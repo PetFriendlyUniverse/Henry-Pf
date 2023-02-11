@@ -1,10 +1,16 @@
 const { Router } = require("express");
-const { getAllInvoices, getId } = require("../handler/invoicesHandler");
+const {
+  getInvoiceHandler,
+  getInvoiceIdHandler,
+  postInvoiceHandler,
+} = require("../handler/invoicesHandler");
 
 const router = Router();
 
-router.get("/", getAllInvoices);
+router.get("/", getInvoiceHandler);
 
-router.get("/:id", getId);
+router.get("/:id", getInvoiceIdHandler);
+
+router.post("/create", postInvoiceHandler);
 
 module.exports = router;

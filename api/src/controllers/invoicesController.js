@@ -1,6 +1,4 @@
-const { Invoices, Invoices_Products } = require("../db");
-const { Sequelize } = require("sequelize");
-const axios = require("axios");
+const { Invoices, Invoices_Products, Products } = require("../db");
 
 const getInvoices = async () => {
   const invoices = await Invoices.findAll();
@@ -20,7 +18,37 @@ const getInvoicesId = async (id) => {
   }
 };
 
+const createInvoice = async (userId, products) => {
+  try {
+    const newInvoice = await Invoices.create(userId);
+    const productsBulk = Object.keys(products).map((key) => {
+      return {
+        InvoiceId: newInvoice.id,
+        ProductId: key,
+        amount: products[key],
+      };
+    });
+
+    const invoiceProducts = await Invoices_Products.bulkCreate(productsBulk);
+
+    const invoiceWithProducts = await Invoices.findByPk(newInvoice.id, {
+      include: [
+        {
+          model: Products,
+          through: {
+            attributes: [],
+          },
+        },
+      ],
+    });
+    return invoiceWithProducts;
+  } catch (error) {
+    return { error: error.message };
+  }
+};
+
 module.exports = {
   getInvoices,
   getInvoicesId,
+  createInvoice,
 };
