@@ -32,15 +32,9 @@ module.exports = (sequelize) => {
     },
     stock: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       validate: {
         min: 0,
-      },
-    },
-    qualification: {
-      type: DataTypes.FLOAT,
-      validate: {
-        min: 0.5,
-        max: 5.0,
       },
     },
     specie: {
@@ -57,7 +51,15 @@ module.exports = (sequelize) => {
         len: [1, 20],
       },
     },
-    //desde aca para abajo dependera del producto que tipo de propiedad tendra, asi que no es necesario que todas estas propiedades este presente en un producto.
+    //Desde aca para abajo dependera del producto que tipo de propiedad tendra, asi que no es necesario que todas estas propiedades este presente en un producto.
+    qualification: {
+      type: DataTypes.FLOAT,
+      defaultValue: null,
+      validate: {
+        min: 0.5,
+        max: 5.0,
+      },
+    },
     weight: {
       type: DataTypes.FLOAT,
       allowNull: true,

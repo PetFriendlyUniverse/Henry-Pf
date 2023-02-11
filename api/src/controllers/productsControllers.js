@@ -28,26 +28,24 @@ const createProduct = async (
   price,
   description,
   stock,
-  qualification,
   specie,
   breed,
   weight,
   color,
   size
 ) => {
-  const newProduct = await Products.create({
-    name,
-    price,
-    description,
-    stock,
-    qualification,
-    specie,
-    breed,
-    weight,
-    color,
-    size,
-  });
-  return newProduct;
+  const data = { name, price, description, stock, specie, breed };
+  if (!Object.values(data).every((value) => value)) {
+    throw new Error("Missing data");
+  } else {
+    const newProduct = await Products.create({
+      ...data,
+      weight,
+      color,
+      size,
+    });
+    return newProduct;
+  }
 };
 
 const updateProduct = async (
@@ -55,26 +53,22 @@ const updateProduct = async (
   price,
   description,
   stock,
-  qualification,
   specie,
   breed,
+  qualification,
   weight,
   color,
   size
 ) => {
-  const editedProduct = await Products.update({
-    name,
-    price,
-    description,
-    stock,
-    qualification,
-    specie,
-    breed,
-    weight,
-    color,
-    size,
-  });
-  return editedProduct;
+  const data = { name, price, description, stock, specie, breed, qualification, weight, color, size };
+  if (!Object.values(data).every((value) => value)) {
+    throw new Error("Missing data");
+  } else {
+    const editedProduct = await Products.update({
+      ...data
+    });
+    return editedProduct;
+  }
 };
 
 const deleteProduct = async (id) => {
