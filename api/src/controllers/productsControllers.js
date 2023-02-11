@@ -35,19 +35,23 @@ const createProduct = async (
   color,
   size
 ) => {
-  const newProduct = await Products.create({
-    name,
-    price,
-    description,
-    stock,
-    qualification,
-    specie,
-    breed,
-    weight,
-    color,
-    size,
-  });
-  return newProduct;
+  if (!name || !price || !description || !stock || !specie || !breed) {
+    throw new Error("Missing data");
+  } else {
+    const newProduct = await Products.create({
+      name,
+      price,
+      description,
+      stock,
+      qualification,
+      specie,
+      breed,
+      weight,
+      color,
+      size,
+    });
+    return newProduct;
+  }
 };
 
 const updateProduct = async (
@@ -62,19 +66,23 @@ const updateProduct = async (
   color,
   size
 ) => {
-  const editedProduct = await Products.update({
-    name,
-    price,
-    description,
-    stock,
-    qualification,
-    specie,
-    breed,
-    weight,
-    color,
-    size,
-  });
-  return editedProduct;
+  if (!name || !price || !description || !stock || !specie || !breed) {
+    throw new Error("Missing data");
+  } else {
+    const editedProduct = await Products.update({
+      name,
+      price,
+      description,
+      stock,
+      qualification,
+      specie,
+      breed,
+      weight,
+      color,
+      size,
+    });
+    return editedProduct;
+  }
 };
 
 const deleteProduct = async (id) => {
