@@ -24,9 +24,9 @@ const getInvoiceIdHandler = async (req, res) => {
 };
 
 const postInvoiceHandler = async (req, res) => {
-  const { userId, products } = req.body; //products = {product_id: amount,product_id: amount, ...}
+  const { UserId, products } = req.body; //products = {product_id: amount,product_id: amount, ...}
   try {
-    let invoice = await createInvoice(userId, products);
+    let invoice = await createInvoice(UserId, products);
     return res.status(200).json(invoice);
   } catch (error) {
     return res.status(404).json({ error: error.message });
