@@ -1,6 +1,7 @@
 const {
   getInvoices,
   getInvoicesId,
+  createInvoice,
 } = require("../controllers/invoicesController");
 
 const getInvoiceHandler = async (req, res) => {
