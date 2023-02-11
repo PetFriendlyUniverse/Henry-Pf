@@ -1,12 +1,12 @@
-const { Products } = require("../db");
+const { Product } = require("../db");
 
 const getAllProducts = async () => {
-  const products = await Products.findAll();
+  const products = await Product.findAll();
   return products;
 };
 
 const getProductByID = async (id) => {
-  const product = await Products.findByPk({
+  const product = await Product.findByPk({
     where: {
       id: id,
     },
@@ -15,7 +15,7 @@ const getProductByID = async (id) => {
 };
 
 const getProductByName = async (name) => {
-  const product = await Products.findAll({
+  const product = await Product.findAll({
     where: {
       name: name,
     },
@@ -38,7 +38,7 @@ const createProduct = async (
   if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
   } else {
-    const newProduct = await Products.create({
+    const newProduct = await Product.create({
       ...data,
       weight,
       color,
@@ -64,7 +64,7 @@ const updateProduct = async (
   if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
   } else {
-    const editedProduct = await Products.update({
+    const editedProduct = await Product.update({
       ...data
     });
     return editedProduct;
@@ -72,7 +72,7 @@ const updateProduct = async (
 };
 
 const deleteProduct = async (id) => {
-  const productDeleted = await Products.update(
+  const productDeleted = await Product.update(
     { enabled: false },
     {
       where: {
