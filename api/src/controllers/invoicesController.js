@@ -1,4 +1,4 @@
-const { Invoices, Invoices_Products, Products } = require("../db");
+const { Invoices, Invoices_Products, User, Product } = require("../db");
 
 const getInvoices = async () => {
   const invoices = await Invoices.findAll();
@@ -18,9 +18,11 @@ const getInvoicesId = async (id) => {
   }
 };
 
-const createInvoice = async (userId, products) => {
+const createInvoice = async (UserId, products) => {
   try {
-    const newInvoice = await Invoices.create(userId);
+    const newInvoice = await Invoices.create();
+    const user = await User.findByPk(UserId);
+    await user.addInvoice(newInvoice.id)
     const productsBulk = Object.keys(products).map((key) => {
       return {
         InvoiceId: newInvoice.id,
@@ -34,7 +36,7 @@ const createInvoice = async (userId, products) => {
     const invoiceWithProducts = await Invoices.findByPk(newInvoice.id, {
       include: [
         {
-          model: Products,
+          model: Product,
           through: {
             attributes: [],
           },
