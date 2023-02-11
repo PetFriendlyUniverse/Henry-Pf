@@ -40,6 +40,10 @@ module.exports = (sequelize) => {
           len: [1, 20],
         },
       },
+      enable: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+      },
     },
     { timestamps: false }
   );

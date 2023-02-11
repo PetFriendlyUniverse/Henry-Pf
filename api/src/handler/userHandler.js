@@ -25,8 +25,10 @@ const getUserHandler = async (req, res) => {
 };
 const putUserHandler = async (req, res) => {
   const { id } = req.params;
+  const user = req.body;
+
   try {
-    const users = await updateAllUsers(id);
+    const users = await updateAllUsers(user, id);
     res.status(200).json(users);
   } catch (error) {
     res.status(404).json({ error: error.message });
