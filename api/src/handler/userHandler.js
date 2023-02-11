@@ -14,7 +14,7 @@ const getUserHandler = async (req, res) => {
     res.status(404).json({ error: error.message });
   }
 };
-const updateUserHandler = async (req, res) => {
+const putUserHandler = async (req, res) => {
   const { id } = req.params;
   try {
     const users = await updateAllUsers(id);
@@ -36,6 +36,6 @@ const deleteUserHandler = async (req, res) => {
 module.exports = {
   postUserHandler,
   getUserHandler,
-  updateUserHandler,
+  putUserHandler,
   deleteUserHandler,
 };
