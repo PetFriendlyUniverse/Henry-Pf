@@ -28,24 +28,18 @@ const createProduct = async (
   price,
   description,
   stock,
-  qualification,
   specie,
   breed,
   weight,
   color,
   size
 ) => {
-  if (!name || !price || !description || !stock || !specie || !breed) {
+  const data = { name, price, description, stock, specie, breed };
+  if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
   } else {
     const newProduct = await Products.create({
-      name,
-      price,
-      description,
-      stock,
-      qualification,
-      specie,
-      breed,
+      ...data,
       weight,
       color,
       size,
@@ -59,27 +53,19 @@ const updateProduct = async (
   price,
   description,
   stock,
-  qualification,
   specie,
   breed,
+  qualification,
   weight,
   color,
   size
 ) => {
-  if (!name || !price || !description || !stock || !specie || !breed) {
+  const data = { name, price, description, stock, specie, breed, qualification, weight, color, size };
+  if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
   } else {
     const editedProduct = await Products.update({
-      name,
-      price,
-      description,
-      stock,
-      qualification,
-      specie,
-      breed,
-      weight,
-      color,
-      size,
+      ...data
     });
     return editedProduct;
   }
