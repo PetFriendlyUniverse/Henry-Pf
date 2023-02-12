@@ -20,14 +20,20 @@ const getCommentsByUser = async (userId) => {
   throw Error("Este usuario no ha realizado comentarios todavía");
 };
 
-const createNewComment = async (userId, content) => {
-  const newComment = await Comments.create({ userId, content });
+const createNewComment = async (userId, content, productId) => {
+  const newComment = await Comments.create({
+    UserId: userId,
+    content,
+    ProductId: productId,
+  });
+
   if (newComment) return newComment;
   throw Error("Lo sentimos hubo un error al intentar crear el comentario");
 };
 
 const updateComment = async (commentId, userId, content) => {
   const commentToUpdate = await Comments.findByPk(commentId);
+  if (!commentToUpdate) throw Error("El comentario no se encontró");
   if (commentToUpdate.UserId !== userId)
     throw Error("Un usuario no puede editar un comentario ajeno"); //verificamos que sea el mismo user
 
