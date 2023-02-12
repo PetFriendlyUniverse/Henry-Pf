@@ -47,6 +47,7 @@ const postProductHandler = async (req, res) => {
     weight,
     color,
     size,
+    storeId,
   } = req.body;
   try {
     const newProduct = await createProduct(
@@ -58,7 +59,8 @@ const postProductHandler = async (req, res) => {
       breed,
       weight,
       color,
-      size
+      size,
+      storeId
     );
     return res.status(200).json(newProduct);
   } catch (error) {
