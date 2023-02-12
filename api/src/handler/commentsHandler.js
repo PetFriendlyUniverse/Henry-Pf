@@ -27,7 +27,7 @@ const getCommentsByUserHandler = async (req, res) => {
 };
 
 const postCreateCommentHandler = async (req, res) => {
-  const { userId, content } = req.body;
+  const { userId, content, productId } = req.body;
 
   if (!content)
     return res
@@ -35,7 +35,7 @@ const postCreateCommentHandler = async (req, res) => {
       .send("No se puede crear comentarios sin un contenido");
 
   try {
-    const newComment = await createNewComment(userId, content);
+    const newComment = await createNewComment(userId, content, productId);
     return res.status(200).json(newComment);
   } catch (error) {
     return res.status(404).json({ error: error.message });
@@ -62,7 +62,7 @@ const deleteCommentHandler = async (req, res) => {
   const { commentId } = req.params;
 
   try {
-    const messageOfDelete = deleteComment(commentId);
+    const messageOfDelete = await deleteComment(commentId);
     res.status(200).send(messageOfDelete);
   } catch (error) {
     res.status(404).json({ message: error.message });
