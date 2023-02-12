@@ -26,4 +26,29 @@ const createNewComment = async (userId, content) => {
   throw Error("Lo sentimos hubo un error al intentar crear el comentario");
 };
 
-module.exports = { getCommentsByProduct, getCommentsByUser, createNewComment };
+const updateComment = async (commentId, userId, content) => {
+  const commentToUpdate = await Comments.findByPk(commentId);
+  if (commentToUpdate.UserId !== userId)
+    throw Error("Un usuario no puede editar un comentario ajeno"); //verificamos que sea el mismo user
+
+  await commentToUpdate.update({ content });
+  await commentToUpdate.save();
+  if (commentToUpdate) return commentToUpdate;
+  throw Error("Lo sentimos hubo un error al intentar actualizar el comentario");
+};
+
+const deleteComment = async (commentId) => {
+  const commentToDelete = await Comments.findByPk(commentId);
+  if (!commentToDelete) throw Error("No se encontró el comentario");
+
+  await commentToDelete.destroy();
+  return "Se ha eliminado el comentario";
+};
+
+module.exports = {
+  getCommentsByProduct,
+  getCommentsByUser,
+  createNewComment,
+  updateComment,
+  deleteComment,
+};
