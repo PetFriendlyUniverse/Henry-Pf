@@ -1,0 +1,48 @@
+const { Store } = require("../db");
+
+const getAllStore = async () => {
+  const storesList = await Store.findAll();
+  return storesList;
+};
+
+const getStoreByID = async (id) => {
+  const store = await Store.findByPk(id);
+  return store;
+};
+
+const createStore = async (name, location) => {
+  const data = { name, location };
+  if (!Object.values(data).every((value) => value)) {
+    throw new Error("Missing data");
+  } else {
+    const newStore = await Store.create(data);
+    return newStore;
+  }
+};
+
+const updateStore = async (store, id) => {
+  const editedStore = await Store.update(store, { where: { id: id } });
+  return editedStore;
+};
+
+const deleteStore = async (id) => {
+  const storeDeleted = await Store.update(
+    { enabled: false },
+    {
+      where: {
+        id,
+      },
+    }
+  );
+  return storeDeleted
+    ? "Tienda eliminada correctamente"
+    : "No se pudo eliminar la tienda";
+};
+
+module.exports = {
+  getAllStore,
+  getStoreByID,
+  createStore,
+  updateStore,
+  deleteStore,
+};
