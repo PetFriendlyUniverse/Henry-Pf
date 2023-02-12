@@ -22,7 +22,7 @@ const createInvoice = async (UserId, products) => {
   try {
     const newInvoice = await Invoices.create();
     const user = await User.findByPk(UserId);
-    await user.addInvoice(newInvoice.id)
+    await user.addInvoice(newInvoice.id);
     const productsBulk = Object.keys(products).map((key) => {
       return {
         InvoiceId: newInvoice.id,

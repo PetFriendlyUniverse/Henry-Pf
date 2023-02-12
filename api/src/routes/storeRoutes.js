@@ -8,12 +8,10 @@ const {
 } = require("../handler/storeHandler");
 const router = Router();
 
-storeRoutes.get("/", getAllStoreHandler);
-storeRoutes.get("/:id", getStoreByIDHandler);
+router.get("/", getAllStoreHandler);
+router.get("/:id", getStoreByIDHandler);
+router.post("/create", postStoreHandler);
+router.put("/:id", putStoreHandler);
+router.delete("/:id", deleteStoreHandler);
 
-storeRoutes.post("/create", postStoreHandler);
-
-storeRoutes.put("/:id", putStoreHandler);
-
-storeRoutes.delete("/:id", deleteStoreHandler);
 module.exports = router;
