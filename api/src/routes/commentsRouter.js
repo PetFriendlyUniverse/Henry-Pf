@@ -3,6 +3,8 @@ const {
   getCommentsByPoductHandler,
   getCommentsByUserHandler,
   postCreateCommentHandler,
+  putUpdateCommentHandler,
+  deleteCommentHandler,
 } = require("../handler/commentsHandler");
 
 const commentsRouter = Router();
@@ -12,8 +14,8 @@ commentsRouter.get("/byUser/:userId", getCommentsByUserHandler);
 
 commentsRouter.post("/create", postCreateCommentHandler); // recibe [userId & content] (body)
 
-commentsRouter.put("/update/:commentId");
+commentsRouter.put("/update/:commentId", putUpdateCommentHandler);
 
-commentsRouter.delete("/:commentId");
+commentsRouter.delete("/:commentId", deleteCommentHandler);
 
 module.exports = commentsRouter;
