@@ -1,4 +1,4 @@
-const { Product } = require("../db");
+const { Product, Store } = require("../db");
 
 const getAllProducts = async () => {
   const products = await Product.findAll();
@@ -32,7 +32,8 @@ const createProduct = async (
   breed,
   weight,
   color,
-  size
+  size,
+  storeId
 ) => {
   const data = { name, price, description, stock, specie, breed };
   if (!Object.values(data).every((value) => value)) {
@@ -44,6 +45,7 @@ const createProduct = async (
       color,
       size,
     });
+    await newProduct.setStore(storeId); // falta verificar que en caso de que no encuentre una tienda con esa id lance un error y no cree el producto
     return newProduct;
   }
 };
@@ -60,12 +62,23 @@ const updateProduct = async (
   color,
   size
 ) => {
-  const data = { name, price, description, stock, specie, breed, qualification, weight, color, size };
+  const data = {
+    name,
+    price,
+    description,
+    stock,
+    specie,
+    breed,
+    qualification,
+    weight,
+    color,
+    size,
+  };
   if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
   } else {
     const editedProduct = await Product.update({
-      ...data
+      ...data,
     });
     return editedProduct;
   }

@@ -10,6 +10,7 @@ module.exports = (sequelize) => {
     },
     name: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false,
       validate: {
         len: [1, 20],
@@ -21,6 +22,10 @@ module.exports = (sequelize) => {
       validate: {
         len: [1, 100],
       },
+    },
+    enabled: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
     },
   });
 };
