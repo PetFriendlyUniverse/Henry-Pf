@@ -3,6 +3,7 @@ const {
   getAllUsers,
   updateAllUsers,
   deleteUsersById,
+  getUserById,
 } = require("../controllers/userControllers");
 
 const postUserHandler = async (req, res) => {
@@ -15,6 +16,7 @@ const postUserHandler = async (req, res) => {
     res.status(404).json({ error: error.message });
   }
 };
+
 const getUserHandler = async (req, res) => {
   try {
     const users = await getAllUsers();
@@ -23,6 +25,17 @@ const getUserHandler = async (req, res) => {
     res.status(404).json({ error: error.message });
   }
 };
+
+const getUserDetailHandler = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await getUserById(id);
+    res.status(404).json(user);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
+
 const putUserHandler = async (req, res) => {
   const { id } = req.params;
   const user = req.body;
@@ -34,6 +47,7 @@ const putUserHandler = async (req, res) => {
     res.status(404).json({ error: error.message });
   }
 };
+
 const deleteUserHandler = async (req, res) => {
   const { id } = req.params;
   try {
@@ -49,4 +63,5 @@ module.exports = {
   getUserHandler,
   putUserHandler,
   deleteUserHandler,
+  getUserDetailHandler,
 };

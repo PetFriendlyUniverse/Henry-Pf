@@ -12,6 +12,11 @@ const getAllUsers = async () => {
   return userList;
 };
 
+const getUserById = async (id) => {
+  const user = await User.findByPk(id);
+  return user;
+};
+
 const updateAllUsers = async (user, id) => {
   await User.update(user, {
     where: { id: id },
@@ -26,4 +31,10 @@ const deleteUsersById = async (id) => {
   return update ? "Usuario eliminado correctamente" : "Usuario incorrecto";
 };
 
-module.exports = { createUser, getAllUsers, updateAllUsers, deleteUsersById };
+module.exports = {
+  createUser,
+  getAllUsers,
+  updateAllUsers,
+  deleteUsersById,
+  getUserById,
+};
