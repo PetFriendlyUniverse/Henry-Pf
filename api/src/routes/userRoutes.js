@@ -4,13 +4,15 @@ const {
   getUserHandler,
   putUserHandler,
   deleteUserHandler,
+  getUserDetailHandler,
 } = require("../handler/userHandler");
 
 const userRoutes = Router();
 //===> aca estamos en /user
-userRoutes.post("/create", postUserHandler);
-
 userRoutes.get("/", getUserHandler);
+userRoutes.get("/detail/:id", getUserDetailHandler);
+
+userRoutes.post("/create", postUserHandler);
 
 userRoutes.put("/:id", putUserHandler);
 
