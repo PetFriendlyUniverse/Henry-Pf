@@ -10,8 +10,8 @@ const {
 const productsRoutes = Router();
 
 productsRoutes.get("/", getAllProductsHandler);
-productsRoutes.get("/name", getProductByIDlHandler);
-productsRoutes.get("/:id", getProductByNameHandler);
+productsRoutes.get("/name", getProductByNameHandler);
+productsRoutes.get("/:id", getProductByIDlHandler);
 productsRoutes.post("/create", postProductHandler);
 productsRoutes.put("/:id", putProductHandler);
 productsRoutes.delete("/:id", deleteProductHandler);
