@@ -18,7 +18,7 @@ const getUserById = async (id) => {
 };
 
 const updateAllUsers = async (user, id) => {
-  await User.update(user, {
+  await User.update({...user}, {
     where: { id: id },
   });
   const updated = await User.findByPk(id);
