@@ -4,12 +4,19 @@ const {
   createStore,
   updateStore,
   deleteStore,
+  storeFilter
 } = require("../controllers/storeControllers");
 
 const getAllStoreHandler = async (req, res) => {
+  const query = req.query
   try {
-    const all = await getAllStore();
-    return res.status(200).json(all);
+    if (Object.keys(query).length) {
+      const allfilter = await storeFilter(query)
+      return res.status(200).json(allfilter);
+    } else {
+      const all = await getAllStore();
+      return res.status(200).json(all);
+    }
   } catch (error) {
     return res.status(404).json(error.message);
   }
