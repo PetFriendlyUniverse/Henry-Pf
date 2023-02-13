@@ -39,10 +39,20 @@ const deleteStore = async (id) => {
     : "No se pudo eliminar la tienda";
 };
 
+const storeFilter = async (query) => {
+  if (Object.keys(query).length) {
+    const stores = await Store.findAll({
+      where: query,
+    });
+    return stores;
+  }
+}
+
 module.exports = {
   getAllStore,
   getStoreByID,
   createStore,
   updateStore,
   deleteStore,
+  storeFilter
 };
