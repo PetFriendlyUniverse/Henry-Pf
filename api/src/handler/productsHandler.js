@@ -69,30 +69,12 @@ const postProductHandler = async (req, res) => {
 };
 
 const putProductHandler = async (req, res) => {
-  const {
-    name,
-    price,
-    description,
-    stock,
-    qualification,
-    specie,
-    breed,
-    weight,
-    color,
-    size,
-  } = req.body;
+  const {id} = req.params
+  const data = req.body;
+  
   try {
     const productEdited = await updateProduct(
-      name,
-      price,
-      description,
-      stock,
-      qualification,
-      specie,
-      breed,
-      weight,
-      color,
-      size
+      id, data
     );
     return res.status(200).json(productEdited);
   } catch (error) {

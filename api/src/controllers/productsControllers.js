@@ -54,35 +54,17 @@ const createProduct = async (
 };
 
 const updateProduct = async (
-  name,
-  price,
-  description,
-  stock,
-  specie,
-  breed,
-  qualification,
-  weight,
-  color,
-  size
+  id,
+  data
 ) => {
-  const data = {
-    name,
-    price,
-    description,
-    stock,
-    specie,
-    breed,
-    qualification,
-    weight,
-    color,
-    size,
-  };
+
   if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
   } else {
-    const editedProduct = await Product.update({
-      ...data,
+    await Product.update({...data}, {
+      where: { id: id },
     });
+    const editedProduct = await Product.findByPk(id)
     return editedProduct;
   }
 };
