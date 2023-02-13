@@ -5,12 +5,19 @@ const {
   createProduct,
   updateProduct,
   deleteProduct,
+  productFilter,
 } = require("../controllers/productsControllers");
 
 const getAllProductsHandler = async (req, res) => {
+  const query = req.query;
   try {
-    all = await getAllProducts();
-    return res.status(200).json(all);
+    let product;
+    if (query) {
+      product = await productFilter(query);
+    } else {
+      product = await getAllProducts();
+    }
+    return res.status(200).json(product);
   } catch (error) {
     return res.status(404).json(error.message);
   }
@@ -69,13 +76,11 @@ const postProductHandler = async (req, res) => {
 };
 
 const putProductHandler = async (req, res) => {
-  const {id} = req.params
+  const { id } = req.params;
   const data = req.body;
-  
+
   try {
-    const productEdited = await updateProduct(
-      id, data
-    );
+    const productEdited = await updateProduct(id, data);
     return res.status(200).json(productEdited);
   } catch (error) {
     return res.status(404).json(error.message);
