@@ -16,14 +16,9 @@ const postFavorite = async (req, res) => {
 };
 
 const getFavorite = async (req, res) => {
-  const { idUser, idProduct } = req.params;
+  const { idUser } = req.params;
   try {
-    let search;
-    if (idUser) {
-      search = await searchFavorite(idUser);
-    } else if (idProduct) {
-      search = await searchFavorite(idProduct);
-    }
+    const search = await searchFavorite(idUser);
     return res.status(200).json(search);
   } catch (error) {
     return res.status(404).json(error.message);
@@ -31,9 +26,9 @@ const getFavorite = async (req, res) => {
 };
 
 const deleteFavorite = async (req, res) => {
-  const { idUser } = req.params;
+  const { idProduct } = req.params;
   try {
-    const favorite = await deleteFavoriteById(idUser);
+    const favorite = await deleteFavoriteById(idProduct);
     res.status(200).json(favorite);
   } catch (error) {
     return res.status(404).json(error.message);

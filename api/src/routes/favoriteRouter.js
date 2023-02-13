@@ -7,8 +7,8 @@ const {
 
 const favoriteRouter = Router();
 
-favoriteRouter.get("/:idUser/:idProduct", getFavorite);
+favoriteRouter.get("/:idUser", getFavorite);
 favoriteRouter.post("/create/:idUser/:idProduct", postFavorite);
-favoriteRouter.delete("/:idUser", deleteFavorite);
+favoriteRouter.delete("/:idProduct", deleteFavorite);
 
 module.exports = favoriteRouter;
