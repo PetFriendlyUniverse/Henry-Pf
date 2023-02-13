@@ -36,6 +36,8 @@ const createProduct = async (
   storeId
 ) => {
   const data = { name, price, description, stock, specie, breed };
+  const store = Store.findByPk(storeId)
+  if (!store) { throw new Error ("Store doesnt exist")} 
   if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
   } else {
@@ -45,41 +47,24 @@ const createProduct = async (
       color,
       size,
     });
-    await newProduct.setStore(storeId); // falta verificar que en caso de que no encuentre una tienda con esa id lance un error y no cree el producto
+    await newProduct.setStore(storeId);
+    
     return newProduct;
   }
 };
 
 const updateProduct = async (
-  name,
-  price,
-  description,
-  stock,
-  specie,
-  breed,
-  qualification,
-  weight,
-  color,
-  size
+  id,
+  data
 ) => {
-  const data = {
-    name,
-    price,
-    description,
-    stock,
-    specie,
-    breed,
-    qualification,
-    weight,
-    color,
-    size,
-  };
+
   if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
   } else {
-    const editedProduct = await Product.update({
-      ...data,
+    await Product.update({...data}, {
+      where: { id: id },
     });
+    const editedProduct = await Product.findByPk(id)
     return editedProduct;
   }
 };
