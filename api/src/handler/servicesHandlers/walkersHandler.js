@@ -3,12 +3,19 @@ const {
   getWalkersById,
   updateWalkers,
   deleteWalkersById,
+  filterWalkers
 } = require("../../controllers/servicesControllers/walkersController");
 
 const getWalkersHandler = async (req, res) => {
+  const query = req.query
   try {
-    const walkers = await getAllWalkers();
-    res.status(200).json(walkers);
+    if (Object.keys(query).length) {
+      const walkers = await filterWalkers(query)
+      res.status(200).json(walkers);
+    } else {
+      const walkers = await getAllWalkers();
+      res.status(200).json(walkers);
+    }
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
