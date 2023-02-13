@@ -27,9 +27,19 @@ const deleteWalkersById = async (id) => {
   return update ? "Walker eliminado correctamente" : "Walker incorrecto";
 };
 
+const filterWalkers = async (query) => {
+  if (Object.keys(query).length) {
+    const walkers = await Walkers.findAll({
+      where: query,
+    });
+    return walkers;
+  }
+}
+
 module.exports = {
   getAllWalkers,
   getWalkersById,
   updateWalkers,
   deleteWalkersById,
+  filterWalkers
 };
