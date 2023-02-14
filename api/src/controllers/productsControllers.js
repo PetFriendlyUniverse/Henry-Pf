@@ -1,17 +1,22 @@
 const { Op } = require("sequelize");
 const { Product, Store } = require("../db");
 
-const getAllProducts = async (where, order, prices) => {
-  if (prices[0] && !prices[1]) where.price = { [Op.gte]: query.prices[0] };
-  if (prices[1] && !prices[0]) where.price = { [Op.lte]: query.prices[1] };
-  if (prices[1] && prices[0]) where.price = { [Op.between]: prices };
-
-  const products = await Product.findAll({
-    where: where,
-    order: order,
-  });
+const getAllProducts = async () => {
+  const products = await Product.findAll();
   return products;
 };
+
+// const getAllProducts = async ({ where, order, prices }) => {
+//   if (prices[0] && !prices[1]) where.price = { [Op.gte]: query.prices[0] };
+//   if (prices[1] && !prices[0]) where.price = { [Op.lte]: query.prices[1] };
+//   if (prices[1] && prices[0]) where.price = { [Op.between]: prices };
+
+//   const products = await Product.findAll({
+//     where: where,
+//     order: order,
+//   });
+//   return products;
+// };
 
 const getProductByID = async (id) => {
   const product = await Product.findByPk({

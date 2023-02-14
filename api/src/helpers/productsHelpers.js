@@ -7,18 +7,19 @@ const queryAdapter = {
   //bd: "brand",
 };
 
-// page: page, pq: productXpage, sortby, sortType; asc || des,
+// page: page, pq: productXpage, sortby, sortType; asc || des,    !! solo funciona si sortBy viene antes que sortType
 //minP: "minPrice" maxP: 'maxPrice'
 const queryMarker = (query) => {
-  if (!Object.keys(query)) return null;
+  // if (!Object.keys(query).length > 0) return null;
 
   const paginationParams = {};
   const where = {};
   const order = [[]];
   const prices = [];
+
   for (const key in query) {
     if (["pq", "page"].includes(key)) {
-      paginationParams[queryAdapter[key]] = query[key];
+      paginationParams[key] = query[key];
     } else if (key === "sortBy" || key === "sortType") {
       order[0].push(query[key]);
     } else if (key === "minP" || key === "maxP") {
@@ -27,10 +28,19 @@ const queryMarker = (query) => {
       where[queryAdapter[key]] = query[key];
     }
   }
-  return { where, order, paginationParams, prices };
+  const paramsConsult = {};
+
+  if (Object.keys(where).length > 0) paramsConsult.where = where;
+  if (order[0].length > 0) paramsConsult.order = order;
+  if (prices.length > 0) paramsConsult.prices = prices;
+
+  if (Object.keys(paramsConsult).length == 0)
+    return { paramsConsult: null, paginationParams };
+  return { paramsConsult, paginationParams };
 };
 
 const pagination = (all, { pq, page }) => {
+  // console.log("pagination", pq, page);
   const lastIndex = pq * page;
   const firstIndex = lastIndex - pq;
   const totalPages = Math.ceil(all.length / pq);

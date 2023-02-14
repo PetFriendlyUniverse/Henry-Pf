@@ -14,12 +14,20 @@ const {
 
 const getAllProductsHandler = async (req, res) => {
   const query = req.query;
+  // console.log(query); // { pq: '2', page: '1' }
   try {
-    const { where, order, paginationParams, prices } = queryMarker(query);
+    const { paramsConsult, paginationParams } = queryMarker(query);
+    let all;
+    if (!paramsConsult) {
+      all = await getAllProducts();
+    }
+    // else {
+    //   const all = await getAllProductsFiltered(paramsConsult);
+    // }
 
-    const all = await getAllProducts(where, order, prices);
+    // return res.status(200).json(all);
+
     const paginated = pagination(all, paginationParams);
-
     return res.status(200).json(paginated);
   } catch (error) {
     return res.status(404).json(error.message);
