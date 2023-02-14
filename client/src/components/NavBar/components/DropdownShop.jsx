@@ -10,7 +10,7 @@ function DropdownShop() {
     <>
       <button
         onClick={showDropdownShop}
-        className="relative flex justify-between"
+        className=" bg-slate-500 flex w-full items-center justify-between rounded-md px-4 py-1 text-xs text-green md:text-sm lg:relative lg:text-base"
       >
         $40.000
         <svg
@@ -24,7 +24,26 @@ function DropdownShop() {
         </svg>
       </button>
 
-      <div ref={dropdownShop} className="absolute hidden h-52 bg-slate-500">
+      <div
+        ref={dropdownShop}
+        className=" z-10 hidden w-64 rounded-b-lg bg-primary pt-8 lg:absolute"
+      >
+        <h2>Modal carrito de compras</h2>
+        <h2>Modal carrito de compras</h2>
+        <h2>Modal carrito de compras</h2>
+        <h2>Modal carrito de compras</h2>
+        <h2>Modal carrito de compras</h2>
+        <h2>Modal carrito de compras</h2>
+        <h2>Modal carrito de compras</h2>
+        <h2>Modal carrito de compras</h2>
+        <h2>Modal carrito de compras</h2>
+        <h2>Modal carrito de compras</h2>
+        <h2>Modal carrito de compras</h2>
+        <h2>Modal carrito de compras</h2>
+        <h2>Modal carrito de compras</h2>
+        <h2>Modal carrito de compras</h2>
+        <h2>Modal carrito de compras</h2>
+        <h2>Modal carrito de compras</h2>
         <h2>Modal carrito de compras</h2>
       </div>
     </>

@@ -5,10 +5,10 @@ function dropdownHelp() {
     dropdown.current.classList.toggle("hidden");
   };
   return (
-    <li>
+    <>
       <button
         onClick={showDropdown}
-        className="realtive flex w-full items-center justify-between border-b border-gray-100 py-2 pl-3 pr-4 font-medium text-black hover:bg-gray-50 dark:border-gray-700  dark:hover:bg-gray-700 dark:hover:text-white dark:focus:text-white md:w-auto md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-white md:dark:hover:bg-transparent"
+        className="bg-slate-500 flex w-full items-center justify-between rounded-md px-4 py-1 text-xs text-green md:text-sm lg:relative lg:text-base"
       >
         Ayuda
         <svg
@@ -23,16 +23,16 @@ function dropdownHelp() {
       </button>
       <div
         ref={dropdown}
-        className="absolute z-10 hidden w-44 divide-y divide-gray-100 rounded-lg bg-white shadow dark:divide-gray-600 dark:bg-gray-700"
+        className="hidden rounded-b-lg bg-primary text-green lg:absolute lg:z-10"
       >
         <ul
-          className="py-2 text-sm text-gray-700 dark:text-gray-400"
+          className="bg-slate-500 text-white dark:text-gray-400 rounded-md py-2 text-sm"
           aria-labelledby="dropdownNavbarButton"
         >
           <li>
             <a
               href="#"
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white block px-4 py-2"
             >
               Dashboard
             </a>
@@ -40,7 +40,7 @@ function dropdownHelp() {
           <li>
             <a
               href="#"
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white block px-4 py-2"
             >
               Settings
             </a>
@@ -48,22 +48,14 @@ function dropdownHelp() {
           <li>
             <a
               href="#"
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white block px-4 py-2"
             >
               Earnings
             </a>
           </li>
         </ul>
-        <div className="py-2">
-          <a
-            href="#"
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
-          >
-            Sign out
-          </a>
-        </div>
       </div>
-    </li>
+    </>
   );
 }
 
