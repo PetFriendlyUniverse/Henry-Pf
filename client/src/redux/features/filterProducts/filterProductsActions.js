@@ -1,8 +1,10 @@
-import { getProducts } from "../filterProducts/filterProductsSlice"
-import axios from "axios"
+import axios from "axios";
+import { getProducts } from "./filterProductsSlice";
 
-export const getProductsAsync = () => async (dispatch)=>{
-  const {data} = await axios.get("/rutaDeProducts")
-  console.log("data en slice");
-  return dispatch(getProducts(data.results))
-}
+export const getProductsApi = () => async (dispatch) => {
+  console.log("data.resuts en Slice");
+  const { data } = await axios.get("/products");
+  console.log(data);
+
+  return dispatch(getProducts(data));
+};

@@ -1,19 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: 0,
+  products: [],
 };
 
-export const counterSlice = createSlice({
-  name: "counter",
+export const Products = createSlice({
+  name: "Products",
   initialState,
   reducers: {
-    getProducts: (state, action) => {
-      state.value += action.payload;
+    getProducts: (state, { payload }) => {
+      state.products = payload;
     },
   },
 });
 
-export const { getProducts } = counterSlice.actions;
+// Action creators are generated for each case reducer function
+export const { getProducts } = Products.actions;
 
-export default counterSlice.reducer;
+export default Products.reducer;
