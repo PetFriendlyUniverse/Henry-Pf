@@ -6,7 +6,6 @@ const {
   postProductHandler,
   putProductHandler,
   deleteProductHandler,
-  getProductFilter,
 } = require("../handler/productsHandler");
 const productsRoutes = Router();
 

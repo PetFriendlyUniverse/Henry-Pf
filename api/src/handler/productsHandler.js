@@ -5,19 +5,12 @@ const {
   createProduct,
   updateProduct,
   deleteProduct,
-  productFilter,
 } = require("../controllers/productsControllers");
 
 const getAllProductsHandler = async (req, res) => {
-  const query = req.query;
   try {
-    let product;
-    if (query) {
-      product = await productFilter(query);
-    } else {
-      product = await getAllProducts();
-    }
-    return res.status(200).json(product);
+    const all = await getAllProducts();
+    return res.status(200).json(all);
   } catch (error) {
     return res.status(404).json(error.message);
   }
