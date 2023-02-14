@@ -34,9 +34,7 @@ const deleteStore = async (id) => {
       },
     }
   );
-  return storeDeleted
-    ? "Tienda eliminada correctamente"
-    : "No se pudo eliminar la tienda";
+  return storeDeleted ? "Store deleted successfully" : "Could not delete store";
 };
 
 const storeFilter = async (query) => {
@@ -46,7 +44,7 @@ const storeFilter = async (query) => {
     });
     return stores;
   }
-}
+};
 
 module.exports = {
   getAllStore,
@@ -54,5 +52,5 @@ module.exports = {
   createStore,
   updateStore,
   deleteStore,
-  storeFilter
+  storeFilter,
 };
