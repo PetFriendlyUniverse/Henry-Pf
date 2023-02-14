@@ -16,6 +16,13 @@ module.exports = (sequelize) => {
         len: [1, 50],
       },
     },
+    img: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 500],
+      },
+    },
     price: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -49,6 +56,13 @@ module.exports = (sequelize) => {
       allowNull: false,
       validate: {
         len: [1, 30],
+      },
+    },
+    brand: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 50],
       },
     },
     //Desde aca para abajo dependera del producto que tipo de propiedad tendra, asi que no es necesario que todas estas propiedades este presente en un producto.

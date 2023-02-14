@@ -16,13 +16,16 @@ const generator = () => {
         let randPrice = Math.floor(Math.random() * 200 + 51);
         let stock = Math.floor(Math.random() * 200 + 51);
         let specie = species[Math.ceil(Math.random() * 4)];
+        let brand = `Una muy buena marca`;
         await products.createProduct({
           name: `Product ${i}${s}`,
+          img: "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/674/580/products/dog-selection-perro-adulto1-6728d5f43d66da7c2d16252425172286-640-0.jpg",
           price: randPrice,
           description: description,
           stock: stock,
           specie: specie,
           breed: `breed${s}`,
+          brand: brand,
           storeId: i,
         });
       }
