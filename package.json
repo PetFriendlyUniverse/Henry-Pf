@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "paginate": "^0.2.0",
+    "react-paginate": "^8.1.4"
+  }
+}

@@ -1,6 +1,7 @@
 import { getProductsApi } from "../../../redux/features/filterProducts/filterProductsActions";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Paginator from "@/components/Paginator/Paginator";
 
 export default function HomeShop() {
   const state = useSelector((state) => state);
@@ -19,6 +20,7 @@ export default function HomeShop() {
         filtros
       </div>
       <div className="absolute right-0 top-96 h-48 w-11/12 border-2 border-black">
+        <Paginator />
         Paginator
       </div>
     </div>
