@@ -10,6 +10,7 @@ const searchFavorite = async (idUser) => {
       UserId: user.id,
     },
   });
+  if (!favorites.length) throw new Error("No favorites yet");
   return favorites;
 };
 

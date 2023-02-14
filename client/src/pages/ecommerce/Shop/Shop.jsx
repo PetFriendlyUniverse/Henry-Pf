@@ -1,6 +1,14 @@
-import React from "react";
+import { getProductsApi } from "../../../redux/features/filterProducts/filterProductsActions";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function HomeShop() {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  console.log(state.Products.products);
+  useEffect(() => {
+    dispatch(getProductsApi());
+  }, []);
   return (
     <div className="relative h-full w-full">
       <p>ACA ARRIBA VA LA NAV BAR</p>
