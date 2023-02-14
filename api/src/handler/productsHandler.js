@@ -9,7 +9,7 @@ const {
 
 const getAllProductsHandler = async (req, res) => {
   try {
-    all = await getAllProducts();
+    const all = await getAllProducts();
     return res.status(200).json(all);
   } catch (error) {
     return res.status(404).json(error.message);
@@ -69,13 +69,11 @@ const postProductHandler = async (req, res) => {
 };
 
 const putProductHandler = async (req, res) => {
-  const {id} = req.params
+  const { id } = req.params;
   const data = req.body;
-  
+
   try {
-    const productEdited = await updateProduct(
-      id, data
-    );
+    const productEdited = await updateProduct(id, data);
     return res.status(200).json(productEdited);
   } catch (error) {
     return res.status(404).json(error.message);
