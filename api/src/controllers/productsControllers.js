@@ -31,34 +31,19 @@ const getProductByName = async (name) => {
   return product;
 };
 
-const createProduct = async (
-  name,
-  price,
-  description,
-  stock,
-  specie,
-  breed,
-  weight,
-  color,
-  size,
-  storeId
-) => {
-  const data = { name, price, description, stock, specie, breed };
-  const store = Store.findByPk(storeId);
+const createProduct = async (requiredData, extraData) => {
+  const store = Store.findByPk(requiredData.storeId);
   if (!store) {
     throw new Error("Store doesnt exist");
   }
-  if (!Object.values(data).every((value) => value)) {
+  if (!Object.values(requiredData).every((value) => value)) {
     throw new Error("Missing data");
   } else {
     const newProduct = await Product.create({
-      ...data,
-      weight,
-      color,
-      size,
+      ...requiredData,
+      ...extraData,
     });
-    await newProduct.setStore(storeId);
-
+    // await newProduct.setStore(requiredData.storeId);
     return newProduct;
   }
 };

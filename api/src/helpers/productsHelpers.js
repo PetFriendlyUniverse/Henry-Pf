@@ -36,4 +36,31 @@ const pagination = (all, { pq, page }) => {
   const totalPages = Math.ceil(all.length / pq);
   return [all.slice(firstIndex, lastIndex), totalPages];
 };
-module.exports = { queryMarker, pagination };
+
+const splitData = (data) => {
+  const {
+    name,
+    price,
+    description,
+    stock,
+    specie,
+    breed,
+    storeId,
+    weight,
+    color,
+    size,
+  } = data;
+  const requiredData = {
+    name,
+    price,
+    description,
+    stock,
+    specie,
+    breed,
+    StoreId: storeId,
+  };
+  const extraData = { weight, color, size };
+  return { requiredData, extraData };
+};
+
+module.exports = { queryMarker, pagination, splitData };

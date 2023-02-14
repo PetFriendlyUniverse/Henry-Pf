@@ -1,12 +1,16 @@
 const {
   getAllProducts,
   getProductByID,
-  getProductByName,
+  // getProductByName,
   createProduct,
   updateProduct,
   deleteProduct,
 } = require("../controllers/productsControllers");
-const { queryMarker, pagination } = require("../helpers/productsHelpers");
+const {
+  queryMarker,
+  pagination,
+  splitData,
+} = require("../helpers/productsHelpers");
 
 const getAllProductsHandler = async (req, res) => {
   const query = req.query;
@@ -35,7 +39,8 @@ const getProductByIDlHandler = async (req, res) => {
 const postProductHandler = async (req, res) => {
   const data = req.body;
   try {
-    const newProduct = await createProduct(data);
+    const { requiredData, extraData } = splitData(data);
+    const newProduct = await createProduct(requiredData, extraData);
     return res.status(200).json(newProduct);
   } catch (error) {
     return res.status(404).json(error.message);
@@ -66,7 +71,7 @@ const deleteProductHandler = async (req, res) => {
 module.exports = {
   getAllProductsHandler,
   getProductByIDlHandler,
-  getProductByNameHandler,
+  // getProductByNameHandler,
   postProductHandler,
   putProductHandler,
   deleteProductHandler,
