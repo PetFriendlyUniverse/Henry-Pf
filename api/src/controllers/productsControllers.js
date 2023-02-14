@@ -6,38 +6,16 @@ const getAllProducts = async () => {
   return products;
 };
 
-// const getAllProducts = async ({ where, order, prices }) => {
-//   if (prices[0] && !prices[1]) where.price = { [Op.gte]: query.prices[0] };
-//   if (prices[1] && !prices[0]) where.price = { [Op.lte]: query.prices[1] };
-//   if (prices[1] && prices[0]) where.price = { [Op.between]: prices };
-
-//   const products = await Product.findAll({
-//     where: where,
-//     order: order,
-//   });
-//   return products;
-// };
 const getProductFilter = async (query) => {
-  const where = {};
-  if (query.where.name)
+  // const where = {};
+  if (!!query.where?.name)
     query.where.name = { [Op.iLike]: `%${query.where.name}%` };
-  if (query.price && query.priceCondition) {
-    if (query.priceCondition === "gt") {
-      where.price = { [Op.gt]: query.price };
-    } else if (query.priceCondition === "lt") {
-      where.price = { [Op.lt]: query.price };
-    }
-  }
-
-  Object.keys(query).forEach((key) => {
-    if (key !== "price" && key !== "priceCondition") {
-      where[key] = query[key];
-    }
-  });
+  if (query.where?.priceCondition == "gt") {
+    query.where.price = { [Op.gt]: query.where.price };
+  } else if (query.where?.priceCondition == "lt")
+    query.where.price = { [Op.lt]: query.where.price };
+  delete query.where.priceCondition;
   const products = await Product.findAll(query);
-  // const products = await Product.findAll({
-  //   where: where,
-  // });
   return products;
 };
 const getProductByID = async (id) => {
@@ -58,7 +36,6 @@ const createProduct = async (requiredData, extraData) => {
       ...requiredData,
       ...extraData,
     });
-    // await newProduct.setStore(requiredData.storeId);
     return newProduct;
   }
 };
