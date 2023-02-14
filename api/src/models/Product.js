@@ -41,14 +41,14 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 10],
+        len: [1, 30],
       },
     },
     breed: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 20],
+        len: [1, 30],
       },
     },
     //Desde aca para abajo dependera del producto que tipo de propiedad tendra, asi que no es necesario que todas estas propiedades este presente en un producto.
@@ -71,7 +71,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
-        len: [1, 10],
+        len: [1, 30],
       },
     },
     size: {
