@@ -10,7 +10,7 @@ const {
 const productsRoutes = Router();
 
 productsRoutes.get("/", getAllProductsHandler);
-productsRoutes.get("/name", getProductByNameHandler);
+
 productsRoutes.get("/:id", getProductByIDlHandler);
 productsRoutes.post("/create", postProductHandler);
 productsRoutes.put("/:id", putProductHandler);

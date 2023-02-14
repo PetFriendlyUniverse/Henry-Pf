@@ -6,11 +6,17 @@ const {
   updateProduct,
   deleteProduct,
 } = require("../controllers/productsControllers");
+const { queryMarker, pagination } = require("../helpers/productsHelpers");
 
 const getAllProductsHandler = async (req, res) => {
+  const query = req.query;
   try {
-    const all = await getAllProducts();
-    return res.status(200).json(all);
+    const { where, order, paginationParams, prices } = queryMarker(query);
+
+    const all = await getAllProducts(where, order, prices);
+    const paginated = pagination(all, paginationParams);
+
+    return res.status(200).json(paginated);
   } catch (error) {
     return res.status(404).json(error.message);
   }
@@ -26,42 +32,10 @@ const getProductByIDlHandler = async (req, res) => {
   }
 };
 
-const getProductByNameHandler = async (req, res) => {
-  const { name } = req.query;
-  try {
-    const productName = await getProductByName(name);
-    return res.status(200).json(productName);
-  } catch (error) {
-    return res.status(404).json(error.message);
-  }
-};
-
 const postProductHandler = async (req, res) => {
-  const {
-    name,
-    price,
-    description,
-    stock,
-    specie,
-    breed,
-    weight,
-    color,
-    size,
-    storeId,
-  } = req.body;
+  const data = req.body;
   try {
-    const newProduct = await createProduct(
-      name,
-      price,
-      description,
-      stock,
-      specie,
-      breed,
-      weight,
-      color,
-      size,
-      storeId
-    );
+    const newProduct = await createProduct(data);
     return res.status(200).json(newProduct);
   } catch (error) {
     return res.status(404).json(error.message);
