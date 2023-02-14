@@ -1,16 +1,16 @@
-function Card() {
 
-    
+import Card from "./Card";
+
+function PokemonCards() {
+
+
   return (
-    <div className="h-80 w-48 border-2 border-black">
-      <p>imagen</p>
-      <p>nombre de producto</p>
-      <p>peso</p>
-      <p>valoracion</p>
-      <p>precio</p>
-      <p>contador y cantidad</p>
+    <div className="flex flex-wrap">
+      {pokemon.map((p) => (
+        <Card key={p.name} name={p.name} weight={p.weight} attack={p.attack} />
+      ))}
     </div>
   );
 }
 
-export default Card;
+export default PokemonCards;

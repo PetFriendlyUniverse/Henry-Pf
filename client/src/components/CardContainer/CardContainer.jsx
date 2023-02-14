@@ -4,11 +4,6 @@ function CardContainer() {
   return (
     <>
       <Card />
-      <Card />
-      <Card />
-      <Card />
-
-      <div>CardContainer</div>
     </>
   );
 }

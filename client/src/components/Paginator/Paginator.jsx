@@ -1,7 +1,7 @@
 // import CardContainer from "../CardContainer/CardContainer";
 import Paginate from "react-paginate";
 import { useState } from "react";
-import Card from "../Card/Card";
+import CardContainer from "../CardContainer/CardContainer";
 
 function Paginator() {
   // const [items, setItems] = useState(allProducts);
@@ -15,7 +15,7 @@ function Paginator() {
     .map((item) => {
       return (
         <div>
-          <Card />
+          <CardContainer />
         </div>
       );
     });
