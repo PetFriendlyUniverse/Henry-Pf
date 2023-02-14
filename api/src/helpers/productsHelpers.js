@@ -1,9 +1,12 @@
+const { Op } = require("sequelize");
+
 const queryAdapter = {
   sr: "name",
   w: "weigth",
   sz: "size",
   bd: "bread",
   sp: "specie",
+  c: "color",
   //bd: "brand",
 };
 
@@ -16,7 +19,7 @@ const queryMarker = (query) => {
   const where = {};
   const order = [[]];
   const prices = [];
-
+  // console.log(query);
   for (const key in query) {
     if (["pq", "page"].includes(key)) {
       paginationParams[key] = query[key];
@@ -24,7 +27,11 @@ const queryMarker = (query) => {
       order[0].push(query[key]);
     } else if (key === "minP" || key === "maxP") {
       prices.push(query[key]);
-    } else {
+    }
+    // else if (key == "sr") {
+    //   where[queryAdapter[key]] = { [Op.iLike]: query[key] };
+    // }
+    else {
       where[queryAdapter[key]] = query[key];
     }
   }

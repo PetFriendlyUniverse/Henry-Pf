@@ -1,7 +1,7 @@
 const {
   getAllProducts,
   getProductByID,
-  // getProductByName,
+  getProductFilter,
   createProduct,
   updateProduct,
   deleteProduct,
@@ -20,12 +20,10 @@ const getAllProductsHandler = async (req, res) => {
     let all;
     if (!paramsConsult) {
       all = await getAllProducts();
+    } else {
+      // console.log(paramsConsult);
+      all = await getProductFilter(paramsConsult);
     }
-    // else {
-    //   const all = await getAllProductsFiltered(paramsConsult);
-    // }
-
-    // return res.status(200).json(all);
 
     const paginated = pagination(all, paginationParams);
     return res.status(200).json(paginated);
@@ -46,6 +44,7 @@ const getProductByIDlHandler = async (req, res) => {
 
 const postProductHandler = async (req, res) => {
   const data = req.body;
+  console.log(data);
   try {
     const { requiredData, extraData } = splitData(data);
     const newProduct = await createProduct(requiredData, extraData);

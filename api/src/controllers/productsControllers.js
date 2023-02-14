@@ -17,22 +17,31 @@ const getAllProducts = async () => {
 //   });
 //   return products;
 // };
+const getProductFilter = async (query) => {
+  const where = {};
+  if (query.where.name)
+    query.where.name = { [Op.iLike]: `%${query.where.name}%` };
+  if (query.price && query.priceCondition) {
+    if (query.priceCondition === "gt") {
+      where.price = { [Op.gt]: query.price };
+    } else if (query.priceCondition === "lt") {
+      where.price = { [Op.lt]: query.price };
+    }
+  }
 
-const getProductByID = async (id) => {
-  const product = await Product.findByPk({
-    where: {
-      id: id,
-    },
+  Object.keys(query).forEach((key) => {
+    if (key !== "price" && key !== "priceCondition") {
+      where[key] = query[key];
+    }
   });
-  return product;
+  const products = await Product.findAll(query);
+  // const products = await Product.findAll({
+  //   where: where,
+  // });
+  return products;
 };
-
-const getProductByName = async (name) => {
-  const product = await Product.findAll({
-    where: {
-      name: name,
-    },
-  });
+const getProductByID = async (id) => {
+  const product = await Product.findByPk(id);
   return product;
 };
 
@@ -45,6 +54,7 @@ const createProduct = async (requiredData, extraData) => {
     throw new Error("Missing data");
   } else {
     const newProduct = await Product.create({
+      StoreId: requiredData.storeId,
       ...requiredData,
       ...extraData,
     });
@@ -80,34 +90,11 @@ const deleteProduct = async (id) => {
   return productDeleted;
 };
 
-const productFilter = async (query) => {
-  const where = {};
-
-  if (query.price && query.priceCondition) {
-    if (query.priceCondition === "gt") {
-      where.price = { [Op.gt]: query.price };
-    } else if (query.priceCondition === "lt") {
-      where.price = { [Op.lt]: query.price };
-    }
-  }
-
-  Object.keys(query).forEach((key) => {
-    if (key !== "price" && key !== "priceCondition") {
-      where[key] = query[key];
-    }
-  });
-
-  const products = await Product.findAll({
-    where: where,
-  });
-  return products;
-};
-
 module.exports = {
   getAllProducts,
   getProductByID,
-  getProductByName,
   createProduct,
   updateProduct,
   deleteProduct,
+  getProductFilter,
 };
