@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const { Product, Store } = require("../db");
 
 const getAllProducts = async () => {
@@ -80,6 +81,31 @@ const deleteProduct = async (id) => {
   );
   return productDeleted;
 };
+
+
+const productFilter = async (query) => {
+  const where = {};
+
+  if (query.price && query.priceCondition) {
+    if (query.priceCondition === "gt") {
+      where.price = { [Op.gt]: query.price };
+    } else if (query.priceCondition === "lt") {
+      where.price = { [Op.lt]: query.price };
+    }
+  }
+
+  Object.keys(query).forEach((key) => {
+    if (key !== "price" && key !== "priceCondition") {
+      where[key] = query[key];
+    }
+  });
+
+  const products = await Product.findAll({
+    where: where,
+  });
+  return products;
+};
+
 
 module.exports = {
   getAllProducts,
