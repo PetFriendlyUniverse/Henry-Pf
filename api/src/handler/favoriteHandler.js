@@ -6,7 +6,7 @@ const {
 } = require("../controllers/favoriteController");
 
 const postFavorite = async (req, res) => {
-  const { idUser, idProduct } = req.params;
+  const { idUser, idProduct } = req.body;
   try {
     const productAddFavorite = await addFavoriteProduct({ idUser, idProduct });
     return res.status(200).json(productAddFavorite);
