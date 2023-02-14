@@ -1,5 +1,17 @@
 const { Walkers } = require("../db");
 
+//prettier-ignore
+const createWalkers = async (data) => {
+  if (!Object.values(data).every((value) => value)) {
+    throw new Error("Missing data");
+  } else {
+    const newWalkers = await Walkers.create({
+      ...data
+    });
+    return newWalkers;
+  }
+};
+
 const getAllWalkers = async () => {
   const walkersList = await Walkers.findAll({});
   return walkersList;
@@ -27,9 +39,20 @@ const deleteWalkersById = async (id) => {
   return update ? "Walker eliminado correctamente" : "Walker incorrecto";
 };
 
+const filterWalkers = async (query) => {
+  if (Object.keys(query).length) {
+    const walkers = await Walkers.findAll({
+      where: query,
+    });
+    return walkers;
+  }
+};
+
 module.exports = {
   getAllWalkers,
   getWalkersById,
   updateWalkers,
   deleteWalkersById,
+  filterWalkers,
+  createWalkers,
 };

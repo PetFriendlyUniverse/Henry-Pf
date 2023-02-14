@@ -1,14 +1,33 @@
 const {
+  createWalkers,
   getAllWalkers,
   getWalkersById,
   updateWalkers,
   deleteWalkersById,
+  filterWalkers,
 } = require("../../controllers/servicesControllers/walkersController");
 
-const getWalkersHandler = async (req, res) => {
+const postWalkersHandler = async (req, res) => {
+  const data = req.body;
   try {
-    const walkers = await getAllWalkers();
-    res.status(200).json(walkers);
+    //prettier-ignore
+    const newWalkers = await createWalkers(data);
+    res.status(200).json(newWalkers);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
+
+const getWalkersHandler = async (req, res) => {
+  const query = req.query;
+  try {
+    if (Object.keys(query).length) {
+      const walkers = await filterWalkers(query);
+      res.status(200).json(walkers);
+    } else {
+      const walkers = await getAllWalkers();
+      res.status(200).json(walkers);
+    }
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
@@ -50,4 +69,5 @@ module.exports = {
   getWalkersDetailHandler,
   putWalkersHandler,
   deleteWalkersHandler,
+  postWalkersHandler,
 };
