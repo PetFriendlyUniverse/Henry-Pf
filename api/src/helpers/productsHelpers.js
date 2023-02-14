@@ -1,5 +1,3 @@
-const { Op } = require("sequelize");
-
 const queryAdapter = {
   sr: "name",
   w: "weigth",
@@ -13,13 +11,10 @@ const queryAdapter = {
 // page: page, pq: productXpage, sortby, sortType; asc || des,    !! solo funciona si sortBy viene antes que sortType
 //minP: "minPrice" maxP: 'maxPrice'
 const queryMarker = (query) => {
-  // if (!Object.keys(query).length > 0) return null;
-
   const paginationParams = {};
   const where = {};
   const order = [[]];
   const prices = [];
-  // console.log(query);
   for (const key in query) {
     if (["pq", "page"].includes(key)) {
       paginationParams[key] = query[key];
@@ -27,11 +22,10 @@ const queryMarker = (query) => {
       order[0].push(query[key]);
     } else if (key === "minP" || key === "maxP") {
       prices.push(query[key]);
-    }
-    // else if (key == "sr") {
-    //   where[queryAdapter[key]] = { [Op.iLike]: query[key] };
-    // }
-    else {
+    } else if (key == "price" || key == "priceCondition") {
+      //price=100&priceCondition=gt
+      where[key] = query[key];
+    } else {
       where[queryAdapter[key]] = query[key];
     }
   }

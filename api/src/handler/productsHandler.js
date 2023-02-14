@@ -44,7 +44,6 @@ const getProductByIDlHandler = async (req, res) => {
 
 const postProductHandler = async (req, res) => {
   const data = req.body;
-  console.log(data);
   try {
     const { requiredData, extraData } = splitData(data);
     const newProduct = await createProduct(requiredData, extraData);
