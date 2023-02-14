@@ -36,10 +36,8 @@ const createProduct = async (
   storeId
 ) => {
   const data = { name, price, description, stock, specie, breed };
-  const store = Store.findByPk(storeId);
-  if (!store) {
-    throw new Error("Store doesnt exist");
-  }
+  const store = Store.findByPk(storeId)
+  if (!store) { throw new Error ("Store doesnt exist")} 
   if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
   } else {
@@ -50,22 +48,23 @@ const createProduct = async (
       size,
     });
     await newProduct.setStore(storeId);
-
+    
     return newProduct;
   }
 };
 
-const updateProduct = async (id, data) => {
+const updateProduct = async (
+  id,
+  data
+) => {
+
   if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
   } else {
-    await Product.update(
-      { ...data },
-      {
-        where: { id: id },
-      }
-    );
-    const editedProduct = await Product.findByPk(id);
+    await Product.update({...data}, {
+      where: { id: id },
+    });
+    const editedProduct = await Product.findByPk(id)
     return editedProduct;
   }
 };
@@ -82,32 +81,6 @@ const deleteProduct = async (id) => {
   return productDeleted;
 };
 
-const productFilter = async (query) => {
-  const where = {};
-  if (query.name) {
-    where.name = query.name;
-  }
-  if (query.weight) {
-    where.weight = query.weight;
-  }
-  if (query.color) {
-    where.color = query.color;
-  }
-  if (query.size) {
-    where.size = query.size;
-  }
-  if (query.specie) {
-    where.specie = query.specie;
-  }
-  if (query.breed) {
-    where.breed = query.breed;
-  }
-  const products = await Product.findAll({
-    where: where,
-  });
-  return products;
-};
-
 module.exports = {
   getAllProducts,
   getProductByID,
@@ -115,5 +88,4 @@ module.exports = {
   createProduct,
   updateProduct,
   deleteProduct,
-  productFilter,
 };
