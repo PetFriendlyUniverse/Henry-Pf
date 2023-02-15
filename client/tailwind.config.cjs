@@ -20,7 +20,34 @@ module.exports = {
         greyHover: "#ced4da",
         white: "#ffff",
       },
+
+      dropShadow: {
+        custom: "36px 36px 37px rgb(0,0,0)",
+        button: "6px 6px 0px rgba(0,0,0)",
+        button2: "10px 10px 0 #FBC638",
+      },
+
+      keyframes: {
+        coloranim: {
+          "0%": { fill: "#ffffff" },
+
+          "50%": {
+            fill: "#FBC638",
+          },
+
+          "100%": {
+            fill: "#ffffff",
+          },
+        },
+      },
+
+      animation: {
+        coloranim: "color_anim 1s infinite 0.6s",
+        coloranim2: "color_anim 1s infinite 0.4s",
+        coloranim3: "color_anim 1s infinite 0.2s",
+      },
     },
+
+    plugins: [],
   },
-  plugins: [],
 };
