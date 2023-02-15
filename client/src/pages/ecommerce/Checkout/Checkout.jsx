@@ -1,7 +1,7 @@
 function Checkout() {
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-slate-200 pt-20">
-      <div className="my-4 flex h-screen max-h-[80vh] min-w-[60vw] flex-row items-center justify-center ">
+      <div className="my-4 flex h-[80vh] min-w-[60vw] flex-row items-center justify-center ">
         <div className="m-4 flex h-full w-4/6 flex-col  items-center justify-center rounded-lg border bg-white px-6 ">
           <div className="m-6 flex h-[8%] w-full items-center justify-center rounded-lg border bg-blue-200 px-6 text-center  text-xs  text-gray-600">
             There are many variations of passages of Lorem Ipsum available, but

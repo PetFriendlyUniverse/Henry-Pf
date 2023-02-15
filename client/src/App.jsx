@@ -9,6 +9,7 @@ import NotFound from "./components/NotFound/NotFound";
 
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
+import Footer from "./components/footer/footer";
 
 function App() {
   const { pathname } = useLocation();
@@ -24,6 +25,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      {pathname !== "/" && <Footer />}
     </div>
   );
 }
