@@ -1,10 +1,13 @@
+import axios from "axios";
 import { useState } from "react";
+
+import validationProfile from "../Validations/Profile";
 
 import LinkButton from "../../../../components/Button/LinkButton";
 
 function FormProfile() {
   const [form, setForm] = useState({
-    email: "",
+    mail: "",
     password: "",
     repeatPassword: "",
     name: "",
@@ -13,7 +16,7 @@ function FormProfile() {
     pets: [],
   });
   const [errors, setErrors] = useState({
-    email: "",
+    mail: "",
     password: "",
     name: "",
     lastname: "",
@@ -26,35 +29,36 @@ function FormProfile() {
       setForm({ ...form, [property]: [value] });
     } else {
       setForm({ ...form, [property]: value });
-      //setErrors({...errors, ...validation({[property]: [value]})})
+      setErrors({ ...errors, ...validationProfile({ [property]: [value] }) });
     }
-    console.log(form);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    axios.post("user/create", form);
   };
   return (
-    <div className="mt-14 flex h-screen justify-center">
+    <div className="flex h-screen justify-center pt-28">
       <form
         onSubmit={handleSubmit}
-        className="rounded-xl p-3 shadow-2xl lg:h-2/3 lg:w-2/5"
+        className="rounded-xl p-3 shadow-2xl lg:h-5/6 lg:w-2/5"
       >
         <h3 className="mb-6">Registrate</h3>
         <div className="group relative z-0 mb-6 h-11 w-full">
           <input
             onChange={handleChange}
             type="text"
-            name="email"
-            value={form.email}
-            className="dark:focus:border-blue-500 focus:border-blue-600 peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 "
+            name="mail"
+            value={form.mail}
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
+            autoComplete="off"
           />
-          <label className="peer-focus:text-blue-600 peer-focus:dark:text-blue-500 absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium dark:text-gray-400">
-            Email
+          <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+            mail
           </label>
-          {!form.email ? null : (
+          {!form.mail ? null : (
             <div>
-              <p className="text-red">{`Por favor escribe un email valido`}</p>
+              <p className="text-red-700">{`Por favor escribe un mail valido`}</p>
             </div>
           )}
         </div>
@@ -64,19 +68,16 @@ function FormProfile() {
             type="text"
             name="password"
             value={form.password}
-            className="dark:focus:border-blue-500 focus:border-blue-600 peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
-            required
+            autoComplete="off"
           />
-          <label
-            for="password"
-            className="peer-focus:text-blue-600 peer-focus:dark:text-blue-500 absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium dark:text-gray-400"
-          >
+          <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
             Contraseña
           </label>
-          {!form.email ? null : (
+          {!form.mail ? null : (
             <div>
-              <p className="text-red">{`Por favor escribe un email valido`}</p>
+              <p className="text-red-700">{`Por favor escribe un mail valido`}</p>
             </div>
           )}
         </div>
@@ -86,19 +87,16 @@ function FormProfile() {
             type="text"
             name="repeatPassword"
             value={form.repeatPassword}
-            className="dark:focus:border-blue-500 focus:border-blue-600 peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
-            required
+            autoComplete="off"
           />
-          <label
-            for="repeatPassword"
-            className="peer-focus:text-blue-600 peer-focus:dark:text-blue-500 absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium dark:text-gray-400"
-          >
+          <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
             Confirme Contraseña
           </label>
-          {!form.email ? null : (
+          {!form.mail ? null : (
             <div>
-              <p className="text-red">{`Por favor escribe un email valido`}</p>
+              <p className="text-red-700">{`Por favor escribe un mail valido`}</p>
             </div>
           )}
         </div>
@@ -109,19 +107,16 @@ function FormProfile() {
               type="text"
               name="name"
               value={form.name}
-              className="dark:focus:border-blue-500 focus:border-blue-600 peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 "
+              className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
               placeholder=" "
-              required
+              autoComplete="off"
             />
-            <label
-              for="name"
-              className="peer-focus:text-blue-600 peer-focus:dark:text-blue-500 absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium dark:text-gray-400"
-            >
+            <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
               Nombre
             </label>
-            {!form.email ? null : (
+            {!form.mail ? null : (
               <div>
-                <p className="text-red">{`Por favor escribe un email valido`}</p>
+                <p className="text-red-700">{`Por favor escribe un mail valido`}</p>
               </div>
             )}
           </div>
@@ -131,19 +126,16 @@ function FormProfile() {
               type="text"
               name="lastname"
               value={form.lastname}
-              className="dark:focus:border-blue-500 focus:border-blue-600 peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 "
+              className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
               placeholder=" "
-              required
+              autoComplete="off"
             />
-            <label
-              for="lastname"
-              className="peer-focus:text-blue-600 peer-focus:dark:text-blue-500 absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium dark:text-gray-400"
-            >
+            <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
               Apellido
             </label>
-            {!form.email ? null : (
+            {!form.mail ? null : (
               <div>
-                <p className="text-red">{`Por favor escribe un email valido`}</p>
+                <p className="text-red-700">{`Por favor escribe un mail valido`}</p>
               </div>
             )}
           </div>
@@ -155,19 +147,16 @@ function FormProfile() {
               type="number"
               name="phone"
               value={form.phone}
-              className="dark:focus:border-blue-500 focus:border-blue-600 peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 "
+              className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
               placeholder=" "
-              required
+              autoComplete="off"
             />
-            <label
-              for="phone"
-              className="peer-focus:text-blue-600 peer-focus:dark:text-blue-500 absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium dark:text-gray-400"
-            >
+            <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
               Numero de telefono
             </label>
-            {!form.email ? null : (
+            {!form.mail ? null : (
               <div>
-                <p className="text-red">{`Por favor escribe un email valido`}</p>
+                <p className="text-red-700">{`Por favor escribe un mail valido`}</p>
               </div>
             )}
           </div>
@@ -178,19 +167,16 @@ function FormProfile() {
               name="pets"
               value={form.pets}
               id="pets"
-              className="dark:focus:border-blue-500 focus:border-blue-600 peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 "
+              className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
               placeholder=" "
-              required
+              autoComplete="off"
             />
-            <label
-              for="pet"
-              className="peer-focus:text-blue-600 peer-focus:dark:text-blue-500 absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium dark:text-gray-400"
-            >
+            <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
               Mascotas
             </label>
-            {!form.email ? null : (
+            {!form.mail ? null : (
               <div>
-                <p className="text-red">{`Por favor escribe un email valido`}</p>
+                <p className="text-red-700">{`Por favor escribe un mail valido`}</p>
               </div>
             )}
           </div>
