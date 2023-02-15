@@ -10,7 +10,7 @@ function DropdownShop() {
     <>
       <button
         onClick={showDropdownShop}
-        className=" bg-slate-500 flex w-full items-center justify-between rounded-md px-4 py-1 text-xs text-green md:text-sm lg:relative lg:text-base"
+        className=" flex w-full items-center justify-between rounded-md bg-primary px-4 py-1 text-xs text-lightwhite md:text-sm lg:relative lg:text-base"
       >
         $40.000
         <svg

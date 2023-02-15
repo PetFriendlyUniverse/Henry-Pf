@@ -9,7 +9,7 @@ function dropdownAccount() {
     <>
       <button
         onClick={showDropdownTwo}
-        className="bg-slate-500 flex w-full items-center justify-between rounded-md px-4 py-1 text-xs text-green md:text-sm lg:relative lg:text-base"
+        className="flex w-full items-center justify-between rounded-md bg-primary px-4 py-1 text-xs text-lightwhite md:text-sm lg:relative lg:text-base"
       >
         Cuenta
         <svg
@@ -24,21 +24,18 @@ function dropdownAccount() {
       </button>
       <div
         ref={dropdownTwo}
-        className="hidden rounded-b-lg bg-primary text-green lg:absolute lg:z-10"
+        className="hidden rounded-b-lg bg-primary text-lightwhite lg:absolute lg:z-10"
       >
-        <ul className="text-gray-700 dark:text-gray-400 py-2 text-sm">
+        <ul className="py-2 text-sm text-gray-700 dark:text-gray-400">
           <li>
-            <a
-              href="#"
-              className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white block px-4 py-2"
-            >
+            <a href="#" className="block  bg-primary px-4 py-2 ">
               asdfsdfa
             </a>
           </li>
           <li>
             <a
               href="#"
-              className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white block px-4 py-2"
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Settings
             </a>
@@ -46,7 +43,7 @@ function dropdownAccount() {
           <li>
             <a
               href="#"
-              className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white block px-4 py-2"
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Earnings
             </a>
