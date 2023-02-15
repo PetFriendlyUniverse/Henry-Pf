@@ -4,7 +4,6 @@ import { useState } from "react";
 import CardContainer from "../CardContainer/CardContainer";
 
 function Paginator() {
-  // const [items, setItems] = useState(allProducts);
   const [pageNumber, setPageNumber] = useState(0);
   const items = [];
 
@@ -14,7 +13,7 @@ function Paginator() {
     .slice(pagesVisited, pagesVisited + ProdPerPage)
     .map((item) => {
       return (
-        <div>
+        <div key={item.id}>
           <CardContainer />
         </div>
       );
@@ -25,7 +24,7 @@ function Paginator() {
   };
 
   return (
-    <div>
+    <div className="h-full w-full">
       {displayProducts}
       <Paginate
         previousLabel={"previous"}
