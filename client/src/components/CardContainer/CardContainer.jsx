@@ -6,7 +6,7 @@ function CardContainer() {
   console.log(products);
 
   return (
-    <>
+    <div className="flex w-full flex-wrap justify-center gap-2 border-2 border-black">
       {products.map((product) => {
         return (
           <Card
@@ -18,7 +18,7 @@ function CardContainer() {
           ></Card>
         );
       })}
-    </>
+    </div>
   );
 }
 
