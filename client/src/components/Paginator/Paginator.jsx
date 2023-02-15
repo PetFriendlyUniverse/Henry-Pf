@@ -19,9 +19,9 @@ function Paginator() {
   };
 
   return (
-    <div className="h-full w-full">
-      <CardContainer />
+    <div className="flex h-full w-full flex-col">
       <Paginate
+        className="flex justify-center border-2 border-black"
         previousLabel={"previous"}
         nextLabel={"next"}
         pageCount={totalPages}
@@ -32,6 +32,7 @@ function Paginator() {
         disabledClassName={"paginationDisabled"}
         activeClassName={"paginationActive"}
       />
+      <CardContainer className="w-full" />
     </div>
   );
 }
