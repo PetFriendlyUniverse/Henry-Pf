@@ -1,9 +1,8 @@
 import { useState } from "react";
-import photoUser from "../../../assets/borrador/profile.jpg";
+import LinkButton from "../../../components/Button/LinkButton";
 
+import photoUser from "../../../assets/borrador/profile.jpg";
 import keyUser from "../../../assets/user/key.svg";
-import profileUser from "../../../assets/user/profile.svg";
-import secutiryUser from "../../../assets/user/security.svg";
 
 function Profile() {
   const [showInfo, setShowInfo] = useState(false);
@@ -39,13 +38,13 @@ function Profile() {
     }
   };
   return (
-    <div className="w-full">
-      <div className="mx-0 w-3/4 p-5">
-        <div className="flex">
-          <div className="">
-            <div className="w-64">
-              <img src={photoUser} alt="profile" className="rounded-xl" />
-            </div>
+    <div className="w-9/12">
+      <div className="ml-12 mt-7 w-full rounded-xl bg-customProfile p-5 shadow-2xl lg:ml-80 lg:flex">
+        <div className="mx-0 w-full lg:w-1/3">
+          <img src={photoUser} alt="profile" className="rounded-xl" />
+        </div>
+        <div className="lg:pl-16">
+          <div className="lg:w-80">
             <div className="py-3 pl-3">
               <div className="flex justify-between">
                 <h3 className="">Mis datos</h3>
@@ -54,20 +53,18 @@ function Profile() {
               {showInfo ? (
                 <div className="">
                   <div className="flex justify-between pb-1">
-                    <p className="px-3">Nombre: Maria Lucatelli</p>
+                    <p className="">Nombre: Maria Lucatelli</p>
                     <img src={keyUser} alt="edit" className="w-4" />
                   </div>
                   <div className="flex justify-between pb-1">
-                    <p className="px-3">Mascotas: Manuelita</p>
+                    <p className="">Mascotas: Manuelita</p>
                     <img src={keyUser} alt="edit" className="w-4" />
                   </div>
                 </div>
               ) : null}
             </div>
           </div>
-        </div>
-        <div className="flex justify-between">
-          <div className="">
+          <div className="lg:w-80">
             <div className="py-3 pl-3">
               <div className="flex justify-between">
                 <h3 className="">Seguridad</h3>
@@ -76,11 +73,15 @@ function Profile() {
               {showSecurity ? (
                 <div className="">
                   <div className="flex justify-between pb-1">
-                    <p className="px-3">Mail: marialucatelli@gmail.com</p>
+                    <p className="">Mail: marialucatelli@gmail.com</p>
                     <img src={keyUser} alt="edit" className="w-4" />
                   </div>
                   <div className="flex justify-between pb-1">
-                    <p className="px-3">Contraseña: marialucatelli777</p>
+                    <p className="">Contraseña: marialucatelli777</p>
+                    <img src={keyUser} alt="edit" className="w-4" />
+                  </div>
+                  <div className="flex justify-between pb-1">
+                    <p className="">Telefono: +5991112794823</p>
                     <img src={keyUser} alt="edit" className="w-4" />
                   </div>
                 </div>
@@ -88,8 +89,8 @@ function Profile() {
             </div>
           </div>
         </div>
-        <div className="flex justify-between">
-          <div className="">
+        <div className="lg:pl-16">
+          <div className="lg:w-80">
             <div className="py-3 pl-3">
               <div className="flex justify-between">
                 <h3 className="">Ubicacion</h3>
@@ -98,20 +99,18 @@ function Profile() {
               {showUbi ? (
                 <div className="">
                   <div className="flex justify-between pb-1">
-                    <p className="px-3">Departamento: CABA</p>
+                    <p className="">Departamento: CABA</p>
                     <img src={keyUser} alt="edit" className="w-4" />
                   </div>
                   <div className="flex justify-between pb-1">
-                    <p className="px-3">Delivery: Calle falsa 123</p>
+                    <p className="">Delivery: Calle falsa 123</p>
                     <img src={keyUser} alt="edit" className="w-4" />
                   </div>
                 </div>
               ) : null}
             </div>
           </div>
-        </div>
-        <div className="flex justify-between">
-          <div className="">
+          <div className="lg:w-80">
             <div className="py-3 pl-3">
               <div className="flex justify-between">
                 <h3 className="">Metodos de Pago</h3>
@@ -120,11 +119,11 @@ function Profile() {
               {showPayment ? (
                 <div className="">
                   <div className="flex justify-between pb-1">
-                    <p className="px-3">Efectivo</p>
+                    <p className="">Efectivo</p>
                     <img src={keyUser} alt="edit" className="w-4" />
                   </div>
                   <div className="flex justify-between pb-1">
-                    <p className="px-3">
+                    <p className="">
                       Tarjeta:{" "}
                       {
                         <select>
@@ -141,6 +140,11 @@ function Profile() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="ml-12 mt-7 w-full rounded-xl p-5 lg:ml-80 lg:flex">
+        <LinkButton component={"Registra una mascota"} />
+        <LinkButton component={"Registrate como paseador"} />
+        <LinkButton component={"Crea tu tienda"} />
       </div>
     </div>
   );
