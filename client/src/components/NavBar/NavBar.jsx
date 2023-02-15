@@ -15,7 +15,7 @@ function NavBar() {
     userMenu.current.classList.toggle("hidden");
   };
   return (
-    <nav className="flex  h-16 border-gray-200 bg-primary sm:px-4">
+    <nav className="fixed flex h-16 w-full border-gray-200 bg-primary sm:px-4">
       <div className="container mx-auto flex items-center justify-between">
         <a href="https://flowbite.com/" className="flex items-center">
           <img
