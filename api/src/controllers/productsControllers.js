@@ -88,6 +88,16 @@ const deleteProduct = async (id) => {
   return productDeleted;
 };
 
+const getFiltersBD = async () => {
+  const filters = []; // [{colors:["blue","red"]}]
+  filters.push({ Breeds: await Breeds.findAll() });
+  filters.push({ Brands: await Brands.findAll() });
+  filters.push({ Species: await Species.findAll() });
+  filters.push({ Colors: await Colors.findAll() });
+
+  return filters;
+};
+
 module.exports = {
   getAllProducts,
   getProductByID,
@@ -95,4 +105,5 @@ module.exports = {
   updateProduct,
   deleteProduct,
   getProductFilter,
+  getFiltersBD,
 };
