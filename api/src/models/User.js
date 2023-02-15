@@ -10,7 +10,22 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
+      user: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1, 15],
+        },
+        unique: true,
+      },
       name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1, 30],
+        },
+      },
+      lastname: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -25,16 +40,15 @@ module.exports = (sequelize) => {
         },
         unique: true,
       },
-      user: {
+      password: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [1, 15],
+          len: [1, 20],
         },
-        unique: true,
       },
-      password: {
-        type: DataTypes.STRING,
+      phone: {
+        type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
           len: [1, 20],
