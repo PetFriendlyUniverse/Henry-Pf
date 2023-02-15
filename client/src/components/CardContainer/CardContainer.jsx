@@ -3,13 +3,14 @@ import Card from "../Card/Card";
 
 function CardContainer() {
   const products = useSelector((state) => state.Products?.products);
+  console.log(products);
 
   return (
     <>
-      {products.map((product, i) => {
+      {products.map((product) => {
         return (
           <Card
-            key={i}
+            key={product.id}
             name={product.name}
             img={product.img}
             weight={product.weight}
