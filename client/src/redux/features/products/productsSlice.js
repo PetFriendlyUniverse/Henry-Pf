@@ -4,7 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 // para usar page => const page = useSelector(state => state.Products.page)
 const initialState = {
   products: [],
-  page: 1,
+  totalPages: 1,
+  currentPage: 1,
 };
 
 export const Products = createSlice({
@@ -13,8 +14,8 @@ export const Products = createSlice({
   reducers: {
     // uso =>  const products = useSelector(state => state.Products.products)
     getProducts: (state, { payload }) => {
-      state.products = payload[0];
-      state.page = payload[1];
+      state.products = payload[0]; //payload: [[{},{},{},{}...], totalPages]
+      state.totalPages = payload[1];
     },
   },
 });
