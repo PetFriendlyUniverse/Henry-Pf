@@ -15,20 +15,42 @@ function FormCreateProduct() {
     weight: 0.0,
     color: "",
     size: "",
-    StoreId: 0,
+    storeId: 0,
+  });
+  const [error, setError] = useState({
+    name: "",
+    img: "",
+    price: "",
+    description: "",
+    stock: "",
+    specie: "",
+    breed: "",
+    brand: "",
+    weight: "",
+    color: "",
+    size: "",
+    storeId: "",
   });
 
   const changeHandler = (e) => {
     let property = e.target.name;
     let value = e.target.value;
-
+    setError(ValidationProduts(property, value));
     setForm({ ...form, [property]: value });
     console.log(form);
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    axios.post("/products/create", form);
+    const data = {
+      ...form,
+      weight: parseFloat(form.weight),
+      price: parseInt(form.price),
+      stock: parseInt(form.stock),
+      StoreId: parseInt(form.StoreId),
+    };
+    console.log(data);
+    axios.post("/products/create", data);
   };
 
   return (
@@ -127,7 +149,7 @@ function FormCreateProduct() {
         <div>
           <label>Size: </label>
           <input
-            type="number"
+            type="text"
             value={form.size}
             name="size"
             onChange={changeHandler}
@@ -137,8 +159,8 @@ function FormCreateProduct() {
           <label>StoreId: </label>
           <input
             type="number"
-            value={form.StoreId}
-            name="StoreId"
+            value={form.storeId}
+            name="storeId"
             onChange={changeHandler}
           />
         </div>
