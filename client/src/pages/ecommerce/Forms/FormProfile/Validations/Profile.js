@@ -36,8 +36,6 @@ const validationProfile = (state) => {
   if (state.mail) {
     if (!emailRegex.test(state.mail)) {
       error.mail = "This not a valid mail";
-    } else {
-      error.mail = "";
     }
   }
 
@@ -45,7 +43,9 @@ const validationProfile = (state) => {
     if (!passwordRegex.test(state.password)) {
       error.password = "Wrong password";
     } else {
-      error.password = "";
+      if (state.password !== state.repeatPassword) {
+        error.repeatPassword = "Password does not match";
+      }
     }
   }
   return error;
