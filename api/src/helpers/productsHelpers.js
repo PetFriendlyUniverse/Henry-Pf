@@ -51,15 +51,17 @@ const pagination = (all, { pq, page }) => {
 const splitData = (data) => {
   const {
     name,
+    img,
     price,
     description,
     stock,
     specie,
     breed,
-    storeId,
+    brand,
     weight,
     color,
     size,
+    storeId,
   } = data;
   const requiredData = {
     name,
@@ -68,9 +70,10 @@ const splitData = (data) => {
     stock,
     specie,
     breed,
+    brand,
     StoreId: storeId,
   };
-  const extraData = { weight, color, size };
+  const extraData = { weight, color, size, img }; // despues pondremos el img sea obligatorio
   return { requiredData, extraData };
 };
 
