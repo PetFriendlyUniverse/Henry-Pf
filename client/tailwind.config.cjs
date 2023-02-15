@@ -6,7 +6,7 @@ module.exports = {
       primary: "#4B3B40",
       secondary: "#82735C",
       crem: "#CACFD6",
-      green: "#D6E5E3",
+      lightwhite: "#D6E5E3",
       yellow: "#E1BC29",
       customProfile: "#f8f7ff",
       green: "#40916c",
