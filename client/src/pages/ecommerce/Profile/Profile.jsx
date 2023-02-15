@@ -4,6 +4,7 @@ import LinkButton from "../../../components/Button/LinkButton";
 import photoUser from "../../../assets/borrador/profile.jpg";
 
 import arrowBottom from "../../../assets/arrows/arrowToBottom.svg";
+import interrogation from "../../../assets/general/interrogation.svg";
 
 import profile from "../../../assets/general/profile.svg";
 import security from "../../../assets/general/security.svg";
@@ -50,9 +51,9 @@ function Profile() {
           <img src={photoUser} alt="profile" className="rounded-xl" />
         </div>
         <div className="lg:pl-16">
-          <div className="lg:w-80">
+          <div className="lg:h-28 lg:w-80">
             <div className="py-3 pl-3">
-              <div className="flex justify-between border-b-2 border-b-primary pb-2">
+              <div className="flex justify-between border-b-2 border-b-stone-900 pb-2">
                 <img src={profile} alt="" className="w-6" />
                 <h3 className="">Mis datos</h3>
                 <button onClick={handleShowInfo}>
@@ -71,9 +72,9 @@ function Profile() {
               ) : null}
             </div>
           </div>
-          <div className="lg:w-80">
+          <div className="lg:h-28 lg:w-80">
             <div className="py-3 pl-3">
-              <div className="flex justify-between pb-2">
+              <div className="flex justify-between border-b-2 border-b-stone-900 pb-2">
                 <img src={security} alt="" className="w-6" />
                 <h3 className="">Seguridad</h3>
                 <button onClick={handleShowSecurity}>
@@ -97,9 +98,9 @@ function Profile() {
           </div>
         </div>
         <div className="lg:pl-16">
-          <div className="lg:w-80">
+          <div className="lg:h-28 lg:w-80">
             <div className="py-3 pl-3">
-              <div className="flex justify-between pb-2">
+              <div className="flex justify-between border-b-2 border-b-stone-900 pb-2">
                 <img src={ubication} alt="" className="w-6" />
                 <h3 className="">Ubicacion</h3>
                 <button onClick={handleShowUbi}>
@@ -118,9 +119,9 @@ function Profile() {
               ) : null}
             </div>
           </div>
-          <div className="lg:w-80">
+          <div className="lg:h-28 lg:w-80">
             <div className="py-3 pl-3">
-              <div className="flex justify-between pb-2">
+              <div className="flex justify-between border-b-2 border-b-stone-900 pb-2">
                 <img src={payment} alt="" className="w-6" />
                 <h3 className="">Metodos de Pago</h3>
                 <button onClick={handleShowPayment}>
@@ -152,9 +153,18 @@ function Profile() {
         </div>
       </div>
       <div className="ml-12 mt-7 w-full rounded-xl p-5 lg:ml-80 lg:flex">
-        <LinkButton component={"Registra una mascota"} />
-        <LinkButton component={"Registrate como paseador"} />
-        <LinkButton component={"Crea tu tienda"} />
+        <div className="mr-3 flex">
+          <LinkButton component={"Registra una mascota"} />
+          <img src={interrogation} alt="help" className="w-5" />
+        </div>
+        <div className="mr-3 flex">
+          <LinkButton component={"Registrate como paseador"} />
+          <img src={interrogation} alt="help" className="w-5" />
+        </div>
+        <div className="mr-3 flex">
+          <LinkButton component={"Crea tu tienda"} />
+          <img src={interrogation} alt="help" className="w-5" />
+        </div>
       </div>
     </div>
   );
