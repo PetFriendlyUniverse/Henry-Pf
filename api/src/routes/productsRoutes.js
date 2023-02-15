@@ -2,7 +2,7 @@ const { Router } = require("express");
 const {
   getAllProductsHandler,
   getProductByIDlHandler,
-  getProductByNameHandler,
+  getFilters,
   postProductHandler,
   putProductHandler,
   deleteProductHandler,
@@ -10,6 +10,7 @@ const {
 const productsRoutes = Router();
 
 productsRoutes.get("/", getAllProductsHandler);
+productsRoutes.get("/filters", getFilters);
 
 productsRoutes.get("/:id", getProductByIDlHandler);
 productsRoutes.post("/create", postProductHandler);
