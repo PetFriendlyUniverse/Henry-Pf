@@ -1,5 +1,5 @@
-// import { getProductsApi } from "../../../redux/features/filterProducts/filterProductsActions";
-// import { useEffect } from "react";
+import { getProductsApi } from "../../../redux/features/filterProducts/filterProductsActions";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Paginator from "@/components/Paginator/Paginator";
 import { useEffect } from "react";
@@ -8,7 +8,9 @@ import { getProductsApi } from "../../../redux/features/filterProducts/filterPro
 export default function HomeShop() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  console.log(state);
+
+  console.log(state.Products.products);
+
 
   useEffect(() => {
     dispatch(getProductsApi());

@@ -15,7 +15,7 @@ function NavBar() {
     userMenu.current.classList.toggle("hidden");
   };
   return (
-    <nav className="border-gray-200 dark:bg-gray-900  bg-primary px-2 py-2.5 sm:px-4">
+    <nav className="border-gray-200  dark:bg-gray-900 flex h-16 bg-primary sm:px-4">
       <div className="container mx-auto flex items-center justify-between">
         <a href="https://flowbite.com/" className="flex items-center">
           <img
@@ -52,7 +52,7 @@ function NavBar() {
             />
           </button>
           <div
-            className="bg-white divide-gray-100 dark:bg-gray-700 dark:divide-gray-600 absolute top-7 -left-20 z-50 my-4 hidden list-none divide-y rounded-lg bg-primary text-base text-green shadow lg:-left-12"
+            className="divide-gray-100 bg-white dark:divide-gray-600 dark:bg-gray-700 absolute top-7 -left-20 z-50 my-4 hidden list-none divide-y rounded-lg bg-primary text-base text-green shadow lg:-left-12"
             id="user-dropdown"
             ref={userMenu}
           >
@@ -68,7 +68,7 @@ function NavBar() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white block px-4 py-2 text-sm"
+                  className="text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white block px-4 py-2 text-sm"
                 >
                   Dashboard
                 </a>
@@ -76,7 +76,7 @@ function NavBar() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white block px-4 py-2 text-sm"
+                  className="text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white block px-4 py-2 text-sm"
                 >
                   Settings
                 </a>
@@ -84,7 +84,7 @@ function NavBar() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white block px-4 py-2 text-sm"
+                  className="text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white block px-4 py-2 text-sm"
                 >
                   Earnings
                 </a>
@@ -92,7 +92,7 @@ function NavBar() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white block px-4 py-2 text-sm"
+                  className="text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white block px-4 py-2 text-sm"
                 >
                   Sign out
                 </a>
@@ -129,7 +129,7 @@ function NavBar() {
           id="mobile-menu-2"
           ref={toolBar}
         >
-          <ul className="border-gray-100 bg-gray-50 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 mt-4 flex flex-col items-center rounded-lg border p-4 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:text-sm md:font-medium">
+          <ul className="border-gray-100 bg-gray-50 dark:border-gray-700 dark:bg-gray-800 md:bg-white md:dark:bg-gray-900 mt-4 flex flex-col items-center rounded-lg border p-4 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:text-sm md:font-medium">
             <li className="w-96">
               <SearchForm />
             </li>
