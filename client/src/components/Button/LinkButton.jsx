@@ -1,10 +1,9 @@
-function LinkButton ({component}) {
-    return (
-        <button 
-        className="px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:bg-blue-900">
-            {component}
-        </button>
-    )
+function LinkButton({ component }) {
+  return (
+    <button className="focus:bg-blue-900 mx-3 rounded-lg bg-blue px-3 py-2 text-center text-sm font-medium text-white shadow-md hover:bg-blueHover">
+      {component}
+    </button>
+  );
 }
 
 export default LinkButton;
