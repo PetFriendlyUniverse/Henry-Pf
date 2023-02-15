@@ -12,12 +12,12 @@ const getAllProducts = async () => {
 
 const getProductFilter = async (query) => {
   if (!!query.where?.name) {
-    query.where?.name = { [Op.iLike]: `%${query.where.name}%` };
+    query.where.name = { [Op.iLike]: `%${query.where.name}%` };
   }
   if (query.where?.priceCondition == "gt") {
-    query.where?.price = { [Op.gt]: query.where.price };
+    query.where.price = { [Op.gt]: query.where.price };
   } else if (query.where?.priceCondition == "lt") {
-    query.where?.price = { [Op.lt]: query.where.price };
+    query.where.price = { [Op.lt]: query.where.price };
   }
   delete query.where.priceCondition;
   // Agregar condición para "enable" igual a true

@@ -13,7 +13,7 @@ import NavBar from "./components/NavBar/NavBar";
 function App() {
   const { pathname } = useLocation();
   return (
-    <div className="App">
+    <div className="App min-h-screen">
       {pathname !== "/" && <NavBar />}
       <Routes>
         <Route path="/" element={<Landing />} />
