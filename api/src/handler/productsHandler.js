@@ -5,6 +5,7 @@ const {
   createProduct,
   updateProduct,
   deleteProduct,
+  getFiltersBD,
 } = require("../controllers/productsControllers");
 const {
   queryMarker,
@@ -74,10 +75,19 @@ const deleteProductHandler = async (req, res) => {
   }
 };
 
+const getFilters = async (req, res) => {
+  try {
+    const filters = await getFiltersBD();
+    return res.status(200).json(filters);
+  } catch (error) {
+    return res.status(404).json(error.message);
+  }
+};
+
 module.exports = {
   getAllProductsHandler,
   getProductByIDlHandler,
-  // getProductByNameHandler,
+  getFilters,
   postProductHandler,
   putProductHandler,
   deleteProductHandler,
