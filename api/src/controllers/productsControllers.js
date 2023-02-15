@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { Product, Store } = require("../db");
+const { Product, Store, Brands, Breeds, Species, Colors } = require("../db");
 
 const getAllProducts = async () => {
   const products = await Product.findAll({
@@ -29,8 +29,21 @@ const getProductByID = async (id) => {
   const product = await Product.findByPk(id);
   return product;
 };
-
+// color, peso, imagen, tamaño  => extra
 const createProduct = async (requiredData, extraData) => {
+  await Brands.findOrCreate({
+    where: { id: requiredData.brand },
+  });
+  await Breeds.findOrCreate({
+    where: { id: requiredData.breed },
+  });
+  await Species.findOrCreate({
+    where: { id: requiredData.specie },
+  });
+  if (extraData?.color)
+    await Colors.findOrCreate({
+      where: { id: extraData.color },
+    });
   const store = Store.findByPk(requiredData.storeId);
   if (!store) {
     throw new Error("Store doesnt exist");

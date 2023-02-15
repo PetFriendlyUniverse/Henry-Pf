@@ -65,6 +65,17 @@ Comments.belongsTo(User);
 Product.hasMany(Comments);
 Comments.belongsTo(Product);
 
+// modelos de filtros
+
+const Brands = require("./models/FilterModels/Brands.js");
+const Breeds = require("./models/FilterModels/Breeds.js");
+const Species = require("./models/FilterModels/Species.js");
+const Colors = require("./models/FilterModels/Colors.js");
+Brands(sequelize);
+Breeds(sequelize);
+Species(sequelize);
+Colors(sequelize);
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize, // para importart la conexión { conn } = require('./db.js');
