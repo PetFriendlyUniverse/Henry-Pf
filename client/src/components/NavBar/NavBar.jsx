@@ -23,13 +23,13 @@ function NavBar() {
             className="mr-3 h-6 sm:h-9"
             alt="Flowbite Logo"
           />
-          <span className="dark:text-white self-center whitespace-nowrap text-xl font-semibold">
+          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
             Flowbite
           </span>
         </a>
 
         <div>
-          <NavLink className="text-green" to="/services">
+          <NavLink className="text-lightwhite" to="/services">
             Servicios
           </NavLink>
         </div>
@@ -52,12 +52,12 @@ function NavBar() {
             />
           </button>
           <div
-            className="divide-gray-100 bg-white dark:divide-gray-600 dark:bg-gray-700 absolute top-7 -left-20 z-50 my-4 hidden list-none divide-y rounded-lg bg-primary text-base text-green shadow lg:-left-12"
+            className="divide-gray-100 dark:divide-gray-600 dark:bg-gray-700 absolute top-7 -left-20 z-50 my-4 hidden list-none divide-y rounded-lg  bg-primary text-base text-lightwhite shadow lg:-left-12"
             id="user-dropdown"
             ref={userMenu}
           >
             <div className="px-4 py-3">
-              <span className="text-gray-900 dark:text-white block text-sm">
+              <span className="text-gray-900 block text-sm dark:text-white">
                 Bonnie Green
               </span>
               <span className="text-gray-500 dark:text-gray-400 block truncate text-sm font-medium">
@@ -68,7 +68,7 @@ function NavBar() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white block px-4 py-2 text-sm"
+                  className="text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 block px-4 py-2 text-sm dark:hover:text-white"
                 >
                   Dashboard
                 </a>
@@ -76,7 +76,7 @@ function NavBar() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white block px-4 py-2 text-sm"
+                  className="text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 block px-4 py-2 text-sm dark:hover:text-white"
                 >
                   Settings
                 </a>
@@ -84,7 +84,7 @@ function NavBar() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white block px-4 py-2 text-sm"
+                  className="text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 block px-4 py-2 text-sm dark:hover:text-white"
                 >
                   Earnings
                 </a>
@@ -92,7 +92,7 @@ function NavBar() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white block px-4 py-2 text-sm"
+                  className="text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 block px-4 py-2 text-sm dark:hover:text-white"
                 >
                   Sign out
                 </a>
@@ -129,7 +129,7 @@ function NavBar() {
           id="mobile-menu-2"
           ref={toolBar}
         >
-          <ul className="border-gray-100 bg-gray-50 dark:border-gray-700 dark:bg-gray-800 md:bg-white md:dark:bg-gray-900 mt-4 flex flex-col items-center rounded-lg border p-4 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:text-sm md:font-medium">
+          <ul className="border-gray-100 bg-gray-50 dark:border-gray-700 dark:bg-gray-800 md:dark:bg-gray-900 mt-4 flex flex-col items-center rounded-lg border p-4 md:mt-0 md:flex-row md:space-x-8 md:border-0  md:text-sm md:font-medium">
             <li className="w-96">
               <SearchForm />
             </li>
@@ -168,7 +168,7 @@ export default NavBar;
           <button
             onClick={toggleBar}
             type="button"
-            className="text-white focus:bg-cyan-500 ml-3 inline-flex items-center rounded-lg p-2  text-sm focus:outline-none focus:ring-2  lg:hidden"
+            className="text-white focus:bg-cyan-0 ml-3 inline-flex items-center rounded-lg p-2  text-sm focus:outline-none focus:ring-2  lg:hidden"
           >
             <span className="sr-only">Open main menu</span>
             <svg

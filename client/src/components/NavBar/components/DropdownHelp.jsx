@@ -8,7 +8,7 @@ function dropdownHelp() {
     <>
       <button
         onClick={showDropdown}
-        className="bg-slate-500 flex w-full items-center justify-between rounded-md px-4 py-1 text-xs text-green md:text-sm lg:relative lg:text-base"
+        className="bg-slate-500 flex w-full items-center justify-between rounded-md px-4 py-1 text-xs text-lightwhite md:text-sm lg:relative lg:text-base"
       >
         Ayuda
         <svg
@@ -23,16 +23,16 @@ function dropdownHelp() {
       </button>
       <div
         ref={dropdown}
-        className="hidden rounded-b-lg bg-primary text-green lg:absolute lg:z-10"
+        className="hidden rounded-b-lg bg-primary text-lightwhite lg:absolute lg:z-10"
       >
         <ul
-          className="bg-slate-500 text-white dark:text-gray-400 rounded-md py-2 text-sm"
+          className="bg-slate-500 dark:text-gray-400 rounded-md py-2 text-sm text-white"
           aria-labelledby="dropdownNavbarButton"
         >
           <li>
             <a
               href="#"
-              className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white block px-4 py-2"
+              className="hover:bg-gray-100 dark:hover:bg-gray-600 block px-4 py-2 dark:hover:text-white"
             >
               Dashboard
             </a>
@@ -40,7 +40,7 @@ function dropdownHelp() {
           <li>
             <a
               href="#"
-              className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white block px-4 py-2"
+              className="hover:bg-gray-100 dark:hover:bg-gray-600 block px-4 py-2 dark:hover:text-white"
             >
               Settings
             </a>
@@ -48,7 +48,7 @@ function dropdownHelp() {
           <li>
             <a
               href="#"
-              className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white block px-4 py-2"
+              className="hover:bg-gray-100 dark:hover:bg-gray-600 block px-4 py-2 dark:hover:text-white"
             >
               Earnings
             </a>
