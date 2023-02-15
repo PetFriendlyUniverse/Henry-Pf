@@ -3,6 +3,7 @@ const { Product, Store } = require("../db");
 
 const getAllProducts = async () => {
   const products = await Product.findAll({
+    attributes: ["id", "name", "price", "img", "weight", "brand"],
     where: {
       enabled: true,
     },
