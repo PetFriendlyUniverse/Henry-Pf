@@ -1,43 +1,37 @@
-// import CardContainer from "../CardContainer/CardContainer";
-// import Paginate from "react-paginate";
-// import { useState } from "react";
 import CardContainer from "../CardContainer/CardContainer";
+import Paginate from "react-paginate";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductsApi } from "../../redux/features/products/productsActions";
 
 function Paginator() {
-  // const [pageNumber, setPageNumber] = useState(0);
-  // const items = [];
+  const { totalPages, currentPage } = useSelector((state) => state.Products);
 
-  // const ProdPerPage = 12;
-  // const pagesVisited = pageNumber * ProdPerPage;
-  // const displayProducts = items
-  //   .slice(pagesVisited, pagesVisited + ProdPerPage)
-  //   .map((item) => {
-  //     return (
-  //       <div key={item.id}>
-  //         <CardContainer />
-  //       </div>
-  //     );
-  //   });
-  // const pageCount = Math.ceil(items.length / ProdPerPage);
-  // const changePage = ({ selected }) => {
-  //   setPageNumber(selected);
-  // };
+  // console.log(pageCount);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProductsApi());
+  }, []);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
 
   return (
     <div className="h-full w-full">
       <CardContainer />
-      {/* {displayProducts}
       <Paginate
         previousLabel={"previous"}
         nextLabel={"next"}
-        pageCount={pageCount}
+        pageCount={totalPages}
         onPageChange={changePage}
         containerClassName={"paginationButtons"}
         previousLinkClassName={"previousButton"}
         nextLinkClassName={"nextButton"}
         disabledClassName={"paginationDisabled"}
         activeClassName={"paginationActive"}
-      /> */}
+      />
     </div>
   );
 }
