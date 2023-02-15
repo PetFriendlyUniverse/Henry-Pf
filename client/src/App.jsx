@@ -23,7 +23,7 @@ function App() {
         <Route path="/shop/shoppingcart" element={<ShoppingCart />} />
         <Route path="/shop/checkout" element={<Checkout />} />
         <Route path="/register" element={<FormProfile />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/detail/:id" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
