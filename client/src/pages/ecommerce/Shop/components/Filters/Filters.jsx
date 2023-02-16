@@ -4,6 +4,7 @@ import List from "./components/List";
 
 function Filters() {
   const filterLists = useGetFilters();
+  console.log(filterLists);
   return (
     <aside className="flex w-full flex-col content-center justify-center py-4 px-3 pt-20 text-center md:pt-0">
       <div>
@@ -11,7 +12,7 @@ function Filters() {
       </div>
       <div className="flex justify-evenly sm:justify-evenly lg:flex-col">
         {filterLists?.map((list, i) => (
-          <List key={i} filter={list.filter} options={list.options} />
+          <List key={i} filter={list[0]} options={list[1]} />
         ))}
       </div>
     </aside>
