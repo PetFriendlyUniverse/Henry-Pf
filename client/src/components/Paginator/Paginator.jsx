@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductsApi } from "../../redux/features/products/productsActions";
 
 function Paginator() {
-  const { totalPages, currentPage } = useSelector((state) => state.Products);
-
-  // console.log(pageCount);
+  let { totalPages, productsPerPage, currentPage, setFilters } = useSelector(
+    (state) => state.Products
+  );
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getProductsApi());
+    dispatch(getProductsApi(productsPerPage, currentPage, setFilters));
   }, []);
 
   const changePage = ({ selected }) => {
