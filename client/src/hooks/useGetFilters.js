@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { getFiltersApi } from "../redux/features/products/productsActions";
 
 function useGetFilters() {
-  const filters = useSelector((state) => state.Products.allFilters);
+  const filters = useSelector((state) => state.Products?.allFilters);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getFiltersApi());

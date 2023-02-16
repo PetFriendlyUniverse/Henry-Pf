@@ -25,8 +25,8 @@ function App() {
         <Route path="/shop/shoppingcart" element={<ShoppingCart />} />
         <Route path="/shop/checkout" element={<Checkout />} />
         <Route path="/register" element={<FormProfile />} />
-        <Route path="/profile/store/create" element={<FormCreateProduct />} />
         <Route path="/detail/:id" element={<Profile />} />
+        <Route path="/profile/store/create" element={<FormCreateProduct />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {pathname !== "/" && <Footer />}
