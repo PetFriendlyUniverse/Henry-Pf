@@ -35,6 +35,14 @@ function FormProfile() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post("user/create", form);
+    setForm({
+      user: "",
+      name: "",
+      lastname: "",
+      mail: "",
+      password: "",
+      phone: "",
+    });
   };
   return (
     <div className="flex h-screen justify-center pt-28">
