@@ -93,7 +93,7 @@ const getFiltersBD = async () => {
   filters.push({ Breeds: await Breeds.findAll() });
   filters.push({ Brands: await Brands.findAll() });
   filters.push({ Species: await Species.findAll() });
-  filters.push({ Colors: await Colors.findAll() });
+  // filters.push({ Colors: await Colors.findAll() });  // pendiente
 
   return filters;
 };
