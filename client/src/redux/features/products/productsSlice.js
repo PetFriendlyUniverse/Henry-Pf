@@ -18,6 +18,7 @@ const initialState = {
   productsPerPage: 12,
   allFilters: [],
   setFilters: {}, // {size: "small", weight: 5}
+  productId: [],
 };
 // cantidad de productos dependiendo del width de la pantalla ???
 export const Products = createSlice({
@@ -42,10 +43,22 @@ export const Products = createSlice({
       }
       state.setFilters = newSetFilters;
     },
+    getProductsById: (state, { payload }) => {
+      state.productId = payload;
+    },
+    deletedProducts: (state, { payload }) => {
+      state.products = payload;
+    },
   },
 });
 
 // los action creators se generan automáticamente
-export const { getProducts, getFilters, setFilters } = Products.actions;
+export const {
+  getProducts,
+  getFilters,
+  setFilters,
+  getProductsById,
+  deletedProducts,
+} = Products.actions;
 
 export default Products.reducer;
