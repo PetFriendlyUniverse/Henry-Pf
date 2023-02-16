@@ -5,7 +5,7 @@ const queryAdapter = {
   bd: "breed",
   sp: "specie",
   c: "color",
-  bd: "brand",
+  brd: "brand",
 };
 
 // page: page, pq: productXpage, sortby, sortType; asc || des,    !! solo funciona si sortBy viene antes que sortType
