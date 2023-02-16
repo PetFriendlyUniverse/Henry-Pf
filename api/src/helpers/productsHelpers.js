@@ -1,6 +1,6 @@
 const queryAdapter = {
   sr: "name",
-  w: "weigth",
+  w: "weight",
   sz: "size",
   bd: "breed",
   sp: "specie",

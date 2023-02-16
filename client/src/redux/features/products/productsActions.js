@@ -3,8 +3,8 @@ import axios from "axios";
 import { queryMarker } from "./helpers/queryMaker";
 
 const getProductsApi =
-  (productsPerPage, currentPage, setFilters) => async (dispatch) => {
-    const query = queryMarker(productsPerPage, currentPage, setFilters);
+  (productsPerPage, currentPage, filters) => async (dispatch) => {
+    const query = queryMarker(productsPerPage, currentPage, filters);
     const { data } = await axios.get(`/products${query}`);
     return dispatch(getProducts(data));
   };
