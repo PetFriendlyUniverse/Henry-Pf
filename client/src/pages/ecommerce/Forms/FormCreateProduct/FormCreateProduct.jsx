@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { validateProductData } from "./Validation/ValidationProduts";
 // name,img,price,description,stock,specie,breed,brand,weight,color,size
 
 function FormCreateProduct() {
@@ -35,9 +36,8 @@ function FormCreateProduct() {
   const changeHandler = (e) => {
     let property = e.target.name;
     let value = e.target.value;
-    setError(ValidationProduts(property, value));
+    setError(validateProductData(value));
     setForm({ ...form, [property]: value });
-    console.log(form);
   };
 
   const submitHandler = (e) => {
@@ -54,8 +54,11 @@ function FormCreateProduct() {
   };
 
   return (
-    <div>
-      <form onSubmit={submitHandler}>
+    <div className="flex h-screen items-center justify-center">
+      <form
+        onSubmit={submitHandler}
+        className="mb-4 rounded bg-white px-8 pt-6 pb-8 shadow-md"
+      >
         <div>
           <label>Name: </label>
           <input
@@ -64,6 +67,7 @@ function FormCreateProduct() {
             name="name"
             onChange={changeHandler}
           />
+          {error.name && <span className="text-red-500">{error.name}</span>}
         </div>
         <div>
           <label>Image: </label>
@@ -91,6 +95,9 @@ function FormCreateProduct() {
             name="description"
             onChange={changeHandler}
           />
+          {error.description && (
+            <span className="text-red-500">{error.description}</span>
+          )}
         </div>
         <div>
           <label>Stock: </label>
@@ -164,7 +171,12 @@ function FormCreateProduct() {
             onChange={changeHandler}
           />
         </div>
-        <button type="submit">Submit</button>
+        <button
+          type="submit"
+          className="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700 focus:outline-none"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );
