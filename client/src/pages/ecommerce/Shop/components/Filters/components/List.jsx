@@ -1,12 +1,21 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilters } from "../../../../../../redux/features/products/productsActions";
 
 function List({ filter, options }) {
   const [mobile, setMobile] = useState(true);
-  const [value, setValue] = useState("");
+  const dispatch = useDispatch();
+  const value = useSelector(
+    (state) => state.Products?.setFilters?.[filter] || ""
+  ); // traemos el value del filtro especíifico y si no hay seteamos ""
+  // console.log(value);
 
   const onClick = (newValue) => {
-    // console.log(value);
-    newValue === value ? setValue("") : setValue(newValue);
+    if (newValue === value) {
+      dispatch(setFilters({ filter, value: "" }));
+    } else {
+      dispatch(setFilters({ filter, value: newValue })); //{filter:"Breed", value: "breed1"}
+    }
   };
 
   const resizeListener = (event) => {
@@ -31,7 +40,7 @@ function List({ filter, options }) {
       {/* por ahora la ul tiene overflow hidden, proximamente va a renderizar 4 elementos y un btn ver mas en caso de haber mas opciones de filtro */}
       {value ? (
         <button
-          className="relative rounded-none border border-red text-red"
+          className="border-red text-red relative rounded-none border"
           onClick={() => onClick(value)}
         >
           <span>{value}</span>
@@ -40,8 +49,8 @@ function List({ filter, options }) {
       ) : (
         <ul className="max-h-32 overflow-auto">
           {options?.map((opc, i) => (
-            <li className="text-sm" onClick={() => onClick(opc)} key={i}>
-              {opc}
+            <li className="text-sm" onClick={() => onClick(opc.id)} key={i}>
+              {opc.id}
             </li>
           ))}
         </ul>

@@ -90,9 +90,9 @@ const deleteProduct = async (id) => {
 
 const getFiltersBD = async () => {
   const filters = []; // [{colors:["blue","red"]}]
-  filters.push({ Breeds: await Breeds.findAll() });
-  filters.push({ Brands: await Brands.findAll() });
-  filters.push({ Species: await Species.findAll() });
+  filters.push(["Breeds", await Breeds.findAll()]);
+  filters.push(["Brands", await Brands.findAll()]);
+  filters.push(["Species", await Species.findAll()]);
   // filters.push({ Colors: await Colors.findAll() });  // pendiente
 
   return filters;

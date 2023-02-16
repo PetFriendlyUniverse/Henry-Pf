@@ -6,17 +6,20 @@ import cardCredit from "../../../assets/cardCredit/cardCredit.svg";
 import transport from "../../../assets/transport/transport.svg";
 function ProductDetail() {
   return (
-    <div className="flex min-h-screen w-screen flex-col items-center justify-center pt-20 ">
+    <div className=" flex min-h-screen w-screen flex-col items-center  justify-center pt-20">
       <div className="max-h-[80vh] max-w-[60vw] ">
-        <div className="flex ">
-          <picture className="block w-6/12 items-center  justify-center">
+        <div className="flex flex-col md:flex-col lg:flex-row">
+          <picture className="block  w-full  items-center justify-center lg:w-6/12">
             <img src={alimento} alt="" className="w-[460px] " />
           </picture>
-          <div className="inline-block w-6/12 ">
+          <div className="inline-block w-full lg:w-6/12 ">
             <div>
-              <h1 className="text-3xl font-bold ">Nombre del Alimento</h1>
-              <a href="">brand</a>
-              <span className="text-xs">-codigo del producto</span>
+              <h1 className="font-bold md:text-2xl lg:text-3xl">
+                Alimento Old Prince Novel Cordero y Arroz Perro Adulto Mediano Y
+                Grande - 15 Kg
+              </h1>
+              <button className="text-xs">Old Pince</button>
+              <span className="text-xs">-codigo del producto:148048</span>
 
               <div class="flex items-center">
                 <svg
@@ -71,20 +74,25 @@ function ProductDetail() {
                 </svg>
               </div>
             </div>
-            <div className="flex items-center gap-8">
-              <h3>Precio</h3>
-              <button className="flex items-center text-[12px] font-bold uppercase text-pink-700">
-                <img src={cardCredit} alt="" /> Ver medios de pagos
-              </button>
-              <button className="flex  items-center text-[12px] font-bold uppercase text-pink-700">
-                <img src={transport} alt="" />
-                Producto con envio gratis
-              </button>
+
+            <div className="flex flex-col flex-wrap items-start gap-4 md:flex-row md:gap-8">
+              <div>
+                <h3>$1000.00</h3>
+              </div>
+              <div>
+                <button className="flex items-center text-[12px] font-bold uppercase text-pink-700">
+                  <img src={cardCredit} alt="" /> Ver medios de pagos
+                </button>
+                <button className="flex  items-center text-[12px] font-bold uppercase text-pink-700">
+                  <img src={transport} alt="" />
+                  Producto con envio gratis
+                </button>
+              </div>
             </div>
             <div>
-              <span> Precio por kilo</span>
+              <span className="text-xs">($693 x Kg)</span>
               <h3>Seleccione Tamaño:</h3>
-              <div className="w-1/6">
+              <div className=" md:w-1/5 lg:w-1/4">
                 <MoarButton component={"15kg"} />
               </div>
             </div>
@@ -93,7 +101,7 @@ function ProductDetail() {
               <div className="w-1/2">
                 <CountProduct />
               </div>
-              <button className="my-2 w-1/2 rounded-lg bg-emerald-400 py-2 px-4">
+              <button className="my-2 rounded-lg bg-emerald-400 py-2 px-4 md:min-w-full lg:w-1/2">
                 Agregar al carrito
               </button>
             </div>
@@ -103,7 +111,7 @@ function ProductDetail() {
                 <span></span>
               </div>
               <div> Envío a Domicilio </div>
-              <div className="text-xs">
+              <div className="md:text-xs lg:text-sm ">
                 Envío gratis +$7500 en CABA y zonas de GBA. No aplica para
                 Envíos al Interior
               </div>
@@ -136,7 +144,7 @@ function ProductDetail() {
         </div>
       </div>
 
-      <div>
+      {/* <div>
         <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
           <ul
             class="-mb-px flex flex-wrap text-center text-sm font-medium"
@@ -238,7 +246,7 @@ function ProductDetail() {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

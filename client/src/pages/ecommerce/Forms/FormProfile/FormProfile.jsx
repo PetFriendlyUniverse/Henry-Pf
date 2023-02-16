@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-import validationProfile from "../Validations/Profile";
+import { validationProfile } from "../Validations/Profile";  //habia un error en la importacion de form
 
 import LinkButton from "../../../../components/Button/LinkButton";
 
@@ -22,6 +22,9 @@ function FormProfile() {
     password: "",
     phone: "",
   });
+  const [repeat, setRepeat] = useState({
+    repeatPassword: "",
+  });
   const handleChange = (e) => {
     const property = e.target.name;
     const value = e.target.value;
@@ -29,15 +32,35 @@ function FormProfile() {
       setForm({ ...form, [property]: [value] });
     } else {
       setForm({ ...form, [property]: value });
-      setErrors({ ...errors, ...validationProfile({ [property]: [value] }) });
+      setErrors({
+        ...errors,
+        ...validationProfile({ property: [property], value: [value] }),
+      });
     }
+  };
+  const handleChangeRepeat = (e) => {
+    const property = e.target.name;
+    const value = e.target.value;
+    setRepeat({ [property]: value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+
     axios.post("user/create", form);
+    setForm({
+      user: "",
+      name: "",
+      lastname: "",
+      mail: "",
+      password: "",
+      phone: "",
+    });
+    setRepeat({
+      repeatPassword: "",
+    });
   };
   return (
-    <div className="flex h-screen justify-center pt-28">
+    <div className="flex h-screen justify-center py-28">
       <form
         onSubmit={handleSubmit}
         className="rounded-xl p-3 shadow-2xl lg:h-[550px] lg:w-2/5"
@@ -56,9 +79,9 @@ function FormProfile() {
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
             Nickname max: 15 caracteres
           </label>
-          {!form.mail ? null : (
+          {form.user ? null : (
             <div>
-              <p className="text-red-700">{`Por favor escribe un mail valido`}</p>
+              <p className="text-red-700">{`${errors.user}`}</p>
             </div>
           )}
         </div>
@@ -73,11 +96,11 @@ function FormProfile() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Mail max: 50 caracteres
+            E-mail max: 50 caracteres
           </label>
-          {!form.mail ? null : (
+          {form.mail ? null : (
             <div>
-              <p className="text-red-700">{`Por favor escribe un mail valido`}</p>
+              <p className="text-red-700">{`${errors.mail}`}</p>
             </div>
           )}
         </div>
@@ -95,28 +118,28 @@ function FormProfile() {
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
             Contraseña max: 20 caracteres
           </label>
-          {!form.mail ? null : (
+          {form.password ? null : (
             <div>
-              <p className="text-red-700">{`Por favor escribe un mail valido`}</p>
+              <p className="text-red-700">{`${errors.password}`}</p>
             </div>
           )}
         </div>
         <div className="group relative z-0 mb-6 h-11 w-full">
           <input
-            onChange={handleChange}
+            onChange={handleChangeRepeat}
             type="text"
             name="repeatPassword"
-            value={form.repeatPassword}
+            value={repeat.repeatPassword}
             className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Confirme Contraseña
+            Confirmar Contraseña
           </label>
-          {!form.mail ? null : (
+          {form.password === repeat.repeatPassword ? null : (
             <div>
-              <p className="text-red-700">{`Por favor escribe un mail valido`}</p>
+              <p className="text-red-700">{`Passwords does not match`}</p>
             </div>
           )}
         </div>
@@ -134,9 +157,9 @@ function FormProfile() {
             <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
               Nombre max: 30 caracteres
             </label>
-            {!form.mail ? null : (
+            {form.name ? null : (
               <div>
-                <p className="text-red-700">{`Por favor escribe un mail valido`}</p>
+                <p className="text-red-700">{`${errors.name}`}</p>
               </div>
             )}
           </div>
@@ -153,9 +176,9 @@ function FormProfile() {
             <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
               Apellido max: 30 caracteres
             </label>
-            {!form.mail ? null : (
+            {form.lastname ? null : (
               <div>
-                <p className="text-red-700">{`Por favor escribe un mail valido`}</p>
+                <p className="text-red-700">{`${errors.lastname}`}</p>
               </div>
             )}
           </div>
@@ -172,11 +195,11 @@ function FormProfile() {
               autoComplete="off"
             />
             <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-              Numero de telefono max: 20 caracteres
+              Telefono max: 20 caracteres
             </label>
-            {!form.mail ? null : (
+            {form.phone ? null : (
               <div>
-                <p className="text-red-700">{`Por favor escribe un mail valido`}</p>
+                <p className="text-red-700">{`${errors.phone}`}</p>
               </div>
             )}
           </div>
