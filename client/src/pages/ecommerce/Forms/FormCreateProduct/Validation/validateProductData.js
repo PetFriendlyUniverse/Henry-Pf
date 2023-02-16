@@ -21,12 +21,11 @@ export const validateProductData = (property, value) => {
     error.price = "El precio debe ser mayor de 0";
   } else if (property === "hp") {
     error.price = "";
-  }
-  if (property === "description" && !value) {
-    error.description = "Debes ingresar una descripción";
   } else if (property === "description") {
     if (value.length > 100) {
       error.description = "La descripción no puede superar los 100 caracteres";
+    } else if (value.length < 10) {
+      error.description = "La descripción debe tener al menos 10 caracteres";
     } else {
       error.description = "";
     }
