@@ -78,10 +78,8 @@ const splitData = (data) => {
 };
 
 const addFixedsFilters = (filters) => {
-  filters.push({
-    Size: [{ id: "small" }, { id: "medium" }, { id: "large" }],
-    Weight: [{ id: "5" }, { id: "10" }, { id: "15" }],
-  });
+  filters.push(["Size", [{ id: "small" }, { id: "medium" }, { id: "large" }]]);
+  filters.push(["Weight", [{ id: "5" }, { id: "10" }, { id: "15" }]]);
 };
 
 module.exports = { queryMarker, pagination, splitData, addFixedsFilters };
