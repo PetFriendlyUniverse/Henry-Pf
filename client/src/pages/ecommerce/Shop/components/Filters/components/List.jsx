@@ -31,7 +31,7 @@ function List({ filter, options }) {
       {/* por ahora la ul tiene overflow hidden, proximamente va a renderizar 4 elementos y un btn ver mas en caso de haber mas opciones de filtro */}
       {value ? (
         <button
-          className="relative rounded-none border border-red text-red"
+          className="border-red text-red relative rounded-none border"
           onClick={() => onClick(value)}
         >
           <span>{value}</span>
@@ -40,8 +40,8 @@ function List({ filter, options }) {
       ) : (
         <ul className="max-h-32 overflow-auto">
           {options?.map((opc, i) => (
-            <li className="text-sm" onClick={() => onClick(opc)} key={i}>
-              {opc}
+            <li className="text-sm" onClick={() => onClick(opc.id)} key={i}>
+              {opc.id}
             </li>
           ))}
         </ul>
