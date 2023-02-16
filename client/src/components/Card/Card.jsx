@@ -1,5 +1,28 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setShopCart } from "../../redux/features/products/productsSlice";
+import AddShopButton from "../Button/AddShopButton";
 import CountProduct from "../CountProduct/CountProduct";
-function Card({ name, img, weight, price }) {
+function Card({ name, img, weight, price, stock, id }) {
+  const dispatch = useDispatch();
+  const [value, setValue] = useState(1);
+  const handleClickDeduct = () => {
+    if (value > 1) setValue(value - 1);
+  };
+  const handleClickAdd = () => {
+    if (value < 10) setValue(value + 1);
+  };
+  const handleAddShopCart = () => {
+    dispatch(
+      setShopCart({
+        id: id,
+        data: { name, img, weight, price, stock, id, amount: value },
+      })
+    );
+    setValue(1);
+
+    // setear una alerta con sweetalert "producto agregado al carrito"
+  };
   return (
     <div className="mx-1 my-4 flex h-96 w-52 flex-col items-center justify-center rounded-lg border ">
       <div className="h-2/3 ">
@@ -12,12 +35,15 @@ function Card({ name, img, weight, price }) {
       <p className="text-bold p-1">${price}</p>
       <div className="flex h-11 items-center justify-around gap-1 bg-slate-100 p-1">
         <div className=" w-1/2">
-          <CountProduct />
+          <CountProduct
+            value={value}
+            handleClickDeduct={handleClickDeduct}
+            handleClickAdd={handleClickAdd}
+            stock={stock}
+          />
         </div>
         <div className="w-1/2 ">
-          <button className=" h-full w-full rounded-lg bg-green-500 px-2 py-1 font-bold  text-white hover:bg-green-300 focus:outline-none focus:ring-2 focus:ring-emerald-900">
-            Comprar
-          </button>
+          <AddShopButton component={"Comprar"} onClick={handleAddShopCart} />
         </div>
       </div>
     </div>
