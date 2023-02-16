@@ -8,16 +8,16 @@ function FormCreateProduct() {
   const [form, setForm] = useState({
     name: "",
     img: "",
-    price: 0,
+    price: "",
     description: "",
-    stock: 0,
+    stock: "",
     specie: "",
     breed: "",
     brand: "",
-    weight: 0.0,
-    color: "",
-    size: "",
-    storeId: 0,
+    weight: null,
+    color: null,
+    size: null,
+    storeId: "",
   });
   const [error, setError] = useState({
     name: "",
@@ -43,6 +43,8 @@ function FormCreateProduct() {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    const errorValues = Object.values(error);
+    const isFormValid = errorValues.every((val) => val === "");
     const data = {
       ...form,
       weight: parseFloat(form.weight),
@@ -50,25 +52,27 @@ function FormCreateProduct() {
       stock: parseInt(form.stock),
       StoreId: parseInt(form.storeId),
     };
-    console.log(data);
-    axios.post("/products/create", data);
+    if (isFormValid) {
+      axios.post("/products/create", data);
+    } else {
+      console.log("Hay errores en el formulario");
+    }
   };
 
   return (
-    <div className="flex h-screen justify-center py-28">
+    <div className="mb-28 flex h-screen justify-center py-28 pt-20">
       <form
         onSubmit={submitHandler}
         className="rounded-xl p-3 shadow-2xl lg:h-[950px] lg:w-2/5"
       >
         <h3 className="mb-6">Create</h3>
-        <button>create</button>
         <div className="group relative z-0 mb-6 h-11 w-full">
           <input
             type="text"
             value={form.name}
             name="name"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -83,7 +87,7 @@ function FormCreateProduct() {
             value={form.img}
             name="img"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -98,7 +102,7 @@ function FormCreateProduct() {
             value={form.price}
             name="price"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -113,7 +117,7 @@ function FormCreateProduct() {
             value={form.description}
             name="description"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -130,7 +134,7 @@ function FormCreateProduct() {
             value={form.stock}
             name="stock"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -145,7 +149,7 @@ function FormCreateProduct() {
             value={form.specie}
             name="specie"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -160,7 +164,7 @@ function FormCreateProduct() {
             value={form.breed}
             name="breed"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -175,7 +179,7 @@ function FormCreateProduct() {
             value={form.brand}
             name="brand"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -190,7 +194,7 @@ function FormCreateProduct() {
             value={form.weight}
             name="weight"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -205,7 +209,7 @@ function FormCreateProduct() {
             value={form.color}
             name="color"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -220,7 +224,7 @@ function FormCreateProduct() {
             value={form.size}
             name="size"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -235,7 +239,7 @@ function FormCreateProduct() {
             value={form.storeId}
             name="storeId"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
