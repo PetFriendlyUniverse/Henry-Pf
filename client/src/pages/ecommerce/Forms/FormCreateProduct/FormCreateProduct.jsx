@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { validateProductData } from "./Validation/ValidationProduts";
+import { validateProductData } from "./Validation/validateProductData";
 // name,img,price,description,stock,specie,breed,brand,weight,color,size
 
 function FormCreateProduct() {
@@ -36,7 +36,7 @@ function FormCreateProduct() {
   const changeHandler = (e) => {
     let property = e.target.name;
     let value = e.target.value;
-    setError(validateProductData(value));
+    setError(validateProductData(property, value));
     setForm({ ...form, [property]: value });
   };
 
@@ -47,7 +47,7 @@ function FormCreateProduct() {
       weight: parseFloat(form.weight),
       price: parseInt(form.price),
       stock: parseInt(form.stock),
-      StoreId: parseInt(form.StoreId),
+      StoreId: parseInt(form.storeId),
     };
     console.log(data);
     axios.post("/products/create", data);
@@ -77,6 +77,7 @@ function FormCreateProduct() {
             name="img"
             onChange={changeHandler}
           />
+          {error.img && <span className="text-red-500">{error.img}</span>}
         </div>
         <div>
           <label>Price: </label>
@@ -86,6 +87,7 @@ function FormCreateProduct() {
             name="price"
             onChange={changeHandler}
           />
+          {error.price && <span className="text-red-500">{error.price}</span>}
         </div>
         <div>
           <label>Description: </label>
@@ -107,6 +109,7 @@ function FormCreateProduct() {
             name="stock"
             onChange={changeHandler}
           />
+          {error.stock && <span className="text-red-500">{error.stock}</span>}
         </div>
         <div>
           <label>Specie: </label>
@@ -116,6 +119,7 @@ function FormCreateProduct() {
             name="specie"
             onChange={changeHandler}
           />
+          {error.specie && <span className="text-red-500">{error.specie}</span>}
         </div>
         <div>
           <label>Breed: </label>
@@ -125,6 +129,7 @@ function FormCreateProduct() {
             name="breed"
             onChange={changeHandler}
           />
+          {error.breed && <span className="text-red-500">{error.breed}</span>}
         </div>
         <div>
           <label>Brand: </label>
@@ -134,6 +139,7 @@ function FormCreateProduct() {
             name="brand"
             onChange={changeHandler}
           />
+          {error.brand && <span className="text-red-500">{error.brand}</span>}
         </div>
         <div>
           <label>Weight: </label>
@@ -143,6 +149,7 @@ function FormCreateProduct() {
             name="weight"
             onChange={changeHandler}
           />
+          {error.weight && <span className="text-red-500">{error.weight}</span>}
         </div>
         <div>
           <label>Color: </label>
@@ -152,6 +159,7 @@ function FormCreateProduct() {
             name="color"
             onChange={changeHandler}
           />
+          {error.color && <span className="text-red-500">{error.color}</span>}
         </div>
         <div>
           <label>Size: </label>
@@ -161,6 +169,7 @@ function FormCreateProduct() {
             name="size"
             onChange={changeHandler}
           />
+          {error.size && <span className="text-red-500">{error.size}</span>}
         </div>
         <div>
           <label>StoreId: </label>
@@ -170,6 +179,9 @@ function FormCreateProduct() {
             name="storeId"
             onChange={changeHandler}
           />
+          {error.storeId && (
+            <span className="text-red-500">{error.storeId}</span>
+          )}
         </div>
         <button
           type="submit"
