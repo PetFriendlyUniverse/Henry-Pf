@@ -1,12 +1,21 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilters } from "../../../../../../redux/features/products/productsActions";
 
 function List({ filter, options }) {
   const [mobile, setMobile] = useState(true);
-  const [value, setValue] = useState("");
+  const dispatch = useDispatch();
+  const value = useSelector(
+    (state) => state.Products?.setFilters?.[filter] || ""
+  ); // traemos el value del filtro especíifico y si no hay seteamos ""
+  // console.log(value);
 
   const onClick = (newValue) => {
-    // console.log(value);
-    newValue === value ? setValue("") : setValue(newValue);
+    if (newValue === value) {
+      dispatch(setFilters({ filter, value: "" }));
+    } else {
+      dispatch(setFilters({ filter, value: newValue })); //{filter:"Breed", value: "breed1"}
+    }
   };
 
   const resizeListener = (event) => {
