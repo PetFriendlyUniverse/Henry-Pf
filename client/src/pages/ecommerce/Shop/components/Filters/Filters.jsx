@@ -10,7 +10,7 @@ function Filters() {
         <h2 className="text-lg font-semibold">Enabled Filters</h2>
       </div>
       <div className="flex justify-evenly sm:justify-evenly lg:flex-col">
-        {filterLists.map((list, i) => (
+        {filterLists?.map((list, i) => (
           <List key={i} filter={list.filter} options={list.options} />
         ))}
       </div>
