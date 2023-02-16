@@ -92,7 +92,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
-        len: [1, 3],
+        len: [1, 7],
       },
     },
     //Trabajamos una propiedad de habilitacion para el borrado logico

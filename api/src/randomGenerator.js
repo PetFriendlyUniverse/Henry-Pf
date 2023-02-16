@@ -34,9 +34,9 @@ const generator = () => {
     5: "https://puppis.vteximg.com.br/arquivos/ids/180531-150-150/142078--2-.png?v=637593763826630000",
   };
   setTimeout(async () => {
-    for (let i = 1; i <= 1; i++) {
+    for (let i = 1; i <= 10; i++) {
       await store.createStore(`Store ${i}`, `Store location ${i}`);
-      for (let s = 1; s <= 5; s++) {
+      for (let s = 1; s <= 30; s++) {
         let description = `Una descripción apropiada para este producto`;
         let price = Math.floor(Math.random() * 200 + 51);
         let stock = Math.floor(Math.random() * 200 + 51);
@@ -45,7 +45,7 @@ const generator = () => {
         let color = colors[Math.ceil(Math.random() * 4)];
         let img = imgs[Math.ceil(Math.random() * 5)];
         let size = sizes[Math.ceil(Math.random() * 4)];
-        let weight = Math.ceil(Math.random() * 19) * 5 + 5;
+        let weight = Math.ceil(Math.random() * 2) * 5 + 5;
         await products.createProduct({
           name: `Product ${i}${s}`,
           img,
