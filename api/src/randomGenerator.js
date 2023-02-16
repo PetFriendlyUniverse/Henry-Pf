@@ -45,7 +45,7 @@ const generator = () => {
         let color = colors[Math.ceil(Math.random() * 4)];
         let img = imgs[Math.ceil(Math.random() * 5)];
         let size = sizes[Math.ceil(Math.random() * 4)];
-        let weight = Math.ceil(Math.random() * 19) * 5 + 5;
+        let weight = Math.ceil(Math.random() * 2) * 5 + 5;
         await products.createProduct({
           name: `Product ${i}${s}`,
           img,
