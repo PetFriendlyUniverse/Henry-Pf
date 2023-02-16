@@ -11,6 +11,7 @@ const {
   queryMarker,
   pagination,
   splitData,
+  addFixedsFilters,
 } = require("../helpers/productsHelpers");
 
 const getAllProductsHandler = async (req, res) => {
@@ -78,6 +79,7 @@ const deleteProductHandler = async (req, res) => {
 const getFilters = async (req, res) => {
   try {
     const filters = await getFiltersBD();
+    addFixedsFilters(filters);
     return res.status(200).json(filters);
   } catch (error) {
     return res.status(404).json(error.message);
