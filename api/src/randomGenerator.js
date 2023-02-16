@@ -21,10 +21,9 @@ const generator = () => {
     4: "brown",
   };
   const sizes = {
-    1: "s",
-    2: "sm",
-    3: "m",
-    4: "xl",
+    1: "small",
+    2: "medium",
+    3: "large",
   };
   const imgs = {
     1: "https://puppis.vteximg.com.br/arquivos/ids/158003-150-150/150002.png?v=635894318957130000",
@@ -44,7 +43,7 @@ const generator = () => {
         let brand = brands[Math.ceil(Math.random() * 4)];
         let color = colors[Math.ceil(Math.random() * 4)];
         let img = imgs[Math.ceil(Math.random() * 5)];
-        let size = sizes[Math.ceil(Math.random() * 4)];
+        let size = sizes[Math.ceil(Math.random() * 3)];
         let weight = Math.ceil(Math.random() * 2) * 5 + 5;
         await products.createProduct({
           name: `Product ${i}${s}`,
@@ -53,7 +52,7 @@ const generator = () => {
           description,
           stock,
           specie,
-          breed: `breed${s}`,
+          breed: `breed${i}`,
           brand,
           storeId: i,
           color,
