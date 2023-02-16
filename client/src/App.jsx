@@ -7,6 +7,7 @@ import Checkout from "./pages/ecommerce/Checkout/Checkout";
 import FormCreateProduct from "./pages/ecommerce/Forms/FormCreateProduct/FormCreateProduct";
 import FormProfile from "./pages/ecommerce/Forms/FormProfile/FormProfile";
 import Profile from "./pages/ecommerce/Profile/Profile";
+import FormCreateProduct from "./pages/ecommerce/Forms/FormCreateProduct/FormCreateProduct";
 import NotFound from "./components/NotFound/NotFound";
 
 import "./App.css";
@@ -27,6 +28,7 @@ function App() {
         <Route path="/register" element={<FormProfile />} />
         <Route path="/profile/store/create" element={<FormCreateProduct />} />
         <Route path="/detail/:id" element={<Profile />} />
+        <Route path="/profile/store/create" element={<FormCreateProduct />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {pathname !== "/" && <Footer />}
