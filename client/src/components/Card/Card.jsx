@@ -4,6 +4,7 @@ function Card({ name, img, weight, price }) {
       <h3>{name}</h3>
       <img src={img} alt="" className="h-full" />
       <p>{weight}</p>
+      <p>{price}</p>
       <div className=" flex gap-1">
         <div className="w-1/2">
           <p>contador</p>

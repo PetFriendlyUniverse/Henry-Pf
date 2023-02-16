@@ -22,6 +22,10 @@ module.exports = {
         button2: "10px 10px 0 #FBC638",
       },
 
+      backgroundImage: {
+        white: "url('./assets/backgroundwhite.png')",
+      },
+
       keyframes: {
         coloranim: {
           "0%": { fill: "#ffffff" },
