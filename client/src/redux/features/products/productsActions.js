@@ -1,10 +1,17 @@
+import { getProducts, getFilters, setFilters } from "./productsSlice";
 import axios from "axios";
-import { getProducts } from "./productsSlice";
+import { queryMarker } from "./helpers/queryMaker";
 
-export const getProductsApi = () => async (dispatch) => {
-  console.log("getProducts");
-  const { data } = await axios.get("/products?pq=12&page=1");
-  console.log(data);
+const getProductsApi =
+  (productsPerPage, currentPage, filters) => async (dispatch) => {
+    const query = queryMarker(productsPerPage, currentPage, filters);
+    const { data } = await axios.get(`/products${query}`);
+    return dispatch(getProducts(data));
+  };
 
-  return dispatch(getProducts(data));
+const getFiltersApi = () => async (dispatch) => {
+  const { data } = await axios.get("/products/filters");
+  return dispatch(getFilters(data));
 };
+
+export { getProductsApi, getFiltersApi, setFilters };

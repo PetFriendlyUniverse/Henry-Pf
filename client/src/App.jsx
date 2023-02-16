@@ -4,6 +4,7 @@ import Landing from "./pages/Landing/Landing";
 import ProductDetail from "./pages/ecommerce/ProductDetail/ProductDetail";
 import ShoppingCart from "./pages/ecommerce/ShoppingCart/ShoppingCart";
 import Checkout from "./pages/ecommerce/Checkout/Checkout";
+import FormCreateProduct from "./pages/ecommerce/Forms/FormCreateProduct/FormCreateProduct";
 import FormProfile from "./pages/ecommerce/Forms/FormProfile/FormProfile";
 import Profile from "./pages/ecommerce/Profile/Profile";
 import NotFound from "./components/NotFound/NotFound";
@@ -24,7 +25,8 @@ function App() {
         <Route path="/shop/shoppingcart" element={<ShoppingCart />} />
         <Route path="/shop/checkout" element={<Checkout />} />
         <Route path="/register" element={<FormProfile />} />
-        <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/detail/:id" element={<Profile />} />
+        <Route path="/profile/store/create" element={<FormCreateProduct />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {pathname !== "/" && <Footer />}

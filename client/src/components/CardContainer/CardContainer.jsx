@@ -1,8 +1,11 @@
 import { useSelector } from "react-redux";
+import useGetProducts from "../../hooks/useGetProducts";
 import Card from "../Card/Card";
 
 function CardContainer() {
-  const products = useSelector((state) => state.Products?.products);
+  // const products = useSelector((state) => state.Products?.products);
+  const products = useGetProducts();
+
   console.log(products);
 
   return (
