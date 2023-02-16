@@ -2,7 +2,7 @@ const queryAdapter = {
   sr: "name",
   w: "weigth",
   sz: "size",
-  bd: "bread",
+  bd: "breed",
   sp: "specie",
   c: "color",
   bd: "brand",
