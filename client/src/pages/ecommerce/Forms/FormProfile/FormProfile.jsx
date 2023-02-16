@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-import validationProfile from "../Validations/Profile";
+import { validationProfile } from "../Validations/Profile";  //habia un error en la importacion de form
 
 import LinkButton from "../../../../components/Button/LinkButton";
 
