@@ -31,7 +31,16 @@ export const Products = createSlice({
     getFilters: (state, { payload }) => {
       state.allFilters = payload;
     },
-    setFilters: (state, { payload }) => {},
+    setFilters: (state, { payload }) => {
+      const newSetFilters = { ...state.setFilters };
+      const { filter, value } = payload; //{filter:"Breed", value: "breed1"}
+      if (value === "") {
+        delete newSetFilters[filter];
+      } else {
+        newSetFilters[filter] = value; //{continent:"on",}
+      }
+      state.setFilters = newSetFilters;
+    },
   },
 });
 
