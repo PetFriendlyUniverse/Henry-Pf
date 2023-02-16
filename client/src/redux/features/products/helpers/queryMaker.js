@@ -2,7 +2,7 @@ const queryAdapter = {
   name: "sr",
   Breeds: "bd",
   Brands: "bd",
-  Weigth: "w",
+  Weight: "w",
   Species: "sp",
   Size: "sz",
   // c: "color",
@@ -14,9 +14,10 @@ const queryAdapter = {
 //  /products?pq=12&page=1
 
 const queryMarker = (productsPerPage, currentPage, setFilters) => {
+  // console.log(setFilters);
   let query = `?pq=${productsPerPage}&page=${currentPage}`;
   for (let property in setFilters) {
-    query += `${queryAdapter[property]}${setFilters[property]}`;
+    query += `&${queryAdapter[property]}=${setFilters[property]}`;
   }
   return query;
 };

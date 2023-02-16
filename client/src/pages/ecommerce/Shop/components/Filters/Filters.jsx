@@ -1,10 +1,9 @@
 import useGetFilters from "../../../../../hooks/useGetFilters";
 import List from "./components/List";
-// import { filterLists } from "./fakeData";
 
 function Filters() {
   const filterLists = useGetFilters();
-  console.log(filterLists);
+  // console.log(filterLists);
   return (
     <aside className="flex w-full flex-col content-center justify-center py-4 px-3 pt-20 text-center md:pt-0">
       <div>
