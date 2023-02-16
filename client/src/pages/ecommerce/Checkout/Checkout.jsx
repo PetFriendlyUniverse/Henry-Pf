@@ -1,9 +1,9 @@
 function Checkout() {
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-slate-200 pt-20">
-      <div className="my-4 flex h-[80vh] min-w-[60vw] flex-row items-center justify-center ">
-        <div className="m-4 flex h-full w-4/6 flex-col  items-center justify-center rounded-lg border bg-white px-6 ">
-          <div className="m-6 flex h-[8%] w-full items-center justify-center rounded-lg border bg-blue-200 px-6 text-center  text-xs  text-gray-600">
+      <div className="my-4 flex h-[80vh] w-screen flex-col items-center justify-center gap-8 lg:w-[60vw] lg:flex-row lg:gap-0">
+        <div className="flex h-full w-full flex-col rounded-lg border  bg-white lg:m-4 lg:w-4/6 lg:items-center lg:justify-center lg:px-6 ">
+          <div className="m-6 hidden h-[8%] w-full items-center justify-center rounded-lg border bg-blue-200 px-6 text-center text-xs  text-gray-600  lg:flex">
             There are many variations of passages of Lorem Ipsum available, but
             the majority have suffered alteration in some form, by injected
             humour
@@ -15,11 +15,11 @@ function Checkout() {
             aca van las cards de los productos
           </div>
         </div>
-        <div className=" flex h-4/6 w-2/6 flex-col self-start ">
-          <div className="m-4 flex h-1/6 w-full  items-center justify-center rounded-lg bg-blue-200  text-lg text-blue-700">
+        <div className=" flex h-4/6 w-full flex-col self-start lg:w-2/6 ">
+          <div className="flex h-1/6 w-full items-center  justify-center rounded-lg bg-blue-200 text-lg  text-blue-700 lg:m-4">
             Tenes un cupon de descuento??
           </div>
-          <div className="m-4 flex h-5/6 w-full flex-col items-center justify-between  p-2">
+          <div className="flex h-5/6 w-full flex-col items-center justify-between p-2  lg:m-4">
             <h1 className=" self-start text-3xl font-bold  text-gray-900">
               Resumen de mi orden
             </h1>

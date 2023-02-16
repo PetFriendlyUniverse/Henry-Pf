@@ -62,7 +62,7 @@ const generator = () => {
         });
       }
     }
-  }, 1000);
+  }, 5000);
 };
 
 module.exports = { generator };

@@ -1,4 +1,4 @@
-const validationProfile = (state) => {
+const validationProfile = ({ property, value }) => {
   let stringRegex = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/;
   let numberRegex = /^[0-9]+$/;
   let emailRegex =
@@ -9,71 +9,74 @@ const validationProfile = (state) => {
 
   let error = {};
 
-  if (!state.user) {
-    error.user = "Please insert a nickname";
-  } else {
-    if (state.user.length > 15) {
-      error.user = "The nickname it's too long";
-    } else if (!stringRegex.test(state.user)) {
-      error.user = "The nickname cannot contain numbers or signs";
-    }
-  }
-
-  if (!state.name) {
-    error.name = "Please insert a name";
-  } else {
-    if (state.name.length > 30) {
-      error.name = "The name it's too long";
-    } else if (!stringRegex.test(state.name)) {
-      error.name = "The name cannot contain numbers or signs";
-    }
-  }
-
-  if (!state.lastname) {
-    error.lastname = "Please insert a last name";
-  } else {
-    if (state.lastname.length > 30) {
-      error.lastname = "The last name it's too long";
-    } else if (!stringRegex.test(state.lastname)) {
-      error.lastname = "The last name cannot contain numbers or signs";
-    }
-  }
-
-  if (!state.mail) {
-    error.mail = "Please insert a email";
-  } else {
-    if (state.mail.length > 50) {
-      error.mail = "The email is too long";
-    } else if (!emailRegex.test(state.mail)) {
-      error.mail = "This not a valid email";
-    }
-  }
-
-  if (!state.password) {
-    error.password = "Insert a password";
-  } else {
-    if (state.password.length > 20) {
-      error.password = "The password is too long";
-    } else if (!passwordRegex.test(state.password)) {
-      error.password = "Try another password";
+  if (property === "user") {
+    if (!stringRegex.test(value)) {
+      error.user = "Por favor ingrese su apodo sin numeros o signos";
+    } else if (value.length > 15) {
+      error.user = "El apodo es demaciado largo";
     } else {
-      if (state.password !== state.repeatPassword) {
-        error.repeatPassword = "Password does not match";
-      }
+      error.user = "";
     }
   }
 
-  if (!state.phone) {
-    error.phone = "Please insert a last name";
-  } else {
-    if (state.phone.length > 20) {
-      error.phone = "The number phone it's too long";
-    } else if (!numberRegex.test(state.phone)) {
-      error.phone = "The last name cannot contain numbers or signs";
+  if (property === "name") {
+    if (!stringRegex.test(value)) {
+      error.name = "Por favor ingrese su nombre sin numeros o signos";
+    } else if (value.length > 15) {
+      error.name = "El nombre es demaciado largo";
+    } else {
+      error.name = "";
+    }
+  }
+
+  if (property === "lastname") {
+    if (!stringRegex.test(value)) {
+      error.lastname = "Por favor ingrese su apellido sin numeros o signos";
+    } else if (value.length > 15) {
+      error.lastname = "El apellido es demaciado largo";
+    } else {
+      error.lastname = "";
+    }
+  }
+
+  if (property === "mail") {
+    if (!emailRegex.test(value)) {
+      error.mail = "El email no es valido";
+    } else if (value.length > 50) {
+      error.mail = "El email es demaciado largo";
+    } else {
+      error.mail = "";
+    }
+  }
+
+  if (property === "password") {
+    if (!passwordRegex.test(value)) {
+      error.password = "Proba con otra contraseña";
+    } else if (value.length > 20) {
+      error.password = "La contraseña es demaciado larga";
+    } else {
+      error.password = "";
+    }
+  }
+
+  if (property === "phone") {
+    if (!numberRegex.test(value)) {
+      error.phone = "Por favor ingrese su numero de telefono";
+    } else if (value.length > 15) {
+      error.phone = "El numero de telefono es demaciado largo";
+    } else {
+      error.phone = "";
     }
   }
 
   return error;
 };
 
-export default validationProfile;
+const validatePassword = ({ password, repeatPassword }) => {
+  // NECESITA = {password: state.password, repeatPassword: repeatPassword}
+  if (password !== repeatPassword)
+    return { errorRepeat: "Las contraseñas no coinciden" };
+  return { errorRepeat: "" };
+};
+
+export { validationProfile, validatePassword };
