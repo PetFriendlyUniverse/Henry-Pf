@@ -18,6 +18,7 @@ const initialState = {
   productsPerPage: 12,
   allFilters: [],
   setFilters: {}, // {size: "small", weight: 5}
+  shopCart: {}, // { id: { product } } || { 1: { product 1 }, 2: { product 2 } }
 };
 // cantidad de productos dependiendo del width de la pantalla ???
 export const Products = createSlice({
@@ -38,14 +39,22 @@ export const Products = createSlice({
       if (value === "") {
         delete newSetFilters[filter];
       } else {
-        newSetFilters[filter] = value; //{continent:"on",}
+        newSetFilters[filter] = value;
       }
       state.setFilters = newSetFilters;
+    },
+    setShopCart: (state, { payload }) => {
+      // payload = { id: id, data:{ product } | "delete" } si recibimos product se agrega al carrito y sino se elimina
+      const { data, id } = payload; // data = { id, img, ...todos los datos del producto entero }
+      data == "delete"
+        ? delete state.shopCart[id]
+        : (state.shopCart[id] = data);
     },
   },
 });
 
 // los action creators se generan automáticamente
-export const { getProducts, getFilters, setFilters } = Products.actions;
+export const { getProducts, getFilters, setFilters, setShopCart } =
+  Products.actions;
 
 export default Products.reducer;
