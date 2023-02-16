@@ -5,7 +5,6 @@ function Card({ name, img, weight, price }) {
       <div className="h-2/3 ">
         <img src={img} alt="" className="h-full w-full rounded-lg " />
       </div>
-
       <h3 className="text-bold m-2 self-start p-1">{name}</h3>
       <p className="text-bold rounded bg-cyan-400 py-1 px-2 text-xs text-white">
         {weight} kg
