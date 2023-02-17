@@ -18,6 +18,7 @@ const initialState = {
   productsPerPage: 12,
   allFilters: [],
   setFilters: {}, // {size: "small", weight: 5}
+  productId: [],
   shopCart: {}, // { id: { product } } || { 1: { product 1 }, 2: { product 2 } }
 };
 // cantidad de productos dependiendo del width de la pantalla ???
@@ -43,6 +44,11 @@ export const Products = createSlice({
       }
       state.setFilters = newSetFilters;
     },
+    getProductsById: (state, { payload }) => {
+      state.productId = payload;
+    },
+    deletedProducts: (state, { payload }) => {
+      state.products = payload;
     setShopCart: (state, { payload }) => {
       // payload = { id: id, data:{ product } | "delete" } si recibimos product se agrega al carrito y sino se elimina
       const { data, id } = payload; // data = { id, img, ...todos los datos del producto entero }
@@ -54,7 +60,13 @@ export const Products = createSlice({
 });
 
 // los action creators se generan automáticamente
-export const { getProducts, getFilters, setFilters, setShopCart } =
-  Products.actions;
+export const {
+  getProducts,
+  getFilters,
+  setFilters,
+  getProductsById,
+  deletedProducts,
+  setShopCart,
+} = Products.actions;
 
 export default Products.reducer;

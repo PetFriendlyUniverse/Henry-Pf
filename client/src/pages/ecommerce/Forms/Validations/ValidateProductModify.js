@@ -1,10 +1,10 @@
-export const validateProductData = (property, value) => {
+export const validateProductModify = (property, value) => {
   let error = {};
   if (property === "name" && !value) {
-    error.name = "Debes ingresar un nombre";
+    error.name = "You must enter a name";
   } else if (property === "name") {
     if (value.length > 50) {
-      error.name = "El nombre no debe superar los 50 caracteres";
+      error.name = "The name should not exceed 50 characters";
     } else {
       error.name = "";
     }
@@ -12,76 +12,76 @@ export const validateProductData = (property, value) => {
   if (property === "img") {
     const imgValidation = /^(http|https):\/\/.+/;
     if (!imgValidation.test(value)) {
-      error.img = "La URL debe comenzar con http o https";
+      error.img = "The URL must start with http or https";
     } else {
       error.img = "";
     }
   }
   if (property === "price" && value <= 0) {
-    error.price = "El precio debe ser mayor de 0";
+    error.price = "The price must be greater than 0";
   } else if (property === "hp") {
     error.price = "";
   } else if (property === "description") {
     if (value.length > 100) {
-      error.description = "La descripción no puede superar los 100 caracteres";
+      error.description = "The description cannot exceed 100 characters";
     } else if (value.length < 10) {
-      error.description = "La descripción debe tener al menos 10 caracteres";
+      error.description = "The description must have at least 10 characters";
     } else {
       error.description = "";
     }
   }
   if (property === "stock" && value <= 0) {
-    error.stock = "El stock debe ser mayor de 0";
+    error.stock = "The stock must be greater than 0";
   } else if (property === "stock") {
     error.stock = "";
   }
   if (property === "specie" && !value) {
-    error.specie = "Debes ingresar una especie";
+    error.specie = "You must enter a species";
   } else if (property === "specie") {
     const nameValidation = /^[a-zA-Z\s]*$/;
     if (!nameValidation.test(value)) {
-      error.specie = "La especie solo debe contener letras";
+      error.specie = "The species must only contain letters";
     } else if (value.length > 30) {
-      error.specie = "La especie no debe superar los 30 caracteres";
+      error.specie = "The species should not exceed 30 characters";
     } else {
       error.specie = "";
     }
   }
   if (property === "breed" && !value) {
-    error.breed = "Debes ingresar una raza";
+    error.breed = "You must enter a breed";
   } else if (property === "breed") {
     const nameValidation = /^[a-zA-Z\s]*$/;
     if (!nameValidation.test(value)) {
-      error.breed = "La raza solo debe contener letras";
+      error.breed = "The breed must only contain letters";
     } else if (value.length > 30) {
-      error.breed = "La raza no debe superar los 30 caracteres";
+      error.breed = "The breed should not exceed 30 characters";
     } else {
       error.breed = "";
     }
   }
   if (property === "brand" && !value) {
-    error.brand = "Debes ingresar una marca";
+    error.brand = "You must enter a brand";
   } else if (property === "brand") {
     const nameValidation = /^[a-zA-Z\s]*$/;
     if (!nameValidation.test(value)) {
-      error.brand = "La marca solo debe contener letra";
+      error.brand = "The brand must only contain letters";
     } else if (value.length > 50) {
-      error.brand = "La marca no debe superar los 50 caracteres";
+      error.brand = "The brand should not exceed 50 characters";
     } else {
       error.brand = "";
     }
   }
   if (property === "weight" && value <= 0.0) {
-    error.weight = "El peso debe ser mayor de 0";
+    error.weight = "The weight must be greater than 0";
   } else if (property === "weight") {
     error.weight = "";
   }
   if (property === "color") {
     const nameValidation = /^[a-zA-Z\s]*$/;
     if (!nameValidation.test(value)) {
-      error.color = "El color solo debe contener letra";
+      error.color = "The color must only contain letters";
     } else if (value.length > 30) {
-      error.color = "El color no debe superar los 30 caracteres";
+      error.color = "The color should not exceed 30 characters";
     } else {
       error.color = "";
     }
@@ -89,17 +89,12 @@ export const validateProductData = (property, value) => {
   if (property === "size") {
     const nameValidation = /^[a-zA-Z\s]*$/;
     if (!nameValidation.test(value)) {
-      error.size = "El tamaño solo debe contener letras";
+      error.size = "The size must only contain letters";
     } else if (value.length > 30) {
-      error.size = "El tamaño no debe superar los 3 caracteres";
+      error.size = "The size should not exceed 3 characters";
     } else {
       error.size = "";
     }
-  }
-  if (property === "StoreId" && value <= 0) {
-    error.StoreId = "El id debe ser mayor de 0";
-  } else if (property === "StoreId") {
-    error.StoreId = "";
   }
   return error;
 };

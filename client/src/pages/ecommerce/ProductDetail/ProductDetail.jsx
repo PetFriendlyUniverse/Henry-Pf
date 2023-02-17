@@ -1,25 +1,47 @@
-import React from "react";
-import alimento from "../../../assets/alimento.png";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
+// import alimento from "../../../assets/alimento.png";
 import MoarButton from "../../../components/Button/MoarButton";
 import CountProduct from "../../../components/CountProduct/CountProduct";
 import cardCredit from "../../../assets/cardCredit/cardCredit.svg";
 import transport from "../../../assets/transport/transport.svg";
+import {
+  getProductsId,
+  deleteProductId,
+} from "../../../redux/features/products/productsActions";
+
 function ProductDetail() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  let { productId } = useSelector((state) => state.Products);
+
+  const handleClick = () => {
+    dispatch(deleteProductId(id));
+    alert("fue elminado correctamente");
+    navigate("/shop");
+  };
+  useEffect(() => {
+    dispatch(getProductsId(id));
+  }, []);
   return (
     <div className=" flex min-h-screen w-screen flex-col items-center  justify-center pt-20">
       <div className="max-h-[80vh] max-w-[60vw] ">
         <div className="flex flex-col md:flex-col lg:flex-row">
           <picture className="block  w-full  items-center justify-center lg:w-6/12">
-            <img src={alimento} alt="" className="w-[460px] " />
+            <img src={productId.img} alt="" className="w-[460px] " />
           </picture>
           <div className="inline-block w-full lg:w-6/12 ">
             <div>
               <h1 className="font-bold md:text-2xl lg:text-3xl">
-                Alimento Old Prince Novel Cordero y Arroz Perro Adulto Mediano Y
-                Grande - 15 Kg
+                {productId.name}
               </h1>
               <button className="text-xs">Old Pince</button>
-              <span className="text-xs">-codigo del producto:148048</span>
+              <span className="text-xs">
+                -codigo del producto:{productId.id}
+              </span>
 
               <div class="flex items-center">
                 <svg
@@ -77,7 +99,7 @@ function ProductDetail() {
 
             <div className="flex flex-col flex-wrap items-start gap-4 md:flex-row md:gap-8">
               <div>
-                <h3>$1000.00</h3>
+                <h3>{"$" + productId.price}</h3>
               </div>
               <div>
                 <button className="flex items-center text-[12px] font-bold uppercase text-pink-700">
@@ -90,10 +112,10 @@ function ProductDetail() {
               </div>
             </div>
             <div>
-              <span className="text-xs">($693 x Kg)</span>
+              <span className="text-xs">({productId.price + "x Kg"})</span>
               <h3>Seleccione Tamaño:</h3>
               <div className=" md:w-1/5 lg:w-1/4">
-                <MoarButton component={"15kg"} />
+                <MoarButton component={productId.weight + "kg"} />
               </div>
             </div>
             <div>
@@ -141,6 +163,12 @@ function ProductDetail() {
               </div>
             </div>
           </div>
+        </div>
+        <div>
+          <MoarButton component={"Delete"} onClick={handleClick} />
+          <Link to={`/shop/detail/modify/${id}`}>
+            <MoarButton component={"Modify"} />
+          </Link>
         </div>
       </div>
 
