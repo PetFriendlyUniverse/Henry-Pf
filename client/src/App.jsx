@@ -7,6 +7,7 @@ import Footer from "./components/footer/footer";
 // import Login from "./components/Login/Login";
 
 const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
+const Services = lazy(() => import("./pages/services/incoming"));
 
 const Landing = lazy(() => import("./pages/Landing/Landing"));
 const ProductDetail = lazy(() =>
@@ -40,6 +41,7 @@ function App() {
       <Suspense fallback={<div>Proximamente un Loader...</div>}>
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/detail/:id" element={<ProductDetail />} />
           <Route path="/shop/shoppingcart" element={<ShoppingCart />} />
