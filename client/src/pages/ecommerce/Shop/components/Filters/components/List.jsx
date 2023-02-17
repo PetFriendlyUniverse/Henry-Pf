@@ -67,7 +67,11 @@ function List({ filter, options }) {
           className="hidden max-h-32 overflow-auto md:block"
         >
           {options?.map((opc, i) => (
-            <li className="text-sm" onClick={() => onClick(opc.id)} key={i}>
+            <li
+              className="my-1 cursor-pointer text-sm"
+              onClick={() => onClick(opc.id)}
+              key={i}
+            >
               {opc.id}
             </li>
           ))}
