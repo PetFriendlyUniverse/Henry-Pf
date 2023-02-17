@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import useGetProducts from "../../hooks/useGetProducts";
 import Card from "../Card/Card";
 
