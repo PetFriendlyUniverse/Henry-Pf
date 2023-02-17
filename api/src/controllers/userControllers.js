@@ -1,11 +1,20 @@
 const { User } = require("../db");
 
-const createUser = async (user, name, lastname, mail, password, phone) => {
+const createUser = async (
+  user,
+  name,
+  lastname,
+  mail,
+  password,
+  phone,
+  province,
+  locality
+) => {
   const data = { user, name, lastname, mail, password, phone };
 
   if (!Object.values(data).every((value) => value)) throw Error("Missing data");
 
-  return await User.create(data);
+  return await User.create(...data, province, locality);
 };
 
 const getAllUsers = async () => {
