@@ -1,169 +1,225 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import LinkButton from "../../../components/Button/LinkButton";
 
 import photoUser from "../../../assets/borrador/profile.jpg";
-
-import arrowBottom from "../../../assets/arrows/arrowToBottom.svg";
-import interrogation from "../../../assets/general/interrogation.svg";
-
-import profile from "../../../assets/general/profile.svg";
-import security from "../../../assets/general/security.svg";
-import ubication from "../../../assets/general/location.svg";
-import payment from "../../../assets/general/payment.svg";
+import edit from "../../../assets/general/edit.svg";
 
 function Profile() {
-  const [showInfo, setShowInfo] = useState(false);
-  const [showSecurity, setShowSecurity] = useState(false);
-  const [showUbi, setShowUbi] = useState(false);
-  const [showPayment, setShowPayment] = useState(false);
-  const handleShowInfo = () => {
-    if (!showInfo) {
-      setShowInfo(true);
-    } else {
-      setShowInfo(false);
-    }
-  };
-  const handleShowSecurity = () => {
-    if (!showSecurity) {
-      setShowSecurity(true);
-    } else {
-      setShowSecurity(false);
-    }
-  };
-  const handleShowUbi = () => {
-    if (!showUbi) {
-      setShowUbi(true);
-    } else {
-      setShowUbi(false);
-    }
-  };
-  const handleShowPayment = () => {
-    if (!showPayment) {
-      setShowPayment(true);
-    } else {
-      setShowPayment(false);
-    }
+  const [showInfo, setShowInfo] = useState("profile");
+  const handleShowInfo = (e) => {
+    setShowInfo(e.target.name);
   };
   return (
-    <div className="w-9/12">
-      <div className="ml-12 mt-7 w-full rounded-xl bg-customProfile p-5 shadow-2xl lg:ml-80 lg:flex">
-        <div className="mx-0 w-full lg:w-1/3">
-          <img src={photoUser} alt="profile" className="rounded-xl" />
-        </div>
-        <div className="lg:pl-16">
-          <div className="lg:h-28 lg:w-80">
-            <div className="py-3 pl-3">
-              <div className="flex justify-between border-b-2 border-b-stone-900 pb-2">
-                <img src={profile} alt="" className="w-6" />
-                <h3 className="">Mis datos</h3>
-                <button onClick={handleShowInfo}>
-                  <img src={arrowBottom} alt="" className="w-4" />
-                </button>
-              </div>
-              {showInfo ? (
-                <div className="">
-                  <div className="flex justify-between pb-1">
-                    <p className="">Nombre: Maria Lucatelli</p>
-                  </div>
-                  <div className="flex justify-between pb-1">
-                    <p className="">Mascotas: Manuelita</p>
-                  </div>
-                </div>
-              ) : null}
+    <div className="w-full px-52 pt-28 pb-60">
+      <div className="flex rounded-md border-2">
+        <div className="p-3">
+          <div className="flex lg:w-60">
+            <div className="px-3 lg:w-1/3">
+              <img src={photoUser} alt="profile" className="rounded-full" />
+            </div>
+            <div>
+              <h1 className="text-2xl font-black">{`Nombre`}</h1>
             </div>
           </div>
-          <div className="lg:h-28 lg:w-80">
-            <div className="py-3 pl-3">
-              <div className="flex justify-between border-b-2 border-b-stone-900 pb-2">
-                <img src={security} alt="" className="w-6" />
-                <h3 className="">Seguridad</h3>
-                <button onClick={handleShowSecurity}>
-                  <img src={arrowBottom} alt="" className="w-4" />
-                </button>
+          <div className="">
+            <div className="mb-4 mt-4 border-gray-200 dark:border-gray-700">
+              <ul
+                className="-mb-px text-center text-sm font-medium"
+                id="myTab"
+                data-tabs-toggle="#myTabContent"
+                role="tablist"
+              >
+                <li
+                  className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500"
+                  role="presentation"
+                >
+                  <button
+                    onClick={handleShowInfo}
+                    name="profile"
+                    className="inline-block p-4"
+                    id="profile-tab"
+                    data-tabs-target="#profile"
+                    type="button"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false"
+                  >
+                    Perfil
+                  </button>
+                </li>
+                <li
+                  className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500"
+                  role="presentation"
+                >
+                  <button
+                    onClick={handleShowInfo}
+                    name="contacts"
+                    className="inline-block border-b-2 border-transparent p-4 "
+                    id="contacts-tab"
+                    data-tabs-target="#contacts"
+                    type="button"
+                    role="tab"
+                    aria-controls="contacts"
+                    aria-selected="false"
+                  >
+                    Contacto
+                  </button>
+                </li>
+                <li
+                  className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500"
+                  role="presentation"
+                >
+                  {/* Reveer esto de volver al hacer Health/Services */}
+                  <Link to="/shop">
+                    <button
+                      className="inline-block p-4 "
+                      id="profile-tab"
+                      data-tabs-target="#profile"
+                      type="button"
+                      role="tab"
+                      aria-controls="profile"
+                      aria-selected="false"
+                    >
+                      Volver
+                    </button>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div id="myTabContent">
+              <div
+                className="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
+                id="profile"
+                role="tabpanel"
+                aria-labelledby="profile-tab"
+              >
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  This is some placeholder content the{" "}
+                  <strong className="font-medium text-gray-800 dark:text-white">
+                    Profile tab's associated content
+                  </strong>
+                  . Clicking another tab will toggle the visibility of this one
+                  for the next. The tab JavaScript swaps classNamees to control
+                  the content visibility and styling.
+                </p>
               </div>
-              {showSecurity ? (
-                <div className="">
-                  <div className="flex justify-between pb-1">
-                    <p className="">Mail: marialucatelli@gmail.com</p>
-                  </div>
-                  <div className="flex justify-between pb-1">
-                    <p className="">Contraseña: marialucatelli777</p>
-                  </div>
-                  <div className="flex justify-between pb-1">
-                    <p className="">Telefono: +5991112794823</p>
-                  </div>
-                </div>
-              ) : null}
+              <div
+                className="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
+                id="dashboard"
+                role="tabpanel"
+                aria-labelledby="dashboard-tab"
+              >
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  This is some placeholder content the{" "}
+                  <strong className="font-medium text-gray-800 dark:text-white">
+                    Dashboard tab's associated content
+                  </strong>
+                  . Clicking another tab will toggle the visibility of this one
+                  for the next. The tab JavaScript swaps classNamees to control
+                  the content visibility and styling.
+                </p>
+              </div>
+              <div
+                className="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
+                id="settings"
+                role="tabpanel"
+                aria-labelledby="settings-tab"
+              >
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  This is some placeholder content the{" "}
+                  <strong className="font-medium text-gray-800 dark:text-white">
+                    Settings tab's associated content
+                  </strong>
+                  . Clicking another tab will toggle the visibility of this one
+                  for the next. The tab JavaScript swaps classNamees to control
+                  the content visibility and styling.
+                </p>
+              </div>
+              <div
+                className="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
+                id="contacts"
+                role="tabpanel"
+                aria-labelledby="contacts-tab"
+              >
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  This is some placeholder content the{" "}
+                  <strong className="font-medium text-gray-800 dark:text-white">
+                    Contacts tab's associated content
+                  </strong>
+                  . Clicking another tab will toggle the visibility of this one
+                  for the next. The tab JavaScript swaps classNamees to control
+                  the content visibility and styling.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        <div className="lg:pl-16">
-          <div className="lg:h-28 lg:w-80">
-            <div className="py-3 pl-3">
-              <div className="flex justify-between border-b-2 border-b-stone-900 pb-2">
-                <img src={ubication} alt="" className="w-6" />
-                <h3 className="">Ubicacion</h3>
-                <button onClick={handleShowUbi}>
-                  <img src={arrowBottom} alt="" className="w-4" />
-                </button>
-              </div>
-              {showUbi ? (
-                <div className="">
-                  <div className="flex justify-between pb-1">
-                    <p className="">Departamento: CABA</p>
-                  </div>
-                  <div className="flex justify-between pb-1">
-                    <p className="">Delivery: Calle falsa 123</p>
+        <div className="border-l-2 border-gray-400 lg:w-[1200px]">
+          {showInfo == "profile" ? (
+            <div className="border-b-2 border-gray-400 p-3">
+              <h1 className="pl-2 text-3xl font-semibold">Perfil</h1>
+            </div>
+          ) : (
+            <div className="border-b-2 border-gray-400 p-3">
+              <h1 className="pl-2 text-3xl font-semibold">Contacto</h1>
+            </div>
+          )}
+          <div className="flex">
+            {showInfo == "profile" ? (
+              <div>
+                <div className="flex justify-between pt-6">
+                  <div className="w-[600px] pl-16">
+                    <div className="flex justify-between pt-2">
+                      <div>
+                        <h6 className="font-bold">Nombre completo:</h6>
+                        <p>{`Jennifer Aniston`}</p>
+                      </div>
+                      <div>
+                        <h6 className="font-bold">Nombre de Usuario:</h6>
+                        <p>{`JennAniston`}</p>
+                      </div>
+                      <div>
+                        <h6 className="font-bold">Contraseña:</h6>
+                        <p>{`***************`}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              ) : null}
-            </div>
-          </div>
-          <div className="lg:h-28 lg:w-80">
-            <div className="py-3 pl-3">
-              <div className="flex justify-between border-b-2 border-b-stone-900 pb-2">
-                <img src={payment} alt="" className="w-6" />
-                <h3 className="">Metodos de Pago</h3>
-                <button onClick={handleShowPayment}>
-                  <img src={arrowBottom} alt="" className="w-4" />
-                </button>
               </div>
-              {showPayment ? (
-                <div className="">
-                  <div className="flex justify-between pb-1">
-                    <p className="">Efectivo</p>
-                  </div>
-                  <div className="flex justify-between pb-1">
-                    <p className="">
-                      Tarjeta:{" "}
-                      {
-                        <select>
-                          <option value="">MasterCard</option>
-                          <option value="">Galicia</option>
-                          <option value="">MercadoPago</option>
-                        </select>
-                      }
-                    </p>
+            ) : (
+              <div>
+                <div className="flex justify-between pt-6">
+                  <div className="w-[600px] pl-16">
+                    <div className="flex justify-between pt-2">
+                      <div>
+                        <h6 className="font-bold">Correo:</h6>
+                        <p>{`jenniferaniston@gmail.com`}</p>
+                      </div>
+                      <div>
+                        <h6 className="font-bold">Numero de Telefono:</h6>
+                        <p>{`1234567890`}</p>
+                      </div>
+                      <div>
+                        <h6 className="font-bold">Direccion:</h6>
+                        <p>{`Calle Falsa 123`}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              ) : null}
+              </div>
+            )}
+            <div className="pl-12 pt-5">
+              <div className="py-2">
+                <LinkButton component={"Crea tu producto"} />
+              </div>
+              <div className="py-2">
+                <button className="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
+                  <img src={edit} alt="edit" />
+                </button>
+              </div>
             </div>
           </div>
-          <div></div>
-        </div>
-      </div>
-      <div className="ml-12 mt-7 w-full rounded-xl p-5 lg:ml-80 lg:flex">
-        <div className="mr-3 flex">
-          <LinkButton component={"Registra una mascota"} />
-          <img src={interrogation} alt="help" className="w-5" />
-        </div>
-        <div className="mr-3 flex">
-          <LinkButton component={"Registrate como paseador"} />
-          <img src={interrogation} alt="help" className="w-5" />
-        </div>
-        <div className="mr-3 flex">
-          <LinkButton component={"Crea tu tienda"} />
-          <img src={interrogation} alt="help" className="w-5" />
         </div>
       </div>
     </div>
