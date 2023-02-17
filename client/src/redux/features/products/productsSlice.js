@@ -55,7 +55,7 @@ export const Products = createSlice({
       const { data, id } = payload; // data = { id, img, ...todos los datos del producto entero }
       data == "delete"
         ? delete state.shopCart[id]
-        : (state.shopCart[id] = data);
+        : (state.shopCart[id] = { ...state.shopCart[id], ...data });
     },
   },
 });

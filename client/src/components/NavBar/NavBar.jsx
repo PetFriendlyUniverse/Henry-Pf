@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import SearchForm from "./components/SearchForm";
 import DropdownHelp from "./components/DropdownHelp";
-import DropdownAccount from "./components/dropdownAccount";
 import DropdownShop from "./components/DropdownShop";
 
 import { useRef } from "react";
@@ -137,9 +136,6 @@ function NavBar() {
             </li>
             <li>
               <DropdownHelp />
-            </li>
-            <li>
-              <DropdownAccount />
             </li>
             <li>
               <DropdownShop />
