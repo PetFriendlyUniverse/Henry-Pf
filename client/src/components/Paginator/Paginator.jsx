@@ -7,6 +7,7 @@ import { setCurrentPage } from "../../redux/features/products/productsSlice";
 import arrowLeft from "../../assets/arrows/dobleArrowToLeft.svg";
 import arrowRight from "../../assets/arrows/dobleArrowToRight.svg";
 
+
 function Paginator() {
   let { totalPages, productsPerPage, currentPage, setFilters } = useSelector(
     (state) => state.Products

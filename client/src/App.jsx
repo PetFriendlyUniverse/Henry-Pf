@@ -1,4 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Shop from "./pages/ecommerce/Shop/Shop";
 import Landing from "./pages/Landing/Landing";
 import ProductDetail from "./pages/ecommerce/ProductDetail/ProductDetail";
@@ -16,7 +17,11 @@ import Footer from "./components/footer/footer";
 import Login from "./components/Login/Login";
 
 function App() {
+  const shopCart = useSelector((state) => state.Products.shopCart);
   const { pathname } = useLocation();
+  window.addEventListener("beforeunload", () => {
+    localStorage.setItem("shopCart", JSON.stringify(shopCart));
+  });
   return (
     <div className="App min-h-screen">
       {pathname !== "/" && <NavBar />}
