@@ -1,4 +1,4 @@
-const validationProfile = ({ property, value }) => {
+const validationProfile = (property, value) => {
   let stringRegex = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/;
   let numberRegex = /^[0-9]+$/;
   let emailRegex =
@@ -9,7 +9,9 @@ const validationProfile = ({ property, value }) => {
 
   let error = {};
 
-  if (property === "user") {
+  if (property === "user" && !value) {
+    error.user = "Ingrese su nickname";
+  } else if (property === "user") {
     if (!stringRegex.test(value)) {
       error.user = "Por favor ingrese su apodo sin numeros o signos";
     } else if (value.length > 15) {
@@ -19,7 +21,9 @@ const validationProfile = ({ property, value }) => {
     }
   }
 
-  if (property === "name") {
+  if (property === "name" && !value) {
+    error.name = "Ingrese su Nombre";
+  } else if (property === "name") {
     if (!stringRegex.test(value)) {
       error.name = "Por favor ingrese su nombre sin numeros o signos";
     } else if (value.length > 15) {
@@ -29,7 +33,9 @@ const validationProfile = ({ property, value }) => {
     }
   }
 
-  if (property === "lastname") {
+  if (property === "lastname" && !value) {
+    error.lastname = "Ingrese su apellido";
+  } else if (property === "lastname") {
     if (!stringRegex.test(value)) {
       error.lastname = "Por favor ingrese su apellido sin numeros o signos";
     } else if (value.length > 15) {
@@ -39,7 +45,9 @@ const validationProfile = ({ property, value }) => {
     }
   }
 
-  if (property === "mail") {
+  if (property === "mail" && !value) {
+    error.mail = "Ingrese un email";
+  } else if (property === "mail") {
     if (!emailRegex.test(value)) {
       error.mail = "El email no es valido";
     } else if (value.length > 50) {
@@ -49,7 +57,9 @@ const validationProfile = ({ property, value }) => {
     }
   }
 
-  if (property === "password") {
+  if (property === "password" && !value) {
+    error.password = "Ingrese la contraseña";
+  } else if (property === "password") {
     if (!passwordRegex.test(value)) {
       error.password = "Proba con otra contraseña";
     } else if (value.length > 20) {
@@ -59,20 +69,20 @@ const validationProfile = ({ property, value }) => {
     }
   }
 
-  if (property === "phone") {
+  if (property === "emergencyphone" && value <= 0) {
     if (!numberRegex.test(value)) {
-      error.phone = "Por favor ingrese su numero de telefono";
+      error.emergencyphone = "Por favor ingrese su numero de telefono";
     } else if (value.length > 15) {
-      error.phone = "El numero de telefono es demaciado largo";
+      error.emergencyphone = "El numero de telefono es demaciado largo";
     } else {
-      error.phone = "";
+      error.emergencyphone = "";
     }
   }
 
   return error;
 };
 
-const validatePassword = ({ password, repeatPassword }) => {
+const validatePassword = (password, repeatPassword) => {
   // NECESITA = {password: state.password, repeatPassword: repeatPassword}
   if (password !== repeatPassword)
     return { errorRepeat: "Las contraseñas no coinciden" };

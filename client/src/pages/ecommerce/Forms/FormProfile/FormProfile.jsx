@@ -32,10 +32,7 @@ function FormProfile() {
       setForm({ ...form, [property]: [value] });
     } else {
       setForm({ ...form, [property]: value });
-      setErrors({
-        ...errors,
-        ...validationProfile({ property: [property], value: [value] }),
-      });
+      setErrors(validationProfile(property, value));
       //setError(validateProduct(property, value));
     }
   };
@@ -87,13 +84,9 @@ function FormProfile() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Nickname max: 15 caracteres
+            Nickname (max: 15 caracteres)
           </label>
-          {form.user ? null : (
-            <div>
-              <p className="text-red-700">{`${errors.user}`}</p>
-            </div>
-          )}
+          {errors.user && <span className="text-red-500">{errors.user}</span>}
         </div>
         <div className="group relative z-0 mb-6 h-11 w-full">
           <input
@@ -106,19 +99,15 @@ function FormProfile() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            E-mail max: 50 caracteres
+            E-mail (max: 50 caracteres)
           </label>
-          {form.mail ? null : (
-            <div>
-              <p className="text-red-700">{`${errors.mail}`}</p>
-            </div>
-          )}
+          {errors.mail && <span className="text-red-500">{errors.mail}</span>}
         </div>
 
         <div className="group relative z-0 mb-6 h-11 w-full">
           <input
             onChange={handleChange}
-            type="text"
+            type="password"
             name="password"
             value={form.password}
             className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
@@ -126,18 +115,16 @@ function FormProfile() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Contraseña max: 20 caracteres
+            Contraseña (max: 20 caracteres)
           </label>
-          {form.password ? null : (
-            <div>
-              <p className="text-red-700">{`${errors.password}`}</p>
-            </div>
+          {errors.password && (
+            <span className="text-red-500">{errors.password}</span>
           )}
         </div>
         <div className="group relative z-0 mb-6 h-11 w-full">
           <input
             onChange={handleChangeRepeat}
-            type="text"
+            type="password"
             name="repeatPassword"
             value={repeat.repeatPassword}
             className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
@@ -147,10 +134,8 @@ function FormProfile() {
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
             Confirmar Contraseña
           </label>
-          {form.password === repeat.repeatPassword ? null : (
-            <div>
-              <p className="text-red-700">{`Passwords does not match`}</p>
-            </div>
+          {errors.repeatPassword && (
+            <span className="text-red-500">{errors.repeatPassword}</span>
           )}
         </div>
         <div className="grid md:grid-cols-2 md:gap-6">
@@ -165,13 +150,9 @@ function FormProfile() {
               autoComplete="off"
             />
             <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-              Nombre max: 30 caracteres
+              Nombre (max: 30 caracteres)
             </label>
-            {form.name ? null : (
-              <div>
-                <p className="text-red-700">{`${errors.name}`}</p>
-              </div>
-            )}
+            {errors.name && <span className="text-red-500">{errors.name}</span>}
           </div>
           <div className="group relative z-0 mb-6 h-11 w-full">
             <input
@@ -184,12 +165,10 @@ function FormProfile() {
               autoComplete="off"
             />
             <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-              Apellido max: 30 caracteres
+              Apellido (max: 30 caracteres)
             </label>
-            {form.lastname ? null : (
-              <div>
-                <p className="text-red-700">{`${errors.lastname}`}</p>
-              </div>
+            {errors.lastname && (
+              <span className="text-red-500">{errors.lastname}</span>
             )}
           </div>
         </div>
@@ -205,12 +184,10 @@ function FormProfile() {
               autoComplete="off"
             />
             <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-              Telefono max: 20 caracteres
+              Telefono (max: 20 caracteres)
             </label>
-            {form.phone ? null : (
-              <div>
-                <p className="text-red-700">{`${errors.phone}`}</p>
-              </div>
+            {errors.phone && (
+              <span className="text-red-500">{errors.phone}</span>
             )}
           </div>
           <div className="group relative z-0 mb-6 h-11 w-full">
@@ -226,10 +203,8 @@ function FormProfile() {
             <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
               Telefono de Emergencia
             </label>
-            {form.emergencyphone ? null : (
-              <div>
-                <p className="text-red-700">{`${errors.emergencyphone}`}</p>
-              </div>
+            {errors.emergencyphone && (
+              <span className="text-red-500">{errors.emergencyphone}</span>
             )}
           </div>
         </div>
