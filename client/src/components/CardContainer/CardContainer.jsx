@@ -19,6 +19,7 @@ function CardContainer() {
             img={product.img}
             weight={product.weight}
             price={product.price}
+            stock={product.stock}
           />
         );
       })}

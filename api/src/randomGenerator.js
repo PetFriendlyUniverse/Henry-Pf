@@ -38,7 +38,7 @@ const generator = () => {
       for (let s = 1; s <= 30; s++) {
         let description = `Una descripción apropiada para este producto`;
         let price = Math.floor(Math.random() * 200 + 51);
-        let stock = Math.floor(Math.random() * 200 + 51);
+        let stock = Math.ceil(Math.random() * 15);
         let specie = species[Math.ceil(Math.random() * 4)];
         let brand = brands[Math.ceil(Math.random() * 4)];
         let color = colors[Math.ceil(Math.random() * 4)];
