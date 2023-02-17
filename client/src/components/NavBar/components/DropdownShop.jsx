@@ -5,7 +5,6 @@ import LinkButton from "../../Button/LinkButton";
 import { Link } from "react-router-dom";
 
 function DropdownShop() {
-  const dropdownShop = useRef(null);
   const shopCartProducts = useSelector((state) => state.Products?.shopCart);
   const productsIds = Object.keys(shopCartProducts);
   let totalPrice = 0;
@@ -13,18 +12,13 @@ function DropdownShop() {
     totalPrice += shopCartProducts[id].amount * shopCartProducts[id].price;
     return shopCartProducts[id];
   });
-  const showDropdownShop = () => {
-    dropdownShop.current.classList.toggle("hidden");
-  };
+
   return (
-    <>
-      <button
-        onClick={showDropdownShop}
-        className=" flex w-full items-center justify-between rounded-md bg-primary px-4 py-1 text-xs text-lightwhite md:text-sm lg:relative lg:text-base"
-      >
+    <div className="group">
+      <button className=" flex w-full items-center justify-between rounded-md bg-primary px-4 py-1 text-xs text-lightwhite md:text-sm lg:relative lg:text-base">
         $40.000
         <svg
-          className="ml-1 h-4 w-4"
+          className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180"
           aria-hidden="true"
           fill="currentColor"
           viewBox="0 0 20 20"
@@ -34,10 +28,7 @@ function DropdownShop() {
         </svg>
       </button>
 
-      <div
-        ref={dropdownShop}
-        className=" z-10 hidden w-96 rounded-b-lg bg-primary pt-8 lg:absolute"
-      >
+      <div className="z-10 hidden w-96 rounded-b-lg bg-primary pt-8 group-hover:block lg:absolute">
         {products?.map((prod) => (
           <Subcard prod={prod} key={prod.id} />
         ))}
@@ -51,7 +42,7 @@ function DropdownShop() {
           </h2>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
