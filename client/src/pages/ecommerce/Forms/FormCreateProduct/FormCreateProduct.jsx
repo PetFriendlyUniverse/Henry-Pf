@@ -58,12 +58,11 @@ function FormCreateProduct() {
       console.log("Hay errores en el formulario");
     }
   };
-
   return (
-    <div className="mb-28 flex h-screen justify-center py-28 pt-20">
+    <div className=" mb-28 flex min-h-screen justify-center py-28 pt-20 ">
       <form
         onSubmit={submitHandler}
-        className="rounded-xl p-3 shadow-2xl lg:h-[950px] lg:w-2/5"
+        className="w-11/12 rounded-xl p-3 shadow-2xl md:w-3/5 lg:h-auto lg:w-2/5"
       >
         <h3 className="mb-6">Create</h3>
         <div className="group relative z-0 mb-6 h-11 w-full">
