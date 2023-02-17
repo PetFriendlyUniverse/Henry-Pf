@@ -66,10 +66,10 @@ function FormModifyProduct() {
   };
 
   return (
-    <div className="mb-28 flex h-screen justify-center py-28 pt-20">
+    <div className=" mb-28 flex min-h-screen justify-center py-28 pt-20 ">
       <form
         onSubmit={submitHandler}
-        className="rounded-xl p-3 shadow-2xl lg:h-[950px] lg:w-2/5"
+        className="w-11/12 rounded-xl p-3 shadow-2xl md:w-3/5 lg:h-auto lg:w-2/5"
       >
         <h3 className="mb-6">Create</h3>
         <div className="group relative z-0 mb-6 h-11 w-full">
@@ -78,7 +78,7 @@ function FormModifyProduct() {
             value={form.name}
             name="name"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -93,7 +93,7 @@ function FormModifyProduct() {
             value={form.img}
             name="img"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -108,7 +108,7 @@ function FormModifyProduct() {
             value={form.price}
             name="price"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -123,7 +123,7 @@ function FormModifyProduct() {
             value={form.description}
             name="description"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -140,7 +140,7 @@ function FormModifyProduct() {
             value={form.stock}
             name="stock"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -155,7 +155,7 @@ function FormModifyProduct() {
             value={form.specie}
             name="specie"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -170,7 +170,7 @@ function FormModifyProduct() {
             value={form.breed}
             name="breed"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -185,7 +185,7 @@ function FormModifyProduct() {
             value={form.brand}
             name="brand"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -200,7 +200,7 @@ function FormModifyProduct() {
             value={form.weight}
             name="weight"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -215,7 +215,7 @@ function FormModifyProduct() {
             value={form.color}
             name="color"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -230,7 +230,7 @@ function FormModifyProduct() {
             value={form.size}
             name="size"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -239,7 +239,7 @@ function FormModifyProduct() {
           </label>
           {error.size && <span className="text-red-500">{error.size}</span>}
         </div>
-        <LinkButton component={"Create"} />
+        <LinkButton component={"Modify"} />
       </form>
     </div>
   );
