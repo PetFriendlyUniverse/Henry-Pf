@@ -49,6 +49,7 @@ export const Products = createSlice({
     },
     deletedProducts: (state, { payload }) => {
       state.products = payload;
+    },
     setShopCart: (state, { payload }) => {
       // payload = { id: id, data:{ product } | "delete" } si recibimos product se agrega al carrito y sino se elimina
       const { data, id } = payload; // data = { id, img, ...todos los datos del producto entero }

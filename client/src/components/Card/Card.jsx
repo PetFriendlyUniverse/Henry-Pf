@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { setShopCart } from "../../redux/features/products/productsSlice";
 import AddShopButton from "../Button/AddShopButton";
 import CountProduct from "../CountProduct/CountProduct";
@@ -20,13 +21,14 @@ function Card({ name, img, weight, price, stock, id }) {
       })
     );
     setValue(1);
-
     // setear una alerta con sweetalert "producto agregado al carrito"
   };
   return (
     <div className="mx-1 my-4 flex h-96 w-52 flex-col items-center justify-center rounded-lg border ">
       <div className="h-2/3 ">
-        <img src={img} alt="" className="h-full w-full rounded-lg " />
+        <Link to={`/shop/detail/${id}`}>
+          <img src={img} alt="" className="h-full w-full rounded-lg " />
+        </Link>
       </div>
       <h3 className="text-bold m-2 self-start p-1">{name}</h3>
       <p className="text-bold rounded bg-cyan-400 py-1 px-2 text-xs text-white">
