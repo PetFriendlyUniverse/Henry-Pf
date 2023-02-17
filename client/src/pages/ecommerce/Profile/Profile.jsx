@@ -17,11 +17,11 @@ function Profile() {
     setShowInfo(e.target.name);
   };
   return (
-    <div className="w-full px-52 pt-28 pb-60">
-      <div className="flex rounded-md border-2">
-        <div className="p-3">
-          <div className="flex lg:w-60">
-            <div className="px-3 lg:w-1/3">
+    <div className="flex justify-center py-28 px-3 pt-20 md:max-w-fit ">
+      <div className="flex h-full w-10/12 rounded-md border-2">
+        <div className="mb-3 p-3 xl:w-96 ">
+          <div className="flex lg:w-40 ">
+            <div className="px-3 lg:max-w-3xl">
               <img src={photoUser} alt="profile" className="rounded-full" />
             </div>
             <div>

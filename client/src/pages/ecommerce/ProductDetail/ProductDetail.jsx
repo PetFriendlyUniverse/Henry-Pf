@@ -159,16 +159,16 @@ function ProductDetail() {
                   <div className="text-xs">
                     Retirá sin cargo por tu sucursal preferida
                   </div>
+                  <div className="mx-auto w-2/6">
+                    <MoarButton component={"Delete"} onClick={handleClick} />
+                    <Link to={`/shop/detail/modify/${id}`}>
+                      <MoarButton component={"Modify"} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div>
-          <MoarButton component={"Delete"} onClick={handleClick} />
-          <Link to={`/shop/detail/modify/${id}`}>
-            <MoarButton component={"Modify"} />
-          </Link>
         </div>
       </div>
 
