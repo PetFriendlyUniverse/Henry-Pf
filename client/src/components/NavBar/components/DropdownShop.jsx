@@ -1,8 +1,18 @@
 import { useRef } from "react";
+import Subcard from "../../SubCard/Subcard";
+import { useSelector } from "react-redux";
+import LinkButton from "../../Button/LinkButton";
+import { Link } from "react-router-dom";
 
 function DropdownShop() {
   const dropdownShop = useRef(null);
-
+  const shopCartProducts = useSelector((state) => state.Products?.shopCart);
+  const productsIds = Object.keys(shopCartProducts);
+  let totalPrice = 0;
+  const products = productsIds.map((id) => {
+    totalPrice += shopCartProducts[id].amount * shopCartProducts[id].price;
+    return shopCartProducts[id];
+  });
   const showDropdownShop = () => {
     dropdownShop.current.classList.toggle("hidden");
   };
@@ -26,25 +36,20 @@ function DropdownShop() {
 
       <div
         ref={dropdownShop}
-        className=" z-10 hidden w-64 rounded-b-lg bg-primary pt-8 lg:absolute"
+        className=" z-10 hidden w-96 rounded-b-lg bg-primary pt-8 lg:absolute"
       >
-        <h2>Modal carrito de compras</h2>
-        <h2>Modal carrito de compras</h2>
-        <h2>Modal carrito de compras</h2>
-        <h2>Modal carrito de compras</h2>
-        <h2>Modal carrito de compras</h2>
-        <h2>Modal carrito de compras</h2>
-        <h2>Modal carrito de compras</h2>
-        <h2>Modal carrito de compras</h2>
-        <h2>Modal carrito de compras</h2>
-        <h2>Modal carrito de compras</h2>
-        <h2>Modal carrito de compras</h2>
-        <h2>Modal carrito de compras</h2>
-        <h2>Modal carrito de compras</h2>
-        <h2>Modal carrito de compras</h2>
-        <h2>Modal carrito de compras</h2>
-        <h2>Modal carrito de compras</h2>
-        <h2>Modal carrito de compras</h2>
+        {products?.map((prod) => (
+          <Subcard prod={prod} key={prod.id} />
+        ))}
+        <hr />
+        <div className="flex justify-between p-2">
+          <Link to="/shop/checkout">
+            <LinkButton component={"Confirmar Compra"} />
+          </Link>
+          <h2 className="border-blue inline-block border">
+            Total: ${totalPrice},00
+          </h2>
+        </div>
       </div>
     </>
   );
