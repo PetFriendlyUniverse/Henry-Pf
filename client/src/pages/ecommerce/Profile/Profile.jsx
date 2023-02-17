@@ -211,7 +211,9 @@ function Profile() {
             )}
             <div className="pl-12 pt-5">
               <div className="py-2">
-                <LinkButton component={"Crea tu producto"} />
+                <Link to="/profile/store/create">
+                  <LinkButton component={"Crea tu producto"} />
+                </Link>
               </div>
               <div className="py-2">
                 <button className="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
