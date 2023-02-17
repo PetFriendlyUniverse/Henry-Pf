@@ -1,4 +1,12 @@
+import { useDispatch } from "react-redux";
+import { clearShopCart } from "../../../redux/features/products/productsSlice";
+
 function Checkout() {
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    localStorage.removeItem("shopCart");
+    dispatch(clearShopCart());
+  };
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-slate-200 pt-20">
       <div className="my-4 flex h-[80vh] w-screen flex-col items-center justify-center gap-8 lg:w-[60vw] lg:flex-row lg:gap-0">
@@ -41,6 +49,7 @@ function Checkout() {
             </div>
 
             <button
+              onClick={handleClick}
               type="button"
               className=" w-full self-end rounded-lg bg-emerald-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-900"
             >

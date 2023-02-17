@@ -19,7 +19,7 @@ const initialState = {
   allFilters: [],
   setFilters: {}, // {size: "small", weight: 5}
   productId: [],
-  shopCart: {}, // { id: { product } } || { 1: { product 1 }, 2: { product 2 } }
+  shopCart: JSON.parse(localStorage.getItem("shopCart")) || {}, // { id: { product } } || { 1: { product 1 }, 2: { product 2 } }
 };
 // cantidad de productos dependiendo del width de la pantalla ???
 export const Products = createSlice({
@@ -60,6 +60,9 @@ export const Products = createSlice({
         ? delete state.shopCart[id]
         : (state.shopCart[id] = { ...state.shopCart[id], ...data });
     },
+    clearShopCart: (state) => {
+      state.shopCart = {};
+    },
   },
 });
 
@@ -72,6 +75,7 @@ export const {
   getProductsById,
   deletedProducts,
   setShopCart,
+  clearShopCart,
 } = Products.actions;
 
 export default Products.reducer;
