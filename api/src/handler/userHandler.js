@@ -7,8 +7,17 @@ const {
 } = require("../controllers/userControllers");
 
 const postUserHandler = async (req, res) => {
-  const { user, name, lastname, mail, password, phone, province, locality } =
-    req.body;
+  const {
+    user,
+    name,
+    lastname,
+    mail,
+    password,
+    phone,
+    emergencyphone,
+    province,
+    locality,
+  } = req.body;
 
   try {
     const newUser = await createUser(
@@ -18,6 +27,7 @@ const postUserHandler = async (req, res) => {
       mail,
       password,
       phone,
+      emergencyphone,
       province,
       locality
     );

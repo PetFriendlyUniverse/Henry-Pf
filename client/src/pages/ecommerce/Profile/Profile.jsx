@@ -2,8 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import LinkButton from "../../../components/Button/LinkButton";
 
+import PersonalInfo from "./components/PersonalInfo";
+import Contacts from "./components/Contacts";
+import Ubication from "./components/Ubication";
+import Payment from "./components/Payment";
+
 import photoUser from "../../../assets/borrador/profile.jpg";
 import edit from "../../../assets/general/edit.svg";
+import interrogation from "../../../assets/general/interrogation.svg";
 
 function Profile() {
   const [showInfo, setShowInfo] = useState("profile");
@@ -54,7 +60,7 @@ function Profile() {
                 >
                   <button
                     onClick={handleShowInfo}
-                    name="contacts"
+                    name="contact"
                     className="inline-block border-b-2 border-transparent p-4 "
                     id="contacts-tab"
                     data-tabs-target="#contacts"
@@ -64,6 +70,42 @@ function Profile() {
                     aria-selected="false"
                   >
                     Contacto
+                  </button>
+                </li>
+                <li
+                  className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500"
+                  role="presentation"
+                >
+                  <button
+                    onClick={handleShowInfo}
+                    name="ubication"
+                    className="inline-block p-4"
+                    id="profile-tab"
+                    data-tabs-target="#profile"
+                    type="button"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false"
+                  >
+                    Direcciones
+                  </button>
+                </li>
+                <li
+                  className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500"
+                  role="presentation"
+                >
+                  <button
+                    onClick={handleShowInfo}
+                    name="payment"
+                    className="inline-block p-4"
+                    id="profile-tab"
+                    data-tabs-target="#profile"
+                    type="button"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false"
+                  >
+                    Formas de Pago
                   </button>
                 </li>
                 <li
@@ -160,62 +202,38 @@ function Profile() {
             <div className="border-b-2 border-gray-400 p-3">
               <h1 className="pl-2 text-3xl font-semibold">Perfil</h1>
             </div>
-          ) : (
+          ) : showInfo == "contact" ? (
             <div className="border-b-2 border-gray-400 p-3">
               <h1 className="pl-2 text-3xl font-semibold">Contacto</h1>
+            </div>
+          ) : showInfo == "ubication" ? (
+            <div className="border-b-2 border-gray-400 p-3">
+              <h1 className="pl-2 text-3xl font-semibold">Direcciones</h1>
+            </div>
+          ) : (
+            <div className="border-b-2 border-gray-400 p-3">
+              <h1 className="pl-2 text-3xl font-semibold">Formas de Pago</h1>
             </div>
           )}
           <div className="flex">
             {showInfo == "profile" ? (
-              <div>
-                <div className="flex justify-between pt-6">
-                  <div className="w-[600px] pl-16">
-                    <div className="flex justify-between pt-2">
-                      <div>
-                        <h6 className="font-bold">Nombre completo:</h6>
-                        <p>{`Jennifer Aniston`}</p>
-                      </div>
-                      <div>
-                        <h6 className="font-bold">Nombre de Usuario:</h6>
-                        <p>{`JennAniston`}</p>
-                      </div>
-                      <div>
-                        <h6 className="font-bold">Contraseña:</h6>
-                        <p>{`***************`}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <PersonalInfo />
+            ) : showInfo == "contact" ? (
+              <Contacts />
+            ) : showInfo == "ubication" ? (
+              <Ubication />
             ) : (
-              <div>
-                <div className="flex justify-between pt-6">
-                  <div className="w-[600px] pl-16">
-                    <div className="flex justify-between pt-2">
-                      <div>
-                        <h6 className="font-bold">Correo:</h6>
-                        <p>{`jenniferaniston@gmail.com`}</p>
-                      </div>
-                      <div>
-                        <h6 className="font-bold">Numero de Telefono:</h6>
-                        <p>{`1234567890`}</p>
-                      </div>
-                      <div>
-                        <h6 className="font-bold">Direccion:</h6>
-                        <p>{`Calle Falsa 123`}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Payment />
             )}
             <div className="pl-12 pt-5">
-              <div className="py-2">
+              <div className="flex py-2">
+                <img src={interrogation} alt="help" className="w-5" />
                 <Link to="/profile/store/create">
                   <LinkButton component={"Crea tu producto"} />
                 </Link>
               </div>
-              <div className="py-2">
+              <div className="flex py-2">
+                <img src={interrogation} alt="help" className="w-5" />
                 <button className="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
                   <img src={edit} alt="edit" />
                 </button>

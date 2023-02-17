@@ -54,6 +54,12 @@ module.exports = (sequelize) => {
           len: [1, 20],
         },
       },
+      emergencyphone: {
+        type: DataTypes.INTEGER,
+        validate: {
+          len: [1, 20],
+        },
+      },
       province: {
         type: DataTypes.STRING,
         validate: {
