@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { validationProfile } from "../Validations/Profile";  //habia un error en la importacion de form
+import { validationProfile } from "../Validations/Profile"; //habia un error en la importacion de form
 import LinkButton from "../../../../components/Button/LinkButton";
 
 function FormProfile() {
@@ -11,6 +11,7 @@ function FormProfile() {
     mail: "",
     password: "",
     phone: "",
+    emergencyphone: "",
   });
   const [errors, setErrors] = useState({
     user: "",
@@ -19,6 +20,7 @@ function FormProfile() {
     mail: "",
     password: "",
     phone: "",
+    emergencyphone: "",
   });
   const [repeat, setRepeat] = useState({
     repeatPassword: "",
@@ -34,6 +36,7 @@ function FormProfile() {
         ...errors,
         ...validationProfile({ property: [property], value: [value] }),
       });
+      //setError(validateProduct(property, value));
     }
   };
   const handleChangeRepeat = (e) => {
@@ -43,19 +46,28 @@ function FormProfile() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    axios.post("user/create", form);
-    setForm({
-      user: "",
-      name: "",
-      lastname: "",
-      mail: "",
-      password: "",
-      phone: "",
-    });
-    setRepeat({
-      repeatPassword: "",
-    });
+    const errorValues = Object.values(errors);
+    const isFormValid = errorValues.every((val) => val === "");
+    if (isFormValid) {
+      axios
+        .post("user/create", form)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+      setForm({
+        user: "",
+        name: "",
+        lastname: "",
+        mail: "",
+        password: "",
+        phone: "",
+        emergencyphone: "",
+      });
+      setRepeat({
+        repeatPassword: "",
+      });
+    } else {
+      console.log("Hay errores en el formulario");
+    }
   };
   return (
     <div className="flex h-screen justify-center py-28">
@@ -201,26 +213,25 @@ function FormProfile() {
               </div>
             )}
           </div>
-          {/* <div className="group relative z-0 mb-6 h-11 w-full">
+          <div className="group relative z-0 mb-6 h-11 w-full">
             <input
               onChange={handleChange}
-              type="text"
-              name="pets"
-              value={form.pets}
-              id="pets"
+              type="number"
+              name="emergencyphone"
+              value={form.emergencyphone}
               className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
               placeholder=" "
               autoComplete="off"
             />
             <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-              Mascotas
+              Telefono de Emergencia
             </label>
-            {!form.mail ? null : (
+            {form.emergencyphone ? null : (
               <div>
-                <p className="text-red-700">{`Por favor escribe un mail valido`}</p>
+                <p className="text-red-700">{`${errors.emergencyphone}`}</p>
               </div>
             )}
-          </div> */}
+          </div>
         </div>
         <LinkButton component={"Enviar"} />
       </form>
