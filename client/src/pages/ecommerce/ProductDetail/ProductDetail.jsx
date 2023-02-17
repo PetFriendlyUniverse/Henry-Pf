@@ -1,20 +1,27 @@
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
-import alimento from "../../../assets/alimento.png";
+// import alimento from "../../../assets/alimento.png";
 import MoarButton from "../../../components/Button/MoarButton";
 import CountProduct from "../../../components/CountProduct/CountProduct";
 import cardCredit from "../../../assets/cardCredit/cardCredit.svg";
 import transport from "../../../assets/transport/transport.svg";
-import { getProductsId } from "../../../redux/features/products/productsActions";
+import {
+  getProductsId,
+  deleteProductId,
+} from "../../../redux/features/products/productsActions";
 
 function ProductDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   let { productId } = useSelector((state) => state.Products);
 
-  const clickdeprueba = () => {
-    console.log("hola");
+  const handleClick = () => {
+    dispatch(deleteProductId(id));
+    alert("fue elminado correctamente");
+    navigate("/shop");
   };
   useEffect(() => {
     dispatch(getProductsId(id));
@@ -158,8 +165,10 @@ function ProductDetail() {
           </div>
         </div>
         <div>
-          <MoarButton component={"Delete"} onClick={clickdeprueba} />
-          <MoarButton component={"Modify"} />
+          <MoarButton component={"Delete"} onClick={handleClick} />
+          <Link to={`/shop/detail/modify/${id}`}>
+            <MoarButton component={"Modify"} />
+          </Link>
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { validateProductData } from "./Validation/validateProductData";
+import { validateProduct } from "../Validations/validateProduct";
 import LinkButton from "../../../../components/Button/LinkButton";
 // name,img,price,description,stock,specie,breed,brand,weight,color,size
 
@@ -37,7 +37,7 @@ function FormCreateProduct() {
   const changeHandler = (e) => {
     let property = e.target.name;
     let value = e.target.value;
-    setError(validateProductData(property, value));
+    setError(validateProduct(property, value));
     setForm({ ...form, [property]: value });
   };
 

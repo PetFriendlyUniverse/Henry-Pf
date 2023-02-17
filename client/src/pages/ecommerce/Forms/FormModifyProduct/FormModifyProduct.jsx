@@ -1,23 +1,33 @@
 import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getProductsId } from "../../../../redux/features/products/productsActions";
 import axios from "axios";
-// import { validateProductData } from "./Validation/validateProductData";
-import LinkButton from "../../../../components/Button/LinkButton";
-// name,img,price,description,stock,specie,breed,brand,weight,color,size
 
-function FormModifyProduct(props) {
+import LinkButton from "../../../../components/Button/LinkButton";
+import { validateProductModify } from "../Validations/ValidateProductModify";
+
+function FormModifyProduct() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  let { productId } = useSelector((state) => state.Products);
+  useEffect(() => {
+    dispatch(getProductsId(id));
+  }, []);
   const [form, setForm] = useState({
-    name: "",
-    img: "",
-    price: "",
-    description: "",
-    stock: "",
-    specie: "",
-    breed: "",
-    brand: "",
-    weight: null,
-    color: null,
-    size: null,
-    storeId: "",
+    name: productId.name,
+    img: productId.img,
+    price: productId.price,
+    description: productId.description,
+    stock: productId.stock,
+    specie: productId.specie,
+    breed: productId.breed,
+    brand: productId.brand,
+    weight: productId.weight,
+    color: productId.color,
+    size: productId.size,
   });
   const [error, setError] = useState({
     name: "",
@@ -37,7 +47,7 @@ function FormModifyProduct(props) {
   const changeHandler = (e) => {
     let property = e.target.name;
     let value = e.target.value;
-    setError(validateProductData(property, value));
+    setError(validateProductModify(property, value));
     setForm({ ...form, [property]: value });
   };
 
@@ -45,17 +55,13 @@ function FormModifyProduct(props) {
     e.preventDefault();
     const errorValues = Object.values(error);
     const isFormValid = errorValues.every((val) => val === "");
-    const data = {
-      ...form,
-      weight: parseFloat(form.weight),
-      price: parseInt(form.price),
-      stock: parseInt(form.stock),
-      StoreId: parseInt(form.storeId),
-    };
+
     if (isFormValid) {
-      axios.post("/products/create", data);
+      axios.put(`products/${id}`, form);
+      alert("se modifico");
+      navigate(`/shop/detail/${id}`);
     } else {
-      console.log("Hay errores en el formulario");
+      alert("Hay errores en el formulario");
     }
   };
 
@@ -72,7 +78,7 @@ function FormModifyProduct(props) {
             value={form.name}
             name="name"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -87,7 +93,7 @@ function FormModifyProduct(props) {
             value={form.img}
             name="img"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -102,7 +108,7 @@ function FormModifyProduct(props) {
             value={form.price}
             name="price"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -117,7 +123,7 @@ function FormModifyProduct(props) {
             value={form.description}
             name="description"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -134,7 +140,7 @@ function FormModifyProduct(props) {
             value={form.stock}
             name="stock"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -149,7 +155,7 @@ function FormModifyProduct(props) {
             value={form.specie}
             name="specie"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -164,7 +170,7 @@ function FormModifyProduct(props) {
             value={form.breed}
             name="breed"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -179,7 +185,7 @@ function FormModifyProduct(props) {
             value={form.brand}
             name="brand"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -194,7 +200,7 @@ function FormModifyProduct(props) {
             value={form.weight}
             name="weight"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -209,7 +215,7 @@ function FormModifyProduct(props) {
             value={form.color}
             name="color"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -224,7 +230,7 @@ function FormModifyProduct(props) {
             value={form.size}
             name="size"
             onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
           />
@@ -232,23 +238,6 @@ function FormModifyProduct(props) {
             Size:{" "}
           </label>
           {error.size && <span className="text-red-500">{error.size}</span>}
-        </div>
-        <div className="group relative z-0 mb-6 h-11 w-full">
-          <input
-            type="number"
-            value={form.storeId}
-            name="storeId"
-            onChange={changeHandler}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
-            placeholder=" "
-            autoComplete="off"
-          />
-          <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            StoreId:{" "}
-          </label>
-          {error.storeId && (
-            <span className="text-red-500">{error.storeId}</span>
-          )}
         </div>
         <LinkButton component={"Create"} />
       </form>
