@@ -7,7 +7,17 @@ const {
 } = require("../controllers/userControllers");
 
 const postUserHandler = async (req, res) => {
-  const { user, name, lastname, mail, password, phone } = req.body;
+  const {
+    user,
+    name,
+    lastname,
+    mail,
+    password,
+    phone,
+    emergencyphone,
+    province,
+    locality,
+  } = req.body;
 
   try {
     const newUser = await createUser(
@@ -16,7 +26,10 @@ const postUserHandler = async (req, res) => {
       lastname,
       mail,
       password,
-      phone
+      phone,
+      emergencyphone,
+      province,
+      locality
     );
     res.status(200).json(newUser);
   } catch (error) {
