@@ -3,9 +3,11 @@ import SearchForm from "./components/SearchForm";
 import DropdownHelp from "./components/DropdownHelp";
 import DropdownAccount from "./components/dropdownAccount";
 import DropdownShop from "./components/DropdownShop";
-import react from "@/assets/react.svg";
+
 import { useRef } from "react";
 function NavBar() {
+  const togleLogin = useRef(null);
+
   const toolBar = useRef(null);
   const toggleBar = () => {
     toolBar.current.classList.toggle("hidden");

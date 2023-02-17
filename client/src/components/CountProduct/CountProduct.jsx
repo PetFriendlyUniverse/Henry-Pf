@@ -1,11 +1,11 @@
 import LessButton from "../Button/LessButton";
 import MoarButton from "../Button/MoarButton";
 import s from "./CountProduct.module.css";
-function CountProduct() {
+function CountProduct({ handleClickDeduct, handleClickAdd, value }) {
   return (
     <div className="flex w-full">
       <div className="w-1/3">
-        <LessButton component={"-"} />
+        <LessButton component={"-"} onClick={handleClickDeduct} />
       </div>
       <div className="w-1/3 bg-orange-900">
         <input
@@ -13,11 +13,11 @@ function CountProduct() {
           name=""
           id=""
           className={`h-full w-full text-center ${s.input}`}
-          value="1"
+          value={value}
         />
       </div>
       <div className="w-1/3">
-        <MoarButton component={"+"} />
+        <MoarButton component={"+"} value={+1} onClick={handleClickAdd} />
       </div>
     </div>
   );

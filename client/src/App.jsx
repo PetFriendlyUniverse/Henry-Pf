@@ -13,6 +13,7 @@ import NotFound from "./components/NotFound/NotFound";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/footer/footer";
+import Login from "./components/Login/Login";
 
 function App() {
   const { pathname } = useLocation();
@@ -25,8 +26,8 @@ function App() {
         <Route path="/shop/detail/:id" element={<ProductDetail />} />
         <Route path="/shop/shoppingcart" element={<ShoppingCart />} />
         <Route path="/shop/checkout" element={<Checkout />} />
-        <Route path="/register" element={<FormProfile />} />
-        <Route path="/detail/:id" element={<Profile />} />
+        <Route path="/login" element={<FormProfile />} />
+        <Route path="/profile/:id" element={<Profile />} />
         <Route path="/profile/store/create" element={<FormCreateProduct />} />
         <Route path="/shop/detail/modify/:id" element={<FormModifyProduct />} />
         <Route path="*" element={<NotFound />} />

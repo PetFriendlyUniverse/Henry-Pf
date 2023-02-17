@@ -12,7 +12,7 @@ export default function HomeShop() {
         <div className="lg:border-blue w-full bg-amber-600 lg:sticky lg:top-16 lg:h-[500px] lg:w-1/5  lg:border-2">
           <Filters />
         </div>
-        <div className="lg:min-h-screen lg:w-4/5 lg:bg-red-700">
+        <div className="lg:min-h-screen lg:w-4/5 ">
           <Paginator />
         </div>
       </div>
