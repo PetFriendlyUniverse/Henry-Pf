@@ -7,6 +7,7 @@ import Footer from "./components/footer/footer";
 // import Login from "./components/Login/Login";
 
 const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
+
 const Landing = lazy(() => import("./pages/Landing/Landing"));
 const ProductDetail = lazy(() =>
   import("./pages/ecommerce/ProductDetail/ProductDetail")
@@ -26,17 +27,6 @@ const FormModifyProduct = lazy(() =>
 );
 const Profile = lazy(() => import("./pages/ecommerce/Profile/Profile"));
 const NotFound = lazy(() => import("./components/NotFound/NotFound"));
-
-// import Shop from "./pages/ecommerce/Shop/Shop";
-// import Landing from "./pages/Landing/Landing";
-// import ProductDetail from "./pages/ecommerce/ProductDetail/ProductDetail";
-// import ShoppingCart from "./pages/ecommerce/ShoppingCart/ShoppingCart";
-// import Checkout from "./pages/ecommerce/Checkout/Checkout";
-// import FormCreateProduct from "./pages/ecommerce/Forms/FormCreateProduct/FormCreateProduct";
-// import FormProfile from "./pages/ecommerce/Forms/FormProfile/FormProfile";
-// import FormModifyProduct from "./pages/ecommerce/Forms/FormModifyProduct/FormModifyProduct";
-// import Profile from "./pages/ecommerce/Profile/Profile";
-// import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   const shopCart = useSelector((state) => state.Products.shopCart);
