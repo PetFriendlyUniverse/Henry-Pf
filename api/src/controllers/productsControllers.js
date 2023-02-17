@@ -3,7 +3,7 @@ const { Product, Store, Brands, Breeds, Species, Colors } = require("../db");
 
 const getAllProducts = async () => {
   const products = await Product.findAll({
-    attributes: ["id", "name", "price", "img", "weight", "brand"],
+    attributes: ["id", "name", "price", "img", "weight", "brand", "stock"],
     where: {
       enabled: true,
     },
@@ -12,6 +12,7 @@ const getAllProducts = async () => {
 };
 
 const getProductFilter = async (query) => {
+  query.attributes = ["id", "name", "price", "img", "weight", "brand", "stock"];
   if (!!query.where?.name) {
     query.where.name = { [Op.iLike]: `%${query.where.name}%` };
   }
