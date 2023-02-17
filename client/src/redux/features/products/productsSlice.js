@@ -34,6 +34,9 @@ export const Products = createSlice({
     getFilters: (state, { payload }) => {
       state.allFilters = payload;
     },
+    setCurrentPage: (state, { payload }) => {
+      state.currentPage = payload;
+    },
     setFilters: (state, { payload }) => {
       const newSetFilters = { ...state.setFilters };
       const { filter, value } = payload; //{filter:"Breed", value: "breed1"}
@@ -64,6 +67,7 @@ export const Products = createSlice({
 export const {
   getProducts,
   getFilters,
+  setCurrentPage,
   setFilters,
   getProductsById,
   deletedProducts,
