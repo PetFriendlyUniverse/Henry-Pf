@@ -12,6 +12,7 @@ const getAllProducts = async () => {
 };
 
 const getProductFilter = async (query) => {
+  query.attributes = ["id", "name", "price", "img", "weight", "brand", "stock"];
   if (!!query.where?.name) {
     query.where.name = { [Op.iLike]: `%${query.where.name}%` };
   }
