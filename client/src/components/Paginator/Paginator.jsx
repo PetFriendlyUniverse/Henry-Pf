@@ -3,6 +3,7 @@ import Paginate from "react-paginate";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductsApi } from "../../redux/features/products/productsActions";
+import { setCurrentPage } from "../../redux/features/products/productsSlice";
 
 function Paginator() {
   let { totalPages, productsPerPage, currentPage, setFilters } = useSelector(
@@ -15,7 +16,7 @@ function Paginator() {
   }, []);
 
   const changePage = ({ selected }) => {
-    setPageNumber(selected);
+    dispatch(setCurrentPage(selected + 1));
   };
 
   return (
@@ -24,13 +25,14 @@ function Paginator() {
         className="flex justify-center border-2 border-black"
         previousLabel={"previous"}
         nextLabel={"next"}
+        pageRangeDisplayed={3}
         pageCount={totalPages}
         onPageChange={changePage}
         containerClassName={"paginationButtons"}
-        previousLinkClassName={"previousButton"}
-        nextLinkClassName={"nextButton"}
+        previousLinkClassName={"pr-8"}
+        nextLinkClassName={"pl-8"}
         disabledClassName={"paginationDisabled"}
-        activeClassName={"paginationActive"}
+        activeClassName={"text-xl"}
       />
       <CardContainer className="w-full" />
     </div>
