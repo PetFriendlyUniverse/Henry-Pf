@@ -5,7 +5,7 @@ import pool from "../../assets/poolside.jpg";
 import perrojugo from "../../assets/perrojugo.jpg";
 import gatolentes from "../../assets/gatolentes.jpg";
 import Buttons from "../../assets/Buttons/Buttons.jsx";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo/logo.png";
 
 function Landing() {
   return (
