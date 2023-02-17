@@ -11,7 +11,7 @@ function Card({ name, img, weight, price, stock, id }) {
     if (value > 1) setValue(value - 1);
   };
   const handleClickAdd = () => {
-    if (value < 10) setValue(value + 1);
+    if (value < stock) setValue(value + 1);
   };
   const handleAddShopCart = () => {
     dispatch(

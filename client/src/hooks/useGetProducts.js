@@ -9,7 +9,7 @@ function useGetProducts() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProductsApi(productsPerPage, currentPage, setFilters));
-  }, [setFilters]);
+  }, [setFilters, productsPerPage, currentPage]);
   return products;
 }
 
