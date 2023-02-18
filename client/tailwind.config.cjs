@@ -14,6 +14,7 @@ module.exports = {
         blueHover: "#03045e",
         grey: "#e9ecef",
         greyHover: "#ced4da",
+        yellowPalette: "#edf16D",
       },
 
       dropShadow: {

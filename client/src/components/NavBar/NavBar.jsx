@@ -13,7 +13,7 @@ function NavBar() {
   };
 
   return (
-    <nav className="fixed z-30 flex h-24 w-full border-gray-200 bg-primary sm:px-4">
+    <nav className="fixed z-30 flex h-24 w-full bg-gradient-to-b from-blue-500  via-blue-400 to-blue-500 sm:px-4">
       <div className="container mx-auto flex items-center justify-around sm:justify-evenly md:justify-between lg:justify-around">
         <Link to={`/`}>
           <img
@@ -23,12 +23,12 @@ function NavBar() {
           />
         </Link>
         <div>
-          <NavLink className="text-lightwhite" to="/shop">
+          <NavLink className="text-xl text-yellowPalette" to="/shop">
             Shop
           </NavLink>
         </div>
         <div>
-          <NavLink className="text-lightwhite" to="/services">
+          <NavLink className="text-xl text-yellowPalette" to="/services">
             Servicios
           </NavLink>
         </div>
@@ -58,11 +58,11 @@ function NavBar() {
           </svg>
         </button>
         <div
-          className="md:w-scren absolute top-14 left-0 z-10 hidden w-full items-center justify-between bg-primary md:order-1 lg:static lg:flex lg:w-[900px]"
+          className="md:w-scren absolute top-14 left-0 z-10 hidden w-full items-center justify-between md:order-1 lg:static lg:flex lg:w-[900px]"
           id="mobile-menu-2"
           ref={toolBar}
         >
-          <ul className="mt-4 flex flex-col items-center rounded-lg border border-gray-100 bg-primary p-4 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:text-sm  md:font-medium ">
+          <ul className="mt-4 flex flex-col items-center rounded-lg border border-gray-100 p-4 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:text-sm  md:font-medium ">
             <li className="w-96">
               <SearchForm />
             </li>
