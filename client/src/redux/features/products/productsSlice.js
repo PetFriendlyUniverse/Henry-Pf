@@ -30,7 +30,6 @@ export const Products = createSlice({
     getProducts: (state, { payload }) => {
       state.products = payload[0]; //payload: [[{},{},{},{}...], totalPages]
       state.totalPages = payload[1];
-      state.currentPage = 1;
     },
     getFilters: (state, { payload }) => {
       state.allFilters = payload;
@@ -47,6 +46,7 @@ export const Products = createSlice({
         newSetFilters[filter] = value;
       }
       state.setFilters = newSetFilters;
+      state.currentPage = 1;
     },
     getProductsById: (state, { payload }) => {
       state.productId = payload;

@@ -15,12 +15,17 @@ function Paginator() {
     dispatch(getProductsApi(productsPerPage, currentPage, setFilters));
   }, []);
 
+  const changePage = ({ selected }) => {
+    dispatch(setCurrentPage(selected + 1));
+  };
+
   return (
     <div className="src  flex h-full min-w-[1400px] flex-col ">
       <div className="w-1/4 self-center">
         <Paginate
           pageCount={totalPages}
           marginPagesDisplayed={0}
+          onPageChange={changePage}
           forcePage={currentPage - 1}
           containerClassName={
             "flex text-sm h-4 font-mono w-1/2 justify-between  items-center  rounded-xl "
