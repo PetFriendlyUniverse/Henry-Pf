@@ -1,7 +1,62 @@
 import React from "react";
 import s from "./Login.module.css";
+import axios from "axios";
+import { useState } from "react";
+import { validationProfile } from "../../pages/ecommerce/Forms/Validations/Profile";
+import LinkButton from "../Button/LinkButton";
 
 function Login() {
+  const [form, setForm] = useState({
+    user: "",
+    name: "",
+    lastname: "",
+    mail: "",
+    password: "",
+    phone: "",
+  });
+  const [errors, setErrors] = useState({
+    user: "",
+    name: "",
+    lastname: "",
+    mail: "",
+    password: "",
+    phone: "",
+  });
+  const [repeat, setRepeat] = useState({
+    repeatPassword: "",
+  });
+  const handleChange = (e) => {
+    const property = e.target.name;
+    const value = e.target.value;
+    if (property === "pets") {
+      setForm({ ...form, [property]: [value] });
+    } else {
+      setForm({ ...form, [property]: value });
+      setErrors({ ...errors, ...validationProfile(property, value) });
+      //setError(validateProduct(property, value));
+    }
+  };
+  const handleChangeRepeat = (e) => {
+    const property = e.target.name;
+    const value = e.target.value;
+    setRepeat({ [property]: value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios.post("user/create", form);
+    setForm({
+      user: "",
+      name: "",
+      lastname: "",
+      mail: "",
+      password: "",
+      phone: "",
+    });
+    setRepeat({
+      repeatPassword: "",
+    });
+  };
   return (
     <>
       <div className="flex h-screen items-center justify-center pt-20">
@@ -16,15 +71,17 @@ function Login() {
 
               <input
                 class={s.input}
+                onChange={handleChange}
                 type="email"
-                name="email"
+                name="mail"
                 placeholder="Email"
                 required=""
               />
               <input
                 class={s.input}
+                onChange={handleChange}
                 type="password"
-                name="pswd"
+                name="password"
                 placeholder="Password"
                 required=""
               />
@@ -33,32 +90,104 @@ function Login() {
           </div>
 
           <div class={s.register}>
-            <form class={s.form}>
+            <form class={s.form} onSubmit={handleSubmit}>
               <label htmlFor={s["chk"]} aria-hidden="true">
                 Register
               </label>
               <input
+                onChange={handleChange}
+                type="text"
+                name="user"
+                value={form.user}
+                class={s.input}
+                placeholder="Username "
+                autoComplete="off"
+                required="true"
+              />
+              {errors.user && (
+                <span className=" text-xs text-red-500">{errors.user}</span>
+              )}
+              <input
+                onChange={handleChange}
+                class={s.input}
+                value={form.name}
+                type="text"
+                name="name"
+                placeholder="name "
+                autoComplete="off"
+                required="true"
+              />
+              {errors.name && (
+                <span className="text-xs text-red-500">{errors.name}</span>
+              )}
+              <input
+                onChange={handleChange}
+                value={form.lastname}
                 class={s.input}
                 type="text"
-                name="txt"
-                placeholder="Username"
-                required=""
+                name="lastname"
+                placeholder="lastname "
+                autoComplete="off"
+                required="true"
               />
+              {errors.lastname && (
+                <span className="text-xs text-red-500">{errors.lastname}</span>
+              )}
+              <input
+                onChange={handleChange}
+                class={s.input}
+                value={form.mail}
+                type="email"
+                name="mail"
+                placeholder="Email"
+                required="true"
+                autoComplete="off"
+              />
+              {errors.mail && (
+                <span className="text-xs text-red-500">{errors.mail}</span>
+              )}
+              <input
+                onChange={handleChange}
+                value={form.phone}
+                class={s.input}
+                type="number"
+                name="phone"
+                placeholder=" phone"
+                autoComplete="off"
+                required="true"
+              />
+              {errors.phone && (
+                <span className="text-xs text-red-500">{errors.phone}</span>
+              )}
               <input
                 class={s.input}
-                type="email"
-                name="email"
-                placeholder="Email"
-                required=""
+                value={form.password}
+                onChange={handleChange}
+                type="password"
+                name="password"
+                placeholder="Password"
+                autoComplete="off"
+                required="true"
               />
+              {errors.password && (
+                <span className="text-xs text-red-500">{errors.password}</span>
+              )}
               <input
+                onChange={handleChangeRepeat}
                 class={s.input}
                 type="password"
-                name="pswd"
-                placeholder="Password"
-                required=""
+                name="repeatPassword"
+                value={repeat.repeatPassword}
+                placeholder="Repeat Password "
+                autoComplete="off"
+                required="true"
               />
-              <button>Register</button>
+              {errors.password === errors.repeatPassword ? null : (
+                <div>
+                  <p className="text-xs text-red-700">{`Passwords does not match`}</p>
+                </div>
+              )}
+              <LinkButton />
             </form>
           </div>
         </div>

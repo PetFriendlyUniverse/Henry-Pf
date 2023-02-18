@@ -4,10 +4,13 @@
   display: flex;
   flex-direction: column;
   background-color: #6225E6;
-  max-height: 420px;
-  max-width: 2050px;
+  max-height: 80vh;
+  max-width: 50vw;
+  width: 70vw;
   height: 100%;
-  color: white;
+  color: black;
+  border-top-right-radius: 40px;
+  border-top-left-radius: 40px;
   overflow: hidden; 
   transition: 1s;
   box-shadow: 6px 6px 0 black;
@@ -56,27 +59,19 @@ label {
   transition: .5s ease-in-out;
 }
 
-.input {
-  width: 100%;
-  height: 40px;
-  background: #e0dede;
-  padding: 10px;
-  border: none;
-  outline: none;
-  border-radius: 4px;
-}
 
 /*Register*/
 .register {
   background: #FBC638;
   border-radius: 60% / 10%;
-  transform: translateY(-2%);
+  transform: translateY(10%);
   transition: .8s ease-in-out;
+  
 }
 
 .register:hover{
-    transform: translateX(0%);
-    animation: color_anim 1s infinite 0.6s;
+  transform: translateY(12%);
+  animation: color_anim 1s infinite 0.6s;
 }
 
 .register label {
@@ -85,12 +80,12 @@ label {
 }
 
 #chk:checked ~ .register {
-  transform: translateY(-60%);
+  transform: translateY(-42%);
 }
 
 #chk:checked ~ .register label {
   transform: scale(1);
-  margin: 10% 0 5%;
+  margin: 0%;
 }
 
 #chk:checked ~ .login label {
@@ -115,4 +110,6 @@ label {
 .form button:hover {
   background-color: #6d44b8;
 }
+
+
 

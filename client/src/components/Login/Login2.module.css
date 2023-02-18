@@ -1,0 +1,31 @@
+.main {
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: #6225E6;
+    max-height: 720px;
+   width: 850px;
+    height: 100%;
+    color: white;
+    overflow: hidden; 
+    transition: 1s;
+    box-shadow: 6px 6px 0 black;
+  }
+
+
+
+
+#chk:checked ~ .register{
+    transform: translateY(-60%);
+}
+
+#chk:checked ~ .register label{
+    transform: scale(1);
+    margin:10% 0 5%;
+}
+
+#chk:checked ~ .login label{
+transform: scale(.6);
+margin:5% 0 5%;
+}
