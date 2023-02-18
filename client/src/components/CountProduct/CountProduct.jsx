@@ -10,10 +10,9 @@ function CountProduct({ handleClickDeduct, handleClickAdd, value }) {
       <div className="w-1/3 bg-orange-900">
         <input
           type="number"
-          name=""
-          id=""
           className={`h-full w-full text-center ${s.input}`}
           value={value}
+          readOnly
         />
       </div>
       <div className="w-1/3">
