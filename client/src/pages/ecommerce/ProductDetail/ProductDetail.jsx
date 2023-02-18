@@ -1,5 +1,6 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
 import React, { useEffect } from "react";
 // import alimento from "../../../assets/alimento.png";
 import MoarButton from "../../../components/Button/MoarButton";
@@ -10,6 +11,7 @@ import {
   getProductsId,
   deleteProductId,
 } from "../../../redux/features/products/productsActions";
+import { clearProductId } from "../../../redux/features/products/productsSlice";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -19,12 +21,36 @@ function ProductDetail() {
   let { productId } = useSelector((state) => state.Products);
 
   const handleClick = () => {
-    dispatch(deleteProductId(id));
-    alert("fue elminado correctamente");
-    navigate("/shop");
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "¿Quieres eliminar este producto?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(deleteProductId(id));
+        Swal.fire({
+          title: "Eliminado",
+          text: "El producto ha sido eliminado correctamente",
+          icon: "success",
+        }).then(() => {
+          navigate("/shop");
+        });
+      }
+    });
   };
+
   useEffect(() => {
     dispatch(getProductsId(id));
+  }, []);
+  useEffect(() => {
+    return () => {
+      dispatch(clearProductId());
+    };
   }, []);
   return (
     <div className=" flex min-h-screen w-screen flex-col items-center  justify-center pt-20">
@@ -159,16 +185,16 @@ function ProductDetail() {
                   <div className="text-xs">
                     Retirá sin cargo por tu sucursal preferida
                   </div>
+                  <div className="mx-auto w-2/6">
+                    <MoarButton component={"Delete"} onClick={handleClick} />
+                    <Link to={`/shop/detail/modify/${id}`}>
+                      <MoarButton component={"Modify"} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div>
-          <MoarButton component={"Delete"} onClick={handleClick} />
-          <Link to={`/shop/detail/modify/${id}`}>
-            <MoarButton component={"Modify"} />
-          </Link>
         </div>
       </div>
 

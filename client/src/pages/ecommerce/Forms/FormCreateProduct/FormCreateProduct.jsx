@@ -2,9 +2,11 @@ import { useState } from "react";
 import axios from "axios";
 import { validateProduct } from "../Validations/validateProduct";
 import LinkButton from "../../../../components/Button/LinkButton";
+import Swal from "sweetalert2";
 // name,img,price,description,stock,specie,breed,brand,weight,color,size
 
 function FormCreateProduct() {
+  const [formComplete, setFormComplete] = useState(false);
   const [form, setForm] = useState({
     name: "",
     img: "",
@@ -39,6 +41,11 @@ function FormCreateProduct() {
     let value = e.target.value;
     setError(validateProduct(property, value));
     setForm({ ...form, [property]: value });
+    if (value !== "") {
+      setFormComplete(true);
+    } else {
+      setFormComplete(false);
+    }
   };
 
   const submitHandler = (e) => {
@@ -53,13 +60,23 @@ function FormCreateProduct() {
       StoreId: parseInt(form.storeId),
     };
     if (isFormValid) {
-      axios.post("/products/create", data);
+      axios.post("/products/create", data).then(() => {
+        Swal.fire({
+          title: "Producto creado",
+          icon: "success",
+          text: "El producto ha sido creado correctamente",
+        });
+      });
     } else {
-      console.log("Hay errores en el formulario");
+      Swal.fire({
+        icon: "error",
+        title: "Error en el formulario",
+        text: "Por favor, revisa los campos del formulario",
+      });
     }
   };
   return (
-    <div className=" mb-28 flex min-h-screen justify-center py-28 pt-20 ">
+    <div className=" mb-28 flex min-h-screen justify-center py-28 ">
       <form
         onSubmit={submitHandler}
         className="w-11/12 rounded-xl p-3 shadow-2xl md:w-3/5 lg:h-auto lg:w-2/5"
@@ -249,7 +266,7 @@ function FormCreateProduct() {
             <span className="text-red-500">{error.storeId}</span>
           )}
         </div>
-        <LinkButton component={"Create"} />
+        {formComplete && <LinkButton component={"Create"} />}
       </form>
     </div>
   );

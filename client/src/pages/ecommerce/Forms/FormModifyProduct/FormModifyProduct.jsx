@@ -7,6 +7,7 @@ import axios from "axios";
 
 import LinkButton from "../../../../components/Button/LinkButton";
 import { validateProductModify } from "../Validations/ValidateProductModify";
+import Swal from "sweetalert2";
 
 function FormModifyProduct() {
   const { id } = useParams();
@@ -57,16 +58,29 @@ function FormModifyProduct() {
     const isFormValid = errorValues.every((val) => val === "");
 
     if (isFormValid) {
-      axios.put(`products/${id}`, form);
-      alert("se modifico");
-      navigate(`/shop/detail/${id}`);
+      axios
+        .put(`products/${id}`, form)
+        .then(() => {
+          Swal.fire({
+            title: "Producto modificado",
+            icon: "success",
+            text: "El producto ha sido modificado correctamente",
+          });
+        })
+        .then(() => {
+          navigate(`/shop/detail/${id}`);
+        });
     } else {
-      alert("Hay errores en el formulario");
+      Swal.fire({
+        icon: "error",
+        title: "Error en el formulario",
+        text: "Por favor, revisa los campos del formulario",
+      });
     }
   };
 
   return (
-    <div className=" mb-28 flex min-h-screen justify-center py-28 pt-20 ">
+    <div className=" mb-28 flex min-h-screen justify-center py-28 ">
       <form
         onSubmit={submitHandler}
         className="w-11/12 rounded-xl p-3 shadow-2xl md:w-3/5 lg:h-auto lg:w-2/5"
