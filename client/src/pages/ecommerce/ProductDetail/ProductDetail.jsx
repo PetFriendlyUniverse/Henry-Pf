@@ -10,6 +10,7 @@ import {
   getProductsId,
   deleteProductId,
 } from "../../../redux/features/products/productsActions";
+import { clearProductId } from "../../../redux/features/products/productsSlice";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -25,6 +26,11 @@ function ProductDetail() {
   };
   useEffect(() => {
     dispatch(getProductsId(id));
+  }, []);
+  useEffect(() => {
+    return () => {
+      dispatch(clearProductId());
+    };
   }, []);
   return (
     <div className=" flex min-h-screen w-screen flex-col items-center  justify-center pt-20">
