@@ -1,5 +1,6 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
 import React, { useEffect } from "react";
 // import alimento from "../../../assets/alimento.png";
 import MoarButton from "../../../components/Button/MoarButton";
@@ -20,10 +21,29 @@ function ProductDetail() {
   let { productId } = useSelector((state) => state.Products);
 
   const handleClick = () => {
-    dispatch(deleteProductId(id));
-    alert("fue elminado correctamente");
-    navigate("/shop");
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "¿Quieres eliminar este producto?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(deleteProductId(id));
+        Swal.fire({
+          title: "Eliminado",
+          text: "El producto ha sido eliminado correctamente",
+          icon: "success",
+        }).then(() => {
+          navigate("/shop");
+        });
+      }
+    });
   };
+
   useEffect(() => {
     dispatch(getProductsId(id));
   }, []);
