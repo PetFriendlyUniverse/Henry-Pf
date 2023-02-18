@@ -26,7 +26,7 @@ function ProductDetail() {
       text: "¿Quieres eliminar este producto?",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: "#5380a4",
       cancelButtonColor: "#d33",
       confirmButtonText: "Sí, eliminar",
       cancelButtonText: "Cancelar",
@@ -149,7 +149,7 @@ function ProductDetail() {
               <div className="w-1/2">
                 <CountProduct />
               </div>
-              <button className="my-2 rounded-lg bg-emerald-400 py-2 px-4 md:min-w-full lg:w-1/2">
+              <button className="my-2 rounded-lg bg-[#4dbb47] py-2 px-4 md:min-w-full lg:w-1/2">
                 Agregar al carrito
               </button>
             </div>

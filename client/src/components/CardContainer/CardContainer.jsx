@@ -5,7 +5,7 @@ function CardContainer() {
   const products = useGetProducts();
 
   return (
-    <div className="flex w-full flex-wrap justify-center gap-2 border-2 border-black">
+    <div className="flex w-full flex-wrap justify-center gap-2 ">
       {products?.length === 0 ? (
         <h2>No se encotraron coincidencias con los datos solicitados</h2>
       ) : (
