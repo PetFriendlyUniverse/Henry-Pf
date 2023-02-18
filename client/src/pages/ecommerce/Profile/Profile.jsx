@@ -17,8 +17,8 @@ function Profile() {
     setShowInfo(e.target.name);
   };
   return (
-    <div className="flex justify-center py-28 px-3 pt-20 md:max-w-fit ">
-      <div className="flex h-full w-10/12 rounded-md border-2">
+    <div className=" flex justify-center py-28 px-3 pt-20 md:max-w-fit ">
+      <div className="mt-6 flex h-full w-11/12 rounded-md border-2">
         <div className="mb-3 p-3 xl:w-96 ">
           <div className="flex lg:w-40 ">
             <div className="px-3 lg:max-w-3xl">
@@ -225,9 +225,9 @@ function Profile() {
             ) : (
               <Payment />
             )}
-            <div className="pl-12 pt-5">
+            <div className=" pl-12 pt-5">
               <div className="flex py-2">
-                <img src={interrogation} alt="help" className="w-5" />
+                <img src={interrogation} alt="help" className="w-3" />
                 <Link to="/profile/store/create">
                   <LinkButton component={"Crea tu producto"} />
                 </Link>
