@@ -14,9 +14,9 @@ function DropdownShop() {
   });
 
   return (
-    <div className="group">
-      <button className=" flex w-full items-center justify-between rounded-md bg-primary px-4 py-1 text-xs text-lightwhite md:text-sm lg:relative lg:text-base">
-        $40.000
+    <div className="group rounded-xl">
+      <button className="  flex w-full items-center justify-between rounded-md border border-cyan-50 px-4 py-1 text-xs text-lightwhite md:text-sm lg:relative lg:text-base">
+        ${totalPrice}
         <svg
           className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180"
           aria-hidden="true"
@@ -28,7 +28,7 @@ function DropdownShop() {
         </svg>
       </button>
 
-      <div className="z-10 hidden w-96 rounded-b-lg bg-primary pt-8 group-hover:block lg:absolute">
+      <div className=" z-10 hidden max-h-96 w-96 overflow-y-scroll rounded-b-lg bg-blue-100 pt-8  group-hover:block lg:absolute">
         {products?.map((prod) => (
           <Subcard prod={prod} key={prod.id} />
         ))}
@@ -38,7 +38,7 @@ function DropdownShop() {
             <LinkButton component={"Confirmar Compra"} />
           </Link>
           <h2 className="border-blue inline-block border">
-            Total: ${totalPrice},00
+            Total: ${totalPrice}
           </h2>
         </div>
       </div>

@@ -4,3 +4,8 @@
   box-sizing: border-box;
   user-select: none;
 }
+
+:root {
+  --primary: rebeccapurple;
+  --secondary: cornflowerblue;
+}

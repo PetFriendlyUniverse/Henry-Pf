@@ -22,7 +22,7 @@ function Subcard({ prod, gridProperties }) {
     }
   };
   return (
-    <article className="flex w-full items-center justify-between">
+    <article className="mx-2 flex w-[95%] items-center justify-between rounded-l-lg border-[1px] border-black">
       <picture className="w-20 p-1">
         <img src={img} alt={name} />
       </picture>
@@ -32,14 +32,14 @@ function Subcard({ prod, gridProperties }) {
         <span className="text-xs text-zinc-500">stock: {stock - amount}</span>
       </div>
       <div>
+        <p>precio: ${price * amount},00</p>
+      </div>
+      <div className="w-24 ">
         <CountProduct
           handleClickDeduct={handleClickDeduct}
           handleClickAdd={handleClickAdd}
           value={amount}
         />
-      </div>
-      <div>
-        <p>precio: ${price * amount},00</p>
       </div>
     </article>
   );
