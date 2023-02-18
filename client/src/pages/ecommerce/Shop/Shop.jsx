@@ -9,7 +9,7 @@ export default function HomeShop() {
       </div>
 
       <div className="lg:flex lg:h-full lg:justify-between xl:max-w-[1800px]  ">
-        <div className="lg:border-blue h-fit w-full bg-colorFilter text-gray-300 lg:top-16 lg:w-64  lg:border-2">
+        <div className="lg:border-blue h-fit w-full  lg:top-16 lg:w-64  lg:border-2">
           <Filters />
         </div>
         <div className="lg:min-h-screen lg:w-4/5 ">

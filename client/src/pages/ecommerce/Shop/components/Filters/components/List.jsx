@@ -55,7 +55,7 @@ function List({ filter, options }) {
       {/* si hay filtro seteado, lo muestra como boton y sino los filtros a elejir */}
       {value ? (
         <button
-          className="border-red text-red relative rounded-sm border border-yellow-400 pr-4 pl-1 text-yellow-400 lg:px-0 "
+          className="border-red text-red relative  border border-none pr-4 pl-1 text-[#5380a4] lg:px-0 "
           onClick={() => onClick(value)}
         >
           <span>{value}</span>
