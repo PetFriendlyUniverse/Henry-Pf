@@ -38,7 +38,7 @@ function List({ filter, options }) {
 
   return (
     <div className="flex flex-col">
-      <hr class="my-2 h-px border-0 bg-gray-400" />
+      <hr className="my-2 h-px border-0 bg-gray-400" />
       <button
         className={`font-semibold  text-yellow-500 ${
           mobile ? "hover:text-yellow-600" : "cursor-default"

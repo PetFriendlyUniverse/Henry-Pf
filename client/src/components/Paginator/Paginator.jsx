@@ -41,9 +41,9 @@ function Paginator() {
               <g
                 id="arrow"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 className="h-1 rounded-lg"
               >
                 <path
@@ -69,9 +69,9 @@ function Paginator() {
               <g
                 id="arrow"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 className="h-1 rounded-lg"
               >
                 <path
