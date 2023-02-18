@@ -17,15 +17,15 @@ function Profile() {
     setShowInfo(e.target.name);
   };
   return (
-    <div className=" flex justify-center py-28 px-3 pt-20 md:max-w-fit ">
-      <div className="mt-6 flex h-full w-11/12 rounded-md border-2">
+    <div className="flex justify-center py-28 px-3 pt-36 md:max-w-fit">
+      <div className="mt-6 flex h-full w-full flex-col rounded-md border-2 pt-2 sm:flex-row md:flex-row">
         <div className="mb-3 p-3 xl:w-96 ">
-          <div className="flex lg:w-40 ">
-            <div className="px-3 lg:max-w-3xl">
-              <img src={photoUser} alt="profile" className="rounded-full" />
+          <div class="flex flex-col items-center justify-center pt-2 sm:flex-row md:justify-between md:px-11">
+            <div class="mb-4 w-56 sm:mb-0 sm:w-72 md:w-20">
+              <img src={photoUser} alt="profile" class="rounded-full" />
             </div>
-            <div>
-              <h1 className="text-2xl font-black">{`Nombre`}</h1>
+            <div class="mx-0 text-center sm:text-left">
+              <h1 class="text-2xl font-black">{`Jennifer`}</h1>
             </div>
           </div>
           <div className="">
@@ -197,25 +197,33 @@ function Profile() {
             </div>
           </div>
         </div>
-        <div className="border-l-2 border-gray-400 lg:w-[1200px]">
+        <div className="border-gray-400 lg:w-[1200px] lg:border-l-2">
           {showInfo == "profile" ? (
             <div className="border-b-2 border-gray-400 p-3">
-              <h1 className="pl-2 text-3xl font-semibold">Perfil</h1>
+              <h1 className="flex justify-center pl-2 text-3xl font-semibold">
+                Profile
+              </h1>
             </div>
           ) : showInfo == "contact" ? (
             <div className="border-b-2 border-gray-400 p-3">
-              <h1 className="pl-2 text-3xl font-semibold">Contacto</h1>
+              <h1 className="flex justify-center pl-2 text-3xl font-semibold">
+                Contact
+              </h1>
             </div>
           ) : showInfo == "ubication" ? (
             <div className="border-b-2 border-gray-400 p-3">
-              <h1 className="pl-2 text-3xl font-semibold">Direcciones</h1>
+              <h1 className="flex justify-center pl-2 text-3xl font-semibold">
+                Adress
+              </h1>
             </div>
           ) : (
             <div className="border-b-2 border-gray-400 p-3">
-              <h1 className="pl-2 text-3xl font-semibold">Formas de Pago</h1>
+              <h1 className="flex justify-center pl-2 text-3xl font-semibold">
+                Payment
+              </h1>
             </div>
           )}
-          <div className="flex">
+          <div className="flex-col pt-2 lg:flex lg:flex-row">
             {showInfo == "profile" ? (
               <PersonalInfo />
             ) : showInfo == "contact" ? (
@@ -225,16 +233,16 @@ function Profile() {
             ) : (
               <Payment />
             )}
-            <div className=" pl-12 pt-5">
-              <div className="flex py-2">
-                <img src={interrogation} alt="help" className="w-3" />
+            <div class="flex pl-4 pt-5 sm:pl-12 md:flex-col">
+              <div class="flex py-2">
+                <img src={interrogation} alt="help" class="w-3 sm:w-5" />
                 <Link to="/profile/store/create">
-                  <LinkButton component={"Crea tu producto"} />
+                  <LinkButton component={"Create your product"} />
                 </Link>
               </div>
-              <div className="flex py-2">
-                <img src={interrogation} alt="help" className="w-5" />
-                <button className="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
+              <div class="flex py-2">
+                <img src={interrogation} alt="help" class="w-5" />
+                <button class="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
                   <img src={edit} alt="edit" />
                 </button>
               </div>
