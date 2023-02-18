@@ -51,6 +51,9 @@ export const Products = createSlice({
     getProductsById: (state, { payload }) => {
       state.productId = payload;
     },
+    clearProductId: (state) => {
+      state.productId = {};
+    },
     deletedProducts: (state, { payload }) => {
       state.products = payload;
     },
@@ -77,6 +80,7 @@ export const {
   deletedProducts,
   setShopCart,
   clearShopCart,
+  clearProductId,
 } = Products.actions;
 
 export default Products.reducer;
