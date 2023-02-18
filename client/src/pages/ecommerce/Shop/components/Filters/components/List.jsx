@@ -4,15 +4,15 @@ import { setFilters } from "../../../../../../redux/features/products/productsAc
 
 function List({ filter, options }) {
   const [mobile, setMobile] = useState(true);
+  const [showAll, setShowAll] = useState(false);
   const dispatch = useDispatch();
   const toggleFilter = useRef(null);
   const value = useSelector(
     (state) => state.Products?.setFilters?.[filter] || ""
-  ); // traemos el value del filtro especíifico y si no hay seteamos ""
-  // console.log(value);
+  ); // traemos el value del filtro específico y si no hay seteamos ""
 
   const toggleFilters = () => {
-    toggleFilter.current.classList.toggle("hidden");
+    mobile && toggleFilter.current.classList.toggle("hidden");
   };
 
   const onClick = (newValue) => {
@@ -21,6 +21,9 @@ function List({ filter, options }) {
     } else {
       dispatch(setFilters({ filter, value: newValue })); //{filter:"Breed", value: "breed1"}
     }
+  };
+  const handleShowAll = () => {
+    setShowAll(!showAll);
   };
 
   const resizeListener = (event) => {
@@ -35,27 +38,24 @@ function List({ filter, options }) {
 
   return (
     <div className="flex flex-col">
-      <hr class="my-2 h-px border-0 bg-gray-200 dark:bg-gray-700" />
-
-      {mobile ? (
-        <button
-          className="font-semibold"
-          type="button"
-          id="filters-menu-button"
-          aria-expanded="false"
-          data-dropdown-toggle="filters-dropdown"
-          data-dropdown-placement="bottom"
-          onClick={toggleFilters}
-        >
-          {filter}
-        </button>
-      ) : (
-        <span className="font-semibold">{filter}</span>
-      )}
-      {/* por ahora la ul tiene overflow hidden, proximamente va a renderizar 4 elementos y un btn ver mas en caso de haber mas opciones de filtro */}
+      <hr class="my-2 h-px border-0 bg-gray-400" />
+      <button
+        className={`font-semibold  text-yellow-500 ${
+          mobile ? "hover:text-yellow-600" : "cursor-default"
+        }`}
+        type="button"
+        id="filters-menu-button"
+        aria-expanded="false"
+        data-dropdown-toggle="filters-dropdown"
+        data-dropdown-placement="bottom"
+        onClick={toggleFilters}
+      >
+        {filter}
+      </button>
+      {/* si hay filtro seteado, lo muestra como boton y sino los filtros a elejir */}
       {value ? (
         <button
-          className="border-red text-red relative rounded-none border"
+          className="border-red text-red relative rounded-sm border border-yellow-400 pr-4 pl-1 text-yellow-400 lg:px-0 "
           onClick={() => onClick(value)}
         >
           <span>{value}</span>
@@ -64,11 +64,13 @@ function List({ filter, options }) {
       ) : (
         <ul
           ref={toggleFilter}
-          className="hidden max-h-32 overflow-auto md:block"
+          className={`hidden ${
+            options.length > 5 && (!showAll ? "md:h-[90px] lg:h-28" : "h-fit")
+          } overflow-hidden md:block `}
         >
           {options?.map((opc, i) => (
             <li
-              className="my-1 cursor-pointer text-sm"
+              className={`text- my-1 cursor-pointer`}
               onClick={() => onClick(opc.id)}
               key={i}
             >
@@ -76,6 +78,17 @@ function List({ filter, options }) {
             </li>
           ))}
         </ul>
+      )}
+      {/* si hay mas de 5 filtros y no hay filtro elejido muestra el Ver Todos */}
+      {options.length > 5 && !value && (
+        <button
+          className={`hidden text-sm font-bold md:block ${
+            !showAll ? "text-yellow-300" : "text-red-300"
+          }`}
+          onClick={handleShowAll}
+        >
+          {showAll ? "Ver Menos" : "Ver Todo"}
+        </button>
       )}
     </div>
   );
