@@ -17,8 +17,8 @@ function Profile() {
     setShowInfo(e.target.name);
   };
   return (
-    <div className="flex justify-center py-28 px-3 pt-36 md:max-w-fit">
-      <div className="mt-6 flex h-full w-full flex-col rounded-md border-2 pt-2 sm:flex-row md:flex-row">
+    <div className="flex justify-center pb-28 pt-36 lg:items-center">
+      <div className="mt-6 flex h-full w-full flex-col rounded-md border-2 pt-2 md:flex-row lg:w-3/5">
         <div className="mb-3 p-3 xl:w-96 ">
           <div class="flex flex-col items-center justify-center pt-2 sm:flex-row md:justify-between md:px-11">
             <div class="mb-4 w-56 sm:mb-0 sm:w-72 md:w-20">
@@ -197,33 +197,33 @@ function Profile() {
             </div>
           </div>
         </div>
-        <div className="border-gray-400 lg:w-[1200px] lg:border-l-2">
+        <div className="border-gray-400 lg:w-full lg:border-l-2">
           {showInfo == "profile" ? (
-            <div className="border-b-2 border-gray-400 p-3">
+            <div className="border-gray-400 p-3 lg:border-b-2">
               <h1 className="flex justify-center pl-2 text-3xl font-semibold">
                 Profile
               </h1>
             </div>
           ) : showInfo == "contact" ? (
-            <div className="border-b-2 border-gray-400 p-3">
+            <div className="border-gray-400 p-3 lg:border-b-2">
               <h1 className="flex justify-center pl-2 text-3xl font-semibold">
                 Contact
               </h1>
             </div>
           ) : showInfo == "ubication" ? (
-            <div className="border-b-2 border-gray-400 p-3">
+            <div className="border-gray-400 p-3 lg:border-b-2">
               <h1 className="flex justify-center pl-2 text-3xl font-semibold">
                 Adress
               </h1>
             </div>
           ) : (
-            <div className="border-b-2 border-gray-400 p-3">
+            <div className="border-gray-400 p-3 lg:border-b-2">
               <h1 className="flex justify-center pl-2 text-3xl font-semibold">
                 Payment
               </h1>
             </div>
           )}
-          <div className="flex-col pt-2 lg:flex lg:flex-row">
+          <div className="flex flex-col pt-2 lg:flex xl:flex">
             {showInfo == "profile" ? (
               <PersonalInfo />
             ) : showInfo == "contact" ? (
@@ -233,7 +233,7 @@ function Profile() {
             ) : (
               <Payment />
             )}
-            <div class="flex pl-4 pt-5 sm:pl-12 md:flex-col">
+            <div class="flex pl-4 pt-5 sm:pl-12">
               <div class="flex py-2">
                 <img src={interrogation} alt="help" class="w-3 sm:w-5" />
                 <Link to="/profile/store/create">
