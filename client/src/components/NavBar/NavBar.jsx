@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import SearchForm from "./components/SearchForm";
 import DropdownHelp from "./components/DropdownHelp";
 import DropdownShop from "./components/DropdownShop";
@@ -15,13 +15,13 @@ function NavBar() {
   return (
     <nav className="fixed z-30 flex h-24 w-full border-gray-200 bg-primary sm:px-4">
       <div className="container mx-auto flex items-center justify-around sm:justify-evenly md:justify-between lg:justify-around">
-        <a href="https://flowbite.com/" className="flex items-center">
+        <Link to={`/`}>
           <img
             src={logo}
             className="mr-3 h-10 sm:h-12 md:h-14 lg:h-16 xl:h-20"
             alt="PetShopUniverse Logo"
           />
-        </a>
+        </Link>
         <div>
           <NavLink className="text-lightwhite" to="/shop">
             Shop
