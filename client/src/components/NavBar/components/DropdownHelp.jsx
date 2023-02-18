@@ -1,7 +1,7 @@
 function dropdownHelp() {
   return (
     <div className="group">
-      <button className="flex w-full items-center justify-between rounded-md bg-primary px-4 py-1 text-xs text-lightwhite md:text-sm lg:relative lg:text-base">
+      <button className="flex w-full items-center justify-between rounded-md border border-cyan-50 px-4 py-1 text-xs text-lightwhite md:text-sm lg:relative lg:text-base">
         Ayuda
         <svg
           className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180"
@@ -13,9 +13,9 @@ function dropdownHelp() {
           <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
         </svg>
       </button>
-      <div className="hidden rounded-b-lg bg-primary text-lightwhite group-hover:block lg:absolute lg:z-10">
+      <div className="hidden rounded-b-lg bg-blue-100 text-lightwhite group-hover:block lg:absolute lg:z-10">
         <ul
-          className="rounded-md bg-primary py-2 text-sm text-white dark:text-gray-400"
+          className="rounded-md bg-blue-100 py-2 text-sm text-white dark:text-gray-400"
           aria-labelledby="dropdownNavbarButton"
         >
           <li>

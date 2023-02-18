@@ -15,17 +15,18 @@ function Paginator() {
     dispatch(getProductsApi(productsPerPage, currentPage, setFilters));
   }, []);
 
-  const changePage = ({ selected }) => {
-    dispatch(setCurrentPage(selected + 1));
-  };
-
   return (
-    <div className="src  flex h-full w-full flex-col ">
-      <div className="w-2/4 self-center">
+    <div className="src  flex h-full min-w-[1400px] flex-col ">
+      <div className="w-1/4 self-center">
         <Paginate
+          pageCount={totalPages}
+          marginPagesDisplayed={0}
+          forcePage={currentPage - 1}
           containerClassName={
-            "flex text-sm h-12 font-mono w-full justify-between  items-center  rounded-xl "
+            "flex text-sm h-4 font-mono w-1/2 justify-between  items-center  rounded-xl "
           }
+          pageLinkClassName={"px-3 hover:text-white"}
+          activeLinkClassName={"bg-blue-700 text-white rounded-lg"}
           previousLabel={
             <svg
               className="ml-2 h-4 rotate-180 transform rounded-lg duration-500 hover:scale-125"
@@ -81,15 +82,6 @@ function Paginator() {
                 ></path>
               </g>
             </svg>
-          }
-          pageRangeDisplayed={3}
-          pageCount={totalPages}
-          onPageChange={changePage}
-          previousLinkClassName={""}
-          nextLinkClassName={""}
-          disabledClassName={"paginationDisabled text-cyan-700"}
-          activeClassName={
-            "text-xl px-3 py-1 font-extrabold bg-yellowPalette text-cyan-700 rounded-[50%]"
           }
         />
       </div>
