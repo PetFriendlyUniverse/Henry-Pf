@@ -22,7 +22,7 @@ function Subcard({ prod, gridProperties }) {
     }
   };
   return (
-    <article className="mx-2 flex w-[95%] items-center justify-between rounded-l-lg border-[1px] border-black">
+    <article className="mx-auto flex w-11/12 items-center justify-between rounded-l-lg border-[1px] border-black px-2">
       <picture className="w-20 p-1">
         <img src={img} alt={name} />
       </picture>

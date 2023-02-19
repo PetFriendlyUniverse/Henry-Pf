@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import Subcard from "../../SubCard/Subcard";
 import { useSelector } from "react-redux";
 import LinkButton from "../../Button/LinkButton";
@@ -16,7 +15,7 @@ function DropdownShop() {
   return (
     <div className="group rounded-xl">
       <button className="  flex w-full items-center justify-between rounded-md border border-cyan-50 px-4 py-1 text-xs text-lightwhite md:text-sm lg:relative lg:text-base">
-        ${totalPrice}
+        $ {totalPrice}
         <svg
           className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180"
           aria-hidden="true"
@@ -28,16 +27,22 @@ function DropdownShop() {
         </svg>
       </button>
 
-      <div className=" z-10 hidden max-h-96 w-96 overflow-y-scroll rounded-b-lg bg-blue-100 pt-8  group-hover:block lg:absolute">
-        {products?.map((prod) => (
-          <Subcard prod={prod} key={prod.id} />
-        ))}
+      <div className=" z-10 hidden max-h-96 w-96 rounded-b-lg bg-blue-100  group-hover:block lg:absolute">
+        <div
+          className={`flex h-80 flex-col gap-2 ${
+            products.length > 3 && "overflow-scroll overflow-x-hidden"
+          }  py-3`}
+        >
+          {products?.map((prod) => (
+            <Subcard prod={prod} key={prod.id} />
+          ))}
+        </div>
         <hr />
-        <div className="flex justify-between p-2">
+        <div className="flex items-center justify-between rounded-b-lg bg-blue-200 p-2 ">
           <Link to="/shop/checkout">
             <LinkButton component={"Confirmar Compra"} />
           </Link>
-          <h2 className="border-blue inline-block border">
+          <h2 className="border-blue inline-block rounded-md border py-2 px-4">
             Total: ${totalPrice}
           </h2>
         </div>
