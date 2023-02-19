@@ -20,7 +20,7 @@ function Paginator() {
   };
 
   return (
-    <div className="src  flex h-full min-w-[1400px] flex-col ">
+    <div className="src  flex h-full flex-col lg:min-w-[800px] xl:min-w-[1000px] 2xl:min-w-[1400px]">
       <div className="w-1/4 self-center">
         <Paginate
           pageCount={totalPages}
