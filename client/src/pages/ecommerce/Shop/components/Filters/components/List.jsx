@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useWidthIsLessThan from "../../../../../../hooks/useWidthIsLessThan";
 import { setFilters } from "../../../../../../redux/features/products/productsActions";
+import filterTranslator from "../adapters/filterTranslator";
 
 function List({ filter, options }) {
   const mobile = useWidthIsLessThan(768); //recibe el breakpoint  retorna true si el innerWidth es menor, sino retorna false
@@ -41,7 +42,7 @@ function List({ filter, options }) {
         data-dropdown-placement="bottom"
         onClick={toggleFilters}
       >
-        {filter}
+        {filterTranslator(filter)}
       </button>
       {/* si hay filtro seteado, lo muestra como boton y sino los filtros a elejir */}
       {value ? (
