@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import useIsMobile from "../../../../../../hooks/useIsMobile";
 import { setFilters } from "../../../../../../redux/features/products/productsActions";
 
 function List({ filter, options }) {
-  const [mobile, setMobile] = useState(true);
+  const mobile = useIsMobile(768); //recibe el breakpoint  retorna true si el innerWidth es menor, sino retorna false
   const [showAll, setShowAll] = useState(false);
   const dispatch = useDispatch();
   const toggleFilter = useRef(null);
@@ -26,19 +27,9 @@ function List({ filter, options }) {
     setShowAll(!showAll);
   };
 
-  const resizeListener = (event) => {
-    event.target.innerWidth > 768 && setMobile(false);
-    event.target.innerWidth < 768 && setMobile(true);
-  };
-  useEffect(() => {
-    window.innerWidth > 768 && setMobile(false); // esto es necesario para ejecutarlo la primera vez que entramos a la pag
-    window.addEventListener("resize", resizeListener); // agrega la escucha al resize ( cambio de ancho de pantalla ) para que actualice el estado en caso de ser necesario
-    return () => window.removeEventListener("resize", resizeListener); // importantísimo! esto remueve la escucha para no mantenerla en las demas paginas donde no se necesita
-  }, []);
-
   return (
     <div className="flex flex-col">
-      <hr class="my-2 h-px border-0 bg-gray-400" />
+      <hr className="my-2 h-px border-0 bg-gray-400" />
       <button
         className={`font-semibold  text-yellow-500 ${
           mobile ? "hover:text-yellow-600" : "cursor-default"
