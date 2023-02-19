@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import useIsMobile from "../../../../../../hooks/useIsMobile";
+import useWidthIsLessThan from "../../../../../../hooks/useWidthIsLessThan";
 import { setFilters } from "../../../../../../redux/features/products/productsActions";
 
 function List({ filter, options }) {
-  const mobile = useIsMobile(768); //recibe el breakpoint  retorna true si el innerWidth es menor, sino retorna false
+  const mobile = useWidthIsLessThan(768); //recibe el breakpoint  retorna true si el innerWidth es menor, sino retorna false
   const [showAll, setShowAll] = useState(false);
   const dispatch = useDispatch();
   const toggleFilter = useRef(null);
