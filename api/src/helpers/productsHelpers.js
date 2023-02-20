@@ -78,7 +78,10 @@ const splitData = (data) => {
 };
 
 const addFixedsFilters = (filters) => {
-  filters.push(["Size", [{ id: "small" }, { id: "medium" }, { id: "large" }]]);
+  filters.push([
+    "Size",
+    [{ id: "chico" }, { id: "mediano" }, { id: "grande" }],
+  ]);
   filters.push(["Weight", [{ id: "5" }, { id: "10" }, { id: "15" }]]);
 };
 
