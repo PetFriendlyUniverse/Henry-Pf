@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getFiltersApi } from "../redux/features/products/productsActions";
+import { getAllBrandsApi } from "../redux/features/products/productsActions";
 
-function useGetFilters() {
+function useGetBrands() {
   const brands = useSelector((state) => state.Products?.allBrands);
   const dispatch = useDispatch();
   useEffect(() => {
-    !brands && dispatch(getFiltersApi());
+    !brands && dispatch(getAllBrandsApi());
   }, []);
 
   return filters;
 }
 
-export default useGetFilters;
+export default useGetBrands;
