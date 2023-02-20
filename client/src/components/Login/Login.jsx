@@ -25,6 +25,12 @@ function Login() {
   const [repeat, setRepeat] = useState({
     repeatPassword: "",
   });
+
+  const [login, setLogin] = useState({
+    mail: "",
+    password: "",
+  });
+
   const handleChange = (e) => {
     const property = e.target.name;
     const value = e.target.value;
@@ -33,7 +39,6 @@ function Login() {
     } else {
       setForm({ ...form, [property]: value });
       setErrors({ ...errors, ...validationProfile(property, value) });
-      //setError(validateProduct(property, value));
     }
   };
   const handleChangeRepeat = (e) => {
@@ -43,7 +48,6 @@ function Login() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-
     axios.post("user/create", form);
     setForm({
       user: "",
@@ -57,6 +61,23 @@ function Login() {
       repeatPassword: "",
     });
   };
+
+  const handleChangeLogin = (e) => {
+    const property = e.target.name;
+    const value = e.target.value;
+    setLogin({ ...login, [property]: value });
+  };
+  const handleSubmitLogin = (e) => {
+    e.preventDefault();
+    try {
+      axios.post("user/login", login).then((res) => {
+        const token = res.data.token;
+        localStorage.setItem("token", token);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <>
       <div className="flex h-screen items-center justify-center pt-20">
@@ -64,24 +85,26 @@ function Login() {
           <input type="checkbox" id={s["chk"]} aria-hidden="true" />
 
           <div class={s.login}>
-            <form class={s.form}>
+            <form onSubmit={handleSubmitLogin} class={s.form}>
               <label htmlFor={s["chk"]} aria-hidden="true">
                 Log in
               </label>
 
               <input
                 class={s.input}
-                onChange={handleChange}
+                onChange={handleChangeLogin}
                 type="email"
                 name="mail"
+                value={login.mail}
                 placeholder="Email"
                 required=""
               />
               <input
                 class={s.input}
-                onChange={handleChange}
+                onChange={handleChangeLogin}
                 type="password"
                 name="password"
+                value={login.password}
                 placeholder="Password"
                 required=""
               />
@@ -187,7 +210,7 @@ function Login() {
                   <p className="text-xs text-red-700">{`Passwords does not match`}</p>
                 </div>
               )}
-              <LinkButton />
+              <LinkButton component={"Register"} />
             </form>
           </div>
         </div>
