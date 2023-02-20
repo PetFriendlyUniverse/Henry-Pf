@@ -2,7 +2,6 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import React, { useEffect, useState } from "react";
-// import alimento from "../../../assets/alimento.png";
 import MoarButton from "../../../components/Button/MoarButton";
 import CountProduct from "../../../components/CountProduct/CountProduct";
 import cardCredit from "../../../assets/cardCredit/cardCredit.svg";
@@ -48,9 +47,7 @@ function ProductDetail() {
       }
     });
   };
-  const auxCartAmount = Object.keys(shopCartProducts).length
-    ? shopCartProducts[id].amount
-    : 0;
+  const auxCartAmount = shopCartProducts[id] ? shopCartProducts[id].amount : 0;
   const auxCartStock = productId?.stock;
   useEffect(() => {
     dispatch(getProductsId(id));
@@ -90,7 +87,7 @@ function ProductDetail() {
           },
         })
       );
-      // [ sweet alert ] agregado
+
       await Swal.fire({
         icon: "success",
         title: "Tu producto ha sido agregado con éxito!",
@@ -98,8 +95,6 @@ function ProductDetail() {
         timer: 1100,
       });
     } else {
-      // notificar que no hay mas stock disponible
-      // [ sweet alert ] no hay stock
       await Swal.fire({
         icon: "error",
         title: "No hay stock disponible",
