@@ -7,6 +7,7 @@ const storeRoutes = require("./storeRoutes");
 const commentsRouter = require("./commentsRouter");
 const favoriteRouter = require("./favoriteRouter");
 const loginRouter = require("./loginRouter");
+const brandsRouter = require("./brandsRouter");
 require("../helpers/google.js");
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -20,6 +21,7 @@ router.use("/invoices", invoicesRoutes);
 router.use("/store", storeRoutes);
 router.use("/comments", commentsRouter);
 router.use("/favorite", favoriteRouter);
+router.use("/brands", brandsRouter);
 
 router.use(
   "/auth",
