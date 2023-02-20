@@ -15,7 +15,7 @@ const productsRoutes = Router();
 productsRoutes.get("/", getAllProductsHandler);
 productsRoutes.get("/filters", getFilters);
 
-productsRoutes.get("/:id", getProductByIDlHandler);
+productsRoutes.get("/:id", authMiddleware, getProductByIDlHandler);
 productsRoutes.post("/create", authMiddleware, postProductHandler);
 productsRoutes.put("/:id", authMiddleware, putProductHandler);
 productsRoutes.delete("/:id", authMiddleware, deleteProductHandler);

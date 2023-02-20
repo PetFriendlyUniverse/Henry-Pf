@@ -1,8 +1,8 @@
 const passport = require("passport");
+const { User } = require("../db");
+const jwt = require("jsonwebtoken");
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = process.env;
-
-const emails = ["federicoalmeida15@gmail.com"];
+const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, JWT_SECRET } = process.env;
 
 passport.use(
   "auth-google",
@@ -12,15 +12,33 @@ passport.use(
       clientSecret: GOOGLE_CLIENT_SECRET,
       callbackURL: "http://localhost:3001/auth/google",
     },
-    function (accessToken, refreshToken, profile, done) {
-      const response = emails.includes(profile.emails[0].value);
-      // IF EXITS IN DATABASE
-      if (response) {
-        done(null, profile);
-      } else {
-        // SAVE IN DATABASE
-        emails.push(profile.emails[0].value);
-        done(null, profile);
+    async function (accessToken, refreshToken, profile, done) {
+      try {
+        const [user, created] = await User.findOrCreate({
+          where: {
+            mail: profile.emails[0].value,
+          },
+          defaults: {
+            name: profile.name.givenName,
+            lastname: profile.name.familyName,
+            user: profile.displayName,
+            password: "google", // Puedes establecer una contraseña temporal para usuarios de Google
+            enable: true,
+          },
+        });
+
+        if (created) {
+          console.log("Usuario creado:", user.toJSON());
+        } else {
+          console.log("Usuario encontrado:", user.toJSON());
+        }
+
+        const token = jwt.sign({ id: user.id }, JWT_SECRET);
+        done(null, { user: user.toJSON(), token });
+        console.log(token);
+      } catch (error) {
+        console.error("Error en la estrategia de Google:", error);
+        done(error);
       }
     }
   )
