@@ -7,14 +7,17 @@ const {
   putProductHandler,
   deleteProductHandler,
 } = require("../handler/productsHandler");
+
+const authMiddleware = require("../helpers/authMiddleware");
+
 const productsRoutes = Router();
 
 productsRoutes.get("/", getAllProductsHandler);
 productsRoutes.get("/filters", getFilters);
 
 productsRoutes.get("/:id", getProductByIDlHandler);
-productsRoutes.post("/create", postProductHandler);
-productsRoutes.put("/:id", putProductHandler);
-productsRoutes.delete("/:id", deleteProductHandler);
+productsRoutes.post("/create", authMiddleware, postProductHandler);
+productsRoutes.put("/:id", authMiddleware, putProductHandler);
+productsRoutes.delete("/:id", authMiddleware, deleteProductHandler);
 
 module.exports = productsRoutes;
