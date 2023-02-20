@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 function Buttons() {
   return (
     <>
-      <NavLink to="/shop">
+      <NavLink to="/landingshop">
         <button className={s.cta1}>
           <span className={s.span}>SHOP</span>
           <span className={s.second}>

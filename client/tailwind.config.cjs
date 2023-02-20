@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,jsx}",
+    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
@@ -17,17 +21,14 @@ module.exports = {
         yellowPalette: "#edf16D",
         colorFilter: "#645E9D",
       },
-
       dropShadow: {
         custom: "36px 36px 37px rgb(0,0,0)",
         button: "6px 6px 0px rgba(0,0,0)",
         button2: "10px 10px 0 #FBC638",
       },
-
       backgroundImage: {
         white: "url('./assets/backgroundwhite.png')",
       },
-
       keyframes: {
         coloranim: {
           "0%": { fill: "#ffffff" },
@@ -41,14 +42,12 @@ module.exports = {
           },
         },
       },
-
       animation: {
         coloranim: "color_anim 1s infinite 0.6s",
         coloranim2: "color_anim 1s infinite 0.4s",
         coloranim3: "color_anim 1s infinite 0.2s",
       },
     },
-
-    plugins: [],
+    plugins: [require("flowbite/plugin")],
   },
 };
