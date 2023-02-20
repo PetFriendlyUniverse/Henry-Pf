@@ -1,8 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
-import React, { useEffect } from "react";
-// import alimento from "../../../assets/alimento.png";
+import React, { useEffect, useState } from "react";
 import MoarButton from "../../../components/Button/MoarButton";
 import CountProduct from "../../../components/CountProduct/CountProduct";
 import cardCredit from "../../../assets/cardCredit/cardCredit.svg";
@@ -11,13 +10,18 @@ import {
   getProductsId,
   deleteProductId,
 } from "../../../redux/features/products/productsActions";
-import { clearProductId } from "../../../redux/features/products/productsSlice";
+import {
+  clearProductId,
+  setShopCart,
+} from "../../../redux/features/products/productsSlice";
+import LessButton from "../../../components/Button/LessButton";
 
 function ProductDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const [amount, setAmount] = useState(1);
+  const shopCartProducts = useSelector((state) => state.Products?.shopCart);
   let { productId } = useSelector((state) => state.Products);
 
   const handleClick = () => {
@@ -43,7 +47,8 @@ function ProductDetail() {
       }
     });
   };
-
+  const auxCartAmount = shopCartProducts[id] ? shopCartProducts[id].amount : 0;
+  const auxCartStock = productId?.stock;
   useEffect(() => {
     dispatch(getProductsId(id));
   }, []);
@@ -52,6 +57,52 @@ function ProductDetail() {
       dispatch(clearProductId());
     };
   }, []);
+
+  const handleClickDeduct = () => {
+    if (amount > 1) setAmount(amount - 1);
+  };
+  const handleClickAdd = () => {
+    if (auxCartAmount + amount < auxCartStock) setAmount(amount + 1);
+  };
+  const handleClickAddProduct = async ({
+    name,
+    img,
+    weight,
+    price,
+    stock,
+    id,
+  }) => {
+    if (auxCartAmount + amount <= auxCartStock) {
+      dispatch(
+        setShopCart({
+          id,
+          data: {
+            name,
+            img,
+            weight,
+            price,
+            stock,
+            id,
+            amount: auxCartAmount + amount,
+          },
+        })
+      );
+
+      await Swal.fire({
+        icon: "success",
+        title: "Tu producto ha sido agregado con éxito!",
+        showConfirmButton: false,
+        timer: 1100,
+      });
+    } else {
+      await Swal.fire({
+        icon: "error",
+        title: "No hay stock disponible",
+        showConfirmButton: false,
+        timer: 1100,
+      });
+    }
+  };
   return (
     <div className=" flex min-h-screen w-full flex-col items-center  justify-center pt-20">
       <div className=" max-w-[60vw] ">
@@ -147,9 +198,16 @@ function ProductDetail() {
             <div>
               <span> Seleccione Cantidad:</span>
               <div className="w-1/2">
-                <CountProduct />
+                <CountProduct
+                  handleClickDeduct={handleClickDeduct}
+                  handleClickAdd={handleClickAdd}
+                  value={amount}
+                />
               </div>
-              <button className="my-2 rounded-lg bg-[#4dbb47] py-2 px-4 md:min-w-full lg:w-1/2">
+              <button
+                className="my-2 rounded-lg bg-[#4dbb47] py-2 px-4 md:min-w-full lg:w-1/2"
+                onClick={() => handleClickAddProduct(productId)}
+              >
                 Agregar al carrito
               </button>
             </div>
@@ -185,9 +243,9 @@ function ProductDetail() {
                   <div className="text-xs">
                     Retirá sin cargo por tu sucursal preferida
                   </div>
-                  <div className="mx-auto w-2/6">
-                    <MoarButton component={"Delete"} onClick={handleClick} />
-                    <Link to={`/shop/detail/modify/${id}`}>
+                  <div className="mx-auto my-2 flex w-auto">
+                    <LessButton component={"Delete"} onClick={handleClick} />
+                    <Link to={`/shop/detail/modify/${id}`} className="w-full">
                       <MoarButton component={"Modify"} />
                     </Link>
                   </div>
