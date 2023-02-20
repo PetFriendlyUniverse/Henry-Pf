@@ -4,6 +4,7 @@ import {
   setFilters,
   getProductsById,
   deletedProducts,
+  getAllBrands,
 } from "./productsSlice";
 import axios from "axios";
 import { queryMarker } from "./helpers/queryMaker";
@@ -26,6 +27,10 @@ const deleteProductId = (id) => async (dispatch) => {
   const { data } = await axios.delete(`/products/${id}`);
   return dispatch(deletedProducts(data));
 };
+const getAllBrandsApi = () => async (dispatch) => {
+  const { data } = await axios.get("/brands");
+  return dispatch(getAllBrands(data));
+};
 
 export {
   getProductsApi,
@@ -33,4 +38,5 @@ export {
   setFilters,
   getProductsId,
   deleteProductId,
+  getAllBrandsApi,
 };
