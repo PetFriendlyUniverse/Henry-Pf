@@ -8,7 +8,7 @@ export default function HomeShop({ brands }) {
       <div className="flex border-2 border-black pt-20 md:block md:h-44  lg:h-28 lg:w-full"></div>
       <Recomendados></Recomendados>
       <div className="lg:flex lg:h-full lg:justify-between xl:max-w-[1800px]  ">
-        <div className="lg:border-blue lg:border-#645e9d ml-2 h-fit w-full border-2 lg:sticky lg:top-16 lg:w-1/5 lg:border-2">
+        <div className="lg:border-blue lg:border-#645e9d h-fit w-full border-2 lg:sticky lg:top-16 lg:ml-2 lg:w-1/5 lg:border-2">
           <Filters />
         </div>
         <div className="lg:min-h-screen lg:w-4/5 ">

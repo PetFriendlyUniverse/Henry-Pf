@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <footer className="bg-gray-100 text-center text-gray-600 lg:text-left ">
-      <div class="flex items-center justify-center border-b border-gray-300 p-6 lg:justify-between">
+      <div className="flex items-center justify-center border-b border-gray-300 p-6 lg:justify-between">
         <div className="mr-12 hidden lg:block">
           <span>Get connected with us on social networks:</span>
         </div>
@@ -74,13 +74,13 @@ function Footer() {
               ></path>
             </svg>
           </a>
-          <a href="#!" class="mr-6 text-gray-600">
+          <a href="#!" className="mr-6 text-gray-600">
             <svg
               aria-hidden="true"
               focusable="false"
               data-prefix="fab"
               data-icon="linkedin-in"
-              class="w-3.5"
+              className="w-3.5"
               role="img"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 448 512"
@@ -151,22 +151,22 @@ function Footer() {
               TIENDA ONLINE
             </h6>
             <p className="mb-4">
-              <a href="#!" class="text-gray-600">
+              <a href="#!" className="text-gray-600">
                 Envío Programado
               </a>
             </p>
             <p className="mb-4">
-              <a href="#!" class="text-gray-600">
+              <a href="#!" className="text-gray-600">
                 Formas de Entrega
               </a>
             </p>
-            <p cclassName="mb-4">
-              <a href="#!" class="text-gray-600">
+            <p className="mb-4">
+              <a href="#!" className="text-gray-600">
                 Descuentos Bancarios
               </a>
             </p>
             <p>
-              <a href="#!" class="text-gray-600">
+              <a href="#!" className="text-gray-600">
                 Cambios y devoluciones
               </a>
             </p>
@@ -180,7 +180,7 @@ function Footer() {
                 Veterinaria
               </a>
             </p>
-            <p cclassName="mb-4">
+            <p className="mb-4">
               <a href="#!" className="text-gray-600">
                 Peluquería
               </a>
@@ -278,7 +278,7 @@ function Footer() {
       <div className="bg-gray-200 p-6 text-center">
         <span> © 2023 PetFriendlyUniverse - Todos los derechos reservados</span>
         <a
-          cclassName="text-gray-600 font-semibold"
+          className="font-semibold text-gray-600"
           href="https://tailwind-elements.com/"
         ></a>
       </div>
