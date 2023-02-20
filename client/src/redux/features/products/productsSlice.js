@@ -19,6 +19,7 @@ const initialState = {
   allFilters: [],
   setFilters: {}, // {size: "small", weight: 5}
   productId: [],
+  allbrands: [],
   shopCart: JSON.parse(localStorage.getItem("shopCart")) || {}, // { id: { product } } || { 1: { product 1 }, 2: { product 2 } }
 };
 // cantidad de productos dependiendo del width de la pantalla ???
@@ -57,6 +58,9 @@ export const Products = createSlice({
     deletedProducts: (state, { payload }) => {
       state.products = payload;
     },
+    getAllBrands: (state, { payload }) => {
+      state.brands = payload;
+    },
     setShopCart: (state, { payload }) => {
       // payload = { id: id, data:{ product } | "delete" } si recibimos product se agrega al carrito y sino se elimina
       const { data, id } = payload; // data = { id, img, ...todos los datos del producto entero }
@@ -81,6 +85,7 @@ export const {
   setShopCart,
   clearShopCart,
   clearProductId,
+  getAllBrands,
 } = Products.actions;
 
 export default Products.reducer;
