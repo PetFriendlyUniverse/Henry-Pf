@@ -6,7 +6,7 @@ function useGetFilters() {
   const filters = useSelector((state) => state.Products?.allFilters);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getFiltersApi());
+    !filters && dispatch(getFiltersApi());
   }, []);
 
   return filters;
