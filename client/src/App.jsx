@@ -4,6 +4,7 @@ import { Suspense, lazy } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/footer/footer";
+import LandingShop from "./pages/ecommerce/LandingShop/LandingShop";
 // import Login from "./components/Login/Login";
 
 const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
@@ -40,6 +41,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/landingshop" element={<LandingShop />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/detail/:id" element={<ProductDetail />} />
           <Route path="/shop/shoppingcart" element={<ShoppingCart />} />

@@ -23,7 +23,7 @@ function NavBar() {
           />
         </Link>
         <div>
-          <NavLink className="text-xl text-yellowPalette" to="/shop">
+          <NavLink className="text-xl text-yellowPalette" to="/landingshop">
             Shop
           </NavLink>
         </div>
