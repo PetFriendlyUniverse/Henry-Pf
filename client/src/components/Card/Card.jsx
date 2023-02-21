@@ -26,7 +26,7 @@ function Card({ name, img, weight, price, stock, id }) {
       icon: "success",
       title: "Producto agregado al carrito",
       showConfirmButton: false,
-      timer: 1500,
+      timer: 800,
     });
   };
   return (
