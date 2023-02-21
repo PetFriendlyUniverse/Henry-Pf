@@ -7,7 +7,7 @@ function PhotoName() {
         <img src={photoUser} alt="profile" class="rounded-full" />
       </div>
       <div class="mx-0 text-center sm:text-left">
-        <h1 class="text-2xl font-black">{`Jennifer`}</h1>
+        <h1 class="text-2xl font-black">Federico</h1>
       </div>
     </div>
   );
