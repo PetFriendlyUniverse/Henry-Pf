@@ -63,9 +63,19 @@ const validationProfile = (property, value) => {
     if (!passwordRegex.test(value)) {
       error.password = "Proba con otra contraseña";
     } else if (value.length > 20) {
-      error.password = "La contraseña es demaciado larga";
+      error.password = "La contraseña es demasiado larga";
     } else {
       error.password = "";
+    }
+  }
+
+  if (property === "phone" && value <= 0) {
+    if (!numberRegex.test(value)) {
+      error.phone = "Por favor ingrese su numero de telefono";
+    } else if (value.length > 15) {
+      error.phone = "El numero de telefono es demaciado largo";
+    } else {
+      error.phone = "";
     }
   }
 

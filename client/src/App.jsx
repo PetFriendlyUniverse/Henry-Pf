@@ -25,6 +25,9 @@ const Login = lazy(() => import("./components/Login/Login/"));
 const FormModifyProduct = lazy(() =>
   import("./pages/ecommerce/Forms/FormModifyProduct/FormModifyProduct")
 );
+const FormProfile = lazy(() =>
+  import("./pages/ecommerce/Forms/FormProfile/FormProfile")
+);
 const Profile = lazy(() => import("./pages/ecommerce/Profile/Profile"));
 const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 
@@ -47,6 +50,7 @@ function App() {
           <Route path="/shop/shoppingcart" element={<ShoppingCart />} />
           <Route path="/shop/checkout" element={<Checkout />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile/register" element={<FormProfile />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/profile/store/create" element={<FormCreateProduct />} />
           <Route
