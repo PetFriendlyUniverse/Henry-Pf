@@ -15,9 +15,9 @@ const productsRoutes = Router();
 productsRoutes.get("/", getAllProductsHandler);
 productsRoutes.get("/filters", getFilters);
 
-productsRoutes.get("/:id", authMiddleware, getProductByIDlHandler);
-productsRoutes.post("/create", authMiddleware, postProductHandler);
-productsRoutes.put("/:id", authMiddleware, putProductHandler);
-productsRoutes.delete("/:id", authMiddleware, deleteProductHandler);
+productsRoutes.get("/:id", getProductByIDlHandler);
+productsRoutes.post("/create", postProductHandler);
+productsRoutes.put("/:id", putProductHandler);
+productsRoutes.delete("/:id", deleteProductHandler);
 
 module.exports = productsRoutes;
