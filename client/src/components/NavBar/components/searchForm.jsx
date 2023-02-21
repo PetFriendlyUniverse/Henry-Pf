@@ -17,7 +17,7 @@ function SearchForm() {
     dispatch(setFilters({ filter: "name", value: searchValue }));
   };
   return (
-    <form action="" onSubmit={handleSearch} className="relative flex ">
+    <form action="" onSubmit={handleSearch} className="relative flex  ">
       <input
         type="text"
         className="w-full rounded-xl px-2 py-1"

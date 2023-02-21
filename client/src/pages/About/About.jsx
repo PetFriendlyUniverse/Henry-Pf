@@ -67,7 +67,7 @@ function About() {
         {members.map((person) => (
           <article
             key={person.name}
-            className="flex h-full w-full flex-col items-center justify-center gap-5 rounded-3xl bg-slate-600  bg-gradient-to-b  from-slate-600 to-slate-900 p-5 text-white drop-shadow-button "
+            className="flex h-full w-full flex-col items-center justify-center gap-5 rounded-xl bg-slate-600  bg-gradient-to-b  from-slate-600 to-slate-900 p-5 text-white drop-shadow-button "
           >
             <div className="flex flex-col items-center justify-center gap-3">
               <img
