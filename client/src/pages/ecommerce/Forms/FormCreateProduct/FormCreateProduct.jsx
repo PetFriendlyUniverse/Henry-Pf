@@ -114,7 +114,7 @@ function FormCreateProduct() {
         </div>
         <div className="group relative z-0 mb-6 h-11 w-full">
           <input
-            type="text"
+            type="number"
             value={form.price}
             name="price"
             onChange={changeHandler}
@@ -206,7 +206,7 @@ function FormCreateProduct() {
         </div>
         <div className="group relative z-0 mb-6 h-11 w-full">
           <input
-            type="text"
+            type="number"
             value={form.weight}
             name="weight"
             onChange={changeHandler}
