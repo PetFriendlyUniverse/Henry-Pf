@@ -1,4 +1,4 @@
-import search from "@/assets/search.svg";
+import search from "../../../assets/general/search.svg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setFilters } from "../../../redux/features/products/productsSlice";
