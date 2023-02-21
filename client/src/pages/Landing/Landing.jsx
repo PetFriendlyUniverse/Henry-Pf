@@ -1,15 +1,15 @@
-import perronegro from "../../assets/perro-negro.jpg";
-import comida from "../../assets/comida.jpg";
-import retrato from "../../assets/retrato.jpg";
-import pool from "../../assets/poolside.jpg";
-import perrojugo from "../../assets/perrojugo.jpg";
-import gatolentes from "../../assets/gatolentes.jpg";
+import perronegro from "../../assets/imagenes/perro-negro.jpg";
+import comida from "../../assets/imagenes/comida.jpg";
+import retrato from "../../assets/imagenes/retrato.jpg";
+import pool from "../../assets/imagenes/poolside.jpg";
+import perrojugo from "../../assets/imagenes/perrojugo.jpg";
+import gatolentes from "../../assets/imagenes/gatolentes.jpg";
 import Buttons from "../../assets/Buttons/Buttons.jsx";
 import logo from "../../assets/logo/logo.png";
 
 function Landing() {
   return (
-    <div className=" flex h-screen w-screen bg-white bg-cover bg-no-repeat font-mono font-semibold  ">
+    <div className=" flex h-screen w-screen bg-cover bg-no-repeat font-mono font-semibold ">
       <div className="z-20 flex h-16 w-96 gap-4 ">
         <Buttons />
       </div>
@@ -30,7 +30,7 @@ function Landing() {
           </article>
         </div>
 
-        <div className="flex  w-full flex-col justify-end   bg-slate-100 pr-48 pl-10 pb-10 ">
+        <div className="flex  w-full flex-col justify-end   pr-48 pl-10 pb-10 ">
           <section className="flex h-[400px] w-[430px] ">
             <img
               src={perrojugo}
