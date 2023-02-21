@@ -22,9 +22,6 @@ function FormProfile() {
     phone: "",
     emergencyphone: "",
   });
-  const [repeat, setRepeat] = useState({
-    repeatPassword: "",
-  });
   const handleChange = (e) => {
     const property = e.target.name;
     const value = e.target.value;
@@ -35,11 +32,6 @@ function FormProfile() {
       setForm({ ...form, [property]: value });
       setErrors({ ...errors, ...validationProfile(property, value) }); //NO CAMBIAR ESTO POR DIOS
     }
-  };
-  const handleChangeRepeat = (e) => {
-    const property = e.target.name;
-    const value = e.target.value;
-    setRepeat({ [property]: value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,9 +50,6 @@ function FormProfile() {
         password: "",
         phone: "",
         emergencyphone: "",
-      });
-      setRepeat({
-        repeatPassword: "",
       });
     } else {
       console.log("Hay errores en el formulario");
@@ -121,7 +110,7 @@ function FormProfile() {
             <span className="text-red-500">{errors.password}</span>
           )}
         </div>
-        <div className="group relative z-0 mb-6 h-11 w-full">
+        {/* <div className="group relative z-0 mb-6 h-11 w-full">
           <input
             onChange={handleChangeRepeat}
             type="password"
@@ -137,7 +126,7 @@ function FormProfile() {
           {errors.repeatPassword && (
             <span className="text-red-500">{errors.repeatPassword}</span>
           )}
-        </div>
+        </div> */}
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="group relative z-0 mb-6 h-11 w-full">
             <input
