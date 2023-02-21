@@ -1,4 +1,4 @@
-import photoUser from "../../../../assets/borrador/profile.jpg";
+import photoUser from "../../../../assets/general/profile.svg";
 
 function PhotoName() {
   return (
