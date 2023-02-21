@@ -5,6 +5,7 @@ import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/footer/footer";
 import LandingShop from "./pages/ecommerce/LandingShop/LandingShop";
+import About from "./pages/About/About";
 // import Login from "./components/Login/Login";
 
 const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
@@ -21,7 +22,7 @@ const Checkout = lazy(() => import("./pages/ecommerce/Checkout/Checkout"));
 const FormCreateProduct = lazy(() =>
   import("./pages/ecommerce/Forms/FormCreateProduct/FormCreateProduct")
 );
-const Login = lazy(() => import("./components/Login/Login/"));
+const Login = lazy(() => import("./components/Login/Login"));
 const FormModifyProduct = lazy(() =>
   import("./pages/ecommerce/Forms/FormModifyProduct/FormModifyProduct")
 );
@@ -58,6 +59,7 @@ function App() {
             element={<FormModifyProduct />}
           />
           <Route path="*" element={<NotFound />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </Suspense>
       {pathname !== "/" && <Footer />}

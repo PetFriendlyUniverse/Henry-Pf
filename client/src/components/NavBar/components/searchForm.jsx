@@ -1,9 +1,9 @@
-import search from "@/assets/search.svg";
+import search from "../../../assets/general/search.svg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setFilters } from "../../../redux/features/products/productsSlice";
 
-function searchForm() {
+function SearchForm() {
   const [searchValue, setSearchValue] = useState("");
   const dispatch = useDispatch();
 
@@ -17,19 +17,24 @@ function searchForm() {
     dispatch(setFilters({ filter: "name", value: searchValue }));
   };
   return (
-    <form action="" onSubmit={handleSearch} className="relative flex ">
+    <form action="" onSubmit={handleSearch} className="relative flex  ">
       <input
         type="text"
         className="w-full rounded-xl px-2 py-1"
         value={searchValue}
         onChange={handleInputSearch}
       />
-      <img src={search} alt="" className="absolute right-0 top-1" />
+      <img
+        src={search}
+        alt="Buscar"
+        onClick={handleSearch}
+        className="absolute right-1 top-0 cursor-pointer py-[2px] hover:scale-105"
+      />
     </form>
   );
 }
 
-export default searchForm;
+export default SearchForm;
 
 /* 
 relative flex items-center lg:w-96

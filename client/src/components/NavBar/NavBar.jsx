@@ -23,12 +23,18 @@ function NavBar() {
           />
         </Link>
         <div>
-          <NavLink className="text-xl text-yellowPalette" to="/landingshop">
+          <NavLink
+            className="rounded-md border border-black py-1 px-4 text-base font-semibold text-black shadow-sm shadow-black active:shadow-inner active:shadow-black"
+            to="/landingshop"
+          >
             Shop
           </NavLink>
         </div>
         <div>
-          <NavLink className="text-xl text-yellowPalette" to="/services">
+          <NavLink
+            className="rounded-md border border-black py-1 px-4 text-base font-semibold text-black shadow-sm shadow-black active:shadow-inner active:shadow-black"
+            to="/services"
+          >
             Servicios
           </NavLink>
         </div>
@@ -71,6 +77,14 @@ function NavBar() {
             </li>
             <li>
               <DropdownShop />
+            </li>
+            <li>
+              <Link
+                to="/about"
+                className="rounded-md border border-black py-1 px-4 shadow-sm shadow-black active:shadow-inner active:shadow-black"
+              >
+                Sobre Nosotros
+              </Link>
             </li>
           </ul>
         </div>

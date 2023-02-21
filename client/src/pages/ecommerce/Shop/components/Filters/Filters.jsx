@@ -15,7 +15,7 @@ function Filters() {
       {/* <div className="border border-black"> */}
       <button
         onClick={handleClick}
-        className={`w-min self-center rounded-md border border-cyan-50 px-4 py-1 text-xs text-lightwhite md:text-sm lg:cursor-auto lg:text-base lg:font-semibold lg:text-black`}
+        className={`w-min self-center rounded-md  px-4 py-1 text-xs uppercase text-lightwhite md:text-sm lg:cursor-auto lg:text-base lg:font-bold lg:tracking-widest lg:text-black`}
       >
         Filtros
       </button>
