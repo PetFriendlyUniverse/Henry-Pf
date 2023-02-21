@@ -58,8 +58,11 @@ const loginUser = async (mail, password) => {
   if (!user) throw Error("User not found");
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) throw Error("Invalid credentials");
-  const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
-  return token;
+  const token = jwt.sign(
+    { id: user.id, token: user.token },
+    process.env.JWT_SECRET
+  );
+  return { id: user.id, token };
 };
 
 module.exports = {
