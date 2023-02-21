@@ -4,6 +4,7 @@ import LinkButton from "../../Button/LinkButton";
 import { Link } from "react-router-dom";
 import { clearShopCart } from "../../../redux/features/products/productsSlice";
 import deleteBtn from "../../../assets/general/delete.svg";
+import Swal from "sweetalert2";
 
 function DropdownShop() {
   const dispatch = useDispatch();
@@ -15,7 +16,25 @@ function DropdownShop() {
     return shopCartProducts[id];
   });
   const handleDelete = () => {
-    dispatch(clearShopCart());
+    totalPrice > 0 &&
+      Swal.fire({
+        icon: "warning",
+        title: "Está seguro de que quiere eliminar su carro de compras?",
+        showConfirmButton: true,
+        confirmButtonText: "Si",
+        showDenyButton: true,
+        denyButtonText: "No",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch(dispatch(clearShopCart()));
+          Swal.fire({
+            title: "Productos Eliminados",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
 
   return (
