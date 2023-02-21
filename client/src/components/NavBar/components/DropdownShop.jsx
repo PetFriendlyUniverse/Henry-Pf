@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LinkButton from "../../Button/LinkButton";
 import { Link } from "react-router-dom";
 import { clearShopCart } from "../../../redux/features/products/productsSlice";
+import deleteBtn from "../../../assets/general/delete.svg";
 
 function DropdownShop() {
   const dispatch = useDispatch();
@@ -33,13 +34,14 @@ function DropdownShop() {
       </button>
 
       <div className=" z-10 hidden max-h-96 w-96 rounded-b-lg bg-blue-100  group-hover:block lg:absolute">
-        <div className=" flex w-full justify-between border-b border-black px-4 py-1 ">
+        <div className=" flex w-full items-center justify-between border-b border-black px-4 py-1 ">
           <p className="inline-block">{products.length} productos</p>
-          <span
-            onClick={handleDelete}
-            className="rounded-md border border-red-500 px-1  text-red-500 hover:bg-red-500 hover:text-cyan-50"
-          >
-            Vaciar Carrito
+          <span onClick={handleDelete}>
+            <img
+              src={deleteBtn}
+              className="w-7 cursor-pointer hover:scale-105"
+              alt="vaciar carrito"
+            />
           </span>
         </div>
         <div
