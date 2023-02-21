@@ -5,6 +5,7 @@ import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/footer/footer";
 import LandingShop from "./pages/ecommerce/LandingShop/LandingShop";
+import About from "./pages/About/About";
 // import Login from "./components/Login/Login";
 
 const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
@@ -58,6 +59,7 @@ function App() {
             element={<FormModifyProduct />}
           />
           <Route path="*" element={<NotFound />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </Suspense>
       {pathname !== "/" && <Footer />}

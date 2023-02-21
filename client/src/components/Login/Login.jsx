@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import { validationProfile } from "../../pages/ecommerce/Forms/Validations/Profile";
 import LinkButton from "../Button/LinkButton";
+import Swal from "sweetalert2";
 
 function Login() {
   const [form, setForm] = useState({
@@ -29,11 +30,11 @@ function Login() {
     const property = e.target.name;
     const value = e.target.value;
     if (property === "pets") {
+      //Esto todavia no hay que tenerlo en cuenta
       setForm({ ...form, [property]: [value] });
     } else {
       setForm({ ...form, [property]: value });
-      setErrors({ ...errors, ...validationProfile(property, value) });
-      //setError(validateProduct(property, value));
+      setErrors({ ...errors, ...validationProfile(property, value) }); //NO CAMBIAR ESTO POR DIOS
     }
   };
   const handleChangeRepeat = (e) => {
@@ -43,34 +44,59 @@ function Login() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    axios.post("user/create", form);
-    setForm({
-      user: "",
-      name: "",
-      lastname: "",
-      mail: "",
-      password: "",
-      phone: "",
-    });
-    setRepeat({
-      repeatPassword: "",
-    });
+    const errorValues = Object.values(errors);
+    const isFormValid = errorValues.every((val) => val === "");
+    if (isFormValid) {
+      axios
+        .post("user/create", form)
+        .then((res) =>
+          Swal.fire({
+            icon: "success",
+            title: "El registro se ha sido realizado con éxito!",
+            showConfirmButton: true,
+            timer: 1500,
+          })
+        )
+        .catch((err) => console.log(err));
+      setForm({
+        user: "",
+        name: "",
+        lastname: "",
+        mail: "",
+        password: "",
+        phone: "",
+      });
+      setRepeat({
+        repeatPassword: "",
+      });
+    } else {
+      console.log("Hay errores en el formulario");
+    }
   };
+
+  // const handleClick = async () => {
+  //   await Swal.fire({
+  //     icon: "success",
+  //     title: "El registro se ha sido realizado con éxito!",
+  //     showConfirmButton: true,
+  //     timer: 1500,
+  //   });
+  // };
+
   return (
     <>
       <div className="flex h-screen items-center justify-center pt-20">
-        <div class={s.main}>
+        <div className={s.main}>
           <input type="checkbox" id={s["chk"]} aria-hidden="true" />
 
-          <div class={s.login}>
-            <form class={s.form}>
+          <div className={s.login}>
+            <form className={s.form}>
               <label htmlFor={s["chk"]} aria-hidden="true">
                 PET FRIENDLY
               </label>
 
               <input
-                class={s.input}
+                className={s.input}
                 onChange={handleChange}
                 type="email"
                 name="mail"
@@ -78,7 +104,7 @@ function Login() {
                 required=""
               />
               <input
-                class={s.input}
+                className={s.input}
                 onChange={handleChange}
                 type="password"
                 name="password"
@@ -89,8 +115,8 @@ function Login() {
             </form>
           </div>
 
-          <div class={s.register}>
-            <form class={s.form} onSubmit={handleSubmit}>
+          <div className={s.register}>
+            <form className={s.form} onSubmit={handleSubmit}>
               <label htmlFor={s["chk"]} aria-hidden="true">
                 Registrarse
               </label>

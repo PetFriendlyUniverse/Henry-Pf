@@ -11,7 +11,7 @@ function Contacts() {
       </div>
       <div class="mb-2 sm:mb-0 md:px-7 lg:px-10">
         <h6 class="font-bold">Mail:</h6>
-        <p class="text-sm">jennaniston@gmail.com</p>
+        <p class="text-sm">federicoalmeida15@gmail.com</p>
       </div>
     </div>
   );
