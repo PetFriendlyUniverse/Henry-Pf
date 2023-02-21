@@ -92,7 +92,7 @@ function Login() {
           <div className={s.login}>
             <form className={s.form}>
               <label htmlFor={s["chk"]} aria-hidden="true">
-                Log in
+                PET FRIENDLY
               </label>
 
               <input
@@ -100,7 +100,7 @@ function Login() {
                 onChange={handleChange}
                 type="email"
                 name="mail"
-                placeholder="Email"
+                placeholder="Mail"
                 required=""
               />
               <input
@@ -108,140 +108,112 @@ function Login() {
                 onChange={handleChange}
                 type="password"
                 name="password"
-                placeholder="Password"
+                placeholder="Contraseña"
                 required=""
               />
-              <button>Log in</button>
+              <button>Ingresar</button>
             </form>
           </div>
 
           <div className={s.register}>
             <form className={s.form} onSubmit={handleSubmit}>
               <label htmlFor={s["chk"]} aria-hidden="true">
-                Register
+                Registrarse
               </label>
-              <div className="relative flex flex-col">
-                <input
-                  onChange={handleChange}
-                  type="text"
-                  name="user"
-                  value={form.user}
-                  className={s.input}
-                  placeholder=" Username "
-                  autoComplete="off"
-                  required="true"
-                />
-                {errors.user && (
-                  <span className=" absolute top-8 ml-1 text-xs text-red-500">
-                    {errors.user}
-                  </span>
-                )}
-              </div>
-              <div className="relative flex flex-col">
-                <input
-                  onChange={handleChange}
-                  className={s.input}
-                  value={form.name}
-                  type="text"
-                  name="name"
-                  placeholder=" Name "
-                  autoComplete="off"
-                  required="true"
-                />
-                {errors.name && (
-                  <span className="absolute top-8 ml-1 text-xs text-red-500">
-                    {errors.name}
-                  </span>
-                )}
-              </div>
-              <div className="relative flex flex-col">
-                <input
-                  onChange={handleChange}
-                  value={form.lastname}
-                  className={s.input}
-                  type="text"
-                  name="lastname"
-                  placeholder=" Lastname "
-                  autoComplete="off"
-                  required="true"
-                />
-                {errors.lastname && (
-                  <span className=" absolute top-8 ml-1 text-xs text-red-500">
-                    {errors.lastname}
-                  </span>
-                )}
-              </div>
-              <div className="relative flex flex-col">
-                <input
-                  onChange={handleChange}
-                  className={s.input}
-                  value={form.mail}
-                  type="email"
-                  name="mail"
-                  placeholder=" Email"
-                  required="true"
-                  autoComplete="off"
-                />
-                {errors.mail && (
-                  <span className=" absolute top-8 ml-1 text-xs text-red-500">
-                    {errors.mail}
-                  </span>
-                )}
-              </div>
-              <div className="relative flex flex-col">
-                <input
-                  onChange={handleChange}
-                  value={form.phone}
-                  className={s.input}
-                  type="number"
-                  name="phone"
-                  placeholder=" Phone"
-                  autoComplete="off"
-                  required="true"
-                />
-                {errors.phone && (
-                  <span className="absolute top-8 ml-1 text-xs text-red-500">
-                    {errors.phone}
-                  </span>
-                )}
-              </div>
-              <div className="relative flex flex-col">
-                <input
-                  className={s.input}
-                  value={form.password}
-                  onChange={handleChange}
-                  type="password"
-                  name="password"
-                  placeholder=" Password"
-                  autoComplete="off"
-                  required="true"
-                />
-
-                {errors.password && (
-                  <span className="absolute top-8 ml-1 text-xs text-red-500">
-                    {errors.password}
-                  </span>
-                )}
-              </div>
-
-              <div className="relative flex flex-col">
-                <input
-                  onChange={handleChangeRepeat}
-                  className={s.input}
-                  type="password"
-                  name="repeatPassword"
-                  value={repeat.repeatPassword}
-                  placeholder=" Repeat Password "
-                  autoComplete="off"
-                  required="true"
-                />
-                {/* {errors.password === errors.repeatPassword ? null : (
-                  <div>
-                    <p className="absolute top-8 ml-1 text-xs text-red-700">{`Passwords does not match`}</p>
-                  </div>
-                )} */}
-              </div>
-              <button onSubmit={handleSubmit}>Registrar</button>
+              <input
+                onChange={handleChange}
+                type="text"
+                name="user"
+                value={form.user}
+                class={s.input}
+                placeholder="Usuario "
+                autoComplete="off"
+                required="true"
+              />
+              {errors.user && (
+                <span className=" text-xs text-red-500">{errors.user}</span>
+              )}
+              <input
+                onChange={handleChange}
+                class={s.input}
+                value={form.name}
+                type="text"
+                name="name"
+                placeholder="Nombre"
+                autoComplete="off"
+                required="true"
+              />
+              {errors.name && (
+                <span className="text-xs text-red-500">{errors.name}</span>
+              )}
+              <input
+                onChange={handleChange}
+                value={form.lastname}
+                class={s.input}
+                type="text"
+                name="lastname"
+                placeholder="Apellido "
+                autoComplete="off"
+                required="true"
+              />
+              {errors.lastname && (
+                <span className="text-xs text-red-500">{errors.lastname}</span>
+              )}
+              <input
+                onChange={handleChange}
+                class={s.input}
+                value={form.mail}
+                type="email"
+                name="mail"
+                placeholder="Mail"
+                required="true"
+                autoComplete="off"
+              />
+              {errors.mail && (
+                <span className="text-xs text-red-500">{errors.mail}</span>
+              )}
+              <input
+                onChange={handleChange}
+                value={form.phone}
+                class={s.input}
+                type="number"
+                name="phone"
+                placeholder=" Teléfono"
+                autoComplete="off"
+                required="true"
+              />
+              {errors.phone && (
+                <span className="text-xs text-red-500">{errors.phone}</span>
+              )}
+              <input
+                class={s.input}
+                value={form.password}
+                onChange={handleChange}
+                type="password"
+                name="password"
+                placeholder="Contraseña"
+                autoComplete="off"
+                required="true"
+              />
+              {errors.password && (
+                <span className="text-xs text-red-500">{errors.password}</span>
+              )}
+              <input
+                onChange={handleChangeRepeat}
+                class={s.input}
+                type="password"
+                name="repeatPassword"
+                value={repeat.repeatPassword}
+                placeholder="Repetir Contraseña "
+                autoComplete="off"
+                required="true"
+              />
+              {errors.password === errors.repeatPassword ? null : (
+                <div>
+                  <p className="text-xs text-red-700">{`Passwords does not match`}</p>
+                </div>
+              )}
+              <LinkButton />
             </form>
           </div>
         </div>
