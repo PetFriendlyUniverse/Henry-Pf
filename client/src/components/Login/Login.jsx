@@ -5,8 +5,10 @@ import { useState } from "react";
 import { validationProfile } from "../../pages/ecommerce/Forms/Validations/Profile";
 import LinkButton from "../Button/LinkButton";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     user: "",
     name: "",
@@ -23,9 +25,9 @@ function Login() {
     password: "",
     phone: "",
   });
-  const [repeat, setRepeat] = useState({
-    repeatPassword: "",
-  });
+  // const [repeat, setRepeat] = useState({
+  //   repeatPassword: "",
+  // });
   const handleChange = (e) => {
     const property = e.target.name;
     const value = e.target.value;
@@ -37,11 +39,32 @@ function Login() {
       setErrors({ ...errors, ...validationProfile(property, value) }); //NO CAMBIAR ESTO POR DIOS
     }
   };
-  const handleChangeRepeat = (e) => {
-    const property = e.target.name;
-    const value = e.target.value;
-    setRepeat({ [property]: value });
+  // const handleChangeRepeat = (e) => {
+  //   const property = e.target.name;
+  //   const value = e.target.value;
+  //   // setRepeat({ [property]: value });
+  // };
+  const handletSubmitLogin = (e) => {
+    e.preventDefault();
+    try {
+      Swal.fire({
+        icon: "success",
+        title: "El ingreso se ha sido realizado con éxito!",
+        showConfirmButton: true,
+        timer: 1500,
+      }).then(() => {
+        navigate("/shop");
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "El ingreso tuvo problemas vuelve a probar!",
+        showConfirmButton: true,
+        timer: 1500,
+      });
+    }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const errorValues = Object.values(errors);
@@ -66,9 +89,9 @@ function Login() {
         password: "",
         phone: "",
       });
-      setRepeat({
-        repeatPassword: "",
-      });
+      // setRepeat({
+      //   repeatPassword: "",
+      // });
     } else {
       console.log("Hay errores en el formulario");
     }
@@ -90,7 +113,7 @@ function Login() {
           <input type="checkbox" id={s["chk"]} aria-hidden="true" />
 
           <div className={s.login}>
-            <form className={s.form}>
+            <form onSubmit={handletSubmitLogin} className={s.form}>
               <label htmlFor={s["chk"]} aria-hidden="true">
                 PET FRIENDLY
               </label>
@@ -178,7 +201,7 @@ function Login() {
                 class={s.input}
                 type="number"
                 name="phone"
-                placeholder=" Teléfono"
+                placeholder="Teléfono"
                 autoComplete="off"
                 required="true"
               />
@@ -198,7 +221,7 @@ function Login() {
               {errors.password && (
                 <span className="text-xs text-red-500">{errors.password}</span>
               )}
-              <input
+              {/* <input
                 onChange={handleChangeRepeat}
                 class={s.input}
                 type="password"
@@ -212,8 +235,8 @@ function Login() {
                 <div>
                   <p className="text-xs text-red-700">{`Passwords does not match`}</p>
                 </div>
-              )}
-              <LinkButton />
+              )} */}
+              <LinkButton component={"Registrate"} />
             </form>
           </div>
         </div>
