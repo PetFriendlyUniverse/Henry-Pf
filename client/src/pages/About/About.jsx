@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import linkedln from "../../assets/socialmedia/linkedin.svg";
 import github from "../../assets/socialmedia/github.svg";
-import agustinimg from "../../assets/profileimg/agustinchavero.jpg";
+import agustinimg from "../../assets/profileimg/agustinchavero.jpeg";
 import benjaminimg from "../../assets/profileimg/benjamincastro.jpg";
-import federicoimg from "../../assets/profileimg/federicoalmeida.jpg";
-import florenciaimg from "../../assets/profileimg/florenciamarcos.jpg";
-import imanolimg from "../../assets/profileimg/imanoldominguez.jpg";
-import maxiimg from "../../assets/profileimg/maximopermingeat.jpg";
-import pabloimg from "../../assets/profileimg/pabloamico.jpg";
-import stefanoimg from "../../assets/profileimg/stefanegemelli.jpg";
+import federicoimg from "../../assets/profileimg/federicoalmeida.jpeg";
+import florenciaimg from "../../assets/profileimg/florenciamarcos.jpeg";
+import imanolimg from "../../assets/profileimg/imanoldominguez.jpeg";
+import maxiimg from "../../assets/profileimg/maximopermingeat.jpeg";
+import pabloimg from "../../assets/profileimg/pabloamico.jpeg";
+import stefanoimg from "../../assets/profileimg/stefanegemelli.jpeg";
 function About() {
   const members = [
     {
