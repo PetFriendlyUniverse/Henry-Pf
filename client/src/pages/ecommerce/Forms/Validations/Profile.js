@@ -3,7 +3,9 @@ const validationProfile = (property, value) => {
   let numberRegex = /^[0-9]+$/;
   let emailRegex =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-  let passwordRegex = /^[a-zA-ZÀ-ÿ\s]{1,20}$/;
+  let passwordRegex =
+    /^(?=(?:.*\d))(?=.*[A-Z])(?=.*[a-z])(?=.*[.,*!?¿¡/#$%&])\S{8,64}$/;
+  // /^[a-zA-Z0-9À-ÿ\s]{1,20}$/;
 
   //  /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i; ES EL ANTERIOR REGEX de mail
 
@@ -61,19 +63,31 @@ const validationProfile = (property, value) => {
     error.password = "Ingrese la contraseña";
   } else if (property === "password") {
     if (!passwordRegex.test(value)) {
-      error.password = "Proba con otra contraseña";
+      error.password =
+        "La contraseña debe contener 8 caracteres minimo, minuscula, mayuscula, numero y signo especial";
     } else if (value.length > 20) {
-      error.password = "La contraseña es demaciado larga";
+      error.password = "La contraseña es demasiado larga";
     } else {
       error.password = "";
     }
   }
 
-  if (property === "emergencyphone" && value <= 0) {
+  if (property === "phone" && value <= 0) {
     if (!numberRegex.test(value)) {
-      error.emergencyphone = "Por favor ingrese su numero de telefono";
+      error.phone = "Por favor ingrese su numero de telefono";
     } else if (value.length > 15) {
-      error.emergencyphone = "El numero de telefono es demaciado largo";
+      error.phone = "El numero de telefono es demaciado largo";
+    } else {
+      error.phone = "";
+    }
+  }
+
+  if (property === "emergencyphone" && value <= 0) {
+    error.emergencyphone = "Ingrese un numero de emergencia";
+    if (!numberRegex.test(value)) {
+      error.emergencyphone = "Por favor ingrese un numero de emergencia";
+    } else if (value.length > 15) {
+      error.emergencyphone = "El un numero de emergencia es demaciado largo";
     } else {
       error.emergencyphone = "";
     }

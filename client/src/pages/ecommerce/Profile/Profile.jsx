@@ -51,7 +51,7 @@ function Profile() {
                     Direcciones
                   </button>
                 </li>
-                <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
+                {/* <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
                   <button
                     onClick={handleShowInfo}
                     name="payment"
@@ -59,7 +59,7 @@ function Profile() {
                   >
                     Formas de Pago
                   </button>
-                </li>
+                </li> */}
                 <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
                   {/* Reveer esto de volver al hacer Health/Services */}
                   <Link to="/shop">
@@ -74,25 +74,25 @@ function Profile() {
           {showInfo == "profile" ? (
             <div className="border-gray-400 p-3 lg:border-b-2">
               <h1 className="flex justify-center pl-2 text-3xl font-semibold">
-                Profile
+                Perfil
               </h1>
             </div>
           ) : showInfo == "contact" ? (
             <div className="border-gray-400 p-3 lg:border-b-2">
               <h1 className="flex justify-center pl-2 text-3xl font-semibold">
-                Contact
+                Contacto
               </h1>
             </div>
           ) : showInfo == "ubication" ? (
             <div className="border-gray-400 p-3 lg:border-b-2">
               <h1 className="flex justify-center pl-2 text-3xl font-semibold">
-                Adress
+                Direcciones
               </h1>
             </div>
           ) : (
             <div className="border-gray-400 p-3 lg:border-b-2">
               <h1 className="flex justify-center pl-2 text-3xl font-semibold">
-                Payment
+                Metodos de Pago
               </h1>
             </div>
           )}
@@ -113,12 +113,12 @@ function Profile() {
                   <LinkButton component={"Create your product"} />
                 </Link>
               </div>
-              <div class="flex py-2">
+              {/* <div class="flex py-2">
                 <img src={interrogation} alt="help" class="w-5" />
                 <button class="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
                   <img src={edit} alt="edit" />
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
