@@ -14,7 +14,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [1, 15],
+          len: [1, 50],
         },
         unique: true,
       },
@@ -44,12 +44,11 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [1, 20],
+          len: [1, 100],
         },
       },
       phone: {
         type: DataTypes.INTEGER,
-        allowNull: false,
         validate: {
           len: [1, 20],
         },

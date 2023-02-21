@@ -1,9 +1,12 @@
+require("dotenv").config();
+
 const {
   createUser,
   getAllUsers,
   updateAllUsers,
   deleteUsersById,
   getUserById,
+  loginUser,
 } = require("../controllers/userControllers");
 
 const postUserHandler = async (req, res) => {
@@ -78,10 +81,21 @@ const deleteUserHandler = async (req, res) => {
   }
 };
 
+const loginHandler = async (req, res) => {
+  const { mail, password } = req.body;
+  try {
+    const token = await loginUser(mail, password);
+    res.status(200).json({ token });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
   postUserHandler,
   getUserHandler,
   putUserHandler,
   deleteUserHandler,
   getUserDetailHandler,
+  loginHandler,
 };

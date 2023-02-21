@@ -1,4 +1,5 @@
 const express = require("express");
+const passport = require("passport");
 const morgan = require("morgan");
 const routes = require("./routes/index.js");
 const { ORIGIN } = process.env; // configurar su origen en env (en mi caso es ORIGIN=127.0.0.1 pero puede ser ORIGIN=localhost)
@@ -22,6 +23,7 @@ server.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
+server.use(passport.initialize());
 
 server.use("/", routes);
 
