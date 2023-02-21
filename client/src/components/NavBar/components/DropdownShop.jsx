@@ -33,7 +33,7 @@ function DropdownShop() {
       </button>
 
       <div className=" z-10 hidden max-h-96 w-96 rounded-b-lg bg-blue-100  group-hover:block lg:absolute">
-        <div className=" flex w-full justify-between border border-black px-4 py-1 ">
+        <div className=" flex w-full justify-between border-b border-black px-4 py-1 ">
           <p className="inline-block">{products.length} productos</p>
           <span
             onClick={handleDelete}
