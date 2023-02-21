@@ -3,7 +3,7 @@
   font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
-  background-color: #6225E6;
+  background-color: #60a5fa;
   max-height: 80vh;
   max-width: 50vw;
   width: 70vw;
@@ -22,7 +22,7 @@
 
 .main:hover{
 transition: 0.5s;
-box-shadow: 6px 6px 0 #957621;
+box-shadow: 6px 6px 0 #FBC638;
 
 }
 
@@ -31,6 +31,7 @@ box-shadow: 6px 6px 0 #957621;
   flex-direction: column;
   gap: 14px;
   padding: 24px;
+  height: 750px;
 }
 
 /*checkbox to switch from sign up to login*/
@@ -41,6 +42,8 @@ box-shadow: 6px 6px 0 #957621;
 /*Login*/
 .login {
   position: relative;
+  display: flex;
+  justify-content: center;
   width: 100%;
   height: 100%;
 }
@@ -62,25 +65,27 @@ label {
 
 /*Register*/
 .register {
-  background: #FBC638;
+  display: flex;
+  justify-content: center;
+  background: #edf16d;
   border-radius: 60% / 10%;
-  transform: translateY(10%);
+  transform: translateY(-12%);
   transition: .8s ease-in-out;
   
 }
 
 .register:hover{
-  transform: translateY(12%);
+  transform: translateY(-9%);
   animation: color_anim 1s infinite 0.6s;
 }
 
 .register label {
-  color: #573b8a;
-  transform: scale(.6);
+  color: #645e9d;
+  transform: scale(.8);
 }
 
 #chk:checked ~ .register {
-  transform: translateY(-42%);
+  transform: translateY(-85%);
 }
 
 #chk:checked ~ .register label {
@@ -94,11 +99,11 @@ label {
 }   
 /*Button*/
 .form button {
-  width: 85%;
+  width: 100%;
   height: 40px;
   margin: 12px auto 10%;
   color: #fff;
-  background: #573b8a;
+  background: #645e9d;
   font-size: 1rem;
   font-weight: bold;
   border: none;
@@ -108,8 +113,12 @@ label {
 }
 
 .form button:hover {
-  background-color: #6d44b8;
+  background-color: #645e9d;
 }
 
 
+.input{
+  width: 450px;
+  margin: 4px;
+}
 

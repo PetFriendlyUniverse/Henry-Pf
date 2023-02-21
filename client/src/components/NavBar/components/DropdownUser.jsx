@@ -4,7 +4,7 @@ import user from "../../../assets/general/profile.svg";
 
 function DropdownUser() {
   return (
-    <div className="group relative flex items-center gap-2 md:order-2 lg:flex-col">
+    <div className="group  relative flex items-center gap-2 md:order-2 lg:flex-col">
       <button
         type="button"
         className="mr-3 flex rounded-full  text-sm focus:ring-4 focus:ring-gray-300  md:mr-0"
@@ -49,11 +49,10 @@ function DropdownUser() {
               Settings
             </Link>
           </li>
-
           <li>
             <a
               href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-700 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Sign out
             </a>
