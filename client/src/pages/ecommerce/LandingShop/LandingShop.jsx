@@ -43,16 +43,16 @@ function LandingShop() {
         <section className="mt-5 flex w-full flex-col items-center sm:grid sm:grid-cols-2 sm:gap-3">
           <div className="sm:col-start-1 sm:col-end-3">
             <h1 className="text-center font-bold uppercase sm:text-2xl">
-              los más
+              productos
               <span className="font-bold uppercase text-yellow-600 sm:text-2xl">
                 {" "}
-                elegidos
+                destacados
               </span>
             </h1>
           </div>
           <div className="flex w-full flex-col items-center sm:col-start-1 sm:col-end-2">
             <Link
-              to="/shop/checkout/1"
+              to="/shop"
               className="my-3 flex w-4/5 items-center justify-center gap-2 bg-yellow-600 py-1 text-white sm:gap-5 sm:py-2  sm:px-4 lg:h-16"
             >
               <span>
@@ -151,7 +151,7 @@ function LandingShop() {
           </div>
           <div className="flex w-full flex-col items-center sm:col-start-2 sm:col-end-3">
             <Link
-              to="/shop/checkout/1"
+              to="/shop"
               className="mb-3 mt-10  flex w-4/5 items-center justify-center gap-2 bg-yellow-600 py-1 text-white sm:my-3 sm:gap-5 sm:py-2 sm:px-4 lg:h-16 "
             >
               <span>
@@ -277,10 +277,10 @@ function LandingShop() {
             <h3 className="text-slate-2 00 text-2xl font-bold  uppercase sm:text-3xl">
               Sobre nosotros
             </h3>
-            <p className="p-2 text-center  text-slate-300 sm:px-10 ">
+            <p className="p-2 text-center  text-slate-200 sm:px-10 ">
               Somos un grupo de 8 estudiantes de Henry apasionados por la
-              programación. ¡Estamos muy felices de su visita, esperamos que
-              disfrutes la experiencia en nuestra pagina web!.
+              programación. <br /> ¡Estamos muy felices de su visita, esperamos
+              que disfrutes la experiencia en nuestra sitio web!.
             </p>
           </div>
         </section>
@@ -290,7 +290,7 @@ function LandingShop() {
               medios <span className="uppercase text-white">de pago</span>
             </h4>
             <p className="mt-3 text-center font-semibold uppercase sm:mt-5 sm:px-2 sm:text-xl">
-              Trabajamos con todos los medios de pago ofrecidos por{" "}
+              Trabajamos con todos los medios de pago ofrecidos por <br />
               <span className="text-blue-700">MERCADO PAGO</span>
             </p>
           </div>

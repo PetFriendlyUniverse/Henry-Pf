@@ -1,9 +1,13 @@
 import Subcard from "../../SubCard/Subcard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LinkButton from "../../Button/LinkButton";
 import { Link } from "react-router-dom";
+import { clearShopCart } from "../../../redux/features/products/productsSlice";
+import deleteBtn from "../../../assets/general/delete.svg";
+import Swal from "sweetalert2";
 
 function DropdownShop() {
+  const dispatch = useDispatch();
   const shopCartProducts = useSelector((state) => state.Products?.shopCart);
   const productsIds = Object.keys(shopCartProducts);
   let totalPrice = 0;
@@ -11,6 +15,27 @@ function DropdownShop() {
     totalPrice += shopCartProducts[id].amount * shopCartProducts[id].price;
     return shopCartProducts[id];
   });
+  const handleDelete = () => {
+    totalPrice > 0 &&
+      Swal.fire({
+        icon: "warning",
+        title: "Está seguro de que quiere eliminar su carro de compras?",
+        showConfirmButton: true,
+        confirmButtonText: "Si",
+        showDenyButton: true,
+        denyButtonText: "No",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch(dispatch(clearShopCart()));
+          Swal.fire({
+            title: "Productos Eliminados",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
 
   return (
     <div className="group rounded-xl">
@@ -28,6 +53,16 @@ function DropdownShop() {
       </button>
 
       <div className=" z-10 hidden max-h-96 w-96 rounded-b-lg bg-blue-100  group-hover:block lg:absolute">
+        <div className=" flex w-full items-center justify-between border-b border-black px-4 py-1 ">
+          <p className="inline-block">{products.length} productos</p>
+          <span onClick={handleDelete}>
+            <img
+              src={deleteBtn}
+              className="w-7 cursor-pointer hover:scale-105"
+              alt="vaciar carrito"
+            />
+          </span>
+        </div>
         <div
           className={`flex h-80 flex-col gap-2 ${
             products.length > 3 && "overflow-scroll overflow-x-hidden"
