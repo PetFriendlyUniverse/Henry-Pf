@@ -13,7 +13,7 @@ function Incoming() {
         <h1 className="text-7xl font-extrabold">Sitio en desarrollo</h1>
       </div>
       <div className="flex justify-center px-0 align-middle">
-        <Link to="/shop">
+        <Link to="/landingshop">
           <LinkButton component={"Volver"} />
         </Link>
       </div>

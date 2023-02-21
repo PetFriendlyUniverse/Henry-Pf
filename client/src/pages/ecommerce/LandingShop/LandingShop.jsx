@@ -269,18 +269,18 @@ function LandingShop() {
             <h2 className="text-2xl font-bold text-yellow-400 sm:text-3xl">
               Pet Friendly Universe
             </h2>
-            <span className="text-xl font-bold uppercase text-green-400 sm:text-2xl">
-              Online Store
+            <span className="text-xl font-bold uppercase text-green-500 sm:text-2xl">
+              Tienda Online
             </span>
           </div>
           <div className="flex flex-col items-center justify-center gap-3 ">
             <h3 className="text-slate-2 00 text-2xl font-bold  uppercase sm:text-3xl">
               Sobre nosotros
             </h3>
-            <p className="p-2 text-center  text-slate-300 sm:px-10 ">
+            <p className="p-2 text-center  text-slate-200 sm:px-10 ">
               Somos un grupo de 8 estudiantes de Henry apasionados por la
-              programación. ¡Estamos muy felices de su visita, esperamos que
-              disfrutes la experiencia en nuestra pagina web!.
+              programación. <br /> ¡Estamos muy felices de su visita, esperamos
+              que disfrutes la experiencia en nuestra sitio web!.
             </p>
           </div>
         </section>
@@ -290,7 +290,7 @@ function LandingShop() {
               medios <span className="uppercase text-white">de pago</span>
             </h4>
             <p className="mt-3 text-center font-semibold uppercase sm:mt-5 sm:px-2 sm:text-xl">
-              Trabajamos con todos los medios de pago ofrecidos por{" "}
+              Trabajamos con todos los medios de pago ofrecidos por <br />
               <span className="text-blue-700">MERCADO PAGO</span>
             </p>
           </div>

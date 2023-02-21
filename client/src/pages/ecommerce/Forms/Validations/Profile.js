@@ -101,6 +101,12 @@ const validatePassword = (password, repeatPassword) => {
   if (password !== repeatPassword)
     return { errorRepeat: "Las contraseñas no coinciden" };
   return { errorRepeat: "" };
+
+  /* let error = {};
+  if (password !== repeatPassword) {
+    error.errorRepeat = "Las contraseñas no coinciden";
+  } else error.errorRepeat = "";
+  return error; */
 };
 
 export { validationProfile, validatePassword };

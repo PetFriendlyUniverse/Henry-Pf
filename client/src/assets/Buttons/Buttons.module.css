@@ -38,7 +38,7 @@
   }
   
   .cta1:hover {
-    background-image: url("../background1.png");
+    background-image: url("../imagenes/background1.png");
     z-index: 0;
     transition: 0.5s;
     color: black;
@@ -65,7 +65,7 @@
       }
       
       .cta2:hover {
-        background-image: url("../background2.png");
+        background-image: url("../imagenes/background2.png");
         background-size: cover;
         overflow:hidden;
         background-repeat: no-repeat;

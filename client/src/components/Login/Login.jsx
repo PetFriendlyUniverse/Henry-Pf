@@ -4,8 +4,11 @@ import axios from "axios";
 import { useState } from "react";
 import { validationProfile } from "../../pages/ecommerce/Forms/Validations/Profile";
 import LinkButton from "../Button/LinkButton";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     user: "",
     name: "",
@@ -22,100 +25,123 @@ function Login() {
     password: "",
     phone: "",
   });
-  const [repeat, setRepeat] = useState({
-    repeatPassword: "",
-  });
-
-  const [login, setLogin] = useState({
-    mail: "",
-    password: "",
-  });
-
+  // const [repeat, setRepeat] = useState({
+  //   repeatPassword: "",
+  // });
   const handleChange = (e) => {
     const property = e.target.name;
     const value = e.target.value;
     if (property === "pets") {
+      //Esto todavia no hay que tenerlo en cuenta
       setForm({ ...form, [property]: [value] });
     } else {
       setForm({ ...form, [property]: value });
-      setErrors({ ...errors, ...validationProfile(property, value) });
+      setErrors({ ...errors, ...validationProfile(property, value) }); //NO CAMBIAR ESTO POR DIOS
     }
   };
-  const handleChangeRepeat = (e) => {
-    const property = e.target.name;
-    const value = e.target.value;
-    setRepeat({ [property]: value });
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios.post("user/create", form);
-    setForm({
-      user: "",
-      name: "",
-      lastname: "",
-      mail: "",
-      password: "",
-      phone: "",
-    });
-    setRepeat({
-      repeatPassword: "",
-    });
-  };
-
-  const handleChangeLogin = (e) => {
-    const property = e.target.name;
-    const value = e.target.value;
-    setLogin({ ...login, [property]: value });
-  };
-  const handleSubmitLogin = (e) => {
+  // const handleChangeRepeat = (e) => {
+  //   const property = e.target.name;
+  //   const value = e.target.value;
+  //   // setRepeat({ [property]: value });
+  // };
+  const handletSubmitLogin = (e) => {
     e.preventDefault();
     try {
-      axios.post("user/login", login).then((res) => {
-        const token = res.data.token;
-        localStorage.setItem("token", token);
+      Swal.fire({
+        icon: "success",
+        title: "El ingreso se ha sido realizado con éxito!",
+        showConfirmButton: true,
+        timer: 1500,
+      }).then(() => {
+        navigate("/shop");
       });
     } catch (error) {
-      console.error(error);
+      Swal.fire({
+        icon: "error",
+        title: "El ingreso tuvo problemas vuelve a probar!",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     }
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errorValues = Object.values(errors);
+    const isFormValid = errorValues.every((val) => val === "");
+    if (isFormValid) {
+      axios
+        .post("user/create", form)
+        .then((res) =>
+          Swal.fire({
+            icon: "success",
+            title: "El registro se ha sido realizado con éxito!",
+            showConfirmButton: true,
+            timer: 1500,
+          })
+        )
+        .catch((err) => console.log(err));
+      setForm({
+        user: "",
+        name: "",
+        lastname: "",
+        mail: "",
+        password: "",
+        phone: "",
+      });
+      // setRepeat({
+      //   repeatPassword: "",
+      // });
+    } else {
+      console.log("Hay errores en el formulario");
+    }
+  };
+
+  // const handleClick = async () => {
+  //   await Swal.fire({
+  //     icon: "success",
+  //     title: "El registro se ha sido realizado con éxito!",
+  //     showConfirmButton: true,
+  //     timer: 1500,
+  //   });
+  // };
+
   return (
     <>
       <div className="flex h-screen items-center justify-center pt-20">
-        <div class={s.main}>
+        <div className={s.main}>
           <input type="checkbox" id={s["chk"]} aria-hidden="true" />
 
-          <div class={s.login}>
-            <form onSubmit={handleSubmitLogin} class={s.form}>
+          <div className={s.login}>
+            <form onSubmit={handletSubmitLogin} className={s.form}>
               <label htmlFor={s["chk"]} aria-hidden="true">
-                Log in
+                PET FRIENDLY
               </label>
 
               <input
-                class={s.input}
-                onChange={handleChangeLogin}
+                className={s.input}
+                onChange={handleChange}
                 type="email"
                 name="mail"
-                value={login.mail}
-                placeholder="Email"
+                placeholder="Mail"
                 required=""
               />
               <input
-                class={s.input}
-                onChange={handleChangeLogin}
+                className={s.input}
+                onChange={handleChange}
                 type="password"
                 name="password"
-                value={login.password}
-                placeholder="Password"
+                placeholder="Contraseña"
                 required=""
               />
-              <button>Log in</button>
+              <button>Ingresar</button>
             </form>
           </div>
 
-          <div class={s.register}>
-            <form class={s.form} onSubmit={handleSubmit}>
+          <div className={s.register}>
+            <form className={s.form} onSubmit={handleSubmit}>
               <label htmlFor={s["chk"]} aria-hidden="true">
-                Register
+                Registrarse
               </label>
               <input
                 onChange={handleChange}
@@ -123,7 +149,7 @@ function Login() {
                 name="user"
                 value={form.user}
                 class={s.input}
-                placeholder="Username "
+                placeholder="Usuario "
                 autoComplete="off"
                 required="true"
               />
@@ -136,7 +162,7 @@ function Login() {
                 value={form.name}
                 type="text"
                 name="name"
-                placeholder="name "
+                placeholder="Nombre"
                 autoComplete="off"
                 required="true"
               />
@@ -149,7 +175,7 @@ function Login() {
                 class={s.input}
                 type="text"
                 name="lastname"
-                placeholder="lastname "
+                placeholder="Apellido "
                 autoComplete="off"
                 required="true"
               />
@@ -162,7 +188,7 @@ function Login() {
                 value={form.mail}
                 type="email"
                 name="mail"
-                placeholder="Email"
+                placeholder="Mail"
                 required="true"
                 autoComplete="off"
               />
@@ -175,7 +201,7 @@ function Login() {
                 class={s.input}
                 type="number"
                 name="phone"
-                placeholder=" phone"
+                placeholder="Teléfono"
                 autoComplete="off"
                 required="true"
               />
@@ -188,20 +214,20 @@ function Login() {
                 onChange={handleChange}
                 type="password"
                 name="password"
-                placeholder="Password"
+                placeholder="Contraseña"
                 autoComplete="off"
                 required="true"
               />
               {errors.password && (
                 <span className="text-xs text-red-500">{errors.password}</span>
               )}
-              <input
+              {/* <input
                 onChange={handleChangeRepeat}
                 class={s.input}
                 type="password"
                 name="repeatPassword"
                 value={repeat.repeatPassword}
-                placeholder="Repeat Password "
+                placeholder="Repetir Contraseña "
                 autoComplete="off"
                 required="true"
               />
@@ -209,8 +235,8 @@ function Login() {
                 <div>
                   <p className="text-xs text-red-700">{`Passwords does not match`}</p>
                 </div>
-              )}
-              <LinkButton component={"Register"} />
+              )} */}
+              <LinkButton component={"Registrate"} />
             </form>
           </div>
         </div>

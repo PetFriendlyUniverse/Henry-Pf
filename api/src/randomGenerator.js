@@ -63,7 +63,7 @@ const generator = () => {
         let size = sizes[Math.ceil(Math.random() * 3)];
         let weight = Math.ceil(Math.random() * 2) * 5 + 5;
         await products.createProduct({
-          name: `Product ${i}${s}`,
+          name: `Producto ${i}${s}`,
           img,
           price,
           description,
