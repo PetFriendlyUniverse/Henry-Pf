@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function DropdownUser() {
   return (
-    <div className="group relative flex items-center gap-2 md:order-2 lg:flex-col">
+    <div className="group  relative flex items-center gap-2 md:order-2 lg:flex-col">
       <button
         type="button"
         className="mr-3 flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-gray-300  md:mr-0"
@@ -20,14 +20,14 @@ function DropdownUser() {
         />
       </button>
       <div
-        className="absolute top-7 -left-20 z-50 my-4 hidden list-none divide-y divide-gray-100 rounded-lg bg-primary text-base text-lightwhite  shadow group-hover:block  lg:-left-12"
+        className="absolute top-7 -left-20 z-50 my-4 hidden list-none divide-y divide-gray-100 rounded-md border  border-cyan-50 bg-blue-100  text-black  shadow group-hover:block  lg:-left-12"
         id="user-dropdown"
       >
         <div className="px-4 py-3">
-          <span className="block text-sm text-gray-900 dark:text-white">
+          <span className="block text-sm text-gray-900 dark:text-gray-700">
             Bonnie Green
           </span>
-          <span className="block truncate text-sm font-medium text-gray-500 dark:text-gray-400">
+          <span className="dark:text-gray7400 block truncate text-sm font-medium text-gray-500">
             name@flowbite.com
           </span>
         </div>
@@ -35,7 +35,7 @@ function DropdownUser() {
           <li>
             <a
               href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="dark:text-gray7200 block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Dashboard
             </a>
@@ -43,7 +43,7 @@ function DropdownUser() {
           <li>
             <Link
               to={`profile/1`}
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-700 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Settings
             </Link>
@@ -51,7 +51,7 @@ function DropdownUser() {
           <li>
             <a
               href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-700 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Earnings
             </a>
@@ -59,7 +59,7 @@ function DropdownUser() {
           <li>
             <a
               href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-700 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Sign out
             </a>
