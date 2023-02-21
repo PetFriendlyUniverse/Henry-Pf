@@ -76,10 +76,10 @@ function FormCreateProduct() {
     }
   };
   return (
-    <div className=" mb-28 flex min-h-screen justify-center py-28 ">
+    <div className="  flex min-h-screen justify-center bg-[url('https://petfood.com.ar/img/cms/symphony.png')] pt-28 pb-10">
       <form
         onSubmit={submitHandler}
-        className="w-11/12 rounded-xl p-3 shadow-2xl md:w-3/5 lg:h-auto lg:w-2/5"
+        className="w-11/12 rounded-xl bg-[#ffffff] p-3 shadow-2xl md:w-3/5 lg:h-auto lg:w-2/5"
       >
         <h3 className="mb-6">Create</h3>
         <div className="group relative z-0 mb-6 h-11 w-full">
@@ -93,7 +93,7 @@ function FormCreateProduct() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Name:
+            Nombre:
           </label>
           {error.name && <span className="text-red-500">{error.name}</span>}
         </div>
@@ -108,7 +108,7 @@ function FormCreateProduct() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Image:{" "}
+            Link de imagen:
           </label>
           {error.img && <span className="text-red-500">{error.img}</span>}
         </div>
@@ -123,7 +123,7 @@ function FormCreateProduct() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Price:{" "}
+            Precio:
           </label>
           {error.price && <span className="text-red-500">{error.price}</span>}
         </div>
@@ -138,7 +138,7 @@ function FormCreateProduct() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Description:{" "}
+            Descripción:
           </label>
           {error.description && (
             <span className="text-red-500">{error.description}</span>
@@ -155,7 +155,7 @@ function FormCreateProduct() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Stock:{" "}
+            Stock:
           </label>
           {error.stock && <span className="text-red-500">{error.stock}</span>}
         </div>
@@ -170,7 +170,7 @@ function FormCreateProduct() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Specie:{" "}
+            Especie:
           </label>
           {error.specie && <span className="text-red-500">{error.specie}</span>}
         </div>
@@ -185,7 +185,7 @@ function FormCreateProduct() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Breed:{" "}
+            Raza:
           </label>
           {error.breed && <span className="text-red-500">{error.breed}</span>}
         </div>
@@ -200,7 +200,7 @@ function FormCreateProduct() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Brand:{" "}
+            Marca:
           </label>
           {error.brand && <span className="text-red-500">{error.brand}</span>}
         </div>
@@ -215,7 +215,7 @@ function FormCreateProduct() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Weight:{" "}
+            Peso:
           </label>
           {error.weight && <span className="text-red-500">{error.weight}</span>}
         </div>
@@ -230,7 +230,7 @@ function FormCreateProduct() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Color:{" "}
+            Color:
           </label>
           {error.color && <span className="text-red-500">{error.color}</span>}
         </div>
@@ -245,7 +245,7 @@ function FormCreateProduct() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Size:{" "}
+            Tamaño:
           </label>
           {error.size && <span className="text-red-500">{error.size}</span>}
         </div>
@@ -260,13 +260,13 @@ function FormCreateProduct() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            StoreId:{" "}
+            StoreId:
           </label>
           {error.storeId && (
             <span className="text-red-500">{error.storeId}</span>
           )}
         </div>
-        {formComplete && <LinkButton component={"Create"} />}
+        {formComplete && <LinkButton component={"Crear"} />}
       </form>
     </div>
   );

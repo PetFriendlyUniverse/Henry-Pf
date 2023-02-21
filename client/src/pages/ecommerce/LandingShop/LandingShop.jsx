@@ -269,8 +269,8 @@ function LandingShop() {
             <h2 className="text-2xl font-bold text-yellow-400 sm:text-3xl">
               Pet Friendly Universe
             </h2>
-            <span className="text-xl font-bold uppercase text-green-400 sm:text-2xl">
-              Online Store
+            <span className="text-xl font-bold uppercase text-green-500 sm:text-2xl">
+              Tienda Online
             </span>
           </div>
           <div className="flex flex-col items-center justify-center gap-3 ">

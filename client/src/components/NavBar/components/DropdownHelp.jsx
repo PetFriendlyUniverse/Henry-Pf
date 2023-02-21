@@ -1,7 +1,7 @@
 function dropdownHelp() {
   return (
     <div className="group">
-      <button className="flex w-full items-center justify-between rounded-md border border-cyan-50 px-4 py-1 text-xs text-lightwhite md:text-sm lg:relative lg:text-base">
+      <button className="flex w-full items-center justify-between rounded-md border border-black px-4 py-1 text-xs text-black shadow-sm shadow-black md:text-sm lg:relative lg:text-base">
         Ayuda
         <svg
           className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180"
