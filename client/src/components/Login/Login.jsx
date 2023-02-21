@@ -66,7 +66,7 @@ function Login() {
           <div class={s.login}>
             <form class={s.form}>
               <label htmlFor={s["chk"]} aria-hidden="true">
-                Log in
+                PET FRIENDLY
               </label>
 
               <input
@@ -74,7 +74,7 @@ function Login() {
                 onChange={handleChange}
                 type="email"
                 name="mail"
-                placeholder="Email"
+                placeholder="Mail"
                 required=""
               />
               <input
@@ -82,17 +82,17 @@ function Login() {
                 onChange={handleChange}
                 type="password"
                 name="password"
-                placeholder="Password"
+                placeholder="Contraseña"
                 required=""
               />
-              <button>Log in</button>
+              <button>Ingresar</button>
             </form>
           </div>
 
           <div class={s.register}>
             <form class={s.form} onSubmit={handleSubmit}>
               <label htmlFor={s["chk"]} aria-hidden="true">
-                Register
+                Registrarse
               </label>
               <input
                 onChange={handleChange}
@@ -100,7 +100,7 @@ function Login() {
                 name="user"
                 value={form.user}
                 class={s.input}
-                placeholder="Username "
+                placeholder="Usuario "
                 autoComplete="off"
                 required="true"
               />
@@ -113,7 +113,7 @@ function Login() {
                 value={form.name}
                 type="text"
                 name="name"
-                placeholder="name "
+                placeholder="Nombre"
                 autoComplete="off"
                 required="true"
               />
@@ -126,7 +126,7 @@ function Login() {
                 class={s.input}
                 type="text"
                 name="lastname"
-                placeholder="lastname "
+                placeholder="Apellido "
                 autoComplete="off"
                 required="true"
               />
@@ -139,7 +139,7 @@ function Login() {
                 value={form.mail}
                 type="email"
                 name="mail"
-                placeholder="Email"
+                placeholder="Mail"
                 required="true"
                 autoComplete="off"
               />
@@ -152,7 +152,7 @@ function Login() {
                 class={s.input}
                 type="number"
                 name="phone"
-                placeholder=" phone"
+                placeholder=" Teléfono"
                 autoComplete="off"
                 required="true"
               />
@@ -165,7 +165,7 @@ function Login() {
                 onChange={handleChange}
                 type="password"
                 name="password"
-                placeholder="Password"
+                placeholder="Contraseña"
                 autoComplete="off"
                 required="true"
               />
@@ -178,7 +178,7 @@ function Login() {
                 type="password"
                 name="repeatPassword"
                 value={repeat.repeatPassword}
-                placeholder="Repeat Password "
+                placeholder="Repetir Contraseña "
                 autoComplete="off"
                 required="true"
               />

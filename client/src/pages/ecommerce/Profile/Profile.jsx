@@ -110,7 +110,7 @@ function Profile() {
               <div class="flex py-2">
                 <img src={interrogation} alt="help" class="w-3 sm:w-5" />
                 <Link to="/profile/store/create">
-                  <LinkButton component={"Create your product"} />
+                  <LinkButton component={"Crear tu producto"} />
                 </Link>
               </div>
               {/* <div class="flex py-2">
