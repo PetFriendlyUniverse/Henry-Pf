@@ -43,16 +43,16 @@ function LandingShop() {
         <section className="mt-5 flex w-full flex-col items-center sm:grid sm:grid-cols-2 sm:gap-3">
           <div className="sm:col-start-1 sm:col-end-3">
             <h1 className="text-center font-bold uppercase sm:text-2xl">
-              los más
+              productos
               <span className="font-bold uppercase text-yellow-600 sm:text-2xl">
                 {" "}
-                elegidos
+                destacados
               </span>
             </h1>
           </div>
           <div className="flex w-full flex-col items-center sm:col-start-1 sm:col-end-2">
             <Link
-              to="/shop/checkout/1"
+              to="/shop"
               className="my-3 flex w-4/5 items-center justify-center gap-2 bg-yellow-600 py-1 text-white sm:gap-5 sm:py-2  sm:px-4 lg:h-16"
             >
               <span>
@@ -151,7 +151,7 @@ function LandingShop() {
           </div>
           <div className="flex w-full flex-col items-center sm:col-start-2 sm:col-end-3">
             <Link
-              to="/shop/checkout/1"
+              to="/shop"
               className="mb-3 mt-10  flex w-4/5 items-center justify-center gap-2 bg-yellow-600 py-1 text-white sm:my-3 sm:gap-5 sm:py-2 sm:px-4 lg:h-16 "
             >
               <span>
