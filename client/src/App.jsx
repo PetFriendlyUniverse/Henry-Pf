@@ -9,7 +9,7 @@ import About from "./pages/About/About";
 // import Login from "./components/Login/Login";
 
 const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
-const Services = lazy(() => import("./pages/services/incoming"));
+const Services = lazy(() => import("./pages/Services/Services"));
 
 const Landing = lazy(() => import("./pages/Landing/Landing"));
 const ProductDetail = lazy(() =>
