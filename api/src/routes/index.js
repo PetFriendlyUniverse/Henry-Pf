@@ -16,7 +16,11 @@ require("../helpers/google.js");
 
 const router = Router();
 const { generator } = require("../randomGenerator");
-generator();
+// generator();
+router.use("/randomgenerator5000", (req, res) => {
+  generator();
+  res.send("Ejecucion de randomGenerator5000 exitosa");
+});
 router.use("/user", userRoutes);
 router.use("/products", productsRoutes);
 router.use("/invoices", invoicesRoutes);
