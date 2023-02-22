@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import { Suspense, lazy } from "react";
 import LinkButton from "../../components/Button/LinkButton";
 import Construction from "../../assets/borrador/construction.png";
 
