@@ -1,5 +1,6 @@
-const store = require("./controllers/storeControllers");
-const products = require("./controllers/productsControllers");
+// const store = require("./controllers/storeControllers");
+// const products = require("./controllers/productsControllers");
+const { Product, Store, Brands, Breeds, Species } = require("../src/db");
 
 const generator = () => {
   const species = {
@@ -48,15 +49,58 @@ const generator = () => {
     13: "https://animall.com.ar/5604/agility-perro-adulto-medianos-y-grandes-x-20-kg.jpg",
   };
 
+  const razas = [
+    "Pastor Alemán",
+    "Golden Retriever",
+    "Labrador Retriever",
+    "Caniche",
+    "Bulldog",
+    "Beagle",
+    "Rottweiler",
+    "Yorkshire Terrier",
+    "Dachshund",
+    "Boxer",
+    "Doberman Pinscher",
+    "Husky Siberiano",
+    "Cocker Spaniel",
+    "Chihuahua",
+    "Shih Tzu",
+    "Australian Shepherd",
+    "Pug",
+    "Gran Danés",
+    "Shiba Inu",
+    "Maltés",
+  ];
+
+  const flavors = [
+    "Carne y Pavo",
+    "Pollo y Cordero",
+    "Pescado y Cerdo",
+    "Pavo y Salmón",
+    "Cordero y Pato",
+    "Cerdo y Venado",
+    "Pescado y Conejo",
+    "Pollo y Quail",
+    "Pavo y Pheasant",
+    "Cordero y Bisonte",
+    "Cerdo y Kanguro",
+    "Pescado y Wild Boar",
+    "Pollo y Buffalo",
+    "Pavo y Fruit",
+    "Cordero y Vegetables",
+    "Cerdo y Cheese",
+    "Pescado y Yogurt",
+    "Pollo y Carne",
+    "Pavo y Pescado",
+    "Cordero y Cerdo",
+    "Cerdo y Pavo",
+  ];
+
   setTimeout(async () => {
+    const storesToCreate = [];
+    const productsToCreate = [];
     for (let i = 1; i <= 10; i++) {
-      /* let name = `Tienda ${i}`;
-      let phone = 1234567890;
-      let province = `Provincia ${i}`;
-      let locality = `Localidad ${i}`;
-      let streets = `Calles ${i}`;
-      let description = `Descripcion ${i}`; */
-      await store.createStore({
+      storesToCreate.push({
         name: `Tienda ${i}`,
         phone: 1234567890,
         province: `Provincia ${i}`,
@@ -64,8 +108,8 @@ const generator = () => {
         streets: `Calles ${i}`,
         description: `Descripcion ${i}`,
       });
-      console.log();
-      for (let s = 1; s <= 30; s++) {
+
+      for (let s = 1; s <= 20; s++) {
         let description = `Una descripción apropiada para este producto`;
         let price = Math.floor(Math.random() * 200 + 51);
         let stock = Math.ceil(Math.random() * 15);
@@ -75,15 +119,17 @@ const generator = () => {
         let img = imgs[indexBrandImg];
         let color = colors[Math.ceil(Math.random() * 4)];
         let size = sizes[Math.ceil(Math.random() * 3)];
-        let weight = Math.ceil(Math.random() * 2) * 5 + 5;
-        await products.createProduct({
-          name: `Producto ${i}${s}`,
+        let weight = Math.ceil(Math.random() * 3) * 5 + 5;
+        let breed = razas[Math.floor(Math.random() * 20)];
+
+        productsToCreate.push({
+          name: `Alimento ${brand} de ${flavors[s]}`,
           img,
           price,
           description,
           stock,
           specie,
-          breed: `raza${i}`,
+          breed,
           brand,
           storeId: i,
           color,
@@ -92,10 +138,59 @@ const generator = () => {
         });
       }
     }
-  }, 5000);
+    await Store.bulkCreate(storesToCreate);
+
+    const brandsToCreate = new Set();
+    const breedsToCreate = new Set();
+    const speciesToCreate = new Set();
+
+    productsToCreate.forEach((prod) => {
+      brandsToCreate.add(prod["brand"]);
+      breedsToCreate.add(prod["breed"]);
+      speciesToCreate.add(prod["specie"]);
+    });
+    const brandObj = [];
+    const breeObj = [];
+    const speciesObj = [];
+
+    for (let item of brandsToCreate) brandObj.push({ id: item });
+    for (let item of breedsToCreate) breeObj.push({ id: item });
+    for (let item of speciesToCreate) speciesObj.push({ id: item });
+
+    // Brands, Breeds, Species
+    Brands.bulkCreate(brandObj);
+    Breeds.bulkCreate(breeObj);
+    Species.bulkCreate(speciesObj);
+
+    await Product.bulkCreate(productsToCreate);
+  }, 30000);
 };
 
 module.exports = { generator };
+
+// await store.createStore({
+//   name: `Tienda ${i}`,
+//   phone: 1234567890,
+//   province: `Provincia ${i}`,
+//   locality: `Localidad ${i}`,
+//   streets: `Calles ${i}`,
+//   description: `Descripcion ${i}`,
+// });
+
+// await products.createProduct({
+//   name: `Alimento ${brand} de ${flavors[s]}`,
+//   img,
+//   price,
+//   description,
+//   stock,
+//   specie,
+//   breed,
+//   brand,
+//   storeId: i,
+//   color,
+//   size,
+//   weight,
+// });
 
 // {
 // 	"name": "Producto de Prueba",
