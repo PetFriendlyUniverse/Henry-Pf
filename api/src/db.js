@@ -46,6 +46,8 @@ const {
   Store,
   Favorite,
   Comments,
+  Daycare,
+  Walker,
 } = sequelize.models;
 
 Invoices.belongsToMany(Product, { through: Invoices_Products });
@@ -59,6 +61,12 @@ Invoices.belongsTo(User);
 
 Store.hasMany(Product);
 Product.belongsTo(Store);
+
+User.hasOne(Daycare);
+Daycare.belongsTo(User);
+
+User.hasOne(Walker);
+Walker.belongsTo(User);
 
 User.hasMany(Comments);
 Comments.belongsTo(User);
