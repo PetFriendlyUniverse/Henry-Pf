@@ -8,10 +8,9 @@ function DropdownUser() {
   const id = localStorage.getItem("id");
   const dispatch = useDispatch();
 
-  const userDetailId = useSelector((state) => state.User.userId);
+  const userDetailId = useSelector((state) => state.User?.userId);
 
   useEffect(() => {
-    console.log(id);
     dispatch(getUserApi(id));
   }, []);
 
@@ -38,10 +37,10 @@ function DropdownUser() {
       >
         <div className="px-4 py-3">
           <span className="block text-sm text-gray-900 dark:text-white">
-            {userDetailId.name}
+            {userDetailId?.name}
           </span>
           <span className="block truncate text-sm font-medium text-gray-500 dark:text-gray-400">
-            {userDetailId.mail}
+            {userDetailId?.mail}
           </span>
         </div>
         <ul className="py-2" aria-labelledby="user-menu-button">
