@@ -2,13 +2,14 @@ import { Link } from "react-router-dom";
 import { Carousel } from "flowbite-react";
 import useGetProducts from "../../../hooks/useGetProducts";
 import logo from "../../../assets/logo/logo.png";
+
 function LandingShop() {
   const product = useGetProducts();
   const list = product.slice(0, 6);
   console.log(list);
   return (
     <>
-      <header className="clip-header relative flex w-full flex-col bg-[url('https://petfood.com.ar/img/cms/back1-ok.jpg')] bg-cover bg-fixed bg-center bg-no-repeat pt-24  text-black sm:h-[650px] lg:min-h-[800px] xl:min-h-[800px]">
+      <header className="clip-header relative flex w-full flex-col bg-cover bg-fixed bg-center bg-no-repeat pt-24 text-black sm:h-[650px] sm:bg-balloonSM  md:bg-balloonMD lg:min-h-[800px] lg:bg-balloonLG xl:min-h-[800px]">
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         <div className="z-10 sm:mx-auto sm:grid sm:h-full  sm:grid-cols-3 sm:items-center sm:justify-center sm:gap-1 md:w-10/12 md:justify-items-center lg:top-1/2 lg:grid-cols-6 lg:gap-4">
           <Link

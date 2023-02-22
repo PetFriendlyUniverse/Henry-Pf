@@ -28,7 +28,9 @@ module.exports = {
       },
       backgroundImage: {
         white: "url('./assets/imagenes/backgroundwhite.png')",
-        ballon: "url('./assets/imagenes/ASD-01.png')",
+        balloonLG: "url('./assets/imagenes/ASD-01.png')",
+        balloonMD: "url('./assets/imagenes/ASD-tablet-01.png')",
+        balloonSM: "url('./assets/imagenes/ASD-sm-01.png')",
       },
       keyframes: {
         coloranim: {
