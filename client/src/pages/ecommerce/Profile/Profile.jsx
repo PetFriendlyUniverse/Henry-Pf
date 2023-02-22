@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import LinkButton from "../../../components/Button/LinkButton";
+import { useSelector } from "react-redux";
 
 import PhotoName from "./components/PhotoName";
 import PersonalInfo from "./components/PersonalInfo";
@@ -13,6 +14,7 @@ import interrogation from "../../../assets/general/interrogation.svg";
 
 function Profile() {
   const [showInfo, setShowInfo] = useState("profile");
+  const user = useSelector((state) => state.User?.userId);
   const handleShowInfo = (e) => {
     setShowInfo(e.target.name);
   };
@@ -20,7 +22,7 @@ function Profile() {
     <div className="flex justify-center pb-28 pt-36 lg:items-center">
       <div className="mt-6 flex h-full w-full flex-col rounded-md border-2 pt-2 md:flex-row lg:w-3/5">
         <div className="mb-3 p-3 xl:w-96 ">
-          <PhotoName />
+          <PhotoName img={user?.img} name={user?.name} />
           <div className="">
             <div className="mb-4 mt-4 border-gray-200 dark:border-gray-700">
               <ul className="-mb-px text-center text-sm font-medium">
@@ -98,11 +100,15 @@ function Profile() {
           )}
           <div className="flex flex-col pt-2 lg:flex xl:flex">
             {showInfo == "profile" ? (
-              <PersonalInfo />
+              <PersonalInfo name={user?.name} user={user?.user} />
             ) : showInfo == "contact" ? (
-              <Contacts />
+              <Contacts
+                phone={user?.phone}
+                emergencyphone={user?.emergencyphone}
+                mail={user?.mail}
+              />
             ) : showInfo == "ubication" ? (
-              <Ubication />
+              <Ubication province={user?.province} locality={user?.locality} />
             ) : (
               <Payment />
             )}

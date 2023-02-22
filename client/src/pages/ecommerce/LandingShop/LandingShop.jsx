@@ -2,13 +2,19 @@ import { Link } from "react-router-dom";
 import { Carousel } from "flowbite-react";
 import useGetProducts from "../../../hooks/useGetProducts";
 import logo from "../../../assets/logo/logo.png";
+import img1 from "../../../assets/imagenes/doghouse-01.png";
+import img2 from "../../../assets/imagenes/food-01.png";
+import img3 from "../../../assets/imagenes/toys-01.png";
+import img4 from "../../../assets/imagenes/gatos-juguetes-0.jpg";
+import img5 from "../../../assets/imagenes/cat-tree.jpg";
+import img6 from "../../../assets/imagenes/camaa-gato.jpg";
+
 function LandingShop() {
   const product = useGetProducts();
   const list = product.slice(0, 6);
-  console.log(list);
   return (
     <>
-      <header className="clip-header relative flex w-full flex-col bg-[url('https://petfood.com.ar/img/cms/back1-ok.jpg')] bg-cover bg-fixed bg-center bg-no-repeat pt-24  text-black sm:h-[650px] lg:min-h-[800px] xl:min-h-[800px]">
+      <header className="clip-header relative flex w-full flex-col bg-balloon bg-cover bg-fixed bg-center bg-no-repeat pt-24 text-black sm:h-[650px]  lg:min-h-[800px]  xl:min-h-[800px]">
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         <div className="z-10 sm:mx-auto sm:grid sm:h-full  sm:grid-cols-3 sm:items-center sm:justify-center sm:gap-1 md:w-10/12 md:justify-items-center lg:top-1/2 lg:grid-cols-6 lg:gap-4">
           <Link
@@ -141,11 +147,9 @@ function LandingShop() {
             </Link>
             <div className=" h-96 w-full sm:h-64 xl:h-80 2xl:h-96">
               <Carousel>
-                <img src="https://petfood.com.ar/img/cms/PERR1.jpg" alt="..." />
-                <img src="https://petfood.com.ar/img/cms/PERR1.jpg" alt="..." />
-                <img src="https://petfood.com.ar/img/cms/PERR1.jpg" alt="..." />
-                <img src="https://petfood.com.ar/img/cms/PERR1.jpg" alt="..." />
-                <img src="https://petfood.com.ar/img/cms/PERR1.jpg" alt="..." />
+                <img src={img1} alt="..." />
+                <img src={img2} alt="..." />
+                <img src={img3} alt="..." />
               </Carousel>
             </div>
           </div>
@@ -240,26 +244,9 @@ function LandingShop() {
             </Link>
             <div className=" h-96 w-full sm:h-64 xl:h-80 2xl:h-96">
               <Carousel>
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5qJFhzzzriH0YmkGzTEwLF6ewBuBN0j-rLw&usqp=CAU"
-                  alt="..."
-                />
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5qJFhzzzriH0YmkGzTEwLF6ewBuBN0j-rLw&usqp=CAU"
-                  alt="..."
-                />
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5qJFhzzzriH0YmkGzTEwLF6ewBuBN0j-rLw&usqp=CAU"
-                  alt="..."
-                />
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5qJFhzzzriH0YmkGzTEwLF6ewBuBN0j-rLw&usqp=CAU"
-                  alt="..."
-                />
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5qJFhzzzriH0YmkGzTEwLF6ewBuBN0j-rLw&usqp=CAU"
-                  alt="..."
-                />
+                <img src={img4} alt="..." />
+                <img src={img5} alt="..." />
+                <img src={img6} alt="..." />
               </Carousel>
             </div>
           </div>

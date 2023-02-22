@@ -1,21 +1,13 @@
-// modelo de stores
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "Store",
+    "Daycare",
     {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-      },
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1, 30],
-        },
       },
       phone: {
         type: DataTypes.INTEGER,

@@ -7,6 +7,8 @@ import logo from "../../assets/logo/logo.png";
 import { useRef } from "react";
 import DropdownUser from "./components/DropdownUser";
 function NavBar() {
+  const token = localStorage.getItem("token");
+
   const toolBar = useRef(null);
   const toggleBar = () => {
     toolBar.current.classList.toggle("hidden");
@@ -39,7 +41,7 @@ function NavBar() {
           </NavLink>
         </div>
 
-        <DropdownUser />
+        {token ? <DropdownUser /> : <Link to={"/login"}>Login</Link>}
         <button
           data-collapse-toggle="mobile-menu-2"
           type="button"
