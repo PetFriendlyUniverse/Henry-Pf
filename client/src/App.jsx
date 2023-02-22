@@ -22,7 +22,7 @@ const Checkout = lazy(() => import("./pages/ecommerce/Checkout/Checkout"));
 const FormCreateProduct = lazy(() =>
   import("./pages/ecommerce/Forms/FormCreateProduct/FormCreateProduct")
 );
-const Login = lazy(() => import("./components/Login/Login/"));
+const Login = lazy(() => import("./components/Login/Login"));
 const FormModifyProduct = lazy(() =>
   import("./pages/ecommerce/Forms/FormModifyProduct/FormModifyProduct")
 );

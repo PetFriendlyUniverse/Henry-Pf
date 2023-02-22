@@ -5,8 +5,14 @@ import { useState } from "react";
 import { validationProfile } from "../../pages/ecommerce/Forms/Validations/Profile";
 import LinkButton from "../Button/LinkButton";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
+  const [login, setLogin] = useState({
+    mail: "",
+    password: "",
+  });
   const [form, setForm] = useState({
     user: "",
     name: "",
@@ -23,9 +29,9 @@ function Login() {
     password: "",
     phone: "",
   });
-  const [repeat, setRepeat] = useState({
-    repeatPassword: "",
-  });
+  // const [repeat, setRepeat] = useState({
+  //   repeatPassword: "",
+  // });
   const handleChange = (e) => {
     const property = e.target.name;
     const value = e.target.value;
@@ -37,11 +43,38 @@ function Login() {
       setErrors({ ...errors, ...validationProfile(property, value) }); //NO CAMBIAR ESTO POR DIOS
     }
   };
-  const handleChangeRepeat = (e) => {
+  const handleChangeLogin = (e) => {
     const property = e.target.name;
     const value = e.target.value;
-    setRepeat({ [property]: value });
+    setLogin({ ...login, [property]: value });
   };
+  // const handleChangeRepeat = (e) => {
+  //   const property = e.target.name;
+  //   const value = e.target.value;
+  //   // setRepeat({ [property]: value });
+  // };
+  const handletSubmitLogin = (e) => {
+    e.preventDefault();
+    axios
+      .post("user/login", login)
+      .then((res) => {
+        const token = res.data.token;
+        const id = res.data.id;
+        localStorage.setItem("token", token);
+        localStorage.setItem("id", id);
+      })
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "El ingreso se ha sido realizado con éxito!",
+          showConfirmButton: true,
+          timer: 1500,
+        }).then(() => {
+          navigate("/shop");
+        });
+      });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const errorValues = Object.values(errors);
@@ -66,9 +99,9 @@ function Login() {
         password: "",
         phone: "",
       });
-      setRepeat({
-        repeatPassword: "",
-      });
+      // setRepeat({
+      //   repeatPassword: "",
+      // });
     } else {
       console.log("Hay errores en el formulario");
     }
@@ -90,158 +123,132 @@ function Login() {
           <input type="checkbox" id={s["chk"]} aria-hidden="true" />
 
           <div className={s.login}>
-            <form className={s.form}>
+            <form onSubmit={handletSubmitLogin} className={s.form}>
               <label htmlFor={s["chk"]} aria-hidden="true">
-                Log in
+                PET FRIENDLY
               </label>
 
               <input
                 className={s.input}
-                onChange={handleChange}
+                onChange={handleChangeLogin}
+                value={login.mail}
                 type="email"
                 name="mail"
-                placeholder="Email"
+                placeholder="Mail"
                 required=""
               />
               <input
                 className={s.input}
-                onChange={handleChange}
+                onChange={handleChangeLogin}
+                value={login.password}
                 type="password"
                 name="password"
-                placeholder="Password"
+                placeholder="Contraseña"
                 required=""
               />
-              <button>Log in</button>
+              <button>Ingresar</button>
             </form>
           </div>
 
           <div className={s.register}>
             <form className={s.form} onSubmit={handleSubmit}>
               <label htmlFor={s["chk"]} aria-hidden="true">
-                Register
+                Registrarse
               </label>
-              <div className="relative flex flex-col">
-                <input
-                  onChange={handleChange}
-                  type="text"
-                  name="user"
-                  value={form.user}
-                  className={s.input}
-                  placeholder=" Username "
-                  autoComplete="off"
-                  required="true"
-                />
-                {errors.user && (
-                  <span className=" absolute top-8 ml-1 text-xs text-red-500">
-                    {errors.user}
-                  </span>
-                )}
-              </div>
-              <div className="relative flex flex-col">
-                <input
-                  onChange={handleChange}
-                  className={s.input}
-                  value={form.name}
-                  type="text"
-                  name="name"
-                  placeholder=" Name "
-                  autoComplete="off"
-                  required="true"
-                />
-                {errors.name && (
-                  <span className="absolute top-8 ml-1 text-xs text-red-500">
-                    {errors.name}
-                  </span>
-                )}
-              </div>
-              <div className="relative flex flex-col">
-                <input
-                  onChange={handleChange}
-                  value={form.lastname}
-                  className={s.input}
-                  type="text"
-                  name="lastname"
-                  placeholder=" Lastname "
-                  autoComplete="off"
-                  required="true"
-                />
-                {errors.lastname && (
-                  <span className=" absolute top-8 ml-1 text-xs text-red-500">
-                    {errors.lastname}
-                  </span>
-                )}
-              </div>
-              <div className="relative flex flex-col">
-                <input
-                  onChange={handleChange}
-                  className={s.input}
-                  value={form.mail}
-                  type="email"
-                  name="mail"
-                  placeholder=" Email"
-                  required="true"
-                  autoComplete="off"
-                />
-                {errors.mail && (
-                  <span className=" absolute top-8 ml-1 text-xs text-red-500">
-                    {errors.mail}
-                  </span>
-                )}
-              </div>
-              <div className="relative flex flex-col">
-                <input
-                  onChange={handleChange}
-                  value={form.phone}
-                  className={s.input}
-                  type="number"
-                  name="phone"
-                  placeholder=" Phone"
-                  autoComplete="off"
-                  required="true"
-                />
-                {errors.phone && (
-                  <span className="absolute top-8 ml-1 text-xs text-red-500">
-                    {errors.phone}
-                  </span>
-                )}
-              </div>
-              <div className="relative flex flex-col">
-                <input
-                  className={s.input}
-                  value={form.password}
-                  onChange={handleChange}
-                  type="password"
-                  name="password"
-                  placeholder=" Password"
-                  autoComplete="off"
-                  required="true"
-                />
-
-                {errors.password && (
-                  <span className="absolute top-8 ml-1 text-xs text-red-500">
-                    {errors.password}
-                  </span>
-                )}
-              </div>
-
-              <div className="relative flex flex-col">
-                <input
-                  onChange={handleChangeRepeat}
-                  className={s.input}
-                  type="password"
-                  name="repeatPassword"
-                  value={repeat.repeatPassword}
-                  placeholder=" Repeat Password "
-                  autoComplete="off"
-                  required="true"
-                />
-                {/* {errors.password === errors.repeatPassword ? null : (
-                  <div>
-                    <p className="absolute top-8 ml-1 text-xs text-red-700">{`Passwords does not match`}</p>
-                  </div>
-                )} */}
-              </div>
-              <button onSubmit={handleSubmit}>Registrar</button>
+              <input
+                onChange={handleChange}
+                type="text"
+                name="user"
+                value={form.user}
+                class={s.input}
+                placeholder="Usuario "
+                autoComplete="off"
+                required="true"
+              />
+              {errors.user && (
+                <span className=" text-xs text-red-500">{errors.user}</span>
+              )}
+              <input
+                onChange={handleChange}
+                class={s.input}
+                value={form.name}
+                type="text"
+                name="name"
+                placeholder="Nombre"
+                autoComplete="off"
+                required="true"
+              />
+              {errors.name && (
+                <span className="text-xs text-red-500">{errors.name}</span>
+              )}
+              <input
+                onChange={handleChange}
+                value={form.lastname}
+                class={s.input}
+                type="text"
+                name="lastname"
+                placeholder="Apellido "
+                autoComplete="off"
+                required="true"
+              />
+              {errors.lastname && (
+                <span className="text-xs text-red-500">{errors.lastname}</span>
+              )}
+              <input
+                onChange={handleChange}
+                class={s.input}
+                value={form.mail}
+                type="email"
+                name="mail"
+                placeholder="Mail"
+                required="true"
+                autoComplete="off"
+              />
+              {errors.mail && (
+                <span className="text-xs text-red-500">{errors.mail}</span>
+              )}
+              <input
+                onChange={handleChange}
+                value={form.phone}
+                class={s.input}
+                type="number"
+                name="phone"
+                placeholder="Teléfono"
+                autoComplete="off"
+                required="true"
+              />
+              {errors.phone && (
+                <span className="text-xs text-red-500">{errors.phone}</span>
+              )}
+              <input
+                class={s.input}
+                value={form.password}
+                onChange={handleChange}
+                type="password"
+                name="password"
+                placeholder="Contraseña"
+                autoComplete="off"
+                required="true"
+              />
+              {errors.password && (
+                <span className="text-xs text-red-500">{errors.password}</span>
+              )}
+              {/* <input
+                onChange={handleChangeRepeat}
+                class={s.input}
+                type="password"
+                name="repeatPassword"
+                value={repeat.repeatPassword}
+                placeholder="Repetir Contraseña "
+                autoComplete="off"
+                required="true"
+              />
+              {errors.password === errors.repeatPassword ? null : (
+                <div>
+                  <p className="text-xs text-red-700">{`Passwords does not match`}</p>
+                </div>
+              )} */}
+              <LinkButton component={"Registrate"} />
             </form>
           </div>
         </div>

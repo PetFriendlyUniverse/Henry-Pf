@@ -1,4 +1,6 @@
 const { User } = require("../db");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const createUser = async (
   user,
@@ -11,11 +13,17 @@ const createUser = async (
   province,
   locality
 ) => {
-  const data = { user, name, lastname, mail, password, phone };
+  const data = { user, name, lastname, mail, phone };
   const extraData = { emergencyphone, province, locality };
   if (!Object.values(data).every((value) => value)) throw Error("Missing data");
+  const hashedPassword = await bcrypt.hash(password, 10); // esto en codificado la password no sacar
+  const userCreated = await User.create({
+    ...data,
+    password: hashedPassword,
+    ...extraData,
+  });
 
-  return await User.create(data, extraData);
+  return userCreated;
 };
 
 const getAllUsers = async () => {
@@ -45,10 +53,23 @@ const deleteUsersById = async (id) => {
   return update ? "User deleted successfully" : "Wrong user";
 };
 
+const loginUser = async (mail, password) => {
+  const user = await User.findOne({ where: { mail } });
+  if (!user) throw Error("User not found");
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) throw Error("Invalid credentials");
+  const token = jwt.sign(
+    { id: user.id, token: user.token },
+    process.env.JWT_SECRET
+  );
+  return { id: user.id, token };
+};
+
 module.exports = {
   createUser,
   getAllUsers,
   updateAllUsers,
   deleteUsersById,
   getUserById,
+  loginUser,
 };

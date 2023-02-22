@@ -1,9 +1,8 @@
-// modelo de factura de usuario
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "User",
+    "Daycare",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -14,18 +13,11 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [1, 50],
+          len: [1, 15],
         },
         unique: true,
       },
       name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1, 30],
-        },
-      },
-      lastname: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -44,32 +36,46 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [1, 100],
+          len: [1, 20],
         },
       },
       phone: {
         type: DataTypes.INTEGER,
-        validate: {
-          len: [1, 20],
-        },
-      },
-      emergencyphone: {
-        type: DataTypes.INTEGER,
+        allowNull: false,
         validate: {
           len: [1, 20],
         },
       },
       province: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
           len: [1, 30],
         },
       },
       locality: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
           lent: [1, 30],
         },
+      },
+      streets: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1, 100],
+        },
+      },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [50, 2000],
+        },
+      },
+      qualification: {
+        type: DataTypes.FLOAT,
       },
       enable: {
         type: DataTypes.BOOLEAN,

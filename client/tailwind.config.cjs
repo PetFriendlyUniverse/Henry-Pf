@@ -27,7 +27,10 @@ module.exports = {
         button2: "10px 10px 0 #FBC638",
       },
       backgroundImage: {
-        white: "url('./assets/backgroundwhite.png')",
+        white: "url('./assets/imagenes/backgroundwhite.png')",
+        balloonLG: "url('./assets/imagenes/ASD-01.png')",
+        balloonMD: "url('./assets/imagenes/ASD-tablet-01.png')",
+        balloonSM: "url('./assets/imagenes/ASD-sm-01.png')",
       },
       keyframes: {
         coloranim: {

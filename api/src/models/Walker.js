@@ -1,31 +1,15 @@
-// modelo de factura de usuario
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "User",
+    "Walker",
     {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      user: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1, 50],
-        },
-        unique: true,
-      },
       name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1, 30],
-        },
-      },
-      lastname: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -40,35 +24,40 @@ module.exports = (sequelize) => {
         },
         unique: true,
       },
+      user: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1, 15],
+        },
+        unique: true,
+      },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [1, 100],
-        },
-      },
-      phone: {
-        type: DataTypes.INTEGER,
-        validate: {
           len: [1, 20],
         },
       },
-      emergencyphone: {
+      price: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         validate: {
-          len: [1, 20],
-        },
+          min: 0
+        }
       },
-      province: {
+      state: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
           len: [1, 30],
         },
       },
-      locality: {
+      neighborhood: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          lent: [1, 30],
+          len: [1, 100],
         },
       },
       enable: {

@@ -7,6 +7,9 @@ const {
   putProductHandler,
   deleteProductHandler,
 } = require("../handler/productsHandler");
+
+const authMiddleware = require("../helpers/authMiddleware");
+
 const productsRoutes = Router();
 
 productsRoutes.get("/", getAllProductsHandler);
