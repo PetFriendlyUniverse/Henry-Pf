@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { validateProduct } from "../Validations/validateProduct";
+import { ValidateProduct } from "../Validations/ValidateProduct";
 import LinkButton from "../../../../components/Button/LinkButton";
 import Swal from "sweetalert2";
 // name,img,price,description,stock,specie,breed,brand,weight,color,size
@@ -39,7 +39,7 @@ function FormCreateProduct() {
   const changeHandler = (e) => {
     let property = e.target.name;
     let value = e.target.value;
-    setError(validateProduct(property, value));
+    setError(ValidateProduct(property, value));
     setForm({ ...form, [property]: value });
     if (value !== "") {
       setFormComplete(true);
