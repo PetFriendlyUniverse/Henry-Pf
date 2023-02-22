@@ -50,7 +50,21 @@ const generator = () => {
 
   setTimeout(async () => {
     for (let i = 1; i <= 10; i++) {
-      await store.createStore(`Store ${i}`, `Store location ${i}`);
+      /* let name = `Tienda ${i}`;
+      let phone = 1234567890;
+      let province = `Provincia ${i}`;
+      let locality = `Localidad ${i}`;
+      let streets = `Calles ${i}`;
+      let description = `Descripcion ${i}`; */
+      await store.createStore({
+        name: `Tienda ${i}`,
+        phone: 1234567890,
+        province: `Provincia ${i}`,
+        locality: `Localidad ${i}`,
+        streets: `Calles ${i}`,
+        description: `Descripcion ${i}`,
+      });
+      console.log();
       for (let s = 1; s <= 30; s++) {
         let description = `Una descripción apropiada para este producto`;
         let price = Math.floor(Math.random() * 200 + 51);

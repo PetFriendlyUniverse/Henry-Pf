@@ -9,49 +9,9 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1, 30],
-        },
-      },
-      mail: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1, 50],
-        },
-        unique: true,
-      },
-      user: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1, 15],
-        },
-        unique: true,
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1, 20],
-        },
-      },
-      price: {
+      phone: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        validate: {
-          min: 0
-        }
-      },
-      state: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1, 30],
-        },
       },
       neighborhood: {
         type: DataTypes.STRING,
@@ -59,6 +19,23 @@ module.exports = (sequelize) => {
         validate: {
           len: [1, 100],
         },
+      },
+      streets: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1, 100],
+        },
+      },
+      price: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          min: 0,
+        },
+      },
+      qualification: {
+        type: DataTypes.FLOAT,
       },
       enable: {
         type: DataTypes.BOOLEAN,

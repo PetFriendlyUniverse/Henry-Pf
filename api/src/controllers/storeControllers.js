@@ -10,8 +10,7 @@ const getStoreByID = async (id) => {
   return store;
 };
 
-const createStore = async (name, location) => {
-  const data = { name, location };
+const createStore = async (data) => {
   if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
   } else {
