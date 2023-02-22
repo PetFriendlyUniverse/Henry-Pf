@@ -33,7 +33,9 @@ passport.use(
           console.log("Usuario encontrado:", user.toJSON());
         }
 
-        const token = jwt.sign({ id: user.id }, JWT_SECRET);
+        const token = jwt.sign({ id: user.id }, JWT_SECRET, {
+          expiresIn: "1h",
+        });
         done(null, { user: user.toJSON(), token });
       } catch (error) {
         console.error("Error en la estrategia de Google:", error);

@@ -4,14 +4,14 @@ const {
   createStore,
   updateStore,
   deleteStore,
-  storeFilter
+  storeFilter,
 } = require("../controllers/storeControllers");
 
 const getAllStoreHandler = async (req, res) => {
-  const query = req.query
+  const query = req.query;
   try {
     if (Object.keys(query).length) {
-      const allfilter = await storeFilter(query)
+      const allfilter = await storeFilter(query);
       return res.status(200).json(allfilter);
     } else {
       const all = await getAllStore();
@@ -31,9 +31,9 @@ const getStoreByIDHandler = async (req, res) => {
   }
 };
 const postStoreHandler = async (req, res) => {
-  const { name, location } = req.body;
+  const data = req.body;
   try {
-    const newStore = await createStore(name, location);
+    const newStore = await createStore(data);
     return res.status(200).json(newStore);
   } catch (error) {
     return res.status(404).json(error.message);
