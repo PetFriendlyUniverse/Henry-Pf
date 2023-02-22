@@ -11,6 +11,7 @@ module.exports = (sequelize) => {
       },
       phone: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         validate: {
           len: [1, 20],
         },
@@ -35,6 +36,9 @@ module.exports = (sequelize) => {
         validate: {
           min: 0,
         },
+      },
+      qualification: {
+        type: DataTypes.FLOAT,
       },
       enable: {
         type: DataTypes.BOOLEAN,
