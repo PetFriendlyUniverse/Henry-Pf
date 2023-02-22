@@ -152,11 +152,12 @@ function Login() {
               />
               <button>Ingresar</button>
             </form>
-            <button onClick={handleClickGoogle}>
-              Click para seguir con google
-            </button>
+            <div className={s.loginGoogle}>
+              <button onClick={handleClickGoogle}>
+                Click para seguir con google
+              </button>
+            </div>
           </div>
-
           <div className={s.register}>
             <form className={s.form} onSubmit={handleSubmit}>
               <label htmlFor={s["chk"]} aria-hidden="true">

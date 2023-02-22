@@ -90,6 +90,10 @@ const loginHandler = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+const logoutHandler = async (req, res) => {
+  res.clearCookie("token");
+  res.sendStatus(200);
+};
 
 module.exports = {
   postUserHandler,
@@ -98,4 +102,5 @@ module.exports = {
   deleteUserHandler,
   getUserDetailHandler,
   loginHandler,
+  logoutHandler,
 };
