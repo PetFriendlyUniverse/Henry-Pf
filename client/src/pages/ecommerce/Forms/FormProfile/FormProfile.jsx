@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { validationProfile } from "../Validations/Profile"; //habia un error en la importacion de form
+import { ValidationProfile } from "../Validations/Profile"; //habia un error en la importacion de form
 import LinkButton from "../../../../components/Button/LinkButton";
 
 function FormProfile() {
@@ -30,7 +30,7 @@ function FormProfile() {
       setForm({ ...form, [property]: [value] });
     } else {
       setForm({ ...form, [property]: value });
-      setErrors({ ...errors, ...validationProfile(property, value) }); //NO CAMBIAR ESTO POR DIOS
+      setErrors({ ...errors, ...ValidationProfile(property, value) }); //NO CAMBIAR ESTO POR DIOS
     }
   };
   const handleSubmit = (e) => {

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getProductsId } from "../../../../redux/features/products/productsActions";
-import { validateProduct } from "../Validations/ValidateProduct";
+import { ValidateProduct } from "../Validations/ValidateProduct";
 import axios from "axios";
 import LinkButton from "../../../../components/Button/LinkButton";
 import Swal from "sweetalert2";
@@ -46,7 +46,7 @@ function FormModifyProduct() {
   const changeHandler = (e) => {
     let property = e.target.name;
     let value = e.target.value;
-    setError(validateProduct(property, value));
+    setError(ValidateProduct(property, value));
     setForm({ ...form, [property]: value });
   };
 

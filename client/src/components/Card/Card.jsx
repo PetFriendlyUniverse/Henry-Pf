@@ -30,25 +30,30 @@ function Card({ name, img, weight, price, stock, id }) {
     });
   };
   return (
-    <div className="mx-1 my-4 flex h-96 w-52 flex-col items-center justify-center rounded-lg border ">
-      <div className="h-2/3 ">
-        <Link to={`/shop/detail/${id}`}>
-          <img src={img} alt="" className="h-full w-full rounded-lg " />
+    <div className="flex  h-full w-full min-w-fit max-w-xs flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-black sm:max-w-sm ">
+      <div className="h-56 w-full bg-[rgba(0,0,0,0.5)]">
+        <Link
+          to={`/shop/detail/${id}`}
+          className="flex items-center justify-center"
+        >
+          <img src={img} alt="" className="h-56 w-56 " />
         </Link>
       </div>
-      <div className="flex  justify-between">
+      <div className="flex   justify-between">
         <h3 className="text-bold m-2 self-start p-1">{name}</h3>
-        <div className="text mt-2 ">
-          <p className="text-bold my-1 rounded bg-cyan-400 py-1 px-2 text-xs text-white">
-            {weight} kg
-          </p>
-          <p className="text-bold rounded bg-cyan-400 py-1 px-2 text-xs text-white">
-            Stock: {stock}
-          </p>
-        </div>
       </div>
-      <p className="text-bold p-1">${price}</p>
-      <div className="flex h-11 items-center justify-around gap-1 bg-slate-100 p-1">
+      <div className="mt-2 flex  items-center justify-center gap-2">
+        <p className="text-bold my-1 rounded bg-cyan-400 py-1 px-2 text-xs text-white">
+          {weight} kg
+        </p>
+        <p className="text-bold rounded bg-cyan-400 py-1 px-2 text-xs text-white">
+          Stock: {stock}
+        </p>
+      </div>
+      <div className="h-">
+        <p className="text-bold p-1">${price}</p>
+      </div>
+      <div className="flex items-center justify-around gap-1 bg-slate-100 p-1">
         <div className=" w-1/2">
           <CountProduct
             value={value}

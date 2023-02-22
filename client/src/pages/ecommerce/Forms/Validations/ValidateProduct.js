@@ -1,4 +1,4 @@
-export const validateProduct = (property, value) => {
+export const ValidateProduct = (property, value) => {
   let error = {};
   if (property === "name" && !value) {
     error.name = "Debe ingresar un nombre";
