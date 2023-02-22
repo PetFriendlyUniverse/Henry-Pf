@@ -6,8 +6,10 @@ import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/footer/footer";
 import LandingShop from "./pages/ecommerce/LandingShop/LandingShop";
 import About from "./pages/About/About";
+
 // import Login from "./components/Login/Login";
 
+const Loader = lazy(() => import("./components/Loader/Loader"));
 const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
 const Services = lazy(() => import("./pages/services/incoming"));
 
@@ -41,7 +43,7 @@ function App() {
   return (
     <div className="App min-h-screen">
       {pathname !== "/" && <NavBar />}
-      <Suspense fallback={<div>Proximamente un Loader...</div>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/services" element={<Services />} />

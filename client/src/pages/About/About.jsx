@@ -9,6 +9,7 @@ import imanolimg from "../../assets/profileimg/imanoldominguez.jpeg";
 import maxiimg from "../../assets/profileimg/maximopermingeat.jpeg";
 import pabloimg from "../../assets/profileimg/pabloamico.jpeg";
 import stefanoimg from "../../assets/profileimg/stefanegemelli.jpeg";
+
 function About() {
   const members = [
     {
