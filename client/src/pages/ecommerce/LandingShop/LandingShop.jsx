@@ -12,7 +12,6 @@ import img6 from "../../../assets/imagenes/camaa-gato.jpg";
 function LandingShop() {
   const product = useGetProducts();
   const list = product.slice(0, 6);
-  console.log(list);
   return (
     <>
       <header className="clip-header relative flex w-full flex-col bg-balloon bg-cover bg-fixed bg-center bg-no-repeat pt-24 text-black sm:h-[650px]  lg:min-h-[800px]  xl:min-h-[800px]">

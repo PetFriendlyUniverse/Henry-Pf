@@ -25,6 +25,7 @@ module.exports = {
         custom: "36px 36px 37px rgb(0,0,0)",
         button: "6px 6px 0px rgba(0,0,0)",
         button2: "10px 10px 0 #FBC638",
+        input: "inset 19px 19px 38px #9b9b9b, inset -19px -19px 38px #ffffff",
       },
       backgroundImage: {
         white: "url('./assets/imagenes/backgroundwhite.png')",
