@@ -25,12 +25,17 @@ module.exports = {
         custom: "36px 36px 37px rgb(0,0,0)",
         button: "6px 6px 0px rgba(0,0,0)",
         button2: "10px 10px 0 #FBC638",
+        input: "inset 19px 19px 38px #9b9b9b, inset -19px -19px 38px #ffffff",
       },
       backgroundImage: {
         white: "url('./assets/imagenes/backgroundwhite.png')",
-        balloonLG: "url('./assets/imagenes/ASD-01.png')",
-        balloonMD: "url('./assets/imagenes/ASD-tablet-01.png')",
-        balloonSM: "url('./assets/imagenes/ASD-sm-01.png')",
+        balloon: "url('./assets/imagenes/fondo-landingshop.png')",
+        perros: "url('./assets/imagenes/PERR1.png')",
+        gatos: "url('./assets/imagenes/CAT.png')",
+        contacto: "url('./assets/imagenes/CONTACTO1.png')",
+        pcomida: "url('./assets/imagenes/food-01.png')",
+        phouse: "url('./assets/imagenes/doghouse-01.png')",
+        ptoys: "url('./assets/imagenes/toys-01.png')",
       },
       keyframes: {
         coloranim: {
