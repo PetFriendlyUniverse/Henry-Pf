@@ -11,7 +11,7 @@ import About from "./pages/About/About";
 
 const Loader = lazy(() => import("./components/Loader/Loader"));
 const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
-const Services = lazy(() => import("./pages/services/incoming"));
+const Services = lazy(() => import("./pages/Services/Services"));
 
 const Landing = lazy(() => import("./pages/Landing/Landing"));
 const ProductDetail = lazy(() =>
