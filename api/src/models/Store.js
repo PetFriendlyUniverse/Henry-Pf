@@ -10,6 +10,13 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1, 30],
+        },
+      },
       phone: {
         type: DataTypes.INTEGER,
         allowNull: false,
