@@ -9,7 +9,7 @@ import logo from "../../assets/logo/logo.png";
 
 function Landing() {
   return (
-    <div className=" flex h-screen w-screen bg-cover bg-no-repeat font-mono font-semibold ">
+    <div className=" flex h-screen w-screen bg-white bg-cover bg-no-repeat font-mono font-semibold ">
       <div className="z-20 flex h-16 w-96 gap-4 ">
         <Buttons />
       </div>

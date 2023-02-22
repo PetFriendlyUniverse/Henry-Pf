@@ -9,6 +9,10 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
+  const [login, setLogin] = useState({
+    mail: "",
+    password: "",
+  });
   const [form, setForm] = useState({
     user: "",
     name: "",
@@ -39,6 +43,11 @@ function Login() {
       setErrors({ ...errors, ...validationProfile(property, value) }); //NO CAMBIAR ESTO POR DIOS
     }
   };
+  const handleChangeLogin = (e) => {
+    const property = e.target.name;
+    const value = e.target.value;
+    setLogin({ ...login, [property]: value });
+  };
   // const handleChangeRepeat = (e) => {
   //   const property = e.target.name;
   //   const value = e.target.value;
@@ -46,23 +55,24 @@ function Login() {
   // };
   const handletSubmitLogin = (e) => {
     e.preventDefault();
-    try {
-      Swal.fire({
-        icon: "success",
-        title: "El ingreso se ha sido realizado con éxito!",
-        showConfirmButton: true,
-        timer: 1500,
-      }).then(() => {
-        navigate("/shop");
+    axios
+      .post("user/login", login)
+      .then((res) => {
+        const token = res.data.token;
+        const id = res.data.id;
+        localStorage.setItem("token", token);
+        localStorage.setItem("id", id);
+      })
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "El ingreso se ha sido realizado con éxito!",
+          showConfirmButton: true,
+          timer: 1500,
+        }).then(() => {
+          navigate("/shop");
+        });
       });
-    } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "El ingreso tuvo problemas vuelve a probar!",
-        showConfirmButton: true,
-        timer: 1500,
-      });
-    }
   };
 
   const handleSubmit = (e) => {
@@ -120,7 +130,8 @@ function Login() {
 
               <input
                 className={s.input}
-                onChange={handleChange}
+                onChange={handleChangeLogin}
+                value={login.mail}
                 type="email"
                 name="mail"
                 placeholder="Mail"
@@ -128,7 +139,8 @@ function Login() {
               />
               <input
                 className={s.input}
-                onChange={handleChange}
+                onChange={handleChangeLogin}
+                value={login.password}
                 type="password"
                 name="password"
                 placeholder="Contraseña"

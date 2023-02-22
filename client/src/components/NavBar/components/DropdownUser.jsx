@@ -1,8 +1,19 @@
-import { useRef } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import user from "../../../assets/general/profile.svg";
+import { getUserApi } from "../../../redux/features/users/usersActions";
 
 function DropdownUser() {
+  const id = localStorage.getItem("id");
+  const dispatch = useDispatch();
+
+  const userDetailId = useSelector((state) => state.User?.userId);
+
+  useEffect(() => {
+    dispatch(getUserApi(id));
+  }, []);
+
   return (
     <div className="group  relative flex items-center gap-2 md:order-2 lg:flex-col">
       <button
@@ -26,24 +37,16 @@ function DropdownUser() {
       >
         <div className="px-4 py-3">
           <span className="block text-sm text-gray-900 dark:text-white">
-            Federico Almeida
+            {userDetailId?.name}
           </span>
           <span className="block truncate text-sm font-medium text-gray-500 dark:text-gray-400">
-            federicoalmeida15@gmail.com
+            {userDetailId?.mail}
           </span>
         </div>
         <ul className="py-2" aria-labelledby="user-menu-button">
           <li>
             <Link
-              to="/login"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
-            >
-              Ingresar / Registrarse
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="profile/1"
+              to={`profile/${id}`}
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Configuración
