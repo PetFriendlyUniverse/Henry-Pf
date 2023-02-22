@@ -75,6 +75,10 @@ function Login() {
       });
   };
 
+  const handleClickGoogle = async () => {
+    await axios.get("auth");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const errorValues = Object.values(errors);
@@ -148,6 +152,10 @@ function Login() {
               />
               <button>Ingresar</button>
             </form>
+            <button onClick={handleClickGoogle}>
+              click
+              {/* <a href="http://localhost:3001/auth">click</a> */}
+            </button>
           </div>
 
           <div className={s.register}>
