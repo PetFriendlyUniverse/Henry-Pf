@@ -15,8 +15,8 @@ require("../helpers/google.js");
 // Ejemplo: const authRouter = require('./auth.js');
 
 const router = Router();
-const { generator } = require("../randomGenerator");
-generator();
+// const { generator } = require("../randomGenerator");
+// generator();
 router.use("/user", userRoutes);
 router.use("/products", productsRoutes);
 router.use("/invoices", invoicesRoutes);
@@ -26,7 +26,7 @@ router.use("/favorite", favoriteRouter);
 router.use("/brands", brandsRouter);
 router.use("/payment", paymentRouter);
 
-router.use(
+router.get(
   "/auth",
   passport.authenticate("auth-google", {
     scope: [
@@ -34,8 +34,18 @@ router.use(
       "https://www.googleapis.com/auth/userinfo.email",
     ],
     session: false,
-  }),
-  loginRouter
+  })
+);
+
+router.get(
+  "/auth/google",
+  passport.authenticate("auth-google", { session: false }),
+  (req, res) => {
+    const { token } = req.user;
+    const { id } = req.user.user;
+    res.redirect(`http://localhost:5173/shop?t=${token}&i=${id}`);
+    // res.send({ token: token, id: id });
+  }
 );
 
 module.exports = router;

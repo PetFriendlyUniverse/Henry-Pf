@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import user from "../../../assets/general/profile.svg";
 import { getUserApi } from "../../../redux/features/users/usersActions";
+import axios from "axios";
 
 function DropdownUser() {
   const id = localStorage.getItem("id");
@@ -13,6 +14,12 @@ function DropdownUser() {
   useEffect(() => {
     dispatch(getUserApi(id));
   }, []);
+  const prueba = () => {
+    axios.post("user/logout");
+    localStorage.removeItem("token");
+    localStorage.removeItem("id");
+    window.location.reload();
+  };
 
   return (
     <div className="group  relative flex items-center gap-2 md:order-2 lg:flex-col">
@@ -53,12 +60,12 @@ function DropdownUser() {
             </Link>
           </li>
           <li>
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-700 dark:hover:bg-gray-600 dark:hover:text-white"
+            <button
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+              onClick={prueba}
             >
-              Cerrar sesión
-            </a>
+              Cerrar Sesion
+            </button>
           </li>
         </ul>
       </div>

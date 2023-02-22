@@ -75,6 +75,10 @@ function Login() {
       });
   };
 
+  const handleClickGoogle = () => {
+    window.location.href = "http://localhost:3001/auth";
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const errorValues = Object.values(errors);
@@ -148,8 +152,12 @@ function Login() {
               />
               <button>Ingresar</button>
             </form>
+            <div className={s.loginGoogle}>
+              <button onClick={handleClickGoogle}>
+                Click para seguir con google
+              </button>
+            </div>
           </div>
-
           <div className={s.register}>
             <form className={s.form} onSubmit={handleSubmit}>
               <label htmlFor={s["chk"]} aria-hidden="true">
