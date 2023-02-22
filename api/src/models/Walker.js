@@ -1,21 +1,13 @@
-// modelo de stores
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "Store",
+    "Walker",
     {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-      },
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1, 30],
-        },
       },
       phone: {
         type: DataTypes.INTEGER,
@@ -24,18 +16,11 @@ module.exports = (sequelize) => {
           len: [1, 20],
         },
       },
-      province: {
+      neighborhood: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [1, 30],
-        },
-      },
-      locality: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          lent: [1, 30],
+          len: [1, 100],
         },
       },
       streets: {
@@ -45,11 +30,11 @@ module.exports = (sequelize) => {
           len: [1, 100],
         },
       },
-      description: {
-        type: DataTypes.STRING,
+      price: {
+        type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
-          len: [50, 2000],
+          min: 0,
         },
       },
       qualification: {
