@@ -13,7 +13,6 @@ function NavBar() {
   const toggleBar = () => {
     toolBar.current.classList.toggle("hidden");
   };
-
   return (
     <nav className="fixed z-30 flex h-24 w-full bg-gradient-to-b from-blue-500  via-blue-400 to-blue-500 sm:px-4">
       <div className="container mx-auto flex items-center justify-around sm:justify-evenly md:justify-between lg:justify-around">
@@ -40,8 +39,11 @@ function NavBar() {
             Servicios
           </NavLink>
         </div>
-
-        {token ? <DropdownUser /> : <Link to={"/login"}>Login</Link>}
+        {typeof token === "string" ? (
+          <DropdownUser />
+        ) : (
+          <Link to={"/login"}>Login</Link>
+        )}
         <button
           data-collapse-toggle="mobile-menu-2"
           type="button"

@@ -75,8 +75,8 @@ function Login() {
       });
   };
 
-  const handleClickGoogle = async () => {
-    await axios.get("auth");
+  const handleClickGoogle = () => {
+    window.location.href = "http://localhost:3001/auth";
   };
 
   const handleSubmit = (e) => {
@@ -153,8 +153,7 @@ function Login() {
               <button>Ingresar</button>
             </form>
             <button onClick={handleClickGoogle}>
-              click
-              {/* <a href="http://localhost:3001/auth">click</a> */}
+              Click para seguir con google
             </button>
           </div>
 

@@ -43,34 +43,9 @@ router.get(
   (req, res) => {
     const { token } = req.user;
     const { id } = req.user.user;
-    res.send({ token: token, id: id });
+    res.redirect(`http://localhost:5173/shop?t=${token}&i=${id}`);
+    // res.send({ token: token, id: id });
   }
 );
-
-// router.get(
-//   // OAuth 2 callback url. Use this url to configure your OAuth client in the
-//   // Google Developers console
-//   "/auth/google/callback",
-
-//   // Finish OAuth 2 flow using Passport.js
-//   passport.authenticate("auth-google", {
-//     scope: [
-//       "https://www.googleapis.com/auth/userinfo.profile",
-//       "https://www.googleapis.com/auth/userinfo.email",
-//     ],
-//     session: false,
-//   }),
-
-//   // Redirect back to the original page, if any
-//   (req, res) => {
-//     const { token } = req.user;
-//     const { id } = req.user.user;
-//     console.log(id, token);
-//     const redirect = req.session.oauth2return || "/";
-//     delete req.session.oauth2return;
-//     // res.redirect(redirect);
-//     res.status(200).json({ id: id, token: token });
-//   }
-// );
 
 module.exports = router;
