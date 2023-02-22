@@ -20,9 +20,6 @@ module.exports = (sequelize) => {
       phone: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        validate: {
-          len: [1, 20],
-        },
       },
       province: {
         type: DataTypes.STRING,
@@ -35,7 +32,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          lent: [1, 30],
+          len: [1, 30],
         },
       },
       streets: {
@@ -49,7 +46,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [50, 2000],
+          len: [1, 2000],
         },
       },
       qualification: {

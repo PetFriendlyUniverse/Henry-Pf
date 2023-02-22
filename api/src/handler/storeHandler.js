@@ -31,16 +31,9 @@ const getStoreByIDHandler = async (req, res) => {
   }
 };
 const postStoreHandler = async (req, res) => {
-  const { name, phone, province, locality, streets, description } = req.body;
+  const data = req.body;
   try {
-    const newStore = await createStore(
-      name,
-      phone,
-      province,
-      locality,
-      streets,
-      description
-    );
+    const newStore = await createStore(data);
     return res.status(200).json(newStore);
   } catch (error) {
     return res.status(404).json(error.message);

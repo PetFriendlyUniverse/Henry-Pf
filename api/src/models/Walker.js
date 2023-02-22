@@ -12,9 +12,6 @@ module.exports = (sequelize) => {
       phone: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        validate: {
-          len: [1, 20],
-        },
       },
       neighborhood: {
         type: DataTypes.STRING,
