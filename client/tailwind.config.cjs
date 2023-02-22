@@ -28,9 +28,13 @@ module.exports = {
       },
       backgroundImage: {
         white: "url('./assets/imagenes/backgroundwhite.png')",
-        balloonLG: "url('./assets/imagenes/ASD-01.png')",
-        balloonMD: "url('./assets/imagenes/ASD-tablet-01.png')",
-        balloonSM: "url('./assets/imagenes/ASD-sm-01.png')",
+        balloon: "url('./assets/imagenes/fondo-landingshop.png')",
+        perros: "url('./assets/imagenes/PERR1.png')",
+        gatos: "url('./assets/imagenes/CAT.png')",
+        contacto: "url('./assets/imagenes/CONTACTO1.png')",
+        pcomida: "url('./assets/imagenes/food-01.png')",
+        phouse: "url('./assets/imagenes/doghouse-01.png')",
+        ptoys: "url('./assets/imagenes/toys-01.png')",
       },
       keyframes: {
         coloranim: {
