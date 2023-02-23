@@ -49,11 +49,11 @@ const postProductHandler = async (req, res) => {
   const data = req.body;
   const file = req.file;
   try {
-    const { requiredData, extraData } = splitData(data);
+    const nueva = JSON.parse(req.body.data);
+    const { requiredData, extraData } = splitData(nueva);
     const image = await cloudinary.uploader.upload(file.path);
-    extraData.imgUrl = image.secure_url;
-    console.log(data);
-    console.log((extraData.imgUrl = image.secure_url));
+    extraData.img = image.secure_url;
+    console.log((extraData.img = image.secure_url));
     const newProduct = await createProduct(requiredData, extraData, file);
     return res.status(200).json(newProduct);
   } catch (error) {

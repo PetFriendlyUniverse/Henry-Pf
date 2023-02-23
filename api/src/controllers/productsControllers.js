@@ -53,7 +53,7 @@ const createProduct = async (requiredData, extraData, file) => {
   }
   if (file) {
     const result = await cloudinary.uploader.upload(file.path);
-    extraData.imageUrl = result.secure_url;
+    extraData.img = result.secure_url;
   }
   if (!Object.values(requiredData).every((value) => value)) {
     throw new Error("Missing data");
