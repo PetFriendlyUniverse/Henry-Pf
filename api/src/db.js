@@ -24,26 +24,6 @@ const sequelize = new Sequelize(
   }
 );
 
-<<<<<<< HEAD
-const sequelize = DATABASE
-  ? new Sequelize(DATABASE, USERNAME, PASSWORD, {
-      host: HOST,
-      dialect: "postgres",
-      dialectOptions: {
-        ssl: {
-          require: true,
-          rejectUnauthorized: false,
-        },
-      },
-    })
-  : new Sequelize(`${EXTERNAL_DB_URL}?ssl=true`, {
-      // logging: false, // set to console.log to see the raw SQL queries
-      // native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-      dialect: "postgres",
-      protocol: "postgres",
-      dialectOptions: {},
-    });
-=======
 /* const sequelize = new Sequelize(`${INTERNAL_DB_UTL}?ssl=true`, {
   // logging: false, // set to console.log to see the raw SQL queries
   // native: false, // lets Sequelize know we can use pg-native for ~30% more speed
@@ -51,7 +31,6 @@ const sequelize = DATABASE
   protocol: "postgres",
   dialectOptions: {},
 }); */
->>>>>>> 165d2af52b3eb600472b6bdf20085ed984bd97b3
 
 const basename = path.basename(__filename);
 
