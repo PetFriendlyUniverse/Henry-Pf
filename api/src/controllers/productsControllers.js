@@ -99,6 +99,15 @@ const getFiltersBD = async () => {
   return filters;
 };
 
+const getProductsByStore = async (storeId) => {
+  const products = await Product.findAll({
+    where: {
+      StoreId: storeId,
+    },
+  });
+  return products;
+};
+
 module.exports = {
   getAllProducts,
   getProductByID,
@@ -107,4 +116,5 @@ module.exports = {
   deleteProduct,
   getProductFilter,
   getFiltersBD,
+  getProductsByStore,
 };

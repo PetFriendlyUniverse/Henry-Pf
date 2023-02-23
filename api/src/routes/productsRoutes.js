@@ -6,6 +6,7 @@ const {
   postProductHandler,
   putProductHandler,
   deleteProductHandler,
+  getProductByIDStorelHandler,
 } = require("../handler/productsHandler");
 
 const multer = require("multer");
@@ -19,6 +20,9 @@ productsRoutes.get("/", getAllProductsHandler);
 productsRoutes.get("/filters", getFilters);
 
 productsRoutes.get("/:id", getProductByIDlHandler);
+
+productsRoutes.get("/store/:storeId", getProductByIDStorelHandler);
+
 productsRoutes.post("/create", upload.single("img"), postProductHandler);
 productsRoutes.put("/:id", putProductHandler);
 productsRoutes.delete("/:id", deleteProductHandler);
