@@ -5,6 +5,7 @@ import {
   getProductsById,
   deletedProducts,
   getAllBrands,
+  deleteFavorite,
 } from "./productsSlice";
 import axios from "axios";
 import { queryMarker } from "./helpers/queryMaker";
@@ -31,7 +32,10 @@ const getAllBrandsApi = () => async (dispatch) => {
   const { data } = await axios.get("/brands");
   return dispatch(getAllBrands(data));
 };
-
+const deleteFavoriteById = (id) => async (dispatch) => {
+  const { data } = await axios.delete(`/favorite/${id}`);
+  return dispatch(deleteFavorite(data));
+};
 export {
   getProductsApi,
   getFiltersApi,
@@ -39,4 +43,5 @@ export {
   getProductsId,
   deleteProductId,
   getAllBrandsApi,
+  deleteFavoriteById,
 };
