@@ -2,6 +2,7 @@ const express = require("express");
 const passport = require("passport");
 const morgan = require("morgan");
 const routes = require("./routes/index.js");
+const cloudinary = require("cloudinary").v2;
 const { ORIGIN } = process.env; // configurar su origen en env (en mi caso es ORIGIN=127.0.0.1 pero puede ser ORIGIN=localhost)
 
 require("./db.js");
@@ -11,6 +12,12 @@ const server = express();
 server.name = "API";
 
 server.use(morgan("dev"));
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 server.use(express.json());
 server.use((req, res, next) => {

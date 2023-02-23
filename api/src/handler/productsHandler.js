@@ -13,6 +13,7 @@ const {
   splitData,
   addFixedsFilters,
 } = require("../helpers/productsHelpers");
+const cloudinary = require("cloudinary").v2;
 
 const getAllProductsHandler = async (req, res) => {
   const query = req.query;
@@ -46,9 +47,14 @@ const getProductByIDlHandler = async (req, res) => {
 
 const postProductHandler = async (req, res) => {
   const data = req.body;
+  const file = req.file;
   try {
-    const { requiredData, extraData } = splitData(data);
-    const newProduct = await createProduct(requiredData, extraData);
+    const nueva = JSON.parse(req.body.data);
+    const { requiredData, extraData } = splitData(nueva);
+    const image = await cloudinary.uploader.upload(file.path);
+    extraData.img = image.secure_url;
+    console.log((extraData.img = image.secure_url));
+    const newProduct = await createProduct(requiredData, extraData, file);
     return res.status(200).json(newProduct);
   } catch (error) {
     return res.status(404).json(error.message);
