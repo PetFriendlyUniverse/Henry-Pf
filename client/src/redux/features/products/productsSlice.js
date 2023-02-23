@@ -15,7 +15,7 @@ const initialState = {
   products: [],
   totalPages: 1,
   currentPage: 1,
-  productsPerPage: 12,
+  productsPerPage: 15,
   allFilters: [],
   setFilters: {}, // {size: "small", weight: 5}
   productId: [],

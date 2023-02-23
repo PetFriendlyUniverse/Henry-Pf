@@ -20,6 +20,11 @@ module.exports = {
         greyHover: "#ced4da",
         yellowPalette: "#edf16D",
         colorFilter: "#645E9D",
+        russianviolet: "#392B58",
+        cornflowerblue: "#6495ed",
+        steelblue: "#5380a4",
+        ultraviolet: "#645e9d",
+        pastelgreen: "#4dbb47",
       },
       dropShadow: {
         custom: "36px 36px 37px rgb(0,0,0)",

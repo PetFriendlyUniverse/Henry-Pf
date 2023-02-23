@@ -1,10 +1,11 @@
+import { useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import SearchForm from "./components/SearchForm";
 import DropdownHelp from "./components/DropdownHelp";
 import DropdownShop from "./components/DropdownShop";
 import logo from "../../assets/logo/logo.png";
-
-import { useRef } from "react";
+import services from "../../assets/general/services.svg";
+import shop from "../../assets/general/shop.svg";
 import DropdownUser from "./components/DropdownUser";
 function NavBar() {
   const token = localStorage.getItem("token");
@@ -15,8 +16,8 @@ function NavBar() {
   };
 
   return (
-    <nav className="fixed z-30 flex h-24 w-full bg-gradient-to-b from-blue-500  via-blue-400 to-blue-500 sm:px-4">
-      <div className="container mx-auto flex items-center justify-around sm:justify-evenly md:justify-between lg:justify-around">
+    <nav className="fixed z-30 flex h-24 w-full bg-russianviolet sm:px-4">
+      <div className="flex w-full items-center justify-around sm:justify-evenly md:justify-between lg:justify-between">
         <Link to={`/`}>
           <img
             src={logo}
@@ -24,24 +25,27 @@ function NavBar() {
             alt="PetShopUniverse Logo"
           />
         </Link>
-        <div>
+
+        <div className="flex items-center gap-10">
           <NavLink
-            className="rounded-md border border-black py-1 px-4 text-base font-semibold text-black shadow-sm shadow-black active:shadow-inner active:shadow-black"
+            className=" flex gap-5 rounded-md border border-cornflowerblue py-2 px-4 text-base font-semibold text-cornflowerblue shadow-sm shadow-cornflowerblue active:shadow-inner active:shadow-cornflowerblue"
             to="/landingshop"
           >
+            <img src={shop} alt="" />
             Shop
           </NavLink>
-        </div>
-        <div>
-          <NavLink
-            className="rounded-md border border-black py-1 px-4 text-base font-semibold text-black shadow-sm shadow-black active:shadow-inner active:shadow-black"
-            to="/services"
-          >
-            Servicios
-          </NavLink>
+          <div>
+            <NavLink
+              className="flex gap-5 rounded-md border border-cornflowerblue py-2 px-4 text-base font-semibold text-cornflowerblue shadow-sm shadow-cornflowerblue
+               active:shadow-inner active:shadow-cornflowerblue"
+              to="/services"
+            >
+              <img src={services} alt="" />
+              Servicios
+            </NavLink>
+          </div>
         </div>
 
-        {token ? <DropdownUser /> : <Link to={"/login"}>Login</Link>}
         <button
           data-collapse-toggle="mobile-menu-2"
           type="button"
@@ -65,28 +69,26 @@ function NavBar() {
             ></path>
           </svg>
         </button>
+        <div className="w-96 ">
+          <SearchForm />
+        </div>
         <div
-          className="md:w-scren absolute top-14 left-0 z-10 hidden w-full items-center justify-between md:order-1 lg:static lg:flex lg:w-[900px]"
+          className=" absolute top-14 left-0 z-10 hidden  items-center justify-between  md:order-1 lg:static lg:flex "
           id="mobile-menu-2"
           ref={toolBar}
         >
-          <ul className="mt-4 flex flex-col items-center rounded-lg border border-gray-100 p-4 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:text-sm  md:font-medium ">
-            <li className="w-96">
-              <SearchForm />
-            </li>
+          <ul className="mt-4 flex flex-col items-center rounded-lg border border-gray-100 md:mt-0 md:flex-row md:justify-between md:space-x-8 md:border-0  md:text-sm md:font-medium lg:px-10 ">
             <li>
               <DropdownHelp />
             </li>
             <li>
               <DropdownShop />
             </li>
+            <li className="rounded-md border border-cornflowerblue py-2 px-4 text-base text-cornflowerblue shadow-sm shadow-cornflowerblue active:shadow-inner active:shadow-cornflowerblue">
+              <Link to="/about">Sobre Nosotros</Link>
+            </li>
             <li>
-              <Link
-                to="/about"
-                className="rounded-md border border-black py-1 px-4 shadow-sm shadow-black active:shadow-inner active:shadow-black"
-              >
-                Sobre Nosotros
-              </Link>
+              {token ? <DropdownUser /> : <Link to={"/login"}>Login</Link>}
             </li>
           </ul>
         </div>
