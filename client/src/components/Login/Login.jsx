@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Login.module.css";
 import axios from "axios";
 import { useState } from "react";
-import { validationProfile } from "../../pages/ecommerce/Forms/Validations/Profile";
+import { ValidationProfile } from "../../pages/ecommerce/Forms/Validations/Profile";
 import LinkButton from "../Button/LinkButton";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
@@ -40,7 +40,7 @@ function Login() {
       setForm({ ...form, [property]: [value] });
     } else {
       setForm({ ...form, [property]: value });
-      setErrors({ ...errors, ...validationProfile(property, value) }); //NO CAMBIAR ESTO POR DIOS
+      setErrors({ ...errors, ...ValidationProfile(property, value) }); //NO CAMBIAR ESTO POR DIOS
     }
   };
   const handleChangeLogin = (e) => {

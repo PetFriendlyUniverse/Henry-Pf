@@ -1,4 +1,4 @@
-const validationProfile = (property, value) => {
+const ValidationProfile = (property, value) => {
   let stringRegex = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/;
   let numberRegex = /^[0-9]+$/;
   let emailRegex =
@@ -96,7 +96,7 @@ const validationProfile = (property, value) => {
   return error;
 };
 
-const validatePassword = (password, repeatPassword) => {
+const ValidatePassword = (password, repeatPassword) => {
   // NECESITA = {password: state.password, repeatPassword: repeatPassword}
   if (password !== repeatPassword)
     return { errorRepeat: "Las contraseñas no coinciden" };
@@ -109,4 +109,4 @@ const validatePassword = (password, repeatPassword) => {
   return error; */
 };
 
-export { validationProfile, validatePassword };
+export { ValidationProfile, ValidatePassword };
