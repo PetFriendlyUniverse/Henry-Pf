@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="bg-gray-100 text-center text-gray-600 lg:text-left ">
+    <footer className="mt-40 bg-gray-100 text-center text-gray-600 lg:text-left">
       <div className="flex items-center justify-center border-b border-gray-300 p-6 lg:justify-between">
         <div className="mr-12 hidden lg:block">
           <span>Conéctate con nosotros en las redes sociales:</span>

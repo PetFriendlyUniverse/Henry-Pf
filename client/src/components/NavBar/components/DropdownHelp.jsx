@@ -1,8 +1,10 @@
+import whatsapp from "../../../assets/socialmedia/whatsapp.svg";
 function dropdownHelp() {
   return (
     <div className="group">
-      <button className="flex w-full items-center justify-between rounded-md border border-black px-4 py-1 text-xs text-black shadow-sm shadow-black md:text-sm lg:relative lg:text-base">
-        Ayuda
+      <button className="flex w-full items-center justify-between gap-5 rounded-md border border-cornflowerblue py-2 px-4 text-xs text-cornflowerblue shadow-sm shadow-cornflowerblue md:text-sm lg:relative lg:text-base">
+        <img src={whatsapp} alt="" />
+        <span>Ayuda</span>
         <svg
           className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180"
           aria-hidden="true"

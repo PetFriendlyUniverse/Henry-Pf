@@ -63,8 +63,8 @@ function About() {
     },
   ];
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-gray-600 bg-[url('https://petfood.com.ar/img/cms/symphony.png')] pt-24">
-      <section className="grid place-content-center  gap-10 lg:h-2/3 lg:w-2/3 lg:grid-cols-4">
+    <div className="lg: flex h-screen  w-full items-center justify-center  bg-gray-600 bg-[url('https://petfood.com.ar/img/cms/symphony.png')] lg:pt-60">
+      <section className="grid place-content-center gap-10  md:pb-10 md:pt-8 md:text-sm lg:h-2/3 lg:w-2/3 lg:grid-cols-4">
         {members.map((person) => (
           <article
             key={person.name}
@@ -73,7 +73,7 @@ function About() {
             <div className="flex flex-col items-center justify-center gap-3">
               <img
                 src={person.img}
-                className="h-40 w-40 rounded-full"
+                className="h-40 w-40 rounded-full md:rounded-bl-lg"
                 alt={person.name}
               />
               <h2 className="text-xl font-semibold tracking-wide">
