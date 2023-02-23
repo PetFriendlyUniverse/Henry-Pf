@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import {
   addFavoriteProduct,
@@ -11,6 +11,7 @@ import { deleteFavoriteById } from "../../redux/features/products/productsAction
 export const Favorite = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { favorite } = useSelector((state) => state.Favorite);
   const profile = useSelector((state) => state.profile);
 
@@ -26,7 +27,7 @@ export const Favorite = () => {
       confirmButtonText: "Eliminar",
     }).then((result) => {
       if (result.isConfirmed) {
-        isAuthenticated ? dispatch(deleteFavoriteById(profile.id)) : null;
+        dispatch(deleteFavoriteById(profile.id));
         Swal.fire(
           "Eliminado!",
           "El carrito se ha eliminado correctamente",
