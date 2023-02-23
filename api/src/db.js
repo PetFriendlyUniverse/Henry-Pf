@@ -8,8 +8,10 @@ const {
   DB_HOST,
   DB_PORT,
   DB_NAME,
-  EXTERNAL_DB_URL,
-  INTERNAL_DB_UTL,
+  DATABASE,
+  USERNAME,
+  PASSWORD,
+  HOST,
 } = process.env;
 
 // const sequelize = new Sequelize(
@@ -28,13 +30,13 @@ const {
 //   protocol: "postgres",
 //   dialectOptions: {},
 // });
-const sequelize = new Sequelize(`${EXTERNAL_DB_URL}?ssl=true`, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+const sequelize = new Sequelize(DATABASE, USERNAME, PASSWORD, {
+  host: HOST,
+  dialect: "postgres",
   dialectOptions: {
     ssl: {
       require: true,
-      rejectUnauthorized: false, // <<-- Agrega esta línea
+      rejectUnauthorized: false,
     },
   },
 });
