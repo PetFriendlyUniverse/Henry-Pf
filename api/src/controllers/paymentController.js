@@ -11,7 +11,8 @@ class PaymentController {
         data.buyer
       );
 
-      return res.redirect(checkout.init_point);
+      return res.send("esto es el redireccionamiento del succes");
+      //return res.redirect(checkout.init_point);
       //si es exitoso los llevamos a la url de Mercado Pago
 
       //return res.json({ url: checkout.init_point });
