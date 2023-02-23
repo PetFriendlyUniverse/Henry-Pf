@@ -1,4 +1,4 @@
-export const validateStore = (property, value) => {
+export const ValidateStore = (property, value) => {
   let stringRegex = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/;
   let numberRegex = /^[0-9]+$/;
 
