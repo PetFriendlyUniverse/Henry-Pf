@@ -20,15 +20,15 @@ function Paginator() {
   };
 
   return (
-    <div className=" flex  h-full flex-col items-center gap-4 lg:min-w-[800px] xl:min-w-[1000px] 2xl:min-w-[1400px]">
-      <div className="mt-4 flex w-9/12 justify-center sm:w-1/2">
+    <div className=" flex h-full flex-col  items-center gap-4 lg:min-h-screen lg:w-4/5 lg:min-w-[800px] xl:min-w-[1000px] 2xl:min-w-[1400px]">
+      <div className="mt-4 flex w-9/12 justify-center sm:w-1/2 md:w-1/5">
         <Paginate
           pageCount={totalPages}
           marginPagesDisplayed={0}
           onPageChange={changePage}
           forcePage={currentPage - 1}
           containerClassName={
-            "flex text-sm h-10 font-mono w-full justify-between  items-center  rounded-xl bg-yellow-600 text-white "
+            "flex text-lg h-10 font-mono w-full justify-between  items-center  rounded-xl border-2 border-russianviolet text-russianviolet font-bold "
           }
           pageLinkClassName={"px-3 hover:text-white"}
           activeLinkClassName={"bg-blue-700 text-white rounded-lg"}
@@ -62,7 +62,7 @@ function Paginator() {
           }
           nextLabel={
             <svg
-              className=" mr-2 h-4 rounded-lg"
+              className=" mr-2 h-4 transform rounded-lg duration-500 hover:scale-125"
               viewBox="0 0 66 43"
               version="1.1"
             >
@@ -90,9 +90,8 @@ function Paginator() {
           }
         />
       </div>
-      <div className="w-3/4">
-        <CardContainer />
-      </div>
+
+      <CardContainer />
     </div>
   );
 }

@@ -1,10 +1,11 @@
-import Subcard from "../../SubCard/Subcard";
-import { useDispatch, useSelector } from "react-redux";
-import LinkButton from "../../Button/LinkButton";
+import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Subcard from "../../SubCard/Subcard";
+import LinkButton from "../../Button/LinkButton";
 import { clearShopCart } from "../../../redux/features/products/productsSlice";
 import deleteBtn from "../../../assets/general/delete.svg";
-import Swal from "sweetalert2";
+import shopcart from "../../../assets/general/shopcart.svg";
 
 function DropdownShop() {
   const dispatch = useDispatch();
@@ -39,8 +40,9 @@ function DropdownShop() {
 
   return (
     <div className="group rounded-xl">
-      <button className="  flex w-full items-center justify-between rounded-md border border-black px-4 py-1 text-xs text-black shadow-sm shadow-black md:text-sm lg:relative lg:text-base">
-        $ {totalPrice}
+      <button className="  flex w-full  items-center justify-between gap-3 rounded-md border border-cornflowerblue py-2 px-4 text-xs text-cornflowerblue shadow-sm shadow-cornflowerblue md:text-sm lg:relative lg:text-base">
+        <img src={shopcart} alt="" />
+        <span>$ {totalPrice}</span>
         <svg
           className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180"
           aria-hidden="true"
