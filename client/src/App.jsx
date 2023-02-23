@@ -6,11 +6,12 @@ import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import LandingShop from "./pages/ecommerce/LandingShop/LandingShop";
 import About from "./pages/About/About";
-import Shop2 from "./pages/ecommerce/Shop/Shop2";
-// import Login from "./components/Login/Login";
 
+// import Shop2 from "./pages/ecommerce/Shop/Shop2";
+
+const Loader = lazy(() => import("./components/Loader/Loader"));
 const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
-const Services = lazy(() => import("./pages/services/incoming"));
+const Services = lazy(() => import("./pages/Services/Services"));
 
 const Landing = lazy(() => import("./pages/Landing/Landing"));
 const ProductDetail = lazy(() =>
@@ -33,6 +34,10 @@ const FormProfile = lazy(() =>
 const Profile = lazy(() => import("./pages/ecommerce/Profile/Profile"));
 const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 
+const TestComponent = lazy(() =>
+  import("./pages/ecommerce/Forms/FormCreateStore/FormCreateStore")
+); //Dejen esto asi para testear sus componentes a ver como se ven o si funcionan, solo cambien la importacion
+
 function App() {
   const shopCart = useSelector((state) => state.Products.shopCart);
   const { pathname } = useLocation();
@@ -42,12 +47,13 @@ function App() {
   return (
     <div className="App min-h-screen">
       {pathname !== "/" && pathname !== "/landingshop" && <NavBar />}
-      <Suspense fallback={<div>Proximamente un Loader...</div>}>
+
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/services" element={<Services />} />
           <Route path="/landingshop" element={<LandingShop />} />
-          {/* <Route path="/shop" element={<Shop2 />} /> */}
+          <Route path="/shop" element={<Shop2 />} />
 
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/detail/:id" element={<ProductDetail />} />
@@ -61,8 +67,9 @@ function App() {
             path="/shop/detail/modify/:id"
             element={<FormModifyProduct />}
           />
-          <Route path="*" element={<NotFound />} />
           <Route path="/about" element={<About />} />
+          <Route path="/testcomponent" element={<TestComponent />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
       {pathname !== "/" && <Footer />}

@@ -6,6 +6,7 @@ const {
   deleteUserHandler,
   getUserDetailHandler,
   loginHandler,
+  logoutHandler,
 } = require("../handler/userHandler");
 
 const userRoutes = Router();
@@ -20,5 +21,7 @@ userRoutes.put("/:id", putUserHandler);
 userRoutes.delete("/:id", deleteUserHandler);
 
 userRoutes.post("/login", loginHandler);
+
+userRoutes.post("/logout", logoutHandler);
 
 module.exports = userRoutes;
