@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useTransition } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
@@ -39,6 +39,7 @@ const TestComponent = lazy(() =>
 ); //Dejen esto asi para testear sus componentes a ver como se ven o si funcionan, solo cambien la importacion
 
 function App() {
+  const [isPending, startTransition] = useTransition();
   const shopCart = useSelector((state) => state.Products.shopCart);
   const { pathname } = useLocation();
   window.addEventListener("beforeunload", () => {
@@ -47,29 +48,35 @@ function App() {
   return (
     <div className="App min-h-screen">
       {pathname !== "/" && pathname !== "/landingshop" && <NavBar />}
+      {isPending && <Loader />}
+      {startTransition(() => {
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/landingshop" element={<LandingShop />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/shop/detail/:id" element={<ProductDetail />} />
+            <Route path="/shop/shoppingcart" element={<ShoppingCart />} />
+            <Route path="/shop/checkout" element={<Checkout />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile/register" element={<FormProfile />} />
+            <Route path="/profile/:id" element={<Profile />} />
+            <Route
+              path="/profile/store/create"
+              element={<FormCreateProduct />}
+            />
+            <Route
+              path="/shop/detail/modify/:id"
+              element={<FormModifyProduct />}
+            />
+            <Route path="/about" element={<About />} />
+            <Route path="/testcomponent" element={<TestComponent />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>;
+      })}
 
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/landingshop" element={<LandingShop />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/shop/detail/:id" element={<ProductDetail />} />
-          <Route path="/shop/shoppingcart" element={<ShoppingCart />} />
-          <Route path="/shop/checkout" element={<Checkout />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/profile/register" element={<FormProfile />} />
-          <Route path="/profile/:id" element={<Profile />} />
-          <Route path="/profile/store/create" element={<FormCreateProduct />} />
-          <Route
-            path="/shop/detail/modify/:id"
-            element={<FormModifyProduct />}
-          />
-          <Route path="/about" element={<About />} />
-          <Route path="/testcomponent" element={<TestComponent />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
       {pathname !== "/" && <Footer />}
     </div>
   );
