@@ -82,7 +82,7 @@ function FormCreateProduct() {
       {/* este es el form completo */}
       <form
         onSubmit={submitHandler}
-        className="mt-10 flex max-h-screen w-full flex-col items-center   rounded-xl  bg-gradient-to-r from-[#0093E9] to-[#80D0C7] p-3 drop-shadow-2xl md:w-3/5 lg:h-auto "
+        className="mt-10 flex max-h-screen w-full flex-col items-center   rounded-xl  bg-gradient-to-r from-cornflowerblue to-russianviolet p-3 drop-shadow-2xl md:w-3/5 lg:h-auto "
       >
         <h3 className="mb-6">Sube tus productos con los datos solicitados</h3>
         {/* aca empieza el div con fondo azul que contiene la estructura del form */}
