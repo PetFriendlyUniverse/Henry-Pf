@@ -30,8 +30,8 @@ function Card({ name, img, weight, price, stock, id }) {
     });
   };
   return (
-    <div className="flex  h-full w-full min-w-fit max-w-xs flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-black sm:max-w-sm ">
-      <div className="h-56 w-full bg-[rgba(0,0,0,0.5)]">
+    <div className="flex  h-full w-full min-w-fit max-w-xs flex-col items-center justify-center overflow-hidden rounded-lg border  sm:max-w-sm ">
+      <div className="h-56 w-full bg-[rgba(0,0,0,0.05)]">
         <Link
           to={`/shop/detail/${id}`}
           className="flex items-center justify-center"
@@ -39,32 +39,34 @@ function Card({ name, img, weight, price, stock, id }) {
           <img src={img} alt="" className="h-56 w-56 " />
         </Link>
       </div>
-      <div className="flex   justify-between">
-        <h3 className="text-bold m-2 self-start p-1">{name}</h3>
-      </div>
-      <div className="mt-2 flex  items-center justify-center gap-2">
-        <p className="text-bold my-1 rounded bg-cyan-400 py-1 px-2 text-xs text-white">
-          {weight} kg
-        </p>
-        <p className="text-bold rounded bg-cyan-400 py-1 px-2 text-xs text-white">
-          Stock: {stock}
-        </p>
-      </div>
-      <div className="h-">
-        <p className="text-bold p-1">${price}</p>
-      </div>
-      <div className="flex items-center justify-around gap-1 bg-slate-100 p-1">
-        <div className=" w-1/2">
-          <CountProduct
-            value={value}
-            handleClickDeduct={handleClickDeduct}
-            handleClickAdd={handleClickAdd}
-            stock={stock}
-            disabled={value === stock}
-          />
+      <div className="bg-[#fff] px-3 pb-2">
+        <div className="flex  w-full items-center justify-center ">
+          <h3 className="m-2 p-1  font-bold">{name}</h3>
         </div>
-        <div className="w-1/2 ">
-          <AddShopButton component={"Comprar"} onClick={handleAddShopCart} />
+        <div className="mt-2 flex w-full  items-center justify-center gap-2 ">
+          <p className="my-1 rounded bg-ultraviolet py-2 px-4 text-xs font-semibold text-white">
+            {weight} kg
+          </p>
+          <p className="rounded bg-ultraviolet py-2 px-4 text-xs font-semibold text-white">
+            Stock: {stock}
+          </p>
+        </div>
+        <div className="w-full ">
+          <p className="p-1 text-center font-bold">${price}</p>
+        </div>
+        <div className="flex w-full items-center justify-around gap-1  p-1">
+          <div className=" w-1/2">
+            <CountProduct
+              value={value}
+              handleClickDeduct={handleClickDeduct}
+              handleClickAdd={handleClickAdd}
+              stock={stock}
+              disabled={value === stock}
+            />
+          </div>
+          <div className="w-1/2 ">
+            <AddShopButton component={"Comprar"} onClick={handleAddShopCart} />
+          </div>
         </div>
       </div>
     </div>
