@@ -1,6 +1,5 @@
 const { Op } = require("sequelize");
 const { Product, Store, Brands, Breeds, Species, Colors } = require("../db");
-const cloudinary = require("cloudinary").v2;
 
 const getAllProducts = async () => {
   const products = await Product.findAll({
@@ -33,7 +32,7 @@ const getProductByID = async (id) => {
   return product;
 };
 // color, peso, imagen, tamaño  => extra
-const createProduct = async (requiredData, extraData, file) => {
+const createProduct = async (requiredData, extraData) => {
   await Brands.findOrCreate({
     where: { id: requiredData.brand },
   });
@@ -50,10 +49,6 @@ const createProduct = async (requiredData, extraData, file) => {
   const store = Store.findByPk(requiredData.storeId);
   if (!store) {
     throw new Error("Store doesnt exist");
-  }
-  if (file) {
-    const result = await cloudinary.uploader.upload(file.path);
-    extraData.img = result.secure_url;
   }
   if (!Object.values(requiredData).every((value) => value)) {
     throw new Error("Missing data");

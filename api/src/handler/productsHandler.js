@@ -49,11 +49,10 @@ const postProductHandler = async (req, res) => {
   const data = req.body;
   const file = req.file;
   try {
-    const nueva = JSON.parse(req.body.data);
-    const { requiredData, extraData } = splitData(nueva);
+    // const nueva = JSON.parse(req.body.data); solo se usa para cuando se quiere probar en insomnia
+    const { requiredData, extraData } = splitData(data);
     const image = await cloudinary.uploader.upload(file.path);
     extraData.img = image.secure_url;
-    console.log((extraData.img = image.secure_url));
     const newProduct = await createProduct(requiredData, extraData, file);
     return res.status(200).json(newProduct);
   } catch (error) {
@@ -64,7 +63,6 @@ const postProductHandler = async (req, res) => {
 const putProductHandler = async (req, res) => {
   const { id } = req.params;
   const data = req.body;
-
   try {
     const productEdited = await updateProduct(id, data);
     return res.status(200).json(productEdited);

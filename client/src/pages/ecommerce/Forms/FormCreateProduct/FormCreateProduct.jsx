@@ -4,13 +4,12 @@ import { ValidateProduct } from "../Validations/ValidateProduct";
 import LinkButton from "../../../../components/Button/LinkButton";
 import Swal from "sweetalert2";
 import { Carousel } from "flowbite-react";
-// name,img,price,description,stock,specie,breed,brand,weight,color,size
 
 function FormCreateProduct() {
   const [formComplete, setFormComplete] = useState(false);
+  const [img, setImg] = useState(null);
   const [form, setForm] = useState({
     name: "",
-    img: "",
     price: "",
     description: "",
     stock: "",
@@ -24,7 +23,6 @@ function FormCreateProduct() {
   });
   const [error, setError] = useState({
     name: "",
-    img: "",
     price: "",
     description: "",
     stock: "",
@@ -36,7 +34,10 @@ function FormCreateProduct() {
     size: "",
     storeId: "",
   });
-
+  const changeHandlerImg = (e) => {
+    setImg(e.target.files[0]);
+    console.log(e.target.files[0]);
+  };
   const changeHandler = (e) => {
     let property = e.target.name;
     let value = e.target.value;
@@ -48,26 +49,37 @@ function FormCreateProduct() {
       setFormComplete(false);
     }
   };
-
   const submitHandler = (e) => {
     e.preventDefault();
     const errorValues = Object.values(error);
     const isFormValid = errorValues.every((val) => val === "");
-    const data = {
-      ...form,
-      weight: parseFloat(form.weight),
-      price: parseInt(form.price),
-      stock: parseInt(form.stock),
-      StoreId: parseInt(form.storeId),
-    };
+    const newForm = new FormData();
+    newForm.append("img", img);
+    newForm.append("name", form.name);
+    newForm.append("price", form.price);
+    newForm.append("description", form.description);
+    newForm.append("stock", form.stock);
+    newForm.append("specie", form.specie);
+    newForm.append("breed", form.breed);
+    newForm.append("brand", form.brand);
+    newForm.append("weight", form.weight);
+    newForm.append("color", form.color);
+    newForm.append("size", form.size);
+    newForm.append("storeId", form.storeId);
     if (isFormValid) {
-      axios.post("/products/create", data).then(() => {
-        Swal.fire({
-          title: "Producto creado",
-          icon: "success",
-          text: "El producto ha sido creado correctamente",
+      axios
+        .post("/products/create", newForm, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          }, //importante en form de imagen poner este headers
+        })
+        .then(() => {
+          Swal.fire({
+            title: "Producto creado",
+            icon: "success",
+            text: "El producto ha sido creado correctamente",
+          });
         });
-      });
     } else {
       Swal.fire({
         icon: "error",
@@ -248,6 +260,7 @@ function FormCreateProduct() {
               {" "}
               <Carousel>
                 <img
+                  src={img}
                   alt="aca se mostrara la imagen subida"
                   className="min-w-1/4  aspect-square  bg-contain"
                 />
@@ -269,18 +282,14 @@ function FormCreateProduct() {
             <div className="h-1/2  p-8 px-8">
               <div className="group relative z-0 mb-6 flex h-11 w-full">
                 <input
-                  type="text"
-                  value={form.img}
-                  name="img"
-                  onChange={changeHandler}
-                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
-                  placeholder=""
-                  autoComplete="off"
+                  type="file"
+                  accept="image/*"
+                  onChange={changeHandlerImg}
                 />
+
                 <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                  Link de imagen:
+                  Imagen:
                 </label>
-                {error.img && <span className="text-red-500">{error.img}</span>}
               </div>
               <div className="group relative z-0 mb-6 flex h-2/4 w-full">
                 <textarea
