@@ -45,12 +45,6 @@ function NavBar() {
           </div>
         </div>
 
-        {typeof token === "string" ? (
-          <DropdownUser />
-        ) : (
-          <Link to={"/login"}>Login</Link>
-        )}
-
         <button
           data-collapse-toggle="mobile-menu-2"
           type="button"
