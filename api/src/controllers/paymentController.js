@@ -4,16 +4,15 @@ class PaymentController {
   }
 
   async getMercadoPagoLink(req, res) {
-    const { name, price, unit, img } = req.body;
+    const data = req.body;
     try {
       const checkout = await this.paymentService.createPaymentMercadoPago(
-        name, // nombre del producto o servicio
-        price, //precio del producto o servicio
-        unit, //cantidad que estamos vendiendo
-        img // imagen de referencia del producto o servicio
+        data.products,
+        data.buyer
       );
 
-      return res.redirect(checkout.init_point);
+      return res.send("esto es el redireccionamiento del succes");
+      //return res.redirect(checkout.init_point);
       //si es exitoso los llevamos a la url de Mercado Pago
 
       //return res.json({ url: checkout.init_point });
