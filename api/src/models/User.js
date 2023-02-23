@@ -47,6 +47,12 @@ module.exports = (sequelize) => {
           len: [1, 100],
         },
       },
+      img: {
+        type: DataTypes.STRING,
+        validate: {
+          len: [1, 500],
+        },
+      },
       phone: {
         type: DataTypes.INTEGER,
         validate: {

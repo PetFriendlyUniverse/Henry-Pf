@@ -1,17 +1,17 @@
 const { Router } = require("express");
 const {
-  postDaycareHandler,
   getDaycaresHandler,
-  getDaycareDetail,
+  getDaycareByIDHandler,
+  postDaycareHandler,
   putDaycareHandler,
   deleteDaycareHandler,
 } = require("../../handler/servicesHandlers/daycareHandler");
 
 const daycareRoutes = Router();
 
-daycareRoutes.post("/create", postDaycareHandler);
 daycareRoutes.get("/", getDaycaresHandler);
-daycareRoutes.get("/detail/:id", getDaycareDetail);
+daycareRoutes.get("/:id", getDaycareByIDHandler);
+daycareRoutes.post("/create", postDaycareHandler);
 daycareRoutes.put("/:id", putDaycareHandler);
 daycareRoutes.delete("/:id", deleteDaycareHandler);
 
