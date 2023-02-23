@@ -1,8 +1,10 @@
+import whatsapp from "../../../assets/socialmedia/whatsapp.svg";
 function dropdownHelp() {
   return (
     <div className="group">
-      <button className="flex w-full items-center justify-between rounded-md border border-black px-4 py-1 text-xs text-black shadow-sm shadow-black md:text-sm lg:relative lg:text-base">
-        Ayuda
+      <button className="flex w-full items-center justify-between gap-5 rounded-md border border-cornflowerblue py-2 px-4 text-xs text-cornflowerblue shadow-sm shadow-cornflowerblue md:text-sm lg:relative lg:text-base">
+        <img src={whatsapp} alt="" />
+        <span>Ayuda</span>
         <svg
           className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180"
           aria-hidden="true"
@@ -14,11 +16,11 @@ function dropdownHelp() {
         </svg>
       </button>
       <div className="hidden rounded-b-lg bg-white p-2 text-lightwhite group-hover:block lg:absolute lg:z-10 lg:w-32">
-        <p class="text-gray-500 ">
+        <p className="text-gray-500 ">
           Para contactarte con nosotros puedes comunicarte a travez de nuestro{" "}
           <a
             href="#"
-            class="font-medium text-green-500 underline hover:no-underline "
+            className="font-medium text-green-500 underline hover:no-underline "
           >
             Whatsapp
           </a>

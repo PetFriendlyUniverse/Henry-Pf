@@ -34,6 +34,10 @@ const FormProfile = lazy(() =>
 const Profile = lazy(() => import("./pages/ecommerce/Profile/Profile"));
 const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 
+const TestComponent = lazy(() =>
+  import("./pages/ecommerce/Forms/FormCreateStore/FormCreateStore")
+); //Dejen esto asi para testear sus componentes a ver como se ven o si funcionan, solo cambien la importacion
+
 function App() {
   const shopCart = useSelector((state) => state.Products.shopCart);
   const { pathname } = useLocation();
@@ -42,14 +46,13 @@ function App() {
   });
   return (
     <div className="App min-h-screen">
-      {pathname !== "/" && <NavBar />}
+      {pathname !== "/" && pathname !== "/landingshop" && <NavBar />}
+
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/services" element={<Services />} />
           <Route path="/landingshop" element={<LandingShop />} />
-          {/* <Route path="/shop" element={<Shop2 />} /> */}
-
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/detail/:id" element={<ProductDetail />} />
           <Route path="/shop/shoppingcart" element={<ShoppingCart />} />
@@ -62,8 +65,9 @@ function App() {
             path="/shop/detail/modify/:id"
             element={<FormModifyProduct />}
           />
-          <Route path="*" element={<NotFound />} />
           <Route path="/about" element={<About />} />
+          <Route path="/testcomponent" element={<TestComponent />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
       {pathname !== "/" && <Footer />}

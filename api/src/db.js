@@ -9,25 +9,41 @@ const {
   DB_PORT,
   DB_NAME,
   EXTERNAL_DB_URL,
-  INTERNAL_DB_UTL,
+  DATABASE,
+  USERNAME,
+  PASSWORD,
+  HOST,
 } = process.env;
 
 // const sequelize = new Sequelize(
 //   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
-
 //   {
 //     logging: false, // set to console.log to see the raw SQL queries
 //     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 //   }
 // );
 
-const sequelize = new Sequelize(`${INTERNAL_DB_UTL}?ssl=true`, {
-  // logging: false, // set to console.log to see the raw SQL queries
-  // native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-  dialect: "postgres",
-  protocol: "postgres",
-  dialectOptions: {},
-});
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CONFIG PARA DEPLOY
+const sequelize = DATABASE
+  ? new Sequelize(DATABASE, USERNAME, PASSWORD, {
+      host: HOST,
+      dialect: "postgres",
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false,
+        },
+      },
+    })
+  : new Sequelize(`${EXTERNAL_DB_URL}?ssl=true`, {
+      // logging: false, // set to console.log to see the raw SQL queries
+      // native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+      dialect: "postgres",
+      protocol: "postgres",
+      dialectOptions: {},
+    });
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FIN DE CONFIG PARA DEPLOY
 
 const basename = path.basename(__filename);
 
