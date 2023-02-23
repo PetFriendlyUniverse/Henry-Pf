@@ -47,7 +47,6 @@ function App() {
   return (
     <div className="App min-h-screen">
       {pathname !== "/" && pathname !== "/landingshop" && <NavBar />}
-
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Landing />} />
@@ -70,7 +69,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
-      {pathname !== "/" && <Footer />}
+      ;{pathname !== "/" && <Footer />}
     </div>
   );
 }
