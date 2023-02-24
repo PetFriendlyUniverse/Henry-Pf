@@ -115,15 +115,15 @@ function FormModifyUser() {
     <div className="flex h-screen justify-center py-28">
       <form
         onSubmit={handleSubmit}
-        className="rounded-xl p-3 shadow-2xl lg:h-[550px] lg:w-2/5"
+        className="rounded-xl p-3 shadow-2xl lg:h-[820px] lg:w-2/5"
       >
-        <h3 className="mb-6">Registrate</h3>
+        <h3 className="mb-6">Modifica o agrega informacion</h3>
         <div className="group relative z-0 mb-6 h-11 w-full">
           <input
             type="file"
             accept="image/*"
             onChange={handleChangeImage}
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            className="block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:placeholder-gray-400"
             placeholder=" "
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
@@ -234,9 +234,115 @@ function FormModifyUser() {
           <div className="group relative z-0 mb-6 h-11 w-full">
             <input
               onChange={handleChange}
+              type="text"
+              name="province"
+              value={form.province}
+              className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+              placeholder=" "
+              autoComplete="off"
+            />
+            <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+              Provincia (max: 30 caracteres)
+            </label>
+            {errors.province && (
+              <span className="text-red-500">{errors.province}</span>
+            )}
+          </div>
+          <div className="group relative z-0 mb-6 h-11 w-full">
+            <input
+              onChange={handleChange}
+              type="text"
+              name="locality"
+              value={form.locality}
+              className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+              placeholder=" "
+              autoComplete="off"
+            />
+            <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+              Localidad (max: 30 caracteres)
+            </label>
+            {errors.locality && (
+              <span className="text-red-500">{errors.locality}</span>
+            )}
+          </div>
+        </div>
+        <div className="mb-7 flex">
+          <div className="group relative z-0 mb-6 h-11 w-full">
+            <input
+              onChange={handleChange}
               type="number"
-              name="phone"
-              value={form.phone}
+              name="zip_code"
+              value={form.zip_code}
+              className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+              placeholder=" "
+              autoComplete="off"
+            />
+            <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+              Codigo Postal
+            </label>
+            {errors.zip_code && (
+              <span className="text-red-500">{errors.zip_code}</span>
+            )}
+          </div>
+          <div className="group relative z-0 mx-4 mb-6 h-11 w-full">
+            <input
+              onChange={handleChange}
+              type="text"
+              name="street_name"
+              value={form.street_name}
+              className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+              placeholder=" "
+              autoComplete="off"
+            />
+            <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+              Nombre de la calle
+            </label>
+            {errors.street_name && (
+              <span className="text-red-500">{errors.street_name}</span>
+            )}
+          </div>
+          <div className="group relative z-0 mb-6 h-11 w-full">
+            <input
+              onChange={handleChange}
+              type="number"
+              name="street_number"
+              value={form.street_number}
+              className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+              placeholder=" "
+              autoComplete="off"
+            />
+            <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+              Numeracion
+            </label>
+            {errors.street_number && (
+              <span className="text-red-500">{errors.street_number}</span>
+            )}
+          </div>
+        </div>
+        <div className="grid md:grid-cols-2 md:gap-6">
+          <div className="group relative z-0 mb-6 h-11 w-full">
+            <input
+              onChange={handleChange}
+              type="number"
+              name="area_code"
+              value={form.area_code}
+              className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+              placeholder=" "
+              autoComplete="off"
+            />
+            <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+              Codigo de area
+            </label>
+            {errors.area_code && (
+              <span className="text-red-500">{errors.area_code}</span>
+            )}
+          </div>
+          <div className="group relative z-0 mb-6 h-11 w-full">
+            <input
+              onChange={handleChange}
+              type="number"
+              name="number"
+              value={form.number}
               className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
               placeholder=" "
               autoComplete="off"
@@ -244,16 +350,35 @@ function FormModifyUser() {
             <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
               Telefono (max: 20 caracteres)
             </label>
-            {errors.phone && (
-              <span className="text-red-500">{errors.phone}</span>
+            {errors.number && (
+              <span className="text-red-500">{errors.number}</span>
+            )}
+          </div>
+        </div>
+        <div className="mb-7 grid md:grid-cols-2 md:gap-6">
+          <div className="group relative z-0 mb-6 h-11 w-full">
+            <input
+              onChange={handleChange}
+              type="number"
+              name="area_code_emergency"
+              value={form.area_code_emergency}
+              className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+              placeholder=" "
+              autoComplete="off"
+            />
+            <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+              Codigo de area
+            </label>
+            {errors.area_code_emergency && (
+              <span className="text-red-500">{errors.area_code_emergency}</span>
             )}
           </div>
           <div className="group relative z-0 mb-6 h-11 w-full">
             <input
               onChange={handleChange}
               type="number"
-              name="emergencyphone"
-              value={form.emergencyphone}
+              name="emergency_number"
+              value={form.emergency_number}
               className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
               placeholder=" "
               autoComplete="off"
@@ -261,8 +386,8 @@ function FormModifyUser() {
             <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
               Telefono de Emergencia
             </label>
-            {errors.emergencyphone && (
-              <span className="text-red-500">{errors.emergencyphone}</span>
+            {errors.emergency_number && (
+              <span className="text-red-500">{errors.emergency_number}</span>
             )}
           </div>
         </div>

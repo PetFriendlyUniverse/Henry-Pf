@@ -10,53 +10,53 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      name_store: {
+      name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: [1, 30],
         },
       },
       area_code_store: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
-      number_store: {
+      number: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       province: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: [1, 30],
         },
       },
       locality: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: [1, 30],
         },
       },
       zip_code: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       street_name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           lent: [5, 30],
         },
       },
       street_number: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       description: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: [1, 2000],
         },
