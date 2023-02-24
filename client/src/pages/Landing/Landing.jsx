@@ -9,7 +9,7 @@ import logo from "../../assets/logo/logo.png";
 
 function Landing() {
   return (
-    <div className=" flex h-screen w-screen bg-white bg-cover bg-no-repeat font-mono font-semibold ">
+    <div className=" flex h-full w-full bg-whitepattern bg-cover bg-no-repeat font-mono font-semibold ">
       <div className="z-20 flex h-16 w-96 gap-4 ">
         <Buttons />
       </div>
@@ -18,7 +18,9 @@ function Landing() {
         <div className="">
           <article className=" flex flex-col items-center justify-center pt-8 text-center">
             <img src={logo} alt="" className="pb-2" />
-            <h3 className="w-2/12 pb-2">Bienvenidos a pet friendly universe</h3>
+            <h1 className="w-2/12 pb-2 font-bold">
+              Bienvenidos a pet friendly universe
+            </h1>
             <hr className="h-1  w-3/12 rounded-full bg-gray-600 opacity-20"></hr>
             <p className="w-4/12 pt-2">
               Nuestra sección de shop tiene un final solidario, parte de la
