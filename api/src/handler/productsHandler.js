@@ -32,7 +32,6 @@ const postProductHandler = async (req, res) => {
 };
 const getAllProductsHandler = async (req, res) => {
   const query = req.query;
-  // console.log(query); // { pq: '2', page: '1' }
   try {
     const { paramsConsult, paginationParams } = queryMarker(query);
     let all;

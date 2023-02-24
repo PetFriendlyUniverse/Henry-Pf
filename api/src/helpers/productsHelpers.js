@@ -8,35 +8,37 @@ const queryAdapter = {
   brd: "brand",
 };
 
-// page: page, pq: productXpage, sortby, sortType; asc || des,    !! solo funciona si sortBy viene antes que sortType
-//minP: "minPrice" maxP: 'maxPrice'
+// page: page, pq: productXpage
+// sortBy, sortType; asc || des,    !! solo funciona si sortBy viene antes que sortType
+// gt: mayorQue, lt: menorQue <== (precios)
+
 const queryMarker = (query) => {
   const paginationParams = {};
   const where = {};
   const order = [[]];
-  const prices = [];
+  // const prices = [];
+  const { gt, lt } = query;
+  const pricesBetween = (gt || lt) && [
+    parseInt(gt) || 0,
+    parseInt(lt) || Infinity,
+  ]; // si viene gt o lt  se setean los valores [Op.between]: [min, max]
   for (const key in query) {
     if (["pq", "page"].includes(key)) {
       paginationParams[key] = query[key];
     } else if (key === "sortBy" || key === "sortType") {
       order[0].push(query[key]);
-    } else if (key === "minP" || key === "maxP") {
-      prices.push(query[key]);
-    } else if (key == "price" || key == "priceCondition") {
-      //price=100&priceCondition=gt
-      where[key] = query[key];
     } else {
-      where[queryAdapter[key]] = query[key];
+      if (queryAdapter[key]) where[queryAdapter[key]] = query[key];
     }
   }
   const paramsConsult = {};
 
   if (Object.keys(where).length > 0) paramsConsult.where = where;
   if (order[0].length > 0) paramsConsult.order = order;
-  if (prices.length > 0) paramsConsult.prices = prices;
+  if (pricesBetween) paramsConsult.pricesBetween = pricesBetween;
+  console.log(paramsConsult);
 
-  if (Object.keys(paramsConsult).length == 0)
-    return { paramsConsult: null, paginationParams };
+  if (Object.keys(paramsConsult).length == 0) return { paginationParams };
   return { paramsConsult, paginationParams };
 };
 
