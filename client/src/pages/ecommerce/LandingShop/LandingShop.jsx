@@ -8,7 +8,6 @@ import img3 from "../../../assets/imagenes/toys-01.png";
 import img4 from "../../../assets/imagenes/gatos-juguetes-0.jpg";
 import img5 from "../../../assets/imagenes/cat-tree.jpg";
 import img6 from "../../../assets/imagenes/camaa-gato.jpg";
-import Filters from "../Shop/components/Filters/Filters";
 import Recomendados from "../../../components/Recomendados/Recomendados";
 
 function LandingShop() {
