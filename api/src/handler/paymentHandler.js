@@ -1,38 +1,36 @@
-const { DB_HOST, DB_PORT } = process.env;
+const { DB_HOST, DB_PORT, MP_TOKEN, MP_PUBLICKEY } = process.env;
 // SDK de Mercado Pago
 const mercadopago = require("mercadopago");
 // Agrega credenciales
 mercadopago.configure({
-  access_token: "PROD_ACCESS_TOKEN",
+  access_token: MP_TOKEN,
 });
 
 const postPaymentHandler = (req, res) => {
+  const products = req.body;
+
   let preference = {
-    items: [
-      {
-        title: req.body.description,
-        unit_price: Number(req.body.price),
-        quantity: Number(req.body.quantity),
-      },
-    ],
+    items: products,
     back_urls: {
-      success: `http://${DB_HOST}:${DB_PORT}/payment/feedback`,
-      failure: `http://${DB_HOST}:${DB_PORT}/payment/feedback`,
-      pending: `http://${DB_HOST}:${DB_PORT}/payment/feedback`,
+      // corregir redireccionamiento
+      success: `http://${DB_HOST}:${DB_PORT}/shop`,
+      failure: `http://${DB_HOST}:${DB_PORT}/shop/checkout`,
+      pending: ``,
     },
     auto_return: "approved",
+    binary_mode: true,
   };
 
   mercadopago.preferences
     .create(preference)
-    .then(function (response) {
-      res.json({
-        id: response.body.id,
+    .then((response) => {
+      res.status(200).json({
+        response,
       });
     })
-    .catch(function (error) {
-      console.log(error);
+    .catch((error) => {
+      res.status(400).send({ error: error.message });
     });
 };
 
-module.exports = { postPaymentHandler, postWebhookHandler };
+module.exports = { postPaymentHandler };
