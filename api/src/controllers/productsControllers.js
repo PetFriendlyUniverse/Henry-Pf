@@ -1,4 +1,4 @@
-const { Op } = require("sequelize");
+const { Op, Sequelize } = require("sequelize");
 const { Product, Store, Brands, Breeds, Species, Colors } = require("../db");
 
 const getAllProducts = async () => {
@@ -8,7 +8,11 @@ const getAllProducts = async () => {
       enabled: true,
     },
   });
-  return products;
+  const priceRange = {
+    min: await Product.min("price"),
+    max: await Product.max("price"),
+  };
+  return { products, priceRange };
 };
 
 const getProductFilter = async (query) => {
@@ -16,7 +20,6 @@ const getProductFilter = async (query) => {
   if (!!query.where?.name) {
     query.where.name = { [Op.iLike]: `%${query.where.name}%` };
   }
-
   if (!!query?.pricesBetween) {
     query.where = {
       ...query.where,
@@ -28,7 +31,19 @@ const getProductFilter = async (query) => {
   // Agregar condición para "enable" igual a true
   query.where.enabled = true;
   const products = await Product.findAll(query);
-  return products;
+  const maxPrice = await Product.findAll({
+    attributes: [[Sequelize.fn("max", Sequelize.col("price")), "max_price"]],
+    where: query.where,
+  });
+  const minPrice = await Product.findAll({
+    attributes: [[Sequelize.fn("min", Sequelize.col("price")), "min_price"]],
+    where: query.where,
+  });
+  const priceRange = {
+    min: minPrice[0].dataValues.min_price,
+    max: maxPrice[0].dataValues.max_price,
+  };
+  return { products, priceRange };
 };
 const getProductByID = async (id) => {
   const product = await Product.findByPk(id);
