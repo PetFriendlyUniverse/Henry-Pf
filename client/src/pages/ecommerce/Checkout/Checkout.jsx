@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import ContainerRecomendados from "../../../components/ContainerRecomendados/ContainerRecomendados";
 import Subcard from "../../../components/SubCard/Subcard";
 import { clearShopCart } from "../../../redux/features/products/productsSlice";
 
@@ -47,8 +48,8 @@ function Checkout() {
             </div>
           </div>
 
-          <div className=" flex h-2/6 w-full items-center justify-center border">
-            aca van las cards de los productos
+          <div className=" flex h-48  w-full items-center justify-center overflow-hidden bg-slate-100">
+            <ContainerRecomendados />
           </div>
         </div>
         <div className=" flex h-4/6 w-full flex-col self-start lg:w-2/6 ">
