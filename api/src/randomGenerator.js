@@ -163,10 +163,7 @@ const generator = () => {
     Species.bulkCreate(speciesObj);
 
     await Product.bulkCreate(productsToCreate);
-
   }, 10000);
-
-
 };
 
 module.exports = { generator };

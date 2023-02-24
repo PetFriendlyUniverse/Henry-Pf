@@ -102,6 +102,22 @@ module.exports = (sequelize) => {
           len: [1, 20],
         },
       },
+      veterinary: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
+      walker: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
+      daycare: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
+      store: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
       enable: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
