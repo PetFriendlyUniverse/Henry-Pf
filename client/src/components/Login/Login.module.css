@@ -3,7 +3,7 @@
   font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
-  background-color: #60a5fa;
+  background-color: #392B58;
   max-height: 80vh;
   max-width: 50vw;
   width: 70vw;
@@ -65,7 +65,7 @@ label {
 .register {
   display: flex;
   justify-content: center;
-  background: #edf16d;
+  background: #6495ED;
   border-radius: 60% / 10%;
   transform: translateY(-12%);
   transition: 0.8s ease-in-out;
@@ -77,7 +77,7 @@ label {
 }
 
 .register label {
-  color: #645e9d;
+  color: #ffffff;
   transform: scale(0.8);
 }
 

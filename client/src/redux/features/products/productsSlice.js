@@ -17,7 +17,8 @@ const initialState = {
   currentPage: 1,
   productsPerPage: 15,
   allFilters: [],
-  setFilters: {}, // {size: "small", weight: 5}
+  setFilters: {}, // {size: "small", weight: 5, ...}
+  priceRange: {}, // { min: numb, max: numb }
   productId: [],
   allbrands: [],
   favorite: [],
@@ -30,8 +31,10 @@ export const Products = createSlice({
   reducers: {
     // uso =>  const products = useSelector(state => state.Products.products)
     getProducts: (state, { payload }) => {
-      state.products = payload[0]; //payload: [[{},{},{},{}...], totalPages]
-      state.totalPages = payload[1];
+      //payload: {paginated: [[{},{},{},{}...], totalPages], priceRange { min: numb, max: numb }}
+      state.products = payload.paginated[0];
+      state.totalPages = payload.paginated[1];
+      state.priceRange = payload.priceRange;
     },
     getFilters: (state, { payload }) => {
       state.allFilters = payload;

@@ -1,11 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
+import { validateDaycare } from "../Validations/ValidationDaycare";
 import Swal from "sweetalert2";
-import { ValidateStore } from "../Validations/ValidateStore";
-
 import LinkButton from "../../../../components/Button/LinkButton";
 
-function FormCreateStore() {
+function FormCreateDaycare() {
   const [formComplete, setFormComplete] = useState(false);
   const [img, setImg] = useState(null);
   const [form, setForm] = useState({
@@ -28,7 +27,7 @@ function FormCreateStore() {
     const property = e.target.name;
     const value = e.target.value;
     setForm({ ...form, [property]: value });
-    setErrors({ ...errors, ...ValidateStore(property, value) });
+    setErrors({ ...errors, ...validateDaycare(property, value) });
     if (value !== "") {
       setFormComplete(true);
     } else {
@@ -52,16 +51,16 @@ function FormCreateStore() {
     newForm.append("description", form.description);
     if (isFormValid) {
       axios
-        .post("/store/create", newForm, {
+        .post("/daycare/create", newForm, {
           headers: {
             "Content-Type": "multipart/form-data",
           }, //importante en form de imagen poner este headers
         })
         .then(() => {
           Swal.fire({
-            title: "Tienda creada",
+            title: "Guarderia de mascotas creada",
             icon: "success",
-            text: "La Tienda ha sido creada correctamente",
+            text: "La Guarderia ha sido creada correctamente",
           });
         })
         .catch((err) => console.log(err));
@@ -87,7 +86,7 @@ function FormCreateStore() {
         onSubmit={handleSubmit}
         className="rounded-xl p-3 shadow-2xl lg:h-[550px] lg:w-2/5"
       >
-        <h3 className="mb-6">Registra tu Tienda</h3>
+        <h3 className="mb-6">Registra tu Guarderia</h3>
         <div className="group relative z-0 mb-6 h-11 w-full">
           <input
             type="file"
@@ -112,7 +111,7 @@ function FormCreateStore() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Nombre de la Tienda (max: 30 caracteres)
+            Nombre de la Guarderia (max: 30 caracteres)
           </label>
           {errors.name && <span className="text-red-500">{errors.name}</span>}
         </div>
@@ -173,7 +172,7 @@ function FormCreateStore() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Direccion (max: 100 caracteres)
+            Direccion de la Guarderia (max: 100 caracteres)
           </label>
           {errors.streets && (
             <span className="text-red-500">{errors.streets}</span>
@@ -190,7 +189,7 @@ function FormCreateStore() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Telefono (max: 20 caracteres)
+            Telefono de la Guarderia (max: 20 caracteres)
           </label>
           {errors.phone && <span className="text-red-500">{errors.phone}</span>}
         </div>
@@ -217,4 +216,4 @@ function FormCreateStore() {
   );
 }
 
-export default FormCreateStore;
+export default FormCreateDaycare;

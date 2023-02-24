@@ -34,6 +34,13 @@ module.exports = (sequelize) => {
           min: 0,
         },
       },
+      img: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1, 500],
+        },
+      },
       qualification: {
         type: DataTypes.FLOAT,
       },

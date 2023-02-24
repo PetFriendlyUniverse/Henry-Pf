@@ -5,6 +5,15 @@ const getAllStore = async () => {
   return storesList;
 };
 
+const storeFilter = async (query) => {
+  if (Object.keys(query).length) {
+    const stores = await Store.findAll({
+      where: query,
+    });
+    return stores;
+  }
+};
+
 const getStoreByID = async (id) => {
   const store = await Store.findByPk(id);
   return store;
@@ -19,9 +28,19 @@ const createStore = async (data) => {
   }
 };
 
-const updateStore = async (store, id) => {
-  const editedStore = await Store.update(store, { where: { id: id } });
-  return editedStore;
+const updateStore = async (data, id) => {
+  if (!Object.values(data).every((value) => value)) {
+    throw new Error("Missing data");
+  } else {
+    await Store.update(
+      { ...data },
+      {
+        where: { id: id },
+      }
+    );
+    const editedStore = await Store.findByPk(id);
+    return editedStore;
+  }
 };
 
 const deleteStore = async (id) => {
@@ -34,15 +53,6 @@ const deleteStore = async (id) => {
     }
   );
   return storeDeleted ? "Store deleted successfully" : "Could not delete store";
-};
-
-const storeFilter = async (query) => {
-  if (Object.keys(query).length) {
-    const stores = await Store.findAll({
-      where: query,
-    });
-    return stores;
-  }
 };
 
 module.exports = {
