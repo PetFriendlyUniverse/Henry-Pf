@@ -35,4 +35,4 @@ const postPaymentHandler = (req, res) => {
     });
 };
 
-module.exports = { postPaymentHandler, postWebhookHandler };
+module.exports = { postPaymentHandler };
