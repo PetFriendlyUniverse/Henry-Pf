@@ -16,10 +16,16 @@ const postUserHandler = async (req, res) => {
     lastname,
     mail,
     password,
-    phone,
-    emergencyphone,
+    area_code,
+    number,
     province,
     locality,
+    zip_code,
+    street_name,
+    street_number,
+    img,
+    area_code_emergency,
+    emergency_number,
   } = req.body;
 
   try {
@@ -29,10 +35,16 @@ const postUserHandler = async (req, res) => {
       lastname,
       mail,
       password,
-      phone,
-      emergencyphone,
+      area_code,
+      number,
       province,
-      locality
+      locality,
+      zip_code,
+      street_name,
+      street_number,
+      img,
+      area_code_emergency,
+      emergency_number
     );
     res.status(200).json(newUser);
   } catch (error) {

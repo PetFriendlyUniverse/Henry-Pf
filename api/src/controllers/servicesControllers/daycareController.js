@@ -1,5 +1,14 @@
 const { Daycare } = require("../db");
 
+const createDaycare = async (data) => {
+  if (!Object.values(data).every((value) => value)) {
+    throw new Error("Missing data");
+  } else {
+    const newDaycare = await Daycare.create(data);
+    return newDaycare;
+  }
+};
+
 const getAllDaycares = async () => {
   const daycares = await Daycare.findAll();
   return daycares;
@@ -17,15 +26,6 @@ const filterDaycare = async () => {
 const getDaycareByID = async (id) => {
   const daycare = await Daycare.findByPk(id);
   return daycare;
-};
-
-const createDaycare = async (data) => {
-  if (!Object.values(data).every((value) => value)) {
-    throw new Error("Missing data");
-  } else {
-    const newDaycare = await Daycare.create(data);
-    return newDaycare;
-  }
 };
 
 const updateDaycare = async (id, data) => {

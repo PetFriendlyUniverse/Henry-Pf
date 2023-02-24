@@ -2,7 +2,6 @@ const { Walker } = require("../db");
 
 //prettier-ignore
 const createWalkers = async (data) => {
-  //const data = {phone, neighborhood, streets, price}
   if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
   } else {

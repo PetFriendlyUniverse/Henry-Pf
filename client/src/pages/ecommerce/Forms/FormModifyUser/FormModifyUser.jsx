@@ -4,7 +4,7 @@ import { ValidationProfile } from "../Validations/Profile";
 import Swal from "sweetalert2";
 import LinkButton from "../../../../components/Button/LinkButton";
 
-function FormProfile() {
+function FormModifyUser() {
   const [formComplete, setFormComplete] = useState(false);
   const [img, setImg] = useState(null);
   const [form, setForm] = useState({
@@ -13,8 +13,15 @@ function FormProfile() {
     lastname: "",
     mail: "",
     password: "",
-    phone: "",
-    emergencyphone: "",
+    area_code: "",
+    number: "",
+    province: "",
+    locality: "",
+    zip_code: "",
+    street_name: "",
+    street_number: "",
+    area_code_emergency: "",
+    emergency_number: "",
   });
   const [errors, setErrors] = useState({
     user: "",
@@ -22,8 +29,15 @@ function FormProfile() {
     lastname: "",
     mail: "",
     password: "",
-    phone: "",
-    emergencyphone: "",
+    area_code: "",
+    number: "",
+    province: "",
+    locality: "",
+    zip_code: "",
+    street_name: "",
+    street_number: "",
+    area_code_emergency: "",
+    emergency_number: "",
   });
   const handleChange = (e) => {
     const property = e.target.name;
@@ -50,8 +64,14 @@ function FormProfile() {
     newForm.append("lastname", form.lastname);
     newForm.append("mail", form.mail);
     newForm.append("password", form.password);
-    newForm.append("phone", form.phone);
-    newForm.append("emergencyphone", form.emergencyphone);
+    newForm.append("number", form.number);
+    newForm.append("province", form.province);
+    newForm.append("locality", form.locality);
+    newForm.append("zip_code", form.zip_code);
+    newForm.append("street_name", form.street_name);
+    newForm.append("street_number", form.street_number);
+    newForm.append("area_code_emergency", form.area_code_emergency);
+    newForm.append("emergency_number", form.emergency_number);
     if (isFormValid) {
       axios
         .post("/user/create", newForm, {
@@ -73,8 +93,15 @@ function FormProfile() {
         lastname: "",
         mail: "",
         password: "",
-        phone: "",
-        emergencyphone: "",
+        area_code: "",
+        number: "",
+        province: "",
+        locality: "",
+        zip_code: "",
+        street_name: "",
+        street_number: "",
+        area_code_emergency: "",
+        emergency_number: "",
       });
     } else {
       Swal.fire({
@@ -245,4 +272,4 @@ function FormProfile() {
   );
 }
 
-export default FormProfile;
+export default FormModifyUser;
