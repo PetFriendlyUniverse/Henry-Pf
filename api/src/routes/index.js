@@ -47,7 +47,7 @@ router.get(
   (req, res) => {
     const { token } = req.user;
     const { id } = req.user.user;
-    res.redirect(`http://localhost:5173/shop?t=${token}&i=${id}`);
+    res.redirect(`https://petfriendlyuniverse.vercel.app/shop?t=${token}&i=${id}`);
     // res.send({ token: token, id: id });
   }
 );
