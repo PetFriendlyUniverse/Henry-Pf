@@ -131,7 +131,7 @@ const generator = () => {
           specie,
           breed,
           brand,
-          storeId: i,
+          StoreId: i,
           color,
           size,
           weight,
@@ -163,7 +163,7 @@ const generator = () => {
     Species.bulkCreate(speciesObj);
 
     await Product.bulkCreate(productsToCreate);
-  }, 1000);
+  }, 40000);
 };
 
 module.exports = { generator };
