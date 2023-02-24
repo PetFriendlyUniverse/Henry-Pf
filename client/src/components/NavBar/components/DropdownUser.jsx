@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import user from "../../../assets/general/profile.svg";
 import { getUserApi } from "../../../redux/features/users/usersActions";
 import axios from "axios";
