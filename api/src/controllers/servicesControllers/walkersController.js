@@ -23,9 +23,9 @@ const getWalkersById = async (id) => {
   return walker;
 };
 
-const updateWalkers = async (walker, id) => {
-  await Walkers.update(
-    { ...walker },
+const updateWalkers = async (data, id) => {
+  await Walker.update(
+    { ...data },
     {
       where: { id: id },
     }

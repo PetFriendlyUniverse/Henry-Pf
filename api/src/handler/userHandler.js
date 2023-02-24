@@ -73,7 +73,6 @@ const putUserHandler = async (req, res) => {
   const { id } = req.params;
   const user = req.body;
   const file = req.file;
-  console.log(user);
   try {
     //const forInsomnia = JSON.parse(req.body.user); //Esto es unicamente para el insomnia
     const image = await cloudinary.uploader.upload(file.path);
