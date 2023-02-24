@@ -6,6 +6,7 @@ const {
   getFilters,
   putProductHandler,
   deleteProductHandler,
+  getProductByIDStorelHandler,
 } = require("../handler/productsHandler");
 const productsRoutes = Router();
 
@@ -17,6 +18,9 @@ const authMiddleware = require("../helpers/authMiddleware");
 productsRoutes.get("/", getAllProductsHandler);
 productsRoutes.get("/filters", getFilters);
 productsRoutes.get("/:id", getProductByIDlHandler);
+
+productsRoutes.get("/store/:storeId", getProductByIDStorelHandler);
+
 productsRoutes.post("/create", upload.single("img"), postProductHandler);
 productsRoutes.put("/:id", putProductHandler);
 productsRoutes.delete("/:id", deleteProductHandler);

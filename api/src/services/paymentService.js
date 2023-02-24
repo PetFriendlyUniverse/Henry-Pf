@@ -15,31 +15,31 @@ class PaymentService {
     // declaramos la url en el constructor para poder accederla a lo largo de toda la clase
   }
 
-  async createPaymentMercadoPago(name, price, unit, img) {
+  async createPaymentMercadoPago(products, buyer) {
     // recibimos las props que le mandamos desde el PaymentController
     const url = `${this.mercadoPagoUrl}/preferences?access_token=${this.tokensMercadoPago.test.access_token}`;
     // url a la que vamos a hacer los requests
 
-    const items = [
-      {
-        id: "1234",
+    const items = products.map((item) => {
+      return {
+        id: item.id,
         // id interno (del negocio) del item
-        title: name,
+        title: item.title,
         // nombre que viene de la prop que recibe del controller
-        description: "Dispositivo movil de Tienda e-commerce",
+        description: item.description,
         // descripción del producto
-        picture_url: "https://courseit.com.ar/static/logo.png",
+        picture_url: item.imgUrl,
         // url de la imágen del producto
-        category_id: "1234",
+        category_id: item.categoryId,
         // categoría interna del producto (del negocio)
-        quantity: parseInt(unit),
+        quantity: parseInt(item.quantity),
         // cantidad, que tiene que ser un intiger
         currency_id: "ARS",
         // id de la moneda, que tiene que ser en ISO 4217
-        unit_price: parseFloat(price),
+        unit_price: parseFloat(item.price),
         // el precio, que por su complejidad tiene que ser tipo FLOAT
-      },
-    ];
+      };
+    });
 
     const preferences = {
       // declaramos las preferencias de pago
@@ -50,18 +50,18 @@ class PaymentService {
       payer: {
         // información del comprador, si estan en producción tienen que //traerlos del request
         //(al igual que hicimos con el precio del item)
-        name: "Lalo",
-        surname: "Landa",
-        email: "test_user_63274575@testuser.com",
+        name: buyer.name,
+        surname: buyer.surname,
+        email: buyer.mail,
         // si estan en sandbox, aca tienen que poner el email de SU usuario de prueba
         phone: {
-          area_code: "11",
-          number: "22223333",
+          area_code: buyer.phone.area, //===>codigo de area
+          number: buyer.phone.number, //===>numero de telefo
         },
         address: {
-          zip_code: "1111",
-          street_name: "False",
-          street_number: "123",
+          zip_code: buyer.address.zipCode,
+          street_name: buyer.address.streetName,
+          street_number: buyer.address.streetNumber,
         },
       },
       payment_methods: {
@@ -81,11 +81,11 @@ class PaymentService {
       },
       back_urls: {
         // declaramos las urls de redireccionamiento
-        success: "https://localhost:3000/success",
+        success: "/success",
         // url que va a redireccionar si sale todo bien
-        pending: "https://localhost:3000.com/pending",
+        pending: "/pending",
         // url a la que va a redireccionar si decide pagar en efectivo por ejemplo
-        failure: "https://localhost:3000.com/error",
+        failure: "/error",
         // url a la que va a redireccionar si falla el pago
       },
       notification_url: "https://mercadopago-checkout.herokuapp.com/webhook",

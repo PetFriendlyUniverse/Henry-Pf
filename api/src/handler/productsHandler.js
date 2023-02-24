@@ -6,6 +6,7 @@ const {
   updateProduct,
   deleteProduct,
   getFiltersBD,
+  getProductsByStore,
 } = require("../controllers/productsControllers");
 const {
   queryMarker,
@@ -59,6 +60,22 @@ const getProductByIDlHandler = async (req, res) => {
   }
 };
 
+/*
+const postProductHandler = async (req, res) => {
+  const data = req.body;
+  const file = req.file;
+  try {
+    //const nueva = JSON.parse(req.body.data); //solo se usa para cuando se quiere probar en insomnia
+    const { requiredData, extraData } = splitData(nueva);
+    const image = await cloudinary.uploader.upload(file.path);
+    extraData.img = image.secure_url;
+    const newProduct = await createProduct(requiredData, extraData, file);
+    return res.status(200).json(newProduct);
+  } catch (error) {
+    return res.status(404).json(error.message);
+  }
+};
+*/
 const putProductHandler = async (req, res) => {
   const { id } = req.params;
   const data = req.body;
@@ -88,6 +105,15 @@ const getFilters = async (req, res) => {
     return res.status(404).json(error.message);
   }
 };
+const getProductByIDStorelHandler = async (req, res) => {
+  const { storeId } = req.params;
+  try {
+    const productsByStore = await getProductsByStore(storeId);
+    return res.status(200).json(productsByStore);
+  } catch (error) {
+    return res.status(404).json(error.message);
+  }
+};
 
 module.exports = {
   getAllProductsHandler,
@@ -96,4 +122,5 @@ module.exports = {
   postProductHandler,
   putProductHandler,
   deleteProductHandler,
+  getProductByIDStorelHandler,
 };

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
-import { validateStore } from "../Validations/ValidateStore";
 import Swal from "sweetalert2";
+import { ValidateStore } from "../Validations/ValidateStore";
+
 import LinkButton from "../../../../components/Button/LinkButton";
 
 function FormCreateStore() {
@@ -27,7 +28,7 @@ function FormCreateStore() {
     const property = e.target.name;
     const value = e.target.value;
     setForm({ ...form, [property]: value });
-    setErrors({ ...errors, ...validateStore(property, value) });
+    setErrors({ ...errors, ...ValidateStore(property, value) });
     if (value !== "") {
       setFormComplete(true);
     } else {
