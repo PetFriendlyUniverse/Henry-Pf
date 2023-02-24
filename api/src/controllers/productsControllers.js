@@ -12,7 +12,6 @@ const getAllProducts = async () => {
 };
 
 const getProductFilter = async (query) => {
-  console.log("query", query);
   query.attributes = ["id", "name", "price", "img", "weight", "brand", "stock"];
   if (!!query.where?.name) {
     query.where.name = { [Op.iLike]: `%${query.where.name}%` };
@@ -23,7 +22,6 @@ const getProductFilter = async (query) => {
       ...query.where,
       price: { [Op.between]: query.pricesBetween },
     };
-    console.log(query.where);
     delete query.pricesBetween;
   }
   delete query.where.priceCondition;
