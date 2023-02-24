@@ -8,6 +8,8 @@ import img3 from "../../../assets/imagenes/toys-01.png";
 import img4 from "../../../assets/imagenes/gatos-juguetes-0.jpg";
 import img5 from "../../../assets/imagenes/cat-tree.jpg";
 import img6 from "../../../assets/imagenes/camaa-gato.jpg";
+import Filters from "../Shop/components/Filters/Filters";
+import Recomendados from "../../../components/Recomendados/Recomendados";
 
 function LandingShop() {
   const product = useGetProducts();
@@ -22,7 +24,7 @@ function LandingShop() {
             to="/shop"
           >
             <div className="relative flex h-[450px] items-center  justify-center   overflow-hidden sm:h-48 sm:w-48 md:h-52 md:w-52 lg:h-full lg:w-full">
-              <div className=" absolute inset-0 z-10 bg-[url('https://petfood.com.ar/img/cms/PERR1.jpg')] bg-cover bg-center bg-no-repeat duration-200  hover:scale-125 hover:contrast-125 lg:bg-cover "></div>
+              <div className=" absolute inset-0 z-10 bg-perros bg-cover bg-center bg-no-repeat duration-200  hover:scale-125 hover:contrast-125 lg:bg-cover "></div>
             </div>
           </Link>
 
@@ -31,7 +33,7 @@ function LandingShop() {
             to="/shop"
           >
             <div className="relative flex h-[450px] items-center  justify-center   overflow-hidden sm:h-48 sm:w-48 md:h-52 md:w-52 lg:h-full lg:w-full">
-              <div className=" absolute inset-0 z-10  bg-[url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5qJFhzzzriH0YmkGzTEwLF6ewBuBN0j-rLw&usqp=CAU)] bg-cover bg-center bg-no-repeat duration-200 hover:scale-125 hover:contrast-125 lg:bg-cover "></div>
+              <div className=" absolute inset-0 z-10  bg-gatos bg-cover bg-center bg-no-repeat duration-200 hover:scale-125 hover:contrast-125 lg:bg-cover "></div>
             </div>
           </Link>
 
@@ -40,7 +42,7 @@ function LandingShop() {
             to="/shop"
           >
             <div className="relative flex h-[450px] items-center  justify-center   overflow-hidden sm:h-48 sm:w-48 md:h-52 md:w-52 lg:h-full lg:w-full">
-              <div className=" absolute inset-0 z-10 bg-[url('https://petfood.com.ar/img/cms/CONTACTO1.jpg')] bg-cover bg-center bg-no-repeat duration-200  hover:scale-125 hover:contrast-125 lg:bg-cover "></div>
+              <div className=" absolute inset-0 z-10 bg-contacto bg-cover bg-center bg-no-repeat duration-200  hover:scale-125 hover:contrast-125 lg:bg-cover "></div>
             </div>
           </Link>
         </div>
@@ -50,16 +52,16 @@ function LandingShop() {
           <div className="sm:col-start-1 sm:col-end-3">
             <h1 className="text-center font-bold uppercase sm:text-2xl">
               productos
-              <span className="font-bold uppercase text-yellow-600 sm:text-2xl">
+              <span className="font-bold uppercase text-cornflowerblue sm:text-2xl">
                 {" "}
                 destacados
               </span>
             </h1>
           </div>
-          <div className="flex w-full flex-col items-center sm:col-start-1 sm:col-end-2">
+          <div className="mt-12 flex w-full flex-col items-center sm:col-start-1 sm:col-end-2">
             <Link
               to="/shop"
-              className="my-3 flex w-4/5 items-center justify-center gap-2 bg-yellow-600 py-1 text-white sm:gap-5 sm:py-2  sm:px-4 lg:h-16"
+              className="my-3 flex w-4/5 items-center justify-center gap-2 bg-russianviolet py-1 text-white sm:gap-5 sm:py-2  sm:px-4 lg:h-16"
             >
               <span>
                 <svg
@@ -153,10 +155,10 @@ function LandingShop() {
               </Carousel>
             </div>
           </div>
-          <div className="flex w-full flex-col items-center sm:col-start-2 sm:col-end-3">
+          <div className="mt-12 flex w-full flex-col items-center sm:col-start-2 sm:col-end-3">
             <Link
               to="/shop"
-              className="mb-3 mt-10  flex w-4/5 items-center justify-center gap-2 bg-yellow-600 py-1 text-white sm:my-3 sm:gap-5 sm:py-2 sm:px-4 lg:h-16 "
+              className="mb-3 mt-10  flex w-4/5 items-center justify-center gap-2 bg-russianviolet py-1 text-white sm:my-3 sm:gap-5 sm:py-2 sm:px-4 lg:h-16 "
             >
               <span>
                 <svg
@@ -251,7 +253,7 @@ function LandingShop() {
             </div>
           </div>
         </section>
-        <section className="clip-aboutUs mt-5 flex h-96 flex-col items-center justify-center gap-10   bg-colorFilter lg:px-52 xl:h-[500px] xl:px-64">
+        <section className="clip-aboutUs mt-12 flex h-96 flex-col items-center justify-center gap-10   bg-colorFilter lg:px-52 xl:h-[500px] xl:px-64">
           <div className="flex flex-col items-center justify-center gap-2 pt-3 ">
             <h2 className="text-2xl font-bold text-yellow-400 sm:text-3xl">
               Pet Friendly Universe
@@ -307,33 +309,11 @@ function LandingShop() {
         <section className="mt-5 ">
           <div className="flex  h-20 items-center ">
             <h4 className="w-full text-center text-2xl font-bold uppercase">
-              <span className="text-yellow-500">nuestras</span> marcas
+              <span className="text-cornflowerblue">nuestras</span> marcas
             </h4>
           </div>
           <div className="h-40 ">
-            <Carousel className="rounded-md border border-gray-300 ">
-              <div className="flex w-full items-center justify-center ">
-                <img
-                  src="https://petfood.com.ar/img/cms/MARCAS/EUKANUBA.jpg"
-                  alt="..."
-                  className="w-1/2"
-                />
-              </div>
-
-              <div className="flex w-full items-center justify-center">
-                <img
-                  src="https://petfood.com.ar/img/cms/MARCAS/AGILITY.jpg"
-                  alt="..."
-                />
-              </div>
-
-              <div className="flex w-full items-center justify-center">
-                <img
-                  src="https://petfood.com.ar/img/cms/MARCAS/EXCELLENT.jpg"
-                  alt="..."
-                />
-              </div>
-            </Carousel>
+            <Recomendados />
           </div>
         </section>
       </main>

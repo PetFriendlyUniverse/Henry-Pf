@@ -72,7 +72,15 @@ function Login() {
         }).then(() => {
           navigate("/shop");
         });
-      });
+      })
+      .catch(
+        Swal.fire({
+          icon: "error",
+          title: "Usuario o contraseña incorrecto!",
+          showConfirmButton: true,
+          timer: 1500,
+        })
+      );
   };
 
   const handleClickGoogle = () => {
@@ -94,7 +102,14 @@ function Login() {
             timer: 1500,
           })
         )
-        .catch((err) => console.log(err));
+        .catch(
+          Swal.fire({
+            icon: "error",
+            title: "El registro no se ha sido realizado!",
+            showConfirmButton: true,
+            timer: 1500,
+          })
+        );
       setForm({
         user: "",
         name: "",
@@ -152,7 +167,7 @@ function Login() {
               />
               <button>Ingresar</button>
               <div className={s.loginGoogle}>
-                <button onClick={handleClickGoogle}>
+                <button type="button" onClick={handleClickGoogle}>
                   Click para seguir con google
                 </button>
               </div>
@@ -257,6 +272,9 @@ function Login() {
                 </div>
               )} */}
               <LinkButton component={"Registrate"} />
+              <button type="button" onClick={handleClickGoogle}>
+                Click para registrarte con google
+              </button>
             </form>
           </div>
         </div>
