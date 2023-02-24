@@ -13,11 +13,12 @@ module.exports = (sequelize) => {
       name: {
         type: DataTypes.STRING,
         allowNull: true,
-        validate: {
-          len: [1, 30],
-        },
       },
       area_code_store: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      number: {
         type: DataTypes.INTEGER,
         allowNull: true,
       },
