@@ -6,12 +6,15 @@ const {
   deleteWalkersById,
   filterWalkers,
 } = require("../../controllers/servicesControllers/walkersController");
+const cloudinary = require("cloudinary").v2;
 
 const postWalkersHandler = async (req, res) => {
   const data = req.body;
+  const file = req.file;
   try {
-    //prettier-ignore
-    const newWalkers = await createWalkers(data);
+    const image = await cloudinary.uploader.upload(file.path);
+    data.img = image.secure_url;
+    const newWalkers = await createWalkers(data, file);
     res.status(200).json(newWalkers);
   } catch (error) {
     res.status(404).json({ error: error.message });
@@ -45,9 +48,12 @@ const getWalkersDetailHandler = async (req, res) => {
 
 const putWalkersHandler = async (req, res) => {
   const { id } = req.params;
-  const { walker } = req.body;
+  const data = req.body;
+  const file = req.file;
   try {
-    const putWalkers = await updateWalkers(walker, id);
+    const image = await cloudinary.uploader.upload(file.path);
+    data.img = image.secure_url;
+    const putWalkers = await updateWalkers(data, id, file);
     res.status(200).json(putWalkers);
   } catch (error) {
     res.status(404).json({ error: error.message });

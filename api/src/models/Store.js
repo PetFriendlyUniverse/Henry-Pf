@@ -10,11 +10,10 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      name: {
+      img: {
         type: DataTypes.STRING,
-        allowNull: false,
         validate: {
-          len: [1, 30],
+          len: [1, 500],
         },
       },
       phone: {
@@ -47,6 +46,13 @@ module.exports = (sequelize) => {
         allowNull: false,
         validate: {
           len: [1, 2000],
+        },
+      },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1, 30],
         },
       },
       qualification: {

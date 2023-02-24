@@ -61,9 +61,9 @@ function FormProfile() {
         })
         .then(() => {
           Swal.fire({
-            title: "Producto creado",
+            title: "Perfil actualizado",
             icon: "success",
-            text: "El producto ha sido creado correctamente",
+            text: "El perfil ha sido actualizado correctamente",
           });
         })
         .catch((err) => console.log(err));
