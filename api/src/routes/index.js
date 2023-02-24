@@ -9,6 +9,7 @@ const favoriteRouter = require("./favoriteRouter");
 const loginRouter = require("./loginRouter");
 const brandsRouter = require("./brandsRouter");
 const paymentRouter = require("./payment");
+const mailRoutes = require("./mailRoutes");
 require("../helpers/google.js");
 
 // Importar todos los routers;
@@ -29,6 +30,7 @@ router.use("/comments", commentsRouter);
 router.use("/favorite", favoriteRouter);
 router.use("/brands", brandsRouter);
 router.use("/payment", paymentRouter);
+router.use("/mails", mailRoutes);
 
 router.get(
   "/auth",
