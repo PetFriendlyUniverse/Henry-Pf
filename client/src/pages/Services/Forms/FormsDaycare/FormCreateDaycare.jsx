@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { ValidateStore } from "../Validations/ValidateStore";
+import { validateDaycare } from "../Validations/ValidationDaycare";
 
 import LinkButton from "../../../../components/Button/LinkButton";
 
-function FormCreateStore() {
+function FormCreateDaycare() {
   const provinces = [
     "Buenos Aires",
     "Catamarca",
@@ -31,7 +31,6 @@ function FormCreateStore() {
     "Tierra del Fuego",
     "Tucumán",
   ];
-
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -52,10 +51,7 @@ function FormCreateStore() {
     const property = e.target.name;
     const value = e.target.value;
     setForm({ ...form, [property]: value });
-
-    console.log(form);
-    setErrors({ ...errors, ...ValidateStore(property, value) });
-
+    setErrors({ ...errors, ...validateDaycare(property, value) });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -84,7 +80,7 @@ function FormCreateStore() {
         onSubmit={handleSubmit}
         className="rounded-xl p-3 shadow-2xl lg:h-[550px] lg:w-2/5"
       >
-        <h3 className="mb-6">Registra tu Tienda</h3>
+        <h3 className="mb-6">Registra tu Guarderia</h3>
         <div className="group relative z-0 mb-6 h-11 w-full">
           <input
             onChange={handleChange}
@@ -96,7 +92,7 @@ function FormCreateStore() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Nombre de la Tienda (max: 30 caracteres)
+            Nombre de la Guarderia (max: 30 caracteres)
           </label>
           {errors.name && <span className="text-red-500">{errors.name}</span>}
         </div>
@@ -145,7 +141,7 @@ function FormCreateStore() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Direccion (max: 100 caracteres)
+            Direccion de la Guarderia (max: 100 caracteres)
           </label>
           {errors.streets && (
             <span className="text-red-500">{errors.streets}</span>
@@ -162,7 +158,7 @@ function FormCreateStore() {
             autoComplete="off"
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-            Telefono (max: 20 caracteres)
+            Telefono de la Guarderia (max: 20 caracteres)
           </label>
           {errors.phone && <span className="text-red-500">{errors.phone}</span>}
         </div>
@@ -189,4 +185,4 @@ function FormCreateStore() {
   );
 }
 
-export default FormCreateStore;
+export default FormCreateDaycare;

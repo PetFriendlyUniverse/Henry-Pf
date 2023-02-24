@@ -25,34 +25,6 @@ const createUser = async (
 
   return userCreated;
 };
-
-const getAllUsers = async () => {
-  const userList = await User.findAll({});
-  return userList;
-};
-
-const getUserById = async (id) => {
-  const user = await User.findByPk(id);
-  return user;
-};
-
-const updateAllUsers = async (user, id) => {
-  await User.update(
-    { ...user },
-    {
-      where: { id: id },
-    }
-  );
-  const updated = await User.findByPk(id);
-  return updated;
-};
-
-const deleteUsersById = async (id) => {
-  if (!id) throw Error("Wrong Id");
-  const update = await User.update({ enable: false }, { where: { id: id } });
-  return update ? "User deleted successfully" : "Wrong user";
-};
-
 const loginUser = async (mail, password) => {
   const user = await User.findOne({ where: { mail } });
   if (!user) throw Error("User not found");
@@ -65,12 +37,35 @@ const loginUser = async (mail, password) => {
   );
   return { id: user.id, token };
 };
+const getAllUsers = async () => {
+  const userList = await User.findAll({});
+  return userList;
+};
+const getUserById = async (id) => {
+  const user = await User.findByPk(id);
+  return user;
+};
+const updateAllUsers = async (user, id) => {
+  await User.update(
+    { ...user },
+    {
+      where: { id: id },
+    }
+  );
+  const updated = await User.findByPk(id);
+  return updated;
+};
+const deleteUsersById = async (id) => {
+  if (!id) throw Error("Wrong Id");
+  const update = await User.update({ enable: false }, { where: { id: id } });
+  return update ? "User deleted successfully" : "Wrong user";
+};
 
 module.exports = {
   createUser,
+  loginUser,
   getAllUsers,
+  getUserById,
   updateAllUsers,
   deleteUsersById,
-  getUserById,
-  loginUser,
 };

@@ -1,9 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
-import { ValidationProfile } from "../Validations/Profile"; //habia un error en la importacion de form
+import { ValidationProfile } from "../Validations/Profile";
+import Swal from "sweetalert2";
 import LinkButton from "../../../../components/Button/LinkButton";
 
 function FormProfile() {
+  const [formComplete, setFormComplete] = useState(false);
+  const [img, setImg] = useState(null);
   const [form, setForm] = useState({
     user: "",
     name: "",
@@ -25,22 +28,44 @@ function FormProfile() {
   const handleChange = (e) => {
     const property = e.target.name;
     const value = e.target.value;
-    if (property === "pets") {
-      //Esto todavia no hay que tenerlo en cuenta
-      setForm({ ...form, [property]: [value] });
+    setForm({ ...form, [property]: value });
+    setErrors({ ...errors, ...ValidationProfile(property, value) }); //NO CAMBIAR ESTO POR DIOS
+    if (value !== "") {
+      setFormComplete(true);
     } else {
-      setForm({ ...form, [property]: value });
-      setErrors({ ...errors, ...ValidationProfile(property, value) }); //NO CAMBIAR ESTO POR DIOS
+      setFormComplete(false);
     }
+  };
+  const handleChangeImage = (e) => {
+    setImg(e.target.files[0]);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     const errorValues = Object.values(errors);
     const isFormValid = errorValues.every((val) => val === "");
+    const newForm = new FormData();
+    newForm.append("img", img);
+    newForm.append("user", form.user);
+    newForm.append("name", form.name);
+    newForm.append("lastname", form.lastname);
+    newForm.append("mail", form.mail);
+    newForm.append("password", form.password);
+    newForm.append("phone", form.phone);
+    newForm.append("emergencyphone", form.emergencyphone);
     if (isFormValid) {
       axios
-        .post("user/create", form)
-        .then((res) => console.log(res))
+        .post("/user/create", newForm, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          }, //importante en form de imagen poner este headers
+        })
+        .then(() => {
+          Swal.fire({
+            title: "Producto creado",
+            icon: "success",
+            text: "El producto ha sido creado correctamente",
+          });
+        })
         .catch((err) => console.log(err));
       setForm({
         user: "",
@@ -52,7 +77,11 @@ function FormProfile() {
         emergencyphone: "",
       });
     } else {
-      console.log("Hay errores en el formulario");
+      Swal.fire({
+        icon: "error",
+        title: "Error en el formulario",
+        text: "Por favor, revisa los campos del formulario",
+      });
     }
   };
   return (
@@ -62,6 +91,19 @@ function FormProfile() {
         className="rounded-xl p-3 shadow-2xl lg:h-[550px] lg:w-2/5"
       >
         <h3 className="mb-6">Registrate</h3>
+        <div className="group relative z-0 mb-6 h-11 w-full">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleChangeImage}
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            placeholder=" "
+          />
+          <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+            Imagen
+          </label>
+          {errors.image && <span className="text-red-500">{errors.image}</span>}
+        </div>
         <div className="group relative z-0 mb-6 h-11 w-full">
           <input
             onChange={handleChange}
@@ -197,7 +239,7 @@ function FormProfile() {
             )}
           </div>
         </div>
-        <LinkButton component={"Enviar"} />
+        {formComplete && <LinkButton component={"Enviar"} />}
       </form>
     </div>
   );

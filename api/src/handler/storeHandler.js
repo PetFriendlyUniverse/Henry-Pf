@@ -1,21 +1,21 @@
 const {
   getAllStore,
+  storeFilter,
   getStoreByID,
   createStore,
   updateStore,
   deleteStore,
-  storeFilter,
 } = require("../controllers/storeControllers");
 
-const getAllStoreHandler = async (req, res) => {
+const getStoresHandler = async (req, res) => {
   const query = req.query;
   try {
     if (Object.keys(query).length) {
-      const allfilter = await storeFilter(query);
-      return res.status(200).json(allfilter);
+      const stores = await storeFilter(query);
+      return res.status(200).json(stores);
     } else {
-      const all = await getAllStore();
-      return res.status(200).json(all);
+      const allStores = await getAllStore();
+      return res.status(200).json(allStores);
     }
   } catch (error) {
     return res.status(404).json(error.message);
@@ -40,28 +40,27 @@ const postStoreHandler = async (req, res) => {
   }
 };
 const putStoreHandler = async (req, res) => {
-  const store = req.body;
+  const data = req.body;
   const { id } = req.params;
   try {
-    const storeEdited = await updateStore(store, id);
+    const storeEdited = await updateStore(data, id);
     return res.status(200).json(storeEdited);
   } catch (error) {
     return res.status(400).json(error.message);
   }
 };
-
 const deleteStoreHandler = async (req, res) => {
   const { id } = req.params;
   try {
-    const storeDelete = await deleteStore(id);
-    return res.status(200).send(storeDelete);
+    const storeDeleted = await deleteStore(id);
+    return res.status(200).json(storeDeleted);
   } catch (error) {
     return res.status(404).json(error.message);
   }
 };
 
 module.exports = {
-  getAllStoreHandler,
+  getStoresHandler,
   getStoreByIDHandler,
   postStoreHandler,
   putStoreHandler,

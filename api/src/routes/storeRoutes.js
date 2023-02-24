@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const {
-  getAllStoreHandler,
+  getStoresHandler,
   getStoreByIDHandler,
   postStoreHandler,
   putStoreHandler,
@@ -8,7 +8,7 @@ const {
 } = require("../handler/storeHandler");
 const router = Router();
 
-router.get("/", getAllStoreHandler);
+router.get("/", getStoresHandler);
 router.get("/:id", getStoreByIDHandler);
 router.post("/create", postStoreHandler);
 router.put("/:id", putStoreHandler);

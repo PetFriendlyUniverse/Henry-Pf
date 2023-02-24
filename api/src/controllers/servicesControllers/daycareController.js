@@ -1,24 +1,33 @@
-const { Op } = require("sequelize");
 const { Daycare } = require("../db");
 
-const createDaycare = async (data) => {
-  const newDaycare = await Daycare.create(data);
-  return newDaycare;
-};
-const filterDaycare = async () => {
-  const daycares = await Daycare.findAll({
-    query,
-  });
-  return daycares;
-};
 const getAllDaycares = async () => {
   const daycares = await Daycare.findAll();
   return daycares;
 };
-const getDaycareByID = async (id) => {
-  const daycares = await Daycare.findByPk(id);
-  return daycares;
+
+const filterDaycare = async () => {
+  if (Object.keys(query).length) {
+    const daycares = await Store.findAll({
+      where: query,
+    });
+    return daycares;
+  }
 };
+
+const getDaycareByID = async (id) => {
+  const daycare = await Daycare.findByPk(id);
+  return daycare;
+};
+
+const createDaycare = async (data) => {
+  if (!Object.values(data).every((value) => value)) {
+    throw new Error("Missing data");
+  } else {
+    const newDaycare = await Daycare.create(data);
+    return newDaycare;
+  }
+};
+
 const updateDaycare = async (id, data) => {
   if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
@@ -33,6 +42,7 @@ const updateDaycare = async (id, data) => {
     return editedDaycare;
   }
 };
+
 const deleteDaycare = async (id) => {
   const daycareDelete = await Daycare.update(
     { enabled: false },
@@ -42,7 +52,9 @@ const deleteDaycare = async (id) => {
       },
     }
   );
-  return daycareDelete;
+  return daycareDelete
+    ? "Store deleted successfully"
+    : "Could not delete store";
 };
 
 module.exports = {
