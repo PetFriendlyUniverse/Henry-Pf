@@ -25,6 +25,11 @@ const createUser = async (
     lastname,
     mail,
     password,
+  };
+  const extraData = {
+    img,
+    area_code_emergency,
+    emergency_number,
     area_code,
     number,
     province,
@@ -32,11 +37,6 @@ const createUser = async (
     zip_code,
     street_name,
     street_number,
-  };
-  const extraData = {
-    img,
-    area_code_emergency,
-    emergency_number,
   };
   if (!Object.values(data).every((value) => value)) throw Error("Missing data");
   const hashedPassword = await bcrypt.hash(password, 10); // esto en codificado la password no sacar

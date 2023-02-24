@@ -9,17 +9,15 @@ const {
 const cloudinary = require("cloudinary").v2;
 
 const postStoreHandler = async (req, res) => {
-  const data = req.body;
-  const file = req.file;
+  const { UserId: userId } = req.params;
   try {
-    const image = await cloudinary.uploader.upload(file.path);
-    data.img = image.secure_url;
-    const newStore = await createStore(data, file);
+    const newStore = await createStore(userId);
     return res.status(200).json(newStore);
   } catch (error) {
     return res.status(404).json(error.message);
   }
 };
+
 const getStoresHandler = async (req, res) => {
   const query = req.query;
   try {

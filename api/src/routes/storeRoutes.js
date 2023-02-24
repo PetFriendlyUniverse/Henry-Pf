@@ -11,7 +11,7 @@ const router = Router();
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 
-router.post("/create", upload.single("img"), postStoreHandler);
+router.post("/create/:UserId", postStoreHandler);
 router.get("/", getStoresHandler);
 router.get("/:id", getStoreByIDHandler);
 router.put("/:id", upload.single("img"), putStoreHandler);
