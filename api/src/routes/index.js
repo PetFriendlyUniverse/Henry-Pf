@@ -15,8 +15,8 @@ require("../helpers/google.js");
 // Ejemplo: const authRouter = require('./auth.js');
 
 const router = Router();
-// const { generator } = require("../randomGenerator");
-// generator();
+const { generator } = require("../randomGenerator");
+generator();
 // router.use("/randomgenerator", (req, res) => {
 //   generator();
 //   res.send("Ejecucion de randomGenerator exitosa");
