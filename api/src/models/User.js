@@ -47,34 +47,59 @@ module.exports = (sequelize) => {
           len: [1, 100],
         },
       },
-      img: {
-        type: DataTypes.STRING,
-        validate: {
-          len: [1, 500],
-        },
-      },
-      phone: {
+      area_code: {
         type: DataTypes.INTEGER,
-        validate: {
-          len: [1, 20],
-        },
+        allowNull: false,
       },
-      emergencyphone: {
+      number: {
         type: DataTypes.INTEGER,
-        validate: {
-          len: [1, 20],
-        },
+        allowNull: false,
       },
       province: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
           len: [1, 30],
         },
       },
       locality: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
-          lent: [1, 30],
+          len: [1, 30],
+        },
+      },
+      zip_code: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      street_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          lent: [5, 30],
+        },
+      },
+      street_number: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      img: {
+        type: DataTypes.STRING,
+        validate: {
+          len: [1, 500],
+        },
+      },
+      area_code_emergency: {
+        type: DataTypes.INTEGER,
+        validate: {
+          len: [1, 4],
+        },
+      },
+      emergency_number: {
+        type: DataTypes.INTEGER,
+        validate: {
+          len: [1, 20],
         },
       },
       enable: {

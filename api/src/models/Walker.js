@@ -9,24 +9,6 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      phone: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      neighborhood: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1, 100],
-        },
-      },
-      streets: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1, 100],
-        },
-      },
       price: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -39,6 +21,12 @@ module.exports = (sequelize) => {
         allowNull: false,
         validate: {
           len: [1, 500],
+        },
+      },
+      neighborhood: {
+        type: DataTypes.STRING,
+        validate: {
+          len: [1, 100],
         },
       },
       qualification: {

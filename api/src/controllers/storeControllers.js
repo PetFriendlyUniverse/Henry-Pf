@@ -1,5 +1,14 @@
 const { Store } = require("../db");
 
+const createStore = async (data) => {
+  if (!Object.values(data).every((value) => value)) {
+    throw new Error("Missing data");
+  } else {
+    const newStore = await Store.create(data);
+    return newStore;
+  }
+};
+
 const getAllStore = async () => {
   const storesList = await Store.findAll();
   return storesList;
@@ -17,15 +26,6 @@ const storeFilter = async (query) => {
 const getStoreByID = async (id) => {
   const store = await Store.findByPk(id);
   return store;
-};
-
-const createStore = async (data) => {
-  if (!Object.values(data).every((value) => value)) {
-    throw new Error("Missing data");
-  } else {
-    const newStore = await Store.create(data);
-    return newStore;
-  }
 };
 
 const updateStore = async (data, id) => {
