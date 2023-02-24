@@ -32,19 +32,19 @@ const postProductHandler = async (req, res) => {
 };
 const getAllProductsHandler = async (req, res) => {
   const query = req.query;
-  // console.log(query); // { pq: '2', page: '1' }
   try {
     const { paramsConsult, paginationParams } = queryMarker(query);
-    let all;
+    let sqlResponse;
     if (!paramsConsult) {
-      all = await getAllProducts();
+      sqlResponse = await getAllProducts();
     } else {
       // console.log(paramsConsult);
-      all = await getProductFilter(paramsConsult);
+      sqlResponse = await getProductFilter(paramsConsult);
     }
+    const { products, priceRange } = sqlResponse;
 
-    const paginated = pagination(all, paginationParams);
-    return res.status(200).json(paginated);
+    const paginated = pagination(products, paginationParams);
+    return res.status(200).json({ paginated, priceRange });
   } catch (error) {
     return res.status(404).json(error.message);
   }
