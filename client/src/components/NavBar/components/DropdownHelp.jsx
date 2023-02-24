@@ -16,11 +16,11 @@ function dropdownHelp() {
         </svg>
       </button>
       <div className="hidden rounded-b-lg bg-white p-2 text-lightwhite group-hover:block lg:absolute lg:z-10 lg:w-32">
-        <p class="text-gray-500 ">
+        <p className="text-gray-500 ">
           Para contactarte con nosotros puedes comunicarte a travez de nuestro{" "}
           <a
             href="#"
-            class="font-medium text-green-500 underline hover:no-underline "
+            className="font-medium text-green-500 underline hover:no-underline "
           >
             Whatsapp
           </a>

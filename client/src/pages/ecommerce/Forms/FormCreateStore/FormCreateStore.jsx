@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { validateStore } from "../Validations/ValidateStore";
+import { ValidateStore } from "../Validations/ValidateStore";
 
 import LinkButton from "../../../../components/Button/LinkButton";
 
@@ -52,7 +52,10 @@ function FormCreateStore() {
     const property = e.target.name;
     const value = e.target.value;
     setForm({ ...form, [property]: value });
-    setErrors({ ...errors, ...validateStore(property, value) });
+
+    console.log(form);
+    setErrors({ ...errors, ...ValidateStore(property, value) });
+
   };
   const handleSubmit = (e) => {
     e.preventDefault();
