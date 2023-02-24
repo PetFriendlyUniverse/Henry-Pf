@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
       },
       user: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: [1, 50],
         },
@@ -20,21 +20,21 @@ module.exports = (sequelize) => {
       },
       name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: [1, 30],
         },
       },
       lastname: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: [1, 30],
         },
       },
       mail: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: [1, 50],
         },
@@ -42,47 +42,47 @@ module.exports = (sequelize) => {
       },
       password: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: [1, 100],
         },
       },
       area_code: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       number: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       province: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: [1, 30],
         },
       },
       locality: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: [1, 30],
         },
       },
       zip_code: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       street_name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           lent: [5, 30],
         },
       },
       street_number: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       img: {
         type: DataTypes.STRING,
@@ -107,6 +107,6 @@ module.exports = (sequelize) => {
         defaultValue: true,
       },
     },
-    { timestamps: false }
+    { timestamps: true }
   );
 };

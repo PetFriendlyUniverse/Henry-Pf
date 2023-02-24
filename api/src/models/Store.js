@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
       },
       area_code_store: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       number: {
         type: DataTypes.INTEGER,
