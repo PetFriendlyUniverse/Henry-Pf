@@ -73,6 +73,7 @@ function Profile() {
                     Formas de Pago
                   </button>
                 </li> */}
+<<<<<<< HEAD
                         <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
                           {/* Reveer esto de volver al hacer Health/Services */}
                           <Link to="/shop">
@@ -147,6 +148,81 @@ function Profile() {
                   </div>
                 </div>
               </div>{" "}
+=======
+                <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
+                  {/* Reveer esto de volver al hacer Health/Services */}
+                  <Link to="/shop">
+                    <button className="inline-block p-4">Volver</button>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className="border-gray-400 lg:w-full lg:border-l-2">
+          {showInfo == "profile" ? (
+            <div className="border-gray-400 p-3 lg:border-b-2">
+              <h1 className="flex justify-center pl-2 text-3xl font-semibold">
+                Perfil
+              </h1>
+            </div>
+          ) : showInfo == "contact" ? (
+            <div className="border-gray-400 p-3 lg:border-b-2">
+              <h1 className="flex justify-center pl-2 text-3xl font-semibold">
+                Contacto
+              </h1>
+            </div>
+          ) : showInfo == "ubication" ? (
+            <div className="border-gray-400 p-3 lg:border-b-2">
+              <h1 className="flex justify-center pl-2 text-3xl font-semibold">
+                Direcciones
+              </h1>
+            </div>
+          ) : (
+            <div className="border-gray-400 p-3 lg:border-b-2">
+              <h1 className="flex justify-center pl-2 text-3xl font-semibold">
+                Metodos de Pago
+              </h1>
+            </div>
+          )}
+          <div className="flex flex-col pt-2 lg:flex xl:flex">
+            {showInfo == "profile" ? (
+              <PersonalInfo name={user?.name} user={user?.user} />
+            ) : showInfo == "contact" ? (
+              <Contacts
+                area_code={user?.area_code}
+                number={user?.number}
+                area_code_emergency={user?.area_code_emergency}
+                emergency_number={user?.emergency_number}
+                mail={user?.mail}
+              />
+            ) : showInfo == "ubication" ? (
+              <Ubication
+                province={user?.province}
+                locality={user?.locality}
+                zip_code={user?.zip_code}
+                street_name={user?.street_name}
+                street_number={user?.street_number}
+              />
+            ) : (
+              <Payment />
+            )}
+            <div class="flex pl-4 pt-5 sm:pl-12">
+              <div class="flex py-2">
+                <img src={interrogation} alt="help" class="w-3 sm:w-5" />
+                <Link to="/profile/store/create">
+                  <LinkButton component={"Crear producto"} />
+                </Link>
+              </div>
+              <div class="flex py-2">
+                <img src={interrogation} alt="help" class="w-5" />
+                <Link to={`/profile/edit/${user.id}`}>
+                  <button class="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
+                    <img src={edit} alt="edit" />
+                  </button>
+                </Link>
+              </div>
+>>>>>>> 53ab5b6335d581ac8137bd433b08fe78f484619d
             </div>
           </Tabs.Item>
           <Tabs.Item title="Tienda">
