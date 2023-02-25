@@ -57,7 +57,7 @@ function App() {
           <Route path="/shop/shoppingcart" element={<ShoppingCart />} />
           <Route path="/shop/checkout" element={<Checkout />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile/edit" element={<FormModifyUser />} />
+          <Route path="/profile/edit/:id" element={<FormModifyUser />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/profile/store/create" element={<FormCreateProduct />} />
           <Route

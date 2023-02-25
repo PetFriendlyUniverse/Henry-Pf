@@ -119,12 +119,14 @@ function Profile() {
                   <LinkButton component={"Crear producto"} />
                 </Link>
               </div>
-              {/* <div class="flex py-2">
+              <div class="flex py-2">
                 <img src={interrogation} alt="help" class="w-5" />
-                <button class="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
-                  <img src={edit} alt="edit" />
-                </button>
-              </div> */}
+                <Link to={`/profile/edit/${user.id}`}>
+                  <button class="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
+                    <img src={edit} alt="edit" />
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

@@ -3,25 +3,29 @@ import { useState } from "react";
 import { ValidationProfile } from "../Validations/Profile";
 import Swal from "sweetalert2";
 import LinkButton from "../../../../components/Button/LinkButton";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function FormModifyUser() {
+  const { id } = useParams();
+  const user = useSelector((state) => state.User?.userId);
   const [formComplete, setFormComplete] = useState(false);
   const [img, setImg] = useState(null);
   const [form, setForm] = useState({
-    user: "",
-    name: "",
-    lastname: "",
-    mail: "",
-    password: "",
-    area_code: "",
-    number: "",
-    province: "",
-    locality: "",
-    zip_code: "",
-    street_name: "",
-    street_number: "",
-    area_code_emergency: "",
-    emergency_number: "",
+    user: user?.user,
+    name: user?.name,
+    lastname: user?.lastname,
+    mail: user?.mail,
+    password: user?.password,
+    area_code: user?.area_code,
+    number: user?.number,
+    province: user?.province,
+    locality: user?.locality,
+    zip_code: user?.zip_code,
+    street_name: user?.street_name,
+    street_number: user?.street_number,
+    area_code_emergency: user?.area_code_emergency,
+    emergency_number: user?.emergency_number,
   });
   const [errors, setErrors] = useState({
     user: "",
@@ -64,6 +68,7 @@ function FormModifyUser() {
     newForm.append("lastname", form.lastname);
     newForm.append("mail", form.mail);
     newForm.append("password", form.password);
+    newForm.append("area_code", form.area_code);
     newForm.append("number", form.number);
     newForm.append("province", form.province);
     newForm.append("locality", form.locality);
@@ -74,7 +79,7 @@ function FormModifyUser() {
     newForm.append("emergency_number", form.emergency_number);
     if (isFormValid) {
       axios
-        .post("/user/create", newForm, {
+        .put(`/user/${id}`, newForm, {
           headers: {
             "Content-Type": "multipart/form-data",
           }, //importante en form de imagen poner este headers
@@ -86,23 +91,24 @@ function FormModifyUser() {
             text: "El perfil ha sido actualizado correctamente",
           });
         })
-        .catch((err) => console.log(err));
-      setForm({
-        user: "",
-        name: "",
-        lastname: "",
-        mail: "",
-        password: "",
-        area_code: "",
-        number: "",
-        province: "",
-        locality: "",
-        zip_code: "",
-        street_name: "",
-        street_number: "",
-        area_code_emergency: "",
-        emergency_number: "",
-      });
+        .then(() => {
+          setForm({
+            user: "",
+            name: "",
+            lastname: "",
+            mail: "",
+            password: "",
+            area_code: "",
+            number: "",
+            province: "",
+            locality: "",
+            zip_code: "",
+            street_name: "",
+            street_number: "",
+            area_code_emergency: "",
+            emergency_number: "",
+          });
+        });
     } else {
       Swal.fire({
         icon: "error",
@@ -155,6 +161,7 @@ function FormModifyUser() {
             className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
             placeholder=" "
             autoComplete="off"
+            readOnly
           />
           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
             Correo Electronico (max: 50 caracteres)
