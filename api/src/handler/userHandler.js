@@ -6,6 +6,9 @@ const {
   getUserById,
   updateAllUsers,
   deleteUsersById,
+  resetPassword,
+  verifyResetToken,
+  updatePassword,
 } = require("../controllers/userControllers");
 const cloudinary = require("cloudinary").v2;
 
@@ -105,6 +108,28 @@ const deleteUserHandler = async (req, res) => {
   }
 };
 
+const resetConfirmPasswordHandler = async (req, res) => {
+  const { mail } = req.body;
+  try {
+    const password = await resetPassword(mail);
+    res.status(200).json(password);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
+
+const resetPasswordHandler = async (req, res) => {
+  const { token } = req.params;
+  const { password } = req.body;
+  try {
+    const userId = await verifyResetToken(token);
+    await updatePassword(userId, password);
+    res.status(200).json("Contraseña actualizada correctamente");
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   postUserHandler,
   loginHandler,
@@ -113,4 +138,6 @@ module.exports = {
   getUserDetailHandler,
   putUserHandler,
   deleteUserHandler,
+  resetConfirmPasswordHandler,
+  resetPasswordHandler,
 };
