@@ -1,4 +1,3 @@
-import search from "../../../assets/general/search.svg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setFilters } from "../../../redux/features/products/productsSlice";
@@ -8,7 +7,6 @@ function SearchForm() {
   const dispatch = useDispatch();
 
   const handleInputSearch = (event) => {
-    console.log(event.target.value);
     setSearchValue(event.target.value);
   };
 
