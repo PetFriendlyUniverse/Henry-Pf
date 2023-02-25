@@ -53,6 +53,10 @@ export const Products = createSlice({
       state.setFilters = newSetFilters;
       state.currentPage = 1;
     },
+    clearFilters: (state) => {
+      state.setFilters = {};
+      state.currentPage = 1;
+    },
     getProductsById: (state, { payload }) => {
       state.productId = payload;
     },
@@ -87,6 +91,7 @@ export const {
   getFilters,
   setCurrentPage,
   setFilters,
+  clearFilters,
   getProductsById,
   deletedProducts,
   setShopCart,

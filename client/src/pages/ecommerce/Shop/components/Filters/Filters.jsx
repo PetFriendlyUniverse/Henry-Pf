@@ -1,6 +1,7 @@
 import useGetFilters from "../../../../../hooks/useGetFilters";
 import useToggleBoolean from "../../../../../hooks/useToggleBoolean";
 import useWidthIsLessThan from "../../../../../hooks/useWidthIsLessThan";
+import ClearFiltersBtn from "./components/ClearFiltersBtn";
 import List from "./components/List";
 import PriceRange from "./components/PriceRange";
 import usePriceRangeControll from "./hooks/usePriceRangeControll";
@@ -23,6 +24,7 @@ function Filters() {
       >
         Filtros
       </button>
+      <ClearFiltersBtn />
       <div
         className={`flex ${
           show ? "h-auto" : "h-0"
