@@ -69,14 +69,14 @@ function LandingShop() {
                   viewBox="0 0 24 24"
                   version="1.1"
                   xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
                   fill="#000000"
                 >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
                     id="SVGRepo_tracerCarrier"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   ></g>
                   <g id="SVGRepo_iconCarrier">
                     {" "}
@@ -84,16 +84,16 @@ function LandingShop() {
                     <g
                       id="Page-1"
                       stroke="none"
-                      stroke-width="1"
+                      strokeWidth="1"
                       fill="none"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                     >
                       {" "}
                       <g id="Menu">
                         {" "}
                         <rect
                           id="Rectangle"
-                          fill-rule="nonzero"
+                          fillRule="nonzero"
                           x="0"
                           y="0"
                           width="24"
@@ -108,8 +108,8 @@ function LandingShop() {
                           y2="7"
                           id="Path"
                           stroke="#0C0310"
-                          stroke-width="2"
-                          stroke-linecap="round"
+                          strokeWidth="2"
+                          strokeLinecap="round"
                         >
                           {" "}
                         </line>{" "}
@@ -120,8 +120,8 @@ function LandingShop() {
                           y2="17"
                           id="Path"
                           stroke="#0C0310"
-                          stroke-width="2"
-                          stroke-linecap="round"
+                          strokeWidth="2"
+                          strokeLinecap="round"
                         >
                           {" "}
                         </line>{" "}
@@ -132,8 +132,8 @@ function LandingShop() {
                           y2="12"
                           id="Path"
                           stroke="#0C0310"
-                          stroke-width="2"
-                          stroke-linecap="round"
+                          strokeWidth="2"
+                          strokeLinecap="round"
                         >
                           {" "}
                         </line>{" "}
@@ -166,14 +166,14 @@ function LandingShop() {
                   viewBox="0 0 24 24"
                   version="1.1"
                   xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
                   fill="#000000"
                 >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
                     id="SVGRepo_tracerCarrier"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   ></g>
                   <g id="SVGRepo_iconCarrier">
                     {" "}
@@ -181,16 +181,16 @@ function LandingShop() {
                     <g
                       id="Page-1"
                       stroke="none"
-                      stroke-width="1"
+                      strokeWidth="1"
                       fill="none"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                     >
                       {" "}
                       <g id="Menu">
                         {" "}
                         <rect
                           id="Rectangle"
-                          fill-rule="nonzero"
+                          fillRule="nonzero"
                           x="0"
                           y="0"
                           width="24"
@@ -205,8 +205,8 @@ function LandingShop() {
                           y2="7"
                           id="Path"
                           stroke="#0C0310"
-                          stroke-width="2"
-                          stroke-linecap="round"
+                          strokeWidth="2"
+                          strokeLinecap="round"
                         >
                           {" "}
                         </line>{" "}
@@ -217,8 +217,8 @@ function LandingShop() {
                           y2="17"
                           id="Path"
                           stroke="#0C0310"
-                          stroke-width="2"
-                          stroke-linecap="round"
+                          strokeWidth="2"
+                          strokeLinecap="round"
                         >
                           {" "}
                         </line>{" "}
@@ -229,8 +229,8 @@ function LandingShop() {
                           y2="12"
                           id="Path"
                           stroke="#0C0310"
-                          stroke-width="2"
-                          stroke-linecap="round"
+                          strokeWidth="2"
+                          strokeLinecap="round"
                         >
                           {" "}
                         </line>{" "}

@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -6,24 +8,50 @@ import Subcard from "../../../components/SubCard/Subcard";
 import { clearShopCart } from "../../../redux/features/products/productsSlice";
 
 function Checkout() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userDetailId = useSelector((state) => state.User?.userId);
+
   const shopCartProducts = useSelector((state) => state.Products?.shopCart);
+  console.log(shopCartProducts);
   const productsIds = Object.keys(shopCartProducts);
   let totalPrice = 0;
   const products = productsIds.map((id) => {
     totalPrice += shopCartProducts[id].amount * shopCartProducts[id].price;
     return shopCartProducts[id];
   });
-  const dispatch = useDispatch();
+  const arrProductsPayment = products.map((item) => {
+    return {
+      id: item.id,
+      title: item.name,
+      picture_url: item.img,
+      unit_price: item.price,
+      quantity: item.amount,
+      currency_id: "ARS",
+    };
+  });
+  console.log(arrProductsPayment);
   const handleClick = async () => {
+    try {
+      const { data } = await axios.post("/payment/new", arrProductsPayment);
+      window.location.href = await data.response.body.init_point;
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        icon: "success",
+        title: "No se pudo realizar la compra",
+        showConfirmButton: false,
+        timer: 1100,
+      });
+    }
+    localStorage.removeItem("shopCart");
+    dispatch(clearShopCart());
     await Swal.fire({
       icon: "success",
       title: "Tu compra ha sido realizada con éxito!",
       showConfirmButton: false,
       timer: 1100,
     });
-    localStorage.removeItem("shopCart");
-    dispatch(clearShopCart());
     navigate("/shop");
   };
   return (
