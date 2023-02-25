@@ -1,6 +1,7 @@
 const { User } = require("../db");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { sendResetPasswordEmail } = require("./mailController");
 
 const createUser = async (
   user,
@@ -84,6 +85,37 @@ const deleteUsersById = async (id) => {
   return update ? "User deleted successfully" : "Wrong user";
 };
 
+const resetPassword = async (mail) => {
+  const user = await User.findOne({ where: { mail } });
+  if (!user) {
+    throw Error("No existe el usuario con ese correo electrónico");
+  }
+  const resetToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+    expiresIn: "1h",
+  });
+  await sendResetPasswordEmail(mail, resetToken);
+  return resetToken;
+};
+
+const verifyResetToken = async (token) => {
+  try {
+    const decoded = await jwt.verify(token, process.env.JWT_SECRET);
+    return decoded.id;
+  } catch (error) {
+    throw new Error("Token de reseteo inválido");
+  }
+};
+
+const updatePassword = async (userId, password) => {
+  const user = await User.findOne({ where: { id: userId } });
+  if (!user) {
+    throw new Error("Usuario no encontrado");
+  }
+  const hashedPassword = await bcrypt.hash(password, 10);
+  user.password = hashedPassword;
+  await user.save();
+};
+
 module.exports = {
   createUser,
   loginUser,
@@ -91,4 +123,7 @@ module.exports = {
   getUserById,
   updateAllUsers,
   deleteUsersById,
+  resetPassword,
+  verifyResetToken,
+  updatePassword,
 };
