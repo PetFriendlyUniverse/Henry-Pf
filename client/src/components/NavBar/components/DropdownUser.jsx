@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import user from "../../../assets/general/profile.svg";
 import { getUserApi } from "../../../redux/features/users/usersActions";
 import axios from "axios";
 import arrowDropdown from "../../../assets/arrows/arrowDropdown.svg";
@@ -37,13 +36,15 @@ function DropdownUser() {
         className="group flex w-full items-center gap-1 lg:justify-center"
         type="button"
       >
-        <img src={user} alt="" className="" />
-        <span className="font-bold uppercase text-cornflowerblue">usuario</span>
+        <img src={arrowDropdown} alt="" />
+        <span className="mr-2 font-bold uppercase text-cornflowerblue">
+          {userDetailId?.name}
+        </span>
         <img
           ref={arrow}
-          src={arrowDropdown}
+          src={userDetailId?.img}
           alt=""
-          className="transition-transform"
+          className="h-12 rounded-full transition-transform"
         />
       </button>
 
