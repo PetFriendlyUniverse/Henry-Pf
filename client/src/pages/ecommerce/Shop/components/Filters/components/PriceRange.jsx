@@ -13,7 +13,7 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
       setMinVal(parseInt(target.value));
   };
   const handleMaxValue = ({ target }) => {
-    if (parseInt(target.value) >= parseInt(minVal))
+    if (parseInt(target.value) > parseInt(minVal))
       setMaxVal(parseInt(target.value));
   };
   const handleSetFilter = () => {
@@ -51,13 +51,13 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
           ref={toggleShow}
           className={`hidden ${
             !show ? "md:h-[90px] lg:h-28" : "h-fit"
-          } overflow-hidden md:block `}
+          } flex flex-col overflow-hidden text-center md:block`}
         >
           {!active ? (
             <>
               {" "}
               <li
-                className={`text- my-1 h-4 w-full cursor-pointer font-semibold`}
+                className={`my-1 mx-auto flex h-4 w-2/3 cursor-pointer font-semibold`}
               >
                 <label htmlFor="minRange">Mínimo: </label>
                 <input
@@ -67,11 +67,12 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
                   step={10}
                   onChange={handleMinValue}
                   value={minVal}
-                  className=""
+                  className="relative top-1"
                 />
+                <p className="ml-2">${minVal}</p>
               </li>
               <li
-                className={`text- my-1 h-4 w-full cursor-pointer font-semibold`}
+                className={`my-1 mx-auto  flex h-4 w-2/3 cursor-pointer font-semibold`}
               >
                 <label htmlFor="maxRange">Máximo: </label>
                 <input
@@ -82,17 +83,23 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
                   step={10}
                   onChange={handleMaxValue}
                   value={maxVal}
-                  className=""
+                  className="relative top-1"
                 />
+                <p className="ml-2">${maxVal}</p>
               </li>
             </>
           ) : (
-            <span>
-              rango:${minVal}-${maxVal}
-            </span>
+            <>
+              <span className="block">
+                rango actual:${minVal}-${maxVal}
+              </span>
+            </>
           )}
 
-          <button onClick={handleSetFilter}>
+          <button
+            className=" py-1 text-sm font-bold text-blue-500"
+            onClick={handleSetFilter}
+          >
             {active ? "Revertir" : "Aplicar"}
           </button>
         </ul>

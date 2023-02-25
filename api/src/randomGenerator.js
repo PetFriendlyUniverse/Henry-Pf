@@ -223,22 +223,22 @@ const generator = () => {
         id: brands[i],
       });
     }
-    const speciesObj = [];
-    for (const i in species) {
-      speciesObj.push({
-        id: species[i],
-      });
-    }
+
     const razasObj = [];
     for (const i in razas) {
       razasObj.push({
         id: razas[i],
       });
     }
-
+    const speciesObj = [];
+    for (const i in species) {
+      speciesObj.push({
+        id: species[i],
+      });
+    }
     Brands.bulkCreate(brandObj);
-    Breeds.bulkCreate(speciesObj);
-    Species.bulkCreate(razasObj);
+    Breeds.bulkCreate(razasObj);
+    Species.bulkCreate(speciesObj);
 
     await Product.bulkCreate(productsToCreate);
     console.log("Datos generados exitosamente");
