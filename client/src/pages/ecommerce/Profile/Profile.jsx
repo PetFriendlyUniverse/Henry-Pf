@@ -73,6 +73,7 @@ function Profile() {
                     Formas de Pago
                   </button>
                 </li> */}
+
                         <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
                           {/* Reveer esto de volver al hacer Health/Services */}
                           <Link to="/shop">
