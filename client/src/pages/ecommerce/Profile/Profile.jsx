@@ -103,12 +103,20 @@ function Profile() {
               <PersonalInfo name={user?.name} user={user?.user} />
             ) : showInfo == "contact" ? (
               <Contacts
-                phone={user?.phone}
-                emergencyphone={user?.emergencyphone}
+                area_code={user?.area_code}
+                number={user?.number}
+                area_code_emergency={user?.area_code_emergency}
+                emergency_number={user?.emergency_number}
                 mail={user?.mail}
               />
             ) : showInfo == "ubication" ? (
-              <Ubication province={user?.province} locality={user?.locality} />
+              <Ubication
+                province={user?.province}
+                locality={user?.locality}
+                zip_code={user?.zip_code}
+                street_name={user?.street_name}
+                street_number={user?.street_number}
+              />
             ) : (
               <Payment />
             )}
