@@ -7,7 +7,6 @@ function SearchForm() {
   const dispatch = useDispatch();
 
   const handleInputSearch = (event) => {
-    console.log(event.target.value);
     setSearchValue(event.target.value);
   };
 

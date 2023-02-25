@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import LinkButton from "../../../components/Button/LinkButton";
 import { useSelector } from "react-redux";
+import { Tabs } from "flowbite-react";
 
 import PhotoName from "./components/PhotoName";
 import PersonalInfo from "./components/PersonalInfo";
@@ -9,11 +10,9 @@ import Contacts from "./components/Contacts";
 import Ubication from "./components/Ubication";
 import Payment from "./components/Payment";
 import SearchForm from "../../../components/NavBar/components/SearchForm";
-import PruductsByStoreComponent from "../../../components/PruductsByStoreComponent/PruductsByStoreComponent";
 
-import edit from "../../../assets/general/edit.svg";
 import interrogation from "../../../assets/general/interrogation.svg";
-import { Tabs } from "flowbite-react";
+import CardStoreIdContainer from "../../../components/CardStoreIdContainer/CardStoreIdContainer";
 
 function Profile() {
   const [showInfo, setShowInfo] = useState("profile");
@@ -22,16 +21,16 @@ function Profile() {
     setShowInfo(e.target.name);
   };
   return (
-    <div className="flex justify-center border-2 border-black pb-28 pt-36 lg:items-center">
-      <div className="scroll flex h-screen w-3/4 flex-col-reverse justify-end  overflow-hidden border-2 border-gray-200">
+    <div className="flex justify-center  pb-28 pt-10 lg:items-center">
+      <div className=" flex h-full w-3/4 flex-col-reverse justify-end border-2 border-gray-200">
         <Tabs.Group
           aria-label="Tabs with underline"
           style="underline"
           className=""
         >
           <Tabs.Item title="Perfil" className="">
-            <div className="">
-              <div className=" flex h-full w-full flex-col rounded-md border-2  md:flex-row lg:w-full">
+            <div>
+              <div className=" flex h-full w-full flex-col rounded-md border-2 md:flex-row lg:w-full">
                 <div className="mb-3  p-3 xl:w-96 ">
                   <PhotoName img={user?.img} name={user?.name} />
                   <div className="">
@@ -73,7 +72,6 @@ function Profile() {
                     Formas de Pago
                   </button>
                 </li> */}
-<<<<<<< HEAD
                         <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
                           {/* Reveer esto de volver al hacer Health/Services */}
                           <Link to="/shop">
@@ -84,7 +82,8 @@ function Profile() {
                     </div>
                   </div>
                 </div>
-                <div className="  border-2 border-gray-200 lg:w-full lg:border-l-2">
+                {/* este es el div que contiene el renderizado condicional del titulo */}
+                <div className=" border-2 border-gray-200 lg:w-full lg:border-l-2">
                   {showInfo == "profile" ? (
                     <div className="border-gray-400 p-3 lg:border-b-2">
                       <h1 className="flex justify-center pl-2 text-3xl font-semibold">
@@ -104,13 +103,14 @@ function Profile() {
                       </h1>
                     </div>
                   ) : (
-                    <div className="border-gray-400 p-3 lg:border-b-2">
-                      <h1 className="flex justify-center pl-2 text-3xl font-semibold">
-                        Metodos de Pago
+                    <div className="flex justify-center  gap-4 border-gray-400 p-3 lg:border-b-2">
+                      <h1 className="flex items-center justify-center pl-2 text-3xl font-semibold">
+                        Direcciones
                       </h1>
+                      <div className="rounded-2xl border-2"></div>
                     </div>
                   )}
-                  <div className="flex flex-col pt-2 lg:flex xl:flex">
+                  <div className="flex w-full flex-col justify-center  pt-2 lg:flex-row">
                     {showInfo == "profile" ? (
                       <PersonalInfo name={user?.name} user={user?.user} />
                     ) : showInfo == "contact" ? (
@@ -123,10 +123,18 @@ function Profile() {
                       <Ubication
                         province={user?.province}
                         locality={user?.locality}
+                        zip_code={user?.zip_code}
+                        street_name={user?.street_name}
+                        street_number={user?.street_number}
                       />
+                    ) : showInfo == "products" ? (
+                      <div className="h-46 overflow-scroll">
+                        <CardStoreIdContainer />
+                      </div>
                     ) : (
                       <Payment />
                     )}
+
                     <div class="flex pl-4 pt-5 sm:pl-12">
                       <div class="flex py-2">
                         <img
@@ -138,93 +146,13 @@ function Profile() {
                           <LinkButton component={"Crear producto"} />
                         </Link>
                       </div>
-                      {/* <div class="flex py-2">
-                <img src={interrogation} alt="help" class="w-5" />
-                <button class="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
-                  <img src={edit} alt="edit" />
-                </button>
-              </div> */}
                     </div>
                   </div>
                 </div>
-              </div>{" "}
-=======
-                <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
-                  {/* Reveer esto de volver al hacer Health/Services */}
-                  <Link to="/shop">
-                    <button className="inline-block p-4">Volver</button>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div className="border-gray-400 lg:w-full lg:border-l-2">
-          {showInfo == "profile" ? (
-            <div className="border-gray-400 p-3 lg:border-b-2">
-              <h1 className="flex justify-center pl-2 text-3xl font-semibold">
-                Perfil
-              </h1>
-            </div>
-          ) : showInfo == "contact" ? (
-            <div className="border-gray-400 p-3 lg:border-b-2">
-              <h1 className="flex justify-center pl-2 text-3xl font-semibold">
-                Contacto
-              </h1>
-            </div>
-          ) : showInfo == "ubication" ? (
-            <div className="border-gray-400 p-3 lg:border-b-2">
-              <h1 className="flex justify-center pl-2 text-3xl font-semibold">
-                Direcciones
-              </h1>
-            </div>
-          ) : (
-            <div className="border-gray-400 p-3 lg:border-b-2">
-              <h1 className="flex justify-center pl-2 text-3xl font-semibold">
-                Metodos de Pago
-              </h1>
-            </div>
-          )}
-          <div className="flex flex-col pt-2 lg:flex xl:flex">
-            {showInfo == "profile" ? (
-              <PersonalInfo name={user?.name} user={user?.user} />
-            ) : showInfo == "contact" ? (
-              <Contacts
-                area_code={user?.area_code}
-                number={user?.number}
-                area_code_emergency={user?.area_code_emergency}
-                emergency_number={user?.emergency_number}
-                mail={user?.mail}
-              />
-            ) : showInfo == "ubication" ? (
-              <Ubication
-                province={user?.province}
-                locality={user?.locality}
-                zip_code={user?.zip_code}
-                street_name={user?.street_name}
-                street_number={user?.street_number}
-              />
-            ) : (
-              <Payment />
-            )}
-            <div class="flex pl-4 pt-5 sm:pl-12">
-              <div class="flex py-2">
-                <img src={interrogation} alt="help" class="w-3 sm:w-5" />
-                <Link to="/profile/store/create">
-                  <LinkButton component={"Crear producto"} />
-                </Link>
               </div>
-              <div class="flex py-2">
-                <img src={interrogation} alt="help" class="w-5" />
-                <Link to={`/profile/edit/${user.id}`}>
-                  <button class="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
-                    <img src={edit} alt="edit" />
-                  </button>
-                </Link>
-              </div>
->>>>>>> 53ab5b6335d581ac8137bd433b08fe78f484619d
             </div>
           </Tabs.Item>
+
           <Tabs.Item title="Tienda">
             <div>
               <div className=" flex h-full w-full flex-col rounded-md border-2 md:flex-row lg:w-full">
@@ -233,15 +161,6 @@ function Profile() {
                   <div className="">
                     <div className="mb-4 mt-4 border-gray-200  dark:border-gray-200">
                       <ul className="-mb-px text-center text-sm font-medium">
-                        <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
-                          <button
-                            onClick={handleShowInfo}
-                            name="store"
-                            className="inline-block p-4"
-                          >
-                            Perfil de Tienda
-                          </button>
-                        </li>
                         <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
                           <button
                             onClick={handleShowInfo}
@@ -324,9 +243,9 @@ function Profile() {
                         locality={user?.locality}
                       />
                     ) : showInfo == "products" ? (
-                      <div className="w-full ">
+                      <div className="flex w-full justify-center ">
                         {" "}
-                        <PruductsByStoreComponent />
+                        <CardStoreIdContainer />
                       </div>
                     ) : (
                       <Payment />
