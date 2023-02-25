@@ -1,5 +1,3 @@
-// imports <Filters />
-import { useDispatch, useSelector } from "react-redux";
 import useGetFilters from "../../../../../hooks/useGetFilters";
 import useToggleBoolean from "../../../../../hooks/useToggleBoolean";
 import useWidthIsLessThan from "../../../../../hooks/useWidthIsLessThan";
