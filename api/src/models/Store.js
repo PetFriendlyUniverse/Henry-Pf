@@ -22,10 +22,6 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: true,
       },
-      number: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-      },
       province: {
         type: DataTypes.STRING,
         allowNull: true,

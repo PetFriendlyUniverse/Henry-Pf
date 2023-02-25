@@ -103,12 +103,20 @@ function Profile() {
               <PersonalInfo name={user?.name} user={user?.user} />
             ) : showInfo == "contact" ? (
               <Contacts
-                phone={user?.phone}
-                emergencyphone={user?.emergencyphone}
+                area_code={user?.area_code}
+                number={user?.number}
+                area_code_emergency={user?.area_code_emergency}
+                emergency_number={user?.emergency_number}
                 mail={user?.mail}
               />
             ) : showInfo == "ubication" ? (
-              <Ubication province={user?.province} locality={user?.locality} />
+              <Ubication
+                province={user?.province}
+                locality={user?.locality}
+                zip_code={user?.zip_code}
+                street_name={user?.street_name}
+                street_number={user?.street_number}
+              />
             ) : (
               <Payment />
             )}
@@ -119,12 +127,14 @@ function Profile() {
                   <LinkButton component={"Crear producto"} />
                 </Link>
               </div>
-              {/* <div class="flex py-2">
+              <div class="flex py-2">
                 <img src={interrogation} alt="help" class="w-5" />
-                <button class="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
-                  <img src={edit} alt="edit" />
-                </button>
-              </div> */}
+                <Link to={`/profile/edit/${user.id}`}>
+                  <button class="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
+                    <img src={edit} alt="edit" />
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
