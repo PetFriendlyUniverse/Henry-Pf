@@ -7,8 +7,8 @@ function usePriceRangeControll() {
   //   (state) => state.Products?.setFilters?.priceRange
   // );
   const dispatch = useDispatch();
-  const onSet = (minVal, maxVal) => {
-    dispatch(setFilters({ filter: "priceRange", value: [minVal, maxVal] }));
+  const onSet = (arr2) => {
+    dispatch(setFilters({ filter: "priceRange", value: arr2 || "" })); // setea el arr2 con min,max o "" para eliminar filtro
   };
   return { min, max, onSet };
 }
