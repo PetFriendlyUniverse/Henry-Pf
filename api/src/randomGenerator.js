@@ -220,19 +220,19 @@ const generator = () => {
     const brandObj = [];
     for (const i in brands) {
       brandObj.push({
-        id: i,
+        id: brands[i],
       });
     }
     const speciesObj = [];
     for (const i in species) {
       speciesObj.push({
-        id: i,
+        id: species[i],
       });
     }
     const razasObj = [];
     for (const i in razas) {
       razasObj.push({
-        id: i,
+        id: razas[i],
       });
     }
 
