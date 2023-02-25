@@ -35,7 +35,7 @@ const Profile = lazy(() => import("./pages/ecommerce/Profile/Profile"));
 const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 
 const TestComponent = lazy(() =>
-  import("./pages/ecommerce/Forms/FormModifyUser/FormModifyUser")
+  import("./pages/ecommerce/Forms/FormModifyStore/FormModifyStore")
 ); //Dejen esto asi para testear sus componentes a ver como se ven o si funcionan, solo cambien la importacion
 
 function App() {
