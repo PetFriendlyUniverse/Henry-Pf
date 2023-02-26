@@ -1,9 +1,17 @@
 import useGetProducts from "../../hooks/useGetProducts";
 import Card from "../Card/Card";
+import Loader from "../Loader/Loader";
 
 function CardContainer() {
-  const products = useGetProducts();
-  //flex w-[90%] flex-wrap justify-center gap-2
+  const [loading, products] = useGetProducts();
+
+  if (loading)
+    return (
+      <div className="flex h-screen w-full flex-col content-center items-center py-72">
+        <Loader />
+      </div>
+    );
+
   return (
     <div className="mx-auto grid w-11/12 grid-cols-1 items-center justify-center justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:w-10/12 lg:grid-cols-4  lg:gap-x-10 lg:gap-y-12  ">
       {products?.length === 0 ? (
