@@ -4,11 +4,12 @@ import { ValidateProduct } from "../Validations/ValidateProduct";
 import LinkButton from "../../../../components/Button/LinkButton";
 import Swal from "sweetalert2";
 import { Carousel } from "flowbite-react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function FormCreateProduct() {
   const { id } = useParams();
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const navigate = useNavigate();
   const [imgFile, setImgFile] = useState(null);
   const [formComplete, setFormComplete] = useState(false);
   const [img, setImg] = useState(null);
@@ -99,6 +100,9 @@ function FormCreateProduct() {
             icon: "success",
             text: "El producto ha sido creado correctamente",
           });
+        })
+        .then(() => {
+          navigate(`/profile/store/${id}`);
         });
     } else {
       Swal.fire({
