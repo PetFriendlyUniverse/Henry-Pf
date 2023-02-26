@@ -53,34 +53,32 @@ function Login() {
   //   const value = e.target.value;
   //   // setRepeat({ [property]: value });
   // };
-  const handletSubmitLogin = (e) => {
+  const handletSubmitLogin = async (e) => {
     e.preventDefault();
-    axios
-      .post("user/login", login)
-      .then((res) => {
+    try {
+      await axios.post("user/login", login).then(async (res) => {
+        console.log("then");
         const token = res.data.token;
         const id = res.data.id;
         localStorage.setItem("token", token);
         localStorage.setItem("id", id);
-      })
-      .then(() => {
-        Swal.fire({
+        await Swal.fire({
           icon: "success",
           title: "El ingreso se ha sido realizado con éxito!",
           showConfirmButton: true,
           timer: 1500,
-        }).then(() => {
-          navigate("/shop");
         });
-      })
-      .catch(
-        Swal.fire({
-          icon: "error",
-          title: "Usuario o contraseña incorrecto!",
-          showConfirmButton: true,
-          timer: 1500,
-        })
-      );
+        navigate("/shop");
+      });
+    } catch (error) {
+      console.log("error");
+      Swal.fire({
+        icon: "error",
+        title: "Usuario o contraseña incorrecto!",
+        showConfirmButton: true,
+        timer: 1500,
+      });
+    }
   };
 
   const handleClickGoogle = () => {
