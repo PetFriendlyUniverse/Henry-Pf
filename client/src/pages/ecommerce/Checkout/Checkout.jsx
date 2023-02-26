@@ -5,10 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import ContainerRecomendados from "../../../components/ContainerRecomendados/ContainerRecomendados";
 import Subcard from "../../../components/SubCard/Subcard";
-import {
-  clearShopCart,
-  setShopUser,
-} from "../../../redux/features/products/productsSlice";
+import { clearShopCart } from "../../../redux/features/products/productsSlice";
 
 function Checkout() {
   const dispatch = useDispatch();
@@ -37,21 +34,25 @@ function Checkout() {
   const handleClick = async () => {
     try {
       const { data } = await axios.post("/payment/new", arrProductsPayment);
-      const dateShop = data.response.response.date_created.slice(0, 10);
-
-      dispatch(setShopUser({ date: dateShop, products: arrProductsPayment }));
-      window.location.href = data.response.body.init_point;
-      localStorage.removeItem("shopCart");
-      dispatch(clearShopCart());
+      window.location.href = await data.response.body.init_point;
     } catch (error) {
       console.log(error);
       Swal.fire({
-        icon: "error",
-        title: "Pruebe nuevamente mas tarde",
+        icon: "success",
+        title: "No se pudo realizar la compra",
         showConfirmButton: false,
         timer: 1100,
       });
     }
+    localStorage.removeItem("shopCart");
+    dispatch(clearShopCart());
+    await Swal.fire({
+      icon: "success",
+      title: "Tu compra ha sido realizada con éxito!",
+      showConfirmButton: false,
+      timer: 1100,
+    });
+    navigate("/shop");
   };
   return (
     <div className="flex h-screen w-full items-center justify-center bg-slate-100 pt-24">

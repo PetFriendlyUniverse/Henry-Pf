@@ -16,10 +16,6 @@ import React from "react";
 function TabUser() {
   const [showInfo, setShowInfo] = useState("profile");
   const user = useSelector((state) => state.User?.userId);
-  const shopUser = useSelector((state) => state.Products?.shopUser);
-  console.log(shopUser);
-  const shopCart = useSelector((state) => state.Products?.shopCart);
-  console.log(shopCart);
   const handleShowInfo = (e) => {
     setShowInfo(e.target.name);
   };
@@ -59,16 +55,6 @@ function TabUser() {
                     Direcciones
                   </button>
                 </li>
-                <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
-                  <button
-                    onClick={handleShowInfo}
-                    name="userShopping"
-                    className="inline-block p-4"
-                  >
-                    Mis compras
-                  </button>
-                </li>
-
                 {/* <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
         <button
           onClick={handleShowInfo}
@@ -107,12 +93,6 @@ function TabUser() {
                 Direcciones
               </h1>
             </div>
-          ) : showInfo == "userShopping" ? (
-            <div className="border-gray-400 p-3 lg:border-b-2">
-              <h1 className="flex justify-center pl-2 text-3xl font-semibold">
-                Mis compras
-              </h1>
-            </div>
           ) : (
             <div className="border-gray-400 p-3 lg:border-b-2">
               <h1 className="flex justify-center pl-2 text-3xl font-semibold">
@@ -131,8 +111,6 @@ function TabUser() {
               />
             ) : showInfo == "ubication" ? (
               <Ubication province={user?.province} locality={user?.locality} />
-            ) : showInfo == "userShopping" ? (
-              <div>Hola estas son tus compras</div>
             ) : (
               <Payment />
             )}
