@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductsApi } from "../../redux/features/products/productsActions";
 import { setCurrentPage } from "../../redux/features/products/productsSlice";
+import Sort from "./components/Sort/Sort";
 
 function Paginator() {
   let { totalPages, productsPerPage, currentPage, setFilters } = useSelector(
@@ -21,7 +22,7 @@ function Paginator() {
 
   return (
     <div className=" flex h-full flex-col  items-center gap-4 lg:min-h-screen lg:w-4/5 lg:min-w-[800px] xl:min-w-[1000px] 2xl:min-w-[1400px]">
-      <div className="mt-4 flex w-9/12 justify-center sm:w-1/2 md:w-1/5">
+      <div className="relative mt-4 flex w-9/12 justify-center sm:w-1/2 md:w-1/5">
         <Paginate
           pageCount={totalPages}
           marginPagesDisplayed={0}
@@ -89,6 +90,7 @@ function Paginator() {
             </svg>
           }
         />
+        <Sort />
       </div>
 
       <CardContainer />
