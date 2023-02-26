@@ -15,7 +15,7 @@ const initialState = {
   products: [],
   totalPages: 1,
   currentPage: 1,
-  productsPerPage: 15,
+  productsPerPage: 44, // antes 15
   allFilters: [],
   setFilters: {}, // {size: "small", weight: 5, ...}
   priceRange: {}, // { min: numb, max: numb }
@@ -48,7 +48,11 @@ export const Products = createSlice({
       if (value === "") {
         delete newSetFilters[filter];
       } else {
-        newSetFilters[filter] = value;
+        if (Array.isArray(payload)) {
+          payload.forEach((f) => (newSetFilters[f.filter] = f.value));
+        } else {
+          newSetFilters[filter] = value;
+        }
       }
       state.setFilters = newSetFilters;
       state.currentPage = 1;

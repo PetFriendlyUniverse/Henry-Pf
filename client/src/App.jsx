@@ -35,7 +35,7 @@ const Profile = lazy(() => import("./pages/ecommerce/Profile/Profile"));
 const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 
 const TestComponent = lazy(() =>
-  import("./pages/ecommerce/Forms/FormModifyUser/FormModifyUser")
+  import("./pages/ecommerce/Forms/FormModifyStore/FormModifyStore")
 ); //Dejen esto asi para testear sus componentes a ver como se ven o si funcionan, solo cambien la importacion
 
 function App() {
@@ -57,7 +57,7 @@ function App() {
           <Route path="/shop/shoppingcart" element={<ShoppingCart />} />
           <Route path="/shop/checkout" element={<Checkout />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile/edit" element={<FormModifyUser />} />
+          <Route path="/profile/edit/:id" element={<FormModifyUser />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/profile/store/create" element={<FormCreateProduct />} />
           <Route

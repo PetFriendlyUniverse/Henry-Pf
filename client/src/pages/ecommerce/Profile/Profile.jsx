@@ -4,8 +4,8 @@ import TabStore from "./components/TabStore";
 
 function Profile() {
   return (
-    <div className="flex justify-center border-2 border-black pb-28 pt-36 lg:items-center">
-      <div className="scroll flex h-screen w-3/4 flex-col-reverse justify-end  overflow-hidden border-2 border-gray-200">
+    <div className="flex justify-center  pb-28 pt-10 lg:items-center">
+      <div className=" flex h-full w-3/4 flex-col-reverse justify-end border-2 border-gray-200">
         <Tabs.Group
           aria-label="Tabs with underline"
           style="underline"
@@ -14,6 +14,7 @@ function Profile() {
           <Tabs.Item title="Perfil" className="">
             <TabUser />
           </Tabs.Item>
+
           <Tabs.Item title="Tienda">
             <TabStore />
           </Tabs.Item>

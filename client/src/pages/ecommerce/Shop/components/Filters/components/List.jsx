@@ -62,7 +62,7 @@ function List({ filter, options }) {
         >
           {options?.map((opc, i) => (
             <li
-              className={`text- cursor-pointerfont-semibold my-1 `}
+              className={`text- my-1 cursor-pointer`}
               onClick={() => onClick(opc.id)}
               key={i}
             >

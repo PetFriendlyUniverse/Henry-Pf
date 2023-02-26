@@ -5,6 +5,8 @@ const queryAdapter = {
   Weight: "w",
   Species: "sp",
   Size: "sz",
+  sortBy: "sortBy",
+  sortType: "sortType",
 };
 
 // page: page, pq: productXpage
