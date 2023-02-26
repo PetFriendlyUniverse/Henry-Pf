@@ -5,9 +5,10 @@ import ClearFiltersBtn from "./components/ClearFiltersBtn";
 import List from "./components/List";
 import PriceRange from "./components/PriceRange";
 import usePriceRangeControll from "./hooks/usePriceRangeControll";
+import Loader from "../../../../../components/Loader/Loader";
 
 function Filters() {
-  const filterLists = useGetFilters();
+  const [loading, filterLists] = useGetFilters();
   const [show, toggleShow] = useToggleBoolean(); // recibe el estado inicial (default => false)
   const widthLessThan = useWidthIsLessThan(1024);
   const handleClick = () => {
@@ -15,6 +16,13 @@ function Filters() {
   };
 
   const { min, max, onSet } = usePriceRangeControll();
+
+  if (loading)
+    return (
+      <div className="flex h-screen w-full flex-col content-center items-center py-72">
+        <Loader />
+      </div>
+    );
 
   return (
     <aside className="h-full bg-blue-500 lg:flex lg:w-full lg:flex-col lg:content-center lg:items-center  lg:justify-center  lg:bg-transparent lg:py-2  lg:text-center">

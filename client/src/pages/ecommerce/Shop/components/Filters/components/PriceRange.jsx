@@ -57,7 +57,7 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
             <>
               {" "}
               <li
-                className={`my-1 mx-auto flex h-4 w-2/3 cursor-pointer font-semibold`}
+                className={`my-1 mx-auto flex h-4 cursor-pointer font-semibold`}
               >
                 <label htmlFor="minRange">Mínimo: </label>
                 <input
@@ -72,7 +72,7 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
                 <p className="ml-2">${minVal}</p>
               </li>
               <li
-                className={`my-1 mx-auto  flex h-4 w-2/3 cursor-pointer font-semibold`}
+                className={`my-1 mx-auto  flex h-4 cursor-pointer font-semibold`}
               >
                 <label htmlFor="maxRange">Máximo: </label>
                 <input
