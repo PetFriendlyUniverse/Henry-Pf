@@ -14,7 +14,6 @@ function Sort() {
   const dispatch = useDispatch();
 
   const handleSort = (val, by, type) => {
-    console.log("hola");
     setValue(val);
     dispatch(setFilters([by, type]));
   };
@@ -48,7 +47,7 @@ function Sort() {
                 handleSort(
                   "Mayor precio",
                   { filter: "sortBy", value: "price" },
-                  { filter: "sortType", value: "des" }
+                  { filter: "sortType", value: "DESC" }
                 );
               }}
               className={spanSyles(value, "Mayor precio")}
