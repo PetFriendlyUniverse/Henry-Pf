@@ -1,6 +1,7 @@
 const ValidationProfile = (property, value) => {
-  let stringRegex = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/;
+  let stringRegex = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/;
   let numberRegex = /^[0-9]+$/;
+  let stringNumberRegex = /^[a-zA-Z0-9 ]*$/;
   let emailRegex =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   let passwordRegex =
@@ -15,9 +16,9 @@ const ValidationProfile = (property, value) => {
     error.user = "Ingrese su nickname";
   } else if (property === "user") {
     if (!stringRegex.test(value)) {
-      error.user = "Por favor ingrese su apodo sin numeros o signos";
+      error.user = "Por favor ingrese su nickname sin numeros o signos";
     } else if (value.length > 15) {
-      error.user = "El apodo es demaciado largo";
+      error.user = "El nickname es demasiado largo";
     } else {
       error.user = "";
     }
@@ -29,7 +30,7 @@ const ValidationProfile = (property, value) => {
     if (!stringRegex.test(value)) {
       error.name = "Por favor ingrese su nombre sin numeros o signos";
     } else if (value.length > 15) {
-      error.name = "El nombre es demaciado largo";
+      error.name = "El nombre es demasiado largo";
     } else {
       error.name = "";
     }
@@ -41,7 +42,7 @@ const ValidationProfile = (property, value) => {
     if (!stringRegex.test(value)) {
       error.lastname = "Por favor ingrese su apellido sin numeros o signos";
     } else if (value.length > 15) {
-      error.lastname = "El apellido es demaciado largo";
+      error.lastname = "El apellido es demasiado largo";
     } else {
       error.lastname = "";
     }
@@ -53,7 +54,7 @@ const ValidationProfile = (property, value) => {
     if (!emailRegex.test(value)) {
       error.mail = "El email no es valido";
     } else if (value.length > 50) {
-      error.mail = "El email es demaciado largo";
+      error.mail = "El email es demasiado largo";
     } else {
       error.mail = "";
     }
@@ -72,24 +73,111 @@ const ValidationProfile = (property, value) => {
     }
   }
 
-  if (property === "phone" && value <= 0) {
+  if (property === "area_code" && value <= 0) {
+    error.area_code = "Ingrese su codigo de area";
+  } else if (property === "area_code") {
     if (!numberRegex.test(value)) {
-      error.phone = "Por favor ingrese su numero de telefono";
-    } else if (value.length > 15) {
-      error.phone = "El numero de telefono es demaciado largo";
+      error.area_code = "Por favor ingrese bien el codigo de area";
+    } else if (value.length > 7) {
+      error.area_code = "Demasiado largo";
     } else {
-      error.phone = "";
+      error.area_code = "";
     }
   }
 
-  if (property === "emergencyphone" && value <= 0) {
-    error.emergencyphone = "Ingrese un numero de emergencia";
+  if (property === "number" && !value) {
+    error.number = "Debe ingresar un numero telefonico";
+  } else if (property === "number") {
     if (!numberRegex.test(value)) {
-      error.emergencyphone = "Por favor ingrese un numero de emergencia";
-    } else if (value.length > 15) {
-      error.emergencyphone = "El un numero de emergencia es demaciado largo";
+      error.number = "Por favor ingrese un telefono sin letras o signos";
+    } else if (value.length > 30 || value.length < 6) {
+      error.number = "Por favor ingrese un telefono valido";
     } else {
-      error.emergencyphone = "";
+      error.number = "";
+    }
+  }
+
+  if (property === "province" && !value) {
+    error.province = "Ingrese su Provincia";
+  } else if (property === "province") {
+    if (!stringRegex.test(value)) {
+      error.province = "Por favor ingrese su Provincia sin numeros o signos";
+    } else if (value.length > 15) {
+      error.province = "El nombre es demasiado largo";
+    } else {
+      error.province = "";
+    }
+  }
+
+  if (property === "locality" && !value) {
+    error.locality = "Ingrese su Localidad";
+  } else if (property === "locality") {
+    if (!stringNumberRegex.test(value)) {
+      error.locality = "Por favor ingrese su Localidad sin numeros o signos";
+    } else if (value.length > 15) {
+      error.locality = "El nombre es demasiado largo";
+    } else {
+      error.locality = "";
+    }
+  }
+
+  if (property === "zip_code" && value <= 0) {
+    error.zip_code = "Ingrese un codigo postal";
+  } else if (property === "zip_code") {
+    if (!numberRegex.test(value)) {
+      error.zip_code = "Por favor ingrese bien el codigo postal";
+    } else if (value.length > 7) {
+      error.zip_code = "No valido";
+    } else {
+      error.zip_code = "";
+    }
+  }
+
+  if (property === "street_name" && !value) {
+    error.street_name = "Ingrese el nombre de su calle";
+  } else if (property === "street_name") {
+    if (!stringNumberRegex.test(value)) {
+      error.street_name = "Por favor ingrese el nombre de su calle sin signos";
+    } else if (value.length > 15) {
+      error.street_name = "El nombre es demasiado largo";
+    } else {
+      error.street_name = "";
+    }
+  }
+
+  if (property === "street_number" && value <= 0) {
+    error.street_number = "Ingrese su numeracion";
+  } else if (property === "street_number") {
+    if (!numberRegex.test(value)) {
+      error.street_number = "Por favor ingrese la numeracion correcta";
+    } else if (value.length > 7) {
+      error.street_number = "No valido";
+    } else {
+      error.street_number = "";
+    }
+  }
+
+  if (property === "area_code_emergency" && value <= 0) {
+    error.area_code_emergency = "Ingrese su codigo de area";
+  } else if (property === "area_code_emergency") {
+    if (!numberRegex.test(value)) {
+      error.area_code_emergency = "Por favor ingrese bien el codigo de area";
+    } else if (value.length > 7) {
+      error.area_code_emergency = "Demasiado largo";
+    } else {
+      error.area_code_emergency = "";
+    }
+  }
+
+  if (property === "emergency_number" && value <= 0) {
+    error.emergency_number = "Ingrese un numero de emergencia";
+    if (!numberRegex.test(value)) {
+      error.emergency_number =
+        "Por favor ingrese un numero de emergencia valido";
+    } else if (value.length > 15) {
+      error.emergency_number = "Demasiado largo";
+    } else {
+      error.emergency_number = "";
     }
   }
 

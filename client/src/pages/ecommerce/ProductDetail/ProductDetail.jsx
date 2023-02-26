@@ -2,6 +2,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import React, { useEffect, useState } from "react";
+import { Tabs } from "flowbite-react";
 import MoarButton from "../../../components/Button/MoarButton";
 import CountProduct from "../../../components/CountProduct/CountProduct";
 import cardCredit from "../../../assets/cardCredit/cardCredit.svg";
@@ -103,6 +104,7 @@ function ProductDetail() {
       });
     }
   };
+
   return (
     <div className=" flex min-h-screen w-full flex-col items-center  justify-center pt-20">
       <div className=" max-w-[60vw] ">
@@ -254,6 +256,18 @@ function ProductDetail() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="mt-20 h-full min-h-[200px] w-full bg-gray-100">
+        <Tabs.Group aria-label="Tabs with underline" style="underline">
+          <Tabs.Item title="descripcion">
+            <div>
+              <p>{productId.description}</p>
+            </div>
+          </Tabs.Item>
+          <Tabs.Item title="comentarios">
+            <div>Reseñas de clientes</div>
+          </Tabs.Item>
+        </Tabs.Group>
       </div>
 
       {/* <div>

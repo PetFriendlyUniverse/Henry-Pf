@@ -1,35 +1,62 @@
+import axios from "axios";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import ContainerRecomendados from "../../../components/ContainerRecomendados/ContainerRecomendados";
 import Subcard from "../../../components/SubCard/Subcard";
 import { clearShopCart } from "../../../redux/features/products/productsSlice";
 
 function Checkout() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userDetailId = useSelector((state) => state.User?.userId);
+
   const shopCartProducts = useSelector((state) => state.Products?.shopCart);
+  console.log(shopCartProducts);
   const productsIds = Object.keys(shopCartProducts);
   let totalPrice = 0;
   const products = productsIds.map((id) => {
     totalPrice += shopCartProducts[id].amount * shopCartProducts[id].price;
     return shopCartProducts[id];
   });
-  const dispatch = useDispatch();
+  const arrProductsPayment = products.map((item) => {
+    return {
+      id: item.id,
+      title: item.name,
+      picture_url: item.img,
+      unit_price: item.price,
+      quantity: item.amount,
+      currency_id: "ARS",
+    };
+  });
+  console.log(arrProductsPayment);
   const handleClick = async () => {
+    try {
+      const { data } = await axios.post("/payment/new", arrProductsPayment);
+      window.location.href = await data.response.body.init_point;
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        icon: "success",
+        title: "No se pudo realizar la compra",
+        showConfirmButton: false,
+        timer: 1100,
+      });
+    }
+    localStorage.removeItem("shopCart");
+    dispatch(clearShopCart());
     await Swal.fire({
       icon: "success",
       title: "Tu compra ha sido realizada con éxito!",
       showConfirmButton: false,
       timer: 1100,
     });
-    localStorage.removeItem("shopCart");
-    dispatch(clearShopCart());
     navigate("/shop");
   };
   return (
-
-    <div className="flex h-screen w-full items-center justify-center bg-slate-200 pt-24">
-
-      <div className="my-4 flex h-[80vh] w-full flex-col items-center justify-center gap-8 bg-slate-200 lg:w-[60vw] lg:flex-row lg:gap-0">
+    <div className="flex h-screen w-full items-center justify-center bg-slate-100 pt-24">
+      <div className="my-4 flex h-[80vh] w-full flex-col items-center justify-center gap-8 bg-slate-100 lg:w-[60vw] lg:flex-row lg:gap-0">
         <div className="flex h-full w-full flex-col rounded-lg border  bg-white lg:m-4 lg:w-4/6 lg:items-center lg:justify-center lg:px-6 ">
           <div className="m-6 hidden h-[8%] w-full items-center justify-center rounded-lg border bg-blue-200 px-6 text-center text-xs  text-gray-600  lg:flex">
             There are many variations of passages of Lorem Ipsum available, but
@@ -49,8 +76,8 @@ function Checkout() {
             </div>
           </div>
 
-          <div className=" flex h-2/6 w-full items-center justify-center border">
-            aca van las cards de los productos
+          <div className=" flex h-48  w-full items-center justify-center overflow-hidden bg-slate-100">
+            <ContainerRecomendados />
           </div>
         </div>
         <div className=" flex h-4/6 w-full flex-col self-start lg:w-2/6 ">
