@@ -4,11 +4,11 @@ import Swal from "sweetalert2";
 import { ValidateStore } from "../Validations/ValidateStore";
 
 import LinkButton from "../../../../components/Button/LinkButton";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function FormModifyStore() {
+  const navigate = useNavigate();
   const { id } = useParams();
-  console.log(id);
   const [formComplete, setFormComplete] = useState(false);
   const [img, setImg] = useState(null);
   const [form, setForm] = useState({
@@ -76,18 +76,9 @@ function FormModifyStore() {
             icon: "success",
             text: "La Tienda ha sido creada correctamente",
           });
-        })
-        .then(() => {
-          setForm({
-            name: "",
-            phone: "",
-            province: "",
-            locality: "",
-            streets: "",
-            description: "",
-          });
-        })
-        .catch(() => {
+        }, navigate(`/profile/${id}`))
+        .catch((err) => {
+          console.log(err);
           Swal.fire({
             icon: "error",
             title: "Error en el formulario",

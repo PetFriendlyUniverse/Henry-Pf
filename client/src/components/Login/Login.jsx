@@ -55,7 +55,6 @@ function Login() {
     e.preventDefault();
     try {
       await axios.post("user/login", login).then(async (res) => {
-        console.log("then");
         const token = res.data.token;
         const id = res.data.id;
         localStorage.setItem("token", token);
@@ -80,7 +79,7 @@ function Login() {
   };
 
   const handleClickGoogle = () => {
-    window.location.href = "https://petfriendly-backend.onrender.com/auth";
+    window.location.href = "http://localhost:3001/auth";
   };
 
   const handleSubmit = async (e) => {

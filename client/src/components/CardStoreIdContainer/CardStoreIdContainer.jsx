@@ -1,8 +1,8 @@
 import useGetProductsByStoreId from "../../pages/ecommerce/Profile/hooks/useGetProductsByStoreId";
 
 import CardStoreId from "../CardStoreId/CardStoreId";
-function CardStoreIdContainer() {
-  const products = useGetProductsByStoreId();
+function CardStoreIdContainer({ id }) {
+  const products = useGetProductsByStoreId(id);
 
   return (
     <div className=" flex h-[500px] flex-wrap justify-center gap-8 overflow-scroll overflow-x-hidden border-2 border-gray-50 bg-[#fff] px-3 pb-2">

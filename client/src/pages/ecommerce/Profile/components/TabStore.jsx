@@ -17,11 +17,10 @@ import React from "react";
 
 function TabStore() {
   const [showInfo, setShowInfo] = useState("profile");
-  const user = useSelector((state) => state.User?.userId);
+  const user = useSelector((state) => state.User?.userStoreId);
   const handleShowInfo = (e) => {
     setShowInfo(e.target.name);
   };
-
   return (
     <div>
       <div className=" flex h-full w-full flex-col rounded-md border-2 md:flex-row lg:w-full">
@@ -120,7 +119,7 @@ function TabStore() {
             ) : showInfo == "products" ? (
               <div className="w-full ">
                 {" "}
-                <CardStoreIdContainer />
+                <CardStoreIdContainer id={user?.id} />
               </div>
             ) : (
               <Payment />
@@ -129,7 +128,7 @@ function TabStore() {
             <div class="flex pl-4 pt-5 sm:pl-12">
               <div class="flex py-2">
                 <img src={interrogation} alt="help" class="w-3 sm:w-5" />
-                <Link to="/profile/store/create">
+                <Link to={`/profile/store/create/${user?.id}`}>
                   <LinkButton component={"Crear producto"} />
                 </Link>
               </div>
