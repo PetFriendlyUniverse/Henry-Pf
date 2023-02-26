@@ -11,7 +11,7 @@ function Services() {
           visible="5"
           className="h-8 self-center border-2 border-black"
         >
-          <label for="location">Ubicación</label>
+          <label htmlFor="location">Ubicación</label>
           <option>ubicacion</option>
           <option>buenos aires</option>
           <option>tucuman</option>

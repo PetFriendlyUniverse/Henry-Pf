@@ -5,12 +5,12 @@
   xmlns="http://www.w3.org/2000/svg"
   fill="#6495ed"
   stroke="#6495ed"
-><g id="SVGRepo_bgCarrier" stroke-width="0" /><g
+><g id="SVGRepo_bgCarrier" strokeWidth="0" /><g
     id="SVGRepo_tracerCarrier"
     stroke-linecap="round"
     stroke-linejoin="round"
   /><g id="SVGRepo_iconCarrier"> <defs> <style
-      >.cls-1{fill:none;stroke:#6495ed;stroke-miterlimit:10;stroke-width:1.91px;}</style> </defs> <g
+      >.cls-1{fill:none;stroke:#6495ed;stroke-miterlimit:10;strokeWidth:1.91px;}</style> </defs> <g
       id="cart"
     > <circle class="cls-1" cx="10.07" cy="20.59" r="1.91" /> <circle
         class="cls-1"
