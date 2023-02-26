@@ -25,7 +25,7 @@ server.use(express.json());
 server.use((req, res, next) => {
   res.header(
     "Access-Control-Allow-Origin",
-    ORIGIN ? `http://${ORIGIN}:5173` : REMOTE_ORIGIN
+    "https://petfriendlyuniverse.vercel.app"
   ); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
