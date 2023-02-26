@@ -16,7 +16,7 @@ const generator = () => {
     6: "Sabrocitos",
     7: "Balanced",
     8: "Excellent",
-    9: "Fanwa",
+    9: "Fawna",
     10: "Old Prince",
     11: "Vital",
     12: "Chow",
@@ -186,7 +186,7 @@ const generator = () => {
 
       for (let s = 1; s <= 20; s++) {
         let description = `Una descripción apropiada para este producto`;
-        let price = Math.floor(Math.random() * 200 + 51);
+        let price = Math.floor(Math.random() * 200 + 51) * 50;
         let stock = Math.ceil(Math.random() * 15);
         let specie = species[Math.ceil(Math.random() * 2)];
         let indexBrandImg = Math.ceil(Math.random() * 13);
