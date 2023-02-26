@@ -17,6 +17,7 @@ import Subcard from "../SubCard/Subcard";
 import SearchForm from "./components/SearchForm";
 import DropdownUser from "./components/DropdownUser";
 import login from "../../assets/general/login.svg";
+import { priceFormatter } from "../../adapters/priceFormatter";
 
 function NavBarPrueba() {
   // Logica de usuario
@@ -234,7 +235,7 @@ function NavBarPrueba() {
           >
             <img src={shopcart} alt="" />
             <span className="font-bold text-cornflowerblue">
-              $ {totalPrice}
+              {priceFormatter(totalPrice)}
             </span>
             <img
               ref={img}
@@ -273,7 +274,7 @@ function NavBarPrueba() {
                 <LinkButton component={"Confirmar Compra"} />
               </Link>
               <h2 className="border-blue inline-block rounded-md border py-2 px-4">
-                Total: ${totalPrice}
+                Total: {priceFormatter(totalPrice)}
               </h2>
             </div>
           </div>

@@ -6,6 +6,8 @@ import { setShopCart } from "../../redux/features/products/productsSlice";
 import AddShopButton from "../Button/AddShopButton";
 import { Carousel } from "flowbite-react";
 import CountProduct from "../CountProduct/CountProduct";
+import { priceFormatter } from "../../adapters/priceFormatter";
+
 function Card({ name, img, weight, price, stock, id }) {
   const dispatch = useDispatch();
   const [value, setValue] = useState(1);
@@ -57,7 +59,7 @@ function Card({ name, img, weight, price, stock, id }) {
           </p>
         </div>
         <div className="w-full ">
-          <p className="p-1 text-center font-bold">${price}</p>
+          <p className="p-1 text-center font-bold">{priceFormatter(price)}</p>
         </div>
         <div className="flex w-full items-center justify-around gap-1  p-1">
           <div className=" w-1/2">
