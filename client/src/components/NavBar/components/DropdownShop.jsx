@@ -6,6 +6,7 @@ import LinkButton from "../../Button/LinkButton";
 import { clearShopCart } from "../../../redux/features/products/productsSlice";
 import deleteBtn from "../../../assets/general/delete.svg";
 import shopcart from "../../../assets/general/shopcart.svg";
+import { priceFormatter } from "../../../adapters/priceFormatter";
 
 function DropdownShop() {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ function DropdownShop() {
     <div className="group rounded-xl">
       <button className="  flex w-full  items-center justify-between gap-3 rounded-md border border-cornflowerblue py-2 px-4 text-xs text-cornflowerblue shadow-sm shadow-cornflowerblue md:text-sm lg:relative lg:text-base">
         <img src={shopcart} alt="" />
-        <span>$ {totalPrice}</span>
+        <span>{priceFormatter(totalPrice)}</span>
         <svg
           className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180"
           aria-hidden="true"
@@ -80,7 +81,7 @@ function DropdownShop() {
             <LinkButton component={"Confirmar Compra"} />
           </Link>
           <h2 className="border-blue inline-block rounded-md border py-2 px-4">
-            Total: ${totalPrice}
+            Total: {priceFormatter(totalPrice)}
           </h2>
         </div>
       </div>

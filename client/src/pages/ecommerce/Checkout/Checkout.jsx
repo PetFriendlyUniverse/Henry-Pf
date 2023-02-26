@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { priceFormatter } from "../../../adapters/priceFormatter";
 import ContainerRecomendados from "../../../components/ContainerRecomendados/ContainerRecomendados";
 import Subcard from "../../../components/SubCard/Subcard";
 import { clearShopCart } from "../../../redux/features/products/productsSlice";
@@ -100,7 +101,7 @@ function Checkout() {
                 Subtotal
               </span>
               <span className="font-semibold tracking-wider text-gray-500">
-                ${totalPrice}
+                {priceFormatter(totalPrice)}
               </span>
             </div>
             <hr className="my-2 h-[0.10rem] w-full border-0 bg-gray-400" />
@@ -109,7 +110,7 @@ function Checkout() {
                 Total
               </h3>
               <h3 className="font-semibold tracking-wider  text-blue-700">
-                ${totalPrice}
+                {priceFormatter(totalPrice)}
               </h3>
             </div>
 

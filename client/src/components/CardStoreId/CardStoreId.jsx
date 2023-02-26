@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getProductsById } from "../../redux/features/products/productsSlice";
 import { deleteProductId } from "../../redux/features/products/productsActions";
+import { priceFormatter } from "../../adapters/priceFormatter";
 
 function CardStoreId({ name, img, weight, price, stock, id }) {
   const dispatch = useDispatch();
@@ -60,7 +61,7 @@ function CardStoreId({ name, img, weight, price, stock, id }) {
       </div>
 
       <div className="w-1/2">
-        <p className=" text-center font-bold">${price}</p>
+        <p className=" text-center font-bold">{priceFormatter(price)}</p>
         <p className=" text-center text-xs font-bold">{name}</p>
       </div>
       <div className=" flex w-full  items-center justify-center  gap-2 ">

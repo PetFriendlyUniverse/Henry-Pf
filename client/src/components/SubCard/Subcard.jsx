@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import CountProduct from "../CountProduct/CountProduct";
 import { setShopCart } from "../../redux/features/products/productsSlice";
+import { priceFormatter } from "../../adapters/priceFormatter";
 
 function Subcard({ prod, gridProperties }) {
   const { id, name, price, amount, img, stock, weight } = prod;
@@ -32,7 +33,7 @@ function Subcard({ prod, gridProperties }) {
         <span className="text-xs text-zinc-500">stock: {stock - amount}</span>
       </div>
       <div>
-        <p>precio: ${price * amount},00</p>
+        <p>precio: {priceFormatter(price * amount)}</p>
       </div>
       <div className="w-24 ">
         <CountProduct
