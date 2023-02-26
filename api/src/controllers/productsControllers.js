@@ -9,8 +9,8 @@ const getAllProducts = async () => {
     },
   });
   const priceRange = {
-    min: await Product.min("price"),
-    max: await Product.max("price"),
+    min: Math.floor((await Product.min("price")) / 50) * 50,
+    max: Math.ceil((await Product.max("price")) / 50) * 50,
   };
   return { products, priceRange };
 };
