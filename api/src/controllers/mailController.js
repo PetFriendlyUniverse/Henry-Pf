@@ -29,6 +29,9 @@ const confirmMail = async (name, lastname, mail) => {
         accessToken: accessToken,
         expires: 3600,
       },
+      tls: {
+        rejectUnauthorized: false,
+      },
     });
     const mailInfo = {
       //ENVIO DEL MAIL
@@ -42,7 +45,8 @@ const confirmMail = async (name, lastname, mail) => {
     const result = await transporter.sendMail(mailInfo);
     return result;
   } catch (error) {
-    res.status(400).json(error.message);
+    throw new Error(error.message);
+    // res.status(400).json(error.message);
   }
 };
 

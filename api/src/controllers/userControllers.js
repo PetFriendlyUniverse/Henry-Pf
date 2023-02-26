@@ -17,7 +17,7 @@ const createUser = async (user, name, lastname, mail, password) => {
     ...data,
     password: hashedPassword,
   });
-  confirmMail(name, lastname, mail);
+  await confirmMail(name, lastname, mail);
   return userCreated;
 };
 
