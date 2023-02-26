@@ -48,7 +48,11 @@ export const Products = createSlice({
       if (value === "") {
         delete newSetFilters[filter];
       } else {
-        newSetFilters[filter] = value;
+        if (Array.isArray(payload)) {
+          payload.forEach((f) => (newSetFilters[f.filter] = f.value));
+        } else {
+          newSetFilters[filter] = value;
+        }
       }
       state.setFilters = newSetFilters;
       state.currentPage = 1;
