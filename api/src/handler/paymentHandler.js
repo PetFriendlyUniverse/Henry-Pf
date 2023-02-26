@@ -8,7 +8,7 @@ mercadopago.configure({
 
 const postPaymentHandler = (req, res) => {
   const products = req.body;
-
+  // preference
   let preference = {
     items: products,
     back_urls: {
