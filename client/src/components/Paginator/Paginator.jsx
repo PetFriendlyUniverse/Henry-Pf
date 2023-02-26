@@ -31,7 +31,7 @@ function Paginator() {
           containerClassName={
             "flex text-lg h-10 font-mono w-full justify-between  items-center  rounded-xl border-2 border-russianviolet text-russianviolet font-bold "
           }
-          pageLinkClassName={"px-3 hover:text-white"}
+          pageLinkClassName={"px-3"}
           activeLinkClassName={"bg-blue-700 text-white rounded-lg"}
           previousLabel={
             <svg
