@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import interrogation from "../../../assets/general/interrogation.svg";
+import edit from "../../../assets/general/edit.svg";
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -14,7 +15,10 @@ import PersonalInfo from "./components/PersonalInfo";
 import Contacts from "./components/Contacts";
 import Ubication from "./components/Ubication";
 import Payment from "./components/Payment";
-import { getStoreByUser } from "../../../redux/features/users/usersActions";
+import {
+  getStoreByUser,
+  getUserApi,
+} from "../../../redux/features/users/usersActions";
 
 function Profile() {
   const navigate = useNavigate();
@@ -31,6 +35,9 @@ function Profile() {
       navigate(`/store/modify/${id}`);
     });
   };
+  useEffect(() => {
+    dispatch(getUserApi(user.id));
+  }, []);
   if (user.store) {
     useEffect(() => {
       dispatch(getStoreByUser(user.id));
@@ -141,14 +148,19 @@ function Profile() {
                   <PersonalInfo name={user?.name} user={user?.user} />
                 ) : showInfo == "contact" ? (
                   <Contacts
-                    phone={user?.phone}
-                    emergencyphone={user?.emergencyphone}
+                    area_code={user?.area_code}
+                    number={user?.number}
+                    emergency_number={user?.emergency_number}
+                    area_code_emergency={user?.area_code_emergency}
                     mail={user?.mail}
                   />
                 ) : showInfo == "ubication" ? (
                   <Ubication
                     province={user?.province}
                     locality={user?.locality}
+                    zip_code={user.zip_code}
+                    street_name={user.street_name}
+                    street_number={user.street_number}
                   />
                 ) : (
                   <Payment />
@@ -163,12 +175,14 @@ function Profile() {
                       />
                     </div>
                   )}
-                  {/* <div class="flex py-2">
-      <img src={interrogation} alt="help" class="w-5" />
-      <button class="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
-        <img src={edit} alt="edit" />
-      </button>
-    </div> */}
+                  <div class="flex py-2">
+                    <img src={interrogation} alt="help" class="w-5" />
+                    <button class="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
+                      <Link to={`/profile/edit/${user.id}`}>
+                        <img src={edit} alt="edit" />
+                      </Link>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

@@ -245,12 +245,6 @@ function ProductDetail() {
                   <div className="text-xs">
                     Retirá sin cargo por tu sucursal preferida
                   </div>
-                  <div className="mx-auto my-2 flex w-auto">
-                    <LessButton component={"Delete"} onClick={handleClick} />
-                    <Link to={`/shop/detail/modify/${id}`} className="w-full">
-                      <MoarButton component={"Modify"} />
-                    </Link>
-                  </div>
                 </div>
               </div>
             </div>

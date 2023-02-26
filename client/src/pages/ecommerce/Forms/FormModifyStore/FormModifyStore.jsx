@@ -21,6 +21,7 @@ function FormModifyStore() {
     street_name: "",
     street_number: "",
     description: "",
+    mail: "",
   });
   const [errors, setErrors] = useState({
     name: "",
@@ -63,20 +64,22 @@ function FormModifyStore() {
     newForm.append("street_name", form.street_name);
     newForm.append("street_number", form.street_number);
     newForm.append("description", form.description);
+    newForm.append("mail", form.mail);
     if (isFormValid) {
       axios
         .put(`store/${id}`, newForm, {
           headers: {
             "Content-Type": "multipart/form-data",
-          }, //importante en form de imagen poner este headers
+          },
         })
         .then(() => {
           Swal.fire({
             title: "Tienda creada",
             icon: "success",
             text: "La Tienda ha sido creada correctamente",
+            onClose: () => navigate(`/profile/${id}`),
           });
-        }, navigate(`/profile/${id}`))
+        })
         .catch((err) => {
           console.log(err);
           Swal.fire({
@@ -121,6 +124,21 @@ function FormModifyStore() {
             Nombre de la Tienda (max: 30 caracteres)
           </label>
           {errors.name && <span className="text-red-500">{errors.name}</span>}
+        </div>
+        <div className="group relative z-0 mb-6 h-11 w-full">
+          <input
+            onChange={handleChange}
+            type="text"
+            name="mail"
+            value={form.mail}
+            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+            placeholder=" "
+            autoComplete="off"
+          />
+          <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+            Mail de la Tienda (max: 30 caracteres)
+          </label>
+          {/* {errors.name && <span className="text-red-500">{errors.name}</span>} */}
         </div>
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="group relative z-0 mb-6 h-11 w-full">
