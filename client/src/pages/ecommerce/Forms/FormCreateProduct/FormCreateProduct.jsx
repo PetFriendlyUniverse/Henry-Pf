@@ -78,6 +78,15 @@ function FormCreateProduct() {
     newForm.append("storeId", form.storeId);
     console.log(newForm);
     if (isFormValid) {
+      Swal.fire({
+        title: "Now loading",
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
       axios
         .post("/products/create", newForm, {
           headers: {
@@ -98,8 +107,6 @@ function FormCreateProduct() {
         text: "Por favor, revisa los campos del formulario",
       });
     }
-    console.log(img.name);
-    console.log(img);
   };
 
   return (
