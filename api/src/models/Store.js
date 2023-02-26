@@ -64,6 +64,12 @@ module.exports = (sequelize) => {
           len: [1, 500],
         },
       },
+      mail: {
+        type: DataTypes.STRING,
+        validate: {
+          len: [1, 50],
+        },
+      },
       qualification: {
         type: DataTypes.FLOAT,
       },
