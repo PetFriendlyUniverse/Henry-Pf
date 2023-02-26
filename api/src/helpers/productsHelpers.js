@@ -35,8 +35,13 @@ const queryMarker = (query) => {
 
   if (Object.keys(where).length > 0) paramsConsult.where = where;
   if (order[0].length > 0) paramsConsult.order = order;
-  if (pricesBetween) paramsConsult.pricesBetween = pricesBetween;
+  if (pricesBetween) {
+    paramsConsult.pricesBetween = pricesBetween;
+  } else {
+    // paramsConsult.pricesBetween = [1, 200];
+  }
 
+  // console.log("queryMaker", paramsConsult, "queryMaker");
   if (Object.keys(paramsConsult).length == 0) return { paginationParams };
   return { paramsConsult, paginationParams };
 };

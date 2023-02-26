@@ -242,7 +242,7 @@ const generator = () => {
 
     await Product.bulkCreate(productsToCreate);
     console.log("Datos generados exitosamente");
-  }, 10000);
+  }, 2000);
 };
 
 module.exports = { generator };
