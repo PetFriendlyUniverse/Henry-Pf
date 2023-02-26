@@ -107,6 +107,9 @@ Comments.belongsTo(User);
 Product.hasMany(Comments);
 Comments.belongsTo(Product);
 
+User.hasOne(Store);
+Store.belongsTo(User);
+
 // modelos de filtros
 
 const Brands = require("./models/FilterModels/Brands.js");

@@ -133,3 +133,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+api/index.js
+client/main.jsx

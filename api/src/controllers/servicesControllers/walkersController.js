@@ -2,7 +2,6 @@ const { Walker } = require("../db");
 
 //prettier-ignore
 const createWalkers = async (data) => {
-  //const data = {phone, neighborhood, streets, price}
   if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
   } else {
@@ -23,9 +22,9 @@ const getWalkersById = async (id) => {
   return walker;
 };
 
-const updateWalkers = async (walker, id) => {
-  await Walkers.update(
-    { ...walker },
+const updateWalkers = async (data, id) => {
+  await Walker.update(
+    { ...data },
     {
       where: { id: id },
     }

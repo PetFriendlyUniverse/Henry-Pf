@@ -1,30 +1,31 @@
 const {
-  createDaycare,
-  filterDaycare,
   getAllDaycares,
+  filterDaycare,
   getDaycareByID,
+  createDaycare,
   updateDaycare,
   deleteDaycare,
 } = require("../../controllers/servicesControllers/daycareController");
+const cloudinary = require("cloudinary").v2;
 
 const postDaycareHandler = async (req, res) => {
-  /* data = { user, name, mail, password, phone, province, locality, streets } */
   const data = req.body;
+  const file = req.file;
   try {
-    //validacion pendiente (todos los datos son requeridos)
-    const newDaycare = await createDaycare(data);
+    const image = await cloudinary.uploader.upload(file.path);
+    data.img = image.secure_url;
+    const newDaycare = await createDaycare(data, file);
     res.status(200).json(newDaycare);
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
 };
-
 const getDaycaresHandler = async (req, res) => {
   const query = req.query;
   try {
     if (Object.keys(query).length) {
-      const daycare = await filterDaycare(query);
-      res.status(200).json(daycare);
+      const daycares = await filterDaycare(query);
+      res.status(200).json(daycares);
     } else {
       const allDaycares = await getAllDaycares();
       res.status(200).json(allDaycares);
@@ -33,8 +34,7 @@ const getDaycaresHandler = async (req, res) => {
     res.status(404).json({ error: error.message });
   }
 };
-
-const getDaycareDetail = async (req, res) => {
+const getDaycareByIDHandler = async (req, res) => {
   const { id } = req.params;
   try {
     const daycareDetail = await getDaycareByID(id);
@@ -43,31 +43,33 @@ const getDaycareDetail = async (req, res) => {
     res.status(404).json({ error: error.message });
   }
 };
-
 const putDaycareHandler = async (req, res) => {
+  const data = req.body;
   const { id } = req.params;
+  const file = req.file;
   try {
-    const editedDaycare = await updateDaycare(id);
-    res.status(200).json(editedDaycare);
+    const image = await cloudinary.uploader.upload(file.path);
+    data.img = image.secure_url;
+    const daycareEdited = await updateDaycare(data, id, file);
+    res.status(200).json(daycareEdited);
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
 };
-
 const deleteDaycareHandler = async (req, res) => {
   const { id } = req.params;
   try {
-    const deletedDaycare = await deleteDaycare(id);
-    res.status(200).json(deletedDaycare);
+    const daycareDeleted = await deleteDaycare(id);
+    res.status(200).json(daycareDeleted);
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
 };
 
 module.exports = {
-  postDaycareHandler,
   getDaycaresHandler,
-  getDaycareDetail,
+  getDaycareByIDHandler,
+  postDaycareHandler,
   putDaycareHandler,
   deleteDaycareHandler,
 };

@@ -22,6 +22,7 @@ passport.use(
             name: profile.name.givenName,
             lastname: profile.name.familyName,
             user: profile.displayName,
+            img: profile.photos[0].value,
             password: "google", // Puedes establecer una contraseña temporal para usuarios de Google
             enable: true,
           },

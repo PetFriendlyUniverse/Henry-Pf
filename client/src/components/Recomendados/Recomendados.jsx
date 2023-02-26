@@ -1,4 +1,3 @@
-import useGetFilters from "../../hooks/useGetFilters";
 import eukanubalogo from "../../assets/imagenes/eukanubalogo.png";
 import logofawna from "../../assets/imagenes/lolgofawna.png";
 import pedigreelogo from "../../assets/imagenes/pedigree.png";
@@ -14,7 +13,7 @@ function Recomendados() {
     dispatch(setFilters({ filter: "Brands", value }));
   };
   return (
-    <div className="mt-16 flex h-60 w-full items-center justify-center gap-24 ">
+    <div className=" flex h-60 w-full items-center justify-center gap-2 md:gap-6 lg:gap-8 2xl:gap-24 ">
       <button className="h-52 w-52" onClick={() => handleclick("Royal Canin")}>
         <img
           src={royalcaninlogo}

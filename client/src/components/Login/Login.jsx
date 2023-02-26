@@ -53,26 +53,32 @@ function Login() {
   //   const value = e.target.value;
   //   // setRepeat({ [property]: value });
   // };
-  const handletSubmitLogin = (e) => {
+  const handletSubmitLogin = async (e) => {
     e.preventDefault();
-    axios
-      .post("user/login", login)
-      .then((res) => {
+    try {
+      await axios.post("user/login", login).then(async (res) => {
+        console.log("then");
         const token = res.data.token;
         const id = res.data.id;
         localStorage.setItem("token", token);
         localStorage.setItem("id", id);
-      })
-      .then(() => {
-        Swal.fire({
+        await Swal.fire({
           icon: "success",
           title: "El ingreso se ha sido realizado con éxito!",
           showConfirmButton: true,
           timer: 1500,
-        }).then(() => {
-          navigate("/shop");
         });
+        navigate("/shop");
       });
+    } catch (error) {
+      console.log("error");
+      Swal.fire({
+        icon: "error",
+        title: "Usuario o contraseña incorrecto!",
+        showConfirmButton: true,
+        timer: 1500,
+      });
+    }
   };
 
   const handleClickGoogle = () => {
@@ -94,7 +100,14 @@ function Login() {
             timer: 1500,
           })
         )
-        .catch((err) => console.log(err));
+        .catch(
+          Swal.fire({
+            icon: "error",
+            title: "El registro no se ha sido realizado!",
+            showConfirmButton: true,
+            timer: 1500,
+          })
+        );
       setForm({
         user: "",
         name: "",
@@ -151,12 +164,12 @@ function Login() {
                 required=""
               />
               <button>Ingresar</button>
+              <div className={s.loginGoogle}>
+                <button type="button" onClick={handleClickGoogle}>
+                  Click para seguir con google
+                </button>
+              </div>
             </form>
-            <div className={s.loginGoogle}>
-              <button onClick={handleClickGoogle}>
-                Click para seguir con google
-              </button>
-            </div>
           </div>
           <div className={s.register}>
             <form className={s.form} onSubmit={handleSubmit}>
@@ -257,6 +270,9 @@ function Login() {
                 </div>
               )} */}
               <LinkButton component={"Registrate"} />
+              <button type="button" onClick={handleClickGoogle}>
+                Click para registrarte con google
+              </button>
             </form>
           </div>
         </div>

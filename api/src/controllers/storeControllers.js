@@ -1,8 +1,43 @@
-const { Store } = require("../db");
+const { Store, User } = require("../db");
+
+const createStore = async (userId) => {
+  const user = await User.findByPk(userId);
+  if (!user) {
+    throw new Error(`No se pudo encontrar el usuario con ID ${userId}`);
+  } else {
+    const storeData = {
+      name: user.name, //esto ver si se queda o no
+      phone: user.phone,
+      locality: user.locality,
+      province: user.province,
+      img: user.img,
+    };
+    await User.update(
+      { store: true },
+      {
+        where: {
+          id: userId,
+        },
+      }
+    );
+    const store = await Store.create(storeData);
+    await store.setUser(user);
+    return store;
+  }
+};
 
 const getAllStore = async () => {
   const storesList = await Store.findAll();
   return storesList;
+};
+
+const storeFilter = async (query) => {
+  if (Object.keys(query).length) {
+    const stores = await Store.findAll({
+      where: query,
+    });
+    return stores;
+  }
 };
 
 const getStoreByID = async (id) => {
@@ -10,18 +45,19 @@ const getStoreByID = async (id) => {
   return store;
 };
 
-const createStore = async (data) => {
+const updateStore = async (data, id) => {
   if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
   } else {
-    const newStore = await Store.create(data);
-    return newStore;
+    await Store.update(
+      { ...data },
+      {
+        where: { id: id },
+      }
+    );
+    const editedStore = await Store.findByPk(id);
+    return editedStore;
   }
-};
-
-const updateStore = async (store, id) => {
-  const editedStore = await Store.update(store, { where: { id: id } });
-  return editedStore;
 };
 
 const deleteStore = async (id) => {
@@ -34,15 +70,6 @@ const deleteStore = async (id) => {
     }
   );
   return storeDeleted ? "Store deleted successfully" : "Could not delete store";
-};
-
-const storeFilter = async (query) => {
-  if (Object.keys(query).length) {
-    const stores = await Store.findAll({
-      where: query,
-    });
-    return stores;
-  }
 };
 
 module.exports = {
