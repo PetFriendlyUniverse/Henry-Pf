@@ -15,7 +15,7 @@ const initialState = {
   products: [],
   totalPages: 1,
   currentPage: 1,
-  productsPerPage: 15,
+  productsPerPage: 44, // antes 15
   allFilters: [],
   setFilters: {}, // {size: "small", weight: 5, ...}
   priceRange: {}, // { min: numb, max: numb }
