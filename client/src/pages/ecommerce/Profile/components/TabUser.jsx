@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import LinkButton from "../../../components/Button/LinkButton";
+import LinkButton from "../../../../components/Button/LinkButton";
 import { useSelector } from "react-redux";
 
-import PhotoName from "./components/PhotoName";
-import PersonalInfo from "./components/PersonalInfo";
-import Contacts from "./components/Contacts";
-import Ubication from "./components/Ubication";
-import Payment from "./components/Payment";
+import PhotoName from "./PhotoName";
+import PersonalInfo from "./PersonalInfo";
+import Contacts from "./Contacts";
+import Ubication from "./Ubication";
+import Payment from "./Payment";
 
-import interrogation from "../../../assets/general/interrogation.svg";
+import interrogation from "../../../../assets/general/interrogation.svg";
 
 import React from "react";
 
