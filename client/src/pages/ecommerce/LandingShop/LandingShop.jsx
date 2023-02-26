@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Carousel } from "flowbite-react";
-import useGetProducts from "../../../hooks/useGetProducts";
 import logo from "../../../assets/logo/logo.png";
 import img1 from "../../../assets/imagenes/doghouse-01.png";
 import img2 from "../../../assets/imagenes/food-01.png";
@@ -9,16 +8,23 @@ import img4 from "../../../assets/imagenes/gatos-juguetes-0.jpg";
 import img5 from "../../../assets/imagenes/cat-tree.jpg";
 import img6 from "../../../assets/imagenes/camaa-gato.jpg";
 import Recomendados from "../../../components/Recomendados/Recomendados";
+import { useDispatch } from "react-redux";
+import { setFilters } from "../../../redux/features/products/productsSlice";
 
 function LandingShop() {
-  const product = useGetProducts();
-  const list = product.slice(0, 6);
+  const dispatch = useDispatch();
+  const handleSetFilter = (specie) => {
+    dispatch(setFilters({ filter: "Species", value: specie }));
+  };
   return (
     <>
       <header className="clip-header relative flex w-full flex-col bg-balloon bg-cover bg-fixed bg-center bg-no-repeat pt-24 text-black sm:h-[650px]  lg:min-h-[800px]  xl:min-h-[800px]">
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         <div className="z-10 sm:mx-auto sm:grid sm:h-full  sm:grid-cols-3 sm:items-center sm:justify-center sm:gap-1 md:w-10/12 md:justify-items-center lg:top-1/2 lg:grid-cols-6 lg:gap-4">
           <Link
+            onClick={() => {
+              handleSetFilter("Perros");
+            }}
             className="lg:col-start-1 lg:col-end-3 lg:h-3/5 lg:w-full xl:w-3/4"
             to="/shop"
           >
@@ -28,6 +34,9 @@ function LandingShop() {
           </Link>
 
           <Link
+            onClick={() => {
+              handleSetFilter("Gatos");
+            }}
             className="lg:col-start-3 lg:col-end-5 lg:h-3/5 lg:w-full xl:w-3/4"
             to="/shop"
           >

@@ -17,7 +17,7 @@ function Filters() {
   const { min, max, onSet } = usePriceRangeControll();
 
   return (
-    <aside className="h-full bg-blue-500 lg:flex lg:w-full lg:flex-col lg:content-center  lg:justify-center lg:bg-transparent lg:py-2  lg:text-center">
+    <aside className="h-full bg-blue-500 lg:flex lg:w-full lg:flex-col lg:content-center lg:items-center  lg:justify-center  lg:bg-transparent lg:py-2  lg:text-center">
       <button
         onClick={handleClick}
         className={`h-full w-min self-center rounded-md  px-4 py-1 text-xs uppercase text-lightwhite md:text-sm lg:cursor-auto lg:text-base lg:font-bold lg:tracking-widest lg:text-black`}

@@ -27,9 +27,10 @@ const getProductFilter = async (query) => {
     };
     delete query.pricesBetween;
   }
-  delete query.where.priceCondition;
   // Agregar condición para "enable" igual a true
+  if (!query.where) query.where = {};
   query.where.enabled = true;
+
   const products = await Product.findAll(query);
   const maxPrice = await Product.findAll({
     attributes: [[Sequelize.fn("max", Sequelize.col("price")), "max_price"]],
