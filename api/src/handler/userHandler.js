@@ -9,6 +9,7 @@ const {
   resetPassword,
   verifyResetToken,
   updatePassword,
+  storeById,
 } = require("../controllers/userControllers");
 const cloudinary = require("cloudinary").v2;
 
@@ -98,6 +99,16 @@ const resetPasswordHandler = async (req, res) => {
   }
 };
 
+const getUserStore = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const storeByUser = await storeById(id);
+    res.status(200).json(storeByUser);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   postUserHandler,
   loginHandler,
@@ -108,4 +119,5 @@ module.exports = {
   deleteUserHandler,
   resetConfirmPasswordHandler,
   resetPasswordHandler,
+  getUserStore,
 };

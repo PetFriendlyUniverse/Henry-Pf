@@ -20,7 +20,7 @@ const postProductHandler = async (req, res) => {
   const data = req.body;
   const file = req.file;
   try {
-    // const nueva = JSON.parse(req.body.data); solo se usa para cuando se quiere probar en insomnia
+    // const nueva = JSON.parse(req.body.data);
     const { requiredData, extraData } = splitData(data);
     const image = await cloudinary.uploader.upload(file.path);
     extraData.img = image.secure_url;

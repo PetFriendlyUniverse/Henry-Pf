@@ -1,11 +1,12 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { getUserApi } from "../../../redux/features/users/usersActions";
 import axios from "axios";
 import arrowDropdown from "../../../assets/arrows/arrowDropdown.svg";
 
 function DropdownUser() {
+  const navigate = useNavigate();
   const id = localStorage.getItem("id");
   const dispatch = useDispatch();
   // traemos la data del usuario en redux
@@ -15,10 +16,11 @@ function DropdownUser() {
     dispatch(getUserApi(id));
   }, []);
   const logOut = () => {
-    axios.post("user/logout");
+    axios.post("user/logout").then((res) => {
+      navigate("/shop");
+    });
     localStorage.removeItem("token");
     localStorage.removeItem("id");
-    window.location.reload();
   };
   const userMenu = useRef(null);
   const arrow = useRef(null);

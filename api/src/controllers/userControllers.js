@@ -1,4 +1,4 @@
-const { User } = require("../db");
+const { User, Store } = require("../db");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { sendResetPasswordEmail, confirmMail } = require("./mailController");
@@ -88,6 +88,15 @@ const updatePassword = async (userId, password) => {
   await user.save();
 };
 
+const storeById = async (id) => {
+  const store = await Store.findOne({
+    where: {
+      UserId: id,
+    },
+  });
+  return store;
+};
+
 module.exports = {
   createUser,
   loginUser,
@@ -98,4 +107,5 @@ module.exports = {
   resetPassword,
   verifyResetToken,
   updatePassword,
+  storeById,
 };
