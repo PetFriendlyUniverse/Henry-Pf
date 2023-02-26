@@ -19,7 +19,6 @@ function Login() {
     lastname: "",
     mail: "",
     password: "",
-    phone: "",
   });
   const [errors, setErrors] = useState({
     user: "",
@@ -27,7 +26,6 @@ function Login() {
     lastname: "",
     mail: "",
     password: "",
-    phone: "",
   });
   // const [repeat, setRepeat] = useState({
   //   repeatPassword: "",
@@ -82,43 +80,42 @@ function Login() {
   };
 
   const handleClickGoogle = () => {
-    window.location.href = "http://localhost:3001/auth";
+    window.location.href = "https://petfriendly-backend.onrender.com/auth";
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errorValues = Object.values(errors);
     const isFormValid = errorValues.every((val) => val === "");
     if (isFormValid) {
-      axios
-        .post("user/create", form)
-        .then((res) =>
+      try {
+        await axios.post("user/create", form).then((res) => {
           Swal.fire({
             icon: "success",
             title: "El registro se ha sido realizado con éxito!",
             showConfirmButton: true,
             timer: 1500,
-          })
-        )
-        .catch(
-          Swal.fire({
-            icon: "error",
-            title: "El registro no se ha sido realizado!",
-            showConfirmButton: true,
-            timer: 1500,
-          })
-        );
-      setForm({
-        user: "",
-        name: "",
-        lastname: "",
-        mail: "",
-        password: "",
-        phone: "",
-      });
-      // setRepeat({
-      //   repeatPassword: "",
-      // });
+            closeOnClickOutside: true,
+            closeOnEsc: true,
+          });
+          setForm({
+            user: "",
+            name: "",
+            lastname: "",
+            mail: "",
+            password: "",
+          });
+        });
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "El registro no se ha sido realizado!",
+          showConfirmButton: true,
+          timer: 1500,
+          closeOnClickOutside: true,
+          closeOnEsc: true,
+        });
+      }
     } else {
       console.log("Hay errores en el formulario");
     }
@@ -227,19 +224,6 @@ function Login() {
               />
               {errors.mail && (
                 <span className="text-xs text-red-500">{errors.mail}</span>
-              )}
-              <input
-                onChange={handleChange}
-                value={form.phone}
-                class={s.input}
-                type="number"
-                name="phone"
-                placeholder="Teléfono"
-                autoComplete="off"
-                required="true"
-              />
-              {errors.phone && (
-                <span className="text-xs text-red-500">{errors.phone}</span>
               )}
               <input
                 class={s.input}

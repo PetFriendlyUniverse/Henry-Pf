@@ -15,12 +15,14 @@ require("../helpers/google.js");
 // Ejemplo: const authRouter = require('./auth.js');
 
 const router = Router();
+
 const { generator } = require("../randomGenerator");
 generator();
 // router.use("/randomgenerator", (req, res) => {
 //   generator();
 //   res.send("Ejecucion de randomGenerator exitosa");
 // });
+
 router.use("/user", userRoutes);
 router.use("/products", productsRoutes);
 router.use("/invoices", invoicesRoutes);
@@ -48,7 +50,9 @@ router.get(
   (req, res) => {
     const { token } = req.user;
     const { id } = req.user.user;
-    res.redirect(`http://${process.env.ORIGIN}:5173/shop?t=${token}&i=${id}`);
+
+    res.redirect(`https://petfriendlyuniverse.vercel.app/shop?t=${token}&i=${id}`);
+
     // res.send({ token: token, id: id });
   }
 );

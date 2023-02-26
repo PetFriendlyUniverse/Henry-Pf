@@ -14,42 +14,10 @@ const {
 const cloudinary = require("cloudinary").v2;
 
 const postUserHandler = async (req, res) => {
-  const {
-    user,
-    name,
-    lastname,
-    mail,
-    password,
-    area_code,
-    number,
-    province,
-    locality,
-    zip_code,
-    street_name,
-    street_number,
-    img,
-    area_code_emergency,
-    emergency_number,
-  } = req.body;
+  const { user, name, lastname, mail, password } = req.body;
 
   try {
-    const newUser = await createUser(
-      user,
-      name,
-      lastname,
-      mail,
-      password,
-      area_code,
-      number,
-      province,
-      locality,
-      zip_code,
-      street_name,
-      street_number,
-      img,
-      area_code_emergency,
-      emergency_number
-    );
+    const newUser = await createUser(user, name, lastname, mail, password);
     res.status(200).json(newUser);
   } catch (error) {
     res.status(404).json({ error: error.message });
