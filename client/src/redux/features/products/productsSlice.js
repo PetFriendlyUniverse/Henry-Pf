@@ -23,6 +23,7 @@ const initialState = {
   allbrands: [],
   favorite: [],
   shopCart: JSON.parse(localStorage.getItem("shopCart")) || {}, // { id: { product } } || { 1: { product 1 }, 2: { product 2 } }
+  shopUser: [],
 };
 // cantidad de productos dependiendo del width de la pantalla ???
 export const Products = createSlice({
@@ -86,6 +87,10 @@ export const Products = createSlice({
     deleteFavorite: (state, { payload }) => {
       state.favorite = payload;
     },
+    setShopUser: (state, { payload }) => {
+      // payload = [{},{},{}]
+      state.shopUser = [...state.shopUser, payload];
+    },
   },
 });
 
@@ -103,6 +108,7 @@ export const {
   clearProductId,
   getAllBrands,
   deleteFavorite,
+  setShopUser,
 } = Products.actions;
 
 export default Products.reducer;
