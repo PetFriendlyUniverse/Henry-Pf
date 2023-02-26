@@ -1,4 +1,4 @@
-const { DB_HOST, DB_PORT, MP_TOKEN, MP_PUBLICKEY } = process.env;
+const { MP_TOKEN } = process.env;
 // SDK de Mercado Pago
 const mercadopago = require("mercadopago");
 // Agrega credenciales
@@ -8,13 +8,13 @@ mercadopago.configure({
 
 const postPaymentHandler = (req, res) => {
   const products = req.body;
-
+  // preference
   let preference = {
     items: products,
     back_urls: {
       // corregir redireccionamiento
-      success: `http://${DB_HOST}:${DB_PORT}/shop`,
-      failure: `http://${DB_HOST}:${DB_PORT}/shop/checkout`,
+      success: `https://petfriendlyuniverse.vercel.app/succes`,
+      failure: `https://petfriendlyuniverse.vercel.app/failure`,
       pending: ``,
     },
     auto_return: "approved",
