@@ -4,8 +4,11 @@ import Swal from "sweetalert2";
 import { ValidateStore } from "../Validations/ValidateStore";
 
 import LinkButton from "../../../../components/Button/LinkButton";
+import { useParams } from "react-router-dom";
 
 function FormModifyStore() {
+  const { id } = useParams();
+  console.log(id);
   const [formComplete, setFormComplete] = useState(false);
   const [img, setImg] = useState(null);
   const [form, setForm] = useState({
@@ -49,6 +52,7 @@ function FormModifyStore() {
     const errorValues = Object.values(errors);
     const isFormValid = errorValues.every((val) => val === "");
     const newForm = new FormData();
+    newForm.append("id", id);
     newForm.append("img", img);
     newForm.append("name", form.name);
     newForm.append("area_code", form.area_code);
@@ -61,7 +65,7 @@ function FormModifyStore() {
     newForm.append("description", form.description);
     if (isFormValid) {
       axios
-        .put("/store/create", newForm, {
+        .put(`store/${id}`, newForm, {
           headers: {
             "Content-Type": "multipart/form-data",
           }, //importante en form de imagen poner este headers
@@ -82,13 +86,14 @@ function FormModifyStore() {
             streets: "",
             description: "",
           });
+        })
+        .catch(() => {
+          Swal.fire({
+            icon: "error",
+            title: "Error en el formulario",
+            text: "Por favor, revisa los campos del formulario",
+          });
         });
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Error en el formulario",
-        text: "Por favor, revisa los campos del formulario",
-      });
     }
   };
   return (

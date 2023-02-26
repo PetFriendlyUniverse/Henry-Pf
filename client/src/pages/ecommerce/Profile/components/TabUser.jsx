@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LinkButton from "../../../../components/Button/LinkButton";
 import { useSelector } from "react-redux";
 
@@ -11,13 +10,21 @@ import Payment from "./Payment";
 
 import interrogation from "../../../../assets/general/interrogation.svg";
 
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 function TabUser() {
+  const navigate = useNavigate();
   const [showInfo, setShowInfo] = useState("profile");
   const user = useSelector((state) => state.User?.userId);
   const handleShowInfo = (e) => {
     setShowInfo(e.target.name);
+  };
+  const handleClick = () => {
+    axios.post(`store/create/${user.id}`).then((res) => {
+      const id = res.data.id;
+      navigate(`/store/modify/${id}`);
+    });
   };
 
   return (
@@ -115,12 +122,15 @@ function TabUser() {
               <Payment />
             )}
             <div class="flex pl-4 pt-5 sm:pl-12">
-              <div class="flex py-2">
-                <img src={interrogation} alt="help" class="w-3 sm:w-5" />
-                <Link to="/profile/store/create">
-                  <LinkButton component={"Crear producto"} />
-                </Link>
-              </div>
+              {user.store === false && (
+                <div class="flex py-2">
+                  <img src={interrogation} alt="help" class="w-3 sm:w-5" />
+                  <LinkButton
+                    onClick={handleClick}
+                    component={"Habilita tu tienda"}
+                  />
+                </div>
+              )}
               {/* <div class="flex py-2">
       <img src={interrogation} alt="help" class="w-5" />
       <button class="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
@@ -130,7 +140,7 @@ function TabUser() {
             </div>
           </div>
         </div>
-      </div>{" "}
+      </div>
     </div>
   );
 }
