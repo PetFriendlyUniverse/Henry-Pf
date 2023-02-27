@@ -12,6 +12,7 @@ function FormCreateProduct() {
   const [imgFile, setImgFile] = useState(null);
   const [formComplete, setFormComplete] = useState(false);
   const [img, setImg] = useState(null);
+
   const [form, setForm] = useState({
     name: "",
     price: "",
@@ -89,6 +90,8 @@ function FormCreateProduct() {
             title: "Producto creado",
             icon: "success",
             text: "El producto ha sido creado correctamente",
+            closeOnEsc: true,
+            closeOnClickOutside: true,
           });
         });
     } else {
@@ -96,10 +99,10 @@ function FormCreateProduct() {
         icon: "error",
         title: "Error en el formulario",
         text: "Por favor, revisa los campos del formulario",
+        closeOnEsc: true,
+        closeOnClickOutside: true,
       });
     }
-    console.log(img.name);
-    console.log(img);
   };
 
   return (
