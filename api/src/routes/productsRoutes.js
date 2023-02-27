@@ -1,24 +1,22 @@
 const { Router } = require("express");
 const {
+  postProductHandler,
   getAllProductsHandler,
   getProductByIDlHandler,
   getFilters,
-  postProductHandler,
   putProductHandler,
   deleteProductHandler,
   getProductByIDStorelHandler,
 } = require("../handler/productsHandler");
+const productsRoutes = Router();
 
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 
 const authMiddleware = require("../helpers/authMiddleware");
 
-const productsRoutes = Router();
-
 productsRoutes.get("/", getAllProductsHandler);
 productsRoutes.get("/filters", getFilters);
-
 productsRoutes.get("/:id", getProductByIDlHandler);
 
 productsRoutes.get("/store/:storeId", getProductByIDStorelHandler);

@@ -15,9 +15,10 @@ const initialState = {
   products: [],
   totalPages: 1,
   currentPage: 1,
-  productsPerPage: 15,
+  productsPerPage: 44, // antes 15
   allFilters: [],
-  setFilters: {}, // {size: "small", weight: 5}
+  setFilters: {}, // {size: "small", weight: 5, ...}
+  priceRange: {}, // { min: numb, max: numb }
   productId: [],
   allbrands: [],
   favorite: [],
@@ -30,8 +31,10 @@ export const Products = createSlice({
   reducers: {
     // uso =>  const products = useSelector(state => state.Products.products)
     getProducts: (state, { payload }) => {
-      state.products = payload[0]; //payload: [[{},{},{},{}...], totalPages]
-      state.totalPages = payload[1];
+      //payload: {paginated: [[{},{},{},{}...], totalPages], priceRange { min: numb, max: numb }}
+      state.products = payload.paginated[0];
+      state.totalPages = payload.paginated[1];
+      state.priceRange = payload.priceRange;
     },
     getFilters: (state, { payload }) => {
       state.allFilters = payload;
@@ -45,9 +48,17 @@ export const Products = createSlice({
       if (value === "") {
         delete newSetFilters[filter];
       } else {
-        newSetFilters[filter] = value;
+        if (Array.isArray(payload)) {
+          payload.forEach((f) => (newSetFilters[f.filter] = f.value));
+        } else {
+          newSetFilters[filter] = value;
+        }
       }
       state.setFilters = newSetFilters;
+      state.currentPage = 1;
+    },
+    clearFilters: (state) => {
+      state.setFilters = {};
       state.currentPage = 1;
     },
     getProductsById: (state, { payload }) => {
@@ -84,6 +95,7 @@ export const {
   getFilters,
   setCurrentPage,
   setFilters,
+  clearFilters,
   getProductsById,
   deletedProducts,
   setShopCart,

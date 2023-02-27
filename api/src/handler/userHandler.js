@@ -6,34 +6,18 @@ const {
   getUserById,
   updateAllUsers,
   deleteUsersById,
+  resetPassword,
+  verifyResetToken,
+  updatePassword,
+  storeById,
 } = require("../controllers/userControllers");
 const cloudinary = require("cloudinary").v2;
 
 const postUserHandler = async (req, res) => {
-  const {
-    user,
-    name,
-    lastname,
-    mail,
-    password,
-    phone,
-    emergencyphone,
-    province,
-    locality,
-  } = req.body;
+  const { user, name, lastname, mail, password } = req.body;
 
   try {
-    const newUser = await createUser(
-      user,
-      name,
-      lastname,
-      mail,
-      password,
-      phone,
-      emergencyphone,
-      province,
-      locality
-    );
+    const newUser = await createUser(user, name, lastname, mail, password);
     res.status(200).json(newUser);
   } catch (error) {
     res.status(404).json({ error: error.message });
@@ -73,7 +57,6 @@ const putUserHandler = async (req, res) => {
   const { id } = req.params;
   const user = req.body;
   const file = req.file;
-  console.log(user);
   try {
     //const forInsomnia = JSON.parse(req.body.user); //Esto es unicamente para el insomnia
     const image = await cloudinary.uploader.upload(file.path);
@@ -94,6 +77,38 @@ const deleteUserHandler = async (req, res) => {
   }
 };
 
+const resetConfirmPasswordHandler = async (req, res) => {
+  const { mail } = req.body;
+  try {
+    const password = await resetPassword(mail);
+    res.status(200).json(password);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
+
+const resetPasswordHandler = async (req, res) => {
+  const { token } = req.params;
+  const { password } = req.body;
+  try {
+    const userId = await verifyResetToken(token);
+    await updatePassword(userId, password);
+    res.status(200).json("Contraseña actualizada correctamente");
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const getUserStore = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const storeByUser = await storeById(id);
+    res.status(200).json(storeByUser);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   postUserHandler,
   loginHandler,
@@ -102,4 +117,7 @@ module.exports = {
   getUserDetailHandler,
   putUserHandler,
   deleteUserHandler,
+  resetConfirmPasswordHandler,
+  resetPasswordHandler,
+  getUserStore,
 };

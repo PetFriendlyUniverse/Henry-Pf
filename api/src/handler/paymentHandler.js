@@ -1,10 +1,36 @@
-const PaymentController = require("../controllers/paymentController");
-const PaymentService = require("../services/paymentService");
-const PaymentInstance = new PaymentController(new PaymentService());
+const { MP_TOKEN } = process.env;
+// SDK de Mercado Pago
+const mercadopago = require("mercadopago");
+// Agrega credenciales
+mercadopago.configure({
+  access_token: MP_TOKEN,
+});
 
-const postPaymentHandler = (req, res) =>
-  PaymentInstance.getMercadoPagoLink(req, res);
+const postPaymentHandler = (req, res) => {
+  const products = req.body;
+  // preference
+  let preference = {
+    items: products,
+    back_urls: {
+      // corregir redireccionamiento
+      success: `http://localhost:5173/shop`,
+      failure: `https://petfriendlyuniverse.vercel.app/failure`,
+      pending: ``,
+    },
+    auto_return: "approved",
+    binary_mode: true,
+  };
 
-const postWebhookHandler = (req, res) => PaymentInstance.webhook(req, res);
+  mercadopago.preferences
+    .create(preference)
+    .then((response) => {
+      res.status(200).json({
+        response,
+      });
+    })
+    .catch((error) => {
+      res.status(400).send({ error: error.message });
+    });
+};
 
-module.exports = { postPaymentHandler, postWebhookHandler };
+module.exports = { postPaymentHandler };

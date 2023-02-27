@@ -7,14 +7,14 @@
   xmlns:xlink="http://www.w3.org/1999/xlink"
   fill="#6495ed"
   stroke="#6495ed"
-><g id="SVGRepo_bgCarrier" stroke-width="0" /><g
+><g id="SVGRepo_bgCarrier" strokeWidth="0" /><g
     id="SVGRepo_tracerCarrier"
     stroke-linecap="round"
     stroke-linejoin="round"
   /><g id="SVGRepo_iconCarrier"> <title>Shop</title> <g
       id="Page-1"
       stroke="none"
-      stroke-width="1"
+      strokeWidth="1"
       fill="none"
       fill-rule="evenodd"
     > <g id="Shop"> <rect
@@ -28,36 +28,36 @@
           d="M4,12 L4,19 C4,20.1046 4.89543,21 6,21 L18,21 C19.1046,21 20,20.1046 20,19 L20,12"
           id="Path"
           stroke="#6495ed"
-          stroke-width="2"
+          strokeWidth="2"
           stroke-linecap="round"
         > </path> <path
           d="M9,8 L15,8 L15,9 C15,10.6569 13.6569,12 12,12 L12,12 C10.3431,12 9,10.6569 9,9 L9,8 Z"
           id="Path"
           stroke="#6495ed"
-          stroke-width="2"
+          strokeWidth="2"
           stroke-linecap="round"
         > </path> <path
           d="M15,8 L20.5556,8 C20.801,8 21,8.19898 21,8.44444 L21,9 C21,10.6569 19.6569,12 18,12 L18,12 C16.3431,12 15,10.6569 15,9 L15,8 Z"
           id="Path"
           stroke="#6495ed"
-          stroke-width="2"
+          strokeWidth="2"
           stroke-linecap="round"
         > </path> <path
           d="M3,8.44444 C3,8.19898 3.19898,8 3.44444,8 L9,8 L9,9 C9,10.6569 7.65685,12 6,12 L6,12 C4.34315,12 3,10.6569 3,9 L3,8.44444 Z"
           id="Path"
           stroke="#6495ed"
-          stroke-width="2"
+          strokeWidth="2"
           stroke-linecap="round"
         > </path> <path
           d="M3.82594,3.41142 C3.86881,3.17328 4.07606,3 4.31804,3 L19.682,3 C19.9239,3 20.1312,3.17328 20.1741,3.41142 L20.8941,7.41142 C20.9493,7.71809 20.7136,8 20.402,8 L3.59804,8 C3.28644,8 3.05074,7.71809 3.10594,7.41142 L3.82594,3.41142 Z"
           id="Path"
           stroke="#6495ed"
-          stroke-width="2"
+          strokeWidth="2"
           stroke-linecap="round"
         > </path> <path
           d="M9,16 C9,15.4477 9.44772,15 10,15 L14,15 C14.5523,15 15,15.4477 15,16 L15,21 L9,21 L9,16 Z"
           id="Path"
           stroke="#6495ed"
-          stroke-width="2"
+          strokeWidth="2"
           stroke-linecap="round"
         > </path> </g> </g> </g></svg>

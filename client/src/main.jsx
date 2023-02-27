@@ -8,7 +8,8 @@ import { store } from "./redux/store";
 import { Provider } from "react-redux";
 
 import axios from "axios";
-axios.defaults.baseURL = process.env.BASE_URL || "http://localhost:3001";
+
+axios.defaults.baseURL = "http://localhost:3001";
 // axios.defaults.baseURL = "https://petfriendly-backend.onrender.com";
 
 ReactDOM.createRoot(document.getElementById("root")).render(

@@ -9,14 +9,18 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      name: {
+      name_daycare: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           len: [1, 30],
         },
       },
-      phone: {
+      area_code_daycare: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      number_daycare: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -31,21 +35,36 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          lent: [1, 30],
+          len: [1, 30],
         },
       },
-      streets: {
+      zipcode: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      street_name: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [1, 100],
+          lent: [5, 30],
         },
+      },
+      street_number: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
       description: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           len: [1, 2000],
+        },
+      },
+      img: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1, 500],
         },
       },
       qualification: {
