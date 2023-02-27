@@ -1,4 +1,5 @@
 const ValidationProfile = (property, value) => {
+  let userRegex = /^[a-zA-Z0-9_]+$/;
   let stringRegex = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/;
   let numberRegex = /^[0-9]+$/;
   let stringNumberRegex = /^[a-zA-Z0-9 ]*$/;
@@ -15,7 +16,7 @@ const ValidationProfile = (property, value) => {
   if (property === "user" && !value) {
     error.user = "Ingrese su nickname";
   } else if (property === "user") {
-    if (!stringRegex.test(value)) {
+    if (!userRegex.test(value)) {
       error.user = "Por favor ingrese su nickname sin números o signos";
     } else if (value.length > 15) {
       error.user = "El nickname es demasiado largo";
