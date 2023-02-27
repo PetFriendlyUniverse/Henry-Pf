@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { getUserApi } from "../../../redux/features/users/usersActions";
 import axios from "axios";
 import arrowDropdown from "../../../assets/arrows/arrowDropdown.svg";
+import { clearShopCart } from "../../../redux/features/products/productsSlice";
 
 function DropdownUser() {
   const navigate = useNavigate();
@@ -20,22 +21,28 @@ function DropdownUser() {
       navigate("/shop");
     });
     localStorage.removeItem("token");
+    localStorage.removeItem("shopCart");
+    dispatch(clearShopCart());
     localStorage.removeItem("id");
   };
-  const userMenu = useRef(null);
-  const arrow = useRef(null);
 
+  const arrow = useRef();
+  const dropdownUser = useRef();
   const toggleUserMenu = () => {
-    // userMenu.current.classList.toggle("hidden");
-    // arrow.current.classList.toggle("rotate-180");
+    dropdownUser.current.classList.toggle("hidden");
+    arrow.current.classList.toggle("rotate-180");
   };
   let activeClassName = "border-t border-white ";
+  const mouseOut = () => {
+    dropdownUser.current.classList.add("hidden");
+    arrow.current.classList.remove("rotate-180");
+  };
 
   return (
     <div className="flex flex-col py-3 lg:w-full">
       <button
-        // onClick={toggleUserMenu}
-        className="group peer flex w-full items-center gap-1 lg:justify-center"
+        onClick={toggleUserMenu}
+        className="group flex w-full items-center gap-1 lg:justify-center"
         type="button"
       >
         <img src={arrowDropdown} alt="" />
@@ -43,7 +50,7 @@ function DropdownUser() {
           {userDetailId?.name}
         </span>
         <img
-          // ref={arrow}
+          ref={arrow}
           src={userDetailId?.img}
           alt=""
           className="h-12 rounded-full transition-transform group-focus:rotate-180"
@@ -51,8 +58,9 @@ function DropdownUser() {
       </button>
 
       <ul
-        // ref={userMenu}
-        className="ml-7 hidden list-none overflow-hidden border border-cornflowerblue py-1 text-left text-cornflowerblue shadow-lg hover:block peer-focus:block lg:absolute lg:top-12 lg:z-50 lg:ml-0 lg:w-40 lg:bg-russianviolet lg:p-2 xl:right-6 2xl:right-5 2xl:w-1/3  "
+        onMouseOut={mouseOut}
+        ref={dropdownUser}
+        className="ml-7 hidden list-none overflow-hidden border border-cornflowerblue py-1 text-left text-cornflowerblue shadow-lg hover:block  lg:absolute lg:top-12 lg:z-50 lg:ml-0 lg:w-40 lg:bg-russianviolet lg:p-2 xl:right-6 2xl:right-5 2xl:w-1/3  "
       >
         <li>
           <div className="px-4 py-3">
