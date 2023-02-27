@@ -39,10 +39,9 @@ function Profile() {
   };
 
   useEffect(() => {
+    dispatch(getStoreByUser(user?.id));
     dispatch(getUserApi(user.id));
-    dispatch(getStoreByUser(id));
   }, []);
-  console.log(id);
 
   return (
     <div className="flex justify-center  pb-28 pt-10 lg:items-center">
