@@ -21,8 +21,6 @@ import {
 } from "../../../redux/features/users/usersActions";
 
 function Profile() {
-  const { id } = useParams();
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showInfo, setShowInfo] = useState("profile");
