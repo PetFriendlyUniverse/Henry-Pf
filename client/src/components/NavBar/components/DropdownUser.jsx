@@ -52,7 +52,7 @@ function DropdownUser() {
 
       <ul
         // ref={userMenu}
-        className="invisible ml-7 list-none overflow-hidden border border-cornflowerblue py-1 text-left text-cornflowerblue shadow-lg hover:visible peer-focus:visible lg:absolute lg:top-12 lg:z-50 lg:ml-0 lg:w-40 lg:bg-russianviolet lg:p-2 xl:right-6 2xl:right-5 2xl:w-1/3  "
+        className="ml-7 hidden list-none overflow-hidden border border-cornflowerblue py-1 text-left text-cornflowerblue shadow-lg hover:block peer-focus:block lg:absolute lg:top-12 lg:z-50 lg:ml-0 lg:w-40 lg:bg-russianviolet lg:p-2 xl:right-6 2xl:right-5 2xl:w-1/3  "
       >
         <li>
           <div className="px-4 py-3">
