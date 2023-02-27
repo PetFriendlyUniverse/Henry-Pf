@@ -1,16 +1,17 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Suspense, lazy } from "react";
+// import { Suspense, lazy } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import LandingShop from "./pages/ecommerce/LandingShop/LandingShop";
 import About from "./pages/About/About";
 import TabStore from "./pages/ecommerce/Profile/components/TabStore";
+import Loader from "./components/Loader/Loader";
+import { lazy, Suspense } from "react";
 
 // import Shop2 from "./pages/ecommerce/Shop/Shop2";
 
-const Loader = lazy(() => import("./components/Loader/Loader"));
 const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
 const Services = lazy(() => import("./pages/Services/Services"));
 
@@ -74,7 +75,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
-      ;{pathname !== "/" && <Footer />}
+      {pathname !== "/" && <Footer />}
     </div>
   );
 }

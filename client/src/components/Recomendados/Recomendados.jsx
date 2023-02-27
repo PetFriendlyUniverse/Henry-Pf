@@ -28,7 +28,7 @@ function Recomendados() {
           className="w-full bg-blend-multiply brightness-[1.1]"
         />
       </button>
-      <button className="h-52 w-52" onClick={() => handleclick("Fanwa")}>
+      <button className="h-52 w-52" onClick={() => handleclick("Fawna")}>
         <img src={logofawna} alt="" className="w-full" />
       </button>
       <button className="h-52 w-52">

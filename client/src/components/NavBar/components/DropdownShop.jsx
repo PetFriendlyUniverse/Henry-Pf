@@ -57,7 +57,7 @@ function DropdownShop() {
         />
       </button>
       {/* contenedor modalShop */}
-      <div className=" invisible z-10 mt-2 w-full  rounded-b-lg bg-blue-100 group-hover:block peer-focus:visible  md:absolute md:right-0 md:top-10 md:h-80  md:w-[500px] lg:h-96 2xl:left-0">
+      <div className=" z-10 mt-2 hidden w-full rounded-b-lg bg-blue-100 hover:block group-hover:block peer-focus:block md:absolute md:right-0 md:top-10 md:h-80  md:w-[500px] lg:h-96 2xl:left-0">
         <div className=" flex w-full items-center justify-between border-b border-black px-4 py-1 ">
           <p className="inline-block">{products.length} productos</p>
           <span onClick={handleDelete}>

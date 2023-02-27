@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import LinkButton from "../../../../components/Button/LinkButton";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CardStoreIdContainer from "../../../../components/CardStoreIdContainer/CardStoreIdContainer";
 
 import PhotoName from "./PhotoName";
@@ -14,13 +14,19 @@ import SearchForm from "../../../../components/NavBar/components/SearchForm";
 import interrogation from "../../../../assets/general/interrogation.svg";
 
 import React from "react";
+import { getStoreByUser } from "../../../../redux/features/users/usersActions";
 
 function TabStore() {
+  const dispatch = useDispatch();
+  const { id } = useParams();
   const [showInfo, setShowInfo] = useState("profile");
   const user = useSelector((state) => state.User?.userStoreId);
   const handleShowInfo = (e) => {
     setShowInfo(e.target.name);
   };
+  useEffect(() => {
+    dispatch(getStoreByUser(id));
+  }, []);
   return (
     <div>
       <div className=" flex h-full w-full flex-col rounded-md border-2 md:flex-row lg:w-full">
