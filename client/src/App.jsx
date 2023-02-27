@@ -74,7 +74,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
-      ;{pathname !== "/" && <Footer />}
+      {pathname !== "/" && <Footer />}
     </div>
   );
 }
