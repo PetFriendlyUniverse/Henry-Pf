@@ -40,9 +40,9 @@ function Card({ name, img, weight, price, stock, id }) {
           className="flex items-center justify-center "
         >
           <div className="h-56 w-56 ">
-            <Carousel slide={false} indicators={false}>
-              <img src={img} alt="" className="h-56 w-56 " />
-            </Carousel>
+            {/* <Carousel slide={false} indicators={false}> */}
+            <img src={img} alt="" className="h-56 w-56 " />
+            {/* </Carousel> */}
           </div>
         </Link>
       </div>
