@@ -72,6 +72,15 @@ function FormModifyStore() {
     newForm.append("description", form.description);
     newForm.append("mail", form.mail);
     if (isFormValid) {
+      Swal.fire({
+        title: "Now loading",
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
       axios
         .put(`store/${id}`, newForm, {
           headers: {
