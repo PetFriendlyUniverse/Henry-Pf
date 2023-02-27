@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { priceFormatter } from "../../../adapters/priceFormatter";
 import ContainerRecomendados from "../../../components/ContainerRecomendados/ContainerRecomendados";
 import Subcard from "../../../components/SubCard/Subcard";
 import { clearShopCart } from "../../../redux/features/products/productsSlice";
+import LinkButton from "../../../components/Button/LinkButton";
 
 function Checkout() {
   const dispatch = useDispatch();
@@ -112,14 +113,19 @@ function Checkout() {
                 {priceFormatter(totalPrice)}
               </h3>
             </div>
-
-            <button
-              onClick={handleClick}
-              type="button"
-              className=" w-full self-end rounded-lg bg-emerald-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-900"
-            >
-              Finalizar Compra
-            </button>
+            {userDetailId ? (
+              <button
+                onClick={handleClick}
+                type="button"
+                className=" w-full self-end rounded-lg bg-emerald-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-900"
+              >
+                Finalizar Compra
+              </button>
+            ) : (
+              <Link to="/login">
+                <LinkButton component={"Registrate o Ingresa"} />
+              </Link>
+            )}
           </div>
         </div>
       </div>
