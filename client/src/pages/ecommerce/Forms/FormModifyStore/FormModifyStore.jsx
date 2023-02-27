@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { ValidateStore } from "../Validations/ValidateStore";
 
 import LinkButton from "../../../../components/Button/LinkButton";
 import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getStoreByUser } from "../../../../redux/features/users/usersActions";
 
 function FormModifyStore() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getStoreByUser(id));
+  });
   const [formComplete, setFormComplete] = useState(false);
   const [img, setImg] = useState(null);
   const [form, setForm] = useState({
