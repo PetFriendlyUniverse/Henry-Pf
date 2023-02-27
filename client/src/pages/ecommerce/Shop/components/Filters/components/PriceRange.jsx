@@ -21,8 +21,6 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
     if (!active) {
       //si no esta activo, aplica el rango y resetea min,max
       onSet([minVal, maxVal]);
-      setMinVal(min);
-      setMaxVal(max);
     } else {
       // si el rango esta activo, lo desactiva
       onSet("");
@@ -92,7 +90,10 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
           ) : (
             <>
               <span className="block">
-                rango actual:${minVal}-${maxVal}
+                rango actual:
+                <span className="font-semibold">
+                  ${minVal}-${maxVal}
+                </span>
               </span>
             </>
           )}
