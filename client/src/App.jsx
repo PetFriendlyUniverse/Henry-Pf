@@ -7,6 +7,8 @@ import Footer from "./components/Footer/Footer";
 import LandingShop from "./pages/ecommerce/LandingShop/LandingShop";
 import About from "./pages/About/About";
 import TabStore from "./pages/ecommerce/Profile/components/TabStore";
+// import Skeleton from "react-loading-skeleton";
+import FormPassword from "./pages/FormPassword/FormPassword";
 
 // import Shop2 from "./pages/ecommerce/Shop/Shop2";
 
@@ -45,6 +47,7 @@ function App() {
   window.addEventListener("beforeunload", () => {
     localStorage.setItem("shopCart", JSON.stringify(shopCart));
   });
+
   return (
     <div className="App min-h-screen">
       {pathname !== "/" && pathname !== "/landingshop" && <NavBar />}
@@ -71,6 +74,7 @@ function App() {
           />
           <Route path="/about" element={<About />} />
           <Route path="/store/modify/:id" element={<FormModifyStore />} />
+          <Route path="/recoverpassword" element={<FormPassword />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
