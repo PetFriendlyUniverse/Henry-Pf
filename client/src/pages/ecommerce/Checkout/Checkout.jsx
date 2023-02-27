@@ -36,6 +36,12 @@ function Checkout() {
     try {
       const { data } = await axios.post("/payment/new", arrProductsPayment);
       window.location.href = await data.response.body.init_point;
+      await Swal.fire({
+        icon: "success",
+        title: "Tu compra ha sido realizada con éxito!",
+        showConfirmButton: false,
+        timer: 1100,
+      });
     } catch (error) {
       console.log(error);
       Swal.fire({
@@ -47,12 +53,6 @@ function Checkout() {
     }
     localStorage.removeItem("shopCart");
     dispatch(clearShopCart());
-    await Swal.fire({
-      icon: "success",
-      title: "Tu compra ha sido realizada con éxito!",
-      showConfirmButton: false,
-      timer: 1100,
-    });
     navigate("/shop");
   };
   return (
