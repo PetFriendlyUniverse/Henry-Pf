@@ -20,9 +20,6 @@ const Landing = lazy(() => import("./pages/Landing/Landing"));
 const ProductDetail = lazy(() =>
   import("./pages/ecommerce/ProductDetail/ProductDetail")
 );
-const ShoppingCart = lazy(() =>
-  import("./pages/ecommerce/ShoppingCart/ShoppingCart")
-);
 const Checkout = lazy(() => import("./pages/ecommerce/Checkout/Checkout"));
 const FormCreateProduct = lazy(() =>
   import("./pages/ecommerce/Forms/FormCreateProduct/FormCreateProduct")
@@ -57,7 +54,6 @@ function App() {
           <Route path="/landingshop" element={<LandingShop />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/detail/:id" element={<ProductDetail />} />
-          <Route path="/shop/shoppingcart" element={<ShoppingCart />} />
           <Route path="/shop/checkout" element={<Checkout />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile/edit/:id" element={<FormModifyUser />} />
@@ -72,7 +68,6 @@ function App() {
             element={<FormModifyProduct />}
           />
           <Route path="/about" element={<About />} />
-          <Route path="/testcomponent" element={<TestComponent />} />
           <Route path="/loginpassword" element={<FormPassword />} />
 
           <Route path="/store/modify/:id" element={<FormModifyStore />} />
