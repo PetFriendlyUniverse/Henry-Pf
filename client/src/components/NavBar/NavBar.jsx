@@ -22,13 +22,13 @@ function NavBarPrueba() {
     menu.current.classList.toggle("hidden");
   };
   // ----------------------------
-  const userMenu = useRef(null);
-  const toggleUserMenu = () => {
-    userMenu.current.classList.toggle("hidden");
-    arrow.current.classList.toggle("rotate-180");
-  };
+  // const userMenu = useRef(null);
+  // const toggleUserMenu = () => {
+  //   userMenu.current.classList.toggle("hidden");
+  //   arrow.current.classList.toggle("rotate-180");
+  // };
   // ----------------------------
-  const arrow = useRef(null);
+  // const arrow = useRef(null);
   let activeClassName = "border-b border-white ";
 
   return (
