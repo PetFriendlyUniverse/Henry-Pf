@@ -21,8 +21,6 @@ import {
 } from "../../../redux/features/users/usersActions";
 
 function Profile() {
-  const { id } = useParams();
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showInfo, setShowInfo] = useState("profile");
@@ -42,7 +40,7 @@ function Profile() {
     dispatch(getStoreByUser(user?.id));
     dispatch(getUserApi(user.id));
   }, []);
-  console.log(id);
+
 
   return (
     <div className="flex justify-center  pb-28 pt-10 lg:items-center">
