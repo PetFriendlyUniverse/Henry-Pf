@@ -14,9 +14,9 @@ function Login() {
     password: "",
   });
   const [form, setForm] = useState({
-    user: "",
-    name: "",
-    lastname: "",
+    user: "maximiliano",
+    name: "maximiliano",
+    lastname: "permingeat",
     mail: "",
     password: "",
   });
@@ -88,8 +88,8 @@ function Login() {
     const isFormValid = errorValues.every((val) => val === "");
     if (isFormValid) {
       try {
-        await axios.post("user/create", form).then((res) => {
-          Swal.fire({
+        await axios.post("user/create", form).then(async (res) => {
+          await Swal.fire({
             icon: "success",
             title: "El registro se ha sido realizado con éxito!",
             showConfirmButton: true,
@@ -116,7 +116,14 @@ function Login() {
         });
       }
     } else {
-      console.log("Hay errores en el formulario");
+      Swal.fire({
+        icon: "error",
+        title: "Hay errores en el formulario",
+        showConfirmButton: true,
+        timer: 1500,
+        closeOnClickOutside: true,
+        closeOnEsc: true,
+      });
     }
   };
 
@@ -148,7 +155,7 @@ function Login() {
                 type="email"
                 name="mail"
                 placeholder="Mail"
-                required=""
+                required
               />
               <input
                 className={s.input}
@@ -157,7 +164,7 @@ function Login() {
                 type="password"
                 name="password"
                 placeholder="Contraseña"
-                required=""
+                required
               />
               <button>Ingresar</button>
               <div className={s.loginGoogle}>
@@ -183,7 +190,9 @@ function Login() {
                 required="true"
               />
               {errors.user && (
-                <span className=" text-xs text-red-500">{errors.user}</span>
+                <span className="ml-1 -mt-3 text-sm tracking-wide text-red-700">
+                  {errors.user}
+                </span>
               )}
               <input
                 onChange={handleChange}
@@ -196,7 +205,9 @@ function Login() {
                 required="true"
               />
               {errors.name && (
-                <span className="text-xs text-red-500">{errors.name}</span>
+                <span className="ml-1 -mt-3 text-sm tracking-wide text-red-700">
+                  {errors.name}
+                </span>
               )}
               <input
                 onChange={handleChange}
@@ -209,7 +220,9 @@ function Login() {
                 required="true"
               />
               {errors.lastname && (
-                <span className="text-xs text-red-500">{errors.lastname}</span>
+                <span className="ml-1 -mt-3 text-sm tracking-wide text-red-700">
+                  {errors.lastname}
+                </span>
               )}
               <input
                 onChange={handleChange}
@@ -222,7 +235,9 @@ function Login() {
                 autoComplete="off"
               />
               {errors.mail && (
-                <span className="text-xs text-red-500">{errors.mail}</span>
+                <span className="ml-1 -mt-3 text-sm tracking-wide text-red-700">
+                  {errors.mail}
+                </span>
               )}
               <input
                 class={s.input}
@@ -235,7 +250,9 @@ function Login() {
                 required="true"
               />
               {errors.password && (
-                <span className="text-xs text-red-500">{errors.password}</span>
+                <span className="ml-1 -mt-3 text-center text-sm tracking-wide text-red-700">
+                  {errors.password}
+                </span>
               )}
               {/* <input
                 onChange={handleChangeRepeat}

@@ -3,7 +3,7 @@
   font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
-  background-color: #392B58;
+  background-color: #392b58;
   max-height: 80vh;
   max-width: 50vw;
   width: 70vw;
@@ -31,6 +31,8 @@
   gap: 14px;
   padding: 24px;
   height: 750px;
+  width: 50%;
+  align-items: center;
 }
 
 /*checkbox to switch from sign up to login*/
@@ -60,14 +62,20 @@ label {
   cursor: pointer;
   transition: 0.5s ease-in-out;
 }
+.loginGoogle {
+  width: 100%;
+}
+.loginGoogle button {
+  width: 100%;
+}
 
 /*Register*/
 .register {
   display: flex;
   justify-content: center;
-  background: #6495ED;
+  background: #6495ed;
   border-radius: 60% / 10%;
-  transform: translateY(-12%);
+  transform: translateY(-8%);
   transition: 0.8s ease-in-out;
 }
 
