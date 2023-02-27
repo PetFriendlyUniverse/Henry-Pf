@@ -24,9 +24,9 @@ function TabStore() {
   const handleShowInfo = (e) => {
     setShowInfo(e.target.name);
   };
-  useEffect(() => {
-    dispatch(getStoreByUser(id));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getStoreByUser(id));
+  // }, []);
   return (
     <div>
       <div className=" flex h-full w-full flex-col rounded-md border-2 md:flex-row lg:w-full">
