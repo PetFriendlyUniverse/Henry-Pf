@@ -79,7 +79,7 @@ function Login() {
   };
 
   const handleClickGoogle = () => {
-    window.location.href = "http://localhost:3001/auth";
+    window.location.href = "https://petfriendly-backend.onrender.com/auth";
   };
 
   const handleSubmit = async (e) => {
