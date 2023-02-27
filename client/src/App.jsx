@@ -72,7 +72,6 @@ function App() {
             element={<FormModifyProduct />}
           />
           <Route path="/about" element={<About />} />
-          <Route path="/testcomponent" element={<TestComponent />} />
           <Route path="/loginpassword" element={<FormPassword />} />
 
           <Route path="/store/modify/:id" element={<FormModifyStore />} />
