@@ -21,14 +21,11 @@ function NavBarPrueba() {
     setActive(!active);
     menu.current.classList.toggle("hidden");
   };
-  // ----------------------------
-  // const userMenu = useRef(null);
-  // const toggleUserMenu = () => {
-  //   userMenu.current.classList.toggle("hidden");
-  //   arrow.current.classList.toggle("rotate-180");
-  // };
-  // ----------------------------
-  // const arrow = useRef(null);
+  const selectOption = () => {
+    setActive(!active);
+    menu.current.classList.add("hidden");
+  };
+
   let activeClassName = "border-b border-white ";
 
   return (
@@ -109,6 +106,7 @@ function NavBarPrueba() {
       >
         {/* link to landing shop */}
         <NavLink
+          onClick={selectOption}
           to="/shop"
           className="flex w-full gap-3 py-3 text-cornflowerblue "
         >
@@ -125,6 +123,7 @@ function NavBarPrueba() {
         </NavLink>
         {/* link to services */}
         <NavLink
+          onClick={selectOption}
           to="/services"
           className="flex w-full gap-3 py-3 text-cornflowerblue "
         >
@@ -141,6 +140,7 @@ function NavBarPrueba() {
         </NavLink>
         {/* Link to about */}
         <NavLink
+          onClick={selectOption}
           to="/about"
           className="flex w-full gap-3 py-3 text-cornflowerblue  "
         >
@@ -160,6 +160,7 @@ function NavBarPrueba() {
           <DropdownUser />
         ) : (
           <NavLink
+            onClick={selectOption}
             className="flex w-full justify-center gap-3 py-3 text-cornflowerblue  "
             to={"/login"}
           >

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
   return (
     <footer className=" bg-gray-100 text-center text-gray-600 lg:text-left">
@@ -151,21 +153,23 @@ function Footer() {
             <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
               TIENDA ONLINE
             </h6>
-            <p className="mb-4">
+            {/* <p className="mb-4">
               <a href="#!" className="text-gray-600">
                 Envío Programado
               </a>
-            </p>
-            <p className="mb-4">
-              <a href="#!" className="text-gray-600">
-                Formas de Entrega
-              </a>
-            </p>
-            <p className="mb-4">
+            </p> */}
+            <Link to="/profile/edit">
+              <p className="mb-4">
+                <a href="#!" className="text-gray-600">
+                  Direccion para delivery
+                </a>
+              </p>
+            </Link>
+            {/* <p className="mb-4">
               <a href="#!" className="text-gray-600">
                 Descuentos Bancarios
               </a>
-            </p>
+            </p> */}
             <p>
               <a href="#!" className="text-gray-600">
                 Cambios y devoluciones
@@ -178,12 +182,12 @@ function Footer() {
             </h6>
             <p className="mb-4">
               <a href="#!" className="text-gray-600">
-                Veterinaria
+                Guarderia
               </a>
             </p>
             <p className="mb-4">
               <a href="#!" className="text-gray-600">
-                Peluquería
+                Paseador
               </a>
             </p>
             <p className="mb-4">

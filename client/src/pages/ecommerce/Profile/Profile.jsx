@@ -21,8 +21,6 @@ import {
 } from "../../../redux/features/users/usersActions";
 
 function Profile() {
-  const { id } = useParams();
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showInfo, setShowInfo] = useState("profile");
@@ -39,10 +37,9 @@ function Profile() {
   };
 
   useEffect(() => {
+    dispatch(getStoreByUser(user?.id));
     dispatch(getUserApi(user.id));
-    dispatch(getStoreByUser(id));
   }, []);
-  console.log(id);
 
   return (
     <div className="flex justify-center  pb-28 pt-10 lg:items-center">
@@ -125,7 +122,11 @@ function Profile() {
               )}
               <div className="flex flex-col pt-2 lg:flex xl:flex">
                 {showInfo == "profile" ? (
-                  <PersonalInfo name={user?.name} user={user?.user} />
+                  <PersonalInfo
+                    name={user?.name}
+                    user={user?.user}
+                    lastname={user?.lastname}
+                  />
                 ) : showInfo == "contact" ? (
                   <Contacts
                     area_code={user?.area_code}

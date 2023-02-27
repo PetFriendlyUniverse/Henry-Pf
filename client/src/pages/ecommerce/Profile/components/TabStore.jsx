@@ -17,8 +17,8 @@ import React from "react";
 import { getStoreByUser } from "../../../../redux/features/users/usersActions";
 
 function TabStore() {
+  const id = localStorage.getItem("id");
   const dispatch = useDispatch();
-  const { id } = useParams();
   const [showInfo, setShowInfo] = useState("profile");
   const user = useSelector((state) => state.User?.userStoreId);
   const handleShowInfo = (e) => {
@@ -27,6 +27,7 @@ function TabStore() {
   useEffect(() => {
     dispatch(getStoreByUser(id));
   }, []);
+
   return (
     <div>
       <div className=" flex h-full w-full flex-col rounded-md border-2 md:flex-row lg:w-full">

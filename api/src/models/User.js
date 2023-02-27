@@ -90,18 +90,6 @@ module.exports = (sequelize) => {
           len: [1, 500],
         },
       },
-      area_code_emergency: {
-        type: DataTypes.INTEGER,
-        validate: {
-          len: [1, 4],
-        },
-      },
-      emergency_number: {
-        type: DataTypes.INTEGER,
-        validate: {
-          len: [1, 20],
-        },
-      },
       veterinary: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
