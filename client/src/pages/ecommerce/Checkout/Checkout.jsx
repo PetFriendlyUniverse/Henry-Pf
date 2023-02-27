@@ -14,7 +14,7 @@ function Checkout() {
   const userDetailId = useSelector((state) => state.User?.userId);
 
   const shopCartProducts = useSelector((state) => state.Products?.shopCart);
-  console.log(shopCartProducts);
+
   const productsIds = Object.keys(shopCartProducts);
   let totalPrice = 0;
   const products = productsIds.map((id) => {
@@ -31,7 +31,7 @@ function Checkout() {
       currency_id: "ARS",
     };
   });
-  console.log(arrProductsPayment);
+
   const handleClick = async () => {
     try {
       const { data } = await axios.post("/payment/new", arrProductsPayment);
@@ -43,9 +43,8 @@ function Checkout() {
         timer: 1100,
       });
     } catch (error) {
-      console.log(error);
       Swal.fire({
-        icon: "success",
+        icon: "error",
         title: "No se pudo realizar la compra",
         showConfirmButton: false,
         timer: 1100,
