@@ -148,7 +148,7 @@ function Login() {
                 type="email"
                 name="mail"
                 placeholder="Mail"
-                required=""
+                required={true}
               />
               <input
                 className={s.input}
@@ -157,7 +157,7 @@ function Login() {
                 type="password"
                 name="password"
                 placeholder="Contraseña"
-                required=""
+                required={true}
               />
               <button>Ingresar</button>
               <div className={s.loginGoogle}>
@@ -177,23 +177,23 @@ function Login() {
                 type="text"
                 name="user"
                 value={form.user}
-                class={s.input}
+                className={s.input}
                 placeholder="Usuario "
                 autoComplete="off"
-                required="true"
+                required={true}
               />
               {errors.user && (
                 <span className=" text-xs text-red-500">{errors.user}</span>
               )}
               <input
                 onChange={handleChange}
-                class={s.input}
+                className={s.input}
                 value={form.name}
                 type="text"
                 name="name"
                 placeholder="Nombre"
                 autoComplete="off"
-                required="true"
+                required={true}
               />
               {errors.name && (
                 <span className="text-xs text-red-500">{errors.name}</span>
@@ -201,38 +201,38 @@ function Login() {
               <input
                 onChange={handleChange}
                 value={form.lastname}
-                class={s.input}
+                className={s.input}
                 type="text"
                 name="lastname"
                 placeholder="Apellido "
                 autoComplete="off"
-                required="true"
+                required={true}
               />
               {errors.lastname && (
                 <span className="text-xs text-red-500">{errors.lastname}</span>
               )}
               <input
                 onChange={handleChange}
-                class={s.input}
+                className={s.input}
                 value={form.mail}
                 type="email"
                 name="mail"
                 placeholder="Mail"
-                required="true"
+                required={true}
                 autoComplete="off"
               />
               {errors.mail && (
                 <span className="text-xs text-red-500">{errors.mail}</span>
               )}
               <input
-                class={s.input}
+                className={s.input}
                 value={form.password}
                 onChange={handleChange}
                 type="password"
                 name="password"
                 placeholder="Contraseña"
                 autoComplete="off"
-                required="true"
+                required={true}
               />
               {errors.password && (
                 <span className="text-xs text-red-500">{errors.password}</span>

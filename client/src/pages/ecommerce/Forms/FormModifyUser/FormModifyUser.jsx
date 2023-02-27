@@ -14,6 +14,7 @@ function FormModifyUser() {
   const user = useSelector((state) => state.User?.userId);
   const [formComplete, setFormComplete] = useState(false);
   const [img, setImg] = useState(null);
+  const [imgFile, setImgFile] = useState(null);
 
   const [form, setForm] = useState({
     user: user?.user,
@@ -135,7 +136,7 @@ function FormModifyUser() {
     }
   };
   return (
-    <div className="flex h-screen justify-center py-28">
+    <div className="flex h-full justify-center ">
       <form
         onSubmit={handleSubmit}
         className="mt-10 flex max-h-screen w-full flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue drop-shadow-2xl md:w-3/5 lg:h-auto "

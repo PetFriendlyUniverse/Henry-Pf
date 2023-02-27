@@ -37,10 +37,10 @@ function CardStoreId({ name, img, weight, price, stock, id }) {
   }, []);
 
   return (
-    <div className="flex w-52  flex-col items-center  justify-center border-2   border-gray-100 bg-[#fff] px-3 pb-2">
+    <div className="flex h-64 w-52 flex-col items-center  justify-center border-2   border-gray-100 bg-[#fff] px-3 pb-2">
       <div className="relative   w-36 ">
         <div className="flex-end absolute  -right-10 top-0 flex aspect-square h-10 ">
-          <Link to={`/shop/detail/modify/${id}`} className="w-full">
+          <Link to={`/shop/detail/modify/${id}`}>
             <button
               component={"Modify"}
               className="h-6 w-6 overflow-hidden  rounded-full bg-ultraviolet  text-xs font-semibold text-white"
@@ -48,12 +48,14 @@ function CardStoreId({ name, img, weight, price, stock, id }) {
               /
             </button>
           </Link>
-          <button
-            onClick={handleClick}
-            className="h-6 w-6 overflow-hidden  rounded-full bg-ultraviolet  text-xs font-semibold text-white"
-          >
-            x
-          </button>
+          <Link>
+            <button
+              onClick={handleClick}
+              className="h-6 w-6 overflow-hidden  rounded-full bg-ultraviolet  text-xs font-semibold text-white"
+            >
+              x
+            </button>
+          </Link>
         </div>
         <Link to={`/shop/detail/${id}`}>
           <img src={img} alt="" className="aspect-square w-full " />
