@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import LandingShop from "./pages/ecommerce/LandingShop/LandingShop";
 import About from "./pages/About/About";
+import FormPassword from "./pages/FormPassword/FormPassword";
 
 // import Shop2 from "./pages/ecommerce/Shop/Shop2";
 
@@ -66,6 +67,7 @@ function App() {
           />
           <Route path="/about" element={<About />} />
           <Route path="/testcomponent" element={<TestComponent />} />
+          <Route path="/loginpassword" element={<FormPassword />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
