@@ -122,6 +122,7 @@ const getProductsByStore = async (storeId) => {
   const products = await Product.findAll({
     where: {
       StoreId: storeId,
+      enabled: true,
     },
   });
   return products;

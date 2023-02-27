@@ -107,7 +107,8 @@ function FormModifyStore() {
             text: "La Tienda ha sido creada correctamente",
             closeOnEsc: true,
             closeOnClickOutside: true,
-            onClose: () => navigate(`/profile/${id}`),
+          }).then(() => {
+            navigate(`/profile/${id}`);
           });
         })
         .catch((err) => {
