@@ -30,7 +30,7 @@ const ValidationProfile = (property, value) => {
   } else if (property === "name") {
     if (!stringRegex.test(value)) {
       error.name = "Por favor ingrese su nombre sin números o signos";
-    } else if (value.length > 15) {
+    } else if (value.length > 30) {
       error.name = "El nombre es demasiado largo";
     } else {
       error.name = "";
@@ -42,7 +42,7 @@ const ValidationProfile = (property, value) => {
   } else if (property === "lastname") {
     if (!stringRegex.test(value)) {
       error.lastname = "Por favor ingrese su apellido sin números o signos";
-    } else if (value.length > 15) {
+    } else if (value.length > 30) {
       error.lastname = "El apellido es demasiado largo";
     } else {
       error.lastname = "";
@@ -67,7 +67,7 @@ const ValidationProfile = (property, value) => {
     if (!passwordRegex.test(value)) {
       error.password =
         "La contraseña debe contener 8 caracteres mínimo, minúscula, mayúscula, número y signo especial";
-    } else if (value.length > 20) {
+    } else if (value.length > 100) {
       error.password = "La contraseña es demasiado larga";
     } else {
       error.password = "";
@@ -103,7 +103,7 @@ const ValidationProfile = (property, value) => {
   } else if (property === "province") {
     if (!stringRegex.test(value)) {
       error.province = "Por favor ingrese su provincia sin números o signos";
-    } else if (value.length > 15) {
+    } else if (value.length > 30) {
       error.province = "El nombre es demasiado largo";
     } else {
       error.province = "";
@@ -115,7 +115,7 @@ const ValidationProfile = (property, value) => {
   } else if (property === "locality") {
     if (!stringNumberRegex.test(value)) {
       error.locality = "Por favor ingrese su localidad sin números o signos";
-    } else if (value.length > 15) {
+    } else if (value.length > 30) {
       error.locality = "El nombre es demasiado largo";
     } else {
       error.locality = "";
@@ -139,7 +139,7 @@ const ValidationProfile = (property, value) => {
   } else if (property === "street_name") {
     if (!stringNumberRegex.test(value)) {
       error.street_name = "Por favor ingrese el nombre de su calle sin signos";
-    } else if (value.length > 15) {
+    } else if (value.length > 30) {
       error.street_name = "El nombre es demasiado largo";
     } else {
       error.street_name = "";
