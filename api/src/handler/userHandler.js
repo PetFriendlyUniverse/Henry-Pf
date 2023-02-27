@@ -59,14 +59,17 @@ const putUserHandler = async (req, res) => {
   const file = req.file;
   try {
     //const forInsomnia = JSON.parse(req.body.user); //Esto es unicamente para el insomnia
-    const image = await cloudinary.uploader.upload(file.path);
-    user.img = image.secure_url;
+    if (file) {
+      const image = await cloudinary.uploader.upload(file.path);
+      user.img = image.secure_url;
+    }
     const users = await updateAllUsers(user, id, file);
     res.status(200).json(users);
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
 };
+
 const deleteUserHandler = async (req, res) => {
   const { id } = req.params;
   try {
