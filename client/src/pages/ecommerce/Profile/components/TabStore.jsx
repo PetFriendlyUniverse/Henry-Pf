@@ -17,11 +17,10 @@ import React from "react";
 
 function TabStore() {
   const [showInfo, setShowInfo] = useState("profile");
-  const user = useSelector((state) => state.User?.userId);
+  const user = useSelector((state) => state.User?.userStoreId);
   const handleShowInfo = (e) => {
     setShowInfo(e.target.name);
   };
-
   return (
     <div>
       <div className=" flex h-full w-full flex-col rounded-md border-2 md:flex-row lg:w-full">
@@ -33,7 +32,7 @@ function TabStore() {
                 <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
                   <button
                     onClick={handleShowInfo}
-                    name="store"
+                    name="storeProfile"
                     className="inline-block p-4"
                   >
                     Perfil de Tienda
@@ -120,16 +119,16 @@ function TabStore() {
             ) : showInfo == "products" ? (
               <div className="w-full ">
                 {" "}
-                <CardStoreIdContainer />
+                <CardStoreIdContainer id={user?.id} />
               </div>
             ) : (
               <Payment />
             )}
 
-            <div class="flex pl-4 pt-5 sm:pl-12">
-              <div class="flex py-2">
-                <img src={interrogation} alt="help" class="w-3 sm:w-5" />
-                <Link to="/profile/store/create">
+            <div className="flex pl-4 pt-5 sm:pl-12">
+              <div className="flex py-2">
+                <img src={interrogation} alt="help" className="w-3 sm:w-5" />
+                <Link to={`/profile/store/create/${user?.id}`}>
                   <LinkButton component={"Crear producto"} />
                 </Link>
               </div>

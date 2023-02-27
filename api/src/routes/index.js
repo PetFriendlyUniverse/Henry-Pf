@@ -17,11 +17,11 @@ require("../helpers/google.js");
 const router = Router();
 
 const { generator } = require("../randomGenerator");
-// generator();
-router.use("/randomgenerator", (req, res) => {
-  generator();
-  res.send("Ejecucion de randomGenerator exitosa");
-});
+generator();
+// router.use("/randomgenerator", (req, res) => {
+//   generator();
+//   res.send("Ejecucion de randomGenerator exitosa");
+// });
 
 router.use("/user", userRoutes);
 router.use("/products", productsRoutes);
@@ -51,7 +51,7 @@ router.get(
     const { token } = req.user;
     const { id } = req.user.user;
 
-    res.redirect(`https://petfriendlyuniverse.vercel.app/shop?t=${token}&i=${id}`);
+    res.redirect(`http://localhost:5173/shop?t=${token}&i=${id}`);
 
     // res.send({ token: token, id: id });
   }

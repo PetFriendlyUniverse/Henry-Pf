@@ -122,10 +122,10 @@ function ProductDetail() {
                 -codigo del producto:{productId.id}
               </span>
 
-              <div class="flex items-center">
+              <div className="flex items-center">
                 <svg
                   aria-hidden="true"
-                  class="h-5 w-5 text-yellow-400"
+                  className="h-5 w-5 text-yellow-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +135,7 @@ function ProductDetail() {
                 </svg>
                 <svg
                   aria-hidden="true"
-                  class="h-5 w-5 text-yellow-400"
+                  className="h-5 w-5 text-yellow-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +145,7 @@ function ProductDetail() {
                 </svg>
                 <svg
                   aria-hidden="true"
-                  class="h-5 w-5 text-yellow-400"
+                  className="h-5 w-5 text-yellow-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +155,7 @@ function ProductDetail() {
                 </svg>
                 <svg
                   aria-hidden="true"
-                  class="h-5 w-5 text-yellow-400"
+                  className="h-5 w-5 text-yellow-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +165,7 @@ function ProductDetail() {
                 </svg>
                 <svg
                   aria-hidden="true"
-                  class="h-5 w-5 text-gray-300 dark:text-gray-500"
+                  className="h-5 w-5 text-gray-300 dark:text-gray-500"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -245,12 +245,6 @@ function ProductDetail() {
                   <div className="text-xs">
                     Retirá sin cargo por tu sucursal preferida
                   </div>
-                  <div className="mx-auto my-2 flex w-auto">
-                    <LessButton component={"Delete"} onClick={handleClick} />
-                    <Link to={`/shop/detail/modify/${id}`} className="w-full">
-                      <MoarButton component={"Modify"} />
-                    </Link>
-                  </div>
                 </div>
               </div>
             </div>
@@ -271,16 +265,16 @@ function ProductDetail() {
       </div>
 
       {/* <div>
-        <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+        <div className="mb-4 border-b border-gray-200 dark:border-gray-700">
           <ul
-            class="-mb-px flex flex-wrap text-center text-sm font-medium"
+            className="-mb-px flex flex-wrap text-center text-sm font-medium"
             id="myTab"
             data-tabs-toggle="#myTabContent"
             role="tablist"
           >
-            <li class="mr-2" role="presentation">
+            <li className="mr-2" role="presentation">
               <button
-                class="inline-block rounded-t-lg border-b-2 p-4"
+                className="inline-block rounded-t-lg border-b-2 p-4"
                 id="profile-tab"
                 data-tabs-target="#profile"
                 type="button"
@@ -291,9 +285,9 @@ function ProductDetail() {
                 Descripcion
               </button>
             </li>
-            <li class="mr-2" role="presentation">
+            <li className="mr-2" role="presentation">
               <button
-                class="inline-block rounded-t-lg border-b-2 border-transparent p-4 hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
+                className="inline-block rounded-t-lg border-b-2 border-transparent p-4 hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
                 id="dashboard-tab"
                 data-tabs-target="#dashboard"
                 type="button"
@@ -308,14 +302,14 @@ function ProductDetail() {
         </div>
         <div id="myTabContent">
           <div
-            class="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
+            className="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
             id="profile"
             role="tabpanel"
             aria-labelledby="profile-tab"
           >
-            <p class="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               This is some placeholder content the{" "}
-              <strong class="font-medium text-gray-800 dark:text-white">
+              <strong className="font-medium text-gray-800 dark:text-white">
                 Profile tab's associated content
               </strong>
               . Clicking another tab will toggle the visibility of this one for
@@ -324,14 +318,14 @@ function ProductDetail() {
             </p>
           </div>
           <div
-            class="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
+            className="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
             id="dashboard"
             role="tabpanel"
             aria-labelledby="dashboard-tab"
           >
-            <p class="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               This is some placeholder content the{" "}
-              <strong class="font-medium text-gray-800 dark:text-white">
+              <strong className="font-medium text-gray-800 dark:text-white">
                 Dashboard tab's associated content
               </strong>
               . Clicking another tab will toggle the visibility of this one for
@@ -340,14 +334,14 @@ function ProductDetail() {
             </p>
           </div>
           <div
-            class="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
+            className="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
             id="settings"
             role="tabpanel"
             aria-labelledby="settings-tab"
           >
-            <p class="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               This is some placeholder content the{" "}
-              <strong class="font-medium text-gray-800 dark:text-white">
+              <strong className="font-medium text-gray-800 dark:text-white">
                 Settings tab's associated content
               </strong>
               . Clicking another tab will toggle the visibility of this one for
@@ -356,14 +350,14 @@ function ProductDetail() {
             </p>
           </div>
           <div
-            class="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
+            className="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
             id="contacts"
             role="tabpanel"
             aria-labelledby="contacts-tab"
           >
-            <p class="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               This is some placeholder content the{" "}
-              <strong class="font-medium text-gray-800 dark:text-white">
+              <strong className="font-medium text-gray-800 dark:text-white">
                 Contacts tab's associated content
               </strong>
               . Clicking another tab will toggle the visibility of this one for

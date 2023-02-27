@@ -44,7 +44,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: true,
         validate: {
-          lent: [5, 30],
+          len: [5, 30],
         },
       },
       street_number: {
@@ -62,6 +62,12 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         validate: {
           len: [1, 500],
+        },
+      },
+      mail: {
+        type: DataTypes.STRING,
+        validate: {
+          len: [1, 50],
         },
       },
       qualification: {

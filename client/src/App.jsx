@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import LandingShop from "./pages/ecommerce/LandingShop/LandingShop";
 import About from "./pages/About/About";
+import TabStore from "./pages/ecommerce/Profile/components/TabStore";
 
 // import Shop2 from "./pages/ecommerce/Shop/Shop2";
 
@@ -34,7 +35,7 @@ const FormModifyUser = lazy(() =>
 const Profile = lazy(() => import("./pages/ecommerce/Profile/Profile"));
 const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 
-const TestComponent = lazy(() =>
+const FormModifyStore = lazy(() =>
   import("./pages/ecommerce/Forms/FormModifyStore/FormModifyStore")
 ); //Dejen esto asi para testear sus componentes a ver como se ven o si funcionan, solo cambien la importacion
 
@@ -59,13 +60,17 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile/edit/:id" element={<FormModifyUser />} />
           <Route path="/profile/:id" element={<Profile />} />
-          <Route path="/profile/store/create" element={<FormCreateProduct />} />
+          <Route path="/profile/store/:id" element={<TabStore />} />
+          <Route
+            path="/profile/store/create/:id"
+            element={<FormCreateProduct />}
+          />
           <Route
             path="/shop/detail/modify/:id"
             element={<FormModifyProduct />}
           />
           <Route path="/about" element={<About />} />
-          <Route path="/testcomponent" element={<TestComponent />} />
+          <Route path="/store/modify/:id" element={<FormModifyStore />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

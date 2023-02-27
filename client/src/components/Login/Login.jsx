@@ -14,12 +14,11 @@ function Login() {
     password: "",
   });
   const [form, setForm] = useState({
-    user: "",
-    name: "",
-    lastname: "",
+    user: "maximiliano",
+    name: "maximiliano",
+    lastname: "permingeat",
     mail: "",
     password: "",
-    phone: "",
   });
   const [errors, setErrors] = useState({
     user: "",
@@ -27,7 +26,6 @@ function Login() {
     lastname: "",
     mail: "",
     password: "",
-    phone: "",
   });
   // const [repeat, setRepeat] = useState({
   //   repeatPassword: "",
@@ -57,7 +55,6 @@ function Login() {
     e.preventDefault();
     try {
       await axios.post("user/login", login).then(async (res) => {
-        console.log("then");
         const token = res.data.token;
         const id = res.data.id;
         localStorage.setItem("token", token);
@@ -82,45 +79,51 @@ function Login() {
   };
 
   const handleClickGoogle = () => {
-    window.location.href = "https://petfriendly-backend.onrender.com/auth";
+    window.location.href = "http://localhost:3001/auth";
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errorValues = Object.values(errors);
     const isFormValid = errorValues.every((val) => val === "");
     if (isFormValid) {
-      axios
-        .post("user/create", form)
-        .then((res) =>
-          Swal.fire({
+      try {
+        await axios.post("user/create", form).then(async (res) => {
+          await Swal.fire({
             icon: "success",
             title: "El registro se ha sido realizado con éxito!",
             showConfirmButton: true,
             timer: 1500,
-          })
-        )
-        .catch(
-          Swal.fire({
-            icon: "error",
-            title: "El registro no se ha sido realizado!",
-            showConfirmButton: true,
-            timer: 1500,
-          })
-        );
-      setForm({
-        user: "",
-        name: "",
-        lastname: "",
-        mail: "",
-        password: "",
-        phone: "",
-      });
-      // setRepeat({
-      //   repeatPassword: "",
-      // });
+            closeOnClickOutside: true,
+            closeOnEsc: true,
+          });
+          setForm({
+            user: "",
+            name: "",
+            lastname: "",
+            mail: "",
+            password: "",
+          });
+        });
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "El registro no se ha sido realizado!",
+          showConfirmButton: true,
+          timer: 1500,
+          closeOnClickOutside: true,
+          closeOnEsc: true,
+        });
+      }
     } else {
-      console.log("Hay errores en el formulario");
+      Swal.fire({
+        icon: "error",
+        title: "Hay errores en el formulario",
+        showConfirmButton: true,
+        timer: 1500,
+        closeOnClickOutside: true,
+        closeOnEsc: true,
+      });
     }
   };
 
@@ -152,7 +155,7 @@ function Login() {
                 type="email"
                 name="mail"
                 placeholder="Mail"
-                required=""
+                required={true}
               />
               <input
                 className={s.input}
@@ -161,7 +164,7 @@ function Login() {
                 type="password"
                 name="password"
                 placeholder="Contraseña"
-                required=""
+                required={true}
               />
               <button>Ingresar</button>
               <div className={s.loginGoogle}>
@@ -181,78 +184,75 @@ function Login() {
                 type="text"
                 name="user"
                 value={form.user}
-                class={s.input}
+                className={s.input}
                 placeholder="Usuario "
                 autoComplete="off"
-                required="true"
+                required={true}
               />
               {errors.user && (
-                <span className=" text-xs text-red-500">{errors.user}</span>
+                <span className="ml-1 -mt-3 text-sm tracking-wide text-red-700">
+                  {errors.user}
+                </span>
               )}
               <input
                 onChange={handleChange}
-                class={s.input}
+                className={s.input}
                 value={form.name}
                 type="text"
                 name="name"
                 placeholder="Nombre"
                 autoComplete="off"
-                required="true"
+                required={true}
               />
               {errors.name && (
-                <span className="text-xs text-red-500">{errors.name}</span>
+                <span className="ml-1 -mt-3 text-sm tracking-wide text-red-700">
+                  {errors.name}
+                </span>
               )}
               <input
                 onChange={handleChange}
                 value={form.lastname}
-                class={s.input}
+                className={s.input}
                 type="text"
                 name="lastname"
                 placeholder="Apellido "
                 autoComplete="off"
-                required="true"
+                required={true}
               />
               {errors.lastname && (
-                <span className="text-xs text-red-500">{errors.lastname}</span>
+                <span className="ml-1 -mt-3 text-sm tracking-wide text-red-700">
+                  {errors.lastname}
+                </span>
               )}
               <input
                 onChange={handleChange}
-                class={s.input}
+                className={s.input}
                 value={form.mail}
                 type="email"
                 name="mail"
                 placeholder="Mail"
-                required="true"
+                required={true}
                 autoComplete="off"
               />
               {errors.mail && (
-                <span className="text-xs text-red-500">{errors.mail}</span>
+                <span className="ml-1 -mt-3 text-sm tracking-wide text-red-700">
+                  {errors.mail}
+                </span>
               )}
               <input
-                onChange={handleChange}
-                value={form.phone}
-                class={s.input}
-                type="number"
-                name="phone"
-                placeholder="Teléfono"
-                autoComplete="off"
-                required="true"
-              />
-              {errors.phone && (
-                <span className="text-xs text-red-500">{errors.phone}</span>
-              )}
-              <input
-                class={s.input}
+                className={s.input}
                 value={form.password}
                 onChange={handleChange}
                 type="password"
                 name="password"
                 placeholder="Contraseña"
                 autoComplete="off"
-                required="true"
+                required={true}
               />
               {errors.password && (
-                <span className="text-xs text-red-500">{errors.password}</span>
+                <span className="ml-1 -mt-3 text-center text-sm tracking-wide text-red-700">
+                  {errors.password}
+                </span>
               )}
               {/* <input
                 onChange={handleChangeRepeat}
