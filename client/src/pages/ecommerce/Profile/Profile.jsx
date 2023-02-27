@@ -1,7 +1,7 @@
 import { Tabs } from "flowbite-react";
 import TabUser from "./components/TabUser";
 import TabStore from "./components/TabStore";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import interrogation from "../../../assets/general/interrogation.svg";
@@ -21,6 +21,8 @@ import {
 } from "../../../redux/features/users/usersActions";
 
 function Profile() {
+  const { id } = useParams();
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showInfo, setShowInfo] = useState("profile");
@@ -35,14 +37,13 @@ function Profile() {
       navigate(`/store/modify/${id}`);
     });
   };
+
   useEffect(() => {
     dispatch(getUserApi(user.id));
+    dispatch(getStoreByUser(id));
   }, []);
-  if (user.store) {
-    useEffect(() => {
-      dispatch(getStoreByUser(user.id));
-    }, []);
-  }
+  console.log(id);
+
   return (
     <div className="flex justify-center  pb-28 pt-10 lg:items-center">
       <div className=" flex h-full w-3/4 flex-col-reverse justify-end border-2 border-gray-200">

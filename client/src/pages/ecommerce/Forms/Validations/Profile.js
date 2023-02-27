@@ -16,7 +16,7 @@ const ValidationProfile = (property, value) => {
     error.user = "Ingrese su nickname";
   } else if (property === "user") {
     if (!stringRegex.test(value)) {
-      error.user = "Por favor ingrese su nickname sin numeros o signos";
+      error.user = "Por favor ingrese su nickname sin números o signos";
     } else if (value.length > 15) {
       error.user = "El nickname es demasiado largo";
     } else {
@@ -25,10 +25,10 @@ const ValidationProfile = (property, value) => {
   }
 
   if (property === "name" && !value) {
-    error.name = "Ingrese su Nombre";
+    error.name = "Ingrese su nombre";
   } else if (property === "name") {
     if (!stringRegex.test(value)) {
-      error.name = "Por favor ingrese su nombre sin numeros o signos";
+      error.name = "Por favor ingrese su nombre sin números o signos";
     } else if (value.length > 15) {
       error.name = "El nombre es demasiado largo";
     } else {
@@ -40,7 +40,7 @@ const ValidationProfile = (property, value) => {
     error.lastname = "Ingrese su apellido";
   } else if (property === "lastname") {
     if (!stringRegex.test(value)) {
-      error.lastname = "Por favor ingrese su apellido sin numeros o signos";
+      error.lastname = "Por favor ingrese su apellido sin números o signos";
     } else if (value.length > 15) {
       error.lastname = "El apellido es demasiado largo";
     } else {
@@ -52,7 +52,7 @@ const ValidationProfile = (property, value) => {
     error.mail = "Ingrese un email";
   } else if (property === "mail") {
     if (!emailRegex.test(value)) {
-      error.mail = "El email no es valido";
+      error.mail = "El email no es válido";
     } else if (value.length > 50) {
       error.mail = "El email es demasiado largo";
     } else {
@@ -65,7 +65,7 @@ const ValidationProfile = (property, value) => {
   } else if (property === "password") {
     if (!passwordRegex.test(value)) {
       error.password =
-        "La contraseña debe contener 8 caracteres minimo, minuscula, mayuscula, numero y signo especial";
+        "La contraseña debe contener 8 caracteres mínimo, minúscula, mayúscula, número y signo especial";
     } else if (value.length > 20) {
       error.password = "La contraseña es demasiado larga";
     } else {
@@ -74,10 +74,10 @@ const ValidationProfile = (property, value) => {
   }
 
   if (property === "area_code" && value <= 0) {
-    error.area_code = "Ingrese su codigo de area";
+    error.area_code = "Ingrese su código de area";
   } else if (property === "area_code") {
     if (!numberRegex.test(value)) {
-      error.area_code = "Por favor ingrese bien el codigo de area";
+      error.area_code = "Por favor ingrese bien el código de area";
     } else if (value.length > 7) {
       error.area_code = "Demasiado largo";
     } else {
@@ -86,22 +86,22 @@ const ValidationProfile = (property, value) => {
   }
 
   if (property === "number" && !value) {
-    error.number = "Debe ingresar un numero telefonico";
+    error.number = "Debe ingresar un numero telefónico";
   } else if (property === "number") {
     if (!numberRegex.test(value)) {
-      error.number = "Por favor ingrese un telefono sin letras o signos";
+      error.number = "Por favor ingrese un teléfono sin letras o signos";
     } else if (value.length > 30 || value.length < 6) {
-      error.number = "Por favor ingrese un telefono valido";
+      error.number = "Por favor ingrese un teléfono valido";
     } else {
       error.number = "";
     }
   }
 
   if (property === "province" && !value) {
-    error.province = "Ingrese su Provincia";
+    error.province = "Ingrese su provincia";
   } else if (property === "province") {
     if (!stringRegex.test(value)) {
-      error.province = "Por favor ingrese su Provincia sin numeros o signos";
+      error.province = "Por favor ingrese su provincia sin números o signos";
     } else if (value.length > 15) {
       error.province = "El nombre es demasiado largo";
     } else {
@@ -110,10 +110,10 @@ const ValidationProfile = (property, value) => {
   }
 
   if (property === "locality" && !value) {
-    error.locality = "Ingrese su Localidad";
+    error.locality = "Ingrese su localidad";
   } else if (property === "locality") {
     if (!stringNumberRegex.test(value)) {
-      error.locality = "Por favor ingrese su Localidad sin numeros o signos";
+      error.locality = "Por favor ingrese su localidad sin números o signos";
     } else if (value.length > 15) {
       error.locality = "El nombre es demasiado largo";
     } else {
@@ -122,12 +122,12 @@ const ValidationProfile = (property, value) => {
   }
 
   if (property === "zip_code" && value <= 0) {
-    error.zip_code = "Ingrese un codigo postal";
+    error.zip_code = "Ingrese un código postal";
   } else if (property === "zip_code") {
     if (!numberRegex.test(value)) {
-      error.zip_code = "Por favor ingrese bien el codigo postal";
+      error.zip_code = "Por favor ingrese bien el código postal";
     } else if (value.length > 7) {
-      error.zip_code = "No valido";
+      error.zip_code = "No válido";
     } else {
       error.zip_code = "";
     }
@@ -146,22 +146,22 @@ const ValidationProfile = (property, value) => {
   }
 
   if (property === "street_number" && value <= 0) {
-    error.street_number = "Ingrese su numeracion";
+    error.street_number = "Ingrese su numeración";
   } else if (property === "street_number") {
     if (!numberRegex.test(value)) {
-      error.street_number = "Por favor ingrese la numeracion correcta";
+      error.street_number = "Por favor ingrese la numeración correcta";
     } else if (value.length > 7) {
-      error.street_number = "No valido";
+      error.street_number = "No válido";
     } else {
       error.street_number = "";
     }
   }
 
   if (property === "area_code_emergency" && value <= 0) {
-    error.area_code_emergency = "Ingrese su codigo de area";
+    error.area_code_emergency = "Ingrese su código de area";
   } else if (property === "area_code_emergency") {
     if (!numberRegex.test(value)) {
-      error.area_code_emergency = "Por favor ingrese bien el codigo de area";
+      error.area_code_emergency = "Por favor ingrese bien el código de área";
     } else if (value.length > 7) {
       error.area_code_emergency = "Demasiado largo";
     } else {
@@ -170,10 +170,10 @@ const ValidationProfile = (property, value) => {
   }
 
   if (property === "emergency_number" && value <= 0) {
-    error.emergency_number = "Ingrese un numero de emergencia";
+    error.emergency_number = "Ingrese un número de emergencia";
     if (!numberRegex.test(value)) {
       error.emergency_number =
-        "Por favor ingrese un numero de emergencia valido";
+        "Por favor ingrese un número de emergencia válido";
     } else if (value.length > 15) {
       error.emergency_number = "Demasiado largo";
     } else {

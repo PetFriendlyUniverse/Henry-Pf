@@ -34,7 +34,7 @@ module.exports = {
       },
       backgroundImage: {
         whitepattern: "url('./assets/imagenes/backgroundwhite.png')",
-        balloon: "url('./assets/imagenes/fondo-landingshop.png')",
+        balloon: "url('./assets/imagenes/ASD-01.png')",
         perros: "url('./assets/imagenes/PERR1.png')",
         gatos: "url('./assets/imagenes/CAT.png')",
         contacto: "url('./assets/imagenes/CONTACTO1.png')",

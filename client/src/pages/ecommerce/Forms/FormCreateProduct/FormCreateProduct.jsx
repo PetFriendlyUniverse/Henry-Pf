@@ -4,14 +4,16 @@ import { ValidateProduct } from "../Validations/ValidateProduct";
 import LinkButton from "../../../../components/Button/LinkButton";
 import Swal from "sweetalert2";
 import { Carousel } from "flowbite-react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function FormCreateProduct() {
   const { id } = useParams();
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const navigate = useNavigate();
   const [imgFile, setImgFile] = useState(null);
   const [formComplete, setFormComplete] = useState(false);
   const [img, setImg] = useState(null);
+
   const [form, setForm] = useState({
     name: "",
     price: "",
@@ -78,6 +80,15 @@ function FormCreateProduct() {
     newForm.append("storeId", form.storeId);
     console.log(newForm);
     if (isFormValid) {
+      Swal.fire({
+        title: "Now loading",
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
       axios
         .post("/products/create", newForm, {
           headers: {
@@ -89,17 +100,22 @@ function FormCreateProduct() {
             title: "Producto creado",
             icon: "success",
             text: "El producto ha sido creado correctamente",
+            closeOnEsc: true,
+            closeOnClickOutside: true,
           });
+        })
+        .then(() => {
+          navigate(`/profile/store/${id}`);
         });
     } else {
       Swal.fire({
         icon: "error",
         title: "Error en el formulario",
         text: "Por favor, revisa los campos del formulario",
+        closeOnEsc: true,
+        closeOnClickOutside: true,
       });
     }
-    console.log(img.name);
-    console.log(img);
   };
 
   return (

@@ -5,19 +5,10 @@ import logo from "../../assets/logo/logo.png";
 import shop from "../../assets/general/shop.svg";
 import services from "../../assets/general/services.svg";
 import about from "../../assets/general/about.svg";
-import user from "../../assets/general/profile.svg";
-import arrowDropdown from "../../assets/arrows/arrowDropdown.svg";
-import shopcart from "../../assets/general/shopcart.svg";
-import { useDispatch, useSelector } from "react-redux";
-import Swal from "sweetalert2";
-import { clearShopCart } from "../../redux/features/products/productsSlice";
-import deleteBtn from "../../assets/general/delete.svg";
-import LinkButton from "../Button/LinkButton";
-import Subcard from "../SubCard/Subcard";
 import SearchForm from "./components/SearchForm";
 import DropdownUser from "./components/DropdownUser";
 import login from "../../assets/general/login.svg";
-import { priceFormatter } from "../../adapters/priceFormatter";
+import DropdownShop from "./components/DropdownShop";
 
 function NavBarPrueba() {
   // Logica de usuario
@@ -31,50 +22,15 @@ function NavBarPrueba() {
     menu.current.classList.toggle("hidden");
   };
   // ----------------------------
-  const userMenu = useRef(null);
-  const toggleUserMenu = () => {
-    userMenu.current.classList.toggle("hidden");
-    arrow.current.classList.toggle("rotate-180");
-  };
+  // const userMenu = useRef(null);
+  // const toggleUserMenu = () => {
+  //   userMenu.current.classList.toggle("hidden");
+  //   arrow.current.classList.toggle("rotate-180");
+  // };
   // ----------------------------
-  const arrow = useRef(null);
+  // const arrow = useRef(null);
   let activeClassName = "border-b border-white ";
-  // --------------- Logic Shop Modal -------------------- //
-  const dispatch = useDispatch();
-  const shopCartProducts = useSelector((state) => state.Products?.shopCart);
-  const productsIds = Object.keys(shopCartProducts);
-  let totalPrice = 0;
-  const products = productsIds.map((id) => {
-    totalPrice += shopCartProducts[id].amount * shopCartProducts[id].price;
-    return shopCartProducts[id];
-  });
-  const handleDelete = () => {
-    totalPrice > 0 &&
-      Swal.fire({
-        icon: "warning",
-        title: "Está seguro de que quiere eliminar su carro de compras?",
-        showConfirmButton: true,
-        confirmButtonText: "Si",
-        showDenyButton: true,
-        denyButtonText: "No",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          dispatch(dispatch(clearShopCart()));
-          Swal.fire({
-            title: "Productos Eliminados",
-            icon: "success",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      });
-  };
-  const modalShop = useRef(null);
-  const img = useRef(null);
-  const handleModalShow = () => {
-    modalShop.current.classList.toggle("hidden");
-    img.current.classList.toggle("rotate-180");
-  };
+
   return (
     <nav className="sticky top-0  z-50 flex w-full flex-col items-center justify-between bg-russianviolet p-4 2xl:py-5">
       {/* Contenedor flex logo y button mobile */}
@@ -227,58 +183,7 @@ function NavBarPrueba() {
         <SearchForm />
 
         {/* ShopModal */}
-        <div className="flex w-full flex-col items-center  md:relative md:mt-2 md:w-52">
-          {/* button modalShop */}
-          <button
-            onClick={handleModalShow}
-            className="flex w-1/2 items-center justify-around  rounded-xl border border-cornflowerblue py-2 md:w-full "
-          >
-            <img src={shopcart} alt="" />
-            <span className="font-bold text-cornflowerblue">
-              {priceFormatter(totalPrice)}
-            </span>
-            <img
-              ref={img}
-              src={arrowDropdown}
-              alt=""
-              className="  transition-transform"
-            />
-          </button>
-          {/* contenedor modalShop */}
-          <div
-            ref={modalShop}
-            className=" z-10 mt-2 hidden  w-full rounded-b-lg bg-blue-100 group-hover:block  md:absolute md:right-0 md:top-10 md:h-80  md:w-[500px] lg:h-96 2xl:left-0"
-          >
-            <div className=" flex w-full items-center justify-between border-b border-black px-4 py-1 ">
-              <p className="inline-block">{products.length} productos</p>
-              <span onClick={handleDelete}>
-                <img
-                  src={deleteBtn}
-                  className="w-7 cursor-pointer hover:scale-105"
-                  alt="vaciar carrito"
-                />
-              </span>
-            </div>
-            <div
-              className={`flex h-40 flex-col gap-2 ${
-                products.length && "overflow-scroll overflow-x-hidden"
-              }  py-3 md:h-56 lg:h-[340px] `}
-            >
-              {products?.map((prod) => (
-                <Subcard prod={prod} key={prod.id} />
-              ))}
-            </div>
-            <hr />
-            <div className="flex items-center justify-between rounded-b-lg bg-blue-200 p-2 ">
-              <Link to="/shop/checkout">
-                <LinkButton component={"Confirmar Compra"} />
-              </Link>
-              <h2 className="border-blue inline-block rounded-md border py-2 px-4">
-                Total: {priceFormatter(totalPrice)}
-              </h2>
-            </div>
-          </div>
-        </div>
+        <DropdownShop />
       </div>
     </nav>
   );
