@@ -10,6 +10,7 @@ import img6 from "../../../assets/imagenes/camaa-gato.jpg";
 import Recomendados from "../../../components/Recomendados/Recomendados";
 import { useDispatch } from "react-redux";
 import { setFilters } from "../../../redux/features/products/productsSlice";
+import universe from "../../../assets/imagenes/ASD-01.png";
 
 function LandingShop() {
   const dispatch = useDispatch();
@@ -18,9 +19,14 @@ function LandingShop() {
   };
   return (
     <>
-      <header className="clip-header relative flex w-full flex-col bg-balloon bg-cover bg-fixed bg-center bg-no-repeat pt-24 text-black sm:h-[650px]  lg:min-h-[800px]  xl:min-h-[800px]">
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        <div className="z-10 sm:mx-auto sm:grid sm:h-full  sm:grid-cols-3 sm:items-center sm:justify-center sm:gap-1 md:w-10/12 md:justify-items-center lg:top-1/2 lg:grid-cols-6 lg:gap-4">
+      <header className="clip-header relative flex w-full flex-col overflow-hidden  bg-cover bg-fixed bg-center bg-no-repeat pt-24 text-black sm:h-[350px] lg:h-[550px] lg:min-h-[400px]  xl:min-h-[400px]">
+        <img
+          src={universe}
+          alt=""
+          className="absolute -top-20 h-0 w-0 object-cover contrast-125 sm:top-0 sm:h-full sm:w-full"
+        ></img>
+        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+        <div className="z-10 overflow-hidden sm:mx-auto  sm:grid sm:h-0 sm:w-0 sm:grid-cols-3 sm:items-center sm:justify-center sm:gap-1 md:justify-items-center lg:top-1/2 lg:grid-cols-6 lg:gap-4">
           <Link
             onClick={() => {
               handleSetFilter("Perros");
@@ -57,7 +63,7 @@ function LandingShop() {
       </header>
       <main className="bg-[url('https://petfood.com.ar/img/cms/symphony.png')] py-6 px-3 sm:px-5 md:px-10 lg:px-32 xl:px-52 2xl:px-80 ">
         <section className="mt-5 flex w-full flex-col items-center sm:grid sm:grid-cols-2 sm:gap-3">
-          <div className="sm:col-start-1 sm:col-end-3">
+          <div className="flex flex-col items-center justify-center sm:col-start-1 sm:col-end-3">
             <h1 className="text-center font-bold uppercase sm:text-2xl">
               productos
               <span className="font-bold uppercase text-cornflowerblue sm:text-2xl">
@@ -65,8 +71,96 @@ function LandingShop() {
                 destacados
               </span>
             </h1>
+            <Link
+              to="/shop"
+              className="my-3 mt-12 flex w-10/12 items-center justify-center gap-2  bg-russianviolet py-1 text-white sm:gap-5 sm:py-2  sm:px-4 lg:h-16"
+            >
+              <span>
+                <svg
+                  width="20px"
+                  height="20px"
+                  viewBox="0 0 24 24"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                  fill="#000000"
+                >
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    {" "}
+                    <title>Menu</title>{" "}
+                    <g
+                      id="Page-1"
+                      stroke="none"
+                      strokeWidth="1"
+                      fill="none"
+                      fillRule="evenodd"
+                    >
+                      {" "}
+                      <g id="Menu">
+                        {" "}
+                        <rect
+                          id="Rectangle"
+                          fillRule="nonzero"
+                          x="0"
+                          y="0"
+                          width="24"
+                          height="24"
+                        >
+                          {" "}
+                        </rect>{" "}
+                        <line
+                          x1="5"
+                          y1="7"
+                          x2="19"
+                          y2="7"
+                          id="Path"
+                          stroke="#0C0310"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        >
+                          {" "}
+                        </line>{" "}
+                        <line
+                          x1="5"
+                          y1="17"
+                          x2="19"
+                          y2="17"
+                          id="Path"
+                          stroke="#0C0310"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        >
+                          {" "}
+                        </line>{" "}
+                        <line
+                          x1="5"
+                          y1="12"
+                          x2="19"
+                          y2="12"
+                          id="Path"
+                          stroke="#0C0310"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        >
+                          {" "}
+                        </line>{" "}
+                      </g>{" "}
+                    </g>{" "}
+                  </g>
+                </svg>
+              </span>
+              <span className="text-xs uppercase sm:text-base">
+                ver nuestro shop completo
+              </span>
+            </Link>
           </div>
-          <div className="mt-12 flex w-full flex-col items-center sm:col-start-1 sm:col-end-2">
+          <div className="mt-8 flex w-full flex-col items-center sm:col-start-1 sm:col-end-2">
             <Link
               to="/shop"
               className="my-3 flex w-4/5 items-center justify-center gap-2 bg-russianviolet py-1 text-white sm:gap-5 sm:py-2  sm:px-4 lg:h-16"
@@ -152,10 +246,10 @@ function LandingShop() {
                 </svg>
               </span>
               <span className="text-xs uppercase sm:text-base">
-                ver todos los alimentos para perros
+                ver todos los articulos para perros
               </span>
             </Link>
-            <div className=" h-96 w-full sm:h-64 xl:h-80 2xl:h-96">
+            <div className="mt-12 h-96 w-full sm:h-64 xl:h-80 2xl:h-96">
               <Carousel>
                 <img src={img1} alt="..." />
                 <img src={img2} alt="..." />
@@ -163,7 +257,7 @@ function LandingShop() {
               </Carousel>
             </div>
           </div>
-          <div className="mt-12 flex w-full flex-col items-center sm:col-start-2 sm:col-end-3">
+          <div className="mt-8 flex w-full flex-col items-center sm:col-start-2 sm:col-end-3">
             <Link
               to="/shop"
               className="mb-3 mt-10  flex w-4/5 items-center justify-center gap-2 bg-russianviolet py-1 text-white sm:my-3 sm:gap-5 sm:py-2 sm:px-4 lg:h-16 "
@@ -249,10 +343,10 @@ function LandingShop() {
                 </svg>
               </span>
               <span className="text-xs uppercase sm:text-base">
-                ver todos los alimentos para gatos
+                ver todos los articulos para gatos
               </span>
             </Link>
-            <div className=" h-96 w-full sm:h-64 xl:h-80 2xl:h-96">
+            <div className="mt-12 h-96 w-full sm:h-64 xl:h-80 2xl:h-96">
               <Carousel>
                 <img src={img4} alt="..." />
                 <img src={img5} alt="..." />

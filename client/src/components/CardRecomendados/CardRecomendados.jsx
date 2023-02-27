@@ -3,6 +3,7 @@ import AddShopButton from "../Button/AddShopButton";
 import ribbon from "../../assets/imagenes/ribbon.png";
 import { setShopCart } from "../../redux/features/products/productsSlice";
 import { useState } from "react";
+import { priceFormatter } from "../../adapters/priceFormatter";
 function CardRecomendados({ name, img, weight, price, stock, id }) {
   const dispatch = useDispatch();
   const [value, setValue] = useState(1);
@@ -26,7 +27,7 @@ function CardRecomendados({ name, img, weight, price, stock, id }) {
         <img src={img} alt="" className="aspect-square w-24 " />
       </div>
       <div className="w-full ">
-        <p className="p-1 text-center font-bold">${price}</p>
+        <p className="p-1 text-center font-bold">{priceFormatter(price)}</p>
       </div>
       <div className="w-full ">
         <AddShopButton component={"Comprar"} onClick={handleAddShopCart} />

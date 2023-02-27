@@ -5,13 +5,6 @@ const createStore = async (userId) => {
   if (!user) {
     throw new Error(`No se pudo encontrar el usuario con ID ${userId}`);
   } else {
-    const storeData = {
-      name: user.name, //esto ver si se queda o no
-      phone: user.phone,
-      locality: user.locality,
-      province: user.province,
-      img: user.img,
-    };
     await User.update(
       { store: true },
       {
@@ -20,7 +13,7 @@ const createStore = async (userId) => {
         },
       }
     );
-    const store = await Store.create(storeData);
+    const store = await Store.create();
     await store.setUser(user);
     return store;
   }

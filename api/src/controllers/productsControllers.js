@@ -9,8 +9,8 @@ const getAllProducts = async () => {
     },
   });
   const priceRange = {
-    min: await Product.min("price"),
-    max: await Product.max("price"),
+    min: Math.floor((await Product.min("price")) / 50) * 50,
+    max: Math.ceil((await Product.max("price")) / 50) * 50,
   };
   return { products, priceRange };
 };
@@ -41,8 +41,8 @@ const getProductFilter = async (query) => {
     where: query.where,
   });
   const priceRange = {
-    min: minPrice[0].dataValues.min_price,
-    max: maxPrice[0].dataValues.max_price,
+    min: Math.floor(minPrice[0].dataValues.min_price / 50) * 50,
+    max: Math.ceil(maxPrice[0].dataValues.max_price / 50) * 50,
   };
   return { products, priceRange };
 };

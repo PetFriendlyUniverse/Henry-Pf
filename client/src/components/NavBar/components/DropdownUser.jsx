@@ -1,11 +1,12 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { getUserApi } from "../../../redux/features/users/usersActions";
 import axios from "axios";
 import arrowDropdown from "../../../assets/arrows/arrowDropdown.svg";
 
 function DropdownUser() {
+  const navigate = useNavigate();
   const id = localStorage.getItem("id");
   const dispatch = useDispatch();
   // traemos la data del usuario en redux
@@ -15,25 +16,26 @@ function DropdownUser() {
     dispatch(getUserApi(id));
   }, []);
   const logOut = () => {
-    axios.post("user/logout");
+    axios.post("user/logout").then((res) => {
+      navigate("/shop");
+    });
     localStorage.removeItem("token");
     localStorage.removeItem("id");
-    window.location.reload();
   };
   const userMenu = useRef(null);
   const arrow = useRef(null);
 
   const toggleUserMenu = () => {
-    userMenu.current.classList.toggle("hidden");
-    arrow.current.classList.toggle("rotate-180");
+    // userMenu.current.classList.toggle("hidden");
+    // arrow.current.classList.toggle("rotate-180");
   };
   let activeClassName = "border-t border-white ";
 
   return (
     <div className="flex flex-col py-3 lg:w-full">
       <button
-        onClick={toggleUserMenu}
-        className="group flex w-full items-center gap-1 lg:justify-center"
+        // onClick={toggleUserMenu}
+        className="group peer flex w-full items-center gap-1 lg:justify-center"
         type="button"
       >
         <img src={arrowDropdown} alt="" />
@@ -41,16 +43,16 @@ function DropdownUser() {
           {userDetailId?.name}
         </span>
         <img
-          ref={arrow}
+          // ref={arrow}
           src={userDetailId?.img}
           alt=""
-          className="h-12 rounded-full transition-transform"
+          className="h-12 rounded-full transition-transform group-focus:rotate-180"
         />
       </button>
 
       <ul
-        ref={userMenu}
-        className="ml-7 hidden list-none overflow-hidden border border-cornflowerblue py-1 text-left text-cornflowerblue shadow-lg lg:absolute lg:top-12 lg:z-50 lg:ml-0 lg:w-40 lg:bg-russianviolet lg:p-2 xl:right-6 2xl:right-5 2xl:w-1/3  "
+        // ref={userMenu}
+        className="ml-7 hidden list-none overflow-hidden border border-cornflowerblue py-1 text-left text-cornflowerblue shadow-lg hover:block peer-focus:block lg:absolute lg:top-12 lg:z-50 lg:ml-0 lg:w-40 lg:bg-russianviolet lg:p-2 xl:right-6 2xl:right-5 2xl:w-1/3  "
       >
         <li>
           <div className="px-4 py-3">

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { priceFormatter } from "../../../../../../adapters/priceFormatter";
 
 function PriceRange({ title, min, max, onSet, mobile = true }) {
   const [minVal, setMinVal] = useState(parseInt(min));
@@ -20,8 +21,6 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
     if (!active) {
       //si no esta activo, aplica el rango y resetea min,max
       onSet([minVal, maxVal]);
-      setMinVal(min);
-      setMaxVal(max);
     } else {
       // si el rango esta activo, lo desactiva
       onSet("");
@@ -69,7 +68,7 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
                   value={minVal}
                   className="relative top-1"
                 />
-                <p className="ml-2">${minVal}</p>
+                <p className="ml-2">{priceFormatter(minVal)}</p>
               </li>
               <li
                 className={`my-1 mx-auto  flex h-4 cursor-pointer font-semibold`}
@@ -85,13 +84,16 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
                   value={maxVal}
                   className="relative top-1"
                 />
-                <p className="ml-2">${maxVal}</p>
+                <p className="ml-2">{priceFormatter(maxVal)}</p>
               </li>
             </>
           ) : (
             <>
               <span className="block">
-                rango actual:${minVal}-${maxVal}
+                rango actual:
+                <span className="font-semibold">
+                  ${minVal}-${maxVal}
+                </span>
               </span>
             </>
           )}

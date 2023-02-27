@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { priceFormatter } from "../../../adapters/priceFormatter";
 import ContainerRecomendados from "../../../components/ContainerRecomendados/ContainerRecomendados";
 import Subcard from "../../../components/SubCard/Subcard";
 import { clearShopCart } from "../../../redux/features/products/productsSlice";
@@ -13,7 +14,7 @@ function Checkout() {
   const userDetailId = useSelector((state) => state.User?.userId);
 
   const shopCartProducts = useSelector((state) => state.Products?.shopCart);
-  console.log(shopCartProducts);
+
   const productsIds = Object.keys(shopCartProducts);
   let totalPrice = 0;
   const products = productsIds.map((id) => {
@@ -30,15 +31,20 @@ function Checkout() {
       currency_id: "ARS",
     };
   });
-  console.log(arrProductsPayment);
+
   const handleClick = async () => {
     try {
       const { data } = await axios.post("/payment/new", arrProductsPayment);
       window.location.href = await data.response.body.init_point;
-    } catch (error) {
-      console.log(error);
-      Swal.fire({
+      await Swal.fire({
         icon: "success",
+        title: "Tu compra ha sido realizada con éxito!",
+        showConfirmButton: false,
+        timer: 1100,
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
         title: "No se pudo realizar la compra",
         showConfirmButton: false,
         timer: 1100,
@@ -46,12 +52,6 @@ function Checkout() {
     }
     localStorage.removeItem("shopCart");
     dispatch(clearShopCart());
-    await Swal.fire({
-      icon: "success",
-      title: "Tu compra ha sido realizada con éxito!",
-      showConfirmButton: false,
-      timer: 1100,
-    });
     navigate("/shop");
   };
   return (
@@ -100,7 +100,7 @@ function Checkout() {
                 Subtotal
               </span>
               <span className="font-semibold tracking-wider text-gray-500">
-                ${totalPrice}
+                {priceFormatter(totalPrice)}
               </span>
             </div>
             <hr className="my-2 h-[0.10rem] w-full border-0 bg-gray-400" />
@@ -109,7 +109,7 @@ function Checkout() {
                 Total
               </h3>
               <h3 className="font-semibold tracking-wider  text-blue-700">
-                ${totalPrice}
+                {priceFormatter(totalPrice)}
               </h3>
             </div>
 
