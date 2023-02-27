@@ -12,13 +12,6 @@ function Contacts({
         <p class="text-sm">{`${area_code}-${number}`}</p>
       </div>
       <div class="mb-2 sm:mb-0 md:px-7 lg:px-10">
-        <h6 class="font-bold">Contacto de Emergencia:</h6>
-        <p class="text-sm">
-          {`${area_code_emergency}-${emergency_number}` ||
-            "Actualmente no tienes ningún contacto de emergencia"}
-        </p>
-      </div>
-      <div class="mb-2 sm:mb-0 md:px-7 lg:px-10">
         <h6 class="font-bold">Mail:</h6>
         <p class="text-sm">{mail}</p>
       </div>
