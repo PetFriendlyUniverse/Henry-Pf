@@ -19,14 +19,14 @@ function LandingShop() {
   };
   return (
     <>
-      <header className="clip-header relative flex w-full flex-col  bg-cover bg-fixed bg-center bg-no-repeat pt-24 text-black sm:h-[650px] lg:h-[550px] lg:min-h-[400px]  xl:min-h-[400px]">
+      <header className="clip-header relative flex w-full flex-col overflow-hidden  bg-cover bg-fixed bg-center bg-no-repeat pt-24 text-black sm:h-[350px] lg:h-[550px] lg:min-h-[400px]  xl:min-h-[400px]">
         <img
           src={universe}
           alt=""
-          className="absolute -top-60 w-full contrast-125"
+          className="absolute -top-20 h-0 w-0 object-cover contrast-125 sm:top-0 sm:h-full sm:w-full"
         ></img>
-        <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-        <div className="z-10 sm:mx-auto sm:grid sm:h-full  sm:grid-cols-3 sm:items-center sm:justify-center sm:gap-1 md:h-0 md:w-0 md:justify-items-center lg:top-1/2 lg:grid-cols-6 lg:gap-4">
+        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+        <div className="z-10 overflow-hidden sm:mx-auto  sm:grid sm:h-0 sm:w-0 sm:grid-cols-3 sm:items-center sm:justify-center sm:gap-1 md:justify-items-center lg:top-1/2 lg:grid-cols-6 lg:gap-4">
           <Link
             onClick={() => {
               handleSetFilter("Perros");

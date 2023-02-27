@@ -47,19 +47,6 @@ function Profile() {
   return (
     <div className="flex justify-center  pb-28 pt-10 lg:items-center">
       <div className=" flex h-full w-3/4 flex-col-reverse justify-end border-2 border-gray-200">
-        {/* <Tabs.Group
-          aria-label="Tabs with underline"
-          style="underline"
-          className=""
-        >
-          <Tabs.Item title="Perfil" className="">
-            <TabUser />
-          </Tabs.Item>
-
-          <Tabs.Item title="Tienda">
-            <TabStore />
-          </Tabs.Item>
-        </Tabs.Group> */}
         {user.store && (
           <button>
             <Link to={`/profile/store/${userStore.id}`}>Tienda</Link>
@@ -99,15 +86,7 @@ function Profile() {
                         Direcciones
                       </button>
                     </li>
-                    {/* <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
-        <button
-          onClick={handleShowInfo}
-          name="payment"
-          className="inline-block p-4"
-        >
-          Formas de Pago
-        </button>
-      </li> */}
+
                     <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
                       {/* Reveer esto de volver al hacer Health/Services */}
                       <Link to="/shop">
