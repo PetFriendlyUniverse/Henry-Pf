@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { ValidateStore } from "../Validations/ValidateStore";
@@ -6,10 +7,15 @@ import { Carousel } from "flowbite-react";
 
 import LinkButton from "../../../../components/Button/LinkButton";
 import { useNavigate, useParams } from "react-router-dom";
+import { getStoreByUser } from "../../../../redux/features/users/usersActions";
 
 function FormModifyStore() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getStoreByUser(id));
+  });
   const [formComplete, setFormComplete] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [img, setImg] = useState(null);
