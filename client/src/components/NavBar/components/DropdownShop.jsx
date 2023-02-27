@@ -42,22 +42,40 @@ function DropdownShop() {
       });
   };
 
+  const img = useRef();
+  const dropDown = useRef();
+  const toggleDropdown = () => {
+    img.current.classList.toggle("rotate-180");
+    dropDown.current.classList.toggle("hidden");
+  };
+  const mouseOut = () => {
+    img.current.classList.remove("rotate-180");
+    dropDown.current.classList.add("hidden");
+  };
+
   return (
     <div className="flex w-full flex-col items-center  md:relative md:mt-2 md:w-52">
-      <button className="group peer flex w-1/2 items-center justify-around  rounded-xl border border-cornflowerblue py-2 md:w-full ">
+      <button
+        onClick={toggleDropdown}
+        className=" flex w-1/2 items-center justify-around  rounded-xl border border-cornflowerblue py-2 md:w-full "
+      >
         <img src={shopcart} alt="" />
         <span className="font-bold text-cornflowerblue">
           {priceFormatter(totalPrice)}
         </span>
         <img
-          // ref={img}
+          ref={img}
           src={arrowDropdown}
           alt=""
-          className="transition-transform  group-focus:rotate-180"
+          className="transition-transform "
         />
       </button>
       {/* contenedor modalShop */}
-      <div className=" invisible z-10 mt-2 w-full  rounded-b-lg bg-blue-100 hover:visible group-hover:block peer-focus:visible  md:absolute md:right-0 md:top-10 md:h-80  md:w-[500px] lg:h-96 2xl:left-0">
+      <div
+        onMouseOut={mouseOut}
+        ref={dropDown}
+        className=" z-10 mt-2 hidden w-full rounded-b-lg bg-blue-100 hover:block md:absolute md:right-0 md:top-10 md:h-80  md:w-[500px] lg:h-96 2xl:left-0"
+      >
         <div className=" flex w-full items-center justify-between border-b border-black px-4 py-1 ">
           <p className="inline-block">{products.length} productos</p>
           <span onClick={handleDelete}>

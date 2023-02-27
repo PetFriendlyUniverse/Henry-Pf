@@ -14,38 +14,33 @@ function FormModifyUser() {
   const user = useSelector((state) => state.User?.userId);
   const [formComplete, setFormComplete] = useState(false);
   const [img, setImg] = useState(null);
+  const [imgFile, setImgFile] = useState(null);
 
   const [form, setForm] = useState({
     user: user?.user,
     name: user?.name,
     lastname: user?.lastname,
     mail: user?.mail,
-    password: user?.password,
-    area_code: user?.area_code,
-    number: user?.number,
     province: user?.province,
     locality: user?.locality,
-    zip_code: user?.zip_code,
     street_name: user?.street_name,
+    area_code: user?.area_code,
+    number: user?.number,
+    zip_code: user?.zip_code,
     street_number: user?.street_number,
-    area_code_emergency: user?.area_code_emergency,
-    emergency_number: user?.emergency_number,
   });
   const [errors, setErrors] = useState({
     user: "",
     name: "",
     lastname: "",
     mail: "",
-    password: "",
-    area_code: "",
-    number: "",
     province: "",
     locality: "",
-    zip_code: "",
     street_name: "",
+    area_code: "",
+    number: "",
+    zip_code: "",
     street_number: "",
-    area_code_emergency: "",
-    emergency_number: "",
   });
   const handleChange = (e) => {
     const property = e.target.name;
@@ -80,16 +75,13 @@ function FormModifyUser() {
     newForm.append("name", form.name);
     newForm.append("lastname", form.lastname);
     newForm.append("mail", form.mail);
-    newForm.append("password", form.password);
-    newForm.append("area_code", form.area_code);
-    newForm.append("number", form.number);
     newForm.append("province", form.province);
     newForm.append("locality", form.locality);
-    newForm.append("zip_code", form.zip_code);
     newForm.append("street_name", form.street_name);
+    newForm.append("area_code", form.area_code);
+    newForm.append("number", form.number);
+    newForm.append("zip_code", form.zip_code);
     newForm.append("street_number", form.street_number);
-    newForm.append("area_code_emergency", form.area_code_emergency);
-    newForm.append("emergency_number", form.emergency_number);
     if (isFormValid) {
       axios
         .put(`/user/${id}`, newForm, {
@@ -112,16 +104,13 @@ function FormModifyUser() {
             name: "",
             lastname: "",
             mail: "",
-            password: "",
-            area_code: "",
-            number: "",
             province: "",
             locality: "",
-            zip_code: "",
             street_name: "",
+            area_code: "",
+            number: "",
+            zip_code: "",
             street_number: "",
-            area_code_emergency: "",
-            emergency_number: "",
           });
         });
     } else {
@@ -135,13 +124,13 @@ function FormModifyUser() {
     }
   };
   return (
-    <div className="flex h-screen justify-center py-28">
+    <div className="flex h-full justify-center ">
       <form
         onSubmit={handleSubmit}
         className="mt-10 flex max-h-screen w-full flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue drop-shadow-2xl md:w-3/5 lg:h-auto "
       >
         <h3 className="mb-6">Modifica o agrega informacion</h3>
-        <div className="flex h-full w-full flex-row justify-between overflow-hidden rounded-2xl bg-slate-50">
+        <div className="flex h-full w-full flex-row justify-between overflow-hidden rounded-2xl bg-slate-50 pb-20">
           {/* //div con el fomulario izquierdo */}
           <div className="w-full pl-4 pt-4">
             <div className="group relative z-0 mb-6 h-11 w-4/5">
@@ -179,25 +168,6 @@ function FormModifyUser() {
                 <span className="text-red-500">{errors.mail}</span>
               )}
             </div>
-
-            <div className="group relative z-0 mb-6 h-11 w-4/5">
-              <input
-                onChange={handleChange}
-                type="password"
-                name="password"
-                value={form.password}
-                className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
-                placeholder=" "
-                autoComplete="off"
-              />
-              <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                Contraseña
-              </label>
-              {errors.password && (
-                <span className="text-red-500">{errors.password}</span>
-              )}
-            </div>
-
             <div className="grid w-full md:grid-cols-2 md:gap-6">
               <div className="group relative z-0 mb-6 h-11 w-full">
                 <input
@@ -333,7 +303,7 @@ function FormModifyUser() {
                 {selectedFiles &&
                   selectedFiles.map((file) => (
                     <picture className="flex aspect-square h-full items-center justify-center ">
-                      <img src={file} alt="" key={img.id} className="h-full" />
+                      <img src={file} alt="" key={id} className="h-full" />
                     </picture>
                   ))}
               </Carousel>
@@ -354,8 +324,8 @@ function FormModifyUser() {
                   <input
                     onChange={handleChange}
                     type="number"
-                    name="area_code_emergency"
-                    value={form.area_code_emergency}
+                    name="area_code"
+                    value={form.area_code}
                     className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
                     placeholder=" "
                     autoComplete="off"
@@ -363,13 +333,10 @@ function FormModifyUser() {
                   <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
                     Codigo de area
                   </label>
-                  {errors.area_code_emergency && (
-                    <span className="text-red-500">
-                      {errors.area_code_emergency}
-                    </span>
+                  {errors.area_code && (
+                    <span className="text-red-500">{errors.area_code}</span>
                   )}
                 </div>
-
                 <div className="group relative z-0  h-11 w-full">
                   <input
                     onChange={handleChange}

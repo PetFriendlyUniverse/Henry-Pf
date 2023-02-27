@@ -88,6 +88,15 @@ function Login() {
     const isFormValid = errorValues.every((val) => val === "");
     if (isFormValid) {
       try {
+        Swal.fire({
+          title: "Now loading",
+          allowEscapeKey: false,
+          allowOutsideClick: false,
+
+          didOpen: () => {
+            Swal.showLoading();
+          },
+        });
         await axios.post("user/create", form).then(async (res) => {
           await Swal.fire({
             icon: "success",
@@ -155,7 +164,7 @@ function Login() {
                 type="email"
                 name="mail"
                 placeholder="Mail"
-                required
+                required={true}
               />
               <input
                 className={s.input}
@@ -164,7 +173,7 @@ function Login() {
                 type="password"
                 name="password"
                 placeholder="Contraseña"
-                required
+                required={true}
               />
               <button>Ingresar</button>
               <div className={s.loginGoogle}>
@@ -184,10 +193,10 @@ function Login() {
                 type="text"
                 name="user"
                 value={form.user}
-                class={s.input}
+                className={s.input}
                 placeholder="Usuario "
                 autoComplete="off"
-                required="true"
+                required={true}
               />
               {errors.user && (
                 <span className="ml-1 -mt-3 text-sm tracking-wide text-red-700">
@@ -196,13 +205,13 @@ function Login() {
               )}
               <input
                 onChange={handleChange}
-                class={s.input}
+                className={s.input}
                 value={form.name}
                 type="text"
                 name="name"
                 placeholder="Nombre"
                 autoComplete="off"
-                required="true"
+                required={true}
               />
               {errors.name && (
                 <span className="ml-1 -mt-3 text-sm tracking-wide text-red-700">
@@ -212,12 +221,12 @@ function Login() {
               <input
                 onChange={handleChange}
                 value={form.lastname}
-                class={s.input}
+                className={s.input}
                 type="text"
                 name="lastname"
                 placeholder="Apellido "
                 autoComplete="off"
-                required="true"
+                required={true}
               />
               {errors.lastname && (
                 <span className="ml-1 -mt-3 text-sm tracking-wide text-red-700">
@@ -226,12 +235,12 @@ function Login() {
               )}
               <input
                 onChange={handleChange}
-                class={s.input}
+                className={s.input}
                 value={form.mail}
                 type="email"
                 name="mail"
                 placeholder="Mail"
-                required="true"
+                required={true}
                 autoComplete="off"
               />
               {errors.mail && (
@@ -240,14 +249,14 @@ function Login() {
                 </span>
               )}
               <input
-                class={s.input}
+                className={s.input}
                 value={form.password}
                 onChange={handleChange}
                 type="password"
                 name="password"
                 placeholder="Contraseña"
                 autoComplete="off"
-                required="true"
+                required={true}
               />
               {errors.password && (
                 <span className="ml-1 -mt-3 text-center text-sm tracking-wide text-red-700">
