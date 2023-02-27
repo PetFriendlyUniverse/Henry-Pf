@@ -7,10 +7,10 @@ import Footer from "./components/Footer/Footer";
 import LandingShop from "./pages/ecommerce/LandingShop/LandingShop";
 import About from "./pages/About/About";
 import TabStore from "./pages/ecommerce/Profile/components/TabStore";
+import Loader from "./components/Loader/Loader";
 
 // import Shop2 from "./pages/ecommerce/Shop/Shop2";
 
-const Loader = lazy(() => import("./components/Loader/Loader"));
 const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
 const Services = lazy(() => import("./pages/Services/Services"));
 
