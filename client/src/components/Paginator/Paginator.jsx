@@ -21,7 +21,7 @@ function Paginator() {
   };
 
   return (
-    <div className=" flex h-full flex-col  items-center gap-4 lg:min-h-screen lg:w-4/5 lg:min-w-[800px] xl:min-w-[1000px] 2xl:min-w-[1400px]">
+    <div className=" flex h-full flex-col  items-center gap-4 lg:min-h-screen lg:w-4/5 lg:min-w-[800px] xl:min-h-screen xl:min-w-[1000px] 2xl:min-w-[1400px]">
       <div className="relative mt-4 flex w-9/12 justify-center sm:w-1/2 md:w-1/5">
         <Paginate
           pageCount={totalPages}
@@ -94,7 +94,7 @@ function Paginator() {
       </div>
 
       <CardContainer />
-      <div className="relative mt-4 flex w-9/12 justify-center sm:w-1/2 md:w-1/5">
+      <div className="relative mt-4 flex w-9/12 justify-center sm:w-1/2 md:w-1/5 ">
         <Paginate
           pageCount={totalPages}
           marginPagesDisplayed={0}
