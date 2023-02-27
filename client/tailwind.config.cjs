@@ -33,8 +33,8 @@ module.exports = {
         input: "inset 19px 19px 38px #9b9b9b, inset -19px -19px 38px #ffffff",
       },
       backgroundImage: {
-        white: "url('./assets/imagenes/backgroundwhite.png')",
-        balloon: "url('./assets/imagenes/fondo-landingshop.png')",
+        whitepattern: "url('./assets/imagenes/backgroundwhite.png')",
+        balloon: "url('./assets/imagenes/ASD-01.png')",
         perros: "url('./assets/imagenes/PERR1.png')",
         gatos: "url('./assets/imagenes/CAT.png')",
         contacto: "url('./assets/imagenes/CONTACTO1.png')",

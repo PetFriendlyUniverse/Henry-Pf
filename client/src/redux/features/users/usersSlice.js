@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   userId: {},
+  userStoreId: {},
 };
 
 export const User = createSlice({
@@ -13,8 +14,11 @@ export const User = createSlice({
     getUser: (state, { payload }) => {
       state.userId = payload;
     },
+    getStore: (state, { payload }) => {
+      state.userStoreId = payload;
+    },
   },
 });
 
-export const { getUser } = User.actions;
+export const { getUser, getStore } = User.actions;
 export default User.reducer;

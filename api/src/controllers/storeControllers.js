@@ -1,4 +1,23 @@
-const { Store } = require("../db");
+const { Store, User } = require("../db");
+
+const createStore = async (userId) => {
+  const user = await User.findByPk(userId);
+  if (!user) {
+    throw new Error(`No se pudo encontrar el usuario con ID ${userId}`);
+  } else {
+    await User.update(
+      { store: true },
+      {
+        where: {
+          id: userId,
+        },
+      }
+    );
+    const store = await Store.create();
+    await store.setUser(user);
+    return store;
+  }
+};
 
 const getAllStore = async () => {
   const storesList = await Store.findAll();
@@ -17,15 +36,6 @@ const storeFilter = async (query) => {
 const getStoreByID = async (id) => {
   const store = await Store.findByPk(id);
   return store;
-};
-
-const createStore = async (data) => {
-  if (!Object.values(data).every((value) => value)) {
-    throw new Error("Missing data");
-  } else {
-    const newStore = await Store.create(data);
-    return newStore;
-  }
 };
 
 const updateStore = async (data, id) => {

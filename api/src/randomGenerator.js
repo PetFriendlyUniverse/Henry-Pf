@@ -1,6 +1,6 @@
 // const store = require("./controllers/storeControllers");
 // const products = require("./controllers/productsControllers");
-const { Product, Store, Brands, Breeds, Species } = require("../src/db");
+const { Product, Store, Brands, Breeds, Species, User } = require("../src/db");
 
 const generator = () => {
   const species = {
@@ -16,7 +16,7 @@ const generator = () => {
     6: "Sabrocitos",
     7: "Balanced",
     8: "Excellent",
-    9: "Fanwa",
+    9: "Fawna",
     10: "Old Prince",
     11: "Vital",
     12: "Chow",
@@ -96,11 +96,86 @@ const generator = () => {
     "Cerdo y Pavo",
   ];
 
+  const personas = [
+    {
+      name: "Juan",
+      lastname: "Pérez",
+      mail: "juan.perez@example.com",
+      password: "contraseña1",
+      store: true,
+    },
+    {
+      name: "María",
+      lastname: "González",
+      mail: "maria.gonzalez@example.com",
+      password: "contraseña2",
+      store: true,
+    },
+    {
+      name: "Pedro",
+      lastname: "Ramírez",
+      mail: "pedro.ramirez@example.com",
+      password: "contraseña3",
+      store: true,
+    },
+    {
+      name: "Ana",
+      lastname: "Sánchez",
+      mail: "ana.sanchez@example.com",
+      password: "contraseña4",
+      store: true,
+    },
+    {
+      name: "Carlos",
+      lastname: "Gómez",
+      mail: "carlos.gomez@example.com",
+      password: "contraseña5",
+      store: true,
+    },
+    {
+      name: "Laura",
+      lastname: "Hernández",
+      mail: "laura.hernandez@example.com",
+      password: "contraseña6",
+      store: true,
+    },
+    {
+      name: "Javier",
+      lastname: "López",
+      mail: "javier.lopez@example.com",
+      password: "contraseña7",
+      store: true,
+    },
+    {
+      name: "Sara",
+      lastname: "Torres",
+      mail: "sara.torres@example.com",
+      password: "contraseña8",
+      store: true,
+    },
+    {
+      name: "Antonio",
+      lastname: "Díaz",
+      mail: "antonio.diaz@example.com",
+      password: "contraseña9",
+      store: true,
+    },
+    {
+      name: "Elena",
+      lastname: "Martínez",
+      mail: "elena.martinez@example.com",
+      password: "contraseña10",
+      store: true,
+    },
+  ];
+
   setTimeout(async () => {
     const storesToCreate = [];
     const productsToCreate = [];
+
     for (let i = 1; i <= 10; i++) {
       storesToCreate.push({
+        UserId: i,
         name: `Tienda ${i}`,
         phone: 1234567890,
         province: `Provincia ${i}`,
@@ -111,7 +186,7 @@ const generator = () => {
 
       for (let s = 1; s <= 20; s++) {
         let description = `Una descripción apropiada para este producto`;
-        let price = Math.floor(Math.random() * 200 + 51);
+        let price = Math.floor(Math.random() * 200 + 51) * 50;
         let stock = Math.ceil(Math.random() * 15);
         let specie = species[Math.ceil(Math.random() * 2)];
         let indexBrandImg = Math.ceil(Math.random() * 13);
@@ -138,69 +213,36 @@ const generator = () => {
         });
       }
     }
+    await User.bulkCreate(personas);
+
     await Store.bulkCreate(storesToCreate);
 
-    const brandsToCreate = new Set();
-    const breedsToCreate = new Set();
-    const speciesToCreate = new Set();
-
-    productsToCreate.forEach((prod) => {
-      brandsToCreate.add(prod["brand"]);
-      breedsToCreate.add(prod["breed"]);
-      speciesToCreate.add(prod["specie"]);
-    });
     const brandObj = [];
-    const breeObj = [];
+    for (const i in brands) {
+      brandObj.push({
+        id: brands[i],
+      });
+    }
+
+    const razasObj = [];
+    for (const i in razas) {
+      razasObj.push({
+        id: razas[i],
+      });
+    }
     const speciesObj = [];
-
-    for (let item of brandsToCreate) brandObj.push({ id: item });
-    for (let item of breedsToCreate) breeObj.push({ id: item });
-    for (let item of speciesToCreate) speciesObj.push({ id: item });
-
-    // Brands, Breeds, Species
+    for (const i in species) {
+      speciesObj.push({
+        id: species[i],
+      });
+    }
     Brands.bulkCreate(brandObj);
-    Breeds.bulkCreate(breeObj);
+    Breeds.bulkCreate(razasObj);
     Species.bulkCreate(speciesObj);
 
     await Product.bulkCreate(productsToCreate);
-
-  }, 10000);
-
-
+    console.log("Datos generados exitosamente");
+  }, 2000);
 };
 
 module.exports = { generator };
-
-// await store.createStore({
-//   name: `Tienda ${i}`,
-//   phone: 1234567890,
-//   province: `Provincia ${i}`,
-//   locality: `Localidad ${i}`,
-//   streets: `Calles ${i}`,
-//   description: `Descripcion ${i}`,
-// });
-
-// await products.createProduct({
-//   name: `Alimento ${brand} de ${flavors[s]}`,
-//   img,
-//   price,
-//   description,
-//   stock,
-//   specie,
-//   breed,
-//   brand,
-//   storeId: i,
-//   color,
-//   size,
-//   weight,
-// });
-
-// {
-// 	"name": "Producto de Prueba",
-// 	"price": 25,
-// 	"description": "una descripción apropiada",
-// 	"stock": 35,
-// 	"specie": "pegeLag",
-// 	"breed": "volador",
-// 	"storeId": 1
-// }

@@ -1,17 +1,20 @@
 const { Router } = require("express");
 const {
+  postStoreHandler,
   getStoresHandler,
   getStoreByIDHandler,
-  postStoreHandler,
   putStoreHandler,
   deleteStoreHandler,
 } = require("../handler/storeHandler");
 const router = Router();
 
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
+
+router.post("/create/:UserId", postStoreHandler);
 router.get("/", getStoresHandler);
 router.get("/:id", getStoreByIDHandler);
-router.post("/create", postStoreHandler);
-router.put("/:id", putStoreHandler);
+router.put("/:id", upload.single("img"), putStoreHandler);
 router.delete("/:id", deleteStoreHandler);
 
 module.exports = router;

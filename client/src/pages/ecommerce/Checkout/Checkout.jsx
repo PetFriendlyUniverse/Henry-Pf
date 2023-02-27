@@ -1,35 +1,62 @@
+import axios from "axios";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { priceFormatter } from "../../../adapters/priceFormatter";
+import ContainerRecomendados from "../../../components/ContainerRecomendados/ContainerRecomendados";
 import Subcard from "../../../components/SubCard/Subcard";
 import { clearShopCart } from "../../../redux/features/products/productsSlice";
 
 function Checkout() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userDetailId = useSelector((state) => state.User?.userId);
+
   const shopCartProducts = useSelector((state) => state.Products?.shopCart);
+
   const productsIds = Object.keys(shopCartProducts);
   let totalPrice = 0;
   const products = productsIds.map((id) => {
     totalPrice += shopCartProducts[id].amount * shopCartProducts[id].price;
     return shopCartProducts[id];
   });
-  const dispatch = useDispatch();
+  const arrProductsPayment = products.map((item) => {
+    return {
+      id: item.id,
+      title: item.name,
+      picture_url: item.img,
+      unit_price: item.price,
+      quantity: item.amount,
+      currency_id: "ARS",
+    };
+  });
+
   const handleClick = async () => {
-    await Swal.fire({
-      icon: "success",
-      title: "Tu compra ha sido realizada con éxito!",
-      showConfirmButton: false,
-      timer: 1100,
-    });
+    try {
+      const { data } = await axios.post("/payment/new", arrProductsPayment);
+      window.location.href = await data.response.body.init_point;
+      await Swal.fire({
+        icon: "success",
+        title: "Tu compra ha sido realizada con éxito!",
+        showConfirmButton: false,
+        timer: 1100,
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "No se pudo realizar la compra",
+        showConfirmButton: false,
+        timer: 1100,
+      });
+    }
     localStorage.removeItem("shopCart");
     dispatch(clearShopCart());
     navigate("/shop");
   };
   return (
-
-    <div className="flex h-screen w-full items-center justify-center bg-slate-200 pt-24">
-
-      <div className="my-4 flex h-[80vh] w-full flex-col items-center justify-center gap-8 bg-slate-200 lg:w-[60vw] lg:flex-row lg:gap-0">
+    <div className="flex h-screen w-full items-center justify-center bg-slate-100 pt-24">
+      <div className="my-4 flex h-[80vh] w-full flex-col items-center justify-center gap-8 bg-slate-100 lg:w-[60vw] lg:flex-row lg:gap-0">
         <div className="flex h-full w-full flex-col rounded-lg border  bg-white lg:m-4 lg:w-4/6 lg:items-center lg:justify-center lg:px-6 ">
           <div className="m-6 hidden h-[8%] w-full items-center justify-center rounded-lg border bg-blue-200 px-6 text-center text-xs  text-gray-600  lg:flex">
             There are many variations of passages of Lorem Ipsum available, but
@@ -49,8 +76,8 @@ function Checkout() {
             </div>
           </div>
 
-          <div className=" flex h-2/6 w-full items-center justify-center border">
-            aca van las cards de los productos
+          <div className=" flex h-48  w-full items-center justify-center overflow-hidden bg-slate-100">
+            <ContainerRecomendados />
           </div>
         </div>
         <div className=" flex h-4/6 w-full flex-col self-start lg:w-2/6 ">
@@ -73,7 +100,7 @@ function Checkout() {
                 Subtotal
               </span>
               <span className="font-semibold tracking-wider text-gray-500">
-                ${totalPrice}
+                {priceFormatter(totalPrice)}
               </span>
             </div>
             <hr className="my-2 h-[0.10rem] w-full border-0 bg-gray-400" />
@@ -82,7 +109,7 @@ function Checkout() {
                 Total
               </h3>
               <h3 className="font-semibold tracking-wider  text-blue-700">
-                ${totalPrice}
+                {priceFormatter(totalPrice)}
               </h3>
             </div>
 

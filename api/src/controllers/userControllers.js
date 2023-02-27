@@ -1,30 +1,26 @@
-const { User } = require("../db");
+const { User, Store } = require("../db");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { sendResetPasswordEmail, confirmMail } = require("./mailController");
 
-const createUser = async (
-  user,
-  name,
-  lastname,
-  mail,
-  password,
-  phone,
-  emergencyphone,
-  province,
-  locality
-) => {
-  const data = { user, name, lastname, mail, phone };
-  const extraData = { emergencyphone, province, locality };
+const createUser = async (user, name, lastname, mail, password) => {
+  const data = {
+    user,
+    name,
+    lastname,
+    mail,
+    password,
+  };
   if (!Object.values(data).every((value) => value)) throw Error("Missing data");
   const hashedPassword = await bcrypt.hash(password, 10); // esto en codificado la password no sacar
   const userCreated = await User.create({
     ...data,
     password: hashedPassword,
-    ...extraData,
   });
-
+  await confirmMail(name, lastname, mail);
   return userCreated;
 };
+
 const loginUser = async (mail, password) => {
   const user = await User.findOne({ where: { mail } });
   if (!user) throw Error("User not found");
@@ -61,6 +57,46 @@ const deleteUsersById = async (id) => {
   return update ? "User deleted successfully" : "Wrong user";
 };
 
+const resetPassword = async (mail) => {
+  const user = await User.findOne({ where: { mail } });
+  if (!user) {
+    throw Error("No existe el usuario con ese correo electrónico");
+  }
+  const resetToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+    expiresIn: "1h",
+  });
+  await sendResetPasswordEmail(mail, resetToken);
+  return resetToken;
+};
+
+const verifyResetToken = async (token) => {
+  try {
+    const decoded = await jwt.verify(token, process.env.JWT_SECRET);
+    return decoded.id;
+  } catch (error) {
+    throw new Error("Token de reseteo inválido");
+  }
+};
+
+const updatePassword = async (userId, password) => {
+  const user = await User.findOne({ where: { id: userId } });
+  if (!user) {
+    throw new Error("Usuario no encontrado");
+  }
+  const hashedPassword = await bcrypt.hash(password, 10);
+  user.password = hashedPassword;
+  await user.save();
+};
+
+const storeById = async (id) => {
+  const store = await Store.findOne({
+    where: {
+      UserId: id,
+    },
+  });
+  return store;
+};
+
 module.exports = {
   createUser,
   loginUser,
@@ -68,4 +104,8 @@ module.exports = {
   getUserById,
   updateAllUsers,
   deleteUsersById,
+  resetPassword,
+  verifyResetToken,
+  updatePassword,
+  storeById,
 };

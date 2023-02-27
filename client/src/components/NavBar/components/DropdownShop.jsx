@@ -6,6 +6,9 @@ import LinkButton from "../../Button/LinkButton";
 import { clearShopCart } from "../../../redux/features/products/productsSlice";
 import deleteBtn from "../../../assets/general/delete.svg";
 import shopcart from "../../../assets/general/shopcart.svg";
+import { priceFormatter } from "../../../adapters/priceFormatter";
+import { useRef } from "react";
+import arrowDropdown from "../../../assets/arrows/arrowDropdown.svg";
 
 function DropdownShop() {
   const dispatch = useDispatch();
@@ -16,6 +19,7 @@ function DropdownShop() {
     totalPrice += shopCartProducts[id].amount * shopCartProducts[id].price;
     return shopCartProducts[id];
   });
+
   const handleDelete = () => {
     totalPrice > 0 &&
       Swal.fire({
@@ -39,22 +43,21 @@ function DropdownShop() {
   };
 
   return (
-    <div className="group rounded-xl">
-      <button className="  flex w-full  items-center justify-between gap-3 rounded-md border border-cornflowerblue py-2 px-4 text-xs text-cornflowerblue shadow-sm shadow-cornflowerblue md:text-sm lg:relative lg:text-base">
+    <div className="flex w-full flex-col items-center  md:relative md:mt-2 md:w-52">
+      <button className="group peer flex w-1/2 items-center justify-around  rounded-xl border border-cornflowerblue py-2 md:w-full ">
         <img src={shopcart} alt="" />
-        <span>$ {totalPrice}</span>
-        <svg
-          className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180"
-          aria-hidden="true"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
-        </svg>
+        <span className="font-bold text-cornflowerblue">
+          {priceFormatter(totalPrice)}
+        </span>
+        <img
+          // ref={img}
+          src={arrowDropdown}
+          alt=""
+          className="transition-transform  group-focus:rotate-180"
+        />
       </button>
-
-      <div className=" z-10 hidden max-h-96 w-96 rounded-b-lg bg-blue-100  group-hover:block lg:absolute">
+      {/* contenedor modalShop */}
+      <div className=" z-10 mt-2 hidden w-full rounded-b-lg bg-blue-100 hover:block group-hover:block peer-focus:block md:absolute md:right-0 md:top-10 md:h-80  md:w-[500px] lg:h-96 2xl:left-0">
         <div className=" flex w-full items-center justify-between border-b border-black px-4 py-1 ">
           <p className="inline-block">{products.length} productos</p>
           <span onClick={handleDelete}>
@@ -66,9 +69,9 @@ function DropdownShop() {
           </span>
         </div>
         <div
-          className={`flex h-80 flex-col gap-2 ${
-            products.length > 3 && "overflow-scroll overflow-x-hidden"
-          }  py-3`}
+          className={`flex h-40 flex-col gap-2 ${
+            products.length && "overflow-scroll overflow-x-hidden"
+          }  py-3 md:h-56 lg:h-[340px] `}
         >
           {products?.map((prod) => (
             <Subcard prod={prod} key={prod.id} />
@@ -80,7 +83,7 @@ function DropdownShop() {
             <LinkButton component={"Confirmar Compra"} />
           </Link>
           <h2 className="border-blue inline-block rounded-md border py-2 px-4">
-            Total: ${totalPrice}
+            Total: {priceFormatter(totalPrice)}
           </h2>
         </div>
       </div>
