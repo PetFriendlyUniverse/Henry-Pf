@@ -27,6 +27,9 @@ function CardStoreId({ name, img, weight, price, stock, id }) {
           title: "Eliminado",
           text: "El producto ha sido eliminado correctamente",
           icon: "success",
+        }).then(() => {
+          //provisorio
+          window.location.reload(true);
         });
       }
     });

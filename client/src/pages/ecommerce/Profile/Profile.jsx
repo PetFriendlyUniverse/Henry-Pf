@@ -37,12 +37,9 @@ function Profile() {
   };
   useEffect(() => {
     dispatch(getUserApi(user.id));
+    if (user.store) dispatch(getStoreByUser(user.id));
   }, []);
-  if (user.store) {
-    useEffect(() => {
-      dispatch(getStoreByUser(user.id));
-    }, []);
-  }
+
   return (
     <div className="flex justify-center  pb-28 pt-10 lg:items-center">
       <div className=" flex h-full w-3/4 flex-col-reverse justify-end border-2 border-gray-200">
