@@ -13,8 +13,8 @@ function Checkout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userDetailId = useSelector((state) => state.User?.userId);
-
   const shopCartProducts = useSelector((state) => state.Products?.shopCart);
+  const token = localStorage.getItem("token");
 
   const productsIds = Object.keys(shopCartProducts);
   let totalPrice = 0;
@@ -34,26 +34,28 @@ function Checkout() {
   });
 
   const handleClick = async () => {
-    try {
-      const { data } = await axios.post("/payment/new", arrProductsPayment);
-      window.location.href = await data.response.body.init_point;
+    if (token) {
+      try {
+        const { data } = await axios.post("/payment/new", arrProductsPayment);
+        window.location.href = await data.response.body.init_point;
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "No se pudo realizar la compra",
+          showConfirmButton: false,
+          timer: 1100,
+        });
+      }
+      localStorage.removeItem("shopCart");
+      dispatch(clearShopCart());
+      navigate("/shop");
+    } else {
       await Swal.fire({
-        icon: "success",
-        title: "Tu compra ha sido realizada con éxito!",
-        showConfirmButton: false,
-        timer: 1100,
+        title: "Tienes que registrarte para seguir con tu compra",
+        showConfirmButton: true,
       });
-    } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "No se pudo realizar la compra",
-        showConfirmButton: false,
-        timer: 1100,
-      });
+      navigate("/login");
     }
-    localStorage.removeItem("shopCart");
-    dispatch(clearShopCart());
-    navigate("/shop");
   };
   return (
     <div className="flex h-screen w-full items-center justify-center bg-slate-100 pt-24">
