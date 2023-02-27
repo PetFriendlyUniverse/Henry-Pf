@@ -1,8 +1,8 @@
-import { Carousel } from "flowbite-react";
 import useGetProducts from "../../hooks/useGetProducts";
 import CardRecomendados from "../CardRecomendados/CardRecomendados";
 function ContainerRecomendados() {
-  const products = useGetProducts().slice(0, 5);
+  const [loading, products] = useGetProducts();
+  const productos = products.slice(0.5);
 
   return (
     <div className="flex gap-2 overflow-hidden">

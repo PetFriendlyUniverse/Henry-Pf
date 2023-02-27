@@ -111,7 +111,6 @@ function FormModifyStore() {
           });
         })
         .catch((err) => {
-          console.log(err);
           Swal.fire({
             icon: "error",
             title: "Error en el formulario",
