@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { setShopCart } from "../../redux/features/products/productsSlice";
 import AddShopButton from "../Button/AddShopButton";
-import { Carousel } from "flowbite-react";
+// import { Carousel } from "flowbite-react";
 import CountProduct from "../CountProduct/CountProduct";
 import { priceFormatter } from "../../adapters/priceFormatter";
 
@@ -30,6 +30,8 @@ function Card({ name, img, weight, price, stock, id }) {
       title: "Producto agregado al carrito",
       showConfirmButton: false,
       timer: 800,
+      closeOnEsc: true,
+      closeOnClickOutside: true,
     });
   };
   return (

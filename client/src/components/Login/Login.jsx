@@ -88,6 +88,15 @@ function Login() {
     const isFormValid = errorValues.every((val) => val === "");
     if (isFormValid) {
       try {
+        Swal.fire({
+          title: "Now loading",
+          allowEscapeKey: false,
+          allowOutsideClick: false,
+
+          didOpen: () => {
+            Swal.showLoading();
+          },
+        });
         await axios.post("user/create", form).then(async (res) => {
           await Swal.fire({
             icon: "success",
