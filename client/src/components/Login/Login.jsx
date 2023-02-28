@@ -143,9 +143,32 @@ function Login() {
   const handleChageMail = ({ target }) => {
     setMail(target.value);
   };
-  const submitConfirmMail = (e) => {
+  const submitConfirmMail = async (e) => {
     e.preventDefault();
-    axios.post("/user/reset-password", { mail: mail });
+    Swal.fire({
+      title: "Verificando mail",
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+    try {
+      await axios.post("/user/reset-password", { mail: mail });
+      await Swal.fire(
+        "Le hemos enviado un correo electrónico de confirmación, por favor verifique su e-mail para continuar"
+      );
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: error.response.data.error,
+        showConfirmButton: true,
+        closeOnClickOutside: true,
+        closeOnEsc: true,
+      });
+    }
+    setMail("");
+    setShowModal(false);
   };
 
   // ----------------------- Modal -----------------------//
