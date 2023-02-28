@@ -11,10 +11,11 @@ import Footer from "./components/Footer/Footer";
 import Loader from "./components/Loader/Loader";
 import { lazy, Suspense } from "react";
 
-// import StoreDetail from "./pages/ecommerce/StoreDetail/StoreDetail";
-// import ChangePassword from "./pages/ChangePassword/ChangePassword";
+const DashboardAdmin = lazy(() =>
+  import("./components/DashboardAdmin/DashboardAdmin")
+);
+const Landing = lazy(() => import("./pages/Landing/Landing"));
 
-// import Shop2 from "./pages/ecommerce/Shop/Shop2";
 const StoreDetail = lazy(() =>
   import("./pages/ecommerce/StoreDetail/StoreDetail")
 );
@@ -22,10 +23,10 @@ const ChangePassword = lazy(() =>
   import("./pages/ChangePassword/ChangePassword")
 );
 const Adopcion = lazy(() => import("./pages/Adopcion/Adopcion"));
+
 const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
 const Services = lazy(() => import("./pages/Services/Services"));
 
-const Landing = lazy(() => import("./pages/Landing/Landing"));
 const ProductDetail = lazy(() =>
   import("./pages/ecommerce/ProductDetail/ProductDetail")
 );
@@ -92,8 +93,11 @@ function App() {
 
           <Route path="/store/modify/:id" element={<FormModifyStore />} />
 
+          <Route path="/dashboardadmin" element={<DashboardAdmin />} />
+
           <Route path="/walker/modify/:id" element={<FormModifyWalker />} />
           <Route path="/daycare/modify/:id" element={<FormModifyDaycare />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
