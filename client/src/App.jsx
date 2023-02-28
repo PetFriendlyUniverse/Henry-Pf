@@ -6,7 +6,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import LandingShop from "./pages/ecommerce/LandingShop/LandingShop";
 import About from "./pages/About/About";
-import FormPassword from "./pages/FormPassword/FormPassword";
+// import FormPassword from "./pages/FormPassword/FormPassword";
 import TabStore from "./pages/ecommerce/Profile/components/TabStore";
 import Loader from "./components/Loader/Loader";
 import { lazy, Suspense } from "react";
@@ -69,10 +69,10 @@ function App() {
             element={<FormModifyProduct />}
           />
           <Route path="/about" element={<About />} />
-          <Route path="/loginpassword" element={<FormPassword />} />
+          {/* <Route path="/loginpassword" element={<FormPassword />} /> */}
 
           <Route path="/store/modify/:id" element={<FormModifyStore />} />
-          <Route path="/recoverpassword" element={<FormPassword />} />
+          {/* <Route path="/recoverpassword" element={<FormPassword />} /> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
