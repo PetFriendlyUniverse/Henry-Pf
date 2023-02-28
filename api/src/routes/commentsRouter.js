@@ -1,21 +1,21 @@
 const { Router } = require("express");
 const {
-  getCommentsByPoductHandler,
-  getCommentsByUserHandler,
-  postCreateCommentHandler,
-  putUpdateCommentHandler,
-  deleteCommentHandler,
-} = require("../handler/commentsHandler");
+  getReviewByPoductHandler,
+  getReviewByUserHandler,
+  postCreateReviewHandler,
+  putUpdateReviewHandler,
+  deleteReviewHandler,
+} = require("../handler/reviewsHandler");
 
-const commentsRouter = Router();
+const reviewRouter = Router();
 
-commentsRouter.get("/byProduct/:productId", getCommentsByPoductHandler);
-commentsRouter.get("/byUser/:userId", getCommentsByUserHandler);
+reviewRouter.get("/byProduct/:productId", getReviewByPoductHandler);
+reviewRouter.get("/byUser/:userId", getReviewByUserHandler);
 
-commentsRouter.post("/create", postCreateCommentHandler); // recibe [userId & content] (body)
+reviewRouter.post("/create", postCreateReviewHandler); // recibe [userId & content] (body)
 
-commentsRouter.put("/update/:commentId", putUpdateCommentHandler);
+reviewRouter.put("/update/:reviewId", putUpdateReviewHandler);
 
-commentsRouter.delete("/:commentId", deleteCommentHandler);
+reviewRouter.delete("/:reviewId", deleteReviewHandler);
 
-module.exports = commentsRouter;
+module.exports = reviewRouter;
