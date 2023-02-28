@@ -19,7 +19,7 @@ const getReviewByPoductHandler = async (req, res) => {
 const getReviewByUserHandler = async (req, res) => {
   const { userId } = req.params;
   try {
-    const reviews = await getReviewsByUser(userId);
+    const reviews = await getReviewByUser(userId);
     return res.status(200).json(reviews);
   } catch (error) {
     return res.status(404).json({ error: error.message });
