@@ -1,15 +1,4 @@
-const adapter = {
-  support: {
-    3: ["Brinda buena atención", "Sus clientes están satisfechos"],
-    2: ["Brinda la atención justa", "Sus clientes no están muy satisfechos"],
-    1: ["No brinda buena atención", "Sus clientes estan descontentos"],
-  },
-  dispatchtime: {
-    3: ["", ""],
-    2: ["", ""],
-    1: ["", ""],
-  },
-};
+import { qualificationAdapter } from "../../adapters/qualificationAdapter";
 
 //type debe ser support / dispatchtime || qualification (number)
 function QualificationChart({ type = "support", qualification = 3 }) {
@@ -22,9 +11,9 @@ function QualificationChart({ type = "support", qualification = 3 }) {
         imagenimagenimagenimagen imagenimagenimagenimagen
       </picture>
       <h3 className=" text-xl font-semibold">
-        {adapter[type][qualification][0]}
+        {qualificationAdapter(type, qualification, "title")}
       </h3>
-      <p>{adapter[type][qualification][1]}</p>
+      <p>{qualificationAdapter(type, qualification, "message")}</p>
     </article>
   );
 }
