@@ -54,7 +54,7 @@ const sendResetPasswordEmail = async (email, resetToken) => {
   const contentHtml = `
     <h1>Resetear contraseña en Pet Friendly Universe</h1>
     <p>Para resetear tu contraseña, por favor haz click en el siguiente link:</p>
-    <a href=http://localhost:3001/change-password/${resetToken}">
+    <a href="http://${process.env.ORIGIN}:${process.env.FRONTEND_PORT}/shop/${resetToken}">
       Resetear Contraseña
     </a>
     <p>Si no has solicitado resetear tu contraseña, por favor ignora este correo.</p>
@@ -86,6 +86,7 @@ const sendResetPasswordEmail = async (email, resetToken) => {
         accessToken: accessToken,
         expires: 3600,
       },
+      tls: { rejectUnauthorized: false },
     });
     const mailInfo = {
       from: "Pet Friendly Universe <petfriendyleuniverse@gmail.com>",

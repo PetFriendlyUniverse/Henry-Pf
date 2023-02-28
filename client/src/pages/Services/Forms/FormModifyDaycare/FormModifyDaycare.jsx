@@ -2,20 +2,20 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { ValidateStore } from "../Validations/ValidateStore";
+import { Validate } from "../Validations/Validate";
 import { Carousel } from "flowbite-react";
 
 import LinkButton from "../../../../components/Button/LinkButton";
 import { useNavigate, useParams } from "react-router-dom";
-import { getStoreByUser } from "../../../../redux/features/users/usersActions";
+import { getDaycareByUser } from "../../../../redux/features/users/usersActions";
 
-function FormModifyStore() {
+function FormModifyDaycare() {
   const idUser = localStorage.getItem("id");
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getStoreByUser(id));
+    dispatch(getDaycareByUser(id));
   }, []);
   const [formComplete, setFormComplete] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -48,13 +48,12 @@ function FormModifyStore() {
     const property = e.target.name;
     const value = e.target.value;
     setForm({ ...form, [property]: value });
-    setErrors({ ...errors, ...ValidateStore(property, value) });
+    setErrors({ ...errors, ...Validate(property, value) });
     if (value !== "") {
       setFormComplete(true);
     } else {
       setFormComplete(false);
     }
-    console.log(form);
   };
 
   const changeHandlerImg = (e) => {
@@ -96,16 +95,16 @@ function FormModifyStore() {
         },
       });
       axios
-        .put(`store/${id}`, newForm, {
+        .put(`daycare/${id}`, newForm, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         })
         .then(() => {
           Swal.fire({
-            title: "Tienda creada",
+            title: "Guarderia creada",
             icon: "success",
-            text: "La Tienda ha sido creada correctamente",
+            text: "La Guarderia ha sido creada correctamente",
             closeOnEsc: true,
             closeOnClickOutside: true,
           }).then(() => {
@@ -113,6 +112,7 @@ function FormModifyStore() {
           });
         })
         .catch((err) => {
+          console.log(err);
           Swal.fire({
             icon: "error",
             title: "Error en el formulario",
@@ -130,7 +130,7 @@ function FormModifyStore() {
         className="mt-10 flex h-full w-full flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue drop-shadow-2xl md:w-3/5 lg:h-auto "
       >
         <h3 className="mb-6">
-          Modifica o agrega informacion para crear tu tienda
+          Modifica o agrega informacion para crear tu guarderia
         </h3>
         <div className="flex h-full w-full flex-row justify-between overflow-hidden rounded-2xl bg-slate-50 py-10">
           {/* //div con el fomulario izquierdo */}
@@ -354,4 +354,4 @@ function FormModifyStore() {
   );
 }
 
-export default FormModifyStore;
+export default FormModifyDaycare;

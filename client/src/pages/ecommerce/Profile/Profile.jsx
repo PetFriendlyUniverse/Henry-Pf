@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import interrogation from "../../../assets/general/interrogation.svg";
@@ -15,6 +15,8 @@ import Payment from "./components/Payment";
 import {
   getStoreByUser,
   getUserApi,
+  getWalkerByUser,
+  getDaycareByUser,
 } from "../../../redux/features/users/usersActions";
 import Purchase from "./components/Purchase";
 
@@ -24,18 +26,33 @@ function Profile() {
   const [showInfo, setShowInfo] = useState("profile");
   const user = useSelector((state) => state.User?.userId);
   const userStore = useSelector((state) => state.User?.userStoreId);
+  const userWalker = useSelector((state) => state.User?.userWalkerId);
+  const userDaycare = useSelector((state) => state.User?.userDaycareId);
   const handleShowInfo = (e) => {
     setShowInfo(e.target.name);
   };
-  const handleClick = () => {
+  const handleClickStore = () => {
     axios.post(`store/create/${user.id}`).then((res) => {
-      const id = res.data.id;
-      navigate(`/store/modify/${id}`);
+      const idStore = res.data.id;
+      navigate(`/store/modify/${idStore}`);
     });
   };
-
+  const handleClickWalker = () => {
+    axios.post(`walker/create/${user.id}`).then((res) => {
+      const idWalker = res.data.id;
+      navigate(`/walker/modify/${idWalker}`);
+    });
+  };
+  const handleClickDaycare = () => {
+    axios.post(`daycare/create/${user.id}`).then((res) => {
+      const idDaycare = res.data.id;
+      navigate(`/daycare/modify/${idDaycare}`);
+    });
+  };
   useEffect(() => {
     dispatch(getStoreByUser(user?.id));
+    dispatch(getDaycareByUser(user?.id));
+    dispatch(getWalkerByUser(user?.id));
     dispatch(getUserApi(user.id));
   }, []);
 
@@ -172,9 +189,27 @@ function Profile() {
                     <div class="flex py-2">
                       <img src={interrogation} alt="help" class="w-3 sm:w-5" />
                       <LinkButton
-                        onClick={handleClick}
+                        onClick={handleClickStore}
                         component={"Habilita tu tienda"}
                         title="Habilita tu tienda antes de poder cargar productos para su venta"
+                      />
+                    </div>
+                  )}
+                  {user.daycare === false && (
+                    <div class="flex py-2">
+                      <img src={interrogation} alt="help" class="w-3 sm:w-5" />
+                      <LinkButton
+                        onClick={handleClickDaycare}
+                        component={"Habilita tu guarderia"}
+                      />
+                    </div>
+                  )}
+                  {user.walker === false && (
+                    <div class="flex py-2">
+                      <img src={interrogation} alt="help" class="w-3 sm:w-5" />
+                      <LinkButton
+                        onClick={handleClickWalker}
+                        component={"Habilitate como paseador"}
                       />
                     </div>
                   )}

@@ -15,6 +15,14 @@ const createDaycare = async (userId) => {
     );
     const daycare = await Daycare.create();
     await daycare.setUser(user);
+    await User.update(
+      { daycareId: daycare.id },
+      {
+        where: {
+          id: userId,
+        },
+      }
+    );
     return daycare;
   }
 };
@@ -38,7 +46,7 @@ const getDaycareByID = async (id) => {
   return daycare;
 };
 
-const updateDaycare = async (id, data) => {
+const updateDaycare = async (data, id) => {
   if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
   } else {

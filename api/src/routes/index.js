@@ -11,6 +11,7 @@ const paymentRouter = require("./payment");
 const mailRoutes = require("./mailRoutes");
 const daycareRouter = require("./servicesRouters/daycareRouter");
 const walkersRouter = require("./servicesRouters/walkersRouter");
+const datesRouter = require("./datesRouter");
 require("../helpers/google.js");
 
 // Importar todos los routers;
@@ -21,7 +22,6 @@ const router = Router();
 const { generator } = require("../randomGenerator");
 generator();
 // router.use("/randomgenerator", (req, res) => {
-//   generator();
 //   res.send("Ejecucion de randomGenerator exitosa");
 // });
 
@@ -36,6 +36,7 @@ router.use("/payment", paymentRouter);
 router.use("/mails", mailRoutes);
 router.use("/daycare", daycareRouter);
 router.use("/walker", walkersRouter);
+router.use("/dates", datesRouter);
 
 router.get(
   "/auth",

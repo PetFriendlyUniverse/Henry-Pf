@@ -14,9 +14,9 @@ function Login() {
     password: "",
   });
   const [form, setForm] = useState({
-    user: "maximiliano",
-    name: "maximiliano",
-    lastname: "permingeat",
+    user: "",
+    name: "",
+    lastname: "",
     mail: "",
     password: "",
   });
@@ -27,9 +27,8 @@ function Login() {
     mail: "",
     password: "",
   });
-  // const [repeat, setRepeat] = useState({
-  //   repeatPassword: "",
-  // });
+  const [repeatPassword, setRepeatPassword] = useState("");
+
   const handleChange = (e) => {
     const property = e.target.name;
     const value = e.target.value;
@@ -46,11 +45,9 @@ function Login() {
     const value = e.target.value;
     setLogin({ ...login, [property]: value });
   };
-  // const handleChangeRepeat = (e) => {
-  //   const property = e.target.name;
-  //   const value = e.target.value;
-  //   // setRepeat({ [property]: value });
-  // };
+  const handleChangeRepeatPassword = (e) => {
+    setRepeatPassword(e.target.value);
+  };
   const handletSubmitLogin = async (e) => {
     e.preventDefault();
     try {
@@ -82,11 +79,11 @@ function Login() {
     window.location.href = "http://localhost:3001/auth";
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmitRegister = async (e) => {
     e.preventDefault();
     const errorValues = Object.values(errors);
     const isFormValid = errorValues.every((val) => val === "");
-    if (isFormValid) {
+    if (isFormValid && repeatPassword === form.password) {
       try {
         Swal.fire({
           title: "Now loading",
@@ -113,6 +110,7 @@ function Login() {
             mail: "",
             password: "",
           });
+          setRepeatPassword("");
         });
       } catch (error) {
         Swal.fire({
@@ -136,17 +134,70 @@ function Login() {
     }
   };
 
-  // const handleClick = async () => {
-  //   await Swal.fire({
-  //     icon: "success",
-  //     title: "El registro se ha sido realizado con éxito!",
-  //     showConfirmButton: true,
-  //     timer: 1500,
-  //   });
-  // };
+  // ----------------------- Modal -----------------------//
+  const [showModal, setShowModal] = useState(false);
+  const handleShowModal = () => {
+    setShowModal((prev) => !prev);
+  };
+  const [mail, setMail] = useState("");
+  const handleChageMail = ({ target }) => {
+    setMail(target.value);
+  };
+  const submitConfirmMail = async (e) => {
+    e.preventDefault();
+    Swal.fire({
+      title: "Verificando mail",
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+    try {
+      await axios.post("/user/reset-password", { mail: mail });
+      await Swal.fire(
+        "Le hemos enviado un correo electrónico de confirmación, por favor verifique su e-mail para continuar"
+      );
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: error.response.data.error,
+        showConfirmButton: true,
+        closeOnClickOutside: true,
+        closeOnEsc: true,
+      });
+    }
+    setMail("");
+    setShowModal(false);
+  };
 
+  // ----------------------- Modal -----------------------//
   return (
     <>
+      <div
+        className={`fixed top-0 z-50  ${
+          showModal ? "flex" : "hidden"
+        } h-screen w-screen place-content-center `}
+      >
+        <div
+          className={`opacity-0 ${
+            showModal ? "opacity-60" : "hidden"
+          } h-screen w-screen bg-black transition duration-1000 ease-in-out`}
+        ></div>
+        <form
+          onSubmit={submitConfirmMail}
+          className="absolute top-[45%] rounded-md bg-ultraviolet p-10"
+        >
+          <span onClick={handleShowModal}>X</span>
+          <input
+            onChange={handleChageMail}
+            type="email"
+            placeholder="Ingresar e-mail"
+            value={mail}
+          />
+          <button>Enviar</button>
+        </form>
+      </div>
       <div className="flex h-screen items-center justify-center pt-20">
         <div className={s.main}>
           <input type="checkbox" id={s["chk"]} aria-hidden="true" />
@@ -176,6 +227,14 @@ function Login() {
                 required={true}
               />
               <button>Ingresar</button>
+              <div className="relative w-full">
+                <span
+                  onClick={handleShowModal}
+                  className="absolute right-0 -top-[50px] cursor-pointer text-sm hover:font-semibold hover:tracking-[-.5px]"
+                >
+                  Olvidaste tu contraseña?
+                </span>
+              </div>
               <div className={s.loginGoogle}>
                 <button type="button" onClick={handleClickGoogle}>
                   Click para seguir con google
@@ -184,7 +243,7 @@ function Login() {
             </form>
           </div>
           <div className={s.register}>
-            <form className={s.form} onSubmit={handleSubmit}>
+            <form className={s.form} onSubmit={handleSubmitRegister}>
               <label htmlFor={s["chk"]} aria-hidden="true">
                 Registrarse
               </label>
@@ -263,21 +322,19 @@ function Login() {
                   {errors.password}
                 </span>
               )}
-              {/* <input
-                onChange={handleChangeRepeat}
+              <input
+                onChange={handleChangeRepeatPassword}
                 class={s.input}
                 type="password"
                 name="repeatPassword"
-                value={repeat.repeatPassword}
+                value={repeatPassword}
                 placeholder="Repetir Contraseña "
                 autoComplete="off"
                 required="true"
               />
-              {errors.password === errors.repeatPassword ? null : (
-                <div>
-                  <p className="text-xs text-red-700">{`Passwords does not match`}</p>
-                </div>
-              )} */}
+              {repeatPassword !== form.password && (
+                <p className="text-xs text-red-700">{`Passwords does not match`}</p>
+              )}
               <LinkButton component={"Registrate"} />
               <button type="button" onClick={handleClickGoogle}>
                 Click para registrarte con google
