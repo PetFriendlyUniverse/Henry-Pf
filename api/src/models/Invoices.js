@@ -10,11 +10,26 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      // la FK de user_id se genera aut por la relacion de sequelize 
+      // la FK de user_id se genera aut por la relacion de sequelize
+    },
+    {
+      paymentId: {
+        type: DataTypes.INTEGER,
+      },
+    },
+    {
+      merchantOrder: {
+        type: DataTypes.INTEGER,
+      },
+    },
+    {
+      status: {
+        type: DataTypes.STRING,
+      },
     },
     {
       timestamps: true, // son los tiempos de creacion y de act de la tabla de la base de datos, con esto eliminamos el tiempo de act
-      createdAt: true, 
+      createdAt: true,
       updatedAt: false,
     }
   );
