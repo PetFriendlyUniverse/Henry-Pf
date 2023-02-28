@@ -102,6 +102,15 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
+      storeId: {
+        type: DataTypes.INTEGER,
+      },
+      walkerId: {
+        type: DataTypes.INTEGER,
+      },
+      daycareId: {
+        type: DataTypes.INTEGER,
+      },
       store: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,

@@ -15,6 +15,14 @@ const createStore = async (userId) => {
     );
     const store = await Store.create();
     await store.setUser(user);
+    await User.update(
+      { storeId: store.id },
+      {
+        where: {
+          id: userId,
+        },
+      }
+    );
     return store;
   }
 };
