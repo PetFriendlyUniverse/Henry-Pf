@@ -41,6 +41,7 @@ module.exports = {
         pcomida: "url('./assets/imagenes/food-01.png')",
         phouse: "url('./assets/imagenes/doghouse-01.png')",
         ptoys: "url('./assets/imagenes/toys-01.png')",
+        adopcion: "url('./assets/imagenes/symphony.png')",
       },
       keyframes: {
         coloranim: {

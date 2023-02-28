@@ -1,7 +1,4 @@
-import { Tabs } from "flowbite-react";
-import TabUser from "./components/TabUser";
-import TabStore from "./components/TabStore";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import interrogation from "../../../assets/general/interrogation.svg";

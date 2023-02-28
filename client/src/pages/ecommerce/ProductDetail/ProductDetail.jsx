@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import React, { useEffect, useState } from "react";
@@ -15,7 +15,6 @@ import {
   clearProductId,
   setShopCart,
 } from "../../../redux/features/products/productsSlice";
-import LessButton from "../../../components/Button/LessButton";
 
 function ProductDetail() {
   const { id } = useParams();
