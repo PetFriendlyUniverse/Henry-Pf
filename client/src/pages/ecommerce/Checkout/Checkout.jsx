@@ -25,7 +25,7 @@ function Checkout() {
     return {
       id: item.id,
       title: item.name,
-      picture_url: item.img,
+      picture_url: item.img[0],
       unit_price: item.price,
       quantity: item.amount,
       currency_id: "ARS",
@@ -33,10 +33,13 @@ function Checkout() {
   });
 
   const handleClick = async () => {
+    console.log(arrProductsPayment);
     if (token) {
       try {
         const { data } = await axios.post("/payment/new", arrProductsPayment);
         window.location.href = await data.response.body.init_point;
+        localStorage.removeItem("shopCart");
+        dispatch(clearShopCart());
       } catch (error) {
         Swal.fire({
           icon: "error",
@@ -45,9 +48,6 @@ function Checkout() {
           timer: 1100,
         });
       }
-      localStorage.removeItem("shopCart");
-      dispatch(clearShopCart());
-      navigate("/shop");
     } else {
       await Swal.fire({
         title: "Tienes que registrarte para seguir con tu compra",
