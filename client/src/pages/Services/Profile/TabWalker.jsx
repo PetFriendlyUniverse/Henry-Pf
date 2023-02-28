@@ -1,23 +1,19 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import LinkButton from "../../../../components/Button/LinkButton";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import CardStoreIdContainer from "../../../../components/CardStoreIdContainer/CardStoreIdContainer";
-import Contruccion from "../../../Services/Services";
+import Contruccion from "../../Services/Services";
 
-import PhotoStore from "./Store/PhotoStore";
-import InfoStore from "./Store/InfoStore";
-import ContactsStore from "./Store/ContactsStore";
-import UbicationStore from "./Store/UbicationStore";
-import SearchForm from "../../../../components/NavBar/components/SearchForm";
-
-import interrogation from "../../../../assets/general/interrogation.svg";
-
-import React from "react";
-import { getStoreByUser } from "../../../../redux/features/users/usersActions";
+import PhotoWalker from "./components/Walker/PhotoWalker";
+import InfoWalker from "./components/Walker/InfoWalker";
+import ContactsWalker from "./components/Walker/ContactsWalker";
 import Ubication from "./Ubication";
 
-function TabStore() {
+import interrogation from "../../../assets/general/interrogation.svg";
+
+import React from "react";
+import { getWalkerByUser } from "../../../redux/features/users/usersActions";
+
+function TabWalker() {
   const id = localStorage.getItem("id");
   const dispatch = useDispatch();
   const [showInfo, setShowInfo] = useState("profile");
@@ -26,7 +22,7 @@ function TabStore() {
     setShowInfo(e.target.name);
   };
   useEffect(() => {
-    dispatch(getStoreByUser(id));
+    dispatch(getWalkerByUser(id));
   }, []);
 
   return (
@@ -34,7 +30,7 @@ function TabStore() {
       <div className=" jborder-2 flex h-full w-full flex-row ">
         <div className="mb-3p-3 xl:w-96 ">
           <div className="mb-3  h-full rounded-2xl border-4 border-cornflowerblue  p-3 xl:w-96 ">
-            <PhotoStore img={user?.img} name={user?.name} />
+            <PhotoWalker img={user?.img} name={user?.name} />
             <div className="mb-4 mt-4 border-gray-200  dark:border-gray-200">
               <ul className="-mb-px text-center text-sm font-medium">
                 <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
@@ -97,7 +93,7 @@ function TabStore() {
           {showInfo == "profile" ? (
             <div className="border-gray-400 p-3 lg:border-b-2">
               <h1 className="flex justify-center pl-2 text-3xl font-semibold">
-                Perfil de la Tienda
+                Perfil de Paseador
               </h1>
             </div>
           ) : showInfo == "contact" ? (
@@ -112,27 +108,18 @@ function TabStore() {
                 Direcciones
               </h1>
             </div>
-          ) : showInfo == "storeProfile" ? (
+          ) : (
             <div className="border-gray-400 p-3 lg:border-b-2">
               <h1 className="flex justify-center pl-2 text-3xl font-semibold">
-                Perfil de la Tienda
+                Perfil de Paseador
               </h1>
-            </div>
-          ) : (
-            <div className="flex justify-between gap-4 border-gray-400 p-3 lg:border-b-2">
-              <h1 className="flex items-center justify-center pl-2 text-3xl font-semibold">
-                Productos Disponibles
-              </h1>
-              <div className="rounded-2xl border-2">
-                <SearchForm />
-              </div>
             </div>
           )}
           <div className="flex flex-col pt-2 lg:flex xl:flex">
             {showInfo == "profile" ? (
-              <InfoStore name={user?.name} />
+              <InfoWalker name={user?.name} />
             ) : showInfo == "contact" ? (
-              <ContactsStore
+              <ContactsWalker
                 area_code={user?.area_code}
                 number={user?.number}
                 mail={user?.mail}
@@ -145,28 +132,9 @@ function TabStore() {
                 street_name={user.street_name}
                 street_number={user.street_number}
               />
-            ) : showInfo == "products" ? (
-              <div className="w-full ">
-                {" "}
-                <CardStoreIdContainer id={user?.id} />
-              </div>
             ) : (
               <Contruccion />
             )}
-
-            <div className="flex pl-4 pt-5 sm:pl-12">
-              <div className="flex py-2">
-                <img
-                  src={interrogation}
-                  alt="help"
-                  title="aqui puedes crear nuevos productos"
-                  className="w-3 sm:w-5"
-                />
-                <Link to={`/profile/store/create/${user?.id}`}>
-                  <LinkButton component={"Crear producto"} />
-                </Link>
-              </div>
-            </div>
           </div>
         </div>
       </div>{" "}
@@ -174,4 +142,4 @@ function TabStore() {
   );
 }
 
-export default TabStore;
+export default TabWalker;

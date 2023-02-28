@@ -6,6 +6,7 @@ import LandingShop from "./pages/ecommerce/LandingShop/LandingShop";
 import About from "./pages/About/About";
 // import FormPassword from "./pages/FormPassword/FormPassword";
 import TabStore from "./pages/ecommerce/Profile/components/TabStore";
+import TabWalker from "./pages/Services/Profile/TabWalker";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import Loader from "./components/Loader/Loader";
@@ -79,6 +80,7 @@ function App() {
           <Route path="/profile/edit/:id" element={<FormModifyUser />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/profile/store/:id" element={<TabStore />} />
+          <Route path="/profile/walker/:id" element={<TabWalker />} />
           <Route path="adopcion/blog" element={<Adopcion />} />
           <Route
             path="/profile/store/create/:id"

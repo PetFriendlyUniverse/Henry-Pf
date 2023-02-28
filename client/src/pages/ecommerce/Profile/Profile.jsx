@@ -25,9 +25,6 @@ function Profile() {
   const dispatch = useDispatch();
   const [showInfo, setShowInfo] = useState("profile");
   const user = useSelector((state) => state.User?.userId);
-  const userStore = useSelector((state) => state.User?.userStoreId);
-  const userWalker = useSelector((state) => state.User?.userWalkerId);
-  const userDaycare = useSelector((state) => state.User?.userDaycareId);
   const handleShowInfo = (e) => {
     setShowInfo(e.target.name);
   };
@@ -50,12 +47,9 @@ function Profile() {
     });
   };
   useEffect(() => {
-    dispatch(getStoreByUser(user?.id));
-    dispatch(getDaycareByUser(user?.id));
-    dispatch(getWalkerByUser(user?.id));
     dispatch(getUserApi(user.id));
   }, []);
-
+  console.log(user);
   return (
     <div className="flex justify-start bg-adopcion  pb-28 pt-10 lg:items-center">
       <div className=" flex h-full w-full flex-col-reverse justify-end rounded-2xl">
@@ -106,13 +100,31 @@ function Profile() {
                         Compras
                       </button>
                     </li>
-                    <li className="mr-2 rounded-lg border-b-2 bg-slate-50 py-3  hover:bg-slate-100 hover:text-gray-500">
-                      {user.store && (
-                        <Link to={`/profile/store/${userStore.id}`}>
+                    {user.store && (
+                      <li className="mr-2 rounded-lg border-b-2 bg-slate-50 py-3  hover:bg-slate-100 hover:text-gray-500">
+                        <Link to={`/profile/store/${user.storeId}`}>
                           <button title="ingresa a tu tienda">Tienda</button>
                         </Link>
-                      )}
-                    </li>
+                      </li>
+                    )}
+                    {user.walker && (
+                      <li className="mr-2 rounded-lg border-b-2 bg-slate-50 py-3  hover:bg-slate-100 hover:text-gray-500">
+                        <Link to={`/profile/walker/${user.walkerId}`}>
+                          <button title="ingresa a tu perfil de paseador">
+                            Paseador
+                          </button>
+                        </Link>
+                      </li>
+                    )}
+                    {user.daycare && (
+                      <li className="mr-2 rounded-lg border-b-2 bg-slate-50 py-3  hover:bg-slate-100 hover:text-gray-500">
+                        <Link to={`/profile/daycare/${user.daycareId}`}>
+                          <button title="ingresa a tu guarderia">
+                            Guarderia
+                          </button>
+                        </Link>
+                      </li>
+                    )}
 
                     <li className="mr-2 rounded-lg border-b-2 bg-slate-50  hover:bg-slate-100 hover:text-gray-500">
                       {/* Reveer esto de volver al hacer Health/Services */}
