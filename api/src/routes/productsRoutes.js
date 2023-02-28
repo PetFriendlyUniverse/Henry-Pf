@@ -21,7 +21,7 @@ productsRoutes.get("/:id", getProductByIDlHandler);
 
 productsRoutes.get("/store/:storeId", getProductByIDStorelHandler);
 
-productsRoutes.post("/create", upload.single("img"), postProductHandler);
+productsRoutes.post("/create", upload.array("img"), postProductHandler);
 productsRoutes.put("/:id", putProductHandler);
 productsRoutes.delete("/:id", deleteProductHandler);
 
