@@ -15,6 +15,7 @@ import interrogation from "../../../../assets/general/interrogation.svg";
 
 import React from "react";
 import { getStoreByUser } from "../../../../redux/features/users/usersActions";
+import Ubication from "./Ubication";
 
 function TabStore() {
   const id = localStorage.getItem("id");
@@ -25,15 +26,15 @@ function TabStore() {
     setShowInfo(e.target.name);
   };
   useEffect(() => {
-    dispatch(getStoreByUser(id));
+    dispatch(getStoreByUser(user?.id));
   }, []);
 
   return (
-    <div className="flex justify-center  pb-28 pt-10 lg:items-center">
-      <div className=" flex h-full w-3/4 flex-col rounded-md border-2 md:flex-row lg:w-full">
-        <div className="mb-3 p-3 xl:w-96 ">
-          <PhotoStore img={user?.img} name={user?.name} />
-          <div className="">
+    <div className="flex justify-start bg-adopcion pb-28 pt-10 lg:items-center">
+      <div className=" jborder-2 flex h-full w-full flex-row ">
+        <div className="mb-3p-3 xl:w-96 ">
+          <div className="mb-3  h-full rounded-2xl border-4 border-cornflowerblue  p-3 xl:w-96 ">
+            <PhotoStore img={user?.img} name={user?.name} />
             <div className="mb-4 mt-4 border-gray-200  dark:border-gray-200">
               <ul className="-mb-px text-center text-sm font-medium">
                 <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
@@ -41,6 +42,7 @@ function TabStore() {
                     onClick={handleShowInfo}
                     name="storeProfile"
                     className="inline-block p-4"
+                    title="informacion del propietario"
                   >
                     Perfil de Tienda
                   </button>
@@ -50,6 +52,7 @@ function TabStore() {
                     onClick={handleShowInfo}
                     name="contact"
                     className="inline-block border-b-2 border-transparent p-4 "
+                    title="aquie puede ver la informacion de contacto de la tienda"
                   >
                     Contacto
                   </button>
@@ -59,6 +62,7 @@ function TabStore() {
                     onClick={handleShowInfo}
                     name="location"
                     className="inline-block p-4"
+                    title="aqui puedes ver la direccion de la tienda"
                   >
                     Direcciones
                   </button>
@@ -68,14 +72,20 @@ function TabStore() {
                     onClick={handleShowInfo}
                     name="products"
                     className="inline-block p-4"
+                    title="aqui puedes ver tus productos disponibles"
                   >
                     Productos
                   </button>
                 </li>
                 <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
                   {/* Reveer esto de volver al hacer Health/Services */}
-                  <Link to="/shop">
-                    <button className="inline-block p-4">Volver</button>
+                  <Link to={`/profile/${user.id}`}>
+                    <button
+                      title="vuelve a tu perfil"
+                      className="inline-block p-4"
+                    >
+                      Volver
+                    </button>
                   </Link>
                 </li>
               </ul>
@@ -83,7 +93,7 @@ function TabStore() {
           </div>
         </div>
         {/* este es el div que contiene el renderizado condicional del titulo */}
-        <div className=" border-2 border-gray-200 lg:w-full lg:border-l-2">
+        <div className=" ml-28  flex w-full flex-col flex-wrap rounded-2xl border-4  border-cornflowerblue">
           {showInfo == "profile" ? (
             <div className="border-gray-400 p-3 lg:border-b-2">
               <h1 className="flex justify-center pl-2 text-3xl font-semibold">
@@ -118,7 +128,7 @@ function TabStore() {
               </div>
             </div>
           )}
-          <div className="flex w-full flex-col  pt-2 lg:flex xl:flex">
+          <div className="flex flex-col pt-2 lg:flex xl:flex">
             {showInfo == "profile" ? (
               <InfoStore name={user?.name} />
             ) : showInfo == "contact" ? (
@@ -128,7 +138,7 @@ function TabStore() {
                 mail={user?.mail}
               />
             ) : showInfo == "location" ? (
-              <UbicationStore
+              <Ubication
                 province={user?.province}
                 locality={user?.locality}
                 zip_code={user.zip_code}
@@ -146,7 +156,12 @@ function TabStore() {
 
             <div className="flex pl-4 pt-5 sm:pl-12">
               <div className="flex py-2">
-                <img src={interrogation} alt="help" className="w-3 sm:w-5" />
+                <img
+                  src={interrogation}
+                  alt="help"
+                  title="aqui puedes crear nuevos productos"
+                  className="w-3 sm:w-5"
+                />
                 <Link to={`/profile/store/create/${user?.id}`}>
                   <LinkButton component={"Crear producto"} />
                 </Link>
