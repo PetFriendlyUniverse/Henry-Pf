@@ -16,10 +16,21 @@ function StoreDetail() {
           <h3 className="mt-8">Ubicación</h3>
           <p>_Store.locality_ , _Store.province_</p>
         </div>
-        <div className="w-3/4 border border-black px-16 lg:min-h-[40vh]">
+        <div className="flex w-3/4 flex-col gap-6 border border-black px-16 lg:min-h-[40vh]">
           <div className="flex h-[350px] w-full gap-4">
             <QualificationChart />
             <QualificationChart />
+          </div>
+          <div className="h-[500px] w-full border border-black">
+            <h2 className="mb-20 text-xl">
+              Algun gráfico de estadísticas de las opiniones
+            </h2>
+            <p>comentarios random</p>
+            <p>comentarios random</p>
+            <p>comentarios random</p>
+            <p>comentarios random</p>
+            <p>comentarios random</p>
+            <p>comentarios random</p>
           </div>
         </div>
       </div>
