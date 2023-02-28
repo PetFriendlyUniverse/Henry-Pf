@@ -15,6 +15,14 @@ const createWalkers = async (userId) => {
     );
     const walker = await Walker.create();
     await walker.setUser(user);
+    await User.update(
+      { walkerId: walker.id },
+      {
+        where: {
+          id: userId,
+        },
+      }
+    );
     return walker;
   }
 };
