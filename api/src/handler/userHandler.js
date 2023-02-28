@@ -10,6 +10,8 @@ const {
   verifyResetToken,
   updatePassword,
   storeById,
+  walkerById,
+  daycareById,
 } = require("../controllers/userControllers");
 const cloudinary = require("cloudinary").v2;
 
@@ -111,6 +113,24 @@ const getUserStore = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+const getUserWalker = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const walkerByUser = await walkerById(id);
+    res.status(200).json(walkerByUser);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+const getUserDaycare = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const daycareByUser = await daycareById(id);
+    res.status(200).json(daycareByUser);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 module.exports = {
   postUserHandler,
@@ -123,4 +143,6 @@ module.exports = {
   resetConfirmPasswordHandler,
   resetPasswordHandler,
   getUserStore,
+  getUserWalker,
+  getUserDaycare,
 };

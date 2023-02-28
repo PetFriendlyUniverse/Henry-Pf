@@ -9,12 +9,10 @@ const {
 const cloudinary = require("cloudinary").v2;
 
 const postDaycareHandler = async (req, res) => {
-  const data = req.body;
-  const file = req.file;
+  const { UserId: userId } = req.params;
+
   try {
-    const image = await cloudinary.uploader.upload(file.path);
-    data.img = image.secure_url;
-    const newDaycare = await createDaycare(data, file);
+    const newDaycare = await createDaycare(userId);
     res.status(200).json(newDaycare);
   } catch (error) {
     res.status(404).json({ error: error.message });

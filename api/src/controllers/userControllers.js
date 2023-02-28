@@ -1,4 +1,4 @@
-const { User, Store } = require("../db");
+const { User, Store, Walker, Daycare } = require("../db");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { sendResetPasswordEmail, confirmMail } = require("./mailController");
@@ -96,6 +96,22 @@ const storeById = async (id) => {
   });
   return store;
 };
+const walkerById = async (id) => {
+  const walker = await Walker.findOne({
+    where: {
+      UserId: id,
+    },
+  });
+  return walker;
+};
+const daycareById = async (id) => {
+  const daycare = await Daycare.findOne({
+    where: {
+      UserId: id,
+    },
+  });
+  return daycare;
+};
 
 module.exports = {
   createUser,
@@ -108,4 +124,6 @@ module.exports = {
   verifyResetToken,
   updatePassword,
   storeById,
+  walkerById,
+  daycareById,
 };

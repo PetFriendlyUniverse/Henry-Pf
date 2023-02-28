@@ -2,17 +2,19 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 // import { Suspense, lazy } from "react";
 import "./App.css";
-import NavBar from "./components/NavBar/NavBar";
-import Footer from "./components/Footer/Footer";
 import LandingShop from "./pages/ecommerce/LandingShop/LandingShop";
 import About from "./pages/About/About";
 // import FormPassword from "./pages/FormPassword/FormPassword";
 import TabStore from "./pages/ecommerce/Profile/components/TabStore";
+import NavBar from "./components/NavBar/NavBar";
+import Footer from "./components/Footer/Footer";
 import Loader from "./components/Loader/Loader";
 import { lazy, Suspense } from "react";
+import StoreDetail from "./pages/ecommerce/StoreDetail/StoreDetail";
 
 // import Shop2 from "./pages/ecommerce/Shop/Shop2";
 
+const Adopcion = lazy(() => import("./pages/Adopcion/Adopcion"));
 const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
 const Services = lazy(() => import("./pages/Services/Services"));
 
@@ -36,7 +38,14 @@ const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 
 const FormModifyStore = lazy(() =>
   import("./pages/ecommerce/Forms/FormModifyStore/FormModifyStore")
-); //Dejen esto asi para testear sus componentes a ver como se ven o si funcionan, solo cambien la importacion
+);
+
+const FormModifyDaycare = lazy(() =>
+  import("./pages/Services/Forms/FormModifyDaycare/FormModifyDaycare")
+);
+const FormModifyWalker = lazy(() =>
+  import("./pages/Services/Forms/FormModifyWalker/FormModifyWalker")
+);
 
 function App() {
   const shopCart = useSelector((state) => state.Products.shopCart);
@@ -55,11 +64,13 @@ function App() {
           <Route path="/landingshop" element={<LandingShop />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/detail/:id" element={<ProductDetail />} />
+          <Route path="/shop/storedetail/:id" element={<StoreDetail />} />
           <Route path="/shop/checkout" element={<Checkout />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile/edit/:id" element={<FormModifyUser />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/profile/store/:id" element={<TabStore />} />
+          <Route path="adopcion/blog" element={<Adopcion />} />
           <Route
             path="/profile/store/create/:id"
             element={<FormCreateProduct />}
@@ -72,7 +83,9 @@ function App() {
           {/* <Route path="/loginpassword" element={<FormPassword />} /> */}
 
           <Route path="/store/modify/:id" element={<FormModifyStore />} />
-          {/* <Route path="/recoverpassword" element={<FormPassword />} /> */}
+
+          <Route path="/walker/modify/:id" element={<FormModifyWalker />} />
+          <Route path="/daycare/modify/:id" element={<FormModifyDaycare />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

@@ -10,6 +10,8 @@ const {
   resetConfirmPasswordHandler,
   resetPasswordHandler,
   getUserStore,
+  getUserWalker,
+  getUserDaycare,
 } = require("../handler/userHandler");
 
 const multer = require("multer");
@@ -20,6 +22,8 @@ const userRoutes = Router();
 userRoutes.get("/", getUserHandler);
 userRoutes.get("/detail/:id", getUserDetailHandler);
 userRoutes.get("/store/:id", getUserStore);
+userRoutes.get("/walker/:id", getUserWalker);
+userRoutes.get("/daycare/:id", getUserDaycare);
 userRoutes.post("/create", postUserHandler);
 userRoutes.post("/login", loginHandler);
 userRoutes.post("/logout", logoutHandler);

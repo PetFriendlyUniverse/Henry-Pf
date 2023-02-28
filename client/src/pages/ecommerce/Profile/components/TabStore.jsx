@@ -3,12 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import LinkButton from "../../../../components/Button/LinkButton";
 import { useDispatch, useSelector } from "react-redux";
 import CardStoreIdContainer from "../../../../components/CardStoreIdContainer/CardStoreIdContainer";
+import Contruccion from "../../../Services/Services";
 
-import PhotoName from "./PhotoName";
-import PersonalInfo from "./PersonalInfo";
-import Contacts from "./Contacts";
-import Ubication from "./Ubication";
-import Payment from "./Payment";
+import PhotoStore from "./Store/PhotoStore";
+import InfoStore from "./Store/InfoStore";
+import ContactsStore from "./Store/ContactsStore";
+import UbicationStore from "./Store/UbicationStore";
 import SearchForm from "../../../../components/NavBar/components/SearchForm";
 
 import interrogation from "../../../../assets/general/interrogation.svg";
@@ -29,10 +29,10 @@ function TabStore() {
   }, []);
 
   return (
-    <div>
-      <div className=" flex h-full w-full flex-col rounded-md border-2 md:flex-row lg:w-full">
+    <div className="flex justify-center  pb-28 pt-10 lg:items-center">
+      <div className=" flex h-full w-3/4 flex-col rounded-md border-2 md:flex-row lg:w-full">
         <div className="mb-3 p-3 xl:w-96 ">
-          <PhotoName img={user?.img} name={user?.name} />
+          <PhotoStore img={user?.img} name={user?.name} />
           <div className="">
             <div className="mb-4 mt-4 border-gray-200  dark:border-gray-200">
               <ul className="-mb-px text-center text-sm font-medium">
@@ -87,7 +87,7 @@ function TabStore() {
           {showInfo == "profile" ? (
             <div className="border-gray-400 p-3 lg:border-b-2">
               <h1 className="flex justify-center pl-2 text-3xl font-semibold">
-                Perfil
+                Perfil de la Tienda
               </h1>
             </div>
           ) : showInfo == "contact" ? (
@@ -102,6 +102,12 @@ function TabStore() {
                 Direcciones
               </h1>
             </div>
+          ) : showInfo == "storeProfile" ? (
+            <div className="border-gray-400 p-3 lg:border-b-2">
+              <h1 className="flex justify-center pl-2 text-3xl font-semibold">
+                Perfil de la Tienda
+              </h1>
+            </div>
           ) : (
             <div className="flex justify-between gap-4 border-gray-400 p-3 lg:border-b-2">
               <h1 className="flex items-center justify-center pl-2 text-3xl font-semibold">
@@ -114,22 +120,28 @@ function TabStore() {
           )}
           <div className="flex w-full flex-col  pt-2 lg:flex xl:flex">
             {showInfo == "profile" ? (
-              <PersonalInfo name={user?.name} user={user?.user} />
+              <InfoStore name={user?.name} />
             ) : showInfo == "contact" ? (
-              <Contacts
-                phone={user?.phone}
-                emergencyphone={user?.emergencyphone}
+              <ContactsStore
+                area_code={user?.area_code}
+                number={user?.number}
                 mail={user?.mail}
               />
             ) : showInfo == "location" ? (
-              <Ubication province={user?.province} locality={user?.locality} />
+              <UbicationStore
+                province={user?.province}
+                locality={user?.locality}
+                zip_code={user.zip_code}
+                street_name={user.street_name}
+                street_number={user.street_number}
+              />
             ) : showInfo == "products" ? (
               <div className="w-full ">
                 {" "}
                 <CardStoreIdContainer id={user?.id} />
               </div>
             ) : (
-              <Payment />
+              <Contruccion />
             )}
 
             <div className="flex pl-4 pt-5 sm:pl-12">
