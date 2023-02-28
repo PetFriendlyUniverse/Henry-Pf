@@ -27,9 +27,8 @@ function Login() {
     mail: "",
     password: "",
   });
-  // const [repeat, setRepeat] = useState({
-  //   repeatPassword: "",
-  // });
+  const [repeatPassword, setRepeatPassword] = useState("");
+
   const handleChange = (e) => {
     const property = e.target.name;
     const value = e.target.value;
@@ -46,11 +45,9 @@ function Login() {
     const value = e.target.value;
     setLogin({ ...login, [property]: value });
   };
-  // const handleChangeRepeat = (e) => {
-  //   const property = e.target.name;
-  //   const value = e.target.value;
-  //   // setRepeat({ [property]: value });
-  // };
+  const handleChangeRepeatPassword = (e) => {
+    setRepeatPassword(e.target.value);
+  };
   const handletSubmitLogin = async (e) => {
     e.preventDefault();
     try {
@@ -82,11 +79,11 @@ function Login() {
     window.location.href = "http://localhost:3001/auth";
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmitRegister = async (e) => {
     e.preventDefault();
     const errorValues = Object.values(errors);
     const isFormValid = errorValues.every((val) => val === "");
-    if (isFormValid) {
+    if (isFormValid && repeatPassword === form.password) {
       try {
         Swal.fire({
           title: "Now loading",
@@ -113,6 +110,7 @@ function Login() {
             mail: "",
             password: "",
           });
+          setRepeatPassword("");
         });
       } catch (error) {
         Swal.fire({
@@ -184,7 +182,7 @@ function Login() {
             </form>
           </div>
           <div className={s.register}>
-            <form className={s.form} onSubmit={handleSubmit}>
+            <form className={s.form} onSubmit={handleSubmitRegister}>
               <label htmlFor={s["chk"]} aria-hidden="true">
                 Registrarse
               </label>
@@ -263,21 +261,19 @@ function Login() {
                   {errors.password}
                 </span>
               )}
-              {/* <input
-                onChange={handleChangeRepeat}
+              <input
+                onChange={handleChangeRepeatPassword}
                 class={s.input}
                 type="password"
                 name="repeatPassword"
-                value={repeat.repeatPassword}
+                value={repeatPassword}
                 placeholder="Repetir Contraseña "
                 autoComplete="off"
                 required="true"
               />
-              {errors.password === errors.repeatPassword ? null : (
-                <div>
-                  <p className="text-xs text-red-700">{`Passwords does not match`}</p>
-                </div>
-              )} */}
+              {repeatPassword !== form.password && (
+                <p className="text-xs text-red-700">{`Passwords does not match`}</p>
+              )}
               <LinkButton component={"Registrate"} />
               <button type="button" onClick={handleClickGoogle}>
                 Click para registrarte con google

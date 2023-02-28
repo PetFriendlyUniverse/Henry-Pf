@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import "./App.css";
 import LandingShop from "./pages/ecommerce/LandingShop/LandingShop";
 import About from "./pages/About/About";
-import FormPassword from "./pages/FormPassword/FormPassword";
+// import FormPassword from "./pages/FormPassword/FormPassword";
 import TabStore from "./pages/ecommerce/Profile/components/TabStore";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
@@ -53,6 +53,7 @@ function App() {
   window.addEventListener("beforeunload", () => {
     localStorage.setItem("shopCart", JSON.stringify(shopCart));
   });
+
   return (
     <div className="App min-h-screen">
       {pathname !== "/" && pathname !== "/landingshop" && <NavBar />}
@@ -79,9 +80,10 @@ function App() {
             element={<FormModifyProduct />}
           />
           <Route path="/about" element={<About />} />
-          <Route path="/loginpassword" element={<FormPassword />} />
+          {/* <Route path="/loginpassword" element={<FormPassword />} /> */}
 
           <Route path="/store/modify/:id" element={<FormModifyStore />} />
+
           <Route path="/walker/modify/:id" element={<FormModifyWalker />} />
           <Route path="/daycare/modify/:id" element={<FormModifyDaycare />} />
           <Route path="*" element={<NotFound />} />
