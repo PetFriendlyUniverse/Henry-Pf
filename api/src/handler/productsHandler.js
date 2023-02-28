@@ -35,8 +35,8 @@ const postProductHandler = async (req, res) => {
   const files = req.files;
   console.log(files);
   try {
-    const nueva = JSON.parse(req.body.data);
-    const { requiredData, extraData } = splitData(nueva);
+    // const nueva = JSON.parse(req.body.data);
+    const { requiredData, extraData } = splitData(data);
     const images = [];
     for (const file of files) {
       const image = await cloudinary.uploader.upload(file.path);

@@ -19,7 +19,7 @@ require("../helpers/google.js");
 const router = Router();
 
 const { generator } = require("../randomGenerator");
-// generator();
+generator();
 // router.use("/randomgenerator", (req, res) => {
 //   generator();
 //   res.send("Ejecucion de randomGenerator exitosa");
