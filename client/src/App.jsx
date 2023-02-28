@@ -37,7 +37,14 @@ const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 
 const FormModifyStore = lazy(() =>
   import("./pages/ecommerce/Forms/FormModifyStore/FormModifyStore")
-); //Dejen esto asi para testear sus componentes a ver como se ven o si funcionan, solo cambien la importacion
+);
+
+const FormModifyDaycare = lazy(() =>
+  import("./pages/Services/Forms/FormModifyDaycare/FormModifyDaycare")
+);
+const FormModifyWalker = lazy(() =>
+  import("./pages/Services/Forms/FormModifyWalker/FormModifyWalker")
+);
 
 function App() {
   const shopCart = useSelector((state) => state.Products.shopCart);
@@ -73,6 +80,8 @@ function App() {
           <Route path="/loginpassword" element={<FormPassword />} />
 
           <Route path="/store/modify/:id" element={<FormModifyStore />} />
+          <Route path="/walker/modify/:id" element={<FormModifyWalker />} />
+          <Route path="/daycare/modify/:id" element={<FormModifyDaycare />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
