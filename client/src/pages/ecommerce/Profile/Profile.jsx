@@ -1,6 +1,3 @@
-import { Tabs } from "flowbite-react";
-import TabUser from "./components/TabUser";
-import TabStore from "./components/TabStore";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -18,6 +15,8 @@ import Payment from "./components/Payment";
 import {
   getStoreByUser,
   getUserApi,
+  getWalkerByUser,
+  getDaycareByUser,
 } from "../../../redux/features/users/usersActions";
 
 function Profile() {
@@ -26,29 +25,57 @@ function Profile() {
   const [showInfo, setShowInfo] = useState("profile");
   const user = useSelector((state) => state.User?.userId);
   const userStore = useSelector((state) => state.User?.userStoreId);
+  const userWalker = useSelector((state) => state.User?.userWalkerId);
+  const userDaycare = useSelector((state) => state.User?.userDaycareId);
   const handleShowInfo = (e) => {
     setShowInfo(e.target.name);
   };
-  const handleClick = () => {
+  const handleClickStore = () => {
     axios.post(`store/create/${user.id}`).then((res) => {
-      const id = res.data.id;
-      navigate(`/store/modify/${id}`);
+      const idStore = res.data.id;
+      navigate(`/store/modify/${idStore}`);
     });
   };
-
+  const handleClickWalker = () => {
+    axios.post(`walker/create/${user.id}`).then((res) => {
+      const idWalker = res.data.id;
+      navigate(`/walker/modify/${idWalker}`);
+    });
+  };
+  const handleClickDaycare = () => {
+    axios.post(`daycare/create/${user.id}`).then((res) => {
+      const idDaycare = res.data.id;
+      navigate(`/daycare/modify/${idDaycare}`);
+    });
+  };
   useEffect(() => {
     dispatch(getStoreByUser(user?.id));
+    dispatch(getDaycareByUser(user?.id));
+    dispatch(getWalkerByUser(user?.id));
     dispatch(getUserApi(user.id));
   }, []);
 
   return (
     <div className="flex justify-center  pb-28 pt-10 lg:items-center">
       <div className=" flex h-full w-3/4 flex-col-reverse justify-end border-2 border-gray-200">
-        {user.store && (
-          <button>
-            <Link to={`/profile/store/${userStore.id}`}>Tienda</Link>
-          </button>
-        )}
+        <div className="flex space-x-4 border-l-4 py-2 pl-4">
+          {user.store && (
+            <button className="hover:bg-gray-200">
+              <Link to={`/profile/store/${userStore.id}`}>Tienda</Link>
+            </button>
+          )}
+          {user.walker && (
+            <button className="hover:bg-gray-200">
+              <Link to={`/profile/store/${userWalker.id}`}>Paseador</Link>
+            </button>
+          )}
+          {user.daycare && (
+            <button className="hover:bg-gray-200">
+              <Link to={`/profile/store/${userDaycare.id}`}>Guarderia</Link>
+            </button>
+          )}
+        </div>
+
         <div className="">
           <div className=" flex h-full w-full flex-col rounded-md border-2  md:flex-row lg:w-full">
             <div className="mb-3  p-3 xl:w-96 ">
@@ -151,8 +178,26 @@ function Profile() {
                     <div class="flex py-2">
                       <img src={interrogation} alt="help" class="w-3 sm:w-5" />
                       <LinkButton
-                        onClick={handleClick}
+                        onClick={handleClickStore}
                         component={"Habilita tu tienda"}
+                      />
+                    </div>
+                  )}
+                  {user.daycare === false && (
+                    <div class="flex py-2">
+                      <img src={interrogation} alt="help" class="w-3 sm:w-5" />
+                      <LinkButton
+                        onClick={handleClickDaycare}
+                        component={"Habilita tu guarderia"}
+                      />
+                    </div>
+                  )}
+                  {user.walker === false && (
+                    <div class="flex py-2">
+                      <img src={interrogation} alt="help" class="w-3 sm:w-5" />
+                      <LinkButton
+                        onClick={handleClickWalker}
+                        component={"Habilitate como paseador"}
                       />
                     </div>
                   )}

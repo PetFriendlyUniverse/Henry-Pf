@@ -110,6 +110,12 @@ Comments.belongsTo(Product);
 User.hasOne(Store);
 Store.belongsTo(User);
 
+User.hasOne(Daycare);
+Daycare.belongsTo(User);
+
+User.hasOne(Walker);
+Walker.belongsTo(User);
+
 // modelos de filtros
 
 const Brands = require("./models/FilterModels/Brands.js");

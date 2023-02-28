@@ -9,62 +9,64 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      name_daycare: {
+      name: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1, 30],
-        },
+        allowNull: true,
       },
-      area_code_daycare: {
+      area_code: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
-      number_daycare: {
+      number: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       province: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: [1, 30],
         },
       },
       locality: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: [1, 30],
         },
       },
-      zipcode: {
+      zip_code: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       street_name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
-          lent: [5, 30],
+          len: [5, 30],
         },
       },
       street_number: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       description: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: [1, 2000],
         },
       },
       img: {
         type: DataTypes.STRING,
-        allowNull: false,
         validate: {
           len: [1, 500],
+        },
+      },
+      mail: {
+        type: DataTypes.STRING,
+        validate: {
+          len: [1, 50],
         },
       },
       qualification: {

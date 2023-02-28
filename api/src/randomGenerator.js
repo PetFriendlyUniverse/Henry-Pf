@@ -199,7 +199,7 @@ const generator = () => {
 
         productsToCreate.push({
           name: `Alimento ${brand} de ${flavors[s]}`,
-          img,
+          img: [img],
           price,
           description,
           stock,
