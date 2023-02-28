@@ -10,6 +10,7 @@ import FormPassword from "./pages/FormPassword/FormPassword";
 import TabStore from "./pages/ecommerce/Profile/components/TabStore";
 import Loader from "./components/Loader/Loader";
 import { lazy, Suspense } from "react";
+import StoreDetail from "./pages/ecommerce/StoreDetail/StoreDetail";
 
 // import Shop2 from "./pages/ecommerce/Shop/Shop2";
 
@@ -54,6 +55,7 @@ function App() {
           <Route path="/landingshop" element={<LandingShop />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/detail/:id" element={<ProductDetail />} />
+          <Route path="/shop/storedetail/:id" element={<StoreDetail />} />
           <Route path="/shop/checkout" element={<Checkout />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile/edit/:id" element={<FormModifyUser />} />
