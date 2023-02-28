@@ -14,9 +14,9 @@ function Login() {
     password: "",
   });
   const [form, setForm] = useState({
-    user: "maximiliano",
-    name: "maximiliano",
-    lastname: "permingeat",
+    user: "",
+    name: "",
+    lastname: "",
     mail: "",
     password: "",
   });
@@ -134,17 +134,70 @@ function Login() {
     }
   };
 
-  // const handleClick = async () => {
-  //   await Swal.fire({
-  //     icon: "success",
-  //     title: "El registro se ha sido realizado con éxito!",
-  //     showConfirmButton: true,
-  //     timer: 1500,
-  //   });
-  // };
+  // ----------------------- Modal -----------------------//
+  const [showModal, setShowModal] = useState(false);
+  const handleShowModal = () => {
+    setShowModal((prev) => !prev);
+  };
+  const [mail, setMail] = useState("");
+  const handleChageMail = ({ target }) => {
+    setMail(target.value);
+  };
+  const submitConfirmMail = async (e) => {
+    e.preventDefault();
+    Swal.fire({
+      title: "Verificando mail",
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+    try {
+      await axios.post("/user/reset-password", { mail: mail });
+      await Swal.fire(
+        "Le hemos enviado un correo electrónico de confirmación, por favor verifique su e-mail para continuar"
+      );
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: error.response.data.error,
+        showConfirmButton: true,
+        closeOnClickOutside: true,
+        closeOnEsc: true,
+      });
+    }
+    setMail("");
+    setShowModal(false);
+  };
 
+  // ----------------------- Modal -----------------------//
   return (
     <>
+      <div
+        className={`fixed top-0 z-50  ${
+          showModal ? "flex" : "hidden"
+        } h-screen w-screen place-content-center `}
+      >
+        <div
+          className={`opacity-0 ${
+            showModal ? "opacity-60" : "hidden"
+          } h-screen w-screen bg-black transition duration-1000 ease-in-out`}
+        ></div>
+        <form
+          onSubmit={submitConfirmMail}
+          className="absolute top-[45%] rounded-md bg-ultraviolet p-10"
+        >
+          <span onClick={handleShowModal}>X</span>
+          <input
+            onChange={handleChageMail}
+            type="email"
+            placeholder="Ingresar e-mail"
+            value={mail}
+          />
+          <button>Enviar</button>
+        </form>
+      </div>
       <div className="flex h-screen items-center justify-center pt-20">
         <div className={s.main}>
           <input type="checkbox" id={s["chk"]} aria-hidden="true" />
@@ -174,6 +227,14 @@ function Login() {
                 required={true}
               />
               <button>Ingresar</button>
+              <div className="relative w-full">
+                <span
+                  onClick={handleShowModal}
+                  className="absolute right-0 -top-[50px] cursor-pointer text-sm hover:font-semibold hover:tracking-[-.5px]"
+                >
+                  Olvidaste tu contraseña?
+                </span>
+              </div>
               <div className={s.loginGoogle}>
                 <button type="button" onClick={handleClickGoogle}>
                   Click para seguir con google

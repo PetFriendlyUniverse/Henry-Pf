@@ -10,10 +10,17 @@ import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import Loader from "./components/Loader/Loader";
 import { lazy, Suspense } from "react";
-import StoreDetail from "./pages/ecommerce/StoreDetail/StoreDetail";
+
+// import StoreDetail from "./pages/ecommerce/StoreDetail/StoreDetail";
+// import ChangePassword from "./pages/ChangePassword/ChangePassword";
 
 // import Shop2 from "./pages/ecommerce/Shop/Shop2";
-
+const StoreDetail = lazy(() =>
+  import("./pages/ecommerce/StoreDetail/StoreDetail")
+);
+const ChangePassword = lazy(() =>
+  import("./pages/ChangePassword/ChangePassword")
+);
 const Adopcion = lazy(() => import("./pages/Adopcion/Adopcion"));
 const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
 const Services = lazy(() => import("./pages/Services/Services"));
@@ -67,6 +74,7 @@ function App() {
           <Route path="/shop/storedetail/:id" element={<StoreDetail />} />
           <Route path="/shop/checkout" element={<Checkout />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/change-password/:token" element={<ChangePassword />} />
           <Route path="/profile/edit/:id" element={<FormModifyUser />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/profile/store/:id" element={<TabStore />} />
