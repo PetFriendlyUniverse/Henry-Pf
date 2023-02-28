@@ -79,7 +79,7 @@ const {
   Invoices_Products,
   Store,
   Favorite,
-  Comments,
+  Review,
   Daycare,
   Walker,
 } = sequelize.models;
@@ -102,10 +102,10 @@ Daycare.belongsTo(User);
 User.hasOne(Walker);
 Walker.belongsTo(User);
 
-User.hasMany(Comments);
-Comments.belongsTo(User);
-Product.hasMany(Comments);
-Comments.belongsTo(Product);
+User.hasMany(Review);
+Review.belongsTo(User);
+Product.hasMany(Review);
+Review.belongsTo(Product);
 
 User.hasOne(Store);
 Store.belongsTo(User);

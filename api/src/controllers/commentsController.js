@@ -1,60 +1,60 @@
-const { Comments } = require("../db");
+const { Review } = require("../db");
 
-const getCommentsByProduct = async (productId) => {
-  const comments = await Comments.findAll({
+const getReviewByProduct = async (productId) => {
+  const reviews = await Review.findAll({
     where: {
       ProductId: productId,
     },
   });
-  if (comments) return comments;
-  throw Error("No comments yet");
+  if (reviews) return reviews;
+  throw Error("No reviews yet");
 };
 
-const getCommentsByUser = async (userId) => {
-  const comments = await Comments.findAll({
+const getReviewByUser = async (userId) => {
+  const reviews = await Review.findAll({
     where: {
       UserId: userId,
     },
   });
-  if (comments) return comments;
-  throw Error("This user has not commented yet");
+  if (reviews) return reviews;
+  throw Error("This user has not reviewed yet");
 };
 
-const createNewComment = async (userId, content, productId) => {
-  const newComment = await Comments.create({
+const createNewReview = async (userId, content, productId) => {
+  const newReview = await Review.create({
     UserId: userId,
     content,
     ProductId: productId,
   });
 
-  if (newComment) return newComment;
-  throw Error("Sorry, there was an error trying to create the comment");
+  if (newReview) return newReview;
+  throw Error("Sorry, there was an error trying to create the review");
 };
 
-const updateComment = async (commentId, userId, content) => {
-  const commentToUpdate = await Comments.findByPk(commentId);
-  if (!commentToUpdate) throw Error("Comment not found");
-  if (commentToUpdate.UserId !== userId)
-    throw Error("A user cannot edit someone else's comment"); //verificamos que sea el mismo user
+const updateReview = async (reviewId, userId, content) => {
+  const reviewToUpdate = await Review.findByPk(reviewId);
+  if (!reviewToUpdate) throw Error("review not found");
+  if (reviewToUpdate.UserId !== userId)
+    throw Error("A user cannot edit someone else's review"); //verificamos que sea el mismo user
 
-  await commentToUpdate.update({ content });
-  await commentToUpdate.save();
-  if (commentToUpdate) return commentToUpdate;
-  throw Error("Sorry, there was an error trying to update the comment");
+  await reviewToUpdate.update({ content });
+  await reviewToUpdate.save();
+  if (reviewToUpdate) return reviewToUpdate;
+  throw Error("Sorry, there was an error trying to update the review");
 };
 
-const deleteComment = async (commentId) => {
-  const commentToDelete = await Comments.findByPk(commentId);
-  if (!commentToDelete) throw Error("Comment not found");
+const deleteReview = async (reviewId) => {
+  const reviewToDelete = await Review.findByPk(reviewId);
+  if (!reviewToDelete) throw Error("review not found");
 
-  await commentToDelete.destroy();
-  return "comment has been removed";
+  await reviewToDelete.destroy();
+  return "review has been removed";
 };
 
 module.exports = {
-  getCommentsByProduct,
-  getCommentsByUser,
-  createNewComment,
-  updateComment,
-  deleteComment,
+  getReviewByProduct,
+  getReviewByUser,
+  createNewReview,
+  updateReview,
+  deleteReview,
 };
