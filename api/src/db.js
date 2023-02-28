@@ -82,6 +82,7 @@ const {
   Comments,
   Daycare,
   Walker,
+  Pet,
 } = sequelize.models;
 
 Invoices.belongsToMany(Product, { through: Invoices_Products });
@@ -115,6 +116,9 @@ Daycare.belongsTo(User);
 
 User.hasOne(Walker);
 Walker.belongsTo(User);
+
+User.hasMany(Pet);
+Pet.belongsTo(User);
 
 // modelos de filtros
 
