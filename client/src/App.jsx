@@ -12,11 +12,13 @@ import Loader from "./components/Loader/Loader";
 import { lazy, Suspense } from "react";
 
 // import Shop2 from "./pages/ecommerce/Shop/Shop2";
-
+const DashboardAdmin = lazy(() =>
+  import("./components/DashboardAdmin/DashboardAdmin")
+);
+const Landing = lazy(() => import("./pages/Landing/Landing"));
 const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
 const Services = lazy(() => import("./pages/Services/Services"));
 
-const Landing = lazy(() => import("./pages/Landing/Landing"));
 const ProductDetail = lazy(() =>
   import("./pages/ecommerce/ProductDetail/ProductDetail")
 );
@@ -71,6 +73,8 @@ function App() {
           <Route path="/loginpassword" element={<FormPassword />} />
 
           <Route path="/store/modify/:id" element={<FormModifyStore />} />
+
+          <Route path="/dashboardadmin" element={<DashboardAdmin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
