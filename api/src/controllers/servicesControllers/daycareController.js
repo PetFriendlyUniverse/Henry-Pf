@@ -38,7 +38,7 @@ const getDaycareByID = async (id) => {
   return daycare;
 };
 
-const updateDaycare = async (id, data) => {
+const updateDaycare = async (data, id) => {
   if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
   } else {

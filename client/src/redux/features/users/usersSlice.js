@@ -5,6 +5,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   userId: {},
   userStoreId: {},
+  userWalkerId: {},
+  userDaycareId: {},
 };
 
 export const User = createSlice({
@@ -17,8 +19,14 @@ export const User = createSlice({
     getStore: (state, { payload }) => {
       state.userStoreId = payload;
     },
+    getWalker: (state, { payload }) => {
+      state.userStoreId = payload;
+    },
+    getDaycare: (state, { payload }) => {
+      state.userStoreId = payload;
+    },
   },
 });
 
-export const { getUser, getStore } = User.actions;
+export const { getUser, getStore, getWalker, getDaycare } = User.actions;
 export default User.reducer;
