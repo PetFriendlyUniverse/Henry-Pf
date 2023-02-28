@@ -11,7 +11,7 @@ const walkersRoutes = Router();
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 
-walkersRoutes.post("/create", upload.single("img"), postWalkersHandler);
+walkersRoutes.post("/create/:UserId", postWalkersHandler);
 walkersRoutes.get("/", getWalkersHandler);
 walkersRoutes.get("/detail/:id", getWalkersDetailHandler);
 walkersRoutes.put("/:id", upload.single("img"), putWalkersHandler);

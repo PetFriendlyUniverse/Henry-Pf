@@ -9,24 +9,64 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      price: {
+      name: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      area_code: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
+      },
+      number: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
+      province: {
+        type: DataTypes.STRING,
+        allowNull: true,
         validate: {
-          min: 0,
+          len: [1, 30],
+        },
+      },
+      locality: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validate: {
+          len: [1, 30],
+        },
+      },
+      zip_code: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
+      street_name: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validate: {
+          len: [5, 30],
+        },
+      },
+      street_number: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validate: {
+          len: [1, 2000],
         },
       },
       img: {
         type: DataTypes.STRING,
-        allowNull: false,
         validate: {
           len: [1, 500],
         },
       },
-      neighborhood: {
+      mail: {
         type: DataTypes.STRING,
         validate: {
-          len: [1, 100],
+          len: [1, 50],
         },
       },
       qualification: {

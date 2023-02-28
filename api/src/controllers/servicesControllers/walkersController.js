@@ -1,14 +1,21 @@
-const { Walker } = require("../db");
+const { Walker, User } = require("../../db");
 
-//prettier-ignore
-const createWalkers = async (data) => {
-  if (!Object.values(data).every((value) => value)) {
-    throw new Error("Missing data");
+const createWalkers = async (userId) => {
+  const user = await User.findByPk(userId);
+  if (!user) {
+    throw new Error(`No se pudo encontrar el usuario con ID ${userId}`);
   } else {
-    const newWalkers = await Walker.create({
-      ...data
-    });
-    return newWalkers;
+    await User.update(
+      { walker: true },
+      {
+        where: {
+          id: userId,
+        },
+      }
+    );
+    const walker = await Walker.create();
+    await walker.setUser(user);
+    return walker;
   }
 };
 

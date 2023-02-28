@@ -9,12 +9,9 @@ const {
 const cloudinary = require("cloudinary").v2;
 
 const postWalkersHandler = async (req, res) => {
-  const data = req.body;
-  const file = req.file;
+  const { UserId: userId } = req.params;
   try {
-    const image = await cloudinary.uploader.upload(file.path);
-    data.img = image.secure_url;
-    const newWalkers = await createWalkers(data, file);
+    const newWalkers = await createWalkers(userId);
     res.status(200).json(newWalkers);
   } catch (error) {
     res.status(404).json({ error: error.message });

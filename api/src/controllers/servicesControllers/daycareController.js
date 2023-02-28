@@ -1,11 +1,21 @@
-const { Daycare } = require("../db");
+const { Daycare, User } = require("../../db");
 
-const createDaycare = async (data) => {
-  if (!Object.values(data).every((value) => value)) {
-    throw new Error("Missing data");
+const createDaycare = async (userId) => {
+  const user = await User.findByPk(userId);
+  if (!user) {
+    throw new Error(`No se pudo encontrar el usuario con ID ${userId}`);
   } else {
-    const newDaycare = await Daycare.create(data);
-    return newDaycare;
+    await User.update(
+      { daycare: true },
+      {
+        where: {
+          id: userId,
+        },
+      }
+    );
+    const daycare = await Daycare.create();
+    await daycare.setUser(user);
+    return daycare;
   }
 };
 
