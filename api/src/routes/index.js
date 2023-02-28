@@ -9,9 +9,10 @@ const favoriteRouter = require("./favoriteRouter");
 const brandsRouter = require("./brandsRouter");
 const paymentRouter = require("./payment");
 const mailRoutes = require("./mailRoutes");
+const datesRouter = require("./datesRouter");
+const petsRouter = require("./petsRouter");
 const daycareRouter = require("./servicesRouters/daycareRouter");
 const walkersRouter = require("./servicesRouters/walkersRouter");
-const datesRouter = require("./datesRouter");
 require("../helpers/google.js");
 
 // Importar todos los routers;
@@ -37,6 +38,7 @@ router.use("/mails", mailRoutes);
 router.use("/daycare", daycareRouter);
 router.use("/walker", walkersRouter);
 router.use("/dates", datesRouter);
+router.use("/pets", petsRouter);
 
 router.get(
   "/auth",
