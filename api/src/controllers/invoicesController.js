@@ -18,20 +18,24 @@ const getInvoicesId = async (id) => {
   }
 };
 
-const createInvoice = async (UserId, products) => {
+const createInvoice = async (
+  userId,
+  products,
+  paymentId,
+  merchantOrder,
+  status
+) => {
   try {
-    const newInvoice = await Invoices.create();
-    const user = await User.findByPk(UserId);
-    await user.addInvoice(newInvoice.id);
-    const productsBulk = Object.keys(products).map((key) => {
-      return {
-        InvoiceId: newInvoice.id,
-        ProductId: key,
-        amount: products[key],
-      };
+    const user = await User.findByPk(userId);
+    const newInvoice = await Invoices.create({
+      userId,
+      paymentId,
+      merchantOrder,
+      status,
     });
+    await user.addInvoice(newInvoice.id);
 
-    const invoiceProducts = await Invoices_Products.bulkCreate(productsBulk);
+    const invoiceProducts = await Invoices_Products.bulkCreate(products);
 
     const invoiceWithProducts = await Invoices.findByPk(newInvoice.id, {
       include: [
