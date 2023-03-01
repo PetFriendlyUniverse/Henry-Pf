@@ -9,11 +9,11 @@ export const ValidateStore = (property, value) => {
     description: "", */
 
   if (property === "name" && !value) {
-    error.name = "Ingrese un nombre para su tienda";
+    error.name = "Ingrese un nombre";
   } else if (property === "name") {
     if (!stringNumberRegex.test(value)) {
       error.name = "Por favor ingrese un nombre sin numeros o signos";
-    } else if (value.length > 15) {
+    } else if (value.length > 30) {
       error.name = "El nombre es demasiado largo";
     } else {
       error.name = "";
@@ -85,6 +85,8 @@ export const ValidateStore = (property, value) => {
   } else if (property === "street_name") {
     if (!stringNumberRegex.test(value)) {
       error.street_name = "Por favor ingrese el nombre de su calle sin signos";
+    } else if (value.length < 4) {
+      error.street_name = "El nombre es demasiado corto";
     } else if (value.length > 15) {
       error.street_name = "El nombre es demasiado largo";
     } else {
@@ -113,6 +115,19 @@ export const ValidateStore = (property, value) => {
       error.description = "Demasiado largo";
     } else {
       error.description = "";
+    }
+  }
+
+  if (property === "mail" && !value) {
+    error.mail = "Ingrese su correo electrónico";
+  } else if (property === "mail") {
+    let mailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!mailRegex.test(value)) {
+      error.mail = "Ingrese un correo electrónico válido";
+    } else if (value.length > 50) {
+      error.mail = "El correo electrónico es demasiado largo";
+    } else {
+      error.mail = "";
     }
   }
 
