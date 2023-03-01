@@ -97,16 +97,18 @@ function DashboardAdmin() {
                 </div>
               </div>
             ) : show === "sales" ? (
-              <div className="px-10 py-10">
-                <DonutGraphs />
+              <div className="px-10">
+                <div className="py-10">
+                  <DonutGraphs />
+                </div>
+                <div className="py-10">
+                  <Graphs />
+                </div>
               </div>
             ) : show === "traffic" ? (
               <div className="px-10">
                 <div className="py-10">
                   <LineGraphs />
-                </div>
-                <div className="py-10">
-                  <Graphs />
                 </div>
               </div>
             ) : show === "requests" ? (
