@@ -1,14 +1,9 @@
 import axios from "axios";
 
-import {
-  getLocalidades,
-  getProvincias,
-  getProvinciasByID,
-  getLocalidesById,
-} from "./ubicacionesSlice";
+import { getLocalidades, getProvincias } from "./ubicacionesSlice";
 
-const getLocalidadesAsync = () => async (dispatch) => {
-  const { data } = await axios.get(`/localidades`);
+const getLocalidadesAsync = (provincia) => async (dispatch) => {
+  const { data } = await axios.get(`/localidades?provincia=${provincia}`);
   return dispatch(getLocalidades(data));
 };
 

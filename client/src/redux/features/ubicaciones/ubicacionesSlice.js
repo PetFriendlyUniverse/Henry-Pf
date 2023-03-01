@@ -16,12 +16,6 @@ export const Ubicaciones = createSlice({
       state.provincias = payload;
     },
   },
-  getProvinciasByID: (state, { payload }) => {
-    state.provinciasById = state.provincias.filter((p) => p.id == payload);
-  },
-  getLocalidesById: (state, { payload }) => {
-    state.localidadesById = state.localidades.filter((p) => p.id == payload);
-  },
 });
 
 export const {
