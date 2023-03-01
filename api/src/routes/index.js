@@ -13,6 +13,8 @@ const dashboardRouter = require("./dashboardRouter");
 const petsRouter = require("./petsRouter");
 const daycareRouter = require("./servicesRouters/daycareRouter");
 const walkersRouter = require("./servicesRouters/walkersRouter");
+const provincias = require("./provinciasRouter");
+const localidades = require("./localidadesRoutes");
 require("../helpers/google.js");
 
 // Importar todos los routers;
@@ -26,6 +28,8 @@ generator();
 //   res.send("Ejecucion de randomGenerator exitosa");
 // });
 
+router.use("/localidades", localidades);
+router.use("/provincias", provincias);
 router.use("/user", userRoutes);
 router.use("/products", productsRoutes);
 router.use("/invoices", invoicesRoutes);
