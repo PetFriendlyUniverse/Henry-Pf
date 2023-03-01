@@ -43,6 +43,7 @@ function FormModifyWalker() {
     street_name: "",
     street_number: "",
     description: "",
+    mail: "",
   });
   const handleChange = (e) => {
     const property = e.target.name;
@@ -133,9 +134,7 @@ function FormModifyWalker() {
           Modifica o agrega informacion para tu perfil de paseador
         </h3>
         <div className="flex h-full w-full flex-row justify-between overflow-hidden rounded-2xl bg-slate-50 py-10">
-          {/* //div con el fomulario izquierdo */}
           <div className="h-full w-1/2 pl-4 pt-4">
-            {/* nombre de tienda aaaaaaaaaaaaaaaaa */}
             <div className="group relative z-0 mb-6 h-11 w-4/5">
               <input
                 onChange={handleChange}
@@ -147,7 +146,7 @@ function FormModifyWalker() {
                 autoComplete="off"
               />
               <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                Nombre de la tienda
+                Nombre de paseador
               </label>
               {errors.name && (
                 <span className="text-red-500">{errors.name}</span>
