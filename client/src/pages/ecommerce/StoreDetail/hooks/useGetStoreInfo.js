@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStoreAsync } from "../../../../redux/features/tiendas/tiendasActions";
+import { useParams } from "react-router-dom";
 
-export const useGetStoreInfo = (storeId) => {
-  const [loading, setLoading] = useState(true);
+export const useGetStoreInfo = () => {
+  const { id } = useParams();
+  const [isLoaded, setIsLoaded] = useState(true);
   const storeInfo = useSelector((state) => state.Tiendas?.storeData);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (storeId !== storeInfo.id) {
-      dispatch(getStoreAsync(storeId));
+    if (parseInt(id) === parseInt(storeInfo?.id)) {
+      setIsLoaded(true);
     } else {
-      setLoading(false);
+      setIsLoaded(false);
+      dispatch(getStoreAsync(id));
     }
-    storeId === storeInfo.storeId && setLoading(false);
   }, [storeInfo]);
-  // const
-  return [loading, storeInfo];
+  return [isLoaded, storeInfo];
 };
