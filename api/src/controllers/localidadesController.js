@@ -2,6 +2,10 @@ const axios = require("axios");
 const { Localidades } = require("../db");
 
 async function getLocalidades() {
+  const localidadesDb = await Localidades.findAll();
+  if (localidadesDb.length > 0) {
+    return localidadesDb;
+  }
   const response = await axios.get(
     "https://apis.datos.gob.ar/georef/api/localidades?orden=nombre&max=5000"
   );
@@ -10,7 +14,7 @@ async function getLocalidades() {
     nombre,
   }));
   await Localidades.bulkCreate(localidades);
-  console.log(localidades);
+  return localidades;
 }
 
 module.exports = {
