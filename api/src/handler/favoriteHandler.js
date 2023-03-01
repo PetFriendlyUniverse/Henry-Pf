@@ -1,4 +1,4 @@
-const {} = require("../controllers/commentsController");
+const {} = require("../controllers/reviewsController");
 const {
   addFavoriteProduct,
   searchFavorite,
