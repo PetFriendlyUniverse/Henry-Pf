@@ -81,7 +81,7 @@ function App() {
           <Route path="/shop/storedetail/:id" element={<StoreDetail />} />
           <Route path="/shop/checkout" element={<Checkout />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/change-password/:token" element={<ChangePassword />} />
+          <Route path="/change-password" element={<ChangePassword />} />
           <Route path="/profile/edit/:id" element={<FormModifyUser />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/profile/store/:id" element={<TabStore />} />
