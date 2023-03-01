@@ -4,6 +4,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { ValidateStore } from "../Validations/ValidateStore";
 import { Carousel } from "flowbite-react";
+import { getLocalidadesAsync } from "../../../../redux/features/ubicaciones/ubicacionesActions";
 
 import LinkButton from "../../../../components/Button/LinkButton";
 import { useNavigate, useParams } from "react-router-dom";
@@ -14,6 +15,13 @@ function FormModifyStore() {
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
+
+  const localidades = useEffect(() => {
+    // Dispatch the getLocalidades action to fetch localidades from the API
+    console.log(dispatch(getLocalidadesAsync()));
+  }, []);
+  console.log(localidades);
+
   useEffect(() => {
     dispatch(getStoreByUser(id));
   }, []);
@@ -192,21 +200,19 @@ function FormModifyStore() {
                 )}
               </div>
               <div className="group relative z-0 mb-6 h-11 w-full">
-                <input
+                <select
                   onChange={handleChange}
-                  type="text"
                   name="locality"
                   value={form.locality}
-                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
-                  placeholder=" "
+                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900"
                   autoComplete="off"
-                />
-                <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                  Localidad
-                </label>
-                {errors.locality && (
-                  <span className="text-red-500">{errors.locality}</span>
-                )}
+                >
+                  {localidades?.map((localidad) => (
+                    <option key={localidad.id} value={localidad.name}>
+                      {localidad.name}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
             {/* cod postal */}

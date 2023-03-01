@@ -17,7 +17,7 @@ function FormCreateProduct() {
   const [formComplete, setFormComplete] = useState(false);
   const [img, setImg] = useState(null);
 
-  useEffect(() => {
+  const localidades = useEffect(() => {
     // Dispatch the getLocalidades action to fetch localidades from the API
     dispatch(getLocalidadesAsync());
   }, []);
