@@ -6,7 +6,15 @@ function Success() {
   const merchantOrder = queryParams.get("merchant_order_id");
   const status = queryParams.get("status");
 
-  return <div>Success</div>;
+  return (
+    <div>
+      <span>{paymentId}</span>
+      <br />
+      <span>{merchantOrder}</span>
+      <br />
+      <span>{status}</span>
+    </div>
+  );
 }
 
 export default Success;
