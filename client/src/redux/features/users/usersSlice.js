@@ -20,10 +20,10 @@ export const User = createSlice({
       state.userStoreId = payload;
     },
     getWalker: (state, { payload }) => {
-      state.userStoreId = payload;
+      state.userWalkerId = payload;
     },
     getDaycare: (state, { payload }) => {
-      state.userStoreId = payload;
+      state.userDaycareId = payload;
     },
   },
 });

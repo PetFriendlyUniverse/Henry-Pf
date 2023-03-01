@@ -5,7 +5,7 @@ import "./App.css";
 import LandingShop from "./pages/ecommerce/LandingShop/LandingShop";
 import About from "./pages/About/About";
 // import FormPassword from "./pages/FormPassword/FormPassword";
-import TabStore from "./pages/ecommerce/Profile/components/TabStore";
+
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import Loader from "./components/Loader/Loader";
@@ -15,6 +15,12 @@ const DashboardAdmin = lazy(() =>
   import("./components/DashboardAdmin/DashboardAdmin")
 );
 const Landing = lazy(() => import("./pages/Landing/Landing"));
+
+const TabStore = lazy(() =>
+  import("./pages/ecommerce/Profile/components/TabStore")
+);
+const TabWalker = lazy(() => import("./pages/Services/Profile/TabWalker"));
+const TabDaycare = lazy(() => import("./pages/Services/Profile/TabDaycare"));
 
 const StoreDetail = lazy(() =>
   import("./pages/ecommerce/StoreDetail/StoreDetail")
@@ -79,6 +85,8 @@ function App() {
           <Route path="/profile/edit/:id" element={<FormModifyUser />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/profile/store/:id" element={<TabStore />} />
+          <Route path="/profile/walker/:id" element={<TabWalker />} />
+          <Route path="/profile/daycare/:id" element={<TabDaycare />} />
           <Route path="adopcion/blog" element={<Adopcion />} />
           <Route
             path="/profile/store/create/:id"
