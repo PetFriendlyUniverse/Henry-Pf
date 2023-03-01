@@ -290,7 +290,12 @@ function FormModifyStore() {
                 {selectedFiles &&
                   selectedFiles.map((file) => (
                     <picture className="flex aspect-square h-full items-center justify-center ">
-                      <img src={file} alt="" key={file.id} className="h-full" />
+                      <img
+                        src={file}
+                        alt=""
+                        key={file.name}
+                        className="h-full"
+                      />
                     </picture>
                   ))}
               </Carousel>
