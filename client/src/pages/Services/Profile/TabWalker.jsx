@@ -6,7 +6,7 @@ import Contruccion from "../../Services/Services";
 import PhotoWalker from "./components/Walker/PhotoWalker";
 import InfoWalker from "./components/Walker/InfoWalker";
 import ContactsWalker from "./components/Walker/ContactsWalker";
-import Ubication from "./Ubication";
+import UbicationWalker from "./components/Walker/UbicationWalker";
 
 import interrogation from "../../../assets/general/interrogation.svg";
 
@@ -17,14 +17,13 @@ function TabWalker() {
   const id = localStorage.getItem("id");
   const dispatch = useDispatch();
   const [showInfo, setShowInfo] = useState("profile");
-  const user = useSelector((state) => state.User?.userStoreId);
+  const user = useSelector((state) => state.User?.userWalkerId);
   const handleShowInfo = (e) => {
     setShowInfo(e.target.name);
   };
   useEffect(() => {
     dispatch(getWalkerByUser(id));
   }, []);
-
   return (
     <div className="flex justify-start bg-adopcion pb-28 pt-10 lg:items-center">
       <div className=" jborder-2 flex h-full w-full flex-row ">
@@ -36,11 +35,11 @@ function TabWalker() {
                 <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
                   <button
                     onClick={handleShowInfo}
-                    name="storeProfile"
+                    name="profile"
                     className="inline-block p-4"
                     title="informacion del propietario"
                   >
-                    Perfil de Tienda
+                    Perfil de Paseador
                   </button>
                 </li>
                 <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
@@ -75,7 +74,7 @@ function TabWalker() {
                 </li>
                 <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
                   {/* Reveer esto de volver al hacer Health/Services */}
-                  <Link to={`/profile/${user.id}`}>
+                  <Link to={`/profile/${id}`}>
                     <button
                       title="vuelve a tu perfil"
                       className="inline-block p-4"
@@ -125,7 +124,7 @@ function TabWalker() {
                 mail={user?.mail}
               />
             ) : showInfo == "location" ? (
-              <Ubication
+              <UbicationWalker
                 province={user?.province}
                 locality={user?.locality}
                 zip_code={user.zip_code}

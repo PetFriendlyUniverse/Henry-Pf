@@ -40,7 +40,7 @@ function TabStore() {
                 <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
                   <button
                     onClick={handleShowInfo}
-                    name="storeProfile"
+                    name="profile"
                     className="inline-block p-4"
                     title="informacion del propietario"
                   >

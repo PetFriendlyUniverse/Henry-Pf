@@ -128,7 +128,7 @@ function Profile() {
 
                     <li className="mr-2 rounded-lg border-b-2 bg-slate-50  hover:bg-slate-100 hover:text-gray-500">
                       {/* Reveer esto de volver al hacer Health/Services */}
-                      <Link to={`/profile/${user.id}`}>
+                      <Link to={`/shop`}>
                         <button className="inline-block p-4">Volver</button>
                       </Link>
                     </li>

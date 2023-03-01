@@ -1,11 +1,10 @@
-function Ubication({
+function UbicationWalker({
   province,
   locality,
   zip_code,
   street_name,
   street_number,
 }) {
-  console.log(province);
   return (
     <div className="5 flex h-full w-full flex-col justify-between py-6 px-4  pt-2  ">
       <div className="h-full w-full rounded-2xl border-2  px-4 pt-2  sm:px-0  xl:flex-row ">
@@ -56,4 +55,4 @@ function Ubication({
   );
 }
 
-export default Ubication;
+export default UbicationWalker;
