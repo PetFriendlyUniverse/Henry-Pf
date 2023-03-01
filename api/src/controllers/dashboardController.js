@@ -26,10 +26,49 @@ const getProducts = async () => {
 };
 
 const getUserFilter = async (name, type) => {
-  const user = await User.findAll({
-    where: { name },
+  if (type === "store") {
+    const store = await Store.findAll({
+      where: { name },
+    });
+    return store;
+  } else if (type === "walker") {
+    const walker = await Walker.findAll({
+      where: { name },
+    });
+    return walker;
+  } else if (type === "daycare") {
+    const daycare = await Daycare.findAll({
+      where: { name },
+    });
+    return daycare;
+  } else {
+    const user = await User.findAll({
+      where: { name },
+    });
+    return user;
+  }
+};
+
+const getEarningsByInvoices = async () => {
+  const result = await Invoice.findAll({
+    include: [
+      {
+        model: Product,
+        as: "Products",
+      },
+    ],
+    attributes: [
+      [
+        Sequelize.fn(
+          "sum",
+          Sequelize.col("Products.Invoices_Products.unitPrice")
+        ),
+        "total",
+      ],
+    ],
   });
-  return user;
+
+  return result[0].dataValues.total;
 };
 
 module.exports = {
@@ -39,4 +78,5 @@ module.exports = {
   getDaycare,
   getProducts,
   getUserFilter,
+  getEarningsByInvoices,
 };
