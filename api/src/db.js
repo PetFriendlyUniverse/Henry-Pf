@@ -92,7 +92,7 @@ User.belongsToMany(Product, { through: Favorite });
 Product.belongsToMany(User, { through: Favorite });
 
 User.hasMany(Invoices);
-Invoices.belongsTo(User, { foreignKey: "UserId" });
+Invoices.belongsTo(User);
 
 Store.hasMany(Product);
 Product.belongsTo(Store);
