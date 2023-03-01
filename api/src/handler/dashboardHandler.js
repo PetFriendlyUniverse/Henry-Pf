@@ -4,7 +4,8 @@ const {
   getWalker,
   getDaycare,
   getProducts,
-} = require("../controllers/dataController");
+  getUserFilter,
+} = require("../controllers/dashboardController");
 
 const getCountUser = async (req, res) => {
   try {
@@ -51,10 +52,29 @@ const getCountProducts = async (req, res) => {
   }
 };
 
+const getFilterUsers = async (req, res) => {
+  const { name, type } = req.query;
+  try {
+    if (name) {
+      const user = await getUserFilter(name);
+      return res.status(200).json(user);
+    } else if (type) {
+      const user = await getUserFilter(type);
+      return res.status(200).json(user);
+    } else if (name && type) {
+      const user = await getUserFilter(name, type);
+      return res.status(200).json(user);
+    }
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+};
+
 module.exports = {
   getCountUser,
   getCountStore,
   getCountWalker,
   getCountDaycare,
   getCountProducts,
+  getFilterUsers,
 };

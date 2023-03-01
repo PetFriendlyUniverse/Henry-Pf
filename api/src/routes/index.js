@@ -9,10 +9,12 @@ const favoriteRouter = require("./favoriteRouter");
 const brandsRouter = require("./brandsRouter");
 const paymentRouter = require("./payment");
 const mailRoutes = require("./mailRoutes");
-const datesRouter = require("./datesRouter");
+const dashboardRouter = require("./dashboardRouter");
 const petsRouter = require("./petsRouter");
 const daycareRouter = require("./servicesRouters/daycareRouter");
 const walkersRouter = require("./servicesRouters/walkersRouter");
+const provincias = require("./provinciasRouter");
+const localidades = require("./localidadesRoutes");
 require("../helpers/google.js");
 
 // Importar todos los routers;
@@ -26,6 +28,8 @@ generator();
 //   res.send("Ejecucion de randomGenerator exitosa");
 // });
 
+router.use("/localidades", localidades);
+router.use("/provincias", provincias);
 router.use("/user", userRoutes);
 router.use("/products", productsRoutes);
 router.use("/invoices", invoicesRoutes);
@@ -37,8 +41,8 @@ router.use("/payment", paymentRouter);
 router.use("/mails", mailRoutes);
 router.use("/daycare", daycareRouter);
 router.use("/walker", walkersRouter);
-router.use("/dates", datesRouter);
 router.use("/pets", petsRouter);
+router.use("/dashboard", dashboardRouter);
 
 router.get(
   "/auth",

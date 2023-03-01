@@ -25,10 +25,18 @@ const getProducts = async () => {
   return products;
 };
 
+const getUserFilter = async (name, type) => {
+  const user = await User.findAll({
+    where: { name },
+  });
+  return user;
+};
+
 module.exports = {
   getUser,
   getStore,
   getWalker,
   getDaycare,
   getProducts,
+  getUserFilter,
 };
