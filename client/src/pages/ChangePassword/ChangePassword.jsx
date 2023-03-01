@@ -25,6 +25,15 @@ function ChangePassword() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (password !== newpassword) {
+      Swal.fire({
+        icon: "error",
+        title: "Las contraseñas deben coincidir!",
+        showConfirmButton: true,
+        timer: 1500,
+      });
+    }
+
     if (!error && password === newpassword) {
       try {
         await axios.put(`user/change-password/${t}`, { password });
