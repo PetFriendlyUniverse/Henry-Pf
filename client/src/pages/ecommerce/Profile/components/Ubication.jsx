@@ -1,5 +1,3 @@
-import React from "react";
-
 function Ubication({
   province,
   locality,
@@ -7,28 +5,53 @@ function Ubication({
   street_name,
   street_number,
 }) {
+  console.log(province);
   return (
-    <div className="flex w-full flex-col justify-between py-6 px-4 pt-2 sm:w-1/2 sm:px-0 md:w-2/3 lg:w-3/4 xl:w-4/5 xl:flex-row 2xl:w-5/6">
-      <div className="mb-2 sm:mb-0 md:px-7 lg:px-10">
-        <h6 className="font-bold">Provincia:</h6>
-        <p>{province || "Actualmente no tienes una provincia "}</p>
+    <div className="5 flex h-full w-full flex-col justify-between py-6 px-4  pt-2  ">
+      <div className="h-full w-full rounded-2xl border-2  px-4 pt-2  sm:px-0  xl:flex-row ">
+        <table className="flex h-full w-full border-collapse flex-col ">
+          <tr className="flex h-full justify-around bg-white py-1">
+            <th className="w-1/5 border-r-2 ">
+              <h4 className="font-bold">Provincia:</h4>
+            </th>
+            <th className="w-1/5 border-r-2">
+              <h4 className=" font-bold">Localidad:</h4>
+            </th>
+            <th className="w-1/5 border-r-2">
+              <h4 className=" font-bold">Codigo Postal:</h4>
+            </th>
+            <th className="w-1/5 border-r-2">
+              <h4 className=" font-bold">Calle:</h4>
+            </th>
+            <th className="w-1/5 ">
+              <h4 className=" font-bold">Numeracion:</h4>
+            </th>
+          </tr>
+
+          <tr className="flex  justify-around bg-slate-200 py-1">
+            <th
+              className="w-1/5 border-r-2
+             border-white"
+            >
+              <p>{province}</p>
+            </th>
+            <th className="w-1/5 border-r-2">
+              <p> {locality}</p>
+            </th>
+            <th className="w-1/5 border-r-2">
+              <p> {zip_code}</p>
+            </th>
+            <th className="w-1/5 border-r-2">
+              <p> {street_name}</p>
+            </th>
+            <th className="w-1/5 ">
+              <p> {street_number}</p>
+            </th>
+          </tr>
+        </table>
       </div>
-      <div className="mb-2 sm:mb-0 md:px-7 lg:px-10">
-        <h6 className="font-bold">Localidad</h6>
-        <p>{locality || "Actualmente no tienes una localidad"}</p>
-      </div>
-      <div className="mb-2 sm:mb-0 md:px-7 lg:px-10">
-        <h6 className="font-bold">Codigo Postal</h6>
-        <p>{zip_code || "Actualmente no tienes un codigo postal"}</p>
-      </div>
-      <div className="mb-2 sm:mb-0 md:px-7 lg:px-10">
-        <h6 className="font-bold">Calle</h6>
-        <p>{street_name || "Actualmente no tienes una calle"}</p>
-      </div>
-      <div className="mb-2 sm:mb-0 md:px-7 lg:px-10">
-        <h6 className="font-bold">Numeracion</h6>
-        <p>{street_number || "Actualmente no tienes una numeracion"}</p>
-      </div>
+
+      <div className="mb-2 sm:mb-0 md:px-7 lg:px-10"></div>
     </div>
   );
 }

@@ -13,7 +13,15 @@ module.exports = (sequelize) => {
       },
     },
     {
-      timestamps: false, 
+      unitPrice: {
+        type: DataTypes.FLOAT, // este es la prop adicional que necesitamos
+        validate: {
+          min: 0,
+        },
+      },
+    },
+    {
+      timestamps: false,
     }
   );
 };

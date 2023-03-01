@@ -4,11 +4,13 @@ const userRoutes = require("./userRoutes");
 const productsRoutes = require("./productsRoutes");
 const invoicesRoutes = require("./invoicesRoutes");
 const storeRoutes = require("./storeRoutes");
-const commentsRouter = require("./commentsRouter");
+const reviewRouter = require("./reviewRouter");
 const favoriteRouter = require("./favoriteRouter");
 const brandsRouter = require("./brandsRouter");
 const paymentRouter = require("./payment");
 const mailRoutes = require("./mailRoutes");
+const datesRouter = require("./datesRouter");
+const petsRouter = require("./petsRouter");
 const daycareRouter = require("./servicesRouters/daycareRouter");
 const walkersRouter = require("./servicesRouters/walkersRouter");
 require("../helpers/google.js");
@@ -21,7 +23,6 @@ const router = Router();
 const { generator } = require("../randomGenerator");
 generator();
 // router.use("/randomgenerator", (req, res) => {
-//   generator();
 //   res.send("Ejecucion de randomGenerator exitosa");
 // });
 
@@ -29,13 +30,15 @@ router.use("/user", userRoutes);
 router.use("/products", productsRoutes);
 router.use("/invoices", invoicesRoutes);
 router.use("/store", storeRoutes);
-router.use("/comments", commentsRouter);
+router.use("/review", reviewRouter);
 router.use("/favorite", favoriteRouter);
 router.use("/brands", brandsRouter);
 router.use("/payment", paymentRouter);
 router.use("/mails", mailRoutes);
 router.use("/daycare", daycareRouter);
 router.use("/walker", walkersRouter);
+router.use("/dates", datesRouter);
+router.use("/pets", petsRouter);
 
 router.get(
   "/auth",

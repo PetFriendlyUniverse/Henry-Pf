@@ -15,6 +15,14 @@ const createDaycare = async (userId) => {
     );
     const daycare = await Daycare.create();
     await daycare.setUser(user);
+    await User.update(
+      { daycareId: daycare.id },
+      {
+        where: {
+          id: userId,
+        },
+      }
+    );
     return daycare;
   }
 };

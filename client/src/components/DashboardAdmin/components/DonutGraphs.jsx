@@ -2,30 +2,62 @@ import { Card, Title, DonutChart } from "@tremor/react";
 import "@tremor/react/dist/esm/tremor.css";
 
 function DonutGraphs() {
-  const cities = [
+  const users = [
     {
-      name: "New York",
+      name: "Tiendas",
       sales: 9800,
     },
     {
-      name: "London",
+      name: "Paseadores",
       sales: 4567,
     },
     {
-      name: "Hong Kong",
+      name: "Guarderias",
+      sales: 3908,
+    },
+  ];
+  const cities = [
+    {
+      name: "Santa Fe",
+      sales: 9800,
+    },
+    {
+      name: "Buenos Aires",
+      sales: 4567,
+    },
+    {
+      name: "Mendoza",
       sales: 3908,
     },
     {
-      name: "San Francisco",
+      name: "Tucuman",
       sales: 2400,
     },
     {
-      name: "Singapore",
+      name: "Cordoba",
       sales: 1908,
     },
     {
-      name: "Zurich",
+      name: "Misiones",
       sales: 1398,
+    },
+  ];
+  const products = [
+    {
+      name: "Whiskas",
+      sales: 9800,
+    },
+    {
+      name: "Pedigree",
+      sales: 4567,
+    },
+    {
+      name: "ProPlan",
+      sales: 3908,
+    },
+    {
+      name: "VitalCan",
+      sales: 2400,
     },
   ];
 
@@ -34,18 +66,46 @@ function DonutGraphs() {
   };
 
   return (
-    <div>
-      <Card maxWidth="max-w-lg">
-        <Title>Sales by City</Title>
-        <DonutChart
-          data={cities}
-          category="sales"
-          dataKey="name"
-          valueFormatter={valueFormatter}
-          marginTop="mt-6"
-          colors={["slate", "violet", "indigo", "rose", "cyan", "amber"]}
-        />
-      </Card>
+    <div className="flex justify-center">
+      <div className="mx-20">
+        <Card maxWidth="max-w-lg">
+          <Title>Ganancias por Usuarios</Title>
+          <DonutChart
+            data={users}
+            category="sales"
+            dataKey="name"
+            valueFormatter={valueFormatter}
+            marginTop="mt-6"
+            colors={["slate", "violet", "indigo", "rose", "cyan", "amber"]}
+          />
+        </Card>
+      </div>
+      <div className="mx-20">
+        <Card maxWidth="max-w-lg">
+          <Title>Ganancias por Provincia</Title>
+          <DonutChart
+            data={cities}
+            category="sales"
+            dataKey="name"
+            valueFormatter={valueFormatter}
+            marginTop="mt-6"
+            colors={["slate", "violet", "indigo", "rose", "cyan", "amber"]}
+          />
+        </Card>
+      </div>
+      <div className="mx-20">
+        <Card maxWidth="max-w-lg">
+          <Title>Ganancias por Productos</Title>
+          <DonutChart
+            data={products}
+            category="sales"
+            dataKey="name"
+            valueFormatter={valueFormatter}
+            marginTop="mt-6"
+            colors={["slate", "violet", "indigo", "rose", "cyan", "amber"]}
+          />
+        </Card>
+      </div>
     </div>
   );
 }

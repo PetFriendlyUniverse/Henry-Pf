@@ -1,7 +1,7 @@
 function Services() {
   return (
     // contenedor completo
-    <div className="flex min-h-[89vh] items-center justify-center  ">
+    <div className="flex  items-center justify-center  ">
       <div className="mx-auto flex h-full w-4/5 items-center justify-center">
         <div className="flex w-1/2 flex-col items-center justify-center gap-16">
           <h2 className="text-center text-5xl font-bold uppercase">

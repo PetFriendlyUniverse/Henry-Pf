@@ -79,9 +79,10 @@ const {
   Invoices_Products,
   Store,
   Favorite,
-  Comments,
+  Review,
   Daycare,
   Walker,
+  Pet,
 } = sequelize.models;
 
 Invoices.belongsToMany(Product, { through: Invoices_Products });
@@ -91,7 +92,7 @@ User.belongsToMany(Product, { through: Favorite });
 Product.belongsToMany(User, { through: Favorite });
 
 User.hasMany(Invoices);
-Invoices.belongsTo(User);
+Invoices.belongsTo(User, { foreignKey: "UserId" });
 
 Store.hasMany(Product);
 Product.belongsTo(Store);
@@ -102,10 +103,10 @@ Daycare.belongsTo(User);
 User.hasOne(Walker);
 Walker.belongsTo(User);
 
-User.hasMany(Comments);
-Comments.belongsTo(User);
-Product.hasMany(Comments);
-Comments.belongsTo(Product);
+User.hasMany(Review);
+Review.belongsTo(User);
+Product.hasMany(Review);
+Review.belongsTo(Product);
 
 User.hasOne(Store);
 Store.belongsTo(User);
@@ -115,6 +116,9 @@ Daycare.belongsTo(User);
 
 User.hasOne(Walker);
 Walker.belongsTo(User);
+
+User.hasMany(Pet);
+Pet.belongsTo(User);
 
 // modelos de filtros
 
