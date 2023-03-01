@@ -4,34 +4,40 @@ import "@tremor/react/dist/esm/tremor.css";
 function Graphs() {
   const chartdata = [
     {
-      date: "Jan 22",
-      SemiAnalysis: 2890,
-      "The Pragmatic Engineer": 2338,
+      date: "Enero 22",
+      Tiendas: 2890,
+      Guarderias: 2338,
+      Paseadores: 3100,
     },
     {
-      date: "Feb 22",
-      SemiAnalysis: 2756,
-      "The Pragmatic Engineer": 2103,
+      date: "Febrero 22",
+      Tiendas: 2756,
+      Guarderias: 2103,
+      Paseadores: 2600,
     },
     {
-      date: "Mar 22",
-      SemiAnalysis: 3322,
-      "The Pragmatic Engineer": 2194,
+      date: "Marzo 22",
+      Tiendas: 3322,
+      Guarderias: 2194,
+      Paseadores: 3012,
     },
     {
-      date: "Apr 22",
-      SemiAnalysis: 3470,
-      "The Pragmatic Engineer": 2108,
+      date: "Abril 22",
+      Tiendas: 3470,
+      Guarderias: 2108,
+      Paseadores: 2890,
     },
     {
-      date: "May 22",
-      SemiAnalysis: 3475,
-      "The Pragmatic Engineer": 1812,
+      date: "Mayo 22",
+      Tiendas: 3475,
+      Guarderias: 1812,
+      Paseadores: 3402,
     },
     {
-      date: "Jun 22",
-      SemiAnalysis: 3129,
-      "The Pragmatic Engineer": 1726,
+      date: "Junio 22",
+      Tiendas: 3129,
+      Guarderias: 1726,
+      Paseadores: 3671,
     },
   ];
   const dataFormatter = function (number) {
@@ -41,13 +47,13 @@ function Graphs() {
   return (
     <div>
       <Card>
-        <Title>Newsletter revenue over time (USD)</Title>
+        <Title>Grafico de ventas del ultimo año</Title>
         <AreaChart
           data={chartdata}
-          categories={["SemiAnalysis", "The Pragmatic Engineer"]}
+          categories={["Tiendas", "Guarderias", "Paseadores"]}
           dataKey="date"
           height="h-72"
-          colors={["indigo", "cyan"]}
+          colors={["indigo", "cyan", "green"]}
           valueFormatter={dataFormatter}
           marginTop="mt-4"
         />

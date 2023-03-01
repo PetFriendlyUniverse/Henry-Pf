@@ -8,7 +8,6 @@ import Contruccion from "../../../Services/Services";
 import PhotoStore from "./Store/PhotoStore";
 import InfoStore from "./Store/InfoStore";
 import ContactsStore from "./Store/ContactsStore";
-import UbicationStore from "./Store/UbicationStore";
 import SearchForm from "../../../../components/NavBar/components/SearchForm";
 
 import interrogation from "../../../../assets/general/interrogation.svg";

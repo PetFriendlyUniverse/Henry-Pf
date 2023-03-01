@@ -52,10 +52,10 @@ const confirmMail = async (name, lastname, mail) => {
 
 const sendResetPasswordEmail = async (email, resetToken) => {
   const contentHtml = `
-    <h1>Resetear contraseña en Pet Friendly Universe</h1>
+    <h1>Reestablecer contraseña en Pet Friendly Universe</h1>
     <p>Para resetear tu contraseña, por favor haz click en el siguiente link:</p>
-    <a href="http://${process.env.ORIGIN}:${process.env.FRONTEND_PORT}/shop/${resetToken}">
-      Resetear Contraseña
+    <a href="http://${process.env.ORIGIN}:${process.env.FRONTEND_PORT}/change-password?t=${resetToken}">
+      Reestablecer Contraseña
     </a>
     <p>Si no has solicitado resetear tu contraseña, por favor ignora este correo.</p>
   `;
@@ -91,7 +91,7 @@ const sendResetPasswordEmail = async (email, resetToken) => {
     const mailInfo = {
       from: "Pet Friendly Universe <petfriendyleuniverse@gmail.com>",
       to: email,
-      subject: "Resetear contraseña en Pet Friendly Universe",
+      subject: "Reestablecer contraseña en Pet Friendly Universe",
       html: contentHtml,
     };
 

@@ -1,18 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { ValidateProduct } from "../Validations/ValidateProduct";
 import LinkButton from "../../../../components/Button/LinkButton";
 import Swal from "sweetalert2";
 import { Carousel } from "flowbite-react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getLocalidadesAsync } from "../../../../redux/features/ubicaciones/ubicacionesActions";
 
 function FormCreateProduct() {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const [selectedFiles, setSelectedFiles] = useState([]);
   const navigate = useNavigate();
   const [imgFile, setImgFile] = useState(null);
   const [formComplete, setFormComplete] = useState(false);
   const [img, setImg] = useState(null);
+
+  const localidades = useEffect(() => {
+    // Dispatch the getLocalidades action to fetch localidades from the API
+    dispatch(getLocalidadesAsync());
+  }, []);
 
   const [form, setForm] = useState({
     name: "",
@@ -124,7 +132,7 @@ function FormCreateProduct() {
       {/* este es el form completo */}
       <form
         onSubmit={submitHandler}
-        className="mt-10 flex max-h-screen w-full flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue drop-shadow-2xl md:w-3/5 lg:h-auto "
+        className="mt-10 flex h-full w-full flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue drop-shadow-2xl md:w-3/5 lg:h-auto "
       >
         <h3 className="mb-6">Sube tus productos con los datos solicitados</h3>
         {/* aca empieza el div con fondo azul que contiene la estructura del form */}
@@ -266,20 +274,13 @@ function FormCreateProduct() {
                 <span className="text-red-500">{error.color}</span>
               )}
             </div>
-            <div className="group relative z-0 mb-6 flex h-11 w-full">
-              <input
-                type="text"
-                value={form.size}
-                name="size"
-                onChange={changeHandler}
-                className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-3 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
-                placeholder=" "
-                autoComplete="off"
-              />
-              <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                Tamaño:
-              </label>
-              {error.size && <span className="text-red-500">{error.size}</span>}
+            <div className="group relative z-0 mb-6 flex h-11 w-full flex-row items-center">
+              <label className="">Tamaño:</label>{" "}
+              <select>
+                <option> chico </option>
+                <option> mediano </option>
+                <option> grande </option>
+              </select>
             </div>
             {formComplete && <LinkButton component={"Crear"} />}
           </div>
