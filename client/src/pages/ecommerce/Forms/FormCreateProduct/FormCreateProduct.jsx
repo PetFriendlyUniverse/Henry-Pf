@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { Carousel } from "flowbite-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getLocalidades } from "../../../../redux/features/ubicaciones/ubicacionesSlice";
+import { getLocalidadesAsync } from "../../../../redux/features/ubicaciones/ubicacionesActions";
 
 function FormCreateProduct() {
   const { id } = useParams();
@@ -19,7 +19,7 @@ function FormCreateProduct() {
 
   useEffect(() => {
     // Dispatch the getLocalidades action to fetch localidades from the API
-    dispatch(getLocalidades());
+    dispatch(getLocalidadesAsync());
   }, []);
 
   const [form, setForm] = useState({

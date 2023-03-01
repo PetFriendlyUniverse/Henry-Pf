@@ -11,7 +11,6 @@ export const Ubicaciones = createSlice({
   reducers: {
     getLocalidades: (state, { payload }) => {
       state.localidades = payload;
-      console.log(payload);
     },
     getProvincias: (state, { payload }) => {
       state.provincias = payload;
