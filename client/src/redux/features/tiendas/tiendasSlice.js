@@ -11,7 +11,6 @@ export const Tiendas = createSlice({
   initialState,
   reducers: {
     getStore: (state, { payload }) => {
-      //todavia no se usa
       state.storeData = payload;
     },
     getProductsByStore: (state, { payload }) => {
