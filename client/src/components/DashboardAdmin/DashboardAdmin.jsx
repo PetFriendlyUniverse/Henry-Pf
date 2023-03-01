@@ -7,16 +7,22 @@ import DonutGraphs from "./components/DonutGraphs";
 import LineGraphs from "./components/LineGraphs";
 import Tickets from "./components/Tickets";
 
+//import Logo from "../../assets/logo/Logo.png";
+//
+
 function DashboardAdmin() {
   const [show, setShow] = useState("accounts");
   const handleShow = (e) => {
     setShow(e.target.name);
   };
   return (
-    <div className="w-full justify-center text-center lg:items-center">
-      <div className="w-11/12 py-32 text-white lg:pl-40">
-        <div className="rounded-tr-full rounded-tl-full bg-russianviolet">
-          <h1 className="py-8">Panel de Administrador de PetShopUniverse</h1>
+    <div className="flex w-full justify-center text-center">
+      <div className="w-11/12 py-32 text-white md:w-3/5 lg:w-4/5">
+        <div className=" rounded-tr-full rounded-tl-full bg-russianviolet">
+          <h1 className="py-8 text-lg font-bold">Panel de Administrador</h1>
+          <div className="flex w-full justify-center px-52 pb-10">
+            //<img src={Logo} alt="logo" className="w-20" /> arreglar import de logo
+          </div>
         </div>
         <div className="bg-russianviolet">
           <div className="flex justify-between px-6">
