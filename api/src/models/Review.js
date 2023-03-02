@@ -9,10 +9,31 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      content: {
+      comment: {
         type: DataTypes.STRING,
         validate: {
           len: [10, 255],
+        },
+      },
+      qualification: {
+        type: DataTypes.INTEGER,
+        validate: {
+          min: 1,
+          max: 5,
+        },
+      },
+      dispatchtime: {
+        type: DataTypes.INTEGER,
+        validate: {
+          min: 1,
+          max: 5,
+        },
+      },
+      support: {
+        type: DataTypes.INTEGER,
+        validate: {
+          min: 1,
+          max: 5,
         },
       },
     }
