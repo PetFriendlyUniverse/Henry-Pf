@@ -61,7 +61,7 @@ function LandingShop() {
           </Link>
         </div>
       </header>
-      <main className="bg-[url('https://petfood.com.ar/img/cms/symphony.png')] py-6 px-3 sm:px-5 md:px-10 lg:px-32 xl:px-52 2xl:px-80 ">
+      <main className="bg-adopcion py-6 px-3 sm:px-5 md:px-10 lg:px-32 xl:px-52 2xl:px-80 ">
         <section className="mt-5 flex w-full flex-col items-center sm:grid sm:grid-cols-2 sm:gap-3">
           <div className="flex flex-col items-center justify-center sm:col-start-1 sm:col-end-3">
             <h1 className="text-center font-bold uppercase sm:text-2xl">
