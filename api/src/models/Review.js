@@ -18,21 +18,21 @@ module.exports = (sequelize) => {
       qualification: {
         type: DataTypes.INTEGER,
         validate: {
-          min: 0,
+          min: 1,
           max: 5,
         },
       },
       dispatchtime: {
         type: DataTypes.INTEGER,
         validate: {
-          min: 0,
+          min: 1,
           max: 5,
         },
       },
       support: {
         type: DataTypes.INTEGER,
         validate: {
-          min: 0,
+          min: 1,
           max: 5,
         },
       },
