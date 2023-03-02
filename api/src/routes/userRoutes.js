@@ -12,6 +12,7 @@ const {
   getUserStore,
   getUserWalker,
   getUserDaycare,
+  deleteUserHandlerPermanent,
 } = require("../handler/userHandler");
 
 const multer = require("multer");
@@ -33,5 +34,6 @@ userRoutes.post("/reset-password", resetConfirmPasswordHandler);
 userRoutes.put("/change-password/:token", resetPasswordHandler);
 userRoutes.put("/:id", upload.single("img"), authMiddleware, putUserHandler);
 userRoutes.delete("/:id", deleteUserHandler);
+userRoutes.delete("/:id", deleteUserHandlerPermanent);
 
 module.exports = userRoutes;

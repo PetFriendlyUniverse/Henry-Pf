@@ -37,6 +37,27 @@ const getInvoicesId = async (id) => {
   }
 };
 
+const getInvoicesIdByUser = async (userId) => {
+  try {
+    const invoices = await Invoices.findAll({
+      where: {
+        userId,
+      },
+      include: [
+        {
+          model: Product,
+          through: {
+            attributes: ["unitPrice", "amount"],
+          },
+        },
+      ],
+    });
+    return invoices;
+  } catch (error) {
+    return { error: error.message };
+  }
+};
+
 const createInvoice = async (
   userId,
   products,
@@ -85,4 +106,5 @@ module.exports = {
   getInvoices,
   getInvoicesId,
   createInvoice,
+  getInvoicesIdByUser,
 };
