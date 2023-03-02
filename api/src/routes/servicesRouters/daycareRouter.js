@@ -4,7 +4,8 @@ const {
   getDaycaresHandler,
   getDaycareByIDHandler,
   putDaycareHandler,
-  deleteDaycareHandler,
+  deletedDaycareHandler,
+  approvedDaycareHandler,
 } = require("../../handler/servicesHandlers/daycareHandler");
 const daycareRoutes = Router();
 
@@ -15,6 +16,7 @@ daycareRoutes.post("/create/:UserId", postDaycareHandler);
 daycareRoutes.get("/", getDaycaresHandler);
 daycareRoutes.get("/detail/:id", getDaycareByIDHandler);
 daycareRoutes.put("/:id", upload.single("img"), putDaycareHandler);
-daycareRoutes.delete("/:id", deleteDaycareHandler);
+daycareRoutes.delete("/:id", deletedDaycareHandler);
+daycareRoutes.put("/confirm/:id", approvedDaycareHandler);
 
 module.exports = daycareRoutes;
