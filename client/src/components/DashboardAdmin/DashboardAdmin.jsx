@@ -17,7 +17,7 @@ function DashboardAdmin() {
   return (
     <div className="flex w-full justify-center text-center">
       <div className="w-11/12 py-32 text-white md:w-3/5 lg:w-4/5">
-        <div className=" rounded-tr-full rounded-tl-full bg-russianviolet">
+        <div className="rounded-t-lg bg-russianviolet">
           <h1 className="py-8 text-lg font-bold">Panel de Administrador</h1>
           <div className="flex w-full justify-center px-52 pb-10">
             <img src={logo} alt="logo" className="w-20" />
