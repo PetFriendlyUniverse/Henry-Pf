@@ -3,7 +3,7 @@ import React from "react";
 function RatingStars({ className, title }) {
   return (
     <svg
-      ariaHidden="true"
+      aria-hidden="true"
       className={className}
       fill="currentColor"
       viewBox="0 0 20 20"
