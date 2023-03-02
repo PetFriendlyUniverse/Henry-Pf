@@ -26,6 +26,12 @@ const loginUser = async (mail, password) => {
   if (!user) throw Error("User not found");
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) throw Error("Invalid credentials");
+  if (mail === "petfriendyleuniverse@gmail.com") {
+    await User.update(
+      { admin: true },
+      { where: { mail: "petfriendyleuniverse@gmail.com" } }
+    );
+  }
   const token = jwt.sign(
     { id: user.id, token: user.token },
     process.env.JWT_SECRET,
@@ -33,6 +39,7 @@ const loginUser = async (mail, password) => {
   );
   return { id: user.id, token };
 };
+
 const getAllUsers = async () => {
   const userList = await User.findAll({});
   return userList;

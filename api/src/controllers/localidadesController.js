@@ -1,19 +1,15 @@
 const axios = require("axios");
 const { Localidades } = require("../db");
+const CircularJSON = require("circular-json");
 
-async function getLocalidades() {
-  const localidadesDb = await Localidades.findAll();
-  if (localidadesDb.length > 0) {
-    return localidadesDb;
-  }
+async function getLocalidades(provincia) {
   const response = await axios.get(
-    "https://apis.datos.gob.ar/georef/api/localidades?orden=nombre&max=5000"
+    `https://apis.datos.gob.ar/georef/api/municipios?provincia=${provincia}&campos=id,nombre&max=1500`
   );
-  const localidades = response.data.localidades.map(({ id, nombre }) => ({
-    id,
-    nombre,
-  }));
-  await Localidades.bulkCreate(localidades);
+  const respuesta = response.data;
+
+  const localidades = CircularJSON.stringify(respuesta);
+
   return localidades;
 }
 

@@ -28,6 +28,7 @@ function Profile() {
   const handleShowInfo = (e) => {
     setShowInfo(e.target.name);
   };
+  console.log(user);
   const handleClickStore = () => {
     axios.post(`store/create/${user.id}`).then((res) => {
       const idStore = res.data.id;
@@ -100,6 +101,13 @@ function Profile() {
                         Compras
                       </button>
                     </li>
+                    {user.admin && (
+                      <li className="mr-2 rounded-lg border-b-2 bg-slate-50 py-3  hover:bg-slate-100 hover:text-gray-500">
+                        <Link to={`/dashboardadmin`}>
+                          <button title="panel de admin">Panel de admin</button>
+                        </Link>
+                      </li>
+                    )}
                     {user.store && (
                       <li className="mr-2 rounded-lg border-b-2 bg-slate-50 py-3  hover:bg-slate-100 hover:text-gray-500">
                         <Link to={`/profile/store/${user.storeId}`}>

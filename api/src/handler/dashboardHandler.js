@@ -5,6 +5,8 @@ const {
   getDaycare,
   getProducts,
   getUserFilter,
+  getEarningsByInvoices,
+  getEarningsByInvoiceStore,
 } = require("../controllers/dashboardController");
 
 const getCountUser = async (req, res) => {
@@ -55,16 +57,27 @@ const getCountProducts = async (req, res) => {
 const getFilterUsers = async (req, res) => {
   const { name, type } = req.query;
   try {
-    if (name) {
-      const user = await getUserFilter(name);
-      return res.status(200).json(user);
-    } else if (type) {
-      const user = await getUserFilter(type);
-      return res.status(200).json(user);
-    } else if (name && type) {
-      const user = await getUserFilter(name, type);
-      return res.status(200).json(user);
-    }
+    const user = await getUserFilter(name, type);
+    return res.status(200).json(user);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+};
+
+const getEarnings = async (req, res) => {
+  try {
+    const earnings = await getEarningsByInvoices();
+    return res.status(200).json(earnings);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+};
+
+const getEarningsByStore = async (req, res) => {
+  const { idStore } = req.params;
+  try {
+    const earnings = await getEarningsByInvoiceStore(idStore);
+    return res.status(200).json(earnings);
   } catch (error) {
     res.status(404).send(error.message);
   }
@@ -77,4 +90,6 @@ module.exports = {
   getCountDaycare,
   getCountProducts,
   getFilterUsers,
+  getEarnings,
+  getEarningsByStore,
 };
