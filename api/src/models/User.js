@@ -115,6 +115,10 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
+      admin: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
       enable: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,

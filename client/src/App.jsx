@@ -37,6 +37,7 @@ const ProductDetail = lazy(() =>
   import("./pages/ecommerce/ProductDetail/ProductDetail")
 );
 const Checkout = lazy(() => import("./pages/ecommerce/Checkout/Checkout"));
+const Success = lazy(() => import("./pages/ecommerce/Success/Success"));
 const FormCreateProduct = lazy(() =>
   import("./pages/ecommerce/Forms/FormCreateProduct/FormCreateProduct")
 );
@@ -80,6 +81,7 @@ function App() {
           <Route path="/shop/detail/:id" element={<ProductDetail />} />
           <Route path="/shop/storedetail/:id" element={<StoreDetail />} />
           <Route path="/shop/checkout" element={<Checkout />} />
+          <Route path="/shop/success" element={<Success />} />
           <Route path="/login" element={<Login />} />
           <Route path="/change-password" element={<ChangePassword />} />
           <Route path="/profile/edit/:id" element={<FormModifyUser />} />

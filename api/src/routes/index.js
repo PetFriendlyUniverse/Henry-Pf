@@ -15,6 +15,7 @@ const daycareRouter = require("./servicesRouters/daycareRouter");
 const walkersRouter = require("./servicesRouters/walkersRouter");
 const provincias = require("./provinciasRouter");
 const localidades = require("./localidadesRoutes");
+const tokenRouter = require("./tokenRoutes");
 require("../helpers/google.js");
 
 // Importar todos los routers;
@@ -43,6 +44,7 @@ router.use("/daycare", daycareRouter);
 router.use("/walker", walkersRouter);
 router.use("/pets", petsRouter);
 router.use("/dashboard", dashboardRouter);
+router.use("/token", tokenRouter);
 
 router.get(
   "/auth",
@@ -63,8 +65,6 @@ router.get(
     const { id } = req.user.user;
 
     res.redirect(`http://localhost:5173/shop?t=${token}&i=${id}`);
-
-    // res.send({ token: token, id: id });
   }
 );
 

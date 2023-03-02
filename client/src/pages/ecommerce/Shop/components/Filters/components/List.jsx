@@ -57,7 +57,7 @@ function List({ filter, options }) {
         <ul
           ref={toggleFilter}
           className={`hidden ${
-            options.length > 5 && (!showAll ? "md:h-[90px] lg:h-28" : "h-fit")
+            options.length > 5 && (!showAll ? "md:h-[90px] lg:h-full" : "h-fit")
           } overflow-hidden md:block `}
         >
           {options?.map((opc, i) => (

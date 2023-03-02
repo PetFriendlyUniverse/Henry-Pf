@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { ValidationProfile } from "../ecommerce/Forms/Validations/Profile";
 import s from "./ChangePassword.module.css";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { validationPassword } from "./validationPassword";
 
 function ChangePassword() {
   const navigate = useNavigate();
@@ -11,40 +11,48 @@ function ChangePassword() {
   const params = new URLSearchParams(query);
   const t = params.get("t");
 
-  console.log("esto es t", t);
-
   const [password, setPassword] = useState("");
-
   const [newpassword, setnewpassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleChangenewpassword = (e) => {
     setnewpassword(e.target.value);
   };
-
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
+    setError(validationPassword(e.target.value));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await axios.put(`user/change-password/${t}`, { password });
-      await Swal.fire({
-        icon: "success",
-        title: "Contraseña reestablecida!",
-        showConfirmButton: true,
-        timer: 1500,
-      });
-      // navigate("/login");
-    } catch (error) {
-      console.log(error);
-      await Swal.fire({
+    if (password !== newpassword) {
+      Swal.fire({
         icon: "error",
-        title: "",
+        title: "Las contraseñas deben coincidir!",
         showConfirmButton: true,
         timer: 1500,
       });
-      // navigate("/login");
+    }
+
+    if (!error && password === newpassword) {
+      try {
+        await axios.put(`user/change-password/${t}`, { password });
+        await Swal.fire({
+          icon: "success",
+          title: "Contraseña reestablecida!",
+          showConfirmButton: true,
+          timer: 1500,
+        });
+        navigate("/login");
+      } catch (error) {
+        await Swal.fire({
+          icon: "error",
+          title: error.response.data.error,
+          showConfirmButton: true,
+          timer: 1500,
+        });
+        navigate("/login");
+      }
     }
   };
 
@@ -63,11 +71,11 @@ function ChangePassword() {
           placeholder="Nueva contraseña"
           required={true}
         />
-        {/* {errors.password && (
-          <span className="ml-1 -mt-3 text-center text-sm tracking-wide text-red-700">
-            {errors.password}
+        {error && (
+          <span className="ml-1 -mt-3 text-center text-xs tracking-wide text-red-700">
+            {error}
           </span>
-        )} */}
+        )}
         <input
           className={s.input}
           onChange={handleChangenewpassword}
@@ -77,8 +85,8 @@ function ChangePassword() {
           placeholder="Ingrese nuevamente la nueva contraseña"
           required={true}
         />
-        {newpassword !== password && (
-          <p className="text-xs text-red-700">{`Passwords does not match`}</p>
+        {newpassword !== password && newpassword && (
+          <p className="text-xs text-red-700">{`Las contraseñas no coinciden`}</p>
         )}
         <button>Ingresar</button>
       </form>
