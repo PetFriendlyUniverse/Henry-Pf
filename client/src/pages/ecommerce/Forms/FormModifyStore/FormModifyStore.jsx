@@ -190,7 +190,7 @@ function FormModifyStore() {
                 <select
                   onChange={handleChange}
                   name="province"
-                  className="max-w-full"
+                  className="max-w-full bg-transparent"
                 >
                   {provincia.map((p) => (
                     <option key={p.id} value={p.nombre}>
@@ -204,6 +204,7 @@ function FormModifyStore() {
                   onChange={handleChange}
                   name="locality"
                   value={form.locality}
+                  className="max-w-full bg-transparent"
                 >
                   {localidad.municipios?.map((l) => (
                     <option key={l.id} value={l.nombre}>
