@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 function Success() {
   const location = useLocation();
+  const userId = localStorage.getItem("id");
   const queryParams = new URLSearchParams(location.search);
   const paymentId = queryParams.get("payment_id");
   const merchantOrder = queryParams.get("merchant_order_id");
@@ -85,9 +86,10 @@ function Success() {
         },
       }
     );
- */
+    */
     const requestData = {
-      userId: 1,
+      userId: userId,
+      /// reemplazar la variable objeto por data
       products: objeto.items.map((product) => {
         return {
           id: product.id,
