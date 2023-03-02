@@ -127,7 +127,7 @@ function Success() {
   }, []);
 
   return (
-    <div className="flex h-full min-h-[70vh] w-full flex-col items-center justify-center bg-[url('https://petfood.com.ar/img/cms/symphony.png')] md:min-h-[60vh] md:py-4 lg:min-h-[50h] xl:min-h-[73vh] 2xl:min-h-[82vh]">
+    <div className="flex h-full min-h-[70vh] w-full flex-col items-center justify-center bg-[url('https://petfood.com.ar/img/cms/symphony.png')] py-5 md:min-h-[60vh] md:py-4 lg:min-h-[50h] xl:min-h-[73vh] 2xl:min-h-[82vh]">
       <div
         id="invoice"
         className=" mx-2 flex flex-col  items-center justify-center gap-3 rounded-lg  bg-russianviolet px-5 py-10 shadow-lg  shadow-black"
