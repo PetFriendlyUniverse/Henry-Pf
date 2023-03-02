@@ -12,6 +12,7 @@ const {
   storeById,
   walkerById,
   daycareById,
+  deleteUsersByIdPermanent,
 } = require("../controllers/userControllers");
 const cloudinary = require("cloudinary").v2;
 
@@ -81,6 +82,15 @@ const deleteUserHandler = async (req, res) => {
     res.status(404).json({ error: error.message });
   }
 };
+const deleteUserHandlerPermanent = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const users = await deleteUsersByIdPermanent(id);
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
 
 const resetConfirmPasswordHandler = async (req, res) => {
   const { mail } = req.body;
@@ -145,4 +155,5 @@ module.exports = {
   getUserStore,
   getUserWalker,
   getUserDaycare,
+  deleteUserHandlerPermanent,
 };
