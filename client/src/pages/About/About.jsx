@@ -9,6 +9,9 @@ import imanolimg from "../../assets/profileimg/imanoldominguez.jpeg";
 import maxiimg from "../../assets/profileimg/maximopermingeat.jpeg";
 import pabloimg from "../../assets/profileimg/pabloamico.jpeg";
 import stefanoimg from "../../assets/profileimg/stefanegemelli.jpeg";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function About() {
   const members = [
@@ -62,47 +65,115 @@ function About() {
       linkedln: "https://www.linkedin.com/in/stefano-gemelli-b99186245/",
     },
   ];
-  return (
-    <div className="lg: flex h-max  w-full items-center justify-center  bg-gray-600 bg-[url('https://petfood.com.ar/img/cms/symphony.png')]  ">
-      <section className="grid place-content-center gap-10  py-3 md:pb-10 md:pt-14 md:text-sm lg:h-2/3 lg:w-2/3 lg:grid-cols-4">
-        {members.map((person) => (
-          <article
-            key={person.name}
-            className="flex h-full w-full flex-col items-center justify-center gap-5 rounded-xl   bg-gradient-to-t  from-russianviolet to-ultraviolet p-5 text-white shadow-xl shadow-black "
-          >
-            <div className="flex flex-col items-center justify-center gap-3">
-              <img
-                src={person.img}
-                className="h-40 w-40 rounded-full md:rounded-bl-lg"
-                alt={person.name}
-              />
-              <h2 className=" text-base font-bold tracking-wide">
-                {person.name}
-              </h2>
-            </div>
-            <div className="flex  items-center justify-center gap-3">
-              <Link
-                target="_blank"
-                to={person.linkedln}
-                className="flex flex-col items-center justify-center gap-1"
+
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  }, []);
+
+  const loaderr = () => {
+    return (
+      <div className="lg: flex h-max  w-full items-center justify-center  bg-gray-600 bg-[url('https://petfood.com.ar/img/cms/symphony.png')]  lg:pt-14">
+        <SkeletonTheme baseColor="#202020" highlightColor="#444">
+          <section className="grid place-content-center gap-10  py-3 md:pb-10 md:pt-14 md:text-sm lg:h-2/3 lg:w-2/3 lg:grid-cols-4">
+            {members.map((person) => (
+              <article
+                key={person.name}
+                className="flex h-full w-full flex-col items-center justify-center gap-5 rounded-xl bg-slate-600  bg-gradient-to-b  from-slate-600 to-slate-900 p-5 text-white drop-shadow-button "
               >
-                <img src={linkedln} alt="linkedln" />
-                <span className="font-semibold">Linkedln</span>
-              </Link>
-              <Link
-                to={person.github}
-                className="flex flex-col items-center justify-center gap-1"
-                target="_blank"
-              >
-                <img src={github} alt="github" />{" "}
-                <span className="font-semibold">Github</span>
-              </Link>
-            </div>
-          </article>
-        ))}
-      </section>
-    </div>
-  );
+                {" "}
+                <Skeleton />
+                <div className="flex flex-col items-center justify-center gap-3">
+                  {" "}
+                  <Skeleton className="h-40 w-40 rounded-full md:rounded-bl-lg" />
+                  {/* <img
+                  src={person.img}
+                  className="h-40 w-40 rounded-full md:rounded-bl-lg"
+                  alt={person.name}
+                /> */}
+                  <h2 className="text-xl font-semibold tracking-wide">
+                    <Skeleton />
+                  </h2>
+                </div>
+                <div className="flex  items-center justify-center gap-3">
+                  <Skeleton />
+                  <Link
+                    target="_blank"
+                    to={person.linkedln}
+                    className="flex flex-col items-center justify-center gap-1"
+                  >
+                    <Skeleton />
+                    {/* º<img src={linkedln} alt="linkedln" /> */}
+                    <span className="font-semibold">
+                      <Skeleton />
+                    </span>
+                  </Link>
+                  <Link
+                    to={person.github}
+                    className="flex flex-col items-center justify-center gap-1"
+                    target="_blank"
+                  >
+                    <Skeleton />
+                    {/* <img src={github} alt="github" />{" "} */}
+                    <span className="font-semibold">
+                      <Skeleton />
+                    </span>
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </section>
+        </SkeletonTheme>
+      </div>
+    );
+  };
+  if (loading) {
+    return loaderr();
+  } else {
+    return (
+      <div className="lg: flex h-max  w-full items-center justify-center  bg-gray-600 bg-[url('https://petfood.com.ar/img/cms/symphony.png')]  lg:pt-14">
+        <section className="grid place-content-center gap-10  py-3 md:pb-10 md:pt-14 md:text-sm lg:h-2/3 lg:w-2/3 lg:grid-cols-4">
+          {members.map((person) => (
+            <article
+              key={person.name}
+              className="flex h-full w-full flex-col items-center justify-center gap-5 rounded-xl bg-slate-600  bg-gradient-to-b  from-slate-600 to-slate-900 p-5 text-white drop-shadow-button "
+            >
+              <div className="flex flex-col items-center justify-center gap-3">
+                <img
+                  src={person.img}
+                  className="h-40 w-40 rounded-full md:rounded-bl-lg"
+                  alt={person.name}
+                />
+                <h2 className="text-xl font-semibold tracking-wide">
+                  {person.name}
+                </h2>
+              </div>
+              <div className="flex  items-center justify-center gap-3">
+                <Link
+                  target="_blank"
+                  to={person.linkedln}
+                  className="flex flex-col items-center justify-center gap-1"
+                >
+                  <img src={linkedln} alt="linkedln" />
+                  <span className="font-semibold">Linkedln</span>
+                </Link>
+                <Link
+                  to={person.github}
+                  className="flex flex-col items-center justify-center gap-1"
+                  target="_blank"
+                >
+                  <img src={github} alt="github" />{" "}
+                  <span className="font-semibold">Github</span>
+                </Link>
+              </div>
+            </article>
+          ))}
+        </section>
+      </div>
+    );
+  }
 }
 
 export default About;
