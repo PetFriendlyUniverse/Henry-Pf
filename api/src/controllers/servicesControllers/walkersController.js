@@ -49,9 +49,10 @@ const updateWalkers = async (data, id) => {
 };
 
 const deleteWalkersById = async (id) => {
-  if (!id) throw Error("id erroneo");
+  if (!id) throw Error("Wrong Id");
   const update = await Walker.update({ enable: false }, { where: { id: id } });
-  return update ? "Walker eliminado correctamente" : "Walker incorrecto";
+  const walker = await Walker.findOne({ where: { id: id } });
+  return [walker];
 };
 
 const filterWalkers = async (query) => {

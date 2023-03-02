@@ -62,17 +62,10 @@ const updateDaycare = async (data, id) => {
 };
 
 const deleteDaycare = async (id) => {
-  const daycareDelete = await Daycare.update(
-    { enabled: false },
-    {
-      where: {
-        id,
-      },
-    }
-  );
-  return daycareDelete
-    ? "Store deleted successfully"
-    : "Could not delete store";
+  if (!id) throw Error("Wrong Id");
+  const update = await Daycare.update({ enable: false }, { where: { id: id } });
+  const daycare = await Daycare.findOne({ where: { id: id } });
+  return [daycare];
 };
 
 module.exports = {

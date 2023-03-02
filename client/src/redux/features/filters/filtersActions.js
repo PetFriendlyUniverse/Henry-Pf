@@ -1,5 +1,11 @@
 import axios from "axios";
-import { getUsersFiltered } from "./filtersSlice";
+import {
+  getUsersFiltered,
+  deleteUser,
+  deleteStore,
+  deleteWalker,
+  deleteDaycare,
+} from "./filtersSlice";
 
 const getUsersFilter = (name, type) => async (dispatch) => {
   const { data } = await axios.get(
@@ -8,4 +14,30 @@ const getUsersFilter = (name, type) => async (dispatch) => {
   return dispatch(getUsersFiltered(data));
 };
 
-export { getUsersFilter };
+const deleteUserApi = (id) => async (dispatch) => {
+  const { data } = await axios.delete(`user/${id}`);
+  return dispatch(deleteUser(data));
+};
+
+const deleteStoreByUser = (id) => async (dispatch) => {
+  const { data } = await axios.delete(`store/${id}`);
+  return dispatch(deleteStore(data));
+};
+
+const deleteDaycareByUser = (id) => async (dispatch) => {
+  const { data } = await axios.delete(`daycare/${id}`);
+  return dispatch(deleteDaycare(data));
+};
+
+const deleteWalkerByUser = (id) => async (dispatch) => {
+  const { data } = await axios.delete(`walker/${id}`);
+  return dispatch(deleteWalker(data));
+};
+
+export {
+  getUsersFilter,
+  deleteUserApi,
+  deleteStoreByUser,
+  deleteDaycareByUser,
+  deleteWalkerByUser,
+};

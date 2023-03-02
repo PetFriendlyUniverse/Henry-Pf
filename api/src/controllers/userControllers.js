@@ -62,13 +62,8 @@ const updateAllUsers = async (user, id) => {
 const deleteUsersById = async (id) => {
   if (!id) throw Error("Wrong Id");
   const update = await User.update({ enable: false }, { where: { id: id } });
-  return update ? "User deleted successfully" : "Wrong user";
-};
-
-const deleteUsersByIdPermanent = async (id) => {
-  if (!id) throw Error("Wrong Id");
-  const deletedRows = await User.destroy({ where: { id: id } });
-  return deletedRows ? "User deleted successfully" : "Wrong user";
+  const user = await User.findOne({ where: { id: id } });
+  return [user];
 };
 
 const resetPassword = async (mail) => {
@@ -140,5 +135,4 @@ module.exports = {
   storeById,
   walkerById,
   daycareById,
-  deleteUsersByIdPermanent,
 };
