@@ -4,7 +4,8 @@ const {
   getWalkersHandler,
   getWalkersDetailHandler,
   putWalkersHandler,
-  deleteWalkersHandler,
+  deletedWalkersHandler,
+  approvedWalkerHandler,
 } = require("../../handler/servicesHandlers/walkersHandler");
 const walkersRoutes = Router();
 
@@ -15,6 +16,7 @@ walkersRoutes.post("/create/:UserId", postWalkersHandler);
 walkersRoutes.get("/", getWalkersHandler);
 walkersRoutes.get("/detail/:id", getWalkersDetailHandler);
 walkersRoutes.put("/:id", upload.single("img"), putWalkersHandler);
-walkersRoutes.delete("/:id", deleteWalkersHandler);
+walkersRoutes.delete("/:id", deletedWalkersHandler);
+walkersRoutes.put("/confirm/:id", approvedWalkerHandler);
 
 module.exports = walkersRoutes;

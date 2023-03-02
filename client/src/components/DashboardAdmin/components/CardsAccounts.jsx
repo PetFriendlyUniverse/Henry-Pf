@@ -32,7 +32,18 @@ function CardsAccounts() {
     console.log(users[0]);
   };
 
-  const prueba = (e) => {
+  const handleDelete = (e) => {
+    if (user.type === "store") {
+      dispatch(deleteStoreByUser(users[0]?.id));
+    } else if (user.type === "daycare") {
+      dispatch(deleteDaycareByUser(users[0]?.id));
+    } else if (user.type === "walker") {
+      dispatch(deleteWalkerByUser(users[0]?.id));
+    } else {
+      dispatch(deleteUserApi(users[0]?.id));
+    }
+  };
+  const handleApproved = (e) => {
     if (user.type === "store") {
       dispatch(deleteStoreByUser(users[0]?.id));
     } else if (user.type === "daycare") {
@@ -108,7 +119,7 @@ function CardsAccounts() {
                   {users && users[0]?.enable ? (
                     <div>
                       <button
-                        onClick={prueba}
+                        onClick={handleDelete}
                         className="rounded-lg bg-red-700 p-1 hover:bg-red-900"
                       >
                         Suspender
@@ -116,7 +127,10 @@ function CardsAccounts() {
                     </div>
                   ) : (
                     <div>
-                      <button className="rounded-lg bg-green-700 p-1 hover:bg-green-900">
+                      <button
+                        onClick={handleApproved}
+                        className="rounded-lg bg-green-700 p-1 hover:bg-green-900"
+                      >
                         Activar
                       </button>
                     </div>

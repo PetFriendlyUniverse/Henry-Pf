@@ -59,7 +59,7 @@ const updateAllUsers = async (user, id) => {
   return updated;
 };
 
-const deleteUsersById = async (id) => {
+const deletedUsersById = async (id) => {
   if (!id) throw Error("Wrong Id");
   const update = await User.update({ enable: false }, { where: { id: id } });
   const user = await User.findOne({ where: { id: id } });
@@ -122,17 +122,25 @@ const daycareById = async (id) => {
   return daycare;
 };
 
+const approvedUsersById = async (id) => {
+  if (!id) throw Error("Wrong Id");
+  const update = await User.update({ enable: true }, { where: { id: id } });
+  const user = await User.findOne({ where: { id: id } });
+  return [user];
+};
+
 module.exports = {
   createUser,
   loginUser,
   getAllUsers,
   getUserById,
   updateAllUsers,
-  deleteUsersById,
+  deletedUsersById,
   resetPassword,
   verifyResetToken,
   updatePassword,
   storeById,
   walkerById,
   daycareById,
+  approvedUsersById,
 };

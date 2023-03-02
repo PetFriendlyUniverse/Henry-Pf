@@ -3,8 +3,9 @@ const {
   getAllWalkers,
   getWalkersById,
   updateWalkers,
-  deleteWalkersById,
+  deletedWalkersById,
   filterWalkers,
+  approvedWalkersById,
 } = require("../../controllers/servicesControllers/walkersController");
 const cloudinary = require("cloudinary").v2;
 
@@ -57,10 +58,20 @@ const putWalkersHandler = async (req, res) => {
   }
 };
 
-const deleteWalkersHandler = async (req, res) => {
+const deletedWalkersHandler = async (req, res) => {
   const { id } = req.params;
   try {
-    const deleteWalkers = await deleteWalkersById(id);
+    const deleteWalkers = await deletedWalkersById(id);
+    res.status(200).json(deleteWalkers);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
+
+const approvedWalkerHandler = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deleteWalkers = await approvedWalkersById(id);
     res.status(200).json(deleteWalkers);
   } catch (error) {
     res.status(404).json({ error: error.message });
@@ -71,6 +82,7 @@ module.exports = {
   getWalkersHandler,
   getWalkersDetailHandler,
   putWalkersHandler,
-  deleteWalkersHandler,
+  deletedWalkersHandler,
   postWalkersHandler,
+  approvedWalkerHandler,
 };
