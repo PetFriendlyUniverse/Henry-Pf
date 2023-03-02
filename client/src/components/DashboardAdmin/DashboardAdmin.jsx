@@ -4,10 +4,9 @@ import CardsAccounts from "./components/CardsAccounts";
 import Graphs from "./components/Graphs";
 import BarGraphs from "./components/BarGraphs";
 import DonutGraphs from "./components/DonutGraphs";
-import LineGraphs from "./components/LineGraphs";
+import LineGraphsSales from "./components/LineGraphsSales";
+import LineGraphsTraffic from "./components/LineGraphsTraffic";
 import Tickets from "./components/Tickets";
-
-import logo from "../../assets/logo/logo.png";
 
 function DashboardAdmin() {
   const [show, setShow] = useState("accounts");
@@ -18,20 +17,17 @@ function DashboardAdmin() {
     <div className="flex w-full justify-center text-center">
       <div className="w-11/12 py-32 text-white md:w-3/5 lg:w-4/5">
         <div className="rounded-t-lg bg-russianviolet">
-          <h1 className="py-8 text-lg font-bold">Panel de Administrador</h1>
-          <div className="flex w-full justify-center px-52 pb-10">
-            <img src={logo} alt="logo" className="w-20" />
-          </div>
+          <h1 className="py-8 font-bold md:text-3xl">Panel de Administrador</h1>
         </div>
         <div className="bg-russianviolet">
           <div className="flex justify-between px-6">
-            <div className="mb-3 w-60">
-              <ul className="ml-10 flex text-center text-sm font-medium">
+            <div className="mb-3 flex">
+              <ul className="flex text-center text-sm font-medium md:ml-10">
                 <li
                   className={
                     show === "accounts"
-                      ? "mr-2 rounded-tr-lg rounded-tl-lg border-b-2 bg-cornflowerblue text-neutral-900 hover:bg-cornflowerblue hover:text-neutral-900"
-                      : "mr-2 rounded-tr-lg rounded-tl-lg border-b-2 hover:bg-cornflowerblue hover:text-neutral-900"
+                      ? "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 bg-cornflowerblue text-neutral-900 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
+                      : "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
                   }
                 >
                   <button
@@ -45,8 +41,8 @@ function DashboardAdmin() {
                 <li
                   className={
                     show === "sales"
-                      ? "mr-2 rounded-tr-lg rounded-tl-lg border-b-2 bg-cornflowerblue text-neutral-900 hover:bg-cornflowerblue hover:text-neutral-900"
-                      : "mr-2 rounded-tr-lg rounded-tl-lg border-b-2 hover:bg-cornflowerblue hover:text-neutral-900"
+                      ? "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 bg-cornflowerblue text-neutral-900 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
+                      : "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
                   }
                 >
                   <button
@@ -60,8 +56,8 @@ function DashboardAdmin() {
                 <li
                   className={
                     show === "traffic"
-                      ? "mr-2 rounded-tr-lg rounded-tl-lg border-b-2 bg-cornflowerblue text-neutral-900 hover:bg-cornflowerblue hover:text-neutral-900"
-                      : "mr-2 rounded-tr-lg rounded-tl-lg border-b-2 hover:bg-cornflowerblue hover:text-neutral-900"
+                      ? "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 bg-cornflowerblue text-neutral-900 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
+                      : "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
                   }
                 >
                   <button
@@ -75,8 +71,8 @@ function DashboardAdmin() {
                 <li
                   className={
                     show === "requests"
-                      ? "mr-2 rounded-tr-lg rounded-tl-lg border-b-2 bg-cornflowerblue text-neutral-900 hover:bg-cornflowerblue hover:text-neutral-900"
-                      : "mr-2 rounded-tr-lg rounded-tl-lg border-b-2 hover:bg-cornflowerblue hover:text-neutral-900"
+                      ? "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 bg-cornflowerblue text-neutral-900 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
+                      : "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
                   }
                 >
                   <button
@@ -84,7 +80,7 @@ function DashboardAdmin() {
                     name="requests"
                     className="inline-block p-4"
                   >
-                    Tickets Soporte
+                    Soporte
                   </button>
                 </li>
               </ul>
@@ -107,13 +103,16 @@ function DashboardAdmin() {
                   <DonutGraphs />
                 </div>
                 <div className="py-10">
+                  <LineGraphsSales />
+                </div>
+                <div className="py-10">
                   <Graphs />
                 </div>
               </div>
             ) : show === "traffic" ? (
               <div className="px-10">
                 <div className="py-10">
-                  <LineGraphs />
+                  <LineGraphsTraffic />
                 </div>
               </div>
             ) : show === "requests" ? (
