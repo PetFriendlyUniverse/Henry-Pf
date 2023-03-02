@@ -105,7 +105,7 @@ function ProductDetail() {
   };
 
   return (
-    <div className=" flex min-h-screen w-full flex-col items-center  justify-center pt-20">
+    <div className=" flex min-h-screen w-full flex-col items-center  justify-center bg-adopcion pt-20">
       <div className=" max-w-[60vw] ">
         <div className="flex flex-col md:flex-col lg:flex-row">
           <picture className="block  w-full  items-center justify-center lg:w-6/12">
