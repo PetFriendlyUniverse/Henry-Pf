@@ -8,6 +8,10 @@ import {
   deleteStoreByUser,
   deleteUserApi,
   deleteWalkerByUser,
+  approvedUserApi,
+  approvedStoreByUser,
+  approvedDaycareByUser,
+  approvedWalkerByUser,
 } from "../../../redux/features/filters/filtersActions";
 
 function CardsAccounts() {
@@ -45,16 +49,15 @@ function CardsAccounts() {
   };
   const handleApproved = (e) => {
     if (user.type === "store") {
-      dispatch(deleteStoreByUser(users[0]?.id));
+      dispatch(approvedStoreByUser(users[0]?.id));
     } else if (user.type === "daycare") {
-      dispatch(deleteDaycareByUser(users[0]?.id));
+      dispatch(approvedDaycareByUser(users[0]?.id));
     } else if (user.type === "walker") {
-      dispatch(deleteWalkerByUser(users[0]?.id));
+      dispatch(approvedWalkerByUser(users[0]?.id));
     } else {
-      dispatch(deleteUserApi(users[0]?.id));
+      dispatch(approvedUserApi(users[0]?.id));
     }
   };
-  console.log(users);
   return (
     <div>
       <div className="flex justify-center">

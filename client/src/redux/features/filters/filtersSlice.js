@@ -23,6 +23,18 @@ export const Filters = createSlice({
     deleteDaycare: (state, { payload }) => {
       state.usersFiltered = payload;
     },
+    approvedUser: (state, { payload }) => {
+      state.usersFiltered = payload;
+    },
+    approvedStore: (state, { payload }) => {
+      state.usersFiltered = payload;
+    },
+    approvedWalker: (state, { payload }) => {
+      state.usersFiltered = payload;
+    },
+    approvedDaycare: (state, { payload }) => {
+      state.usersFiltered = payload;
+    },
   },
 });
 
@@ -32,5 +44,9 @@ export const {
   deleteStore,
   deleteWalker,
   deleteDaycare,
+  approvedUser,
+  approvedStore,
+  approvedWalker,
+  approvedDaycare,
 } = Filters.actions;
 export default Filters.reducer;

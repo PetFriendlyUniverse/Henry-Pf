@@ -5,6 +5,10 @@ import {
   deleteStore,
   deleteWalker,
   deleteDaycare,
+  approvedUser,
+  approvedStore,
+  approvedWalker,
+  approvedDaycare,
 } from "./filtersSlice";
 
 const getUsersFilter = (name, type) => async (dispatch) => {
@@ -34,10 +38,34 @@ const deleteWalkerByUser = (id) => async (dispatch) => {
   return dispatch(deleteWalker(data));
 };
 
+const approvedUserApi = (id) => async (dispatch) => {
+  const { data } = await axios.put(`user/confirm/${id}`);
+  return dispatch(approvedUser(data));
+};
+
+const approvedStoreByUser = (id) => async (dispatch) => {
+  const { data } = await axios.put(`store/confirm/${id}`);
+  return dispatch(approvedStore(data));
+};
+
+const approvedDaycareByUser = (id) => async (dispatch) => {
+  const { data } = await axios.put(`daycare/confirm/${id}`);
+  return dispatch(approvedDaycare(data));
+};
+
+const approvedWalkerByUser = (id) => async (dispatch) => {
+  const { data } = await axios.put(`walker/confirm/${id}`);
+  return dispatch(approvedWalker(data));
+};
+
 export {
   getUsersFilter,
   deleteUserApi,
   deleteStoreByUser,
   deleteDaycareByUser,
   deleteWalkerByUser,
+  approvedUserApi,
+  approvedStoreByUser,
+  approvedDaycareByUser,
+  approvedWalkerByUser,
 };
