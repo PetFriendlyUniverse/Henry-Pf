@@ -23,7 +23,7 @@ export const useGetStoreInfo = () => {
     return () => setIsLoaded(false);
   }, [id]);
 
-  return [isLoaded, storeInfo, error];
+  return [isLoaded, storeInfo?.store, storeInfo?.averages, error];
 
   // ----------------------   codigo viejo (con bucle infinito xd) -----------------------------------//
   // const { id } = useParams();
