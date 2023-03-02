@@ -1,6 +1,7 @@
 import Loader from "../../../components/Loader/Loader";
 import QualificationChart from "./components/QualificationChart/QualificationChart";
 import RatingStars from "./components/RatingStars/RatingStars";
+import ReviewsGraph from "./components/ReviewsGraph/ReviewsGraph";
 import { useGetStoreInfo } from "./hooks/useGetStoreInfo";
 
 const starColor = (rating, starNumber) =>
@@ -25,15 +26,17 @@ function StoreDetail() {
     );
   if (!isLoaded) return <Loader />;
   return (
-    <section className="min-h-[90vh] w-full bg-customProfile">
-      <div className="h-60 w-full bg-gray-200"></div>
-      <div className="relative -top-28 mx-auto flex lg:min-h-[700px] lg:w-2/3">
-        <div className=" w-1/4 border border-black p-2">
+    <section className="min-h-[90vh] w-full bg-customProfile pt-60">
+      {/* <div className="h-60 w-full bg-gray-200"></div> */}
+      <div className="relative -top-28 mx-auto flex rounded-xl bg-violet-100 p-4 lg:min-h-[700px] lg:w-2/3">
+        <div className=" w-1/4 rounded-lg border  p-2">
           <h2 className="my-4 text-xl font-bold ">{store.name}</h2>
           <p className="text-sm">
             Nos acompaña desde {store.createdAt?.split("T")[0]}
           </p>
-          <h3 className="mt-32 font-bold">Valoración</h3>
+          <hr className="mt-8 w-24 border-gray-300 " />
+
+          <h3 className="mt-8 font-bold">Valoración</h3>
           <div class="mb-3 flex items-center" title={qualificationAVG}>
             <RatingStars
               className={`h-5 w-5 ${starColor(qualificationAVG, 1)}`}
@@ -50,8 +53,10 @@ function StoreDetail() {
             <RatingStars
               className={`h-5 w-5 ${starColor(qualificationAVG, 5)}`}
             />
+            <p>{qualificationAVG} de 5</p>
           </div>
-          <hr className="mt-8 w-24 border-gray-100 " />
+          <p> _cantidad_ reseñas </p>
+          <hr className="mt-8 w-24 border-gray-300 " />
           <h3 className="mt-8 font-semibold">Ubicación</h3>
           <p className="text-sm -tracking-[.5px]">
             {store?.locality}, {store?.province}
@@ -65,16 +70,9 @@ function StoreDetail() {
             />
             <QualificationChart type={"support"} qualification={supportAVG} />
           </div>
-          <div className="h-[500px] w-full border border-black">
-            <h2 className="mb-20 text-xl">
-              Algun gráfico de estadísticas de las opiniones
-            </h2>
-            <p>comentarios random</p>
-            <p>comentarios random</p>
-            <p>comentarios random</p>
-            <p>comentarios random</p>
-            <p>comentarios random</p>
-            <p>comentarios random</p>
+          <hr />
+          <div className=" w-full p-2">
+            <ReviewsGraph />
           </div>
         </div>
       </div>
