@@ -7,6 +7,7 @@ const {
   Invoices_Products,
   Invoices,
 } = require("../db");
+const { Op } = require("Sequelize");
 
 const getUser = async () => {
   const user = await User.count();
@@ -36,22 +37,22 @@ const getProducts = async () => {
 const getUserFilter = async (name, type) => {
   if (type === "store") {
     const store = await Store.findAll({
-      where: { name },
+      where: { name: { [Op.like]: `%${name}%` } },
     });
     return store;
   } else if (type === "walker") {
     const walker = await Walker.findAll({
-      where: { name },
+      where: { name: { [Op.like]: `%${name}%` } },
     });
     return walker;
   } else if (type === "daycare") {
     const daycare = await Daycare.findAll({
-      where: { name },
+      where: { name: { [Op.like]: `%${name}%` } },
     });
     return daycare;
-  } else {
+  } else if (name) {
     const user = await User.findAll({
-      where: { name },
+      where: { name: { [Op.like]: `%${name}%` } },
     });
     return user;
   }
