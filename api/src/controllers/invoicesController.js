@@ -3,7 +3,16 @@ const { Invoices, Invoices_Products, User, Product } = require("../db");
 const Colors = require("../models/FilterModels/Colors");
 
 const getInvoices = async () => {
-  const invoices = await Invoices.findAll();
+  const invoices = await Invoices.findAll({
+    include: [
+      {
+        model: Product,
+        through: {
+          attributes: ["unitPrice", "amount"],
+        },
+      },
+    ],
+  });
   return invoices;
 };
 
