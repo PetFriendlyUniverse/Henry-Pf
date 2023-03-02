@@ -7,8 +7,7 @@ import DonutGraphs from "./components/DonutGraphs";
 import LineGraphs from "./components/LineGraphs";
 import Tickets from "./components/Tickets";
 
-//import Logo from "../../assets/logo/Logo.png";
-//
+import logo from "../../assets/logo/logo.png";
 
 function DashboardAdmin() {
   const [show, setShow] = useState("accounts");
@@ -21,7 +20,7 @@ function DashboardAdmin() {
         <div className=" rounded-tr-full rounded-tl-full bg-russianviolet">
           <h1 className="py-8 text-lg font-bold">Panel de Administrador</h1>
           <div className="flex w-full justify-center px-52 pb-10">
-            //<img src={Logo} alt="logo" className="w-20" /> arreglar import de logo
+            <img src={logo} alt="logo" className="w-20" />
           </div>
         </div>
         <div className="bg-russianviolet">

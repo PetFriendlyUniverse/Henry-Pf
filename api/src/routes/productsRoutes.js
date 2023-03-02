@@ -21,8 +21,13 @@ productsRoutes.get("/:id", getProductByIDlHandler);
 
 productsRoutes.get("/store/:storeId", getProductByIDStorelHandler);
 
-productsRoutes.post("/create", upload.array("img"), postProductHandler);
-productsRoutes.put("/:id", putProductHandler);
-productsRoutes.delete("/:id", deleteProductHandler);
+productsRoutes.post(
+  "/create",
+  authMiddleware,
+  upload.array("img"),
+  postProductHandler
+);
+productsRoutes.put("/:id", authMiddleware, putProductHandler);
+productsRoutes.delete("/:id", authMiddleware, deleteProductHandler);
 
 module.exports = productsRoutes;

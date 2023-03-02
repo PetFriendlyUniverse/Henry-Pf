@@ -65,8 +65,6 @@ router.get(
     const { id } = req.user.user;
 
     res.redirect(`http://localhost:5173/shop?t=${token}&i=${id}`);
-
-    // res.send({ token: token, id: id });
   }
 );
 
