@@ -173,21 +173,18 @@ function Login() {
 
   // ----------------------- Modal -----------------------//
   return (
-    <>
+    <div className="relative w-full ">
       <div
-        className={`fixed top-0 z-50  ${
+        className={`fixed top-0 z-50   ${
           showModal ? "flex" : "hidden"
-        } h-screen w-screen place-content-center `}
+        } h-screen w-screen place-content-center  `}
       >
         <div
-          className={`opacity-0 ${
+          className={`relative opacity-0 ${
             showModal ? "opacity-60" : "hidden"
-          } h-screen w-screen bg-black transition duration-1000 ease-in-out`}
+          } relative h-screen w-screen bg-black transition duration-1000 ease-in-out`}
         ></div>
-        <form
-          onSubmit={submitConfirmMail}
-          className="absolute top-[45%] rounded-md bg-ultraviolet p-10"
-        >
+        <form onSubmit={submitConfirmMail} className=" ">
           <span onClick={handleShowModal}>X</span>
           <input
             onChange={handleChageMail}
@@ -227,18 +224,14 @@ function Login() {
                 required={true}
               />
               <button>Ingresar</button>
-              <div className="relative w-full">
-                <span
-                  onClick={handleShowModal}
-                  className="absolute right-0 -top-[50px] cursor-pointer text-sm hover:font-semibold hover:tracking-[-.5px]"
-                >
-                  Olvidaste tu contraseña?
-                </span>
-              </div>
+              <button type="button" onClick={handleShowModal}>
+                Olvidaste tu contraseña?
+              </button>
+              <button type="button" onClick={handleClickGoogle}>
+                Seguir con google
+              </button>
               <div className={s.loginGoogle}>
-                <button type="button" onClick={handleClickGoogle}>
-                  Click para seguir con google
-                </button>
+                <div className="relative w-full"></div>
               </div>
             </form>
           </div>
@@ -324,26 +317,26 @@ function Login() {
               )}
               <input
                 onChange={handleChangeRepeatPassword}
-                class={s.input}
+                className={s.input}
                 type="password"
                 name="repeatPassword"
                 value={repeatPassword}
                 placeholder="Repetir Contraseña "
                 autoComplete="off"
-                required="true"
+                required={true}
               />
               {repeatPassword !== form.password && (
                 <p className="text-xs text-red-700">{`Passwords does not match`}</p>
               )}
               <LinkButton component={"Registrate"} />
               <button type="button" onClick={handleClickGoogle}>
-                Click para registrarte con google
+                Continuar con google
               </button>
             </form>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
