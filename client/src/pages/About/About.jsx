@@ -10,8 +10,8 @@ import maxiimg from "../../assets/profileimg/maximopermingeat.jpeg";
 import pabloimg from "../../assets/profileimg/pabloamico.jpeg";
 import stefanoimg from "../../assets/profileimg/stefanegemelli.jpeg";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function About() {
   const members = [
@@ -70,18 +70,18 @@ function About() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 5000);
+    }, 2000);
   }, []);
 
   const loaderr = () => {
     return (
-      <div className="lg: flex h-max  w-full items-center justify-center  bg-gray-600 bg-[url('https://petfood.com.ar/img/cms/symphony.png')]  lg:pt-14">
-        <SkeletonTheme baseColor="#202020" highlightColor="#444">
+      <SkeletonTheme baseColor="#9c9c9c" highlightColor="white">
+        <div className="lg: [url('https://petfood.com.ar/img/cms/symphony.png')] flex  h-max w-full items-center justify-center  lg:pt-14">
           <section className="grid place-content-center gap-10  py-3 md:pb-10 md:pt-14 md:text-sm lg:h-2/3 lg:w-2/3 lg:grid-cols-4">
             {members.map((person) => (
               <article
                 key={person.name}
-                className="flex h-full w-full flex-col items-center justify-center gap-5 rounded-xl bg-slate-600  bg-gradient-to-b  from-slate-600 to-slate-900 p-5 text-white drop-shadow-button "
+                className="flex h-full w-full flex-col items-center justify-center gap-5 rounded-xl bg-gray-200 drop-shadow-button "
               >
                 {" "}
                 <Skeleton />
@@ -125,8 +125,8 @@ function About() {
               </article>
             ))}
           </section>
-        </SkeletonTheme>
-      </div>
+        </div>
+      </SkeletonTheme>
     );
   };
   if (loading) {
