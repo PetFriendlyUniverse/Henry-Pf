@@ -30,14 +30,14 @@ function CardsAccounts() {
       <div className="flex justify-center">
         <form className="flex pb-10" onSubmit={handlerSubmit}>
           <button className="rounded-l bg-cornflowerblue px-2 hover:bg-blue-600">
-            Buscar Usuarios
+            Buscar
           </button>
           <input
             type="text"
             value={user.name}
             name="name"
             onChange={hadlerChange}
-            className="text-black"
+            className="w-28 text-black md:w-32"
             autoComplete="off"
           />
           <select
