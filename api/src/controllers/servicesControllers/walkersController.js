@@ -48,10 +48,18 @@ const updateWalkers = async (data, id) => {
   return updated;
 };
 
-const deleteWalkersById = async (id) => {
-  if (!id) throw Error("id erroneo");
+const deletedWalkersById = async (id) => {
+  if (!id) throw Error("Wrong Id");
   const update = await Walker.update({ enable: false }, { where: { id: id } });
-  return update ? "Walker eliminado correctamente" : "Walker incorrecto";
+  const walker = await Walker.findOne({ where: { id: id } });
+  return [walker];
+};
+
+const approvedWalkersById = async (id) => {
+  if (!id) throw Error("Wrong Id");
+  const update = await Walker.update({ enable: true }, { where: { id: id } });
+  const walker = await Walker.findOne({ where: { id: id } });
+  return [walker];
 };
 
 const filterWalkers = async (query) => {
@@ -67,7 +75,8 @@ module.exports = {
   getAllWalkers,
   getWalkersById,
   updateWalkers,
-  deleteWalkersById,
+  deletedWalkersById,
   filterWalkers,
   createWalkers,
+  approvedWalkersById,
 };

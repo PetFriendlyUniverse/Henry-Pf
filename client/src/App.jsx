@@ -22,9 +22,6 @@ const TabStore = lazy(() =>
 const TabWalker = lazy(() => import("./pages/Services/Profile/TabWalker"));
 const TabDaycare = lazy(() => import("./pages/Services/Profile/TabDaycare"));
 
-const StoreDetail = lazy(() =>
-  import("./pages/ecommerce/StoreDetail/StoreDetail")
-);
 const ChangePassword = lazy(() =>
   import("./pages/ChangePassword/ChangePassword")
 );
@@ -79,7 +76,6 @@ function App() {
           <Route path="/landingshop" element={<LandingShop />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/detail/:id" element={<ProductDetail />} />
-          <Route path="/shop/storedetail/:id" element={<StoreDetail />} />
           <Route path="/shop/checkout" element={<Checkout />} />
           <Route path="/shop/success" element={<Success />} />
           <Route path="/login" element={<Login />} />

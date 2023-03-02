@@ -6,12 +6,13 @@ const {
   getUserHandler,
   getUserDetailHandler,
   putUserHandler,
-  deleteUserHandler,
+  deletedUserHandler,
   resetConfirmPasswordHandler,
   resetPasswordHandler,
   getUserStore,
   getUserWalker,
   getUserDaycare,
+  approvedUserHandler,
 } = require("../handler/userHandler");
 
 const multer = require("multer");
@@ -32,6 +33,7 @@ userRoutes.post("/logout", authMiddleware, logoutHandler);
 userRoutes.post("/reset-password", resetConfirmPasswordHandler);
 userRoutes.put("/change-password/:token", resetPasswordHandler);
 userRoutes.put("/:id", upload.single("img"), authMiddleware, putUserHandler);
-userRoutes.delete("/:id", deleteUserHandler);
+userRoutes.delete("/:id", deletedUserHandler);
+userRoutes.put("/confirm/:id", approvedUserHandler);
 
 module.exports = userRoutes;

@@ -4,23 +4,19 @@ const {
   getDaycaresHandler,
   getDaycareByIDHandler,
   putDaycareHandler,
-  deleteDaycareHandler,
+  deletedDaycareHandler,
+  approvedDaycareHandler,
 } = require("../../handler/servicesHandlers/daycareHandler");
 const daycareRoutes = Router();
 
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
-const authMiddleware = require("../../helpers/authMiddleware");
 
-daycareRoutes.post("/create/:UserId", authMiddleware, postDaycareHandler);
+daycareRoutes.post("/create/:UserId", postDaycareHandler);
 daycareRoutes.get("/", getDaycaresHandler);
 daycareRoutes.get("/detail/:id", getDaycareByIDHandler);
-daycareRoutes.put(
-  "/:id",
-  authMiddleware,
-  upload.single("img"),
-  putDaycareHandler
-);
-daycareRoutes.delete("/:id", authMiddleware, deleteDaycareHandler);
+daycareRoutes.put("/:id", upload.single("img"), putDaycareHandler);
+daycareRoutes.delete("/:id", deletedDaycareHandler);
+daycareRoutes.put("/confirm/:id", approvedDaycareHandler);
 
 module.exports = daycareRoutes;
