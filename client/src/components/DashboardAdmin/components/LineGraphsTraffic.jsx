@@ -1,7 +1,7 @@
 import { Card, Title, LineChart } from "@tremor/react";
 import "@tremor/react/dist/esm/tremor.css";
 
-function LineGraphs() {
+function LineGraphsTraffic() {
   const chartdata = [
     {
       year: 1951,
@@ -47,4 +47,4 @@ function LineGraphs() {
   );
 }
 
-export default LineGraphs;
+export default LineGraphsTraffic;

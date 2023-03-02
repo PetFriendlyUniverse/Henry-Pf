@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Profile from "../../../assets/general/profile.svg";
-import WhatsApp from "../../../assets/socialmedia/whatsapp.svg";
 import { getUsersFilter } from "../../../redux/features/filters/filtersActions";
 
 function CardsAccounts() {
@@ -27,47 +26,55 @@ function CardsAccounts() {
   };
 
   return (
-    <div className="h-[480px]">
-      <form className="flex pb-10" onSubmit={handlerSubmit}>
-        <button className="rounded-l bg-cornflowerblue px-2 hover:bg-blue-600">
-          Buscar Usuarios
-        </button>
-        <input
-          type="text"
-          value={user.name}
-          name="name"
-          onChange={hadlerChange}
-          className="text-black"
-          autoComplete="off"
-        />
-        <select
-          name="type"
-          value={user.type}
-          onChange={hadlerChange}
-          className="h-6 rounded-r bg-cornflowerblue hover:bg-blue-600"
-        >
-          <option value="" hidden>
-            Tipo de Usuario
-          </option>
-          <option value="user" key="user">
-            Usuario
-          </option>
-          <option value="store" key="store">
-            Tiendas
-          </option>
-          <option value="walker" key="walker">
-            Paseadores
-          </option>
-          <option value="daycare" key="daycare">
-            Guarderias
-          </option>
-        </select>
-      </form>
-      <div className="flex">
+    <div className="">
+      <div className="flex justify-center">
+        <form className="flex pb-10" onSubmit={handlerSubmit}>
+          <button className="rounded-l bg-cornflowerblue px-2 hover:bg-blue-600">
+            Buscar
+          </button>
+          <input
+            type="text"
+            value={user.name}
+            name="name"
+            onChange={hadlerChange}
+            className="w-28 text-black md:w-32"
+            autoComplete="off"
+          />
+          <select
+            name="type"
+            value={user.type}
+            onChange={hadlerChange}
+            className="h-6 rounded-r bg-cornflowerblue hover:bg-blue-600"
+          >
+            <option value="" hidden>
+              Tipo de Usuario
+            </option>
+            <option value="user" key="user">
+              Usuario
+            </option>
+            <option value="store" key="store">
+              Tiendas
+            </option>
+            <option value="walker" key="walker">
+              Paseadores
+            </option>
+            <option value="daycare" key="daycare">
+              Guarderias
+            </option>
+          </select>
+        </form>
+      </div>
+      <div
+        className={
+          users
+            ? "flex max-h-[54vh] min-w-[70vw] flex-wrap justify-center gap-y-4 overflow-y-scroll border-t-2 border-b-2 py-4"
+            : "py-4"
+        }
+      >
         {users &&
           users?.map((e) => {
             return (
-              <div className="mx-10 items-center rounded-lg border border-gray-200  bg-gray-200 px-10 dark:border-gray-700 md:max-w-xl md:flex-row">
+              <div className="mx-10 min-w-[250px] items-center rounded-lg border  border-gray-200 bg-gray-200 px-10 dark:border-gray-700 md:max-w-xl md:flex-row">
                 <div>
                   <div className="flex justify-center">
                     <img
