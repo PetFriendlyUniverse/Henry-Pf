@@ -21,12 +21,8 @@ function FormModifyStore() {
   const provincia = useSelector((state) => state.Ubicaciones.provincias);
   const localidad = useSelector((state) => state.Ubicaciones.localidades);
 
-  const getLocalidades = useEffect(() => {
-    // Dispatch the getLocalidades action to fetch localidades from the API
+  useEffect(() => {
     dispatch(getStoreByUser(id));
-    if (form.province.length > 0) {
-      dispatch(getLocalidadesAsync(form.province));
-    }
     dispatch(getPronvinciasAsync());
   }, []);
 
@@ -67,8 +63,11 @@ function FormModifyStore() {
     } else {
       setFormComplete(false);
     }
+    if (e.target.name === "province") {
+      dispatch(getLocalidadesAsync(e.target.value));
+    }
   };
-
+  console.log(form);
   const changeHandlerImg = (e) => {
     setImg(e.target.files[0]);
     const files = e.target.files;
@@ -191,6 +190,7 @@ function FormModifyStore() {
                   onChange={handleChange}
                   name="province"
                   className="max-w-full"
+                  value={form.province}
                 >
                   {provincia.map((p) => (
                     <option key={p.id} value={p.nombre}>
@@ -355,7 +355,7 @@ function FormModifyStore() {
               </div>
             </div>
             <div className="h-[10px]">
-              {formComplete && <LinkButton component={"Crear Guarderia"} />}
+              {formComplete && <LinkButton component={"Crear Tienda"} />}
             </div>
           </div>
         </div>

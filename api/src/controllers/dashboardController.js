@@ -5,6 +5,7 @@ const {
   Daycare,
   Product,
   Invoices_Products,
+  Invoices,
 } = require("../db");
 
 const getUser = async () => {
@@ -65,8 +66,38 @@ const getEarningsByInvoices = async () => {
   const grandTotal = totals.reduce((acc, invoice) => acc + invoice.total, 0);
   return grandTotal;
 };
+const getEarningsByInvoiceStore = async (storeId) => {
+  try {
+    const invoices = await Invoices.findAll({
+      include: [
+        {
+          model: Product,
+          through: {
+            attributes: ["unitPrice", "amount"],
+          },
+          where: {
+            StoreId: storeId,
+          },
+        },
+      ],
+    });
+    let grandTotal = 0;
+    invoices.forEach((invoice) => {
+      const total = invoice.Products.reduce((acc, product) => {
+        return (
+          acc +
+          product.Invoices_Products.unitPrice * product.Invoices_Products.amount
+        );
+      }, 0);
+      invoice.total = total;
+      grandTotal += total;
+    });
 
-const getEarningsByInvoiceStore = async (idStore) => {};
+    return grandTotal;
+  } catch (error) {
+    return { error: error.message };
+  }
+};
 
 module.exports = {
   getUser,
@@ -76,4 +107,5 @@ module.exports = {
   getProducts,
   getUserFilter,
   getEarningsByInvoices,
+  getEarningsByInvoiceStore,
 };
