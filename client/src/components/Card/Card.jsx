@@ -35,7 +35,7 @@ function Card({ name, img, weight, price, stock, id }) {
     });
   };
   return (
-    <div className="flex  h-full w-full min-w-fit max-w-xs flex-col items-center justify-center overflow-hidden rounded-lg border  sm:max-w-sm ">
+    <div className="flex h-full w-full min-w-fit max-w-xs flex-col items-center justify-between overflow-hidden rounded-lg border text-center  sm:max-w-sm ">
       <div className="h-56 w-full bg-[rgba(0,0,0,0.05)]">
         <Link
           to={`/shop/detail/${id}`}
@@ -50,9 +50,9 @@ function Card({ name, img, weight, price, stock, id }) {
       </div>
       <div className="bg-[#fff] px-3 pb-2">
         <div className="flex  w-full items-center justify-center ">
-          <h3 className="m-2 p-1  font-bold">{name}</h3>
+          <h3 className="m-2 p-1 text-sm font-bold  xl:text-base">{name}</h3>
         </div>
-        <div className="mt-2 flex w-full  items-center justify-center gap-2 ">
+        <div className=" flex w-full  items-center justify-center gap-2 ">
           <p className="my-1 rounded bg-ultraviolet py-2 px-4 text-xs font-semibold text-white">
             {weight} kg
           </p>
