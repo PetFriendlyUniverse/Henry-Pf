@@ -17,6 +17,7 @@ import {
 } from "../../../redux/features/products/productsSlice";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import StoreDetail from "./components/StoreDetail/StoreDetail";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -111,7 +112,7 @@ function ProductDetail() {
       });
     }
   };
- const loaderr = () => {
+  const loaderr = () => {
     return (
       <SkeletonTheme baseColor="#9c9c9c" highlightColor="white">
         <div className=" flex  min-h-screen w-full  flex-col items-center  justify-center pt-0">
@@ -450,6 +451,9 @@ function ProductDetail() {
             </Tabs.Item>
             <Tabs.Item title="comentarios">
               <div>Reseñas de clientes</div>
+            </Tabs.Item>
+            <Tabs.Item title="comentarios">
+              <StoreDetail />
             </Tabs.Item>
           </Tabs.Group>
         </div>
