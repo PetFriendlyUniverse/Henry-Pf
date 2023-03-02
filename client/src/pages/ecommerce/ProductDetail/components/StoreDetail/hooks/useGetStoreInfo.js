@@ -1,27 +1,29 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+
 import axios from "axios";
+import { useSelector } from "react-redux";
 // import { useDispatch, useSelector } from "react-redux";
 // import { getStoreAsync } from "../../../../redux/features/tiendas/tiendasActions";
 
 export const useGetStoreInfo = () => {
-  const { id } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
   const [storeInfo, setStoreInfo] = useState({});
   const [error, setError] = useState(null);
+  const { productId } = useSelector((state) => state.Products);
 
   useEffect(() => {
-    axios
-      .get(`/store/${id}`)
-      .then((res) => {
-        setStoreInfo(res.data);
-        setIsLoaded(true);
-      })
-      .catch((err) => {
-        setError(err);
-      });
+    productId?.StoreId &&
+      axios
+        .get(`/store/${productId.StoreId}`)
+        .then((res) => {
+          setStoreInfo(res.data);
+          setIsLoaded(true);
+        })
+        .catch((err) => {
+          setError(err);
+        });
     return () => setIsLoaded(false);
-  }, [id]);
+  }, [productId?.StoreId]);
 
   return [isLoaded, storeInfo?.store, storeInfo?.averages, error];
 

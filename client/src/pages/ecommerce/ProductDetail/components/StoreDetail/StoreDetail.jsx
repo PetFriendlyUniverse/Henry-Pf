@@ -4,11 +4,9 @@ import RatingStars from "./components/RatingStars/RatingStars";
 import ReviewsGraph from "./components/ReviewsGraph/ReviewsGraph";
 import { useGetStoreInfo } from "./hooks/useGetStoreInfo";
 
-const starColor = (rating, starNumber) =>
-  starNumber <= rating ? "text-yellow-400" : "text-gray-300";
-
 function StoreDetail() {
   const [isLoaded, store, averages, error] = useGetStoreInfo();
+  // console.log(averages);
 
   // console.log(averages); //
   // averages ===>> { dispatchtimeAVG: "4.75000000", qualificationAVG: "3.6000000", supportAVG: "3.4000000" }
@@ -64,7 +62,7 @@ function StoreDetail() {
 
       {/* ----------------------------- inicio seccion 2 ---------------------------  */}
 
-      <ReviewsGraph />
+      <ReviewsGraph data={{ qualificationAVG, dispatchtimeAVG, supportAVG }} />
 
       {/* ----------------------------- fin seccion 2 ---------------------------  */}
 
