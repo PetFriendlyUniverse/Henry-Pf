@@ -63,7 +63,8 @@ const getStoreByID = async (id) => {
   select AVG(r.qualification) as "qualificationAVG", AVG(r.dispatchtime) as "dispatchtimeAVG", AVG(r.support) as "supportAVG"
   from "Products" as p
   inner join "Reviews" as r
-  on "StoreId" = ${id}
+  on p.id = r."ProductId"
+  where "StoreId"=${id}
   ;`,
     {
       type: QueryTypes.SELECT,
