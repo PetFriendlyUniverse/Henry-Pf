@@ -35,16 +35,15 @@ function ChangePassword() {
         showConfirmButton: true,
         timer: 1500,
       });
-      // navigate("/login");
+      navigate("/login");
     } catch (error) {
-      console.log(error);
       await Swal.fire({
         icon: "error",
-        title: "",
+        title: error.response.data.error,
         showConfirmButton: true,
         timer: 1500,
       });
-      // navigate("/login");
+      navigate("/login");
     }
   };
 
