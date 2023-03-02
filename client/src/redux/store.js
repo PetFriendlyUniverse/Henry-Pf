@@ -4,6 +4,7 @@ import User from "./features/users/usersSlice";
 import Tiendas from "./features/tiendas/tiendasSlice";
 import Ubicaciones from "./features/ubicaciones/ubicacionesSlice";
 import Stats from "./features/stats/statsSlice";
+import Filters from "./features/filters/filtersSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     Tiendas,
     Ubicaciones,
     Stats,
+    Filters,
   },
 });

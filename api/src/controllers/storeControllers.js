@@ -1,4 +1,6 @@
-const { Store, User } = require("../db");
+const { Op, QueryTypes } = require("sequelize");
+const { sequelize } = require("../db");
+const { Store, User, Product, Review } = require("../db");
 
 const createStore = async (userId) => {
   const user = await User.findByPk(userId);
@@ -42,8 +44,34 @@ const storeFilter = async (query) => {
 };
 
 const getStoreByID = async (id) => {
-  const store = await Store.findByPk(id);
-  return store;
+  const store = await Store.findOne({
+    where: {
+      id,
+    },
+    // include: {
+    //   model: Product,
+    //   attributes: ["id"],
+    //   include: {
+    //     model: Review,
+    //     attributes: ["comment", "qualification"],
+    //   },
+    // },
+  });
+
+  const averages = await sequelize.query(
+    `
+  select AVG(r.qualification) as "qualificationAVG", AVG(r.dispatchtime) as "dispatchtimeAVG", AVG(r.support) as "supportAVG"
+  from "Products" as p
+  inner join "Reviews" as r
+  on p.id = r."ProductId"
+  where "StoreId"=${id}
+  ;`,
+    {
+      type: QueryTypes.SELECT,
+    }
+  );
+
+  return { store, averages };
 };
 
 const updateStore = async (data, id) => {

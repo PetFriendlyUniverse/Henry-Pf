@@ -1,6 +1,14 @@
 // const store = require("./controllers/storeControllers");
 // const products = require("./controllers/productsControllers");
-const { Product, Store, Brands, Breeds, Species, User } = require("../src/db");
+const {
+  Product,
+  Store,
+  Brands,
+  Breeds,
+  Species,
+  User,
+  Review,
+} = require("../src/db");
 
 const generator = () => {
   const species = {
@@ -241,6 +249,68 @@ const generator = () => {
     Species.bulkCreate(speciesObj);
 
     await Product.bulkCreate(productsToCreate);
+
+    // ------------------------- Reviews ----------------------------- //
+
+    const high = {
+      1: 5,
+      2: 5,
+      3: 4,
+      4: 4,
+      5: 4,
+      6: 5,
+      7: 5,
+      8: 5,
+      9: 5,
+      10: 5,
+    };
+    const half = {
+      1: 2,
+      2: 2,
+      3: 3,
+      4: 3,
+      5: 3,
+      6: 4,
+      7: 4,
+      8: 5,
+      9: 5,
+      10: 5,
+    };
+    const normal = {
+      1: 1,
+      2: 2,
+      3: 2,
+      4: 3,
+      5: 3,
+      6: 4,
+      7: 4,
+      8: 5,
+      9: 5,
+      10: 5,
+    };
+    const randomQualification = {
+      1: high,
+      2: half,
+      3: normal,
+    };
+    const dis = Math.ceil(Math.random() * 3);
+    const sup = Math.ceil(Math.random() * 3);
+    const qual = Math.floor(dis > sup ? dis : sup);
+
+    const reviewsToCreate = [];
+    for (let i = 1; i <= 20; i++) {
+      reviewsToCreate.push({
+        UserId: Math.ceil(i / 2),
+        ProductId: i,
+        comment:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknow",
+        qualification: randomQualification[qual][Math.ceil(Math.random() * 10)],
+        dispatchtime: randomQualification[dis][Math.ceil(Math.random() * 10)],
+        support: randomQualification[sup][Math.ceil(Math.random() * 10)],
+      });
+    }
+    await Review.bulkCreate(reviewsToCreate);
+    // ------------------------- Reviews ----------------------------- //
     console.log("Datos generados exitosamente");
   }, 5000);
 };

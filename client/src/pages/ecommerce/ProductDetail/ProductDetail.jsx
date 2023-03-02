@@ -111,8 +111,7 @@ function ProductDetail() {
       });
     }
   };
-
-  const loaderr = () => {
+ const loaderr = () => {
     return (
       <SkeletonTheme baseColor="#9c9c9c" highlightColor="white">
         <div className=" flex  min-h-screen w-full  flex-col items-center  justify-center pt-0">

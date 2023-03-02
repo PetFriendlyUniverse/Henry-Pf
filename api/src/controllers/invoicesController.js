@@ -3,7 +3,16 @@ const { Invoices, Invoices_Products, User, Product } = require("../db");
 const Colors = require("../models/FilterModels/Colors");
 
 const getInvoices = async () => {
-  const invoices = await Invoices.findAll();
+  const invoices = await Invoices.findAll({
+    include: [
+      {
+        model: Product,
+        through: {
+          attributes: ["unitPrice", "amount"],
+        },
+      },
+    ],
+  });
   return invoices;
 };
 
@@ -12,6 +21,27 @@ const getInvoicesId = async (id) => {
     const invoices = await Invoices.findOne({
       where: {
         id,
+      },
+      include: [
+        {
+          model: Product,
+          through: {
+            attributes: ["unitPrice", "amount"],
+          },
+        },
+      ],
+    });
+    return invoices;
+  } catch (error) {
+    return { error: error.message };
+  }
+};
+
+const getInvoicesIdByUser = async (userId) => {
+  try {
+    const invoices = await Invoices.findAll({
+      where: {
+        userId,
       },
       include: [
         {
@@ -76,4 +106,5 @@ module.exports = {
   getInvoices,
   getInvoicesId,
   createInvoice,
+  getInvoicesIdByUser,
 };

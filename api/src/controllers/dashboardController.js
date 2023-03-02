@@ -1,4 +1,13 @@
-const { User, Walker, Store, Daycare, Product } = require("../db");
+const {
+  User,
+  Walker,
+  Store,
+  Daycare,
+  Product,
+  Invoices_Products,
+  Invoices,
+} = require("../db");
+const { Op } = require("Sequelize");
 
 const getUser = async () => {
   const user = await User.count();
@@ -26,10 +35,69 @@ const getProducts = async () => {
 };
 
 const getUserFilter = async (name, type) => {
-  const user = await User.findAll({
-    where: { name },
+  if (type === "store") {
+    const store = await Store.findAll({
+      where: { name: { [Op.like]: `%${name}%` } },
+    });
+    return store;
+  } else if (type === "walker") {
+    const walker = await Walker.findAll({
+      where: { name: { [Op.like]: `%${name}%` } },
+    });
+    return walker;
+  } else if (type === "daycare") {
+    const daycare = await Daycare.findAll({
+      where: { name: { [Op.like]: `%${name}%` } },
+    });
+    return daycare;
+  } else if (name) {
+    const user = await User.findAll({
+      where: { name: { [Op.like]: `%${name}%` } },
+    });
+    return user;
+  }
+};
+
+const getEarningsByInvoices = async () => {
+  const result = await Invoices_Products.findAll();
+  const totals = result.map((invoice) => {
+    const total = invoice.amount * invoice.unitPrice;
+    return { ...invoice, total };
   });
-  return user;
+  const grandTotal = totals.reduce((acc, invoice) => acc + invoice.total, 0);
+  return grandTotal;
+};
+const getEarningsByInvoiceStore = async (storeId) => {
+  try {
+    const invoices = await Invoices.findAll({
+      include: [
+        {
+          model: Product,
+          through: {
+            attributes: ["unitPrice", "amount"],
+          },
+          where: {
+            StoreId: storeId,
+          },
+        },
+      ],
+    });
+    let grandTotal = 0;
+    invoices.forEach((invoice) => {
+      const total = invoice.Products.reduce((acc, product) => {
+        return (
+          acc +
+          product.Invoices_Products.unitPrice * product.Invoices_Products.amount
+        );
+      }, 0);
+      invoice.total = total;
+      grandTotal += total;
+    });
+
+    return grandTotal;
+  } catch (error) {
+    return { error: error.message };
+  }
 };
 
 module.exports = {
@@ -39,4 +107,6 @@ module.exports = {
   getDaycare,
   getProducts,
   getUserFilter,
+  getEarningsByInvoices,
+  getEarningsByInvoiceStore,
 };

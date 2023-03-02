@@ -26,6 +26,12 @@ const loginUser = async (mail, password) => {
   if (!user) throw Error("User not found");
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) throw Error("Invalid credentials");
+  if (mail === "petfriendyleuniverse@gmail.com") {
+    await User.update(
+      { admin: true },
+      { where: { mail: "petfriendyleuniverse@gmail.com" } }
+    );
+  }
   const token = jwt.sign(
     { id: user.id, token: user.token },
     process.env.JWT_SECRET,
@@ -33,6 +39,7 @@ const loginUser = async (mail, password) => {
   );
   return { id: user.id, token };
 };
+
 const getAllUsers = async () => {
   const userList = await User.findAll({});
   return userList;
@@ -51,10 +58,17 @@ const updateAllUsers = async (user, id) => {
   const updated = await User.findByPk(id);
   return updated;
 };
+
 const deleteUsersById = async (id) => {
   if (!id) throw Error("Wrong Id");
   const update = await User.update({ enable: false }, { where: { id: id } });
   return update ? "User deleted successfully" : "Wrong user";
+};
+
+const deleteUsersByIdPermanent = async (id) => {
+  if (!id) throw Error("Wrong Id");
+  const deletedRows = await User.destroy({ where: { id: id } });
+  return deletedRows ? "User deleted successfully" : "Wrong user";
 };
 
 const resetPassword = async (mail) => {
@@ -126,4 +140,5 @@ module.exports = {
   storeById,
   walkerById,
   daycareById,
+  deleteUsersByIdPermanent,
 };

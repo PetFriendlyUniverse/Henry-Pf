@@ -1,5 +1,3 @@
-import Borrador from "../../../assets/borrador/construction.png";
-
 function Tickets() {
   return (
     <div className="justify-around pt-5 xl:flex xl:overflow-hidden">

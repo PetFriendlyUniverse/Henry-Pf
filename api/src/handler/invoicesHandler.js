@@ -2,6 +2,7 @@ const {
   getInvoices,
   getInvoicesId,
   createInvoice,
+  getInvoicesIdByUser,
 } = require("../controllers/invoicesController");
 
 const getInvoiceHandler = async (req, res) => {
@@ -17,6 +18,16 @@ const getInvoiceIdHandler = async (req, res) => {
   const { id } = req.params;
   try {
     let invoices = await getInvoicesId(id);
+    return res.status(200).json(invoices);
+  } catch (error) {
+    return res.status(404).json({ error: error.message });
+  }
+};
+
+const getInvoiceIdUserHandler = async (req, res) => {
+  const { userId } = req.params;
+  try {
+    let invoices = await getInvoicesIdByUser(userId);
     return res.status(200).json(invoices);
   } catch (error) {
     return res.status(404).json({ error: error.message });
@@ -43,4 +54,5 @@ module.exports = {
   getInvoiceHandler,
   getInvoiceIdHandler,
   postInvoiceHandler,
+  getInvoiceIdUserHandler,
 };
