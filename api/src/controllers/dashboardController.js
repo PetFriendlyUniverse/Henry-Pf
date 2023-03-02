@@ -1,4 +1,11 @@
-const { User, Walker, Store, Daycare, Product } = require("../db");
+const {
+  User,
+  Walker,
+  Store,
+  Daycare,
+  Product,
+  Invoices_Products,
+} = require("../db");
 
 const getUser = async () => {
   const user = await User.count();
@@ -50,26 +57,16 @@ const getUserFilter = async (name, type) => {
 };
 
 const getEarningsByInvoices = async () => {
-  const result = await Invoice.findAll({
-    include: [
-      {
-        model: Product,
-        as: "Products",
-      },
-    ],
-    attributes: [
-      [
-        Sequelize.fn(
-          "sum",
-          Sequelize.col("Products.Invoices_Products.unitPrice")
-        ),
-        "total",
-      ],
-    ],
+  const result = await Invoices_Products.findAll();
+  const totals = result.map((invoice) => {
+    const total = invoice.amount * invoice.unitPrice;
+    return { ...invoice, total };
   });
-
-  return result[0].dataValues.total;
+  const grandTotal = totals.reduce((acc, invoice) => acc + invoice.total, 0);
+  return grandTotal;
 };
+
+const getEarningsByInvoiceStore = async (idStore) => {};
 
 module.exports = {
   getUser,

@@ -6,6 +6,7 @@ const {
   getProducts,
   getUserFilter,
   getEarningsByInvoices,
+  getEarningsByInvoiceStore,
 } = require("../controllers/dashboardController");
 
 const getCountUser = async (req, res) => {
@@ -73,7 +74,10 @@ const getEarnings = async (req, res) => {
 };
 
 const getEarningsByStore = async (req, res) => {
+  const { idStore } = req.params;
   try {
+    const earnings = await getEarningsByInvoiceStore(idStore);
+    return res.status(200).json(earnings);
   } catch (error) {
     res.status(404).send(error.message);
   }
