@@ -127,10 +127,10 @@ function Success() {
   }, []);
 
   return (
-    <div className="flex h-full min-h-[70vh] w-full flex-col items-center justify-center md:min-h-[60vh] lg:min-h-[50h] xl:min-h-[73vh]">
+    <div className="flex h-full min-h-[70vh] w-full flex-col items-center justify-center bg-[url('https://petfood.com.ar/img/cms/symphony.png')] md:min-h-[60vh] md:py-4 lg:min-h-[50h] xl:min-h-[73vh] 2xl:min-h-[82vh]">
       <div
         id="invoice"
-        className=" mx-2 flex  flex-col items-center justify-center gap-3 bg-russianviolet  py-10"
+        className=" mx-2 flex flex-col  items-center justify-center gap-3 rounded-lg  bg-russianviolet px-5 py-10 shadow-lg  shadow-black"
       >
         <div className="flex flex-col items-center justify-center ">
           <h2 className="text-center text-base font-semibold uppercase text-sky-400">
@@ -180,9 +180,9 @@ function Success() {
         </div>
       </div>
       {/* div boton */}
-      <div className=" flex w-full justify-center   pt-1">
+      <div className=" flex w-full justify-center   pt-8">
         <button
-          className=" flex items-center gap-2 rounded-lg bg-cornflowerblue px-4 py-1 uppercase text-white  "
+          className=" flex items-center gap-2 rounded-lg bg-cornflowerblue px-4 py-1 uppercase text-white shadow-lg shadow-[rgba(0,0,0,0.6)] transition-all duration-300 focus:translate-y-1"
           onClick={() => screenshotInvoice(objeto.id)}
         >
           guardar factura
