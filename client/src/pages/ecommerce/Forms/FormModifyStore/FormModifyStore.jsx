@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { ValidateStore } from "../Validations/ValidateStore";
 import { Carousel } from "flowbite-react";
+import {
+  getLocalidadesAsync,
+  getPronvinciasAsync,
+} from "../../../../redux/features/ubicaciones/ubicacionesActions";
 
 import LinkButton from "../../../../components/Button/LinkButton";
 import { useNavigate, useParams } from "react-router-dom";
@@ -14,9 +18,18 @@ function FormModifyStore() {
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
-  useEffect(() => {
+  const provincia = useSelector((state) => state.Ubicaciones.provincias);
+  const localidad = useSelector((state) => state.Ubicaciones.localidades);
+
+  const getLocalidades = useEffect(() => {
+    // Dispatch the getLocalidades action to fetch localidades from the API
     dispatch(getStoreByUser(id));
+    if (form.province.length > 0) {
+      dispatch(getLocalidadesAsync(form.province));
+    }
+    dispatch(getPronvinciasAsync());
   }, []);
+
   const [formComplete, setFormComplete] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [img, setImg] = useState(null);
@@ -54,7 +67,6 @@ function FormModifyStore() {
     } else {
       setFormComplete(false);
     }
-    console.log(form);
   };
 
   const changeHandlerImg = (e) => {
@@ -173,40 +185,33 @@ function FormModifyStore() {
             </div>
 
             {/* provincia */}
-            <div className=" grid w-full md:grid-cols-2 md:gap-6">
-              <div className="group relative z-0 mb-6 h-11 w-full">
-                <input
+            <div className=" grid   md:grid-cols-2 md:gap-6">
+              <div className="group relative  z-0 mb-6 h-11 ">
+                <select
                   onChange={handleChange}
-                  type="text"
                   name="province"
-                  value={form.province}
-                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
-                  placeholder=" "
-                  autoComplete="off"
-                />
-                <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                  Provincia
-                </label>
-                {errors.province && (
-                  <span className="text-red-500">{errors.province}</span>
-                )}
+                  className="max-w-full"
+                >
+                  {provincia.map((p) => (
+                    <option key={p.id} value={p.nombre}>
+                      {p.nombre.slice(0, 25)}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="group relative z-0 mb-6 h-11 w-full">
-                <input
+                <select
                   onChange={handleChange}
-                  type="text"
                   name="locality"
                   value={form.locality}
-                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
-                  placeholder=" "
-                  autoComplete="off"
-                />
-                <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                  Localidad
-                </label>
-                {errors.locality && (
-                  <span className="text-red-500">{errors.locality}</span>
-                )}
+                >
+                  {localidad.municipios?.map((l) => (
+                    <option key={l.id} value={l.nombre}>
+                      {l.nombre}
+                    </option>
+                  ))}
+                  <option>Rosario</option>
+                </select>
               </div>
             </div>
             {/* cod postal */}
@@ -290,7 +295,12 @@ function FormModifyStore() {
                 {selectedFiles &&
                   selectedFiles.map((file) => (
                     <picture className="flex aspect-square h-full items-center justify-center ">
-                      <img src={file} alt="" key={file.id} className="h-full" />
+                      <img
+                        src={file}
+                        alt=""
+                        key={file.name}
+                        className="h-full"
+                      />
                     </picture>
                   ))}
               </Carousel>

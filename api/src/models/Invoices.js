@@ -11,25 +11,21 @@ module.exports = (sequelize) => {
         autoIncrement: true,
       },
       // la FK de user_id se genera aut por la relacion de sequelize
-    },
-    {
+
       userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
       // la FK de user_id se genera aut por la relacion de sequelize
-    },
-    {
+
       paymentId: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
       },
-    },
-    {
+
       merchantOrder: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
       },
-    },
-    {
+
       status: {
         type: DataTypes.STRING,
       },

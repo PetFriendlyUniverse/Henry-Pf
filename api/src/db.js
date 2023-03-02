@@ -92,7 +92,7 @@ User.belongsToMany(Product, { through: Favorite });
 Product.belongsToMany(User, { through: Favorite });
 
 User.hasMany(Invoices);
-Invoices.belongsTo(User, { foreignKey: "UserId" });
+Invoices.belongsTo(User);
 
 Store.hasMany(Product);
 Product.belongsTo(Store);
@@ -132,6 +132,7 @@ Species(sequelize);
 Colors(sequelize);
 
 module.exports = {
+  sequelize,
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize, // para importart la conexión { conn } = require('./db.js');
 };

@@ -19,7 +19,7 @@ function LandingShop() {
   };
   return (
     <>
-      <header className="clip-header relative flex w-full flex-col overflow-hidden  bg-cover bg-fixed bg-center bg-no-repeat pt-24 text-black sm:h-[350px] lg:h-[550px] lg:min-h-[400px]  xl:min-h-[400px]">
+      <header className="clip-header relative flex w-full flex-col overflow-hidden  bg-cover bg-fixed bg-center bg-no-repeat pt-0 text-black sm:h-[350px] lg:h-[550px] lg:min-h-[400px]  xl:min-h-[400px]">
         <img
           src={universe}
           alt=""

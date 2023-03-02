@@ -20,9 +20,11 @@ function Sort() {
 
   return (
     <>
-      <div className="absolute left-[110%] z-10 flex w-80">
-        <p>Ordenar por:</p>
-        <div className=" ml-3 w-[150px]">
+      <div className="flex w-4/5">
+        <div className="w-1/2">
+          <p>Ordenar por:</p>
+        </div>
+        <div className=" w-1/2">
           <button className="peer cursor-default hover:text-blue-500">
             {value}
           </button>
