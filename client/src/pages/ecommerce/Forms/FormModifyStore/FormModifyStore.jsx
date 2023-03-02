@@ -21,7 +21,7 @@ function FormModifyStore() {
   const provincia = useSelector((state) => state.Ubicaciones.provincias);
   const localidad = useSelector((state) => state.Ubicaciones.localidades);
 
-  const localidades = useEffect(() => {
+  const getLocalidades = useEffect(() => {
     // Dispatch the getLocalidades action to fetch localidades from the API
     dispatch(getStoreByUser(id));
     if (form.province.length > 0) {
@@ -29,8 +29,6 @@ function FormModifyStore() {
     }
     dispatch(getPronvinciasAsync());
   }, []);
-
-  console.log(provincia);
 
   const [formComplete, setFormComplete] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -69,7 +67,6 @@ function FormModifyStore() {
     } else {
       setFormComplete(false);
     }
-    console.log(form);
   };
 
   const changeHandlerImg = (e) => {
@@ -188,18 +185,16 @@ function FormModifyStore() {
             </div>
 
             {/* provincia */}
-            <div className=" grid w-full md:grid-cols-2 md:gap-6">
-              <div className="group relative z-0 mb-6 h-11 w-full">
+            <div className=" grid   md:grid-cols-2 md:gap-6">
+              <div className="group relative  z-0 mb-6 h-11 ">
                 <select
                   onChange={handleChange}
                   name="province"
-                  value={form.province}
-                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900"
-                  autoComplete="off"
+                  className="max-w-full"
                 >
-                  {provincia?.map((provincia) => (
-                    <option key={provincia.id} value={provincia.name}>
-                      {provincia.name}
+                  {provincia.map((p) => (
+                    <option key={p.id} value={p.nombre}>
+                      {p.nombre.slice(0, 25)}
                     </option>
                   ))}
                 </select>
@@ -209,14 +204,13 @@ function FormModifyStore() {
                   onChange={handleChange}
                   name="locality"
                   value={form.locality}
-                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900"
-                  autoComplete="off"
                 >
-                  {localidades?.map((l) => (
-                    <option key={l.id} value={l.name}>
-                      {localidades.name}
+                  {localidad.municipios?.map((l) => (
+                    <option key={l.id} value={l.nombre}>
+                      {l.nombre}
                     </option>
                   ))}
+                  <option>Rosario</option>
                 </select>
               </div>
             </div>
