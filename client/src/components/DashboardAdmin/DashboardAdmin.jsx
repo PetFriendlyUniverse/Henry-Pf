@@ -4,7 +4,8 @@ import CardsAccounts from "./components/CardsAccounts";
 import Graphs from "./components/Graphs";
 import BarGraphs from "./components/BarGraphs";
 import DonutGraphs from "./components/DonutGraphs";
-import LineGraphs from "./components/LineGraphs";
+import LineGraphsSales from "./components/LineGraphsSales";
+import LineGraphsTraffic from "./components/LineGraphsTraffic";
 import Tickets from "./components/Tickets";
 
 function DashboardAdmin() {
@@ -21,7 +22,7 @@ function DashboardAdmin() {
         <div className="bg-russianviolet">
           <div className="flex justify-between px-6">
             <div className="mb-3 flex">
-              <ul className="ml-10 flex text-center text-sm font-medium">
+              <ul className="flex text-center text-sm font-medium md:ml-10">
                 <li
                   className={
                     show === "accounts"
@@ -102,13 +103,16 @@ function DashboardAdmin() {
                   <DonutGraphs />
                 </div>
                 <div className="py-10">
+                  <LineGraphsSales />
+                </div>
+                <div className="py-10">
                   <Graphs />
                 </div>
               </div>
             ) : show === "traffic" ? (
               <div className="px-10">
                 <div className="py-10">
-                  <LineGraphs />
+                  <LineGraphsTraffic />
                 </div>
               </div>
             ) : show === "requests" ? (
