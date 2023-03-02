@@ -63,12 +63,12 @@ function About() {
     },
   ];
   return (
-    <div className="lg: flex h-max  w-full items-center justify-center  bg-gray-600 bg-[url('https://petfood.com.ar/img/cms/symphony.png')]  lg:pt-14">
+    <div className="lg: flex h-max  w-full items-center justify-center  bg-gray-600 bg-[url('https://petfood.com.ar/img/cms/symphony.png')]  ">
       <section className="grid place-content-center gap-10  py-3 md:pb-10 md:pt-14 md:text-sm lg:h-2/3 lg:w-2/3 lg:grid-cols-4">
         {members.map((person) => (
           <article
             key={person.name}
-            className="flex h-full w-full flex-col items-center justify-center gap-5 rounded-xl bg-slate-600  bg-gradient-to-b  from-slate-600 to-slate-900 p-5 text-white drop-shadow-button "
+            className="flex h-full w-full flex-col items-center justify-center gap-5 rounded-xl   bg-gradient-to-t  from-russianviolet to-ultraviolet p-5 text-white shadow-xl shadow-black "
           >
             <div className="flex flex-col items-center justify-center gap-3">
               <img
@@ -76,7 +76,7 @@ function About() {
                 className="h-40 w-40 rounded-full md:rounded-bl-lg"
                 alt={person.name}
               />
-              <h2 className="text-xl font-semibold tracking-wide">
+              <h2 className=" text-base font-bold tracking-wide">
                 {person.name}
               </h2>
             </div>
