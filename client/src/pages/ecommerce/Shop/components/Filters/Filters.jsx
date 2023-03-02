@@ -34,7 +34,7 @@ function Filters() {
       </button>
       <ClearFiltersBtn />
       <div
-        className={`flex ${
+        className={`flex w-full ${
           show ? "h-auto" : "h-0"
         } flex-col justify-evenly overflow-hidden sm:flex-row sm:justify-evenly lg:h-auto lg:flex-col lg:overflow-auto`}
       >
