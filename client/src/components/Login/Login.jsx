@@ -235,6 +235,7 @@ function Login() {
               </div>
             </form>
           </div>
+          {/* ------------------------------------------  register   ----------------------------------------- */}
           <div className={s.register}>
             <form className={s.form} onSubmit={handleSubmitRegister}>
               <label htmlFor={s["chk"]} aria-hidden="true">

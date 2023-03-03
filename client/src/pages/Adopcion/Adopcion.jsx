@@ -1,4 +1,5 @@
 import { Carousel } from "flowbite-react";
+import { InstagramEmbed, EmbedToggler } from "react-social-media-embed";
 
 function Adopcion() {
   return (
@@ -13,7 +14,59 @@ function Adopcion() {
             <p class="mt-2 text-lg leading-8 text-gray-600">Ong animalista</p>
           </div>
           {/* el de abajo es el div de la card */}
-          <div class=" mt-10 grid  w-full grid-cols-1 gap-y-16 gap-x-8  border-t border-gray-200 pt-10 lg:mx-0 lg:max-w-none   lg:grid-cols-3 lg:gap-20 2xl:h-[600px]">
+          <div class=" mt-10 flex h-full w-full grid-cols-1 flex-wrap  justify-center gap-y-2 overflow-y-scroll  border-t border-gray-200 pt-10 lg:mx-0 lg:max-w-none   lg:grid-cols-3 lg:gap-20 2xl:h-[600px]">
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <InstagramEmbed
+                url="https://www.instagram.com/reel/CpSf8fJuQbl/"
+                width={400}
+                height={800}
+              />
+            </div>
+
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <InstagramEmbed
+                url="https://www.instagram.com/reel/CpRDz4vtIq1/"
+                width={400}
+                height={800}
+              />
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <InstagramEmbed
+                url="https://www.instagram.com/p/CpOrZgNuF3L/"
+                width={400}
+                height={800}
+              />
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <InstagramEmbed
+                url="https://www.instagram.com/reel/CpEDBusNcB4/"
+                width={400}
+                height={800}
+              />
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <InstagramEmbed
+                url="https://www.instagram.com/p/CpDhrWJJuDQ/"
+                width={400}
+                height={800}
+              />
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <InstagramEmbed
+                url="https://www.instagram.com/p/Co-KvuyOZ_I/"
+                width={400}
+                height={800}
+              />
+            </div>
+
+            {/* <!-- More posts... --> */}
+          </div>
+          <div class=" mt-10 grid h-full w-full grid-cols-1 justify-center gap-y-2 overflow-y-scroll  border-t border-gray-200 pt-10 lg:mx-0 lg:max-w-none   lg:grid-cols-3 lg:gap-20 2xl:h-[600px]">
             <article class="flex max-w-xl flex-col items-start justify-between ">
               <div class="flex items-center gap-x-4 text-xs">
                 <time datetime="2020-03-16" class="text-gray-500">
@@ -188,8 +241,6 @@ function Adopcion() {
                 </div>
               </div>
             </article>
-
-            {/* <!-- More posts... --> */}
           </div>
         </div>
       </div>
