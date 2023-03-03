@@ -2,6 +2,8 @@ import { useState } from "react";
 import GoogleMaps from "simple-react-google-maps";
 
 function Map() {
+  //SI ELIMINAN ESTE COMPONENTE COMIENCEN A REZARLE A DIOS
+  //PRIMERO PORQUE ME COSTO QUE SE MUEVA EL MAPA SEGUNDO PORQUE NO SE HACERLO DE NUEVO
   const [coord, setCoord] = useState({
     lat: -32.8458884,
     lng: -68.8229721,
