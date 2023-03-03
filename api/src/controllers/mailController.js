@@ -31,6 +31,9 @@ const confirmMail = async (name, lastname, mail) => {
         accessToken: accessToken,
         expires: 3600,
       },
+      tls: {
+        rejectUnauthorized: false,
+      },
     });
     const mailInfo = {
       //ENVIO DEL MAIL
@@ -79,6 +82,9 @@ const sendResetPasswordEmail = async (email, resetToken) => {
         accessToken: accessToken,
         expires: 3600,
       },
+      tls: {
+        rejectUnauthorized: false,
+      },
     });
     const mailInfo = {
       from: "Pet Friendly Universe <petfriendyleuniverse@gmail.com>",
@@ -118,6 +124,9 @@ const notificationBuy = async (name, lastname, mail) => {
         refreshToken: REFRESH_TOKEN,
         accessToken: accessToken,
         expires: 3600,
+      },
+      tls: {
+        rejectUnauthorized: false,
       },
     });
     const mailInfo = {
@@ -160,6 +169,9 @@ const notificationSell = async (name, lastname, mail) => {
         refreshToken: REFRESH_TOKEN,
         accessToken: accessToken,
         expires: 3600,
+      },
+      tls: {
+        rejectUnauthorized: false,
       },
     });
     const mailInfo = {
