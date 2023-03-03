@@ -24,7 +24,7 @@ function Landing() {
         <Buttons />
       </div>
       <div className="flex h-full w-full flex-col justify-start sm:w-full">
-        <div className="flex flex-col items-center justify-center p-4 text-center ">
+        <div className="flex flex-col items-center justify-center p-4 text-center sm:mt-10 ">
           <img src={logo} alt="" className="mb-2 w-1/5 pb-2 sm:w-2/12" />
           <h1 className="pb-2 text-xl font-bold sm:mb-4 sm:w-full sm:text-lg">
             BIENVENIDOS a{" "}
