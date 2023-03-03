@@ -1,7 +1,18 @@
+const { sequelize, QueryTypes } = require("sequelize");
 const { Invoices, Invoices_Products, User, Product } = require("../db");
+const Colors = require("../models/FilterModels/Colors");
 
 const getInvoices = async () => {
-  const invoices = await Invoices.findAll();
+  const invoices = await Invoices.findAll({
+    include: [
+      {
+        model: Product,
+        through: {
+          attributes: ["unitPrice", "amount"],
+        },
+      },
+    ],
+  });
   return invoices;
 };
 
@@ -11,6 +22,14 @@ const getInvoicesId = async (id) => {
       where: {
         id,
       },
+      include: [
+        {
+          model: Product,
+          through: {
+            attributes: ["unitPrice", "amount"],
+          },
+        },
+      ],
     });
     return invoices;
   } catch (error) {
@@ -18,27 +37,61 @@ const getInvoicesId = async (id) => {
   }
 };
 
-const createInvoice = async (UserId, products) => {
+const getInvoicesIdByUser = async (userId) => {
   try {
-    const newInvoice = await Invoices.create();
-    const user = await User.findByPk(UserId);
-    await user.addInvoice(newInvoice.id);
-    const productsBulk = Object.keys(products).map((key) => {
-      return {
-        InvoiceId: newInvoice.id,
-        ProductId: key,
-        amount: products[key],
-      };
+    const invoices = await Invoices.findAll({
+      where: {
+        userId,
+      },
+      include: [
+        {
+          model: Product,
+          through: {
+            attributes: ["unitPrice", "amount"],
+          },
+        },
+      ],
+    });
+    return invoices;
+  } catch (error) {
+    return { error: error.message };
+  }
+};
+
+const createInvoice = async (
+  userId,
+  products,
+  paymentId,
+  merchantOrder,
+  status
+) => {
+  try {
+    const user = await User.findByPk(userId);
+
+    const newInvoice = await Invoices.create({
+      userId,
+      paymentId,
+      merchantOrder,
+      status,
     });
 
-    const invoiceProducts = await Invoices_Products.bulkCreate(productsBulk);
+    await user.addInvoices(newInvoice);
+    //console.log(products); //   {id:1 ,unitPrice:2000, quantity:5}
+    await products.forEach((element) => {
+      newInvoice.addProducts(element.id, {
+        through: {
+          unitPrice: element.unitPrice,
+          amount: element.quantity,
+        },
+      });
+    });
 
     const invoiceWithProducts = await Invoices.findByPk(newInvoice.id, {
       include: [
         {
           model: Product,
           through: {
-            attributes: [],
+            attributes: ["unitPrice", "amount"],
           },
         },
       ],
@@ -53,4 +106,5 @@ module.exports = {
   getInvoices,
   getInvoicesId,
   createInvoice,
+  getInvoicesIdByUser,
 };

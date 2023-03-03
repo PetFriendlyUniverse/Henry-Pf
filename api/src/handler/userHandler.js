@@ -5,11 +5,14 @@ const {
   getAllUsers,
   getUserById,
   updateAllUsers,
-  deleteUsersById,
+  deletedUsersById,
   resetPassword,
   verifyResetToken,
   updatePassword,
   storeById,
+  walkerById,
+  daycareById,
+  approvedUsersById,
 } = require("../controllers/userControllers");
 const cloudinary = require("cloudinary").v2;
 
@@ -70,10 +73,10 @@ const putUserHandler = async (req, res) => {
   }
 };
 
-const deleteUserHandler = async (req, res) => {
+const deletedUserHandler = async (req, res) => {
   const { id } = req.params;
   try {
-    const users = await deleteUsersById(id);
+    const users = await deletedUsersById(id);
     res.status(200).json(users);
   } catch (error) {
     res.status(404).json({ error: error.message });
@@ -111,6 +114,34 @@ const getUserStore = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+const getUserWalker = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const walkerByUser = await walkerById(id);
+    res.status(200).json(walkerByUser);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+const getUserDaycare = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const daycareByUser = await daycareById(id);
+    res.status(200).json(daycareByUser);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const approvedUserHandler = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const users = await approvedUsersById(id);
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
 
 module.exports = {
   postUserHandler,
@@ -119,8 +150,11 @@ module.exports = {
   getUserHandler,
   getUserDetailHandler,
   putUserHandler,
-  deleteUserHandler,
+  deletedUserHandler,
   resetConfirmPasswordHandler,
   resetPasswordHandler,
   getUserStore,
+  getUserWalker,
+  getUserDaycare,
+  approvedUserHandler,
 };

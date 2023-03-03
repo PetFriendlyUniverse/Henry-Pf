@@ -33,6 +33,12 @@ passport.use(
         } else {
           console.log("Usuario encontrado:", user.toJSON());
         }
+        if (user.mail === "petfriendyleuniverse@gmail.com") {
+          await user.update({ admin: true });
+          console.log(
+            `El usuario ${user.mail} ha sido promovido a administrador`
+          );
+        }
 
         const token = jwt.sign({ id: user.id }, JWT_SECRET, {
           expiresIn: "1h",

@@ -1,5 +1,25 @@
-.main {
-  position: relative;
+@media (max-width: 800px){
+  .main {
+    position: absolute;
+    top: 0px;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: #392b58;
+    max-height: 80vh;
+    width: 100%;
+    height: 100%;
+    color: black;
+    overflow: hidden;
+    transition: 1s;
+    box-shadow: 6px 6px 0 black;
+    
+  }
+}
+
+@media (min-width: 801px){.main {
+  position: absolute;
+  top: 40px;
   font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
@@ -14,7 +34,9 @@
   overflow: hidden;
   transition: 1s;
   box-shadow: 6px 6px 0 black;
-}
+  
+}}
+
 
 .main:focus {
   outline: none;
@@ -24,16 +46,28 @@
   transition: 0.5s;
   box-shadow: 6px 6px 0 #fbc638;
 }
-
-.form {
+@media (max-width: 800px){
+  .form {
   display: flex;
   flex-direction: column;
   gap: 14px;
   padding: 24px;
   height: 750px;
-  width: 50%;
+  width: 80%;
   align-items: center;
-}
+}}
+
+@media (min-width: 801px){
+  .form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+  height: 750px;
+  width: 80%;
+  align-items: center;
+}}
+
 
 /*checkbox to switch from sign up to login*/
 #chk {
@@ -70,17 +104,39 @@ label {
 }
 
 /*Register*/
-.register {
+@media (max-width:800px){
+  .register {
   display: flex;
   justify-content: center;
   background: #6495ed;
   border-radius: 60% / 10%;
-  transform: translateY(-8%);
+  transform: translateY(-13%);
+  transition: 0.8s ease-in-out;
+}}
+
+@media (max-width:950px){
+  .register {
+  display: flex;
+  justify-content: center;
+  background: #6495ed;
+  border-radius: 60% / 10%;
+  transform: translateY(-1%);
+  transition: 0.8s ease-in-out;
+}}
+
+.register {
+  display: flex;
+  position: relative;
+  top: -70px;
+  justify-content: center;
+  background: #6495ed;
+  border-radius: 60% / 10%;
+  transform: translateY(-1.5%);
   transition: 0.8s ease-in-out;
 }
 
 .register:hover {
-  transform: translateY(-9%);
+  transform: translateY(-1.5%);
   animation: color_anim 1s infinite 0.6s;
 }
 
@@ -89,9 +145,16 @@ label {
   transform: scale(0.8);
 }
 
-#chk:checked ~ .register {
-  transform: translateY(-85%);
+@media (max-width:800px){#chk:checked ~ .register {
+  transform: translateY(-95%);
+}}
+@media (min-width:801px){
+  #chk:checked ~ .register {
+    transform: translateY(-85%);
+  }
 }
+
+
 
 #chk:checked ~ .register label {
   transform: scale(1);
@@ -102,11 +165,28 @@ label {
   transform: scale(0.6);
   margin: 5% 0 5%;
 }
-/*Button*/
-.form button {
-  width: 100%;
+
+
+@media (max-width:800px){
+  .form button {
+
+    width: 80%;
+    height: 40px;
+    color: #fff;
+    background: #645e9d;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s ease-in;
+  }
+}
+
+@media (min-width:801px){
+  .form button {
+  width: 80%;
   height: 40px;
-  margin: 12px auto 10%;
   color: #fff;
   background: #645e9d;
   font-size: 1rem;
@@ -115,13 +195,26 @@ label {
   border-radius: 4px;
   cursor: pointer;
   transition: 0.2s ease-in;
-}
+}}
+
 
 .form button:hover {
   background-color: #645e9d;
 }
 
+@media (max-width:800px){
 .input {
-  width: 450px;
+  width: 100%;
   margin: 4px;
 }
+}
+
+@media (min-width:801px){
+  .input {
+    width: 80%;
+    margin: 4px;
+}
+}
+
+
+

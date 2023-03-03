@@ -29,83 +29,78 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
   };
 
   return (
-    <div>
-      <div className="flex flex-col">
-        <hr className="my-2 h-px border-0 bg-gray-400" />
+    <div className="flex flex-col">
+      <hr className="my-2 h-px border-0 bg-gray-400" />
+      <button
+        className={`bg-green-50  text-lg font-bold uppercase tracking-wider text-black  ${
+          mobile ? "hover:text-yellow-600" : "cursor-default"
+        }`}
+        type="button"
+        id="filters-menu-button"
+        aria-expanded="false"
+        data-dropdown-toggle="filters-dropdown"
+        data-dropdown-placement="bottom"
+        onClick={toggleShow}
+      >
+        {title}
+      </button>
+
+      <ul
+        ref={toggleShow}
+        className={`hidden ${
+          !show ? "md:h-[90px] lg:h-28" : "h-fit"
+        } flex flex-col overflow-hidden text-center md:block`}
+      >
+        {!active ? (
+          <>
+            <li
+              className={`my-1 mx-auto flex  cursor-pointer font-semibold lg:flex-col`}
+            >
+              <label htmlFor="minRange">Mínimo: </label>
+              <input
+                type="range"
+                min={min}
+                max={max}
+                step={10}
+                onChange={handleMinValue}
+                value={minVal}
+                className="relative top-1"
+              />
+              <p className="ml-2">{priceFormatter(minVal)}</p>
+            </li>
+            <li
+              className={`my-1 mx-auto  flex cursor-pointer font-semibold lg:flex-col`}
+            >
+              <label htmlFor="maxRange">Máximo: </label>
+              <input
+                id="maxRange"
+                type="range"
+                min={min}
+                max={max}
+                step={10}
+                onChange={handleMaxValue}
+                value={maxVal}
+                className="relative top-1"
+              />
+              <p className="ml-2">{priceFormatter(maxVal)}</p>
+            </li>
+          </>
+        ) : (
+          <span className="block">
+            rango actual:
+            <span className="font-semibold">
+              ${minVal}-${maxVal}
+            </span>
+          </span>
+        )}
+
         <button
-          className={`bg-green-50  text-lg font-bold uppercase tracking-wider text-black  ${
-            mobile ? "hover:text-yellow-600" : "cursor-default"
-          }`}
-          type="button"
-          id="filters-menu-button"
-          aria-expanded="false"
-          data-dropdown-toggle="filters-dropdown"
-          data-dropdown-placement="bottom"
-          onClick={toggleShow}
+          className=" py-1 text-sm font-bold text-blue-500"
+          onClick={handleSetFilter}
         >
-          {title}
+          {active ? "Revertir" : "Aplicar"}
         </button>
-
-        <ul
-          ref={toggleShow}
-          className={`hidden ${
-            !show ? "md:h-[90px] lg:h-28" : "h-fit"
-          } flex flex-col overflow-hidden text-center md:block`}
-        >
-          {!active ? (
-            <>
-              {" "}
-              <li
-                className={`my-1 mx-auto flex h-4 cursor-pointer font-semibold`}
-              >
-                <label htmlFor="minRange">Mínimo: </label>
-                <input
-                  type="range"
-                  min={min}
-                  max={max}
-                  step={10}
-                  onChange={handleMinValue}
-                  value={minVal}
-                  className="relative top-1"
-                />
-                <p className="ml-2">{priceFormatter(minVal)}</p>
-              </li>
-              <li
-                className={`my-1 mx-auto  flex h-4 cursor-pointer font-semibold`}
-              >
-                <label htmlFor="maxRange">Máximo: </label>
-                <input
-                  id="maxRange"
-                  type="range"
-                  min={min}
-                  max={max}
-                  step={10}
-                  onChange={handleMaxValue}
-                  value={maxVal}
-                  className="relative top-1"
-                />
-                <p className="ml-2">{priceFormatter(maxVal)}</p>
-              </li>
-            </>
-          ) : (
-            <>
-              <span className="block">
-                rango actual:
-                <span className="font-semibold">
-                  ${minVal}-${maxVal}
-                </span>
-              </span>
-            </>
-          )}
-
-          <button
-            className=" py-1 text-sm font-bold text-blue-500"
-            onClick={handleSetFilter}
-          >
-            {active ? "Revertir" : "Aplicar"}
-          </button>
-        </ul>
-      </div>
+      </ul>
     </div>
   );
 }

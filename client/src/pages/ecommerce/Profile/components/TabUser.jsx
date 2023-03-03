@@ -28,9 +28,9 @@ function TabUser() {
   };
 
   return (
-    <div className="">
-      <div className=" flex h-full w-full flex-col rounded-md border-2  md:flex-row lg:w-full">
-        <div className="mb-3  p-3 xl:w-96 ">
+    <div className="flex justify-start  pb-28 pt-10 lg:items-center">
+      <div className=" flex h-full  w-3/4  flex-row justify-end border-2 border-gray-200 ">
+        <div className="mb-3p-3 xl:w-96 ">
           <PhotoName img={user?.img} name={user?.name} />
           <div className="">
             <div className="mb-4 mt-4 border-gray-200 dark:border-gray-700">
@@ -81,7 +81,7 @@ function TabUser() {
             </div>
           </div>
         </div>
-        <div className="  border-2 border-gray-200 lg:w-full lg:border-l-2">
+        <div className=" lg:w-full lg:border-l-2">
           {showInfo == "profile" ? (
             <div className="border-gray-400 p-3 lg:border-b-2">
               <h1 className="flex justify-center pl-2 text-3xl font-semibold">
@@ -121,19 +121,19 @@ function TabUser() {
             ) : (
               <Payment />
             )}
-            <div class="flex pl-4 pt-5 sm:pl-12">
+            <div className="flex pl-4 pt-5 sm:pl-12">
               {user.store === false && (
-                <div class="flex py-2">
-                  <img src={interrogation} alt="help" class="w-3 sm:w-5" />
+                <div className="flex py-2">
+                  <img src={interrogation} alt="help" className="w-3 sm:w-5" />
                   <LinkButton
                     onClick={handleClick}
                     component={"Habilita tu tienda"}
                   />
                 </div>
               )}
-              {/* <div class="flex py-2">
-      <img src={interrogation} alt="help" class="w-5" />
-      <button class="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
+              {/* <div className="flex py-2">
+      <img src={interrogation} alt="help" className="w-5" />
+      <button className="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300">
         <img src={edit} alt="edit" />
       </button>
     </div> */}

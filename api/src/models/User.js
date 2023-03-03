@@ -90,18 +90,6 @@ module.exports = (sequelize) => {
           len: [1, 500],
         },
       },
-      area_code_emergency: {
-        type: DataTypes.INTEGER,
-        validate: {
-          len: [1, 4],
-        },
-      },
-      emergency_number: {
-        type: DataTypes.INTEGER,
-        validate: {
-          len: [1, 20],
-        },
-      },
       veterinary: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
@@ -114,7 +102,20 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
+      storeId: {
+        type: DataTypes.INTEGER,
+      },
+      walkerId: {
+        type: DataTypes.INTEGER,
+      },
+      daycareId: {
+        type: DataTypes.INTEGER,
+      },
       store: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
+      admin: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },

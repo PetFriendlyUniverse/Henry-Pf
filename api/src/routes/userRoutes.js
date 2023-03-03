@@ -6,26 +6,34 @@ const {
   getUserHandler,
   getUserDetailHandler,
   putUserHandler,
-  deleteUserHandler,
+  deletedUserHandler,
   resetConfirmPasswordHandler,
   resetPasswordHandler,
   getUserStore,
+  getUserWalker,
+  getUserDaycare,
+  approvedUserHandler,
 } = require("../handler/userHandler");
 
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
+
+const authMiddleware = require("../helpers/authMiddleware");
 
 const userRoutes = Router();
 //===> aca estamos en /user
 userRoutes.get("/", getUserHandler);
 userRoutes.get("/detail/:id", getUserDetailHandler);
 userRoutes.get("/store/:id", getUserStore);
+userRoutes.get("/walker/:id", getUserWalker);
+userRoutes.get("/daycare/:id", getUserDaycare);
 userRoutes.post("/create", postUserHandler);
 userRoutes.post("/login", loginHandler);
-userRoutes.post("/logout", logoutHandler);
+userRoutes.post("/logout", authMiddleware, logoutHandler);
 userRoutes.post("/reset-password", resetConfirmPasswordHandler);
 userRoutes.put("/change-password/:token", resetPasswordHandler);
-userRoutes.put("/:id", upload.single("img"), putUserHandler);
-userRoutes.delete("/:id", deleteUserHandler);
+userRoutes.put("/:id", upload.single("img"), authMiddleware, putUserHandler);
+userRoutes.delete("/:id", deletedUserHandler);
+userRoutes.put("/confirm/:id", approvedUserHandler);
 
 module.exports = userRoutes;

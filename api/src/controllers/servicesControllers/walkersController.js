@@ -1,14 +1,29 @@
-const { Walker } = require("../db");
+const { Walker, User } = require("../../db");
 
-//prettier-ignore
-const createWalkers = async (data) => {
-  if (!Object.values(data).every((value) => value)) {
-    throw new Error("Missing data");
+const createWalkers = async (userId) => {
+  const user = await User.findByPk(userId);
+  if (!user) {
+    throw new Error(`No se pudo encontrar el usuario con ID ${userId}`);
   } else {
-    const newWalkers = await Walker.create({
-      ...data
-    });
-    return newWalkers;
+    await User.update(
+      { walker: true },
+      {
+        where: {
+          id: userId,
+        },
+      }
+    );
+    const walker = await Walker.create();
+    await walker.setUser(user);
+    await User.update(
+      { walkerId: walker.id },
+      {
+        where: {
+          id: userId,
+        },
+      }
+    );
+    return walker;
   }
 };
 
@@ -33,10 +48,18 @@ const updateWalkers = async (data, id) => {
   return updated;
 };
 
-const deleteWalkersById = async (id) => {
-  if (!id) throw Error("id erroneo");
+const deletedWalkersById = async (id) => {
+  if (!id) throw Error("Wrong Id");
   const update = await Walker.update({ enable: false }, { where: { id: id } });
-  return update ? "Walker eliminado correctamente" : "Walker incorrecto";
+  const walker = await Walker.findOne({ where: { id: id } });
+  return [walker];
+};
+
+const approvedWalkersById = async (id) => {
+  if (!id) throw Error("Wrong Id");
+  const update = await Walker.update({ enable: true }, { where: { id: id } });
+  const walker = await Walker.findOne({ where: { id: id } });
+  return [walker];
 };
 
 const filterWalkers = async (query) => {
@@ -52,7 +75,8 @@ module.exports = {
   getAllWalkers,
   getWalkersById,
   updateWalkers,
-  deleteWalkersById,
+  deletedWalkersById,
   filterWalkers,
   createWalkers,
+  approvedWalkersById,
 };

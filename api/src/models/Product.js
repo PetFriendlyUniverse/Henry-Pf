@@ -17,17 +17,13 @@ module.exports = (sequelize) => {
       },
     },
     img: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 500],
-      },
+      type: DataTypes.ARRAY(DataTypes.STRING),
     },
     price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false,
       validate: {
-        min: 1,
+        min: 0,
       },
     },
     description: {

@@ -1,4 +1,4 @@
-const { User, Store } = require("../db");
+const { User, Store, Walker, Daycare } = require("../db");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { sendResetPasswordEmail, confirmMail } = require("./mailController");
@@ -26,6 +26,12 @@ const loginUser = async (mail, password) => {
   if (!user) throw Error("User not found");
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) throw Error("Invalid credentials");
+  if (mail === "petfriendyleuniverse@gmail.com") {
+    await User.update(
+      { admin: true },
+      { where: { mail: "petfriendyleuniverse@gmail.com" } }
+    );
+  }
   const token = jwt.sign(
     { id: user.id, token: user.token },
     process.env.JWT_SECRET,
@@ -33,6 +39,7 @@ const loginUser = async (mail, password) => {
   );
   return { id: user.id, token };
 };
+
 const getAllUsers = async () => {
   const userList = await User.findAll({});
   return userList;
@@ -51,10 +58,12 @@ const updateAllUsers = async (user, id) => {
   const updated = await User.findByPk(id);
   return updated;
 };
-const deleteUsersById = async (id) => {
+
+const deletedUsersById = async (id) => {
   if (!id) throw Error("Wrong Id");
   const update = await User.update({ enable: false }, { where: { id: id } });
-  return update ? "User deleted successfully" : "Wrong user";
+  const user = await User.findOne({ where: { id: id } });
+  return [user];
 };
 
 const resetPassword = async (mail) => {
@@ -96,6 +105,29 @@ const storeById = async (id) => {
   });
   return store;
 };
+const walkerById = async (id) => {
+  const walker = await Walker.findOne({
+    where: {
+      UserId: id,
+    },
+  });
+  return walker;
+};
+const daycareById = async (id) => {
+  const daycare = await Daycare.findOne({
+    where: {
+      UserId: id,
+    },
+  });
+  return daycare;
+};
+
+const approvedUsersById = async (id) => {
+  if (!id) throw Error("Wrong Id");
+  const update = await User.update({ enable: true }, { where: { id: id } });
+  const user = await User.findOne({ where: { id: id } });
+  return [user];
+};
 
 module.exports = {
   createUser,
@@ -103,9 +135,12 @@ module.exports = {
   getAllUsers,
   getUserById,
   updateAllUsers,
-  deleteUsersById,
+  deletedUsersById,
   resetPassword,
   verifyResetToken,
   updatePassword,
   storeById,
+  walkerById,
+  daycareById,
+  approvedUsersById,
 };

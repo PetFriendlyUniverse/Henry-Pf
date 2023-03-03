@@ -6,6 +6,14 @@ module.exports = {
     "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    screens: {
+      xsm: "380px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+    },
     extend: {
       colors: {
         primary: "#4B3B40",
@@ -41,6 +49,7 @@ module.exports = {
         pcomida: "url('./assets/imagenes/food-01.png')",
         phouse: "url('./assets/imagenes/doghouse-01.png')",
         ptoys: "url('./assets/imagenes/toys-01.png')",
+        adopcion: "url('./assets/imagenes/symphony.png')",
       },
       keyframes: {
         coloranim: {

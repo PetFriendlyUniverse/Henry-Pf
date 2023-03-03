@@ -79,9 +79,10 @@ const {
   Invoices_Products,
   Store,
   Favorite,
-  Comments,
+  Review,
   Daycare,
   Walker,
+  Pet,
 } = sequelize.models;
 
 Invoices.belongsToMany(Product, { through: Invoices_Products });
@@ -102,13 +103,22 @@ Daycare.belongsTo(User);
 User.hasOne(Walker);
 Walker.belongsTo(User);
 
-User.hasMany(Comments);
-Comments.belongsTo(User);
-Product.hasMany(Comments);
-Comments.belongsTo(Product);
+User.hasMany(Review);
+Review.belongsTo(User);
+Product.hasMany(Review);
+Review.belongsTo(Product);
 
 User.hasOne(Store);
 Store.belongsTo(User);
+
+User.hasOne(Daycare);
+Daycare.belongsTo(User);
+
+User.hasOne(Walker);
+Walker.belongsTo(User);
+
+User.hasMany(Pet);
+Pet.belongsTo(User);
 
 // modelos de filtros
 
@@ -122,6 +132,7 @@ Species(sequelize);
 Colors(sequelize);
 
 module.exports = {
+  sequelize,
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize, // para importart la conexión { conn } = require('./db.js');
 };

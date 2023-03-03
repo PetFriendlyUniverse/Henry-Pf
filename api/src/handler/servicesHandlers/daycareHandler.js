@@ -4,17 +4,16 @@ const {
   getDaycareByID,
   createDaycare,
   updateDaycare,
-  deleteDaycare,
+  deletedDaycare,
+  approvedDaycare,
 } = require("../../controllers/servicesControllers/daycareController");
 const cloudinary = require("cloudinary").v2;
 
 const postDaycareHandler = async (req, res) => {
-  const data = req.body;
-  const file = req.file;
+  const { UserId: userId } = req.params;
+
   try {
-    const image = await cloudinary.uploader.upload(file.path);
-    data.img = image.secure_url;
-    const newDaycare = await createDaycare(data, file);
+    const newDaycare = await createDaycare(userId);
     res.status(200).json(newDaycare);
   } catch (error) {
     res.status(404).json({ error: error.message });
@@ -56,10 +55,19 @@ const putDaycareHandler = async (req, res) => {
     res.status(404).json({ error: error.message });
   }
 };
-const deleteDaycareHandler = async (req, res) => {
+const deletedDaycareHandler = async (req, res) => {
   const { id } = req.params;
   try {
     const daycareDeleted = await deleteDaycare(id);
+    res.status(200).json(daycareDeleted);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
+const approvedDaycareHandler = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const daycareDeleted = await approvedDaycare(id);
     res.status(200).json(daycareDeleted);
   } catch (error) {
     res.status(404).json({ error: error.message });
@@ -71,5 +79,6 @@ module.exports = {
   getDaycareByIDHandler,
   postDaycareHandler,
   putDaycareHandler,
-  deleteDaycareHandler,
+  deletedDaycareHandler,
+  approvedDaycareHandler,
 };

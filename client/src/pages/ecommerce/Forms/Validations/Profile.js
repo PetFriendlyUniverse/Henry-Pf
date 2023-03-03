@@ -158,30 +158,6 @@ const ValidationProfile = (property, value) => {
     }
   }
 
-  if (property === "area_code_emergency" && value <= 0) {
-    error.area_code_emergency = "Ingrese su código de area";
-  } else if (property === "area_code_emergency") {
-    if (!numberRegex.test(value)) {
-      error.area_code_emergency = "Por favor ingrese bien el código de área";
-    } else if (value.length > 7) {
-      error.area_code_emergency = "Demasiado largo";
-    } else {
-      error.area_code_emergency = "";
-    }
-  }
-
-  if (property === "emergency_number" && value <= 0) {
-    error.emergency_number = "Ingrese un número de emergencia";
-    if (!numberRegex.test(value)) {
-      error.emergency_number =
-        "Por favor ingrese un número de emergencia válido";
-    } else if (value.length > 15) {
-      error.emergency_number = "Demasiado largo";
-    } else {
-      error.emergency_number = "";
-    }
-  }
-
   return error;
 };
 

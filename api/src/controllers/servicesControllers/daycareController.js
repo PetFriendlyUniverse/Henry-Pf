@@ -1,11 +1,29 @@
-const { Daycare } = require("../db");
+const { Daycare, User } = require("../../db");
 
-const createDaycare = async (data) => {
-  if (!Object.values(data).every((value) => value)) {
-    throw new Error("Missing data");
+const createDaycare = async (userId) => {
+  const user = await User.findByPk(userId);
+  if (!user) {
+    throw new Error(`No se pudo encontrar el usuario con ID ${userId}`);
   } else {
-    const newDaycare = await Daycare.create(data);
-    return newDaycare;
+    await User.update(
+      { daycare: true },
+      {
+        where: {
+          id: userId,
+        },
+      }
+    );
+    const daycare = await Daycare.create();
+    await daycare.setUser(user);
+    await User.update(
+      { daycareId: daycare.id },
+      {
+        where: {
+          id: userId,
+        },
+      }
+    );
+    return daycare;
   }
 };
 
@@ -28,7 +46,7 @@ const getDaycareByID = async (id) => {
   return daycare;
 };
 
-const updateDaycare = async (id, data) => {
+const updateDaycare = async (data, id) => {
   if (!Object.values(data).every((value) => value)) {
     throw new Error("Missing data");
   } else {
@@ -43,18 +61,18 @@ const updateDaycare = async (id, data) => {
   }
 };
 
-const deleteDaycare = async (id) => {
-  const daycareDelete = await Daycare.update(
-    { enabled: false },
-    {
-      where: {
-        id,
-      },
-    }
-  );
-  return daycareDelete
-    ? "Store deleted successfully"
-    : "Could not delete store";
+const deletedDaycare = async (id) => {
+  if (!id) throw Error("Wrong Id");
+  const update = await Daycare.update({ enable: false }, { where: { id: id } });
+  const daycare = await Daycare.findOne({ where: { id: id } });
+  return [daycare];
+};
+
+const approvedDaycare = async (id) => {
+  if (!id) throw Error("Wrong Id");
+  const update = await Daycare.update({ enable: true }, { where: { id: id } });
+  const daycare = await Daycare.findOne({ where: { id: id } });
+  return [daycare];
 };
 
 module.exports = {
@@ -63,5 +81,6 @@ module.exports = {
   getAllDaycares,
   getDaycareByID,
   updateDaycare,
-  deleteDaycare,
+  deletedDaycare,
+  approvedDaycare,
 };

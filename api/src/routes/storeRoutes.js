@@ -10,6 +10,7 @@ const router = Router();
 
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
+const authMiddleware = require("../helpers/authMiddleware");
 
 router.post("/create/:UserId", postStoreHandler);
 router.get("/", getStoresHandler);

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className=" bg-gray-100 text-center text-gray-600 lg:text-left">
+    <footer className=" overflow-hidden bg-gray-100 text-center text-gray-600 lg:text-left">
       <div className="flex items-center justify-center border-b border-gray-300 p-6 lg:justify-between">
         <div className="mr-12 hidden lg:block">
           <span>Conéctate con nosotros en las redes sociales:</span>
@@ -159,11 +159,7 @@ function Footer() {
               </a>
             </p> */}
             <Link to="/profile/edit">
-              <p className="mb-4">
-                <a href="#!" className="text-gray-600">
-                  Direccion para delivery
-                </a>
-              </p>
+              <p className="mb-4 text-gray-600">Direccion para delivery</p>
             </Link>
             {/* <p className="mb-4">
               <a href="#!" className="text-gray-600">
