@@ -160,9 +160,7 @@ function Footer() {
             </p> */}
             <Link to="/profile/edit">
               <p className="mb-4">
-                <a href="#!" className="text-gray-600">
-                  Direccion para delivery
-                </a>
+                <a className="text-gray-600">Direccion para delivery</a>
               </p>
             </Link>
             {/* <p className="mb-4">

@@ -28,6 +28,7 @@ function ProductDetail() {
   let { productId } = useSelector((state) => state.Products);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
+    window.scrollTo(0, 0);
     setTimeout(() => {
       setLoading(false);
     }, 3000);
