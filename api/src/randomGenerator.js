@@ -3,6 +3,8 @@
 const {
   Product,
   Store,
+  Daycare,
+  Walker,
   Brands,
   Breeds,
   Species,
@@ -175,6 +177,124 @@ const generator = () => {
       password: "contraseña10",
       store: true,
     },
+    //-----------------------------------------------
+  ];
+
+  const paseadores = [
+    {
+      name: "Ricardo",
+      lastname: "Artura",
+      mail: "juan.perez@example.com",
+      password: "contraseña1",
+      walker: true,
+    },
+    {
+      name: "Josefina",
+      lastname: "González",
+      mail: "maria.gonzalez@example.com",
+      password: "contraseña2",
+      walker: true,
+    },
+    {
+      name: "Alvaro",
+      lastname: "Catucci",
+      mail: "pedro.ramirez@example.com",
+      password: "contraseña3",
+      walker: true,
+    },
+    {
+      name: "Ana",
+      lastname: "Gillatti",
+      mail: "ana.sanchez@example.com",
+      password: "contraseña4",
+      walker: true,
+    },
+    {
+      name: "Carlos",
+      lastname: "Bonnardel",
+      mail: "carlos.gomez@example.com",
+      password: "contraseña5",
+      walker: true,
+    },
+    {
+      name: "Stefania",
+      lastname: "Schurer",
+      mail: "laura.hernandez@example.com",
+      password: "contraseña6",
+      walker: true,
+    },
+    {
+      name: "Ernesto",
+      lastname: "Coletto",
+      mail: "javier.lopez@example.com",
+      password: "contraseña7",
+      walker: true,
+    },
+    {
+      name: "Antonia",
+      lastname: "Ugarte",
+      mail: "sara.torres@example.com",
+      password: "contraseña8",
+      walker: true,
+    },
+    {
+      name: "Angelica",
+      lastname: "Gimenez",
+      mail: "elena.martinez@example.com",
+      password: "contraseña10",
+      walker: true,
+    },
+  ];
+
+  const guarderias = [
+    {
+      name: "Paraiso",
+      mail: "paraiso@example.com",
+      password: "contraseña1",
+      walker: true,
+    },
+    {
+      name: "Altar de Perros",
+      mail: "altardeperros@example.com",
+      password: "contraseña4",
+      walker: true,
+    },
+    {
+      name: "Fondo de Bikini",
+      mail: "fondodebikini@example.com",
+      password: "contraseña5",
+      walker: true,
+    },
+    {
+      name: "Mar Profundo",
+      mail: "marprofundo@example.com",
+      password: "contraseña6",
+      walker: true,
+    },
+    {
+      name: "Montana Rusa",
+      mail: "montanarusa@example.com",
+      password: "contraseña7",
+      walker: true,
+    },
+    {
+      name: "Espacio Abierto",
+      mail: "espacioabierto@example.com",
+      password: "contraseña8",
+      walker: true,
+    },
+    {
+      name: "Ventana al Jardin",
+      mail: "ventanaaljardin@example.com",
+      password: "contraseña9",
+      walker: true,
+    },
+    {
+      name: "Parque de Juegos",
+      mail: "parquedejuegos@example.com",
+      password: "contraseña10",
+      walker: true,
+    },
   ];
 
   setTimeout(async () => {
@@ -222,8 +342,9 @@ const generator = () => {
       }
     }
     await User.bulkCreate(personas);
-
     await Store.bulkCreate(storesToCreate);
+    await Daycare.bulkCreate(guarderias);
+    await Walker.bulkCreate(paseadores);
 
     const brandObj = [];
     for (const i in brands) {
