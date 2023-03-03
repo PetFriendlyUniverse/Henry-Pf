@@ -78,13 +78,15 @@ function DropdownShop() {
       >
         <div className=" flex w-full items-center justify-between border-b border-black px-4 py-1 ">
           <p className="inline-block">{products.length} productos</p>
-          <span onClick={handleDelete}>
-            <img
-              src={deleteBtn}
-              className="w-7 cursor-pointer hover:scale-105"
-              alt="vaciar carrito"
-            />
-          </span>
+          {products.length && (
+            <span onClick={handleDelete}>
+              <img
+                src={deleteBtn}
+                className="w-7 cursor-pointer hover:scale-105"
+                alt="vaciar carrito"
+              />
+            </span>
+          )}
         </div>
         <div
           className={`flex h-40 flex-col gap-2 ${
@@ -96,14 +98,16 @@ function DropdownShop() {
           ))}
         </div>
         <hr />
-        <div className="flex items-center justify-between rounded-b-lg bg-blue-200 p-2 ">
-          <Link to="/shop/checkout">
-            <LinkButton component={"Confirmar Compra"} />
-          </Link>
-          <h2 className="border-blue inline-block rounded-md border py-2 px-4">
-            Total: {priceFormatter(totalPrice)}
-          </h2>
-        </div>
+        {products.length && (
+          <div className="flex items-center justify-between rounded-b-lg bg-blue-200 p-2 ">
+            <Link to="/shop/checkout">
+              <LinkButton component={"Confirmar Compra"} />
+            </Link>
+            <h2 className="border-blue inline-block rounded-md border py-2 px-4">
+              Total: {priceFormatter(totalPrice)}
+            </h2>
+          </div>
+        )}
       </div>
     </div>
   );
