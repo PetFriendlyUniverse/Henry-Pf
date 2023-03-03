@@ -32,13 +32,19 @@ const getAllDaycares = async () => {
   return daycares;
 };
 
-const filterDaycare = async () => {
-  if (Object.keys(query).length) {
-    const daycares = await Store.findAll({
-      where: query,
-    });
-    return daycares;
+const filterDaycare = async (query) => {
+  let whereClause = {};
+  if (query.province) {
+    whereClause.province = query.province;
+    if (query.locality) {
+      whereClause.locality = query.locality;
+    }
   }
+  const walkers = await Daycare.findAll({
+    where: whereClause,
+  });
+
+  return walkers;
 };
 
 const getDaycareByID = async (id) => {
