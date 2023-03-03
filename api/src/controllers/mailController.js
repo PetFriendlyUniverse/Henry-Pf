@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
+const { contentHtml } = require("../helpers/htmlMailBienvenida");
 
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
@@ -7,12 +8,6 @@ const REDIRECT_URI = "https://developers.google.com/oauthplayground";
 const REFRESH_TOKEN = process.env.GOOGLE_REFRESH_TOKEN;
 
 const confirmMail = async (name, lastname, mail) => {
-  const contentHtml = `
-    <h1>Bienvenido a Pet Friendly Universe!!</h1>
-    <h3>Hola ${name}, por favor haga click en el siguiente link para confirmar su cuenta</h3>
-    <a href="http://${process.env.ORIGIN}:${process.env.FRONTEND_PORT}/confirm-email"><h4>Confirmar Cuenta</h4</a>
-    <p>Si no fuiste tu el que creo la cuenta puedes ignorar este correo`;
-
   // prettier-ignore
   const OAuth2Client = new google.auth.OAuth2( CLIENT_ID, CLIENT_SECRET, REDIRECT_URI );
 
