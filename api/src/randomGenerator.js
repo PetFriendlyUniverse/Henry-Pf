@@ -1,8 +1,11 @@
 // const store = require("./controllers/storeControllers");
 // const products = require("./controllers/productsControllers");
+const { TIME_GENERATOR } = process.env;
 const {
   Product,
   Store,
+  Daycare,
+  Walker,
   Brands,
   Breeds,
   Species,
@@ -175,6 +178,307 @@ const generator = () => {
       password: "contraseña10",
       store: true,
     },
+    //-----------------------------------------------
+  ];
+
+  const paseadores = [
+    {
+      name: "Ricardo",
+      lastname: "Artura",
+      mail: "ricardo.artura@example.com",
+      walker: true,
+      province: "Buenos Aires",
+    },
+    {
+      name: "Josefina",
+      lastname: "Gonzalez",
+      mail: "josefina.gonzalez@example.com",
+      walker: true,
+      province: "Buenos Aires",
+    },
+    {
+      name: "Alvaro",
+      lastname: "Catucci",
+      mail: "alvaro.catucci@example.com",
+      walker: true,
+      province: "Mendoza",
+    },
+    {
+      name: "Ana",
+      lastname: "Gillatti",
+      mail: "ana.gillatti@example.com",
+      walker: true,
+      province: "Salta",
+    },
+    {
+      name: "Carlos",
+      lastname: "Bonnardel",
+      mail: "carlos.bonnardel@example.com",
+      walker: true,
+      province: "Santa Fe",
+    },
+    {
+      name: "Stefania",
+      lastname: "Schurer",
+      mail: "stefania.schurer@example.com",
+      walker: true,
+      province: "Tucuman",
+    },
+    {
+      name: "Ernesto",
+      lastname: "Coletto",
+      mail: "ernesto.coletto@example.com",
+      walker: true,
+      province: "Chubut",
+    },
+    {
+      name: "Antonia",
+      lastname: "Ugarte",
+      mail: "antonia.ugarte@example.com",
+      walker: true,
+      province: "Tucuman",
+    },
+    {
+      name: "Angelica",
+      lastname: "Gimenez",
+      mail: "angelica.gimenez@example.com",
+      walker: true,
+      province: "Misiones",
+    },
+    {
+      name: "Lucía",
+      lastname: "Martínez",
+      mail: "lucia.martinez@example.com",
+      walker: true,
+      province: "Córdoba",
+    },
+    {
+      name: "Federico",
+      lastname: "Gómez",
+      mail: "federico.gomez@example.com",
+      walker: true,
+      province: "Buenos Aires",
+    },
+    {
+      name: "Laura",
+      lastname: "López",
+      mail: "laura.lopez@example.com",
+      walker: true,
+      province: "Mendoza",
+    },
+    {
+      name: "Joaquín",
+      lastname: "García",
+      mail: "joaquin.garcia@example.com",
+      walker: true,
+      province: "Buenos Aires",
+    },
+    {
+      name: "Mariana",
+      lastname: "Gutiérrez",
+      mail: "mariana.gutierrez@example.com",
+      walker: true,
+      province: "Córdoba",
+    },
+    {
+      name: "Ramiro",
+      lastname: "Ramírez",
+      mail: "ramiro.ramirez@example.com",
+      walker: true,
+      province: "Buenos Aires",
+    },
+    {
+      name: "Camila",
+      lastname: "Castro",
+      mail: "camila.castro@example.com",
+      walker: true,
+      province: "Mendoza",
+    },
+    {
+      name: "Facundo",
+      lastname: "Fernández",
+      mail: "facundo.fernandez@example.com",
+      walker: true,
+      province: "Buenos Aires",
+    },
+    {
+      name: "María",
+      lastname: "Sánchez",
+      mail: "maria.sanchez@example.com",
+      walker: true,
+      province: "Mendoza",
+    },
+  ];
+
+  const guarderias = [
+    {
+      name: "Paraiso",
+      mail: "paraiso@example.com",
+      daycare: true,
+      province: "Buenos Aires",
+    },
+    {
+      name: "Altar de Perros",
+      mail: "altardeperros@example.com",
+      daycare: true,
+      province: "Cordoba",
+    },
+    {
+      name: "Fondo de Bikini",
+      mail: "fondodebikini@example.com",
+      daycare: true,
+      province: "Mendoza",
+    },
+    {
+      name: "Mar Profundo",
+      mail: "marprofundo@example.com",
+      daycare: true,
+      province: "Mendoza",
+    },
+    {
+      name: "Montana Rusa",
+      mail: "montanarusa@example.com",
+      daycare: true,
+      province: "Santa Fe",
+    },
+    {
+      name: "Espacio Abierto",
+      mail: "espacioabierto@example.com",
+      daycare: true,
+      province: "Buenos Aires",
+    },
+    {
+      name: "Ventana al Jardin",
+      mail: "ventanaaljardin@example.com",
+      daycare: true,
+      province: "Chubut",
+    },
+    {
+      name: "Parque de Juegos",
+      mail: "parquedejuegos@example.com",
+      daycare: true,
+      province: "Tucuman",
+    },
+    {
+      name: "La Casita",
+      mail: "lacasita@example.com",
+      daycare: true,
+      province: "Cordoba",
+    },
+    {
+      name: "Pequeños Exploradores",
+      mail: "pequenosexploradores@example.com",
+      daycare: true,
+      province: "Santa Fe",
+    },
+    {
+      name: "Mi Jardincito",
+      mail: "mijardincito@example.com",
+      daycare: true,
+      province: "Tucuman",
+    },
+    {
+      name: "El Arco Iris",
+      mail: "elarcoiris@example.com",
+      daycare: true,
+      province: "Mendoza",
+    },
+    {
+      name: "Los Patitos",
+      mail: "lospatitos@example.com",
+      daycare: true,
+      province: "Neuquen",
+    },
+    {
+      name: "La Cigüeña",
+      mail: "laciguena@example.com",
+      daycare: true,
+      province: "Chaco",
+    },
+    {
+      name: "Las Abejitas",
+      mail: "lasabejitas@example.com",
+      daycare: true,
+      province: "Entre Ríos",
+    },
+    {
+      name: "Los Changuitos",
+      mail: "loschanguitos@example.com",
+      daycare: true,
+      province: "Misiones",
+    },
+    {
+      name: "El Hormiguero",
+      mail: "elhormiguero@example.com",
+      daycare: true,
+      province: "San Juan",
+    },
+    {
+      name: "El Árbol de la Vida",
+      mail: "elarboldelavida@example.com",
+      daycare: true,
+      province: "San Luis",
+    },
+    {
+      name: "El Refugio",
+      mail: "refugio@example.com",
+      daycare: true,
+      province: "Santa Fe",
+    },
+    {
+      name: "Colitas Contentas",
+      mail: "colitas@example.com",
+      daycare: true,
+      province: "Chaco",
+    },
+    {
+      name: "Gatitos del Sol",
+      mail: "gatitos@example.com",
+      daycare: true,
+      province: "Tucuman",
+    },
+    {
+      name: "El Bosque de los Lobos",
+      mail: "lobos@example.com",
+      daycare: true,
+      province: "Neuquen",
+    },
+    {
+      name: "Las Huellitas",
+      mail: "huellitas@example.com",
+      daycare: true,
+      province: "Entre Rios",
+    },
+    {
+      name: "El Nido de las Águilas",
+      mail: "aguilas@example.com",
+      daycare: true,
+      province: "Jujuy",
+    },
+    {
+      name: "La Madriguera",
+      mail: "madriguera@example.com",
+      daycare: true,
+      province: "Salta",
+    },
+    {
+      name: "Patas de Amor",
+      mail: "patasamor@example.com",
+      daycare: true,
+      province: "San Juan",
+    },
+    {
+      name: "El Jardín de los Ositos",
+      mail: "ositos@example.com",
+      daycare: true,
+      province: "La Pampa",
+    },
+    {
+      name: "La Guarida del Tigre",
+      mail: "tigre@example.com",
+      daycare: true,
+      province: "Formosa",
+    },
   ];
 
   setTimeout(async () => {
@@ -222,8 +526,9 @@ const generator = () => {
       }
     }
     await User.bulkCreate(personas);
-
     await Store.bulkCreate(storesToCreate);
+    await Daycare.bulkCreate(guarderias);
+    await Walker.bulkCreate(paseadores);
 
     const brandObj = [];
     for (const i in brands) {
@@ -312,7 +617,7 @@ const generator = () => {
     await Review.bulkCreate(reviewsToCreate);
     // ------------------------- Reviews ----------------------------- //
     console.log("Datos generados exitosamente");
-  }, 5000);
+  }, TIME_GENERATOR || 10);
 };
 
 module.exports = { generator };

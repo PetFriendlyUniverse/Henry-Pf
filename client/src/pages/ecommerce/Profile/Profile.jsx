@@ -28,7 +28,6 @@ function Profile() {
   const handleShowInfo = (e) => {
     setShowInfo(e.target.name);
   };
-  console.log(user);
   const handleClickStore = () => {
     axios.post(`store/create/${user.id}`).then((res) => {
       const idStore = res.data.id;
@@ -48,9 +47,9 @@ function Profile() {
     });
   };
   useEffect(() => {
+    dispatch(getStoreByUser(user?.id));
     dispatch(getUserApi(user.id));
   }, []);
-  console.log(user);
   return (
     <div className="flex justify-start bg-adopcion  pb-28 pt-10 lg:items-center">
       <div className=" flex h-full w-full flex-col-reverse justify-end rounded-2xl">
@@ -204,10 +203,14 @@ function Profile() {
                 ) : (
                   <Payment />
                 )}
-                <div class="flex pl-4 pt-5 sm:pl-12">
+                <div className="flex pl-4 pt-5 sm:pl-12">
                   {user.store === false && (
-                    <div class="flex py-2">
-                      <img src={interrogation} alt="help" class="w-3 sm:w-5" />
+                    <div className="flex py-2">
+                      <img
+                        src={interrogation}
+                        alt="help"
+                        className="w-3 sm:w-5"
+                      />
                       <LinkButton
                         onClick={handleClickStore}
                         component={"Habilita tu tienda"}
@@ -216,8 +219,12 @@ function Profile() {
                     </div>
                   )}
                   {user.daycare === false && (
-                    <div class="flex py-2">
-                      <img src={interrogation} alt="help" class="w-3 sm:w-5" />
+                    <div className="flex py-2">
+                      <img
+                        src={interrogation}
+                        alt="help"
+                        className="w-3 sm:w-5"
+                      />
                       <LinkButton
                         onClick={handleClickDaycare}
                         component={"Habilita tu guarderia"}
@@ -225,19 +232,23 @@ function Profile() {
                     </div>
                   )}
                   {user.walker === false && (
-                    <div class="flex py-2">
-                      <img src={interrogation} alt="help" class="w-3 sm:w-5" />
+                    <div className="flex py-2">
+                      <img
+                        src={interrogation}
+                        alt="help"
+                        className="w-3 sm:w-5"
+                      />
                       <LinkButton
                         onClick={handleClickWalker}
                         component={"Habilitate como paseador"}
                       />
                     </div>
                   )}
-                  <div class="flex py-2">
-                    <img src={interrogation} alt="help" class="w-5" />
+                  <div className="flex py-2">
+                    <img src={interrogation} alt="help" className="w-5" />
                     <button
                       title="ingresa aqui para editar tu informacion personal"
-                      class="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300"
+                      className="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300"
                     >
                       <Link to={`/profile/edit/${user.id}`}>
                         <img src={edit} alt="edit" />

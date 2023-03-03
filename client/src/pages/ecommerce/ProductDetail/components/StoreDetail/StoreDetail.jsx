@@ -24,9 +24,9 @@ function StoreDetail() {
     );
   if (!isLoaded) return <Loader />;
   return (
-    <div className="flex flex-col justify-around lg:flex-row">
+    <div className="flex w-full flex-col flex-wrap items-center justify-center sm:flex-row sm:gap-y-4 md:justify-around lg:flex-row lg:items-start lg:justify-start  lg:gap-x-0">
       {/* ----------------------------- inicio seccion 1 ---------------------------  */}
-      <div className="w-full rounded-lg p-1 lg:w-1/5 lg:p-4 lg:pl-8">
+      <div className="w-full rounded-lg p-1 sm:w-1/2 sm:self-start lg:w-1/5 lg:p-4 lg:pl-8">
         <h2 className="mb-1 text-sm font-bold lg:mb-4 lg:text-xl ">
           {store?.name}
         </h2>
@@ -42,16 +42,13 @@ function StoreDetail() {
           {store?.locality}, {store?.province}
         </p>
       </div>
-      {/* ----------------------------- fin seccion 1 ---------------------------  */}
 
       {/* ----------------------------- inicio seccion 2 ---------------------------  */}
 
       <ReviewsGraph data={{ qualificationAVG, dispatchtimeAVG, supportAVG }} />
 
-      {/* ----------------------------- fin seccion 2 ---------------------------  */}
-
       {/* ----------------------------- inicio seccion 3 ---------------------------  */}
-      <div className="flex w-1/3 justify-center gap-x-4">
+      <div className="flex w-full flex-col items-center  justify-center gap-1 xsm:flex-row xsm:items-start sm:w-2/3  sm:flex-row md:gap-x-4 lg:w-5/12">
         <QualificationChart
           type={"dispatchtime"}
           qualification={dispatchtimeAVG}

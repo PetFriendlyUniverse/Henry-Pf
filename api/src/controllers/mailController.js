@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
+const { contentHtml } = require("../helpers/htmlMailBienvenida");
 
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
@@ -10,10 +11,9 @@ const confirmMail = async (name, lastname, mail) => {
   const contentHtml = `
     <h1>Bienvenido a Pet Friendly Universe!!</h1>
     <h3>Hola ${name}, por favor haga click en el siguiente link para confirmar su cuenta</h3>
-    <a href="http://${process.env.ORIGIN}:${process.env.FRONTEND_PORT}/confirm-email"><h4>Confirmar Cuenta</h4</a>
+    <a href="${process.env.ORIGIN}/confirm-email"><h4>Confirmar Cuenta</h4</a>
     <p>Si no fuiste tu el que creo la cuenta puedes ignorar este correo`;
 
-  // prettier-ignore
   const OAuth2Client = new google.auth.OAuth2( CLIENT_ID, CLIENT_SECRET, REDIRECT_URI );
 
   OAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
@@ -55,7 +55,7 @@ const sendResetPasswordEmail = async (email, resetToken) => {
   const contentHtml = `
     <h1>Reestablecer contraseña en Pet Friendly Universe</h1>
     <p>Para resetear tu contraseña, por favor haz click en el siguiente link:</p>
-    <a href="http://${process.env.ORIGIN}:${process.env.FRONTEND_PORT}/change-password?t=${resetToken}">
+    <a href="${process.env.ORIGIN}/change-password?t=${resetToken}">
       Reestablecer Contraseña
     </a>
     <p>Si no has solicitado resetear tu contraseña, por favor ignora este correo.</p>
@@ -82,7 +82,9 @@ const sendResetPasswordEmail = async (email, resetToken) => {
         accessToken: accessToken,
         expires: 3600,
       },
-      tls: { rejectUnauthorized: false },
+      tls: {
+        rejectUnauthorized: false,
+      },
     });
     const mailInfo = {
       from: "Pet Friendly Universe <petfriendyleuniverse@gmail.com>",

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -L"
+    "start": "node index.js",
+    "dev": "nodemon -L"
   },
   "keywords": [],
   "author": "",
@@ -25,7 +26,6 @@
     "passport": "^0.6.0",
     "passport-google-oauth": "^2.0.0",
     "pg": "^8.9.0",
-    "react-loading-skeleton": "^3.1.1",
     "sequelize": "^6.28.0"
   },
   "devDependencies": {

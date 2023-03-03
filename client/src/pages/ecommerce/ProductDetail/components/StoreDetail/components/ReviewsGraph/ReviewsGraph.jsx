@@ -11,7 +11,7 @@ function ReviewsGraph({ data }) {
   ).toFixed(2);
 
   return (
-    <div className=" w-full px-1 lg:w-1/3 lg:py-4">
+    <div className="lg-text-sm px-1 sm:w-1/2 lg:w-1/4">
       <QualificationStars
         className={" lg:mt-4"}
         title={"Calificación general"}

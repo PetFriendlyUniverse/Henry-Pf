@@ -3,13 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { getInvoicesById } from "../../../../redux/features/users/usersActions";
 function Purchase() {
   const userId = localStorage.getItem("id");
-  console.log(userId);
+
   const dispatch = useDispatch();
   const userInvoice = useSelector((state) => state.User?.userInvoicesId);
-  console.log(userInvoice);
-  console.log(userInvoice[0]?.Products[0]?.name);
   useEffect(() => {
-    console.log(dispatch(getInvoicesById(userId)));
+    dispatch(getInvoicesById(userId));
   }, []);
   return (
     <div className=" mx-4 h-[466px] overflow-scroll overflow-x-hidden rounded-2xl border-2  py-6  px-4 pt-2 sm:px-0 xl:flex-row ">
