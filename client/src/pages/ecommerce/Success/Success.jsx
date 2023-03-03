@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import html2canvas from "html2canvas";
 import axios from "axios";
 import payment from "../../../assets/imagenes/payment.svg";
@@ -11,6 +11,7 @@ function Success() {
   const paymentId = queryParams.get("payment_id");
   const merchantOrder = queryParams.get("merchant_order_id");
   const status = queryParams.get("status");
+  const [dataState, setDataState] = useState({})
 
   const getToken = async () => {
     const { data } = await axios.get("/token");
@@ -26,7 +27,7 @@ function Success() {
         },
       }
     );
-   
+   setDataState(data);
     const requestData = {
       userId: userId,
       /// reemplazar la variable objeto por data
@@ -84,16 +85,16 @@ function Success() {
           </h3>
           <h4 className="text-white">
             Número de factura:{" "}
-            <span className="text-yellow-400">{objeto.id}</span>{" "}
+            <span className="text-yellow-400">{dataState.id}</span>{" "}
           </h4>
           <div className="">
             <h5 className="text-lg text-white">Productos:</h5>
             <ul
               className={`h-36 ${
-                objeto.items.length > 3 && "overflow-scroll overflow-x-hidden"
+                dataState.items.length > 3 && "overflow-scroll overflow-x-hidden"
               }`}
             >
-              {objeto.items.map((item, i) => (
+              {dataState.items.map((item, i) => (
                 <>
                   {/* <hr className="h-px bg-slate-900" /> */}
                   <li
@@ -111,7 +112,7 @@ function Success() {
             <h4 className="text-lg text-white">
               Monto total:{" "}
               <span className="text-base text-yellow-400">
-                ${objeto.total_amount}
+                ${dataState.total_amount}
               </span>
             </h4>
           </div>
