@@ -7,6 +7,7 @@ const initialState = {
   userStoreId: {},
   userWalkerId: {},
   userDaycareId: {},
+  userInvoicesId: {}, // {  id key factura  :  [{}}] }
 };
 
 export const User = createSlice({
@@ -25,8 +26,12 @@ export const User = createSlice({
     getDaycare: (state, { payload }) => {
       state.userDaycareId = payload;
     },
+    getUserInvoices: (state, { payload }) => {
+      state.userInvoicesId = payload;
+    },
   },
 });
 
-export const { getUser, getStore, getWalker, getDaycare } = User.actions;
+export const { getUser, getStore, getWalker, getDaycare, getUserInvoices } =
+  User.actions;
 export default User.reducer;
