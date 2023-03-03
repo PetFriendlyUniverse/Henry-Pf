@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Contruccion from "../../Services/Services";
+import Construccion from "../../../components/InConstruccion/Construccion";
 
 import PhotoWalker from "./components/Walker/PhotoWalker";
 import InfoWalker from "./components/Walker/InfoWalker";
@@ -132,7 +132,7 @@ function TabWalker() {
                 street_number={user.street_number}
               />
             ) : (
-              <Contruccion />
+              <Construccion />
             )}
           </div>
         </div>

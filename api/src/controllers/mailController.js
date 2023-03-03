@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
+const { contentHtml } = require("../helpers/htmlMailBienvenida");
 
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
@@ -13,7 +14,6 @@ const confirmMail = async (name, lastname, mail) => {
     <a href="${process.env.ORIGIN}/confirm-email"><h4>Confirmar Cuenta</h4</a>
     <p>Si no fuiste tu el que creo la cuenta puedes ignorar este correo`;
 
-  // prettier-ignore
   const OAuth2Client = new google.auth.OAuth2( CLIENT_ID, CLIENT_SECRET, REDIRECT_URI );
 
   OAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
