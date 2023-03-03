@@ -1,5 +1,6 @@
 // const store = require("./controllers/storeControllers");
 // const products = require("./controllers/productsControllers");
+const { TIME_GENERATOR } = process.env;
 const {
   Product,
   Store,
@@ -616,7 +617,7 @@ const generator = () => {
     await Review.bulkCreate(reviewsToCreate);
     // ------------------------- Reviews ----------------------------- //
     console.log("Datos generados exitosamente");
-  }, 5000);
+  }, TIME_GENERATOR || 10);
 };
 
 module.exports = { generator };
