@@ -9,6 +9,7 @@ function Purchase() {
   useEffect(() => {
     dispatch(getInvoicesById(userId));
   }, []);
+  console.log(userInvoice);
   return (
     <div className=" mx-4 h-[466px] overflow-scroll overflow-x-hidden rounded-2xl border-2  py-6  px-4 pt-2 sm:px-0 xl:flex-row ">
       <ol className="relative mx-4 border-l border-gray-200 dark:border-gray-700">
@@ -21,6 +22,7 @@ function Purchase() {
           {/* nombre de producto */}
           <h3 className="text-lg font-bold ">
             {userInvoice[0]?.Products[0]?.name}
+            {userInvoice[0]?.Products[1]?.name}
           </h3>
 
           {/* <p className="mb-4 text-base font-semibold">
