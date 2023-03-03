@@ -14,6 +14,7 @@ const postPaymentHandler = (req, res) => {
     back_urls: {
       // corregir redireccionamiento
       success: `https://petfriendlyuniverse.vercel.app/shop/success`,
+
       failure: `https://petfriendlyuniverse.vercel.app/failure`,
       pending: ``,
     },
