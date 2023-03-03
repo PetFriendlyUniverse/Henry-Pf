@@ -67,7 +67,7 @@ function FormModifyStore() {
       dispatch(getLocalidadesAsync(e.target.value));
     }
   };
-  console.log(form);
+
   const changeHandlerImg = (e) => {
     setImg(e.target.files[0]);
     const files = e.target.files;
