@@ -28,6 +28,7 @@ function Success() {
       }
     );
    setDataState(data);
+    console.log(dataState)
     const requestData = {
       userId: userId,
       /// reemplazar la variable objeto por data
@@ -91,10 +92,10 @@ function Success() {
             <h5 className="text-lg text-white">Productos:</h5>
             <ul
               className={`h-36 ${
-                dataState.items.length > 3 && "overflow-scroll overflow-x-hidden"
+                dataState?.items?.length > 3 && "overflow-scroll overflow-x-hidden"
               }`}
             >
-              {dataState.items.map((item, i) => (
+              {dataState?.items?.map((item, i) => (
                 <>
                   {/* <hr className="h-px bg-slate-900" /> */}
                   <li
