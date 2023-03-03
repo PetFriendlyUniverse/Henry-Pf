@@ -61,18 +61,18 @@ const updateDaycare = async (data, id) => {
   }
 };
 
-const deleteDaycare = async (id) => {
-  const daycareDelete = await Daycare.update(
-    { enabled: false },
-    {
-      where: {
-        id,
-      },
-    }
-  );
-  return daycareDelete
-    ? "Store deleted successfully"
-    : "Could not delete store";
+const deletedDaycare = async (id) => {
+  if (!id) throw Error("Wrong Id");
+  const update = await Daycare.update({ enable: false }, { where: { id: id } });
+  const daycare = await Daycare.findOne({ where: { id: id } });
+  return [daycare];
+};
+
+const approvedDaycare = async (id) => {
+  if (!id) throw Error("Wrong Id");
+  const update = await Daycare.update({ enable: true }, { where: { id: id } });
+  const daycare = await Daycare.findOne({ where: { id: id } });
+  return [daycare];
 };
 
 module.exports = {
@@ -81,5 +81,6 @@ module.exports = {
   getAllDaycares,
   getDaycareByID,
   updateDaycare,
-  deleteDaycare,
+  deletedDaycare,
+  approvedDaycare,
 };
