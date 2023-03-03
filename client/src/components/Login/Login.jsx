@@ -146,49 +146,59 @@ function Login() {
   };
   const submitConfirmMail = async (e) => {
     e.preventDefault();
-    Swal.fire({
-      title: "Verificando mail",
-      allowEscapeKey: false,
-      allowOutsideClick: false,
-      didOpen: () => {
-        Swal.showLoading();
-      },
-    });
-    try {
-      await axios.post("/user/reset-password", { mail: mail });
-      await Swal.fire(
-        "Le hemos enviado un correo electrónico de confirmación, por favor verifique su e-mail para continuar"
-      );
-    } catch (error) {
+    if (mail) {
       Swal.fire({
-        icon: "error",
-        title: error.response.data.error,
+        title: "Verificando mail",
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+      try {
+        await axios.post("/user/reset-password", { mail: mail });
+        await Swal.fire(
+          "Le hemos enviado un correo electrónico de confirmación, por favor verifique su e-mail para continuar"
+        );
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: error.response.data.error,
+          showConfirmButton: true,
+          closeOnClickOutside: true,
+          closeOnEsc: true,
+        });
+      }
+      setMail("");
+      setShowModal(false);
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Debe ingresar un correo",
         showConfirmButton: true,
         closeOnClickOutside: true,
         closeOnEsc: true,
       });
     }
-    setMail("");
-    setShowModal(false);
   };
 
   // ----------------------- Modal -----------------------//
   return (
     <div className="relative w-full ">
       <div
-        className={`fixed top-0 z-50   ${
+        className={`fixed top-0 z-50 ${
           showModal ? "flex" : "hidden"
         } h-screen w-screen place-content-center  `}
       >
         <div
           onClick={handleShowModal}
-          className={`fixed opacity-0 ${
-            showModal ? "opacity-60" : "hidden"
-          } relative h-screen w-screen bg-black transition duration-1000 ease-in-out`}
+          className={`fixed opacity-60 transition duration-1000 ease-in-out ${
+            showModal ? s.modalBG : "hidden"
+          } relative h-screen w-screen bg-black `}
         ></div>
         <form
           onSubmit={submitConfirmMail}
-          className="absolute top-[45%]  flex aspect-[2/1] h-56 translate-y-[-50%] flex-col items-center justify-center rounded-lg bg-russianviolet"
+          className="absolute top-[45%] flex aspect-[2/1] w-[450px] max-w-[90%] translate-y-[-50%] flex-col items-center justify-center rounded-lg bg-russianviolet"
         >
           <h2 className="mb-8 text-xl text-white">RECUPERAR CONTRASEÑA</h2>
           <span
@@ -246,7 +256,7 @@ function Login() {
                 Olvidaste tu contraseña?
               </button>
               <button type="button" onClick={handleClickGoogle}>
-                Seguir con google
+                Seguir con Google
               </button>
               <div className={s.loginGoogle}>
                 <div className="relative w-full"></div>
@@ -257,7 +267,7 @@ function Login() {
           <div className={s.register}>
             <form className={s.form} onSubmit={handleSubmitRegister}>
               <label htmlFor={s["chk"]} aria-hidden="true">
-                Registrarse
+                REGISTRARSE
               </label>
               <input
                 onChange={handleChange}
@@ -349,7 +359,7 @@ function Login() {
               )}
               <LinkButton component={"Registrate"} />
               <button type="button" onClick={handleClickGoogle}>
-                Continuar con google
+                Continuar con Google
               </button>
             </form>
           </div>
