@@ -1,12 +1,12 @@
 const starColor = (rating, starNumber) =>
   starNumber <= rating ? "text-yellow-400" : "text-gray-300";
 
-function QualificationStars({ className, title, rating }) {
+function QualificationStars({ title, rating }) {
   return (
-    <div className={className}>
-      <h3 className="mb-2 font-bold">{title}</h3>
+    <div className="mt-1 lg:mt-4">
+      <h3 className="mb-2 text-sm font-bold">{title}</h3>
       {/* -----------------------------  Inicio de Rating General ------------------------------- */}
-      <div className="flex items-center">
+      <div className="flex flex-col items-center sm:flex-row">
         <svg
           aria-hidden="true"
           className={`${starColor(rating, 1)} h-5 w-6

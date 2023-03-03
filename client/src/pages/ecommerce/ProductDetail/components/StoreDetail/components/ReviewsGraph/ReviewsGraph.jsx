@@ -1,8 +1,6 @@
 import React from "react";
 import QualificationStars from "../QualificationStars/QualificationStars";
 
-const starColor = (rating, starNumber) =>
-  starNumber <= rating ? "text-yellow-400" : "text-gray-300";
 function ReviewsGraph({ data }) {
   const { qualificationAVG, dispatchtimeAVG, supportAVG } = data;
   const generalAVG = (
@@ -11,21 +9,11 @@ function ReviewsGraph({ data }) {
       parseFloat(supportAVG)) /
     3
   ).toFixed(2);
-  const ratios = {
-    product: ((qualificationAVG / 5) * 100).toString(),
-    dispatchtime: ((dispatchtimeAVG / 5) * 100).toString(),
-    support: ((supportAVG / 5) * 100).toString(),
-  };
-  const ratiosStyles = {
-    product: { width: ratios.product + "%" },
-    dispatchtime: { width: ratios.dispatchtime + "%" },
-    support: { width: ratios.support + "%" },
-  };
 
   return (
-    <div className=" w-1/3 py-4">
+    <div className=" w-full px-1 lg:w-1/3 lg:py-4">
       <QualificationStars
-        className={"mt-4"}
+        className={" lg:mt-4"}
         title={"Calificación general"}
         rating={generalAVG}
       />

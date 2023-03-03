@@ -24,17 +24,21 @@ function StoreDetail() {
     );
   if (!isLoaded) return <Loader />;
   return (
-    <div className="flex justify-around">
+    <div className="flex flex-col justify-around lg:flex-row">
       {/* ----------------------------- inicio seccion 1 ---------------------------  */}
-      <div className="w-1/5 rounded-lg p-4 pl-8">
-        <h2 className="mb-4 text-xl font-bold ">{store?.name}</h2>
-        <p className="text-sm">
+      <div className="w-full rounded-lg p-1 lg:w-1/5 lg:p-4 lg:pl-8">
+        <h2 className="mb-1 text-sm font-bold lg:mb-4 lg:text-xl ">
+          {store?.name}
+        </h2>
+        <p className="text-sm text-gray-500">
           Nos acompaña desde {store?.createdAt?.split("T")[0]}
         </p>
 
-        <hr className="mt-8 w-24 border-gray-300 " />
-        <h3 className="mt-8 font-semibold">Ubicación</h3>
-        <p className="text-sm -tracking-[.5px]">
+        <hr className="mt-3 w-24 border-gray-300 lg:mt-8 " />
+        <h3 className="mb-1 mt-2 text-sm font-bold lg:mb-4 lg:text-xl ">
+          Ubicación
+        </h3>
+        <p className="mb-5 text-sm -tracking-[.5px] text-gray-500">
           {store?.locality}, {store?.province}
         </p>
       </div>
