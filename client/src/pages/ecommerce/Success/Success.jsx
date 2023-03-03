@@ -113,7 +113,7 @@ function Success() {
             <h4 className="text-lg text-white">
               Monto total:{" "}
               <span className="text-base text-yellow-400">
-                ${dataState.total_amount}
+                ${dataState?.total_amount}
               </span>
             </h4>
           </div>
