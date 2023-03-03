@@ -347,7 +347,7 @@ function LandingShop() {
                     ></g>
                     <g id="SVGRepo_iconCarrier">
                       {" "}
-                      <title>Menu</title>{" "}
+                      <title>Menú</title>{" "}
                       <g
                         id="Page-1"
                         stroke="none"
@@ -410,7 +410,7 @@ function LandingShop() {
                   </svg>
                 </span>
                 <span className="text-xs uppercase sm:text-base">
-                  ver todos los articulos para perros
+                  ver todos los artículos para perros
                 </span>
               </Link>
               <div className="mt-12 h-96 w-full sm:h-64 xl:h-80 2xl:h-96">
@@ -444,7 +444,7 @@ function LandingShop() {
                     ></g>
                     <g id="SVGRepo_iconCarrier">
                       {" "}
-                      <title>Menu</title>{" "}
+                      <title>Menú</title>{" "}
                       <g
                         id="Page-1"
                         stroke="none"
@@ -507,7 +507,7 @@ function LandingShop() {
                   </svg>
                 </span>
                 <span className="text-xs uppercase sm:text-base">
-                  ver todos los articulos para gatos
+                  ver todos los artículos para gatos
                 </span>
               </Link>
               <div className="mt-12 h-96 w-full sm:h-64 xl:h-80 2xl:h-96">
@@ -567,8 +567,8 @@ function LandingShop() {
             <img src={logo} alt="" className="w-28" />
             <p className="text-center font-medium text-white sm:text-lg">
               Nuestra sección de shop tiene un final solidario, parte de la
-              recaudacion sera donada a una protectora designada en la seccion
-              de adopcion responsable para poder colaborar a una mejora cultural
+              recaudación será donada a una protectora designada en la sección
+              de adopción responsable para poder colaborar a una mejora cultural
               en el cuidado de nuestros animalitos. Esperamos disfruten su
               estadia !
             </p>

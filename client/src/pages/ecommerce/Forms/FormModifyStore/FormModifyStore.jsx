@@ -15,7 +15,6 @@ import LinkButton from "../../../../components/Button/LinkButton";
 import { useNavigate, useParams } from "react-router-dom";
 import { getStoreByUser } from "../../../../redux/features/users/usersActions";
 
-
 function FormModifyStore() {
   const idUser = localStorage.getItem("id");
   const navigate = useNavigate();
@@ -265,7 +264,7 @@ function FormModifyStore() {
                   autoComplete="off"
                 />
                 <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                  Numeracion
+                  Numeración
                 </label>
                 {errors.street_number && (
                   <span className="text-red-500">{errors.street_number}</span>
@@ -350,7 +349,7 @@ function FormModifyStore() {
                     autoComplete="off"
                   />
                   <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                    Telefono
+                    Teléfono
                   </label>
                   {errors.number && (
                     <span className="text-red-500">{errors.number}</span>

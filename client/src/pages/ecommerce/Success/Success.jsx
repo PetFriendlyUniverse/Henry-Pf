@@ -11,7 +11,7 @@ function Success() {
   const paymentId = queryParams.get("payment_id");
   const merchantOrder = queryParams.get("merchant_order_id");
   const status = queryParams.get("status");
-  const [dataState, setDataState] = useState({})
+  const [dataState, setDataState] = useState({});
 
   const getToken = async () => {
     const { data } = await axios.get("/token");
@@ -27,8 +27,8 @@ function Success() {
         },
       }
     );
-   setDataState(data);
-    console.log(dataState)
+    setDataState(data);
+    console.log(dataState);
     const requestData = {
       userId: userId,
       /// reemplazar la variable objeto por data
@@ -92,7 +92,8 @@ function Success() {
             <h5 className="text-lg text-white">Productos:</h5>
             <ul
               className={`h-36 ${
-                dataState?.items?.length > 3 && "overflow-scroll overflow-x-hidden"
+                dataState?.items?.length > 3 &&
+                "overflow-scroll overflow-x-hidden"
               }`}
             >
               {dataState?.items?.map((item, i) => (
@@ -125,7 +126,7 @@ function Success() {
           className=" flex items-center gap-2 rounded-lg bg-cornflowerblue px-4 py-1 uppercase text-white shadow-lg shadow-[rgba(0,0,0,0.6)] transition-all duration-300 focus:translate-y-1"
           onClick={() => screenshotInvoice(objeto.id)}
         >
-          guardar factura
+          Guardar factura
           <svg
             fill="none"
             stroke="currentColor"

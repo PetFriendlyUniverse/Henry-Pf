@@ -246,7 +246,7 @@ function Login() {
                 Olvidaste tu contraseña?
               </button>
               <button type="button" onClick={handleClickGoogle}>
-                Seguir con google
+                Seguir con Google
               </button>
               <div className={s.loginGoogle}>
                 <div className="relative w-full"></div>
@@ -257,7 +257,7 @@ function Login() {
           <div className={s.register}>
             <form className={s.form} onSubmit={handleSubmitRegister}>
               <label htmlFor={s["chk"]} aria-hidden="true">
-                Registrarse
+                REGISTRARSE
               </label>
               <input
                 onChange={handleChange}
@@ -349,7 +349,7 @@ function Login() {
               )}
               <LinkButton component={"Registrate"} />
               <button type="button" onClick={handleClickGoogle}>
-                Continuar con google
+                Continuar con Google
               </button>
             </form>
           </div>
