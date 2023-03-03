@@ -1,6 +1,5 @@
 import Loader from "../../../../../components/Loader/Loader";
 import QualificationChart from "./components/QualificationChart/QualificationChart";
-import RatingStars from "./components/RatingStars/RatingStars";
 import ReviewsGraph from "./components/ReviewsGraph/ReviewsGraph";
 import { useGetStoreInfo } from "./hooks/useGetStoreInfo";
 
@@ -15,6 +14,7 @@ function StoreDetail() {
     parseFloat(averages?.[0].dispatchtimeAVG).toFixed(2),
     parseFloat(averages?.[0].supportAVG).toFixed(2),
   ];
+
   if (error)
     return (
       <h2>
@@ -31,27 +31,7 @@ function StoreDetail() {
         <p className="text-sm">
           Nos acompaña desde {store?.createdAt?.split("T")[0]}
         </p>
-        {/* <hr className="mt-8 w-24 border-gray-300 " /> */}
-        {/* ------------------ stars  -------------- */}
-        {/* <div className="flex items-center" title={qualificationAVG}>
-          <RatingStars
-            className={`h-5 w-5 ${starColor(qualificationAVG, 1)}`}
-          />
-          <RatingStars
-            className={`h-5 w-5 ${starColor(qualificationAVG, 2)}`}
-          />
-          <RatingStars
-            className={`h-5 w-5 ${starColor(qualificationAVG, 3)}`}
-          />
-          <RatingStars
-            className={`h-5 w-5 ${starColor(qualificationAVG, 4)}`}
-          />
-          <RatingStars
-            className={`h-5 w-5 ${starColor(qualificationAVG, 5)}`}
-          />
-          <p>{qualificationAVG} de 5</p>
-        </div> */}
-        {/* ------------------ fin stars  -------------- */}
+
         <hr className="mt-8 w-24 border-gray-300 " />
         <h3 className="mt-8 font-semibold">Ubicación</h3>
         <p className="text-sm -tracking-[.5px]">
