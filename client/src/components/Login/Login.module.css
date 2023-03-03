@@ -126,6 +126,8 @@ label {
 
 .register {
   display: flex;
+  position: relative;
+  top: -70px;
   justify-content: center;
   background: #6495ed;
   border-radius: 60% / 10%;

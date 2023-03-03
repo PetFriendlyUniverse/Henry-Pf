@@ -136,68 +136,26 @@ function ProductDetail() {
                   </span>
 
                   <div className="flex items-center">
-                    {/* <svg
-                      aria-hidden="true"
-                      className="h-5 w-5 text-yellow-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >  */}
                     <title>
                       <Skeleton />
                     </title>
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                    {/* </svg>  */}
-                    {/* <svg
-                      aria-hidden="true"
-                      className="h-5 w-5 text-yellow-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    > */}{" "}
+
                     <Skeleton />
                     <title>
                       <Skeleton />
                     </title>
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                    {/* </svg> */}
-                    {/* <svg
-                      aria-hidden="true"
-                      className="h-5 w-5 text-yellow-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    > */}{" "}
+
                     <Skeleton />
                     <title>
                       <Skeleton />
                     </title>
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                    {/* </svg> */}
-                    {/* <svg
-                      aria-hidden="true"
-                      className="h-5 w-5 text-yellow-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    > */}
+
                     <title>
                       <Skeleton />
                     </title>
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                    {/* </svg> */}
-                    {/* <svg
-                      aria-hidden="true"
-                      className="h-5 w-5 text-gray-300 dark:text-gray-500"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    > */}
                     <title>
                       <Skeleton />
                     </title>
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                    {/* </svg> */}
                   </div>
                 </div>
 
@@ -209,11 +167,9 @@ function ProductDetail() {
                   </div>
                   <div>
                     <button className="flex items-center text-[12px] font-bold uppercase text-pink-700">
-                      <img src={Skeleton} alt="" />
                       <Skeleton />
                     </button>
                     <button className="flex  items-center text-[12px] font-bold uppercase text-pink-700">
-                      <img src={Skeleton} alt="" />
                       <Skeleton />
                     </button>
                   </div>
@@ -226,7 +182,6 @@ function ProductDetail() {
                     <Skeleton />
                   </h3>
                   <div className=" md:w-1/5 lg:w-1/4">
-                    {/* <MoarButton component={Skeleton} /> */}
                     <Skeleton />
                   </div>
                 </div>
@@ -261,10 +216,6 @@ function ProductDetail() {
                   <div className="text-xs">
                     <Skeleton />
                   </div>
-
-                  {/* <div>Stock</div>
-          <div>Especie</div>
-        <div>Raza</div> */}
                 </div>
                 <div>
                   <div>
@@ -282,11 +233,11 @@ function ProductDetail() {
             </div>
           </div>
           <div className="mt-20 h-full min-h-[200px] w-full bg-gray-100">
-            <div class="mb-4 h-2.5 w-48 rounded-full bg-gray-200 dark:bg-gray-300"></div>
-            <div class="mb-2.5 h-2 rounded-full bg-gray-200 dark:bg-gray-300"></div>
-            <div class="mb-2.5 h-2 rounded-full bg-gray-200 dark:bg-gray-300"></div>
-            <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-300"></div>
-            <div class="mt-4 flex items-center space-x-3"></div>
+            <div className="mb-4 h-2.5 w-48 rounded-full bg-gray-200 dark:bg-gray-300"></div>
+            <div className="mb-2.5 h-2 rounded-full bg-gray-200 dark:bg-gray-300"></div>
+            <div className="mb-2.5 h-2 rounded-full bg-gray-200 dark:bg-gray-300"></div>
+            <div className="h-2 rounded-full bg-gray-200 dark:bg-gray-300"></div>
+            <div className="mt-4 flex items-center space-x-3"></div>
           </div>
         </div>
       </SkeletonTheme>
@@ -457,123 +408,8 @@ function ProductDetail() {
             </Tabs.Item>
           </Tabs.Group>
         </div>
-
-        {/* <div>
-        <div className="mb-4 border-b border-gray-200 dark:border-gray-700">
-          <ul
-            className="-mb-px flex flex-wrap text-center text-sm font-medium"
-            id="myTab"
-            data-tabs-toggle="#myTabContent"
-            role="tablist"
-          >
-            <li className="mr-2" role="presentation">
-              <button
-                className="inline-block rounded-t-lg border-b-2 p-4"
-                id="profile-tab"
-                data-tabs-target="#profile"
-                type="button"
-                role="tab"
-                aria-controls="profile"
-                aria-selected="false"
-              >
-                Descripcion
-              </button>
-            </li>
-            <li className="mr-2" role="presentation">
-              <button
-                className="inline-block rounded-t-lg border-b-2 border-transparent p-4 hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
-                id="dashboard-tab"
-                data-tabs-target="#dashboard"
-                type="button"
-                role="tab"
-                aria-controls="dashboard"
-                aria-selected="false"
-              >
-                Opiniones
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div id="myTabContent">
-          <div
-            className="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
-            id="profile"
-            role="tabpanel"
-            aria-labelledby="profile-tab"
-          >
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              This is some placeholder content the{" "}
-              <strong className="font-medium text-gray-800 dark:text-white">
-                Profile tab's associated content
-              </strong>
-              . Clicking another tab will toggle the visibility of this one for
-              the next. The tab JavaScript swaps classes to control the content
-              visibility and styling.
-            </p>
-          </div>
-          <div
-            className="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
-            id="dashboard"
-            role="tabpanel"
-            aria-labelledby="dashboard-tab"
-          >
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              This is some placeholder content the{" "}
-              <strong className="font-medium text-gray-800 dark:text-white">
-                Dashboard tab's associated content
-              </strong>
-              . Clicking another tab will toggle the visibility of this one for
-              the next. The tab JavaScript swaps classes to control the content
-              visibility and styling.
-            </p>
-          </div>
-          <div
-            className="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
-            id="settings"
-            role="tabpanel"
-            aria-labelledby="settings-tab"
-          >
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              This is some placeholder content the{" "}
-              <strong className="font-medium text-gray-800 dark:text-white">
-                Settings tab's associated content
-              </strong>
-              . Clicking another tab will toggle the visibility of this one for
-              the next. The tab JavaScript swaps classes to control the content
-              visibility and styling.
-            </p>
-          </div>
-          <div
-            className="hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
-            id="contacts"
-            role="tabpanel"
-            aria-labelledby="contacts-tab"
-          >
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              This is some placeholder content the{" "}
-              <strong className="font-medium text-gray-800 dark:text-white">
-                Contacts tab's associated content
-              </strong>
-              . Clicking another tab will toggle the visibility of this one for
-              the next. The tab JavaScript swaps classes to control the content
-              visibility and styling.
-            </p>
-          </div>
-        </div>
-      </div> */}
       </div>
     );
   }
 }
 export default ProductDetail;
-// name,
-// price,
-// description,
-// stock,
-// specie,
-// breed,
-//Desde aca para abajo dependera del producto que tipo de propiedad tendra, asi que no es necesario que todas estas propiedades este presente en un producto
-// weight,
-// color,
-// size,
-// storeId
