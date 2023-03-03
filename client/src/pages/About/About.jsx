@@ -77,11 +77,11 @@ function About() {
     return (
       <SkeletonTheme baseColor="#9c9c9c" highlightColor="white">
         <div className="lg: [url('https://petfood.com.ar/img/cms/symphony.png')] flex  h-max w-full items-center justify-center  lg:pt-14">
-          <section className="grid place-content-center gap-10  py-3 md:pb-10 md:pt-14 md:text-sm lg:h-2/3 lg:w-2/3 lg:grid-cols-4">
+          <section className="grid animate-pulse place-content-center gap-10  py-3 md:pb-10 md:pt-14 md:text-sm lg:h-2/3 lg:w-2/3 lg:grid-cols-4">
             {members.map((person) => (
               <article
                 key={person.name}
-                className="flex h-full w-full flex-col items-center justify-center gap-5 rounded-xl bg-gray-200 drop-shadow-button "
+                className="flex h-full w-full animate-pulse flex-col items-center justify-center gap-5 rounded-xl bg-gray-200 drop-shadow-button "
               >
                 {" "}
                 <Skeleton />
