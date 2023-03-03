@@ -1,7 +1,13 @@
 //No sabemos si vamos a utilizar todo este codigo
 
 import axios from "axios";
-import { getUser, getStore, getDaycare, getWalker } from "./usersSlice";
+import {
+  getUser,
+  getStore,
+  getDaycare,
+  getWalker,
+  getUserInvoices,
+} from "./usersSlice";
 
 export const getUserApi = (id) => async (dispatch) => {
   const { data } = await axios.get(`user/detail/${id}`);
@@ -21,4 +27,9 @@ export const getDaycareByUser = (id) => async (dispatch) => {
 export const getWalkerByUser = (id) => async (dispatch) => {
   const { data } = await axios.get(`user/walker/${id}`);
   return dispatch(getWalker(data));
+};
+
+export const getInvoicesById = (id) => async (dispatch) => {
+  const { data } = await axios.get(`invoices/user/${id}`);
+  return dispatch(getUserInvoices(data));
 };
