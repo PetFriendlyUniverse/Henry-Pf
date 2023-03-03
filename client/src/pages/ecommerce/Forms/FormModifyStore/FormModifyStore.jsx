@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -98,6 +98,7 @@ function FormModifyStore() {
     newForm.append("street_number", form.street_number);
     newForm.append("description", form.description);
     newForm.append("mail", form.mail);
+    console.log(newForm);
     if (isFormValid) {
       Swal.fire({
         title: "Now loading",
@@ -358,7 +359,9 @@ function FormModifyStore() {
               </div>
             </div>
             <div className="h-[10px]">
-              {formComplete && <LinkButton component={"Crear Tienda"} />}
+              <button>
+                {formComplete && <LinkButton component={"Crear Tienda"} />}
+              </button>
             </div>
           </div>
         </div>
