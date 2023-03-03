@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import LinkButton from "../../../../components/Button/LinkButton";
 import { useDispatch, useSelector } from "react-redux";
 import CardStoreIdContainer from "../../../../components/CardStoreIdContainer/CardStoreIdContainer";
-import Contruccion from "../../../Services/Services";
+import Contruccion from "../../../../components/InConstruccion/Construccion";
 
 import PhotoStore from "./Store/PhotoStore";
 import InfoStore from "./Store/InfoStore";

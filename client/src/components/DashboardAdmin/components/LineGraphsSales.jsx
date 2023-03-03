@@ -5,23 +5,23 @@ function LineGraphsSales() {
   const chartdata = [
     {
       date: "Enero 22",
-      Ganancias: 1.74,
+      Ventas: 1.74,
     },
     {
       date: "Febrero 22",
-      Ganancias: 1.93,
+      Ventas: 1.93,
     },
     {
       date: "Marzo 22",
-      Ganancias: 1.9,
+      Ventas: 1.9,
     },
     {
       date: "Abril 22",
-      Ganancias: 1.98,
+      Ventas: 1.98,
     },
     {
       date: "Mayo 22",
-      Ganancias: 2,
+      Ventas: 2,
     },
   ];
 
@@ -36,7 +36,7 @@ function LineGraphsSales() {
         <LineChart
           data={chartdata}
           dataKey="date"
-          categories={["Ganancias"]}
+          categories={["Ventas"]}
           colors={["blue"]}
           valueFormatter={dataFormatter}
           marginTop="mt-6"
