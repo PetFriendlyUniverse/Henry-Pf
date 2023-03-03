@@ -2,8 +2,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 // import { Suspense, lazy } from "react";
 import "./App.css";
-import LandingShop from "./pages/ecommerce/LandingShop/LandingShop";
-import About from "./pages/About/About";
 // import FormPassword from "./pages/FormPassword/FormPassword";
 
 import NavBar from "./components/NavBar/NavBar";
@@ -11,11 +9,17 @@ import Footer from "./components/Footer/Footer";
 import Loader from "./components/Loader/Loader";
 import { lazy, Suspense } from "react";
 
+const About = lazy(() => import("./pages/About/About"));
 const DashboardAdmin = lazy(() =>
   import("./components/DashboardAdmin/DashboardAdmin")
 );
 const Landing = lazy(() => import("./pages/Landing/Landing"));
-
+const LandingShop = lazy(() =>
+  import("./pages/ecommerce/LandingShop/LandingShop")
+);
+const LandingServices = lazy(() =>
+  import("./pages/Services/LandingServices/LandingServices")
+);
 const TabStore = lazy(() =>
   import("./pages/ecommerce/Profile/components/TabStore")
 );
@@ -28,7 +32,9 @@ const ChangePassword = lazy(() =>
 const Adopcion = lazy(() => import("./pages/Adopcion/Adopcion"));
 
 const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
-const Services = lazy(() => import("./pages/Services/Services"));
+const Services = lazy(() =>
+  import("./pages/Services/HomeServices/HomeServices")
+);
 
 const ProductDetail = lazy(() =>
   import("./pages/ecommerce/ProductDetail/ProductDetail")
@@ -72,7 +78,9 @@ function App() {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/landingservices" element={<LandingServices />} />
           <Route path="/services" element={<Services />} />
+
           <Route path="/landingshop" element={<LandingShop />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/detail/:id" element={<ProductDetail />} />
