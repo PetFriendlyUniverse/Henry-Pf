@@ -67,6 +67,18 @@ function Success() {
         quantity: 3,
         unit_price: 2700,
       },
+      {
+        id: "2",
+        category_id: "",
+        currency_id: "ARS",
+        description: "",
+        picture_url:
+          "https://http2.mlstatic.com/D_NQ_NP_932495-MLA54056839113_022023-F.jpg",
+        picture_id: "932495-MLA54056839113_022023",
+        title: "Alimento Eukanuba de Pollo y Cordero",
+        quantity: 3,
+        unit_price: 2700,
+      },
     ],
     cancelled: false,
     additional_info: "",
