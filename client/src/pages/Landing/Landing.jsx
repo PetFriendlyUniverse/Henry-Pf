@@ -19,13 +19,13 @@ function Landing() {
           <article className=" flex flex-col items-center justify-center pt-8 text-center">
             <img src={logo} alt="" className="pb-2" />
             <h1 className="w-2/12 pb-2 font-bold">
-              Bienvenidos a pet friendly universe
+              Bienvenidos a Pet Friendly Universe
             </h1>
             <hr className="h-1  w-3/12 rounded-full bg-gray-600 opacity-20"></hr>
             <p className="w-4/12 pt-2">
               Nuestra sección de shop tiene un final solidario, parte de la
-              recaudacion sera donada a una protectora designada en la seccion
-              de adopcion responsable para poder colaborar a una mejora cultural
+              recaudación será donada a una protectora designada en la sección
+              de adopción responsable para poder colaborar a una mejora cultural
               en el cuidado de nuestros animalitos. Esperamos disfruten su
               estadia !
             </p>

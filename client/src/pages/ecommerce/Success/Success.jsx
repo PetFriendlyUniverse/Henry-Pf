@@ -112,7 +112,7 @@ function Success() {
           className=" flex items-center gap-2 rounded-lg bg-cornflowerblue px-4 py-1 uppercase text-white shadow-lg shadow-[rgba(0,0,0,0.6)] transition-all duration-300 focus:translate-y-1"
           onClick={() => screenshotInvoice(objeto.id)}
         >
-          guardar factura
+          Guardar factura
           <svg
             fill="none"
             stroke="currentColor"
