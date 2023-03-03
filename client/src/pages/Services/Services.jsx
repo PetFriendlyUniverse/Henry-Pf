@@ -14,23 +14,15 @@ function Services() {
     return (
       // contenedor completo
       <SkeletonTheme baseColor="#9c9c9c" highlightColor="white">
-        {/* <div class="max-h-md m-10 mx-auto h- w-3/4 rounded-md border border-gray-300 p-4 shadow">
-          <div class="flex animate-pulse space-x-4">
-            <div class="flex-1 space-y-4 py-1">
-              <div class="h-40 w-full rounded bg-gray-400"></div>
+        <div className="  m-12 mx-auto flex w-1/2 select-none flex-col  gap-10 rounded-2xl bg-white p-2 shadow-lg sm:h-64 sm:flex-row sm:p-4 ">
+          <div className=" flex flex-1 flex-col gap-16 sm:p-2">
+            <div className="flex flex-1 flex-col gap-3">
+              <div className="h-14 w-full animate-pulse rounded-2xl bg-gray-200"></div>
+              <div className="h-14 w-full animate-pulse rounded-2xl bg-gray-200"></div>
+              <div className="h-14 w-full animate-pulse rounded-2xl bg-gray-200"></div>
             </div>
           </div>
-        </div> */}
-
-        <div class="  m-12 mx-auto flex w-1/2 select-none flex-col  gap-10 rounded-2xl bg-white p-2 shadow-lg sm:h-64 sm:flex-row sm:p-4 ">
-          <div class=" flex flex-1 flex-col gap-16 sm:p-2">
-            <div class="flex flex-1 flex-col gap-3">
-              <div class="h-14 w-full animate-pulse rounded-2xl bg-gray-200"></div>
-              <div class="h-14 w-full animate-pulse rounded-2xl bg-gray-200"></div>
-              <div class="h-14 w-full animate-pulse rounded-2xl bg-gray-200"></div>
-            </div>
-          </div>
-          <div class="h-60 w-64 animate-pulse rounded-xl bg-gray-200 sm:h-full sm:w-72"></div>
+          <div className="h-60 w-64 animate-pulse rounded-xl bg-gray-200 sm:h-full sm:w-72"></div>
         </div>
       </SkeletonTheme>
     );
