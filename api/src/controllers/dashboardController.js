@@ -7,7 +7,7 @@ const {
   Invoices_Products,
   Invoices,
 } = require("../db");
-const { Op } = require("Sequelize");
+const { Op } = require("sequelize");
 
 const getUser = async () => {
   const user = await User.count();
