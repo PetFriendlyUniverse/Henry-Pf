@@ -59,36 +59,38 @@ function ChangePassword() {
   return (
     <div className={s.login}>
       <form className={s.form} onSubmit={handleSubmit}>
-        <label htmlFor={s["chk"]} aria-hidden="true">
-          PET FRIENDLY
-        </label>
-        <input
-          className={s.input}
-          onChange={handleChangePassword}
-          value={password}
-          type="password"
-          name="password"
-          placeholder="Nueva contraseña"
-          required={true}
-        />
-        {error && (
-          <span className="ml-1 -mt-3 text-center text-xs tracking-wide text-red-700">
-            {error}
-          </span>
-        )}
-        <input
-          className={s.input}
-          onChange={handleChangenewpassword}
-          value={newpassword}
-          type="password"
-          name="password2"
-          placeholder="Ingrese nuevamente la nueva contraseña"
-          required={true}
-        />
-        {newpassword !== password && newpassword && (
-          <p className="text-xs text-red-700">{`Las contraseñas no coinciden`}</p>
-        )}
-        <button>Ingresar</button>
+        <div className={s.contenedor}>
+          <label htmlFor={s["chk"]} aria-hidden="true">
+            PET FRIENDLY
+          </label>
+          <input
+            className={s.input}
+            onChange={handleChangePassword}
+            value={password}
+            type="password"
+            name="password"
+            placeholder="  Nueva contraseña"
+            required={true}
+          />
+          {error && (
+            <span className="ml-1 -mt-3 text-center text-xs tracking-wide text-red-700">
+              {error}
+            </span>
+          )}
+          <input
+            className={s.input}
+            onChange={handleChangenewpassword}
+            value={newpassword}
+            type="password"
+            name="password2"
+            placeholder="  Ingrese nuevamente la nueva contraseña"
+            required={true}
+          />
+          {newpassword !== password && newpassword && (
+            <p className="text-xs text-red-700">{`Las contraseñas no coinciden`}</p>
+          )}
+          <button>Ingresar</button>
+        </div>
       </form>
     </div>
   );

@@ -11,24 +11,11 @@ function Success() {
   const paymentId = queryParams.get("payment_id");
   const merchantOrder = queryParams.get("merchant_order_id");
   const status = queryParams.get("status");
-  const [dataState, setDataState] = useState({})
+  const [dataState, setDataState] = useState({});
 
   const getToken = async () => {
-    const { data } = await axios.get("/token");
-    return data;
-  };
-
-  const getInvoicesInfo = async (token, merchantOrder) => {
-    const { data } = await axios.get(
-      `https://api.mercadopago.com/merchant_orders/${merchantOrder}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-   setDataState(data);
-    console.log(dataState)
+    const { data } = await axios.get(`/token?merchantOrder=${merchantOrder}`);
+    setDataState(data);
     const requestData = {
       userId: userId,
       /// reemplazar la variable objeto por data
@@ -43,9 +30,9 @@ function Success() {
       merchantOrder: merchantOrder,
       status: status,
     };
-
     return requestData;
   };
+
   //  ----------------------------
   const screenshotInvoice = (id) => {
     const invoice = document.getElementById("invoice");
@@ -59,8 +46,7 @@ function Success() {
   };
   useEffect(() => {
     async function getPaymentData() {
-      const mpToken = await getToken();
-      const invoiceData = await getInvoicesInfo(mpToken, merchantOrder);
+      const invoiceData = await getToken();
       await axios.post("/invoices/create", invoiceData);
     }
     getPaymentData();
@@ -92,7 +78,8 @@ function Success() {
             <h5 className="text-lg text-white">Productos:</h5>
             <ul
               className={`h-36 ${
-                dataState?.items?.length > 3 && "overflow-scroll overflow-x-hidden"
+                dataState?.items?.length > 3 &&
+                "overflow-scroll overflow-x-hidden"
               }`}
             >
               {dataState?.items?.map((item, i) => (

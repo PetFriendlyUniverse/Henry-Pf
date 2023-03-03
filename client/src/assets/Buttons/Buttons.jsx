@@ -61,7 +61,7 @@ function Buttons() {
           </span>
         </button>
       </NavLink>
-      <NavLink to="/services">
+      <NavLink to="/landingservices">
         <button className={s.cta2}>
           <span className={s.span}>SERVICIOS</span>
           <span className={s.second}>
