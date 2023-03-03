@@ -19,13 +19,10 @@ function Success() {
   };
 
   const getInvoicesInfo = async (token, merchantOrder) => {
+    const headers = {'Authorization': `Bearer ${token}`}
     const { data } = await axios.get(
       `https://api.mercadopago.com/merchant_orders/${merchantOrder}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
+      {headers}
     );
    setDataState(data);
     console.log(dataState)
