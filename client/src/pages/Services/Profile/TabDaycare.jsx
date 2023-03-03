@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Contruccion from "../../Services/Services";
+import Contruccion from "../Construccion";
 
 import PhotoDaycare from "./components/Daycare/PhotoDaycare";
 import InfoDaycare from "./components/Daycare/InfoDaycare";
