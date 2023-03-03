@@ -6,6 +6,7 @@ import { ValidationProfile } from "../../pages/ecommerce/Forms/Validations/Profi
 import LinkButton from "../Button/LinkButton";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import close from "../../assets/general/close.svg";
 
 function Login() {
   const navigate = useNavigate();
@@ -180,19 +181,36 @@ function Login() {
         } h-screen w-screen place-content-center  `}
       >
         <div
-          className={`relative opacity-0 ${
+          onClick={handleShowModal}
+          className={`fixed opacity-0 ${
             showModal ? "opacity-60" : "hidden"
           } relative h-screen w-screen bg-black transition duration-1000 ease-in-out`}
         ></div>
-        <form onSubmit={submitConfirmMail} className=" ">
-          <span onClick={handleShowModal}>X</span>
+        <form
+          onSubmit={submitConfirmMail}
+          className="absolute top-[45%]  flex aspect-[2/1] h-56 translate-y-[-50%] flex-col items-center justify-center rounded-lg bg-russianviolet"
+        >
+          <h2 className="mb-8 text-xl text-white">RECUPERAR CONTRASEÑA</h2>
+          <span
+            onClick={handleShowModal}
+            className="absolute top-2 right-2 self-end"
+          >
+            <img
+              src={close}
+              alt="Cerrar Modal"
+              className="w-6 cursor-pointer transition-all duration-100 ease-in hover:scale-105"
+            />
+          </span>
           <input
+            className="w-4/5 p-1"
             onChange={handleChageMail}
             type="email"
             placeholder="Ingresar e-mail"
             value={mail}
           />
-          <button>Enviar</button>
+          <button className="mt-4 w-4/5 rounded-sm bg-ultraviolet p-1 text-white hover:scale-y-105 active:scale-100">
+            Enviar
+          </button>
         </form>
       </div>
       <div className="flex h-screen items-center justify-center pt-20">
