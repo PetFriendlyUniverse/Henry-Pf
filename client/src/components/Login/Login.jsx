@@ -146,30 +146,40 @@ function Login() {
   };
   const submitConfirmMail = async (e) => {
     e.preventDefault();
-    Swal.fire({
-      title: "Verificando mail",
-      allowEscapeKey: false,
-      allowOutsideClick: false,
-      didOpen: () => {
-        Swal.showLoading();
-      },
-    });
-    try {
-      await axios.post("/user/reset-password", { mail: mail });
-      await Swal.fire(
-        "Le hemos enviado un correo electrónico de confirmación, por favor verifique su e-mail para continuar"
-      );
-    } catch (error) {
+    if (mail) {
       Swal.fire({
-        icon: "error",
-        title: error.response.data.error,
+        title: "Verificando mail",
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+      try {
+        await axios.post("/user/reset-password", { mail: mail });
+        await Swal.fire(
+          "Le hemos enviado un correo electrónico de confirmación, por favor verifique su e-mail para continuar"
+        );
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: error.response.data.error,
+          showConfirmButton: true,
+          closeOnClickOutside: true,
+          closeOnEsc: true,
+        });
+      }
+      setMail("");
+      setShowModal(false);
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Debe ingresar un correo",
         showConfirmButton: true,
         closeOnClickOutside: true,
         closeOnEsc: true,
       });
     }
-    setMail("");
-    setShowModal(false);
   };
 
   // ----------------------- Modal -----------------------//
