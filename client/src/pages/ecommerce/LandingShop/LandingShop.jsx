@@ -25,6 +25,7 @@ function LandingShop() {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
+    window.scrollTo(0, 0);
   }, []);
 
   const loaderr = () => {
@@ -69,7 +70,7 @@ function LandingShop() {
               </Link>
             </div>
           </header>
-          <main className="bg-[url('https://petfood.com.ar/img/cms/symphony.png')] py-6 px-3 sm:px-5 md:px-10 lg:px-32 xl:px-52 2xl:px-80 ">
+          <main className="bg-adopcion py-6 px-3 sm:px-5 md:px-10 lg:px-32 xl:px-52 2xl:px-80 ">
             <section className="mt-5 flex w-full flex-col items-center sm:grid sm:grid-cols-2 sm:gap-3">
               <div className="flex flex-col items-center justify-center sm:col-start-1 sm:col-end-3">
                 {" "}
@@ -192,9 +193,9 @@ function LandingShop() {
           <div className="absolute inset-0 bg-black bg-opacity-30"></div>
           <div className="z-10 overflow-hidden sm:mx-auto  sm:grid sm:h-0 sm:w-0 sm:grid-cols-3 sm:items-center sm:justify-center sm:gap-1 md:justify-items-center lg:top-1/2 lg:grid-cols-6 lg:gap-4">
             <Link
-              onClick={() => {
-                handleSetFilter("Perros");
-              }}
+              // onClick={() => {
+              //   handleSetFilter("Perros");
+              // }}
               className="lg:col-start-1 lg:col-end-3 lg:h-3/5 lg:w-full xl:w-3/4"
               to="/shop"
             >
@@ -204,9 +205,9 @@ function LandingShop() {
             </Link>
 
             <Link
-              onClick={() => {
-                handleSetFilter("Gatos");
-              }}
+              // onClick={() => {
+              //   handleSetFilter("Gatos");
+              // }}
               className="lg:col-start-3 lg:col-end-5 lg:h-3/5 lg:w-full xl:w-3/4"
               to="/shop"
             >
