@@ -176,19 +176,19 @@ function Login() {
   return (
     <div className="relative w-full ">
       <div
-        className={`fixed top-0 z-50   ${
+        className={`fixed top-0 z-50 ${
           showModal ? "flex" : "hidden"
         } h-screen w-screen place-content-center  `}
       >
         <div
           onClick={handleShowModal}
-          className={`fixed opacity-0 ${
-            showModal ? "opacity-60" : "hidden"
-          } relative h-screen w-screen bg-black transition duration-1000 ease-in-out`}
+          className={`fixed opacity-60 transition duration-1000 ease-in-out ${
+            showModal ? s.modalBG : "hidden"
+          } relative h-screen w-screen bg-black `}
         ></div>
         <form
           onSubmit={submitConfirmMail}
-          className="absolute top-[45%]  flex aspect-[2/1] h-56 translate-y-[-50%] flex-col items-center justify-center rounded-lg bg-russianviolet"
+          className="absolute top-[45%] flex aspect-[2/1] w-[450px] max-w-[90%] translate-y-[-50%] flex-col items-center justify-center rounded-lg bg-russianviolet"
         >
           <h2 className="mb-8 text-xl text-white">RECUPERAR CONTRASEÑA</h2>
           <span
