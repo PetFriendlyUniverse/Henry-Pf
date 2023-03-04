@@ -73,7 +73,6 @@ function LandingShop() {
           <main className="bg-adopcion py-6 px-3 sm:px-5 md:px-10 lg:px-32 xl:px-52 2xl:px-80 ">
             <section className="mt-5 flex w-full flex-col items-center sm:grid sm:grid-cols-2 sm:gap-3">
               <div className="flex flex-col items-center justify-center sm:col-start-1 sm:col-end-3">
-                {" "}
                 <Skeleton />
                 <h1>
                   <Skeleton className="text-center font-bold uppercase sm:text-2xl" />
@@ -90,7 +89,6 @@ function LandingShop() {
                 </Link>
               </div>
               <div className="mt-8 flex w-full flex-col items-center sm:col-start-1 sm:col-end-2">
-                {" "}
                 <Link to="/shop">
                   <Skeleton className="my-3 flex w-4/5 items-center justify-center gap-2 bg-gray-200 py-1 text-white sm:gap-5 sm:py-2  sm:px-4 lg:h-16" />
                   <span></span>
@@ -104,7 +102,6 @@ function LandingShop() {
               </div>
               <div className="mt-8 flex w-full flex-col items-center sm:col-start-2 sm:col-end-3">
                 <Link to="/shop">
-                  {" "}
                   <Skeleton className="mb-3 mt-10  flex w-4/5 items-center justify-center gap-2 bg-gray-200 py-1 text-white sm:my-3 sm:gap-5 sm:py-2 sm:px-4 lg:h-16 " />
                   <span></span>
                   <span className="text-xs uppercase text-transparent  sm:text-base">
@@ -139,7 +136,6 @@ function LandingShop() {
               </div>
             </section>
             <section>
-              {" "}
               <Skeleton className="clip-payMethod mt-5 flex h-96 flex-col items-center justify-center gap-6 bg-gray-200 px-4 sm:h-[420px] lg:px-52 xl:h-[500px] xl:px-64" />
               <div className="">
                 <p className="mt-3 text-center font-semibold uppercase sm:mt-5 sm:px-2 sm:text-xl">
@@ -153,7 +149,6 @@ function LandingShop() {
             </section>
 
             <section>
-              {" "}
               <Skeleton className="from-slate-600bg-cover relative mt-5 flex h-96 flex-col items-center justify-center gap-8  bg-gray-200  bg-gradient-to-b bg-center bg-no-repeat px-4 lg:px-52 xl:h-[500px] xl:px-64" />
               <p className="text-center font-medium text-white sm:text-lg">
                 <Skeleton />
@@ -163,7 +158,6 @@ function LandingShop() {
               <div className="flex  h-20 items-center ">
                 <h4 className="w-full text-center text-2xl font-bold uppercase">
                   <span className="text-cornflowerblue">
-                    {" "}
                     <Skeleton />
                   </span>{" "}
                   <Skeleton />
