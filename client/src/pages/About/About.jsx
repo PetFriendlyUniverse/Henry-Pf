@@ -84,12 +84,13 @@ function About() {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
+    window.scrollTo(0, 0);
   }, []);
 
   const loaderr = () => {
     return (
       <SkeletonTheme baseColor="#9c9c9c" highlightColor="white">
-        <div className="lg: [url('https://petfood.com.ar/img/cms/symphony.png')] flex  h-max w-full items-center justify-center  lg:pt-14">
+        <div className="lg: flex h-max  w-full items-center justify-center bg-adopcion  lg:pt-14">
           <section className="grid animate-pulse place-content-center gap-10  py-3 md:pb-10 md:pt-14 md:text-sm lg:h-2/3 lg:w-2/3 lg:grid-cols-4">
             {members.map((person) => (
               <article

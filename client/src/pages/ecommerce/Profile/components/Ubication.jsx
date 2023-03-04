@@ -6,53 +6,49 @@ function Ubication({
   street_number,
 }) {
   return (
-    <div className="5 flex h-full w-full flex-col justify-between py-6 px-4  pt-2  ">
-      <div className="h-full w-full rounded-2xl border-2  px-4 pt-2  sm:px-0  xl:flex-row ">
-        <table className="flex h-full w-full border-collapse flex-col ">
-          <tbody>
-            <tr className="flex h-full justify-around bg-white py-1">
-              <th className="w-1/5 border-r-2 ">
-                <h4 className="font-bold">Provincia:</h4>
-              </th>
-              <th className="w-1/5 border-r-2">
-                <h4 className=" font-bold">Localidad:</h4>
-              </th>
-              <th className="w-1/5 border-r-2">
-                <h4 className=" font-bold">Codigo Postal:</h4>
-              </th>
-              <th className="w-1/5 border-r-2">
-                <h4 className=" font-bold">Calle:</h4>
-              </th>
-              <th className="w-1/5 ">
-                <h4 className=" font-bold">Numeracion:</h4>
-              </th>
-            </tr>
-
-            <tr className="flex  justify-around bg-slate-200 py-1">
-              <th
-                className="w-1/5 border-r-2
-             border-white"
-              >
-                <p>{province}</p>
-              </th>
-              <th className="w-1/5 border-r-2">
-                <p> {locality}</p>
-              </th>
-              <th className="w-1/5 border-r-2">
-                <p> {zip_code}</p>
-              </th>
-              <th className="w-1/5 border-r-2">
-                <p> {street_name}</p>
-              </th>
-              <th className="w-1/5 ">
-                <p> {street_number}</p>
-              </th>
-            </tr>
-          </tbody>
-        </table>
+    <div className="mx-2 h-full w-full  max-w-md rounded-2xl border-2 px-2 py-4   ">
+      <div className="py-2">
+        <div className="py-2">
+          <h4 className="pl-2 font-bold">Provincia:</h4>
+        </div>
+        <div className="rounded-lg bg-slate-200 py-1 font-semibold">
+          <p className="pl-4 text-xs sm:text-base">{province} Buenos Aires</p>
+        </div>
       </div>
-
-      <div className="mb-2 sm:mb-0 md:px-7 lg:px-10"></div>
+      <div className="py-2">
+        <div className="py-2">
+          <h4 className="pl-2 font-bold">Localidad:</h4>
+        </div>
+        <div className="rounded-lg bg-slate-200 py-1 font-semibold">
+          <p className="pl-4 text-xs sm:text-base">{locality} Olavarria</p>
+        </div>
+      </div>
+      <div className="py-2">
+        <div className="py-2">
+          <h4 className="pl-2 font-bold">Código postal:</h4>
+        </div>
+        <div className="rounded-lg bg-slate-200 py-1 font-semibold">
+          <p className="pl-4 text-xs sm:text-base">{zip_code}7400</p>
+        </div>
+      </div>
+      <div className="py-2">
+        <div className="py-2">
+          <h4 className="pl-2 font-bold">Calle:</h4>
+        </div>
+        <div className="rounded-lg bg-slate-200 py-1 font-semibold">
+          <p className="pl-4 text-xs sm:text-base">
+            {street_name}Republica del Libano
+          </p>
+        </div>
+      </div>
+      <div className="py-2">
+        <div className="py-2">
+          <h4 className="pl-2 font-bold">Numeración:</h4>
+        </div>
+        <div className="rounded-lg bg-slate-200 py-1 font-semibold">
+          <p className="pl-4 text-xs sm:text-base">{street_number}4142</p>
+        </div>
+      </div>
     </div>
   );
 }
