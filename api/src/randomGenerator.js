@@ -1,8 +1,11 @@
 // const store = require("./controllers/storeControllers");
 // const products = require("./controllers/productsControllers");
+const { TIME_GENERATOR } = process.env;
 const {
   Product,
   Store,
+  Daycare,
+  Walker,
   Brands,
   Breeds,
   Species,
@@ -175,6 +178,386 @@ const generator = () => {
       password: "contraseña10",
       store: true,
     },
+    //-----------------------------------------------
+  ];
+
+  const paseadores = [
+    {
+      name: "Ricardo",
+      lastname: "Artura",
+      mail: "ricardo.artura@example.com",
+      walker: true,
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+      province: "Buenos Aires",
+    },
+    {
+      name: "Josefina",
+      lastname: "Gonzalez",
+      mail: "josefina.gonzalez@example.com",
+      walker: true,
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+      province: "Buenos Aires",
+    },
+    {
+      name: "Alvaro",
+      lastname: "Catucci",
+      mail: "alvaro.catucci@example.com",
+      walker: true,
+      province: "Mendoza",
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+    },
+    {
+      name: "Ana",
+      lastname: "Gillatti",
+      mail: "ana.gillatti@example.com",
+      walker: true,
+      province: "Salta",
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+    },
+
+    {
+      name: "Carlos",
+      lastname: "Bonnardel",
+      mail: "carlos.bonnardel@example.com",
+      walker: true,
+      province: "Santa Fe",
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+    },
+    {
+      name: "Stefania",
+      lastname: "Schurer",
+      mail: "stefania.schurer@example.com",
+      walker: true,
+      province: "Tucuman",
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+    },
+    {
+      name: "Ernesto",
+      lastname: "Coletto",
+      mail: "ernesto.coletto@example.com",
+      walker: true,
+      province: "Chubut",
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+    },
+    {
+      name: "Antonia",
+      lastname: "Ugarte",
+      mail: "antonia.ugarte@example.com",
+      walker: true,
+      province: "Tucuman",
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+    },
+    {
+      name: "Angelica",
+      lastname: "Gimenez",
+      mail: "angelica.gimenez@example.com",
+      walker: true,
+      province: "Misiones",
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+    },
+    {
+      name: "Lucía",
+      lastname: "Martínez",
+      mail: "lucia.martinez@example.com",
+      walker: true,
+      province: "Córdoba",
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+    },
+    {
+      name: "Federico",
+      lastname: "Gómez",
+      mail: "federico.gomez@example.com",
+      walker: true,
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+      province: "Buenos Aires",
+    },
+    {
+      name: "Laura",
+      lastname: "López",
+      mail: "laura.lopez@example.com",
+      walker: true,
+      province: "Mendoza",
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+    },
+    {
+      name: "Joaquín",
+      lastname: "García",
+      mail: "joaquin.garcia@example.com",
+      walker: true,
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+      province: "Buenos Aires",
+    },
+    {
+      name: "Mariana",
+      lastname: "Gutiérrez",
+      mail: "mariana.gutierrez@example.com",
+      walker: true,
+      province: "Córdoba",
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+    },
+    {
+      name: "Ramiro",
+      lastname: "Ramírez",
+      mail: "ramiro.ramirez@example.com",
+      walker: true,
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+      province: "Buenos Aires",
+    },
+    {
+      name: "Camila",
+      lastname: "Castro",
+      mail: "camila.castro@example.com",
+      walker: true,
+      province: "Mendoza",
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+    },
+    {
+      name: "Facundo",
+      lastname: "Fernández",
+      mail: "facundo.fernandez@example.com",
+      walker: true,
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+      province: "Buenos Aires",
+    },
+    {
+      name: "María",
+      lastname: "Sánchez",
+      mail: "maria.sanchez@example.com",
+      walker: true,
+      province: "Mendoza",
+      price_hour: Math.floor(Math.random() * (250 - 50 + 1)) + 50,
+    },
+  ];
+
+  const guarderias = [
+    {
+      name: "Paraiso",
+      mail: "paraiso@example.com",
+      daycare: true,
+      province: "Buenos Aires",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "Altar de Perros",
+      mail: "altardeperros@example.com",
+      daycare: true,
+      province: "Cordoba",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "Fondo de Bikini",
+      mail: "fondodebikini@example.com",
+      daycare: true,
+      province: "Mendoza",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "Mar Profundo",
+      mail: "marprofundo@example.com",
+      daycare: true,
+      province: "Mendoza",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "Montana Rusa",
+      mail: "montanarusa@example.com",
+      daycare: true,
+      province: "Santa Fe",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "Espacio Abierto",
+      mail: "espacioabierto@example.com",
+      daycare: true,
+      province: "Buenos Aires",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "Ventana al Jardin",
+      mail: "ventanaaljardin@example.com",
+      daycare: true,
+      province: "Chubut",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "Parque de Juegos",
+      mail: "parquedejuegos@example.com",
+      daycare: true,
+      province: "Tucuman",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "La Casita",
+      mail: "lacasita@example.com",
+      daycare: true,
+      province: "Cordoba",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "Pequeños Exploradores",
+      mail: "pequenosexploradores@example.com",
+      daycare: true,
+      province: "Santa Fe",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "Mi Jardincito",
+      mail: "mijardincito@example.com",
+      daycare: true,
+      province: "Tucuman",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "El Arco Iris",
+      mail: "elarcoiris@example.com",
+      daycare: true,
+      province: "Mendoza",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "Los Patitos",
+      mail: "lospatitos@example.com",
+      daycare: true,
+      province: "Neuquen",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "La Cigüeña",
+      mail: "laciguena@example.com",
+      daycare: true,
+      province: "Chaco",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+
+    {
+      name: "Las Abejitas",
+      mail: "lasabejitas@example.com",
+      daycare: true,
+      province: "Entre Ríos",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "Los Changuitos",
+      mail: "loschanguitos@example.com",
+      daycare: true,
+      province: "Misiones",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "El Hormiguero",
+      mail: "elhormiguero@example.com",
+      daycare: true,
+      province: "San Juan",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "El Árbol de la Vida",
+      mail: "elarboldelavida@example.com",
+      daycare: true,
+      province: "San Luis",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "El Refugio",
+      mail: "refugio@example.com",
+      daycare: true,
+      province: "Santa Fe",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "Colitas Contentas",
+      mail: "colitas@example.com",
+      daycare: true,
+      province: "Chaco",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+
+    {
+      name: "Gatitos del Sol",
+      mail: "gatitos@example.com",
+      daycare: true,
+      province: "Tucuman",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "El Bosque de los Lobos",
+      mail: "lobos@example.com",
+      daycare: true,
+      province: "Neuquen",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "Las Huellitas",
+      mail: "huellitas@example.com",
+      daycare: true,
+      province: "Entre Rios",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "El Nido de las Águilas",
+      mail: "aguilas@example.com",
+      daycare: true,
+      province: "Jujuy",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+
+    {
+      name: "La Madriguera",
+      mail: "madriguera@example.com",
+      daycare: true,
+      province: "Salta",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+
+    {
+      name: "Patas de Amor",
+      mail: "patasamor@example.com",
+      daycare: true,
+      province: "San Juan",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "El Jardín de los Ositos",
+      mail: "ositos@example.com",
+      daycare: true,
+      province: "La Pampa",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "La Guarida del Tigre",
+      mail: "tigre@example.com",
+      daycare: true,
+      province: "Formosa",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
   ];
 
   setTimeout(async () => {
@@ -222,8 +605,9 @@ const generator = () => {
       }
     }
     await User.bulkCreate(personas);
-
     await Store.bulkCreate(storesToCreate);
+    await Daycare.bulkCreate(guarderias);
+    await Walker.bulkCreate(paseadores);
 
     const brandObj = [];
     for (const i in brands) {
@@ -308,11 +692,20 @@ const generator = () => {
         dispatchtime: randomQualification[dis][Math.ceil(Math.random() * 10)],
         support: randomQualification[sup][Math.ceil(Math.random() * 10)],
       });
+      reviewsToCreate.push({
+        UserId: Math.ceil(i / 2),
+        ProductId: i,
+        comment:
+          "Hola, Hola  Hola, Hola  Hola, Hola  Hola, Hola  Hola, Hola  Hola, Hola  Hola, Hola  ",
+        qualification: randomQualification[qual][Math.ceil(Math.random() * 10)],
+        dispatchtime: randomQualification[dis][Math.ceil(Math.random() * 10)],
+        support: randomQualification[sup][Math.ceil(Math.random() * 10)],
+      });
     }
     await Review.bulkCreate(reviewsToCreate);
     // ------------------------- Reviews ----------------------------- //
     console.log("Datos generados exitosamente");
-  }, 5000);
+  }, TIME_GENERATOR || 10);
 };
 
 module.exports = { generator };

@@ -1,11 +1,9 @@
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import useWidthIsLessThan from "../../../../../../hooks/useWidthIsLessThan";
 import { setFilters } from "../../../../../../redux/features/products/productsActions";
 import filterTranslator from "../adapters/filterTranslator";
 
-function List({ filter, options }) {
-  const mobile = useWidthIsLessThan(768); //recibe el breakpoint  retorna true si el innerWidth es menor, sino retorna false
+function List({ filter, options, mobile }) {
   const [showAll, setShowAll] = useState(false);
   const dispatch = useDispatch();
   const toggleFilter = useRef(null);
@@ -32,8 +30,8 @@ function List({ filter, options }) {
     <div className="flex flex-col">
       <hr className="my-2 h-px border-0 bg-gray-400" />
       <button
-        className={`bg-green-50  text-lg font-bold uppercase tracking-wider text-black  ${
-          mobile ? "hover:text-yellow-600" : "cursor-default"
+        className={`bg-ultravioletLight text-lg font-bold uppercase tracking-wider text-black  ${
+          !mobile && "cursor-default"
         }`}
         type="button"
         id="filters-menu-button"
@@ -57,7 +55,7 @@ function List({ filter, options }) {
         <ul
           ref={toggleFilter}
           className={`hidden ${
-            options.length > 5 && (!showAll ? "md:h-[90px] lg:h-full" : "h-fit")
+            options.length > 5 && (!showAll ? " md:h-[90px] lg:h-28" : "h-fit")
           } overflow-hidden md:block `}
         >
           {options?.map((opc, i) => (

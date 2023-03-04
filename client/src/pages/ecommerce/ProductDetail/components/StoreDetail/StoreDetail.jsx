@@ -5,9 +5,7 @@ import { useGetStoreInfo } from "./hooks/useGetStoreInfo";
 
 function StoreDetail() {
   const [isLoaded, store, averages, error] = useGetStoreInfo();
-  // console.log(averages);
 
-  // console.log(averages); //
   // averages ===>> { dispatchtimeAVG: "4.75000000", qualificationAVG: "3.6000000", supportAVG: "3.4000000" }
   const [qualificationAVG, dispatchtimeAVG, supportAVG] = [
     parseFloat(averages?.[0].qualificationAVG).toFixed(2),

@@ -27,18 +27,33 @@ const createDaycare = async (userId) => {
   }
 };
 
-const getAllDaycares = async () => {
-  const daycares = await Daycare.findAll();
-  return daycares;
+const getAllDaycares = async (page, pq) => {
+  const offset = (page - 1) * pq;
+
+  const daycareList = await Daycare.findAll({
+    limit: pq,
+    offset: offset,
+  });
+
+  return daycareList;
 };
 
-const filterDaycare = async () => {
-  if (Object.keys(query).length) {
-    const daycares = await Store.findAll({
-      where: query,
-    });
-    return daycares;
+const filterDaycare = async (query, page, pq) => {
+  let whereClause = {};
+  if (query.province) {
+    whereClause.province = query.province;
+    if (query.locality) {
+      whereClause.locality = query.locality;
+    }
   }
+  const offset = (page - 1) * pq;
+  const daycareList = await Daycare.findAll({
+    where: whereClause,
+    limit: pq,
+    offset: offset,
+  });
+
+  return daycareList;
 };
 
 const getDaycareByID = async (id) => {

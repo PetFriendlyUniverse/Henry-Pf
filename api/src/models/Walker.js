@@ -72,6 +72,9 @@ module.exports = (sequelize) => {
       qualification: {
         type: DataTypes.FLOAT,
       },
+      price_hour: {
+        type: DataTypes.INTEGER,
+      },
       enable: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,

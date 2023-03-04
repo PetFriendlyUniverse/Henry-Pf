@@ -1,8 +1,9 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import html2canvas from "html2canvas";
 import axios from "axios";
 import payment from "../../../assets/imagenes/payment.svg";
+import EnterButton from "../../../components/Button/EnterButton";
 
 function Success() {
   const location = useLocation();
@@ -11,21 +12,14 @@ function Success() {
   const paymentId = queryParams.get("payment_id");
   const merchantOrder = queryParams.get("merchant_order_id");
   const status = queryParams.get("status");
-  const [dataState, setDataState] = useState({})
+  const [dataState, setDataState] = useState({});
+  const navigate = useNavigate();
 
   const getToken = async () => {
-    const { data } = await axios.get("/token");
-    return data;
-  };
 
-  const getInvoicesInfo = async (token, merchantOrder) => {
-    const headers = {'Authorization': `Bearer ${token}`}
-    const { data } = await axios.get(
-      `https://api.mercadopago.com/merchant_orders/${merchantOrder}`,
-      {headers}
-    );
-   setDataState(data);
-    console.log(dataState)
+    const { data } = await axios.get(`/token?merchantOrder=${merchantOrder}`);
+    setDataState(data);
+
     const requestData = {
       userId: userId,
       /// reemplazar la variable objeto por data
@@ -40,9 +34,9 @@ function Success() {
       merchantOrder: merchantOrder,
       status: status,
     };
-
     return requestData;
   };
+
   //  ----------------------------
   const screenshotInvoice = (id) => {
     const invoice = document.getElementById("invoice");
@@ -56,11 +50,11 @@ function Success() {
   };
   useEffect(() => {
     async function getPaymentData() {
-      const mpToken = await getToken();
-      const invoiceData = await getInvoicesInfo(mpToken, merchantOrder);
+      const invoiceData = await getToken();
       await axios.post("/invoices/create", invoiceData);
     }
     getPaymentData();
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -89,7 +83,8 @@ function Success() {
             <h5 className="text-lg text-white">Productos:</h5>
             <ul
               className={`h-36 ${
-                dataState?.items?.length > 3 && "overflow-scroll overflow-x-hidden"
+                dataState?.items?.length > 3 &&
+                "overflow-scroll overflow-x-hidden"
               }`}
             >
               {dataState?.items?.map((item, i) => (
@@ -117,12 +112,12 @@ function Success() {
         </div>
       </div>
       {/* div boton */}
-      <div className=" flex w-full justify-center   pt-8">
+      <div className=" m-4 flex w-full justify-center  pt-8">
         <button
           className=" flex items-center gap-2 rounded-lg bg-cornflowerblue px-4 py-1 uppercase text-white shadow-lg shadow-[rgba(0,0,0,0.6)] transition-all duration-300 focus:translate-y-1"
           onClick={() => screenshotInvoice(objeto.id)}
         >
-          guardar factura
+          Guardar factura
           <svg
             fill="none"
             stroke="currentColor"
@@ -141,6 +136,14 @@ function Success() {
           </svg>
         </button>
       </div>
+      <button
+        className="mr-2 mb-2 rounded-full border border-slate-200 bg-russianviolet py-2.5 px-5 text-sm font-medium text-cornflowerblue transition delay-100 duration-700 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-gray-500 hover:text-gray-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200"
+        onClick={() => {
+          navigate("/shop");
+        }}
+      >
+        Volver
+      </button>
     </div>
   );
 }

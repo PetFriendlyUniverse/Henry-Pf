@@ -22,7 +22,7 @@ function dropdownHelp() {
             href="#"
             className="font-medium text-green-500 underline hover:no-underline "
           >
-            Whatsapp
+            WhatsApp
           </a>
         </p>
 

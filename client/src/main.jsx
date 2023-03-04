@@ -9,8 +9,9 @@ import { Provider } from "react-redux";
 
 import axios from "axios";
 
-// axios.defaults.baseURL = "http://localhost:3001";
-axios.defaults.baseURL = "https://petfriendly-backend.onrender.com";
+const { VITE_BASE_URL } = import.meta.env;
+axios.defaults.baseURL =
+  VITE_BASE_URL || "https://petfriendly-backend.onrender.com";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>

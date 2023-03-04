@@ -52,7 +52,24 @@ const getInvoicesIdByUser = async (userId) => {
         },
       ],
     });
-    return invoices;
+    const result = invoices.map((invoice) => {
+      return {
+        invoiceId: invoice.id,
+        invoiceDate: invoice.createdAt,
+        products: invoice.Products.map((product) => {
+          return {
+            productName: product.name,
+            store: product.StoreId,
+            amount: product.Invoices_Products.amount,
+            unitPrice: product.Invoices_Products.unitPrice,
+            totalValue:
+              product.Invoices_Products.amount *
+              product.Invoices_Products.unitPrice,
+          };
+        }),
+      };
+    });
+    return result;
   } catch (error) {
     return { error: error.message };
   }

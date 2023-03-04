@@ -1,5 +1,5 @@
 import React from "react";
-import QualificationStars from "../QualificationStars/QualificationStars";
+import QualificationStars from "../../../QualificationStars/QualificationStars";
 
 function ReviewsGraph({ data }) {
   const { qualificationAVG, dispatchtimeAVG, supportAVG } = data;

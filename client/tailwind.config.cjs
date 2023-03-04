@@ -32,6 +32,7 @@ module.exports = {
         cornflowerblue: "#6495ed",
         steelblue: "#5380a4",
         ultraviolet: "#645e9d",
+        ultravioletLight: "#645e9d82",
         pastelgreen: "#4dbb47",
       },
       dropShadow: {

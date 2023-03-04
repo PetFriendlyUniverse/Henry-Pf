@@ -216,5 +216,18 @@ label {
 }
 }
 
+/* modal */
+@keyframes modalBGanimation{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: .6;
+  }
+}
+.modalBG{
+  animation-name: modalBGanimation;
+  animation-duration: 300ms;
+}
 
 

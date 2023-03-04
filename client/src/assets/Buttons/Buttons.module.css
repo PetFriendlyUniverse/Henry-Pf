@@ -1,36 +1,5 @@
 
 
-.cta1 {
-    height: 99vh;
-    flex-direction: column;
-    display: flex;
-    padding: 11px 55px;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    font-size: 25px;
-    color: white;
-    background: #645e9d;
-    transition: 1s;
-    box-shadow: 6px 6px 0 black;
-    /* transform: skewX(-15deg); */
-    border: none;
-  }
-
-  .cta2 {
-    height: 99vh;
-    flex-direction: column;
-    display: flex;
-    padding: 11px 33px;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    font-size: 25px;
-    color: white;
-    background: #645e9d;
-    transition: 1s;
-    box-shadow: 6px 6px 0 black;
-    /* transform: skewX(-15deg); */
-    border: none;
-  }
 
   
   .cta1:focus {
@@ -152,3 +121,82 @@
     }
   }
 
+
+  @media (max-width: 415px) {
+    .cta1 {
+      height: 50px;
+      flex-direction: row;
+      align-items: center;
+      display: flex;
+      padding: 11px 33px;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      color: white;
+      background: #645e9d;
+      transition: 1s;
+      box-shadow: 6px 6px 0 black;
+      /* transform: skewX(-15deg); */
+      border: none;
+    }
+  
+    .cta2 {
+      height: 50px;
+      flex-direction: row;
+      align-items: center;
+      display: flex;
+      padding: 11px 33px;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      color: white;
+      background: #645e9d;
+      transition: 1s;
+      box-shadow: 6px 6px 0 black;
+      /* transform: skewX(-15deg); */
+      border: none;
+    }
+    .arrows{
+      height: 12px;
+    }
+  }
+  
+  @media (min-width: 416px) {
+    .cta1 {
+      height: 99vh;
+      flex-direction: column;
+      display: flex;
+      padding: 11px 33px;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 25px;
+      color: white;
+      background: #645e9d;
+      transition: 1s;
+      box-shadow: 6px 6px 0 black;
+      /* transform: skewX(-15deg); */
+      border: none;
+    }
+  
+  
+    .cta2 {
+      height: 99vh;
+      flex-direction: column;
+      display: flex;
+      padding: 11px 33px;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 25px;
+      color: white;
+      background: #645e9d;
+      transition: 1s;
+      box-shadow: 6px 6px 0 black;
+      /* transform: skewX(-15deg); */
+      border: none;
+    }
+
+    .arrows{
+      width: 50px;
+      height: 50px;
+    }
+  }
