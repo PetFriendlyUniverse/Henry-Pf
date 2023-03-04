@@ -23,6 +23,7 @@ function Landing() {
       <div className=" z-20 mt-10 flex h-14 w-full justify-center gap-4 sm:mt-0 sm:justify-start lg:h-full  lg:w-96 ">
         <Buttons />
       </div>
+
       <div className="flex h-full w-full flex-col justify-start sm:w-full">
         <div className="flex flex-col items-center justify-center p-4 text-center sm:mt-10 ">
           <img src={logo} alt="" className="mb-2 w-1/5 pb-2 sm:w-2/12" />
@@ -58,6 +59,7 @@ function Landing() {
                 RESPONSABLES
               </span>{" "}
               Esperamos disfruten su estadia !
+
             </p>
           </article>
           <div className="mt-4 mb-0 flex w-full flex-wrap justify-center gap-6 self-center rounded-xl bg-violet-200 p-4 sm:mt-8 sm:w-10/12">

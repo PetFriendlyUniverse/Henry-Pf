@@ -68,7 +68,8 @@ router.get(
     const { id } = req.user.user;
 
     res.redirect(
-      `https://petfriendlyuniverse.vercel.app/shop?t=${token}&i=${id}`
+      // `https://petfriendlyuniverse.vercel.app/shop?t=${token}&i=${id}`
+      `${process.env.ORIGIN}/shop?t=${token}&i=${id}`
     );
   }
 );
