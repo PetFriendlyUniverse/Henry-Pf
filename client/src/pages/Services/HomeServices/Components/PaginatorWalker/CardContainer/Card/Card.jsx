@@ -10,7 +10,7 @@ function Card({ name, img, price, id }) {
   const [value, setValue] = useState(1);
 
   return (
-    <div className="flex h-80  w-56 min-w-fit max-w-xs flex-col items-center justify-between overflow-hidden rounded-lg  border text-center  sm:max-w-sm ">
+    <div className="flex h-80  w-56 flex-col items-center justify-between overflow-hidden rounded-lg  border text-center  ">
       <div className=" w-full bg-[rgba(0,0,0,0.05)]">
         <Link
           to={`/services/detail/${id}`}

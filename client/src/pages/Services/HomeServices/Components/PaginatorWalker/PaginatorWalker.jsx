@@ -4,29 +4,31 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Sort from "../../../../../components/Paginator/components/Sort/Sort";
+import { getAllWalkersApi } from "../../../../../redux/features/services/servicesActions";
+import { setCurrentPage } from "../../../../../redux/features/products/productsSlice";
 
 function PaginatorWalker() {
-  let { totalPages, productsPerPage, currentPage, setFilters } = useSelector(
-    (state) => state.Products
+  let { totalPages, walkersPerPage, currentPage } = useSelector(
+    (state) => state.Services
   );
 
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getProductsApi(productsPerPage, currentPage, setFilters));
-  // }, []);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllWalkersApi(currentPage, walkersPerPage));
+  }, []);
 
-  // const changePage = ({ selected }) => {
-  //   dispatch(setCurrentPage(selected + 1));
-  // };
-  // lg:w-4/5 lg:min-w-[800px]
+  const changePage = ({ selected }) => {
+    dispatch(setCurrentPage(selected + 1));
+  };
+
   return (
     <div className=" mx-auto flex h-full flex-col items-center gap-4 lg:min-h-screen lg:w-4/5 lg:min-w-[800px] xl:mx-0 xl:min-h-screen 2xl:w-full  ">
       <h2>Paseadores</h2>
-      <div className="relative  flex w-9/12  items-center justify-center border-2 border-black align-middle sm:w-96  2xl:w-2/5 ">
+      <div className="relative  flex w-9/12  items-center justify-center  align-middle sm:w-96  2xl:w-2/5 ">
         <Paginate
           pageCount={totalPages}
           marginPagesDisplayed={0}
-          // onPageChange={changePage}
+          onPageChange={changePage}
           forcePage={currentPage - 1}
           containerClassName={
             "flex text-lg h-10 font-mono w-full justify-between  items-center  rounded-xl border-2 border-russianviolet text-russianviolet font-bold "
@@ -95,11 +97,11 @@ function PaginatorWalker() {
       </div>
 
       <CardContainer />
-      <div className="relative mt-4 flex w-9/12  items-center justify-center gap-5 border-2 border-black sm:w-96  2xl:w-2/5 ">
+      <div className="relative mt-4 flex w-9/12  items-center justify-center gap-5  sm:w-96  2xl:w-2/5 ">
         <Paginate
           pageCount={totalPages}
           marginPagesDisplayed={0}
-          // onPageChange={changePage}
+          onPageChange={changePage}
           forcePage={currentPage - 1}
           containerClassName={
             "flex text-lg h-10 font-mono w-full justify-between  items-center  rounded-xl border-2 border-russianviolet text-russianviolet font-bold "
