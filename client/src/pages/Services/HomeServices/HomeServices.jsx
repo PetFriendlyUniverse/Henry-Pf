@@ -9,7 +9,7 @@ function HomeServices() {
       <div className="w-full border-2 border-black text-center">
         filtros globales "ubicacion" va con unos tag select
       </div>
-      <div className="gap-10 border-2 border-black  lg:flex lg:h-full lg:w-full lg:gap-4 ">
+      <div className="gap-10 border-2 lg:flex lg:h-full lg:w-full lg:gap-4 ">
         <div className="flex w-1/2 flex-wrap justify-center border-2 border-black">
           <PaginatorDayCare />
         </div>
