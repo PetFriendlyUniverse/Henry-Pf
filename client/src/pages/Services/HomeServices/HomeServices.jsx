@@ -1,6 +1,6 @@
 import Recomendados from "../../../components/Recomendados/Recomendados";
 import Filters from "./Components/FiltersServices/FiltersServices";
-import Paginator from "./Components/PaginatorServices/PaginatorServices";
+//import Paginator from "./Components/PaginatorServices/PaginatorServices";
 
 function HomeServices() {
   return (
@@ -11,7 +11,6 @@ function HomeServices() {
           <Filters />
         </div>
 
-        <Paginator />
       </div>
     </div>
   );
