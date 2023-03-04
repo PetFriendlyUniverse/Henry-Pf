@@ -17,6 +17,7 @@ const provincias = require("./provinciasRouter");
 const localidades = require("./localidadesRoutes");
 const tokenRouter = require("./tokenRoutes");
 require("../helpers/google.js");
+const { TIME_GENERATOR } = process.env;
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -25,12 +26,11 @@ const router = Router();
 
 const { generator } = require("../randomGenerator");
 
-// generator();
+TIME_GENERATOR && generator();
 router.use("/randomgenerator", (req, res) => {
   generator();
   res.send("Ejecucion de randomGenerator exitosa");
 });
-
 
 router.use("/localidades", localidades);
 router.use("/provincias", provincias);
@@ -67,9 +67,10 @@ router.get(
     const { token } = req.user;
     const { id } = req.user.user;
 
-    res.redirect(`https://petfriendlyuniverse.vercel.app/shop?t=${token}&i=${id}`);
-
-
+    res.redirect(
+      // `https://petfriendlyuniverse.vercel.app/shop?t=${token}&i=${id}`
+      `${process.env.ORIGIN}/shop?t=${token}&i=${id}`
+    );
   }
 );
 

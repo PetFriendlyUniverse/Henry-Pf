@@ -22,13 +22,15 @@ const postDaycareHandler = async (req, res) => {
 const getDaycaresHandler = async (req, res) => {
   const query = req.query;
   try {
+    let daycares;
     if (Object.keys(query).length) {
-      const daycares = await filterDaycare(query);
-      res.status(200).json(daycares);
+      const { page, pq, ...filterParams } = query;
+      daycares = await filterDaycare(filterParams, page, pq);
     } else {
-      const allDaycares = await getAllDaycares();
-      res.status(200).json(allDaycares);
+      const { page, pq } = query;
+      daycares = await getAllDaycares(page, pq);
     }
+    res.status(200).json(daycares);
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
@@ -58,7 +60,7 @@ const putDaycareHandler = async (req, res) => {
 const deletedDaycareHandler = async (req, res) => {
   const { id } = req.params;
   try {
-    const daycareDeleted = await deleteDaycare(id);
+    const daycareDeleted = await deletedDaycare(id);
     res.status(200).json(daycareDeleted);
   } catch (error) {
     res.status(404).json({ error: error.message });

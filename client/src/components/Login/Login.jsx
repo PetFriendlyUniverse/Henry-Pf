@@ -6,6 +6,7 @@ import { ValidationProfile } from "../../pages/ecommerce/Forms/Validations/Profi
 import LinkButton from "../Button/LinkButton";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import close from "../../assets/general/close.svg";
 
 function Login() {
   const navigate = useNavigate();
@@ -63,6 +64,10 @@ function Login() {
           timer: 1500,
         });
         navigate("/shop");
+        setTimeout(() => {
+          localStorage.removeItem("token");
+          localStorage.removeItem("token");
+        }, 3600000);
       });
     } catch (error) {
       console.log("error");
@@ -76,7 +81,11 @@ function Login() {
   };
 
   const handleClickGoogle = () => {
-    window.location.href = "https://petfriendly-backend.onrender.com/auth";
+    // window.location.href = "https://petfriendly-backend.onrender.com/auth";
+    window.location.href = "http://localhost:3001/auth";
+    setTimeout(() => {
+      console.log("hola");
+    }, 20000);
   };
 
   const handleSubmitRegister = async (e) => {
@@ -145,54 +154,81 @@ function Login() {
   };
   const submitConfirmMail = async (e) => {
     e.preventDefault();
-    Swal.fire({
-      title: "Verificando mail",
-      allowEscapeKey: false,
-      allowOutsideClick: false,
-      didOpen: () => {
-        Swal.showLoading();
-      },
-    });
-    try {
-      await axios.post("/user/reset-password", { mail: mail });
-      await Swal.fire(
-        "Le hemos enviado un correo electrónico de confirmación, por favor verifique su e-mail para continuar"
-      );
-    } catch (error) {
+    if (mail) {
       Swal.fire({
-        icon: "error",
-        title: error.response.data.error,
+        title: "Verificando mail",
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+      try {
+        await axios.post("/user/reset-password", { mail: mail });
+        await Swal.fire(
+          "Le hemos enviado un correo electrónico de confirmación, por favor verifique su e-mail para continuar"
+        );
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: error.response.data.error,
+          showConfirmButton: true,
+          closeOnClickOutside: true,
+          closeOnEsc: true,
+        });
+      }
+      setMail("");
+      setShowModal(false);
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Debe ingresar un correo",
         showConfirmButton: true,
         closeOnClickOutside: true,
         closeOnEsc: true,
       });
     }
-    setMail("");
-    setShowModal(false);
   };
 
   // ----------------------- Modal -----------------------//
   return (
     <div className="relative w-full ">
       <div
-        className={`fixed top-0 z-50   ${
+        className={`fixed top-0 z-50 ${
           showModal ? "flex" : "hidden"
         } h-screen w-screen place-content-center  `}
       >
         <div
-          className={`relative opacity-0 ${
-            showModal ? "opacity-60" : "hidden"
-          } relative h-screen w-screen bg-black transition duration-1000 ease-in-out`}
+          onClick={handleShowModal}
+          className={`fixed opacity-60 transition duration-1000 ease-in-out ${
+            showModal ? s.modalBG : "hidden"
+          } relative h-screen w-screen bg-black `}
         ></div>
-        <form onSubmit={submitConfirmMail} className=" ">
-          <span onClick={handleShowModal}>X</span>
+        <form
+          onSubmit={submitConfirmMail}
+          className="absolute top-[45%] flex aspect-[2/1] w-[450px] max-w-[90%] translate-y-[-50%] flex-col items-center justify-center rounded-lg bg-russianviolet"
+        >
+          <h2 className="mb-8 text-xl text-white">RECUPERAR CONTRASEÑA</h2>
+          <span
+            onClick={handleShowModal}
+            className="absolute top-2 right-2 self-end"
+          >
+            <img
+              src={close}
+              alt="Cerrar Modal"
+              className="w-6 cursor-pointer transition-all duration-100 ease-in hover:scale-105"
+            />
+          </span>
           <input
+            className="w-4/5 p-1"
             onChange={handleChageMail}
             type="email"
             placeholder="Ingresar e-mail"
             value={mail}
           />
-          <button>Enviar</button>
+          <button className="mt-4 w-4/5 rounded-sm bg-ultraviolet p-1 text-white hover:scale-y-105 active:scale-100">
+            Enviar
+          </button>
         </form>
       </div>
       <div className="flex h-screen items-center justify-center pt-20">
@@ -228,7 +264,7 @@ function Login() {
                 Olvidaste tu contraseña?
               </button>
               <button type="button" onClick={handleClickGoogle}>
-                Seguir con google
+                Seguir con Google
               </button>
               <div className={s.loginGoogle}>
                 <div className="relative w-full"></div>
@@ -239,7 +275,7 @@ function Login() {
           <div className={s.register}>
             <form className={s.form} onSubmit={handleSubmitRegister}>
               <label htmlFor={s["chk"]} aria-hidden="true">
-                Registrarse
+                REGISTRARSE
               </label>
               <input
                 onChange={handleChange}
@@ -331,7 +367,7 @@ function Login() {
               )}
               <LinkButton component={"Registrate"} />
               <button type="button" onClick={handleClickGoogle}>
-                Continuar con google
+                Continuar con Google
               </button>
             </form>
           </div>

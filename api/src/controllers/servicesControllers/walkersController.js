@@ -27,8 +27,14 @@ const createWalkers = async (userId) => {
   }
 };
 
-const getAllWalkers = async () => {
-  const walkersList = await Walker.findAll({});
+const getAllWalkers = async (page, pq) => {
+  const offset = (page - 1) * pq;
+
+  const walkersList = await Walker.findAll({
+    limit: pq,
+    offset: offset,
+  });
+
   return walkersList;
 };
 
@@ -62,13 +68,22 @@ const approvedWalkersById = async (id) => {
   return [walker];
 };
 
-const filterWalkers = async (query) => {
-  if (Object.keys(query).length) {
-    const walkers = await Walker.findAll({
-      where: query,
-    });
-    return walkers;
+const filterWalkers = async (query, page, pq) => {
+  let whereClause = {};
+  if (query.province) {
+    whereClause.province = query.province;
+    if (query.locality) {
+      whereClause.locality = query.locality;
+    }
   }
+  const offset = (page - 1) * pq;
+  const walkersList = await Walker.findAll({
+    where: whereClause,
+    limit: pq,
+    offset: offset,
+  });
+
+  return walkersList;
 };
 
 module.exports = {

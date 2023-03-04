@@ -74,7 +74,7 @@ function Card({ name, img, weight, price, stock, id }) {
             />
           </div>
           <div className="w-1/2 ">
-            <AddShopButton component={"Comprar"} onClick={handleAddShopCart} />
+            <AddShopButton component={"Agregar"} onClick={handleAddShopCart} />
           </div>
         </div>
       </div>
