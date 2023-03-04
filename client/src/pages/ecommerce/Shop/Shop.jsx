@@ -3,17 +3,38 @@ import Filters from "./components/Filters/Filters";
 import Recomendados from "../../../components/Recomendados/Recomendados";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function HomeShop({ brands }) {
   const navigate = useNavigate();
   const serarchParams = new URLSearchParams(window.location.search);
   const id = serarchParams.get("i");
   const token = serarchParams.get("t");
+
   useEffect(() => {
     if (id && token) {
       localStorage.setItem("token", token);
       localStorage.setItem("id", id);
       navigate("/shop");
+    }
+    if (token) {
+      setTimeout(() => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("id");
+        Swal.fire({
+          title: "Su sesión ha expirado",
+          text: "Por favor inicie sesión de nuevo",
+          icon: "warning",
+          showCancelButton: false,
+          confirmButtonColor: "#3085d6",
+          confirmButtonText: "OK",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate("/login");
+          }
+        });
+        console.log("holaaaaa");
+      }, 10000);
     }
     window.scrollTo(0, 0);
   }, []);
