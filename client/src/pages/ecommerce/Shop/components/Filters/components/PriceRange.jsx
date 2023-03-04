@@ -7,7 +7,9 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
   const [active, setActive] = useState(false);
 
   const [show, setShow] = useState(mobile);
-  const toggleShow = () => {};
+  const toggleShow = () => {
+    mobile && setShow((prev) => !prev);
+  };
 
   const handleMinValue = ({ target }) => {
     if (parseInt(target.value) < parseInt(maxVal))
@@ -46,9 +48,8 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
       </button>
 
       <ul
-        ref={toggleShow}
-        className={`hidden ${
-          !show ? "md:h-[90px] lg:h-28" : "h-fit"
+        className={` ${
+          !show ? "hidden" : "h-fit"
         } flex flex-col overflow-hidden text-center md:block`}
       >
         {!active ? (
