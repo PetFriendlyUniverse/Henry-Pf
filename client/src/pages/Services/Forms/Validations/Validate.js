@@ -131,5 +131,29 @@ export const Validate = (property, value) => {
     }
   }
 
+  if (property === "price_hour" && value <= 0) {
+    error.price_hour = "Ingrese por favor un precio por hora";
+  } else if (property === "price_hour") {
+    if (!numberRegex.test(value)) {
+      error.price_hour = "Por favor ingrese el precio sin signos ni letras";
+    } else if (value > 20000) {
+      error.price_hour = "Valor demasiado alto";
+    } else {
+      error.price_hour = "";
+    }
+  }
+
+  if (property === "price_day" && value <= 0) {
+    error.price_day = "Ingrese por favor un precio por dia";
+  } else if (property === "price_day") {
+    if (!numberRegex.test(value)) {
+      error.price_day = "Por favor ingrese el precio sin signos ni letras";
+    } else if (value > 70000) {
+      error.price_day = "Valor demasiado alto";
+    } else {
+      error.price_day = "";
+    }
+  }
+
   return error;
 };

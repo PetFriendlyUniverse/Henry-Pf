@@ -43,11 +43,11 @@ function Landing() {
               <span className="rounded-xl bg-cornflowerblue px-1 text-white">
                 SHOP
               </span>{" "}
-              tiene un final solidario, parte de la recaudacion sera donada a
-              una protectora designada en la seccion de adopcion responsable
+              tiene un final solidario, parte de la recaudación será donada a
+              una protectora designada en la sección de adopción responsable
               para poder colaborar a una mejora cultural en el cuidado de
-              nuestros animalitos. En nuestra sección de servicios podran
-              encontrar guarderias y paseadores de mascotas. Tambien tenemos un
+              nuestros animalitos. En nuestra sección de servicios podrán
+              encontrar guarderias y paseadores de mascotas. También tenemos un
               apartado especial{" "}
               <span className="rounded-xl bg-cornflowerblue px-1 text-white">
                 ADOPCIONES
@@ -59,10 +59,9 @@ function Landing() {
                 RESPONSABLES
               </span>{" "}
               Esperamos disfruten su estadia !
-
             </p>
           </article>
-          <div className="mt-4 mb-0 flex w-full flex-wrap justify-center gap-6 self-center rounded-xl bg-violet-200 p-4 sm:mt-8 sm:w-10/12">
+          {/* <div className="mt-4 mb-0 flex w-full flex-wrap justify-center gap-6 self-center rounded-xl bg-violet-200 p-4 sm:mt-8 sm:w-10/12">
             <img
               src={htmlLogo}
               alt="Html"
@@ -123,7 +122,7 @@ function Landing() {
               title="React Native"
               className="w-10 sm:w-12 md:w-14"
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
