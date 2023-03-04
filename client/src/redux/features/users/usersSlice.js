@@ -7,7 +7,7 @@ const initialState = {
   userStoreId: {},
   userWalkerId: {},
   userDaycareId: {},
-  userInvoicesId: {}, // {  id key factura  :  [{}}] }
+  userInvoicesId: [], // {  id key factura  :  [{}}] }
 };
 
 export const User = createSlice({
