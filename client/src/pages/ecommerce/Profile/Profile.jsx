@@ -96,7 +96,7 @@ function Profile() {
               <li
                 className={`mr-2 rounded-lg border-b-2 bg-slate-50 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black active:shadow-inner active:shadow-black ${
                   showInfo == "profile" &&
-                  "  bg-ultraviolet text-slate-300 hover:text-slate-300"
+                  "  bg-ultraviolet text-slate-300 hover:text-black"
                 } hover:text-gray-500`}
               >
                 <button
