@@ -36,12 +36,11 @@ module.exports = (sequelize) => {
           max: 5,
         },
       },
+    },
+    {
+      timestamps: true,
+      createdAt: true,
+      updatedAt: false,
     }
-
-    // {
-    //   timestamps: true,
-    //   createdAt: true,
-    //   updatedAt: false,
-    // }
   );
 };

@@ -692,6 +692,15 @@ const generator = () => {
         dispatchtime: randomQualification[dis][Math.ceil(Math.random() * 10)],
         support: randomQualification[sup][Math.ceil(Math.random() * 10)],
       });
+      reviewsToCreate.push({
+        UserId: Math.ceil(i / 2),
+        ProductId: i,
+        comment:
+          "Hola, Hola  Hola, Hola  Hola, Hola  Hola, Hola  Hola, Hola  Hola, Hola  Hola, Hola  ",
+        qualification: randomQualification[qual][Math.ceil(Math.random() * 10)],
+        dispatchtime: randomQualification[dis][Math.ceil(Math.random() * 10)],
+        support: randomQualification[sup][Math.ceil(Math.random() * 10)],
+      });
     }
     await Review.bulkCreate(reviewsToCreate);
     // ------------------------- Reviews ----------------------------- //
