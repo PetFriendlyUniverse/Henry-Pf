@@ -173,7 +173,7 @@ function Profile() {
           </div>
         </div>
 
-        <div className="flex h-full w-full flex-col flex-wrap rounded-2xl border-4 border-cornflowerblue py-3  ">
+        <div className="flex h-full w-full flex-col  flex-wrap rounded-2xl border-4 border-cornflowerblue py-3   ">
           <div className="border-cornflowerblue p-3 lg:border-b-2">
             <h1 className="flex justify-center pl-2 text-3xl font-semibold">
               {titles[showInfo]}
