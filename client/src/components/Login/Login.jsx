@@ -64,6 +64,10 @@ function Login() {
           timer: 1500,
         });
         navigate("/shop");
+        setTimeout(() => {
+          localStorage.removeItem("token");
+          localStorage.removeItem("token");
+        }, 3600000);
       });
     } catch (error) {
       console.log("error");
@@ -79,6 +83,9 @@ function Login() {
   const handleClickGoogle = () => {
     // window.location.href = "https://petfriendly-backend.onrender.com/auth";
     window.location.href = "http://localhost:3001/auth";
+    setTimeout(() => {
+      console.log("hola");
+    }, 20000);
   };
 
   const handleSubmitRegister = async (e) => {

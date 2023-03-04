@@ -7,10 +7,11 @@ import img3 from "../../../assets/imagenes/toys-01.png";
 import img4 from "../../../assets/imagenes/gatos-juguetes-0.jpg";
 import img5 from "../../../assets/imagenes/cat-tree.jpg";
 import img6 from "../../../assets/imagenes/camaa-gato.jpg";
+import perro3 from "../../../assets/imagenes/ASD-01.png";
 import Recomendados from "../../../components/Recomendados/Recomendados";
 import { useDispatch } from "react-redux";
 import { setFilters } from "../../../redux/features/products/productsSlice";
-import universe from "../../../assets/imagenes/ASD-01.png";
+// import universe from "../../../assets/imagenes/ASD-01.png";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useState, useEffect } from "react";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -178,11 +179,11 @@ function LandingShop() {
   } else {
     return (
       <>
-        <header className="clip-header relative flex w-full flex-col overflow-hidden  bg-cover bg-fixed bg-center bg-no-repeat pt-0 text-black sm:h-[350px] lg:h-[550px] lg:min-h-[400px]  xl:min-h-[400px]">
+        <header className="clip-header relative flex w-full flex-col overflow-hidden bg-gray-700 pt-0 text-black sm:h-[450px]  lg:h-[459px]  xl:h-[680px] ">
           <img
-            src={universe}
+            src={perro3}
             alt=""
-            className="absolute -top-20 h-0 w-0 object-cover contrast-125 sm:top-0 sm:h-full sm:w-full"
+            className=" lg:h- absolute -top-20 h-0 w-0 object-cover contrast-125 sm:top-0 sm:h-full sm:w-full md:max-h-screen xl:min-h-full"
           ></img>
           <div className="absolute inset-0 bg-black bg-opacity-30"></div>
           <div className="z-10 overflow-hidden sm:mx-auto  sm:grid sm:h-0 sm:w-0 sm:grid-cols-3 sm:items-center sm:justify-center sm:gap-1 md:justify-items-center lg:top-1/2 lg:grid-cols-6 lg:gap-4">

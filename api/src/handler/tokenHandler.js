@@ -1,9 +1,10 @@
 const { MP_TOKEN } = process.env;
 const axios = require("axios");
 const getTokenHandler = async (req, res) => {
+  const { merchantOrder } = req.query;
   try {
     const { data } = await axios.get(
-      `https://api.mercadopago.com/merchant_orders/7942700029`,
+      `https://api.mercadopago.com/merchant_orders/${merchantOrder}`,
       {
         headers: {
           Authorization: `Bearer ${MP_TOKEN}`,

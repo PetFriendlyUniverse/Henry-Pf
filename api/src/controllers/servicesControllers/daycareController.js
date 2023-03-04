@@ -27,12 +27,18 @@ const createDaycare = async (userId) => {
   }
 };
 
-const getAllDaycares = async () => {
-  const daycares = await Daycare.findAll();
-  return daycares;
+const getAllDaycares = async (page, pq) => {
+  const offset = (page - 1) * pq;
+
+  const daycareList = await Daycare.findAll({
+    limit: pq,
+    offset: offset,
+  });
+
+  return daycareList;
 };
 
-const filterDaycare = async (query) => {
+const filterDaycare = async (query, page, pq) => {
   let whereClause = {};
   if (query.province) {
     whereClause.province = query.province;
@@ -40,11 +46,14 @@ const filterDaycare = async (query) => {
       whereClause.locality = query.locality;
     }
   }
-  const walkers = await Daycare.findAll({
+  const offset = (page - 1) * pq;
+  const daycareList = await Daycare.findAll({
     where: whereClause,
+    limit: pq,
+    offset: offset,
   });
 
-  return walkers;
+  return daycareList;
 };
 
 const getDaycareByID = async (id) => {
