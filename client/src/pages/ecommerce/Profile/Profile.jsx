@@ -51,7 +51,6 @@ function Profile() {
     contact: "Contacto",
     purchase: "Mis compras",
     location: "Direcciones",
-    ubication: "",
   };
 
   const components = {
@@ -93,11 +92,20 @@ function Profile() {
           <PhotoName img={user?.img} name={user?.name} />
           <div className="mb-4 mt-4   dark:border-gray-700">
             <ul className="-mb-px text-center text-sm font-medium">
-              <li className="mr-2 rounded-lg border-b-2 bg-slate-50 hover:bg-slate-100 hover:text-gray-500">
+              <li
+                className={`mr-2 rounded-lg border-b-2 bg-slate-50 hover:cursor-pointer hover:bg-violet-900 hover:text-slate-300 ${
+                  showInfo == "profile" &&
+                  "bg-ultraviolet  text-slate-300 hover:bg-ultraviolet hover:text-slate-300"
+                } hover:text-gray-500`}
+              >
                 <button
+                  id="Perfil"
                   onClick={handleShowInfo}
                   name="profile"
-                  className="inline-block p-4"
+                  className={`inline-block  p-4 tracking-wider ${
+                    showInfo == "profile" &&
+                    "tracking-wider underline underline-offset-4"
+                  }`}
                   title="aqui puedes ver quien es el propietario de la cuenta"
                 >
                   Perfil
@@ -180,50 +188,50 @@ function Profile() {
               {titles[showInfo]}
             </h1>
           </div>
-          <div className="flex w-full justify-center py-2  ">
+          <div className="flex w-full flex-col items-center justify-center gap-3 py-2  ">
             {components[showInfo]}
 
-            {/* <div className="flex flex-col pl-4 pt-5 sm:pl-12">
+            <div className="flex flex-col items-center sm:flex-row sm:justify-around  md:w-11/12">
               {user.store === false && (
-                <div className="flex py-2">
+                <div className="flex  justify-center py-2">
                   <img src={interrogation} alt="help" className="w-3 sm:w-5" />
                   <LinkButton
                     onClick={handleClickStore}
-                    component={"Habilita tu tienda"}
+                    component={"Crear tienda"}
                     title="Habilita tu tienda antes de poder cargar productos para su venta"
                   />
                 </div>
               )}
               {user.daycare === false && (
-                <div className="flex py-2">
+                <div className="flex  justify-center py-2">
                   <img src={interrogation} alt="help" className="w-3 sm:w-5" />
                   <LinkButton
                     onClick={handleClickDaycare}
-                    component={"Habilita tu guarderia"}
+                    component={"Crear guarderia"}
                   />
                 </div>
               )}
               {user.walker === false && (
-                <div className="flex py-2">
+                <div className="flex  justify-center py-2">
                   <img src={interrogation} alt="help" className="w-3 sm:w-5" />
                   <LinkButton
                     onClick={handleClickWalker}
-                    component={"Habilitate como paseador"}
+                    component={"Crear paseador"}
                   />
                 </div>
               )}
-              <div className="flex py-2">
+              <div className="flex justify-center  gap-2 py-2">
                 <img src={interrogation} alt="help" className="w-5" />
                 <button
                   title="ingresa aqui para editar tu informacion personal"
-                  className="mx-3 w-11 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 hover:bg-slate-300"
+                  className="active:traslate-y-1 w-14 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 shadow-md shadow-black transition-all duration-200 hover:bg-slate-300"
                 >
                   <Link to={`/profile/edit/${user.id}`}>
                     <img src={edit} alt="edit" />
                   </Link>
                 </button>
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

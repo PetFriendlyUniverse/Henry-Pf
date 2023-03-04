@@ -6,6 +6,7 @@ function Purchase() {
 
   const dispatch = useDispatch();
   const userInvoice = useSelector((state) => state.User?.userInvoicesId);
+  console.log(userInvoice);
   useEffect(() => {
     dispatch(getInvoicesById(userId));
   }, []);
