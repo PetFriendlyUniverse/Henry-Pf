@@ -4,7 +4,6 @@ import Card from "./Card/Card";
 
 function CardContainer() {
   const [loading, walkers] = useGetWalkers();
-  console.log(walkers);
 
   if (loading)
     return (

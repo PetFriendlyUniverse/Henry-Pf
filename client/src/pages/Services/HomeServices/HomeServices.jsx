@@ -1,5 +1,5 @@
 import Recomendados from "../../../components/Recomendados/Recomendados";
-import PaginatorWalker from "./Components/PaginatorDayCare copy/PaginatorWalker";
+import PaginatorWalker from "./Components/PaginatorWalker/PaginatorWalker";
 import PaginatorDayCare from "./Components/PaginatorDayCare/PaginatorDayCare";
 
 function HomeServices() {
