@@ -1,0 +1,36 @@
+.inputRange, .inputRange::-webkit-slider-runnable-track, .inputRange[type='range']::-webkit-slider-thumb{
+  -webkit-appearance: none;
+}
+
+.inputRange[type='range'] {
+  align-self: center;
+  display: block;
+  width: 80%;
+}
+
+.inputRange[type=range]::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  background-color:   #6495ed;
+  border: 3px solid #645e9d;
+  border-radius: 50%;
+  margin-top: -6px;
+  cursor:pointer;
+}
+.inputRange[type=range]::-webkit-slider-thumb:hover {
+  background-color:   #6495ed;
+  border: 3px solid #645e9d;
+}
+.inputRange[type=range]::-webkit-slider-thumb:active {
+  background-color:   #645e9d;
+  border: 3px solid #6495ed;
+
+}
+
+.inputRange[type=range]::-webkit-slider-runnable-track {
+  background-color: #645e9d;
+  height: 8px;
+  border-radius: 5px;
+}
+
+

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { priceFormatter } from "../../../../../../adapters/priceFormatter";
+import s from "./rangeStyles.module.css";
 
 function PriceRange({ title, min, max, onSet, mobile = true }) {
   const [minVal, setMinVal] = useState(parseInt(min));
@@ -34,7 +35,7 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
     <div className="flex flex-col">
       <hr className="my-2 h-px border-0 bg-gray-400" />
       <button
-        className={`bg-green-50  text-lg font-bold uppercase tracking-wider text-black  ${
+        className={`bg-ultravioletLight  text-lg font-bold uppercase tracking-wider text-black  ${
           mobile ? "hover:text-yellow-600" : "cursor-default"
         }`}
         type="button"
@@ -65,7 +66,7 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
                 step={10}
                 onChange={handleMinValue}
                 value={minVal}
-                className="relative top-1"
+                className={`relative top-1 appearance-none ${s.inputRange} mb-2 mt-1`}
               />
               <p className="ml-2">{priceFormatter(minVal)}</p>
             </li>
@@ -81,7 +82,7 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
                 step={10}
                 onChange={handleMaxValue}
                 value={maxVal}
-                className="relative top-1"
+                className={`relative top-1 appearance-none ${s.inputRange} mb-2 mt-1`}
               />
               <p className="ml-2">{priceFormatter(maxVal)}</p>
             </li>

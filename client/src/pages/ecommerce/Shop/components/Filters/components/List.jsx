@@ -30,8 +30,8 @@ function List({ filter, options, mobile }) {
     <div className="flex flex-col">
       <hr className="my-2 h-px border-0 bg-gray-400" />
       <button
-        className={`bg-green-50  text-lg font-bold uppercase tracking-wider text-black  ${
-          mobile ? "hover:text-yellow-600" : "cursor-default"
+        className={`bg-ultravioletLight text-lg font-bold uppercase tracking-wider text-black  ${
+          !mobile && "cursor-default"
         }`}
         type="button"
         id="filters-menu-button"
