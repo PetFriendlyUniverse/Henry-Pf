@@ -22,13 +22,15 @@ const postWalkersHandler = async (req, res) => {
 const getWalkersHandler = async (req, res) => {
   const query = req.query;
   try {
+    let walkers;
     if (Object.keys(query).length) {
-      const walkers = await filterWalkers(query);
-      res.status(200).json(walkers);
+      const { page, pq, ...filterParams } = query;
+      walkers = await filterWalkers(filterParams, page, pq);
     } else {
-      const walkers = await getAllWalkers();
-      res.status(200).json(walkers);
+      const { page, pq } = query;
+      walkers = await getAllWalkers(page, pq);
     }
+    res.status(200).json(walkers);
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
