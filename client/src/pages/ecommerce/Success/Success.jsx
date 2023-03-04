@@ -16,8 +16,10 @@ function Success() {
   const navigate = useNavigate();
 
   const getToken = async () => {
+
     const { data } = await axios.get(`/token?merchantOrder=${merchantOrder}`);
     setDataState(data);
+
     const requestData = {
       userId: userId,
       /// reemplazar la variable objeto por data
