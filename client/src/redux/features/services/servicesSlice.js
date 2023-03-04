@@ -1,10 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  allWalkers: [],
-  walker: [],
-  allDaycares: [],
-  daycare: [],
+  totalPages: 1,
+  currentPage: 1,
+  dayCaresPerPage: 15,
+  walkersPerPage: 15,
+  walkers: [],
+  walkerId: [],
+  dayCares: [],
+  daycareId: [],
 };
 
 export const Services = createSlice({
@@ -12,16 +16,16 @@ export const Services = createSlice({
   initialState,
   reducers: {
     getAllWalkers: (state, { payload }) => {
-      state.allWalkers = payload;
+      state.walkers = payload;
     },
     getWalkerByID: (state, { payload }) => {
-      state.walker = payload;
+      state.walkerId = payload;
     },
     getAllDaycares: (state, { payload }) => {
-      state.allDaycares = payload;
+      state.dayCares = payload;
     },
     getDaycareByID: (state, { payload }) => {
-      state.daycare = payload;
+      state.daycareId = payload;
     },
   },
 });
