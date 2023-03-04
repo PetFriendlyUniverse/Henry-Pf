@@ -37,7 +37,7 @@ export default function HomeShop({ brands }) {
           }
         });
         console.log("holaaaaa");
-      }, 10000);
+      }, 3600000);
     }
 
     window.scrollTo(0, 0);
