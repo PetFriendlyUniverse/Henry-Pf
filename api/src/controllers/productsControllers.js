@@ -1,5 +1,14 @@
-const { Op, Sequelize } = require("sequelize");
-const { Product, Store, Brands, Breeds, Species, Colors } = require("../db");
+const { Op, Sequelize, QueryTypes } = require("sequelize");
+const {
+  sequelize,
+  Review,
+  Product,
+  Store,
+  Brands,
+  Breeds,
+  Species,
+  Colors,
+} = require("../db");
 
 const getAllProducts = async () => {
   const products = await Product.findAll({
@@ -48,7 +57,19 @@ const getProductFilter = async (query) => {
 };
 const getProductByID = async (id) => {
   const product = await Product.findByPk(id);
-  return product;
+  const comments = await sequelize.query(
+    `select comment from "Reviews" where "ProductId"=${id};`,
+    {
+      type: QueryTypes.SELECT,
+    }
+  );
+  const qualification = await sequelize.query(
+    `select AVG(qualification) from "Reviews" where "ProductId"=${id};`,
+    {
+      type: QueryTypes.SELECT,
+    }
+  );
+  return { product, qualification, comments };
 };
 // color, peso, imagen, tamaño  => extra
 const createProduct = async (requiredData, extraData) => {
