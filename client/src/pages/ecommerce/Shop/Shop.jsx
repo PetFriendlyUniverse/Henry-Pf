@@ -13,11 +13,14 @@ export default function HomeShop({ brands }) {
 
   useEffect(() => {
     if (id && token) {
+      console.log("etoy en el if");
       localStorage.setItem("token", token);
       localStorage.setItem("id", id);
       navigate("/shop");
     }
-    if (token) {
+    const tokenLocal = localStorage.getItem("token");
+    console.log(tokenLocal);
+    if (tokenLocal) {
       setTimeout(() => {
         localStorage.removeItem("token");
         localStorage.removeItem("id");
@@ -36,6 +39,7 @@ export default function HomeShop({ brands }) {
         console.log("holaaaaa");
       }, 10000);
     }
+
     window.scrollTo(0, 0);
   }, []);
   return (
