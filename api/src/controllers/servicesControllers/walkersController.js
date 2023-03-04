@@ -63,12 +63,20 @@ const approvedWalkersById = async (id) => {
 };
 
 const filterWalkers = async (query) => {
-  if (Object.keys(query).length) {
-    const walkers = await Walker.findAll({
-      where: query,
-    });
-    return walkers;
+  let whereClause = {};
+  if (query.province) {
+    whereClause.province = query.province;
+
+    if (query.locality) {
+      whereClause.locality = query.locality;
+    }
   }
+
+  const walkers = await Walker.findAll({
+    where: whereClause,
+  });
+
+  return walkers;
 };
 
 module.exports = {

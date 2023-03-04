@@ -36,8 +36,12 @@ const loginHandler = async (req, res) => {
   }
 };
 const logoutHandler = async (req, res) => {
-  res.clearCookie("token");
-  res.sendStatus(200);
+    try {
+    res.clearCookie("token");
+    res.sendStatus(200);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
 };
 const getUserHandler = async (req, res) => {
   try {

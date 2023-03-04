@@ -28,6 +28,7 @@ function ProductDetail() {
   let { productId } = useSelector((state) => state.Products);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
+    window.scrollTo(0, 0);
     setTimeout(() => {
       setLoading(false);
     }, 3000);
@@ -261,7 +262,7 @@ function ProductDetail() {
                 </h1>
                 <button className="text-xs">Old Pince</button>
                 <span className="text-xs">
-                  -codigo del producto:{productId.id}
+                  -Código del producto:{productId.id}
                 </span>
 
                 <div className="flex items-center">
@@ -352,12 +353,12 @@ function ProductDetail() {
                   className="my-2 rounded-lg bg-[#4dbb47] py-2 px-4 md:min-w-full lg:w-1/2"
                   onClick={() => handleClickAddProduct(productId)}
                 >
-                  Agregar al carrito
+                  Añadir al carrito
                 </button>
               </div>
               <div className="text-sm">
                 <div>
-                  Opciones de Envio
+                  Opciones de Envío
                   <span></span>
                 </div>
                 <div> Envío a Domicilio </div>

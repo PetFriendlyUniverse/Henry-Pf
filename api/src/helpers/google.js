@@ -2,7 +2,8 @@ const passport = require("passport");
 const { User } = require("../db");
 const jwt = require("jsonwebtoken");
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, JWT_SECRET } = process.env;
+const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, JWT_SECRET, BACK_ORIGIN } =
+  process.env;
 
 passport.use(
   "auth-google",
@@ -10,7 +11,8 @@ passport.use(
     {
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:3001/auth/google",
+      // callbackURL: "https://petfriendly-backend.onrender.com/auth/google",
+      callbackURL: `${BACK_ORIGIN}/auth/google`,
     },
     async function (accessToken, refreshToken, profile, done) {
       try {

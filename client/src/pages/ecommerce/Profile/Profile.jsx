@@ -83,6 +83,7 @@ function Profile() {
     ),
   };
   useEffect(() => {
+    dispatch(getStoreByUser(user?.id));
     dispatch(getUserApi(user.id));
   }, []);
   return (

@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import html2canvas from "html2canvas";
 import axios from "axios";
 import payment from "../../../assets/imagenes/payment.svg";
@@ -14,100 +14,15 @@ function Success() {
   const paymentId = queryParams.get("payment_id");
   const merchantOrder = queryParams.get("merchant_order_id");
   const status = queryParams.get("status");
-  /////////////-----------------------------------------////////////
-  const objeto = {
-    id: 7942700029,
-    status: "closed",
-    external_reference: "",
-    preference_id: "1314980298-52bed631-403e-4af0-9717-0deccc12f452",
-    payments: [
-      {
-        id: 55177661249,
-        transaction_amount: 8100,
-        total_paid_amount: 8100,
-        shipping_cost: 0,
-        currency_id: "ARS",
-        status: "approved",
-        status_detail: "accredited",
-        operation_type: "regular_payment",
-        date_approved: "2023-02-28T09:14:57.000-04:00",
-        date_created: "2023-02-28T09:14:57.000-04:00",
-        last_modified: "2023-02-28T09:14:57.000-04:00",
-        amount_refunded: 0,
-      },
-    ],
-    shipments: [],
-    payouts: [],
-    collector: {
-      id: 1314980298,
-      email: "",
-      nickname: "TEST_USER_1314980298",
-    },
-    marketplace: "NONE",
-    notification_url: null,
-    date_created: "2023-02-28T09:14:56.949-04:00",
-    last_updated: "2023-02-28T09:14:57.411-04:00",
-    sponsor_id: null,
-    shipping_cost: 0,
-    total_amount: 8100,
-    site_id: "MLA",
-    paid_amount: 8100,
-    refunded_amount: 0,
-    payer: {
-      id: 1314986491,
-      email: "",
-    },
-    items: [
-      {
-        id: "1",
-        category_id: "",
-        currency_id: "ARS",
-        description: "",
-        picture_url:
-          "https://http2.mlstatic.com/D_NQ_NP_932495-MLA54056839113_022023-F.jpg",
-        picture_id: "932495-MLA54056839113_022023",
-        title: "Alimento Eukanuba de Pollo y Cordero",
-        quantity: 3,
-        unit_price: 2700,
-      },
-      {
-        id: "2",
-        category_id: "",
-        currency_id: "ARS",
-        description: "",
-        picture_url:
-          "https://http2.mlstatic.com/D_NQ_NP_932495-MLA54056839113_022023-F.jpg",
-        picture_id: "932495-MLA54056839113_022023",
-        title: "Alimento Eukanuba de Pollo y Cordero",
-        quantity: 3,
-        unit_price: 2700,
-      },
-    ],
-    cancelled: false,
-    additional_info: "",
-    application_id: null,
-    order_status: "paid",
-  };
-  /////////////-----------------------------------------////////////
-  const getToken = async () => {
-    const { data } = await axios.get("/token");
-    return data;
-  };
+  const [dataState, setDataState] = useState({});
 
-  const getInvoicesInfo = async (token, merchantOrder) => {
-    /* const { data } = await axios.get(
-      `https://api.mercadopago.com/merchant_orders/${merchantOrder}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    */
+  const getToken = async () => {
+    const { data } = await axios.get(`/token?merchantOrder=${merchantOrder}`);
+    setDataState(data);
     const requestData = {
       userId: userId,
       /// reemplazar la variable objeto por data
-      products: objeto.items.map((product) => {
+      products: data.items.map((product) => {
         return {
           id: product.id,
           unitPrice: product.unit_price,
@@ -118,9 +33,9 @@ function Success() {
       merchantOrder: merchantOrder,
       status: status,
     };
-
     return requestData;
   };
+
   //  ----------------------------
   const screenshotInvoice = (id) => {
     const invoice = document.getElementById("invoice");
@@ -134,8 +49,7 @@ function Success() {
   };
   useEffect(() => {
     async function getPaymentData() {
-      const mpToken = await getToken();
-      const invoiceData = await getInvoicesInfo(mpToken, merchantOrder);
+      const invoiceData = await getToken();
       await axios.post("/invoices/create", invoiceData);
     }
     getPaymentData();
@@ -161,16 +75,17 @@ function Success() {
           </h3>
           <h4 className="text-white">
             Número de factura:{" "}
-            <span className="text-yellow-400">{objeto.id}</span>{" "}
+            <span className="text-yellow-400">{dataState.id}</span>{" "}
           </h4>
           <div className="">
             <h5 className="text-lg text-white">Productos:</h5>
             <ul
               className={`h-36 ${
-                objeto.items.length > 3 && "overflow-scroll overflow-x-hidden"
+                dataState?.items?.length > 3 &&
+                "overflow-scroll overflow-x-hidden"
               }`}
             >
-              {objeto.items.map((item, i) => (
+              {dataState?.items?.map((item, i) => (
                 <>
                   {/* <hr className="h-px bg-slate-900" /> */}
                   <li
@@ -188,7 +103,7 @@ function Success() {
             <h4 className="text-lg text-white">
               Monto total:{" "}
               <span className="text-base text-yellow-400">
-                ${objeto.total_amount}
+                ${dataState?.total_amount}
               </span>
             </h4>
           </div>
@@ -200,7 +115,7 @@ function Success() {
           className=" flex items-center gap-2 rounded-lg bg-cornflowerblue px-4 py-1 uppercase text-white shadow-lg shadow-[rgba(0,0,0,0.6)] transition-all duration-300 focus:translate-y-1"
           onClick={() => screenshotInvoice(objeto.id)}
         >
-          guardar factura
+          Guardar factura
           <svg
             fill="none"
             stroke="currentColor"

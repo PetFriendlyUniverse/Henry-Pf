@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
+
 import axios from "axios";
 import Swal from "sweetalert2";
 import { ValidateStore } from "../Validations/ValidateStore";
@@ -96,6 +98,7 @@ function FormModifyStore() {
     newForm.append("street_number", form.street_number);
     newForm.append("description", form.description);
     newForm.append("mail", form.mail);
+    console.log(newForm);
     if (isFormValid) {
       Swal.fire({
         title: "Now loading",
@@ -262,7 +265,7 @@ function FormModifyStore() {
                   autoComplete="off"
                 />
                 <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                  Numeracion
+                  Numeración
                 </label>
                 {errors.street_number && (
                   <span className="text-red-500">{errors.street_number}</span>
@@ -347,7 +350,7 @@ function FormModifyStore() {
                     autoComplete="off"
                   />
                   <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                    Telefono
+                    Teléfono
                   </label>
                   {errors.number && (
                     <span className="text-red-500">{errors.number}</span>
@@ -356,7 +359,9 @@ function FormModifyStore() {
               </div>
             </div>
             <div className="h-[10px]">
-              {formComplete && <LinkButton component={"Crear Tienda"} />}
+              <button>
+                {formComplete && <LinkButton component={"Crear Tienda"} />}
+              </button>
             </div>
           </div>
         </div>

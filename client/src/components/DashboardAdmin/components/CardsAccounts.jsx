@@ -109,7 +109,7 @@ function CardsAccounts() {
             return (
               <div
                 key={e.id}
-                className="mx-10 min-w-[250px] items-center rounded-lg border  border-gray-200 bg-gray-200 px-10 dark:border-gray-700 md:max-w-xl md:flex-row"
+                className="mx-5 min-w-[250px] items-center rounded-lg border  border-gray-200 bg-gray-200 px-10 dark:border-gray-700 md:max-w-[330px] md:flex-row"
               >
                 <div>
                   <div className="flex justify-center">

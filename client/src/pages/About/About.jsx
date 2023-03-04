@@ -11,6 +11,19 @@ import pabloimg from "../../assets/profileimg/pabloamico.jpeg";
 import stefanoimg from "../../assets/profileimg/stefanegemelli.jpeg";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useState, useEffect } from "react";
+import Buttons from "../../assets/Buttons/Buttons.jsx";
+import logo from "../../assets/logo/logo.png";
+import htmlLogo from "../../assets/general/html-1.svg";
+import cssLogo from "../../assets/general/css-3.svg";
+import jsLogo from "../../assets/general/javascript-1.svg";
+import nodeLogo from "../../assets/general/nodejs-1.svg";
+import reactLogo from "../../assets/general/react-2.svg";
+import reduxLogo from "../../assets/general/redux.svg";
+import tailwindLogo from "../../assets/general/tailwind-css-2.svg";
+import expressLogo from "../../assets/general/express-109.svg";
+import postgressLogo from "../../assets/general/postgresql.svg";
+import nativeLogo from "../../assets/general/react-native-1.svg";
+
 import "react-loading-skeleton/dist/skeleton.css";
 
 function About() {
@@ -134,7 +147,7 @@ function About() {
     return loaderr();
   } else {
     return (
-      <div className="lg: flex h-max  w-full items-center justify-center  bg-gray-600 bg-[url('https://petfood.com.ar/img/cms/symphony.png')]  lg:pt-14">
+      <div className="lg: flex h-max w-full  flex-col items-center justify-center  bg-gray-600 bg-[url('https://petfood.com.ar/img/cms/symphony.png')]  lg:pt-14">
         <section className="grid place-content-center gap-10  py-3 md:pb-10 md:pt-14 md:text-sm lg:h-2/3 lg:w-2/3 lg:grid-cols-4">
           {members.map((person) => (
             <article
@@ -172,6 +185,53 @@ function About() {
             </article>
           ))}
         </section>
+        <div className="mt-10 mb-10 flex gap-6 self-center">
+          <img src={htmlLogo} alt="Html" title="Html" className="w-24" />
+          <img src={cssLogo} alt="Css" title="Css" className="w-24" />
+          <img
+            src={jsLogo}
+            alt="Javascrip "
+            title="Javascrip"
+            className="w-24"
+          />
+          <img src={nodeLogo} alt="Node Js" title="Node Js" className="w-24" />
+          <img
+            src={reactLogo}
+            alt="React Js"
+            title="React Js"
+            className="w-24"
+          />
+          <img
+            src={reduxLogo}
+            alt="Redux Toolkit"
+            title="Redux Toolkit"
+            className="w-24"
+          />
+          <img
+            src={tailwindLogo}
+            alt="Tailwind Css"
+            title="Tailwind Css"
+            className="w-24"
+          />
+          <img
+            src={expressLogo}
+            alt="Express Js"
+            title="Express Js"
+            className="w-24"
+          />
+          <img
+            src={postgressLogo}
+            alt="Postgress Sql"
+            title="Postgress Sql"
+            className="w-24"
+          />
+          <img
+            src={nativeLogo}
+            alt="React Native"
+            title="React Native"
+            className="w-24"
+          />
+        </div>
       </div>
     );
   }

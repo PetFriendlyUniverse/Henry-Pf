@@ -8,7 +8,10 @@ import { Carousel } from "flowbite-react";
 import LinkButton from "../../../../components/Button/LinkButton";
 import { useNavigate, useParams } from "react-router-dom";
 import { getWalkerByUser } from "../../../../redux/features/users/usersActions";
-import { getPronvinciasAsync } from "../../../../redux/features/ubicaciones/ubicacionesActions";
+import {
+  getLocalidadesAsync,
+  getPronvinciasAsync,
+} from "../../../../redux/features/ubicaciones/ubicacionesActions";
 
 function FormModifyWalker() {
   const idUser = localStorage.getItem("id");
@@ -346,9 +349,11 @@ function FormModifyWalker() {
               </div>
             </div>
             <div className="h-[10px]">
-              {formComplete && (
-                <LinkButton component={"Habilitate como Paseador"} />
-              )}
+              <button>
+                {formComplete && (
+                  <LinkButton component={"Habilitate como Paseador"} />
+                )}
+              </button>
             </div>
           </div>
         </div>

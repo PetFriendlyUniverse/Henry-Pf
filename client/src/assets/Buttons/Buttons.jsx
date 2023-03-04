@@ -8,7 +8,7 @@ function Buttons() {
         <button className={s.cta1}>
           <span className={s.span}>SHOP</span>
           <span className={s.second}>
-            <svg width="50px" height="50px" viewBox="0 0 66 43" version="1.1">
+            <svg className={s.arrows} viewBox="0 0 66 43" version="1.1">
               <g
                 id="arrow"
                 stroke="none"
@@ -65,7 +65,7 @@ function Buttons() {
         <button className={s.cta2}>
           <span className={s.span}>SERVICIOS</span>
           <span className={s.second}>
-            <svg width="50px" height="50px" viewBox="0 0 66 43" version="1.1">
+            <svg className={s.arrows} viewBox="0 0 66 43" version="1.1">
               <g
                 id="arrow"
                 stroke="none"
