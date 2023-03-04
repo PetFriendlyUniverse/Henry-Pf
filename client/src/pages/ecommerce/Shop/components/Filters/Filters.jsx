@@ -10,7 +10,7 @@ import Loader from "../../../../../components/Loader/Loader";
 function Filters() {
   const [loading, filterLists] = useGetFilters();
   const [show, toggleShow] = useToggleBoolean(); // recibe el estado inicial (default => false)
-  const widthLessThan = useWidthIsLessThan(1024);
+  const widthLessThan = useWidthIsLessThan(768);
   const handleClick = () => {
     widthLessThan && toggleShow();
   };
@@ -39,14 +39,20 @@ function Filters() {
         } flex-col justify-evenly overflow-hidden sm:flex-row sm:justify-evenly lg:h-auto lg:flex-col lg:overflow-auto`}
       >
         {filterLists?.map((list, i) => (
-          <List key={i} filter={list[0]} options={list[1]} />
+          <List
+            key={i}
+            filter={list[0]}
+            options={list[1]}
+            mobile={widthLessThan}
+          />
         ))}
-        {min && max && (
+        {!!min && !!max && (
           <PriceRange
             title="Rango de Precio"
             min={min}
             max={max}
             onSet={onSet}
+            mobile={widthLessThan}
           />
         )}
       </div>

@@ -87,12 +87,12 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
             </li>
           </>
         ) : (
-          <span className="block">
-            rango actual:
-            <span className="font-semibold">
+          <>
+            <span className=" -tracking-[1px]">Actual:</span>
+            <span className="ml-1 font-semibold">
               ${minVal}-${maxVal}
             </span>
-          </span>
+          </>
         )}
 
         <button
