@@ -58,7 +58,11 @@ const getProductFilter = async (query) => {
 const getProductByID = async (id) => {
   const product = await Product.findByPk(id);
   const comments = await sequelize.query(
-    `select comment from "Reviews" where "ProductId"=${id};`,
+    `select u.name as "user", r.comment as "comment", r."createdAt" as date
+     from "Reviews" as r
+     inner join "Users" as u
+     on r."UserId"=u."id"
+     where "ProductId"=${id};`,
     {
       type: QueryTypes.SELECT,
     }
