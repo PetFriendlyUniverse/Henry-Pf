@@ -5,9 +5,6 @@ import axios from "axios";
 import payment from "../../../assets/imagenes/payment.svg";
 import EnterButton from "../../../components/Button/EnterButton";
 
-useEffect(() => {
-  window.scrollTo(0, 0);
-});
 function Success() {
   const location = useLocation();
   const userId = localStorage.getItem("id");
@@ -55,6 +52,7 @@ function Success() {
       await axios.post("/invoices/create", invoiceData);
     }
     getPaymentData();
+    window.scrollTo(0, 0);
   }, []);
 
   return (
