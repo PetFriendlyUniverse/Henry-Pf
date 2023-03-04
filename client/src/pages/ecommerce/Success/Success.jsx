@@ -4,6 +4,9 @@ import html2canvas from "html2canvas";
 import axios from "axios";
 import payment from "../../../assets/imagenes/payment.svg";
 
+useEffect(() => {
+  window.scrollTo(0, 0);
+});
 function Success() {
   const location = useLocation();
   const userId = localStorage.getItem("id");

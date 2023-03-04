@@ -15,8 +15,8 @@ export default function HomeShop({ brands }) {
       localStorage.setItem("id", id);
       navigate("/shop");
     }
+    window.scrollTo(0, 0);
   }, []);
-
   return (
     <div className="scrollbar scrollbar-rounded-xl scrollbar-thumb-blue-500 scrollbar-track-blue-300 w-full bg-adopcion lg:flex lg:min-h-screen lg:flex-col lg:gap-12 lg:bg-slate-500 lg:pt-16 xl:items-center">
       <Recomendados />
