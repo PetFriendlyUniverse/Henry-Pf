@@ -1,9 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import {
-  getAllDaycaresApi,
-  getDaycareApi,
-} from "../redux/features/services/servicesActions";
+import { getAllDaycaresApi } from "../redux/features/services/servicesActions";
 
 function useGetDayCare() {
   const [loading, setLoading] = useState(true);

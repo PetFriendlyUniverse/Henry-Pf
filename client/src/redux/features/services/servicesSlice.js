@@ -5,8 +5,8 @@ const initialState = {
   totalPagesWalker: 1,
   currentPageDaycare: 1,
   currentPageWalker: 1,
-  daycaresPerPage: 14,
-  walkersPerPage: 14,
+  daycaresPerPage: 10,
+  walkersPerPage: 10,
   walkers: [],
   walkerId: [],
   daycares: [],
@@ -24,7 +24,7 @@ export const Services = createSlice({
       state.currentPageWalker = payload;
     },
     getAllWalkers: (state, { payload }) => {
-      state.walkers = payload;
+      state.walkers = payload.walkersList;
       state.totalPagesWalker = payload.quantity;
     },
     getWalkerByID: (state, { payload }) => {

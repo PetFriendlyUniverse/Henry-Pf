@@ -4,7 +4,7 @@ import Card from "./Card/Card";
 
 function CardContainer() {
   const [loading, walkers] = useGetWalkers();
-
+  console.log(walkers);
   if (loading)
     return (
       <div className="flex h-screen w-full flex-col content-center items-center py-72">
@@ -20,9 +20,7 @@ function CardContainer() {
         </div>
       ) : (
         walkers?.map((w) => {
-          return (
-            <Card key={w?.id} id={w?.id} name={w?.name} price={w?.price} />
-          );
+          return <Card key={w?.id} id={w?.id} name={w?.name} />;
         })
       )}
     </div>

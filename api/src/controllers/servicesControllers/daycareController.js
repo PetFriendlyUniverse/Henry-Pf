@@ -54,7 +54,6 @@ const filterDaycare = async (query, page, pq) => {
   });
   const count = await Daycare.count();
   const quantity = Math.ceil(count / pq);
-  console.log(quantity);
   return { daycareList, quantity };
 };
 
