@@ -9,12 +9,11 @@ export const useGetStoreInfo = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [storeInfo, setStoreInfo] = useState({});
   const [error, setError] = useState(null);
-  const { productId } = useSelector((state) => state.Products);
-
+  const { product } = useSelector((state) => state.Products?.productId);
   useEffect(() => {
-    productId?.StoreId &&
+    product?.StoreId &&
       axios
-        .get(`/store/${productId.StoreId}`)
+        .get(`/store/${product?.StoreId}`)
         .then((res) => {
           setStoreInfo(res.data);
           setIsLoaded(true);
@@ -23,7 +22,7 @@ export const useGetStoreInfo = () => {
           setError(err);
         });
     return () => setIsLoaded(false);
-  }, [productId?.StoreId]);
+  }, [product?.StoreId]);
 
   return [isLoaded, storeInfo?.store, storeInfo?.averages, error];
 

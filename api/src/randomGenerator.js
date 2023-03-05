@@ -339,6 +339,22 @@ const generator = () => {
       price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
     },
     {
+      name: "Paraiso1",
+      mail: "paraiso2@example.com",
+      daycare: true,
+      province: "Buenos Aires",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "Paraiso2",
+      mail: "paraiso1@example.com",
+      daycare: true,
+      province: "Buenos Aires",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
       name: "Altar de Perros",
       mail: "altardeperros@example.com",
       daycare: true,
@@ -688,6 +704,15 @@ const generator = () => {
         ProductId: i,
         comment:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknow",
+        qualification: randomQualification[qual][Math.ceil(Math.random() * 10)],
+        dispatchtime: randomQualification[dis][Math.ceil(Math.random() * 10)],
+        support: randomQualification[sup][Math.ceil(Math.random() * 10)],
+      });
+      reviewsToCreate.push({
+        UserId: Math.ceil(i / 2),
+        ProductId: i,
+        comment:
+          "Hola, Hola  Hola, Hola  Hola, Hola  Hola, Hola  Hola, Hola  Hola, Hola  Hola, Hola  ",
         qualification: randomQualification[qual][Math.ceil(Math.random() * 10)],
         dispatchtime: randomQualification[dis][Math.ceil(Math.random() * 10)],
         support: randomQualification[sup][Math.ceil(Math.random() * 10)],
