@@ -22,12 +22,11 @@ function PaginatorDayCare() {
   };
 
   return (
-    <div className=" mx-auto flex h-full flex-col items-center gap-4 lg:min-h-screen lg:w-4/5 lg:min-w-[800px] xl:mx-0 xl:min-h-screen 2xl:w-full  ">
-      <h2>Guarderias</h2>
-      <div className="relative  flex w-9/12  items-center justify-center  align-middle sm:w-96  2xl:w-2/5 ">
+    <div className="mx-auto flex h-full flex-col items-center gap-4 pb-10 lg:min-h-screen lg:w-4/5 lg:min-w-[800px] xl:mx-0 xl:min-h-screen 2xl:w-full ">
+      <div className="relative  flex w-9/12  items-center justify-center  align-middle sm:w-96  2xl:w-2/5  ">
         <Paginate
           pageCount={totalPagesDaycare}
-          marginPagesDisplayed={0}
+          marginPagesDisplayed={1}
           onPageChange={changePage}
           forcePage={currentPageDaycare - 1}
           containerClassName={
@@ -98,7 +97,7 @@ function PaginatorDayCare() {
         <div className="flex w-full items-center ">
           <Paginate
             pageCount={totalPagesDaycare}
-            marginPagesDisplayed={0}
+            marginPagesDisplayed={1}
             onPageChange={changePage}
             forcePage={currentPageDaycare - 1}
             containerClassName={

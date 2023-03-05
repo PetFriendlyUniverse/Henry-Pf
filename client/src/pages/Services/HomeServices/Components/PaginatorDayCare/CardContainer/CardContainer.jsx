@@ -4,7 +4,6 @@ import Loader from "../../../../../../components/Loader/Loader";
 
 function CardContainer() {
   const [loading, services] = useGetDayCare();
-  console.log(services);
   if (loading)
     return (
       <div className="flex h-screen w-full flex-col content-center items-center py-72">
@@ -21,7 +20,13 @@ function CardContainer() {
       ) : (
         services?.map((s) => {
           return (
-            <Card key={s?.id} id={s?.id} name={s?.name} price={s?.price} />
+            <Card
+              key={s?.id}
+              id={s?.id}
+              name={s?.name}
+              price_day={s?.price_day}
+              price_hour={s?.price_hour}
+            />
           );
         })
       )}
