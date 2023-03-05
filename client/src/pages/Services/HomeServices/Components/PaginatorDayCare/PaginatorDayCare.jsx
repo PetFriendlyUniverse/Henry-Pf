@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Sort from "../../../../../components/Paginator/components/Sort/Sort";
 import { getAllDaycaresApi } from "../../../../../redux/features/services/servicesActions";
-import { setCurrentPage } from "../../../../../redux/features/products/productsSlice";
+import { setCurrentPage } from "../../../../../redux/features/services/servicesSlice";
 
 function PaginatorDayCare() {
   let { totalPages, dayCaresPerPage, currentPage } = useSelector(
