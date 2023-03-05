@@ -3,7 +3,7 @@ import Card from "../Card/Card";
 import Loader from "../Loader/Loader";
 
 function CardContainer() {
-  const [loading, products] = useGetProducts();
+  const [loading = true, products] = useGetProducts();
 
   if (loading)
     return (
