@@ -8,13 +8,12 @@ import { getAllWalkersApi } from "../../../../../redux/features/services/service
 import { setCurrentPageWalker } from "../../../../../redux/features/services/servicesSlice";
 
 function PaginatorWalker() {
-  let { totalPagesWalker, walkersPerPage, currentPageWalker } = useSelector(
-    (state) => state.Services
-  );
+  let { totalPagesWalker, walkersPerPage, currentPageWalker, province } =
+    useSelector((state) => state.Services);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllWalkersApi(currentPageWalker, walkersPerPage));
+    dispatch(getAllWalkersApi(currentPageWalker, walkersPerPage, province));
   }, []);
 
   const changePage = ({ selected }) => {

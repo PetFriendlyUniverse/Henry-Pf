@@ -34,8 +34,10 @@ const getAllDaycares = async (page, pq) => {
     limit: pq,
     offset: offset,
   });
+  const count = await Daycare.count();
+  const quantity = Math.ceil(count / pq);
 
-  return daycareList;
+  return { daycareList, quantity };
 };
 
 const filterDaycare = async (query, page, pq) => {
@@ -52,7 +54,7 @@ const filterDaycare = async (query, page, pq) => {
     limit: pq,
     offset: offset,
   });
-  const count = await Daycare.count();
+  const count = await Daycare.count({ where: whereClause });
   const quantity = Math.ceil(count / pq);
   return { daycareList, quantity };
 };

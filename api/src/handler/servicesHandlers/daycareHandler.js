@@ -23,7 +23,7 @@ const getDaycaresHandler = async (req, res) => {
   const query = req.query;
   try {
     let daycares;
-    if (Object.keys(query).length) {
+    if ("province" in query) {
       const { page, pq, ...filterParams } = query;
       daycares = await filterDaycare(filterParams, page, pq);
     } else {
