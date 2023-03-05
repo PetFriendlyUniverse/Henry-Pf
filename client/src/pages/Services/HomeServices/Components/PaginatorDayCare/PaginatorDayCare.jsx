@@ -92,11 +92,8 @@ function PaginatorDayCare() {
             </svg>
           }
         />
-        <Sort />
       </div>
-
       <CardContainer />
-
       <div className="relative mt-4 flex w-9/12  items-center justify-center gap-5  sm:w-96  2xl:w-2/5 ">
         <div className="flex w-full items-center ">
           <Paginate

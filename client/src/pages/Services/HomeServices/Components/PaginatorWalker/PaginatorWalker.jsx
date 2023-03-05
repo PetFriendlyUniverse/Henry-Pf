@@ -92,8 +92,6 @@ function PaginatorWalker() {
             </svg>
           }
         />
-
-        <Sort />
       </div>
 
       <CardContainer />
