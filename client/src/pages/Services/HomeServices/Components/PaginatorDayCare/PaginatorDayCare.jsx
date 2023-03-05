@@ -8,13 +8,12 @@ import { getAllDaycaresApi } from "../../../../../redux/features/services/servic
 import { setCurrentPageDaycare } from "../../../../../redux/features/services/servicesSlice";
 
 function PaginatorDayCare() {
-  let { totalPagesDaycare, daycaresPerPage, currentPageDaycare } = useSelector(
-    (state) => state.Services
-  );
+  let { totalPagesDaycare, daycaresPerPage, currentPageDaycare, province } =
+    useSelector((state) => state.Services);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllDaycaresApi(currentPageDaycare, daycaresPerPage));
+    dispatch(getAllDaycaresApi(currentPageDaycare, daycaresPerPage, province));
   }, []);
 
   const changePage = ({ selected }) => {
