@@ -163,7 +163,6 @@ function PaginatorWalker() {
             </svg>
           }
         />
-        <Sort />
       </div>
     </div>
   );

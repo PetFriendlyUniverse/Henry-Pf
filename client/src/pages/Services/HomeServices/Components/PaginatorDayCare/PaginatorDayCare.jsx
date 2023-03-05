@@ -163,7 +163,6 @@ function PaginatorDayCare() {
               </svg>
             }
           />
-          <Sort />
         </div>
       </div>
     </div>
