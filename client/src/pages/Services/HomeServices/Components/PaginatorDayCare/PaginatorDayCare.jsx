@@ -5,20 +5,20 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Sort from "../../../../../components/Paginator/components/Sort/Sort";
 import { getAllDaycaresApi } from "../../../../../redux/features/services/servicesActions";
-import { setCurrentPage } from "../../../../../redux/features/services/servicesSlice";
+import { setCurrentPageDaycare } from "../../../../../redux/features/services/servicesSlice";
 
 function PaginatorDayCare() {
-  let { totalPages, daycaresPerPage, currentPage } = useSelector(
+  let { totalPagesDaycare, daycaresPerPage, currentPageDaycare } = useSelector(
     (state) => state.Services
   );
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllDaycaresApi(currentPage, daycaresPerPage));
+    dispatch(getAllDaycaresApi(currentPageDaycare, daycaresPerPage));
   }, []);
 
   const changePage = ({ selected }) => {
-    dispatch(setCurrentPage(selected + 1));
+    dispatch(setCurrentPageDaycare(selected + 1));
   };
 
   return (
@@ -26,10 +26,10 @@ function PaginatorDayCare() {
       <h2>Guarderias</h2>
       <div className="relative  flex w-9/12  items-center justify-center  align-middle sm:w-96  2xl:w-2/5 ">
         <Paginate
-          pageCount={totalPages}
+          pageCount={totalPagesDaycare}
           marginPagesDisplayed={0}
           onPageChange={changePage}
-          forcePage={currentPage - 1}
+          forcePage={currentPageDaycare - 1}
           containerClassName={
             "flex text-lg h-10 font-mono w-full justify-between  items-center  rounded-xl border-2 border-russianviolet text-russianviolet font-bold "
           }
@@ -100,10 +100,10 @@ function PaginatorDayCare() {
       <div className="relative mt-4 flex w-9/12  items-center justify-center gap-5  sm:w-96  2xl:w-2/5 ">
         <div className="flex w-full items-center ">
           <Paginate
-            pageCount={totalPages}
+            pageCount={totalPagesDaycare}
             marginPagesDisplayed={0}
             onPageChange={changePage}
-            forcePage={currentPage - 1}
+            forcePage={currentPageDaycare - 1}
             containerClassName={
               "flex text-lg h-10 font-mono w-full justify-between  items-center  rounded-xl border-2 border-russianviolet text-russianviolet font-bold "
             }

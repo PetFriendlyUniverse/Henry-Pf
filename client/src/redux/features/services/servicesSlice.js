@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  totalPages: 1,
-  currentPage: 1,
-  daycaresPerPage: 15,
-  walkersPerPage: 1,
+  totalPagesDaycare: 1,
+  totalPagesWalker: 1,
+  currentPageDaycare: 1,
+  currentPageWalker: 1,
+  daycaresPerPage: 14,
+  walkersPerPage: 14,
   walkers: [],
   walkerId: [],
   daycares: [],
@@ -15,18 +17,22 @@ export const Services = createSlice({
   name: "Services",
   initialState,
   reducers: {
-    setCurrentPage: (state, { payload }) => {
-      state.currentPage = payload;
+    setCurrentPageDaycare: (state, { payload }) => {
+      state.currentPageDaycare = payload;
+    },
+    setCurrentPageWalker: (state, { payload }) => {
+      state.currentPageWalker = payload;
     },
     getAllWalkers: (state, { payload }) => {
       state.walkers = payload;
+      state.totalPagesWalker = payload.quantity;
     },
     getWalkerByID: (state, { payload }) => {
       state.walkerId = payload;
     },
     getAllDaycares: (state, { payload }) => {
       state.daycares = payload.daycareList;
-      state.totalPages = payload.quantity;
+      state.totalPagesDaycare = payload.quantity;
     },
     getDaycareByID: (state, { payload }) => {
       state.daycareId = payload;
@@ -38,7 +44,8 @@ export const {
   getWalkerByID,
   getAllDaycares,
   getDaycareByID,
-  setCurrentPage,
+  setCurrentPageDaycare,
+  setCurrentPageWalker,
 } = Services.actions;
 
 export default Services.reducer;

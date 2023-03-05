@@ -5,20 +5,20 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Sort from "../../../../../components/Paginator/components/Sort/Sort";
 import { getAllWalkersApi } from "../../../../../redux/features/services/servicesActions";
-import { setCurrentPage } from "../../../../../redux/features/products/productsSlice";
+import { setCurrentPageWalker } from "../../../../../redux/features/services/servicesSlice";
 
 function PaginatorWalker() {
-  let { totalPages, walkersPerPage, currentPage } = useSelector(
+  let { totalPagesWalker, walkersPerPage, currentPageWalker } = useSelector(
     (state) => state.Services
   );
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllWalkersApi(currentPage, walkersPerPage));
+    dispatch(getAllWalkersApi(currentPageWalker, walkersPerPage));
   }, []);
 
   const changePage = ({ selected }) => {
-    dispatch(setCurrentPage(selected + 1));
+    dispatch(setCurrentPageWalker(selected + 1));
   };
 
   return (
@@ -26,10 +26,10 @@ function PaginatorWalker() {
       <h2>Paseadores</h2>
       <div className="relative  flex w-9/12  items-center justify-center  align-middle sm:w-96  2xl:w-2/5 ">
         <Paginate
-          pageCount={totalPages}
+          pageCount={totalPagesWalker}
           marginPagesDisplayed={0}
           onPageChange={changePage}
-          forcePage={currentPage - 1}
+          forcePage={currentPageWalker - 1}
           containerClassName={
             "flex text-lg h-10 font-mono w-full justify-between  items-center  rounded-xl border-2 border-russianviolet text-russianviolet font-bold "
           }
@@ -99,10 +99,10 @@ function PaginatorWalker() {
       <CardContainer />
       <div className="relative mt-4 flex w-9/12  items-center justify-center gap-5  sm:w-96  2xl:w-2/5 ">
         <Paginate
-          pageCount={totalPages}
+          pageCount={totalPagesWalker}
           marginPagesDisplayed={0}
           onPageChange={changePage}
-          forcePage={currentPage - 1}
+          forcePage={currentPageWalker - 1}
           containerClassName={
             "flex text-lg h-10 font-mono w-full justify-between  items-center  rounded-xl border-2 border-russianviolet text-russianviolet font-bold "
           }

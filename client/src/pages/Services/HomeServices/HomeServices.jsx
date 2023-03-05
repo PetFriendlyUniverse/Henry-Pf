@@ -13,9 +13,9 @@ function HomeServices() {
         <div className="flex w-1/2 flex-wrap justify-center border-2 border-black">
           <PaginatorDayCare />
         </div>
-        {/* <div className="flex w-1/2 flex-wrap justify-center border-2 border-black">
+        <div className="flex w-1/2 flex-wrap justify-center border-2 border-black">
           <PaginatorWalker />
-        </div> */}
+        </div>
       </div>
     </div>
   );

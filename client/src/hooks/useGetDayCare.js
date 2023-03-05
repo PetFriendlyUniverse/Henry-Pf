@@ -7,15 +7,15 @@ import {
 
 function useGetDayCare() {
   const [loading, setLoading] = useState(true);
-  const { daycares, daycaresPerPage, currentPage } = useSelector(
+  const { daycares, daycaresPerPage, currentPageDaycare } = useSelector(
     (state) => state.Services
   );
   const dispatch = useDispatch();
 
   useEffect(() => {
     setLoading(true);
-    dispatch(getAllDaycaresApi(currentPage, daycaresPerPage));
-  }, [currentPage, daycaresPerPage]);
+    dispatch(getAllDaycaresApi(currentPageDaycare, daycaresPerPage));
+  }, [currentPageDaycare, daycaresPerPage]);
 
   useEffect(() => {
     setLoading(false);
