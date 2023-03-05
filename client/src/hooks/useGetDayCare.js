@@ -1,27 +1,30 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getDaycareApi } from "../redux/features/services/servicesActions";
+import {
+  getAllDaycaresApi,
+  getDaycareApi,
+} from "../redux/features/services/servicesActions";
 
 function useGetDayCare() {
   const [loading, setLoading] = useState(true);
-  const { dayCares, dayCaresPerPage, currentPage } = useSelector(
+  const { daycares, daycaresPerPage, currentPage } = useSelector(
     (state) => state.Services
   );
   const dispatch = useDispatch();
 
   useEffect(() => {
     setLoading(true);
-    dispatch(getDaycareApi(dayCaresPerPage, currentPage));
-  }, [dayCaresPerPage, currentPage]);
+    dispatch(getAllDaycaresApi(currentPage, daycaresPerPage));
+  }, [currentPage, daycaresPerPage]);
 
   useEffect(() => {
     setLoading(false);
     return () => {
       setLoading(true);
     };
-  }, [dayCares]);
+  }, [daycares]);
 
-  return [loading, dayCares];
+  return [loading, daycares];
 }
 
 export default useGetDayCare;

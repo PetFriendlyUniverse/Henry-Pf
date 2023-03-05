@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   totalPages: 1,
   currentPage: 1,
-  dayCaresPerPage: 5,
-  walkersPerPage: 5,
+  daycaresPerPage: 15,
+  walkersPerPage: 1,
   walkers: [],
   walkerId: [],
-  dayCares: [],
+  daycares: [],
   daycareId: [],
 };
 
@@ -25,8 +25,8 @@ export const Services = createSlice({
       state.walkerId = payload;
     },
     getAllDaycares: (state, { payload }) => {
-      state.dayCares = payload;
-      state.totalPages = payload.paginated[1];
+      state.daycares = payload.daycareList;
+      state.totalPages = payload.quantity;
     },
     getDaycareByID: (state, { payload }) => {
       state.daycareId = payload;
