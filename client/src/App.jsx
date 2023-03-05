@@ -35,7 +35,12 @@ const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
 const Services = lazy(() =>
   import("./pages/Services/HomeServices/HomeServices")
 );
-
+const WalkerDetail = lazy(() =>
+  import("./pages/Services/Detail/DetailWalker/DetailWalker")
+);
+const DaycareDetail = lazy(() =>
+  import("./pages/Services/Detail/DetailDaycare/DetailDaycare")
+);
 const ProductDetail = lazy(() =>
   import("./pages/ecommerce/ProductDetail/ProductDetail")
 );
@@ -80,7 +85,8 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/landingservices" element={<LandingServices />} />
           <Route path="/services" element={<Services />} />
-
+          <Route path="/walker/detail/:id" element={<WalkerDetail />} />
+          <Route path="/daycare/detail/:id" element={<DaycareDetail />} />
           <Route path="/landingshop" element={<LandingShop />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/detail/:id" element={<ProductDetail />} />
