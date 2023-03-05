@@ -5,12 +5,12 @@ import { priceFormatter } from "../../../../../../../adapters/priceFormatter";
 
 // import { Carousel } from "flowbite-react";
 
-function Card({ name, img, price, id }) {
+function Card({ name, img, price_hour, id }) {
   const dispatch = useDispatch();
   const [value, setValue] = useState(1);
 
   return (
-    <div className="flex h-80  w-56 flex-col items-center justify-between overflow-hidden rounded-lg  border text-center  ">
+    <div className="flex  w-56 flex-col items-center justify-between overflow-hidden  rounded-lg border text-center ">
       <div className=" w-full bg-[rgba(0,0,0,0.05)]">
         <Link
           to={`/services/detail/${id}`}
@@ -29,11 +29,8 @@ function Card({ name, img, price, id }) {
         </div>
         <div className=" flex w-full  items-center justify-center gap-2 ">
           <p className="my-1 rounded bg-ultraviolet py-2 px-4 text-xs font-semibold text-white">
-            precio por hora: {price}
+            precio por hora: {priceFormatter(price_hour)}
           </p>
-        </div>
-        <div className="w-full ">
-          <p className="p-1 text-center font-bold">{priceFormatter(price)}</p>
         </div>
       </div>
     </div>

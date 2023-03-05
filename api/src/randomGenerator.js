@@ -339,6 +339,22 @@ const generator = () => {
       price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
     },
     {
+      name: "Paraiso1",
+      mail: "paraiso2@example.com",
+      daycare: true,
+      province: "Buenos Aires",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
+      name: "Paraiso2",
+      mail: "paraiso1@example.com",
+      daycare: true,
+      province: "Buenos Aires",
+      price_hour: Math.floor(Math.random() * (500 - 100 + 1)) + 100,
+      price_day: Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000,
+    },
+    {
       name: "Altar de Perros",
       mail: "altardeperros@example.com",
       daycare: true,

@@ -4,15 +4,15 @@ import { getAllWalkersApi } from "../redux/features/services/servicesActions";
 
 function useGetWalkers() {
   const [loading, setLoading] = useState(true);
-  const { walkers, walkersPerPage, currentPage } = useSelector(
+  const { walkers, walkersPerPage, currentPageWalker } = useSelector(
     (state) => state.Services
   );
   const dispatch = useDispatch();
 
   useEffect(() => {
     setLoading(true);
-    dispatch(getAllWalkersApi(walkersPerPage, currentPage));
-  }, [walkersPerPage, currentPage]);
+    dispatch(getAllWalkersApi(currentPageWalker, walkersPerPage));
+  }, [currentPageWalker, walkersPerPage]);
 
   useEffect(() => {
     setLoading(false);

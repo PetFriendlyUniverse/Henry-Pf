@@ -82,8 +82,9 @@ const filterWalkers = async (query, page, pq) => {
     limit: pq,
     offset: offset,
   });
-
-  return walkersList;
+  const count = await Walker.count();
+  const quantity = Math.ceil(count / pq);
+  return { walkersList, quantity };
 };
 
 module.exports = {
