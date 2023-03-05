@@ -11,6 +11,7 @@ const initialState = {
   walkerId: [],
   daycares: [],
   daycareId: [],
+  province: "",
 };
 
 export const Services = createSlice({
@@ -37,6 +38,9 @@ export const Services = createSlice({
     getDaycareByID: (state, { payload }) => {
       state.daycareId = payload;
     },
+    setProvinceRedux: (state, { payload }) => {
+      state.province = payload;
+    },
   },
 });
 export const {
@@ -46,6 +50,7 @@ export const {
   getDaycareByID,
   setCurrentPageDaycare,
   setCurrentPageWalker,
+  setProvinceRedux,
 } = Services.actions;
 
 export default Services.reducer;
