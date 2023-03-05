@@ -23,7 +23,7 @@ const getWalkersHandler = async (req, res) => {
   const query = req.query;
   try {
     let walkers;
-    if (Object.keys(query).length) {
+    if ("province" in query) {
       const { page, pq, ...filterParams } = query;
       walkers = await filterWalkers(filterParams, page, pq);
     } else {

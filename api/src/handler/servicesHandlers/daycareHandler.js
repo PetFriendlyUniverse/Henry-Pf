@@ -26,11 +26,9 @@ const getDaycaresHandler = async (req, res) => {
     if ("province" in query) {
       const { page, pq, ...filterParams } = query;
       daycares = await filterDaycare(filterParams, page, pq);
-      console.log("estoy con filtros");
     } else {
       const { page, pq } = query;
       daycares = await getAllDaycares(page, pq);
-      console.log("estoy sin filtros");
     }
     res.status(200).json(daycares);
   } catch (error) {

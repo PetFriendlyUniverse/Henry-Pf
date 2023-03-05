@@ -34,8 +34,10 @@ const getAllWalkers = async (page, pq) => {
     limit: pq,
     offset: offset,
   });
+  const count = await Walker.count();
+  const quantity = Math.ceil(count / pq);
 
-  return walkersList;
+  return { walkersList, quantity };
 };
 
 const getWalkersById = async (id) => {
@@ -82,7 +84,7 @@ const filterWalkers = async (query, page, pq) => {
     limit: pq,
     offset: offset,
   });
-  const count = await Walker.count();
+  const count = await Walker.count({ where: whereClause });
   const quantity = Math.ceil(count / pq);
   return { walkersList, quantity };
 };
