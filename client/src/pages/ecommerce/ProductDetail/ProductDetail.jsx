@@ -12,6 +12,7 @@ import StoreDetail from "./components/StoreDetail/StoreDetail";
 import ProductDetailSkeleton from "./ProductDetailSkeleton";
 import useGetProductInfo from "./hooks/useGetProductInfo";
 import QualificationStars from "./components/QualificationStars/QualificationStars";
+import Comments from "./components/Comments/Comments";
 
 function ProductDetail() {
   window.scrollTo(0, 0);
@@ -148,7 +149,7 @@ function ProductDetail() {
             <p>{product?.description}</p>
           </Tabs.Item>
           <Tabs.Item title="Comentarios">
-            <div>Reseñas de clientes</div>
+            <Comments comments={comments} />
           </Tabs.Item>
           <Tabs.Item title="Vendedor">
             <StoreDetail />
