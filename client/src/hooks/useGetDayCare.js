@@ -6,7 +6,6 @@ function useGetDayCare() {
   const [loading, setLoading] = useState(true);
   const { daycares, daycaresPerPage, currentPageDaycare, province } =
     useSelector((state) => state.Services);
-  console.log(province);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import PaginatorDayCare from "./Components/PaginatorDayCare/PaginatorDayCare";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPronvinciasAsync } from "../../../redux/features/ubicaciones/ubicacionesActions";
-import { setProvinceRedux } from "../../../redux/features/services/servicesSlice";
+import { setProvince } from "../../../redux/features/services/servicesSlice";
 
 function HomeServices() {
   const [show, setShow] = useState("daycare");
@@ -14,7 +14,7 @@ function HomeServices() {
     setShow(e.target.value);
   };
   const handleChange = (e) => {
-    dispatch(setProvinceRedux(e.target.value));
+    dispatch(setProvince(e.target.value));
   };
   useEffect(() => {
     dispatch(getPronvinciasAsync());
