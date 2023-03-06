@@ -33,4 +33,37 @@ const createAdoption = async (userId, data) => {
   return adoptionWithUser;
 };
 
-module.exports = { createAdoption };
+const getAllAdoptions = async (page, pq) => {
+  const offset = (page - 1) * pq;
+
+  const adoptionList = await Adoption.findAll({
+    where: { enable: true },
+    limit: pq,
+    offset: offset,
+  });
+  const count = await Adoption.count();
+  const quantity = Math.ceil(count / pq);
+
+  return { adoptionList, quantity };
+};
+
+const filterAdoption = async (query, page, pq) => {
+  let whereClause = { enable: true };
+  if (query.province) {
+    whereClause.province = query.province;
+    if (query.locality) {
+      whereClause.locality = query.locality;
+    }
+  }
+  const offset = (page - 1) * pq;
+  const adoptionList = await Adoption.findAll({
+    where: whereClause,
+    limit: pq,
+    offset: offset,
+  });
+  const count = await Adoption.count({ where: whereClause });
+  const quantity = Math.ceil(count / pq);
+  return { adoptionList, quantity };
+};
+
+module.exports = { createAdoption, filterAdoption, getAllAdoptions };

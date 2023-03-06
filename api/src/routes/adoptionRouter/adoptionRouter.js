@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const {
   postAdoptionHandler,
+  getAdoptionHandler,
 } = require("../../handler/adoptionHandler/adoptionHandler");
 const adoptionRouter = Router();
 
@@ -12,5 +13,6 @@ adoptionRouter.post(
   upload.single("img"),
   postAdoptionHandler
 );
+adoptionRouter.get("/", getAdoptionHandler);
 
 module.exports = adoptionRouter;
