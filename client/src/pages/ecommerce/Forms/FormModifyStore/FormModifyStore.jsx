@@ -16,33 +16,35 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getStoreByUser } from "../../../../redux/features/users/usersActions";
 
 function FormModifyStore() {
-  const idUser = localStorage.getItem("id");
   const navigate = useNavigate();
-  const { id } = useParams();
   const dispatch = useDispatch();
+  const { id } = useParams();
+
+  const userId = localStorage.getItem("id");
+
+  const user = useSelector((state) => state.User?.userStoreId);
   const provincia = useSelector((state) => state.Ubicaciones.provincias);
   const localidad = useSelector((state) => state.Ubicaciones.localidades);
 
   useEffect(() => {
-    dispatch(getStoreByUser(id));
+    dispatch(getStoreByUser(userId));
     dispatch(getPronvinciasAsync());
   }, []);
 
-  const [formComplete, setFormComplete] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [img, setImg] = useState(null);
   const [imgFile, setImgFile] = useState(null);
   const [form, setForm] = useState({
-    name: "",
-    area_code: "",
-    number: "",
-    province: "",
-    locality: "",
-    zip_code: "",
-    street_name: "",
-    street_number: "",
-    description: "",
-    mail: "",
+    name: user.name,
+    area_code: user.area_code,
+    number: user.number,
+    province: user.province,
+    locality: user.locality,
+    zip_code: user.zip_code,
+    street_name: user.street_name,
+    street_number: user.street_number,
+    description: user.description,
+    mail: user.mail,
   });
   const [errors, setErrors] = useState({
     name: "",
@@ -60,11 +62,6 @@ function FormModifyStore() {
     const value = e.target.value;
     setForm({ ...form, [property]: value });
     setErrors({ ...errors, ...ValidateStore(property, value) });
-    if (value !== "") {
-      setFormComplete(true);
-    } else {
-      setFormComplete(false);
-    }
     if (e.target.name === "province") {
       dispatch(getLocalidadesAsync(e.target.value));
     }
@@ -86,8 +83,9 @@ function FormModifyStore() {
     const errorValues = Object.values(errors);
     const isFormValid = errorValues.every((val) => val === "");
     const newForm = new FormData();
-    newForm.append("id", id);
-    newForm.append("img", img);
+    if (img) {
+      newForm.append("img", img);
+    }
     newForm.append("name", form.name);
     newForm.append("area_code", form.area_code);
     newForm.append("number", form.number);
@@ -117,13 +115,13 @@ function FormModifyStore() {
         })
         .then(() => {
           Swal.fire({
-            title: "Tienda creada",
+            title: "Tienda modificada",
             icon: "success",
-            text: "La Tienda ha sido creada correctamente",
+            text: "La Tienda ha sido modificada correctamente",
             closeOnEsc: true,
             closeOnClickOutside: true,
           }).then(() => {
-            navigate(`/profile/${idUser}`);
+            navigate(-1);
           });
         })
         .catch((err) => {
@@ -360,7 +358,7 @@ function FormModifyStore() {
             </div>
             <div className="h-[10px]">
               <button>
-                {formComplete && <LinkButton component={"Crear Tienda"} />}
+                <LinkButton component={"Crear Tienda"} />
               </button>
             </div>
           </div>
