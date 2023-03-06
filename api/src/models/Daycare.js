@@ -83,6 +83,6 @@ module.exports = (sequelize) => {
         defaultValue: true,
       },
     },
-    { timestamps: false }
+    { updatedAt: false }
   );
 };

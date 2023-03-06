@@ -4,46 +4,45 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { Validate } from "../Validations/Validate";
 import { Carousel } from "flowbite-react";
-
 import LinkButton from "../../../../components/Button/LinkButton";
+
 import { useNavigate, useParams } from "react-router-dom";
-import { getWalkerByUser } from "../../../../redux/features/users/usersActions";
+import { getDaycareByUser } from "../../../../redux/features/users/usersActions";
 import {
   getLocalidadesAsync,
   getPronvinciasAsync,
 } from "../../../../redux/features/ubicaciones/ubicacionesActions";
 
-function FormModifyWalker() {
-  const userId = localStorage.getItem("id");
+function FormCreateDaycare() {
+  const UserId = localStorage.getItem("id");
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
-
-  const user = useSelector((state) => state.User?.userWalkerId);
   const provincia = useSelector((state) => state.Ubicaciones.provincias);
   const localidad = useSelector((state) => state.Ubicaciones.localidades);
 
   useEffect(() => {
-    dispatch(getWalkerByUser(userId));
+    dispatch(getDaycareByUser(id));
     dispatch(getPronvinciasAsync());
   }, []);
 
+  const [formComplete, setFormComplete] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [img, setImg] = useState(null);
   const [imgFile, setImgFile] = useState(null);
   const [form, setForm] = useState({
-    name: user.name,
-    area_code: user.area_code,
-    number: user.number,
-    province: user.province,
-    locality: user.locality,
-    zip_code: user.zip_code,
-    street_name: user.street_name,
-    street_number: user.street_number,
-    description: user.description,
-    mail: user.mail,
-    price_hour: user.price_hour,
-    price_day: user.price_day,
+    name: "",
+    area_code: "",
+    number: "",
+    province: "",
+    locality: "",
+    zip_code: "",
+    street_name: "",
+    street_number: "",
+    description: "",
+    mail: "",
+    price_hour: "",
+    price_day: "",
   });
   const [errors, setErrors] = useState({
     name: "",
@@ -64,6 +63,11 @@ function FormModifyWalker() {
     const value = e.target.value;
     setForm({ ...form, [property]: value });
     setErrors({ ...errors, ...Validate(property, value) });
+    if (value !== "") {
+      setFormComplete(true);
+    } else {
+      setFormComplete(false);
+    }
     if (e.target.name === "province") {
       dispatch(getLocalidadesAsync(e.target.value));
     }
@@ -85,9 +89,7 @@ function FormModifyWalker() {
     const errorValues = Object.values(errors);
     const isFormValid = errorValues.every((val) => val === "");
     const newForm = new FormData();
-    if (img) {
-      newForm.append("img", img);
-    }
+    newForm.append("img", img);
     newForm.append("name", form.name);
     newForm.append("area_code", form.area_code);
     newForm.append("number", form.number);
@@ -111,23 +113,24 @@ function FormModifyWalker() {
         },
       });
       axios
-        .put(`walker/${id}`, newForm, {
+        .post(`daycare/create/${id}`, newForm, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         })
         .then(() => {
           Swal.fire({
-            title: "Habilitado como paseador",
+            title: "Guarderia creada",
             icon: "success",
-            text: "Te habilitaste como paseador correctamente",
+            text: "La Guarderia ha sido creada correctamente",
             closeOnEsc: true,
             closeOnClickOutside: true,
           }).then(() => {
-            navigate(-1);
+            navigate(`/profile/${UserId}`);
           });
         })
         .catch((err) => {
+          console.log(err);
           Swal.fire({
             icon: "error",
             title: "Error en el formulario",
@@ -145,10 +148,12 @@ function FormModifyWalker() {
         className="mt-10 flex h-full w-full flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue drop-shadow-2xl md:w-3/5 lg:h-auto "
       >
         <h3 className="mb-6">
-          Modifica o agrega informacion para tu perfil de paseador
+          Modifica o agrega informacion para crear tu guarderia
         </h3>
         <div className="flex h-full w-full flex-row justify-between overflow-hidden rounded-2xl bg-slate-50 py-10">
+          {/* //div con el fomulario izquierdo */}
           <div className="h-full w-1/2 pl-4 pt-4">
+            {/* nombre de tienda aaaaaaaaaaaaaaaaa */}
             <div className="group relative z-0 mb-6 h-11 w-4/5">
               <input
                 onChange={handleChange}
@@ -160,7 +165,7 @@ function FormModifyWalker() {
                 autoComplete="off"
               />
               <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                Nombre de paseador
+                Nombre de la guarderia
               </label>
               {errors.name && (
                 <span className="text-red-500">{errors.name}</span>
@@ -271,7 +276,7 @@ function FormModifyWalker() {
               </div>
             </div>
             <div className="mb-7 flex">
-              <div className="group relative z-0 mb-6 h-11 w-full">
+              <div className="group relative z-0 mr-10 mb-6 h-11 w-full">
                 <input
                   onChange={handleChange}
                   type="number"
@@ -388,9 +393,7 @@ function FormModifyWalker() {
               </div>
             </div>
             <div className="h-[10px]">
-              <button>
-                <LinkButton component={"Habilitate como Paseador"} />
-              </button>
+              {formComplete && <LinkButton component={"Crear Guarderia"} />}
             </div>
           </div>
         </div>
@@ -399,4 +402,4 @@ function FormModifyWalker() {
   );
 }
 
-export default FormModifyWalker;
+export default FormCreateDaycare;

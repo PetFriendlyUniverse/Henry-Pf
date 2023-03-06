@@ -13,37 +13,36 @@ import {
   getPronvinciasAsync,
 } from "../../../../redux/features/ubicaciones/ubicacionesActions";
 
-function FormModifyWalker() {
-  const userId = localStorage.getItem("id");
+function FormCreateWalker() {
+  const UserId = localStorage.getItem("id");
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
-
-  const user = useSelector((state) => state.User?.userWalkerId);
   const provincia = useSelector((state) => state.Ubicaciones.provincias);
   const localidad = useSelector((state) => state.Ubicaciones.localidades);
 
   useEffect(() => {
-    dispatch(getWalkerByUser(userId));
+    dispatch(getWalkerByUser(id));
     dispatch(getPronvinciasAsync());
   }, []);
 
+  const [formComplete, setFormComplete] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [img, setImg] = useState(null);
   const [imgFile, setImgFile] = useState(null);
   const [form, setForm] = useState({
-    name: user.name,
-    area_code: user.area_code,
-    number: user.number,
-    province: user.province,
-    locality: user.locality,
-    zip_code: user.zip_code,
-    street_name: user.street_name,
-    street_number: user.street_number,
-    description: user.description,
-    mail: user.mail,
-    price_hour: user.price_hour,
-    price_day: user.price_day,
+    name: "",
+    area_code: "",
+    number: "",
+    province: "",
+    locality: "",
+    zip_code: "",
+    street_name: "",
+    street_number: "",
+    description: "",
+    mail: "",
+    price_hour: "",
+    price_day: "",
   });
   const [errors, setErrors] = useState({
     name: "",
@@ -64,6 +63,11 @@ function FormModifyWalker() {
     const value = e.target.value;
     setForm({ ...form, [property]: value });
     setErrors({ ...errors, ...Validate(property, value) });
+    if (value !== "") {
+      setFormComplete(true);
+    } else {
+      setFormComplete(false);
+    }
     if (e.target.name === "province") {
       dispatch(getLocalidadesAsync(e.target.value));
     }
@@ -85,9 +89,7 @@ function FormModifyWalker() {
     const errorValues = Object.values(errors);
     const isFormValid = errorValues.every((val) => val === "");
     const newForm = new FormData();
-    if (img) {
-      newForm.append("img", img);
-    }
+    newForm.append("img", img);
     newForm.append("name", form.name);
     newForm.append("area_code", form.area_code);
     newForm.append("number", form.number);
@@ -111,7 +113,7 @@ function FormModifyWalker() {
         },
       });
       axios
-        .put(`walker/${id}`, newForm, {
+        .post(`walker/create/${id}`, newForm, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -124,7 +126,7 @@ function FormModifyWalker() {
             closeOnEsc: true,
             closeOnClickOutside: true,
           }).then(() => {
-            navigate(-1);
+            navigate(`/profile/${UserId}`);
           });
         })
         .catch((err) => {
@@ -389,7 +391,9 @@ function FormModifyWalker() {
             </div>
             <div className="h-[10px]">
               <button>
-                <LinkButton component={"Habilitate como Paseador"} />
+                {formComplete && (
+                  <LinkButton component={"Habilitate como Paseador"} />
+                )}
               </button>
             </div>
           </div>
@@ -399,4 +403,4 @@ function FormModifyWalker() {
   );
 }
 
-export default FormModifyWalker;
+export default FormCreateWalker;

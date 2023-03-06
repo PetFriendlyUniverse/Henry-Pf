@@ -1,6 +1,6 @@
 const { Daycare, User } = require("../../db");
 
-const createDaycare = async (userId) => {
+const createDaycare = async (userId, data) => {
   const user = await User.findByPk(userId);
   if (!user) {
     throw new Error(`No se pudo encontrar el usuario con ID ${userId}`);
@@ -13,7 +13,7 @@ const createDaycare = async (userId) => {
         },
       }
     );
-    const daycare = await Daycare.create();
+    const daycare = await Daycare.create(data);
     await daycare.setUser(user);
     await User.update(
       { daycareId: daycare.id },

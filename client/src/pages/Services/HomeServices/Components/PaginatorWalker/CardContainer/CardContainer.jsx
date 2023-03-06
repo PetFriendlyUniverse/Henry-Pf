@@ -10,7 +10,6 @@ function CardContainer() {
         <Loader />
       </div>
     );
-
   return (
     <div className="mx-auto flex h-full w-full flex-wrap items-center justify-center justify-items-center gap-7 sm:w-4/5 sm:grid-cols-2 md:max-w-2xl lg:m-0 lg:min-h-fit  lg:w-full  lg:grid-cols-3 lg:gap-x-5 lg:gap-y-6 xl:max-w-5xl xl:grid-cols-4 xl:gap-x-2  2xl:max-w-7xl  2xl:gap-x-10 2xl:gap-y-12  ">
       {walkers?.length === 0 ? (
@@ -23,6 +22,7 @@ function CardContainer() {
             <Card
               key={w?.id}
               id={w?.id}
+              img={w?.img}
               name={w?.name}
               price_hour={w?.price_hour}
             />
