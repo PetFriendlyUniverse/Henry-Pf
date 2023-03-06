@@ -5,13 +5,16 @@ import { useGetStoreInfo } from "./hooks/useGetStoreInfo";
 
 function StoreDetail() {
   const [isLoaded, store, averages, error] = useGetStoreInfo();
+  // console.log(averages);
+
+  let qualificationAVG, dispatchtimeAVG, supportAVG;
+  if (!!averages?.[0].qualificationAVG) {
+    qualificationAVG = parseFloat(averages?.[0].qualificationAVG).toFixed(2);
+    dispatchtimeAVG = parseFloat(averages?.[0].dispatchtimeAVG).toFixed(2);
+    supportAVG = parseFloat(averages?.[0].supportAVG).toFixed(2);
+  }
 
   // averages ===>> { dispatchtimeAVG: "4.75000000", qualificationAVG: "3.6000000", supportAVG: "3.4000000" }
-  const [qualificationAVG, dispatchtimeAVG, supportAVG] = [
-    parseFloat(averages?.[0].qualificationAVG).toFixed(2),
-    parseFloat(averages?.[0].dispatchtimeAVG).toFixed(2),
-    parseFloat(averages?.[0].supportAVG).toFixed(2),
-  ];
 
   if (error)
     return (
@@ -43,17 +46,23 @@ function StoreDetail() {
 
       {/* ----------------------------- inicio seccion 2 ---------------------------  */}
 
-      <ReviewsGraph data={{ qualificationAVG, dispatchtimeAVG, supportAVG }} />
+      {!!qualificationAVG ? (
+        <>
+          <ReviewsGraph
+            data={{ qualificationAVG, dispatchtimeAVG, supportAVG }}
+          />
 
-      {/* ----------------------------- inicio seccion 3 ---------------------------  */}
-      <div className="flex w-full flex-col items-center  justify-center gap-1 xsm:flex-row xsm:items-start sm:w-2/3  sm:flex-row md:gap-x-4 lg:w-5/12">
-        <QualificationChart
-          type={"dispatchtime"}
-          qualification={dispatchtimeAVG}
-        />
-        <QualificationChart type={"support"} qualification={supportAVG} />
-      </div>
-      {/* ----------------------------- fin seccion 3 ---------------------------  */}
+          <div className="flex w-full flex-col items-center  justify-center gap-1 xsm:flex-row xsm:items-start sm:w-2/3  sm:flex-row md:gap-x-4 lg:w-5/12">
+            <QualificationChart
+              type={"dispatchtime"}
+              qualification={dispatchtimeAVG}
+            />
+            <QualificationChart type={"support"} qualification={supportAVG} />
+          </div>
+        </>
+      ) : (
+        <p>Actualmente esta tienda no posee reseñas</p>
+      )}
     </div>
   );
 }
