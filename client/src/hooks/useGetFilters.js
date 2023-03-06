@@ -13,8 +13,10 @@ function useGetFilters() {
     };
   }, [filters]);
   useEffect(() => {
-    setLoading(true);
-    !Object.keys(filters).length && dispatch(getFiltersApi());
+    if (!Object.keys(filters).length) {
+      setLoading(true);
+      dispatch(getFiltersApi());
+    }
   }, []);
 
   return [loading, filters];
