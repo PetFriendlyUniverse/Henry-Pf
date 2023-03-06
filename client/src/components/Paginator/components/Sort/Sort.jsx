@@ -28,7 +28,7 @@ function Sort() {
           <button className="peer mt-1 cursor-default hover:border-b-2 hover:border-b-black hover:pb-2">
             {value}
           </button>
-          <div className="invisible mt-2 ml-2 w-1/3 rounded-md border border-black bg-white hover:visible peer-focus:visible">
+          <div className="invisible mt-2 ml-2 w-1/3 rounded-md border border-black bg-white text-sm hover:visible peer-focus:visible">
             {/* <span className={spanSyles(value, "Más relevantes")}>
               Más relevantes
             </span> */}
