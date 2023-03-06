@@ -35,8 +35,6 @@ function FormAddPet() {
     setForm({ ...form, [property]: value });
   };
 
-  console.log(form);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const newForm = new FormData();
@@ -77,26 +75,6 @@ function FormAddPet() {
     <div className=" w-full justify-center bg-[url('https://petfood.com.ar/img/cms/symphony.png')] ">
       <div className="flex justify-center">
         <form onSubmit={handleSubmit}>
-          <div className="flex w-52 flex-col justify-center overflow-hidden">
-            <input
-              type="file"
-              multiple
-              accept="image/*"
-              onChange={changeHandlerImg}
-              value=""
-            />
-          </div>
-          <div className="flex h-1/2 justify-center">
-            <Carousel className="w-10/12 ">
-              {selectedFiles &&
-                selectedFiles.map((file) => (
-                  <picture className="flex aspect-square h-full items-center justify-center ">
-                    <img src={file} alt="" className="h-full" />
-                  </picture>
-                ))}
-            </Carousel>
-          </div>
-
           <div className="flex justify-between">
             <label className="mb-2 block pr-2 text-sm font-medium text-gray-900">
               Nombre
