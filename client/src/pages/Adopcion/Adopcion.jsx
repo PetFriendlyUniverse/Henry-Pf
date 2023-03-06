@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAdopcionesApi } from "../../redux/features/adopcion/adopcionActions";
 import { setProvince } from "../../redux/features/services/servicesSlice";
 import { getPronvinciasAsync } from "../../redux/features/ubicaciones/ubicacionesActions";
+import PaginatorAdoption from "./components/PaginationAdoption";
 
 function Adopcion() {
   const dispatch = useDispatch();
@@ -86,7 +87,7 @@ function Adopcion() {
           </div>
           {/* el de abajo es el div de la card */}
           <div className=" mt-10  flex h-full  w-full flex-wrap justify-center gap-2 border-t  border-gray-200 pt-10  lg:mx-0 lg:max-w-none   lg:grid-cols-3 lg:gap-20 2xl:h-[600px]">
-            <article className="my-4 flex h-[600px]  w-[328px] max-w-xl flex-col items-start justify-between border bg-white ">
+            {/* <article className="my-4 flex h-[600px]  w-[328px] max-w-xl flex-col items-start justify-between border bg-white ">
               <div className="flex items-center gap-x-4 text-xs">
                 <time dateTime="2020-03-16" className="text-gray-500">
                   Mar 16, 2020
@@ -265,7 +266,8 @@ function Adopcion() {
                   </p>
                 </div>
               </div>
-            </article>
+            </article> */}
+            <PaginatorAdoption />
           </div>
         </div>
       </div>
