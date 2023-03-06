@@ -277,7 +277,10 @@ function LandingShop() {
                   </g>
                 </svg>
               </span>
-              <span className="text-xs uppercase sm:text-base">
+              <span
+                onClick={() => handleSetFilter("Perros")}
+                className="text-xs uppercase sm:text-base"
+              >
                 ver todos los artículos para perros
               </span>
             </Link>
@@ -386,7 +389,10 @@ function LandingShop() {
                   </g>
                 </svg>
               </span>
-              <span className="text-xs uppercase sm:text-base">
+              <span
+                onClick={() => handleSetFilter("Gatos")}
+                className="text-xs uppercase sm:text-base"
+              >
                 ver todos los artículos para gatos
               </span>
             </Link>
