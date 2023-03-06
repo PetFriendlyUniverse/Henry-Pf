@@ -10,29 +10,38 @@ import { priceFormatter } from "../../adapters/priceFormatter";
 
 function Card({ name, img, weight, price, stock, id }) {
   const dispatch = useDispatch();
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState(0);
   const handleClickDeduct = () => {
-    if (value > 1) setValue(value - 1);
+    if (value > 0) setValue(value - 1);
   };
   const handleClickAdd = () => {
     if (value < stock) setValue(value + 1);
   };
   const handleAddShopCart = () => {
-    dispatch(
-      setShopCart({
-        id: id,
-        data: { name, img, weight, price, stock, id, amount: value },
-      })
-    );
-    setValue(1);
-    Swal.fire({
-      icon: "success",
-      title: "Producto agregado al carrito",
-      showConfirmButton: false,
-      timer: 800,
-      closeOnEsc: true,
-      closeOnClickOutside: true,
-    });
+    if (value !== 0) {
+      dispatch(
+        setShopCart({
+          id: id,
+          data: { name, img, weight, price, stock, id, amount: value },
+        })
+      );
+      setValue(0);
+      Swal.fire({
+        icon: "success",
+        title: "Producto agregado al carrito",
+        showConfirmButton: false,
+        timer: 800,
+        closeOnEsc: true,
+        closeOnClickOutside: true,
+      });
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "No puede agregar cantidad 0 al carrito",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
   return (
     <div className="flex h-full w-full min-w-fit max-w-xs flex-col items-center justify-between overflow-hidden rounded-lg border text-center  sm:max-w-sm ">
@@ -57,13 +66,13 @@ function Card({ name, img, weight, price, stock, id }) {
             {weight} kg
           </p>
           <p className="rounded bg-ultraviolet py-2 px-4 text-xs font-semibold text-white">
-            Stock: {stock}
+            Stock: {stock - value}
           </p>
         </div>
         <div className="w-full ">
           <p className="p-1 text-center font-bold">{priceFormatter(price)}</p>
         </div>
-        <div className="flex w-full items-center justify-around gap-1  p-1">
+        <div className="flex w-full items-center justify-around gap-1 p-1">
           <div className=" w-1/2">
             <CountProduct
               value={value}
