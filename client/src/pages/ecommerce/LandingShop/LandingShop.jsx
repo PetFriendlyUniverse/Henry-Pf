@@ -50,6 +50,8 @@ function LandingShop() {
       <header className="clip-header relative flex w-full flex-col overflow-hidden bg-gray-700 pt-0 text-black sm:h-[450px]  lg:h-[459px]  xl:h-[680px] ">
         <img
           onLoad={() => handleImgLoad("perro3")}
+          onAbort={() => handleImgLoad("perro3")}
+          onError={() => handleImgLoad("perro3")}
           src={perro3}
           alt=""
           className=" lg:h- absolute -top-20 h-0 w-0 object-cover contrast-125 sm:top-0 sm:h-full sm:w-full md:max-h-screen xl:min-h-full"
@@ -92,6 +94,8 @@ function LandingShop() {
       </header>
       <main
         onLoad={() => handleImgLoad("mainBg")}
+        onAbort={() => handleImgLoad("mainBg")}
+        onError={() => handleImgLoad("mainBg")}
         className="bg-[url('https://petfood.com.ar/img/cms/symphony.png')] py-6 px-3 sm:px-5 md:px-10 lg:px-32 xl:px-52 2xl:px-80 "
       >
         <section className="mt-5 flex w-full flex-col items-center sm:grid sm:grid-cols-2 sm:gap-3">
@@ -271,6 +275,7 @@ function LandingShop() {
                           strokeLinecap="round"
                         >
                           {" "}
+                          Ver Todos
                         </line>{" "}
                       </g>{" "}
                     </g>{" "}
@@ -288,16 +293,22 @@ function LandingShop() {
               <Carousel>
                 <img
                   onLoad={() => handleImgLoad("img1")}
+                  onAbort={() => handleImgLoad("img1")}
+                  onError={() => handleImgLoad("img1")}
                   src={img1}
                   alt="..."
                 />
                 <img
                   onLoad={() => handleImgLoad("img2")}
+                  onAbort={() => handleImgLoad("img2")}
+                  onError={() => handleImgLoad("img2")}
                   src={img2}
                   alt="..."
                 />
                 <img
                   onLoad={() => handleImgLoad("img3")}
+                  onAbort={() => handleImgLoad("img3")}
+                  onError={() => handleImgLoad("img3")}
                   src={img3}
                   alt="..."
                 />
@@ -400,16 +411,22 @@ function LandingShop() {
               <Carousel>
                 <img
                   onLoad={() => handleImgLoad("img4")}
+                  onAbort={() => handleImgLoad("img4")}
+                  onError={() => handleImgLoad("img4")}
                   src={img4}
                   alt="..."
                 />
                 <img
                   onLoad={() => handleImgLoad("img5")}
+                  onAbort={() => handleImgLoad("img5")}
+                  onError={() => handleImgLoad("img5")}
                   src={img5}
                   alt="..."
                 />
                 <img
                   onLoad={() => handleImgLoad("img6")}
+                  onAbort={() => handleImgLoad("img6")}
+                  onError={() => handleImgLoad("img6")}
                   src={img6}
                   alt="..."
                 />
@@ -450,12 +467,16 @@ function LandingShop() {
           <div className="flex flex-col items-center">
             <img
               onLoad={() => handleImgLoad("mercado2")}
+              onAbort={() => handleImgLoad("mercado2")}
+              onError={() => handleImgLoad("mercado2")}
               src="https://petfood.com.ar/img/cms/mercado2.gif"
               alt=""
               className="w-40"
             />
             <img
               onLoad={() => handleImgLoad("mercadopago")}
+              onAbort={() => handleImgLoad("mercadopago")}
+              onError={() => handleImgLoad("mercadopago")}
               src="https://petfood.com.ar/img/cms/mercadopago-horizontal-listo.png"
               alt=""
               className="w-4/5"
