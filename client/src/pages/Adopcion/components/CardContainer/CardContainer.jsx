@@ -26,8 +26,8 @@ function CardContainer() {
               location={s?.location}
               name={s?.name}
               img={s?.img}
-              user={s?.user}
-              username={s?.username}
+              description={s?.description}
+              userName={s?.userName}
               userPhone={s.userPhone}
               place={s.place}
             />
