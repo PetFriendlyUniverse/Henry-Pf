@@ -2,7 +2,7 @@ const { Op, QueryTypes } = require("sequelize");
 const { sequelize } = require("../db");
 const { Store, User, Product, Review } = require("../db");
 
-const createStore = async (userId) => {
+const createStore = async (userId, data) => {
   const user = await User.findByPk(userId);
   if (!user) {
     throw new Error(`No se pudo encontrar el usuario con ID ${userId}`);
@@ -15,7 +15,7 @@ const createStore = async (userId) => {
         },
       }
     );
-    const store = await Store.create();
+    const store = await Store.create(data);
     await store.setUser(user);
     await User.update(
       { storeId: store.id },
