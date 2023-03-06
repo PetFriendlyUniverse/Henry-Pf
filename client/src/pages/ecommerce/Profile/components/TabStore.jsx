@@ -173,7 +173,7 @@ function TabStore() {
                 title="ingresa aqui para editar tu informacion personal"
                 className="active:traslate-y-1 w-14 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 shadow-md shadow-black transition-all duration-200 hover:bg-slate-300"
               >
-                <Link to={`/store/modify/${user.id}`}>
+                <Link to={`/store/modify/${user?.id}`}>
                   <img src={edit} alt="edit" />
                 </Link>
               </button>
