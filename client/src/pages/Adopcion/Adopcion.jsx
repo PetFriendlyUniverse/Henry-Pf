@@ -1,7 +1,28 @@
 import { InstagramEmbed } from "react-social-media-embed";
 import { Carousel } from "flowbite-react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAdopcionesApi } from "../../redux/features/adopcion/adopcionActions";
+import { setProvince } from "../../redux/features/services/servicesSlice";
+import { getPronvinciasAsync } from "../../redux/features/ubicaciones/ubicacionesActions";
 
 function Adopcion() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAdopcionesApi());
+  }, []);
+
+  useEffect(() => {
+    dispatch(getPronvinciasAsync());
+  }, []);
+
+  const handleChange = (e) => {
+    dispatch(setProvince(e.target.value));
+  };
+
+  const adopciones = useSelector((state) => state.Adopciones.adopcion);
+
   return (
     <div className="h-full w-full  bg-adopcion ">
       <div className="flex  justify-center bg-transparent pb-24 sm:py-32">
