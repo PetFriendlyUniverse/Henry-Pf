@@ -76,6 +76,9 @@ const FormCreateDaycare = lazy(() =>
 const FormModifyWalker = lazy(() =>
   import("./pages/Services/Forms/FormModifyWalker/FormModifyWalker")
 );
+const FormCreateWalker = lazy(() =>
+  import("./pages/Services/Forms/FormCreateWalker/FormCreateWalker")
+);
 
 function App() {
   const shopCart = useSelector((state) => state.Products.shopCart);
@@ -123,6 +126,7 @@ function App() {
 
           <Route path="/dashboardadmin" element={<DashboardAdmin />} />
 
+          <Route path="/walker/create/:id" element={<FormCreateWalker />} />
           <Route path="/walker/modify/:id" element={<FormModifyWalker />} />
 
           <Route path="/daycare/create/:id" element={<FormCreateDaycare />} />

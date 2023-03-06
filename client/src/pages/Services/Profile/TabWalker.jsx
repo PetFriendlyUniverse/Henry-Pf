@@ -9,6 +9,7 @@ import ContactsWalker from "./components/Walker/ContactsWalker";
 import UbicationWalker from "./components/Walker/UbicationWalker";
 
 import interrogation from "../../../assets/general/interrogation.svg";
+import edit from "../../../assets/general/edit.svg";
 
 import React from "react";
 import { getWalkerByUser } from "../../../redux/features/users/usersActions";
@@ -135,8 +136,19 @@ function TabWalker() {
               <Construccion />
             )}
           </div>
+          <div className="flex justify-center  gap-2 py-2">
+            <img src={interrogation} alt="help" className="w-5" />
+            <button
+              title="ingresa aqui para editar tu informacion personal"
+              className="active:traslate-y-1 w-14 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 shadow-md shadow-black transition-all duration-200 hover:bg-slate-300"
+            >
+              <Link to={`/walker/modify/${user?.id}`}>
+                <img src={edit} alt="edit" />
+              </Link>
+            </button>
+          </div>
         </div>
-      </div>{" "}
+      </div>
     </div>
   );
 }
