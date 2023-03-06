@@ -6,6 +6,7 @@ import List from "./components/List";
 import PriceRange from "./components/PriceRange";
 import usePriceRangeControll from "./hooks/usePriceRangeControll";
 import Loader from "../../../../../components/Loader/Loader";
+import Skeleton from "react-loading-skeleton";
 
 function Filters() {
   const [loading, filterLists] = useGetFilters();
