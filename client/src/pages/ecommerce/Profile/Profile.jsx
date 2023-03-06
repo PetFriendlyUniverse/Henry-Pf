@@ -5,7 +5,6 @@ import interrogation from "../../../assets/general/interrogation.svg";
 import edit from "../../../assets/general/edit.svg";
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import LinkButton from "../../../components/Button/LinkButton";
 import PhotoName from "./components/PhotoName";
 import PersonalInfo from "./components/PersonalInfo";
@@ -15,8 +14,6 @@ import Payment from "./components/Payment";
 import {
   getStoreByUser,
   getUserApi,
-  getWalkerByUser,
-  getDaycareByUser,
 } from "../../../redux/features/users/usersActions";
 import Purchase from "./components/Purchase";
 
@@ -28,23 +25,32 @@ function Profile() {
   const handleShowInfo = (e) => {
     setShowInfo(e.target.name);
   };
+  // const handleClickStore = () => {
+  //   axios.post(`store/create/${user.id}`).then((res) => {
+  //     const idStore = res.data.id;
+  //     navigate(`/store/modify/${idStore}`);
+  //   });
+  // };
+  // const handleClickWalker = () => {
+  //   axios.post(`walker/create/${user.id}`).then((res) => {
+  //     const idWalker = res.data.id;
+  //     navigate(`/walker/modify/${idWalker}`);
+  //   });
+  // };
+  // const handleClickDaycare = () => {
+  //   axios.post(`daycare/create/${user.id}`).then((res) => {
+  //     const idDaycare = res.data.id;
+  //     navigate(`/daycare/modify/${idDaycare}`);
+  //   });
+  // };
   const handleClickStore = () => {
-    axios.post(`store/create/${user.id}`).then((res) => {
-      const idStore = res.data.id;
-      navigate(`/store/modify/${idStore}`);
-    });
+    navigate(`/store/create/${user.id}`);
   };
   const handleClickWalker = () => {
-    axios.post(`walker/create/${user.id}`).then((res) => {
-      const idWalker = res.data.id;
-      navigate(`/walker/modify/${idWalker}`);
-    });
+    navigate(`/walker/create/${user.id}`);
   };
   const handleClickDaycare = () => {
-    axios.post(`daycare/create/${user.id}`).then((res) => {
-      const idDaycare = res.data.id;
-      navigate(`/daycare/modify/${idDaycare}`);
-    });
+    navigate(`/daycare/create/${user.id}`);
   };
   const titles = {
     profile: "Perfil",

@@ -13,7 +13,7 @@ function Card({ name, img, price_hour, id }) {
     <div className="flex  w-56 flex-col items-center justify-between overflow-hidden  rounded-lg border text-center ">
       <div className=" w-full bg-[rgba(0,0,0,0.05)]">
         <Link
-          to={`/services/detail/${id}`}
+          to={`/walker/detail/${id}`}
           className="flex items-center justify-center "
         >
           <div className="h-56 w-56 ">

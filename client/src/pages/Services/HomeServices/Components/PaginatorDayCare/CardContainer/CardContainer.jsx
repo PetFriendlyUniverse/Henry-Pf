@@ -24,6 +24,7 @@ function CardContainer() {
               key={s?.id}
               id={s?.id}
               name={s?.name}
+              img={s?.img}
               price_day={s?.price_day}
               price_hour={s?.price_hour}
             />

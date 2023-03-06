@@ -1,6 +1,6 @@
 const { Walker, User } = require("../../db");
 
-const createWalkers = async (userId) => {
+const createWalkers = async (userId, data) => {
   const user = await User.findByPk(userId);
   if (!user) {
     throw new Error(`No se pudo encontrar el usuario con ID ${userId}`);
@@ -13,7 +13,7 @@ const createWalkers = async (userId) => {
         },
       }
     );
-    const walker = await Walker.create();
+    const walker = await Walker.create(data);
     await walker.setUser(user);
     await User.update(
       { walkerId: walker.id },
@@ -34,8 +34,10 @@ const getAllWalkers = async (page, pq) => {
     limit: pq,
     offset: offset,
   });
+  const count = await Walker.count();
+  const quantity = Math.ceil(count / pq);
 
-  return walkersList;
+  return { walkersList, quantity };
 };
 
 const getWalkersById = async (id) => {
@@ -82,7 +84,7 @@ const filterWalkers = async (query, page, pq) => {
     limit: pq,
     offset: offset,
   });
-  const count = await Walker.count();
+  const count = await Walker.count({ where: whereClause });
   const quantity = Math.ceil(count / pq);
   return { walkersList, quantity };
 };
