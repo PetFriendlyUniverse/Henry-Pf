@@ -31,6 +31,7 @@ const getAllWalkers = async (page, pq) => {
   const offset = (page - 1) * pq;
 
   const walkersList = await Walker.findAll({
+    where: { enabled: true },
     limit: pq,
     offset: offset,
   });
@@ -71,7 +72,7 @@ const approvedWalkersById = async (id) => {
 };
 
 const filterWalkers = async (query, page, pq) => {
-  let whereClause = {};
+  let whereClause = { enabled: true };
   if (query.province) {
     whereClause.province = query.province;
     if (query.locality) {
