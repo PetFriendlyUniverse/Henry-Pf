@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Contruccion from "../../../components/InConstruccion/Construccion";
 
@@ -16,6 +16,7 @@ import { getDaycareByUser } from "../../../redux/features/users/usersActions";
 
 function TabDaycare() {
   const id = localStorage.getItem("id");
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showInfo, setShowInfo] = useState("profile");
   const user = useSelector((state) => state.User?.userDaycareId);
@@ -76,14 +77,13 @@ function TabDaycare() {
                 </li>
                 <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
                   {/* Reveer esto de volver al hacer Health/Services */}
-                  <Link to={`/profile/${id}`}>
-                    <button
-                      title="vuelve a tu perfil"
-                      className="inline-block p-4"
-                    >
-                      Volver
-                    </button>
-                  </Link>
+                  <button
+                    onClick={() => navigate(-1)}
+                    title="vuelve a tu perfil"
+                    className="inline-block p-4"
+                  >
+                    Volver
+                  </button>
                 </li>
               </ul>
             </div>

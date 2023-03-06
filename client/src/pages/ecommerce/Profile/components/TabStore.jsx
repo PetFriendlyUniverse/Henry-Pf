@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LinkButton from "../../../../components/Button/LinkButton";
 import { useDispatch, useSelector } from "react-redux";
 import CardStoreIdContainer from "../../../../components/CardStoreIdContainer/CardStoreIdContainer";
@@ -19,6 +19,8 @@ import Ubication from "./Ubication";
 
 function TabStore() {
   const id = localStorage.getItem("id");
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const [showInfo, setShowInfo] = useState("profile");
   const user = useSelector((state) => state.User?.userStoreId);
@@ -79,14 +81,13 @@ function TabStore() {
                 </li>
                 <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
                   {/* Reveer esto de volver al hacer Health/Services */}
-                  <Link to={`/profile/${user.id}`}>
-                    <button
-                      title="vuelve a tu perfil"
-                      className="inline-block p-4"
-                    >
-                      Volver
-                    </button>
-                  </Link>
+                  <button
+                    onClick={() => navigate(-1)}
+                    title="vuelve a tu perfil"
+                    className="inline-block p-4"
+                  >
+                    Volver
+                  </button>
                 </li>
               </ul>
             </div>
