@@ -38,7 +38,7 @@ function DashboardAdmin() {
                     Cuentas
                   </button>
                 </li>
-                <li
+                {/*  <li
                   className={
                     show === "sales"
                       ? "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 bg-cornflowerblue text-neutral-900 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
@@ -82,53 +82,20 @@ function DashboardAdmin() {
                   >
                     Soporte
                   </button>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
 
           <div className="w-full">
-            {show === "accounts" ? (
-              <div className="px-10">
-                <div className="flex justify-center py-10 px-3">
-                  <CardsAccounts />
-                </div>
-                <div className="py-10">
-                  <BarGraphs />
-                </div>
+            <div className="px-10">
+              <div className="flex justify-center py-10 px-3">
+                <CardsAccounts />
               </div>
-            ) : show === "sales" ? (
-              <div className="px-10">
-                <div className="py-10">
-                  <DonutGraphs />
-                </div>
-                <div className="py-10">
-                  <LineGraphsSales />
-                </div>
-                <div className="py-10">
-                  <Graphs />
-                </div>
+              <div className="py-10">
+                <BarGraphs />
               </div>
-            ) : show === "traffic" ? (
-              <div className="px-10">
-                <div className="py-10">
-                  <LineGraphsTraffic />
-                </div>
-              </div>
-            ) : show === "requests" ? (
-              <div className="px-10">
-                <Tickets />
-              </div>
-            ) : (
-              <div className="px-10">
-                <div className="flex justify-center py-10 px-3">
-                  <CardsAccounts />
-                </div>
-                <div className="py-10">
-                  <BarGraphs />
-                </div>
-              </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
