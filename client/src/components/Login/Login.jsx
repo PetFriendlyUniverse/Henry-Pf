@@ -103,25 +103,26 @@ function Login() {
             Swal.showLoading();
           },
         });
-        await axios.post("user/create", form).then(async (res) => {
-          await Swal.fire({
-            icon: "success",
-            title: "El registro se ha sido realizado con éxito!",
-            showConfirmButton: true,
-            timer: 1500,
-            closeOnClickOutside: true,
-            closeOnEsc: true,
-          });
-          setForm({
-            user: "",
-            name: "",
-            lastname: "",
-            mail: "",
-            password: "",
-          });
-          setRepeatPassword("");
+        await axios.post("user/create", form);
+
+        Swal.fire({
+          icon: "success",
+          title: "El registro se ha sido realizado con éxito!",
+          showConfirmButton: true,
+          timer: 1500,
+          closeOnClickOutside: true,
+          closeOnEsc: true,
         });
+        setForm({
+          user: "",
+          name: "",
+          lastname: "",
+          mail: "",
+          password: "",
+        });
+        setRepeatPassword("");
       } catch (error) {
+        console.log(error);
         Swal.fire({
           icon: "error",
           title: "El registro no se ha sido realizado!",
