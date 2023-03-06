@@ -31,7 +31,7 @@ const getAllDaycares = async (page, pq) => {
   const offset = (page - 1) * pq;
 
   const daycareList = await Daycare.findAll({
-    where: { enabled: true },
+    where: { enable: true },
     limit: pq,
     offset: offset,
   });
@@ -42,7 +42,7 @@ const getAllDaycares = async (page, pq) => {
 };
 
 const filterDaycare = async (query, page, pq) => {
-  let whereClause = { enabled: true };
+  let whereClause = { enable: true };
   if (query.province) {
     whereClause.province = query.province;
     if (query.locality) {
