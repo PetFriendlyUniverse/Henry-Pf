@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  adopcion: {},
+  adopcion: [],
   totalPages: 1,
   currentPage: 1,
   adopcionPerPage: 4,
