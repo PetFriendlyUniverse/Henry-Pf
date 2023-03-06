@@ -10,7 +10,7 @@ function CardSkeleton() {
           {/* <Carousel slide={false} indicators={false}> */}
           <Skeleton className="h-56 w-full " />
         </div>
-        <div className=" px-3 pb-2">
+        <div className=" px-3 pb-5">
           <Skeleton className="  flex w-full items-center justify-center " />
           <Skeleton className="  flex w-full items-center justify-center" />
 
