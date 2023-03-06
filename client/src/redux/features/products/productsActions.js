@@ -1,7 +1,6 @@
 import {
   getProducts,
   getFilters,
-  setFilters,
   getProductsById,
   deletedProducts,
   getAllBrands,
@@ -39,7 +38,6 @@ const deleteFavoriteById = (id) => async (dispatch) => {
 export {
   getProductsApi,
   getFiltersApi,
-  setFilters,
   getProductsId,
   deleteProductId,
   getAllBrandsApi,
