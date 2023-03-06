@@ -70,6 +70,9 @@ const FormCreateStore = lazy(() =>
 const FormModifyDaycare = lazy(() =>
   import("./pages/Services/Forms/FormModifyDaycare/FormModifyDaycare")
 );
+const FormCreateDaycare = lazy(() =>
+  import("./pages/Services/Forms/FormCreateDaycare/FormCreateDaycare")
+);
 const FormModifyWalker = lazy(() =>
   import("./pages/Services/Forms/FormModifyWalker/FormModifyWalker")
 );
@@ -121,6 +124,8 @@ function App() {
           <Route path="/dashboardadmin" element={<DashboardAdmin />} />
 
           <Route path="/walker/modify/:id" element={<FormModifyWalker />} />
+
+          <Route path="/daycare/create/:id" element={<FormCreateDaycare />} />
           <Route path="/daycare/modify/:id" element={<FormModifyDaycare />} />
 
           <Route path="*" element={<NotFound />} />
