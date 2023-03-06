@@ -16,9 +16,6 @@ module.exports = (sequelize) => {
       size: {
         type: DataTypes.STRING,
       },
-      size: {
-        type: DataTypes.STRING,
-      },
       specie: {
         type: DataTypes.STRING,
       },
