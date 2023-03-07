@@ -22,14 +22,12 @@ function Purchase() {
     setReviewInvoiceId(invoiceId);
     setReviewProductId(productId);
   };
-  const [reviewInvoiceId, setReviewInvoiceId] = useState("");
   const [reviewProductId, setReviewProductId] = useState("");
   return (
     <>
       <ReviewModal
         showModal={showModal}
         setShowModal={setShowModal}
-        invoiceId={reviewInvoiceId}
         productId={reviewProductId}
       />
 

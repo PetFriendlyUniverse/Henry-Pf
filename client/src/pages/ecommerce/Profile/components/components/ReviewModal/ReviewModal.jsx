@@ -1,42 +1,46 @@
 import React, { useState } from "react";
 import RatingStar from "../../../assets/RatingStar";
 import close from "../../../../../../assets/general/close.svg";
+import axios from "axios";
 
-function ReviewModal({ showModal, setShowModal, productId, invoiceId }) {
+function ReviewModal({ showModal, setShowModal, productId }) {
+  const userId = localStorage.getItem("id");
   const handleShowModal = () => {
     setShowModal((prev) => !prev);
     setReview({
       productId,
-      invoiceId,
-      dispatchtime: 0,
-      qualification: 0,
-      support: 0,
+      dispatchtime: "",
+      qualification: "",
+      support: "",
       comment: "",
     });
   };
   const [review, setReview] = useState({
     productId,
-    invoiceId,
-    dispatchtime: 0,
-    qualification: 0,
-    support: 0,
+    dispatchtime: "",
+    qualification: "",
+    support: "",
     comment: "",
   });
   const handleClickRating = (name, value) => {
     setReview((prev) => {
       return { ...prev, [name]: value };
     });
-    console.log(review);
   };
+
   const handleChangeComment = ({ target }) => {
     setReview((prev) => {
       return { ...prev, comment: target.value };
     });
-    // console.log(review);
   };
 
-  const submitConfirmMail = async (e) => {
+  const handleSubmitReview = async (e) => {
     e.preventDefault();
+    const reviewVals = Object.values(review);
+    if (reviewVals.every((val) => !!val)) {
+      await axios.post(`/review/create/${userId}`, review);
+    } else {
+    }
   };
   return (
     <div
@@ -51,9 +55,9 @@ function ReviewModal({ showModal, setShowModal, productId, invoiceId }) {
         } relative h-screen w-screen bg-black `}
       ></div>
       <form
-        onSubmit={submitConfirmMail}
+        onSubmit={handleSubmitReview}
         Reseña
-        className="absolute top-[45%] flex h-96 w-[450px] max-w-[90%] translate-y-[-50%] flex-col items-center justify-center rounded-lg bg-russianviolet"
+        className="absolute top-[45%] flex h-[500px] w-[550px] max-w-[90%] translate-y-[-50%] flex-col items-center justify-center rounded-lg bg-russianviolet"
       >
         <h2 className="mb-8 text-3xl font-bold tracking-wide text-white"></h2>
         <span
@@ -321,7 +325,8 @@ function ReviewModal({ showModal, setShowModal, productId, invoiceId }) {
 
         <textarea
           name="comment"
-          className="mt-4 w-4/5 p-1"
+          cols={4}
+          className="mt-4 w-4/5 resize-none p-1"
           onChange={handleChangeComment}
           placeholder="Comentario"
           value={review?.comment}
