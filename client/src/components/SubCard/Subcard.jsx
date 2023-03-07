@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import CountProduct from "../CountProduct/CountProduct";
 import { setShopCart } from "../../redux/features/products/productsSlice";
 import { priceFormatter } from "../../adapters/priceFormatter";
+import Swal from "sweetalert2";
 
 function Subcard({ prod, gridProperties }) {
   const { id, name, price, amount, img, stock, weight } = prod;
@@ -18,8 +19,12 @@ function Subcard({ prod, gridProperties }) {
     if (amount < stock) {
       dispatch(setShopCart({ id, data: { amount: amount + 1 } }));
     } else {
-      // notificar que no hay mas stock disponible
-      // [ sweet alert ]
+      Swal.fire({
+        icon: "warning",
+        title: "Has alcanzado el limite de stock",
+        showConfirmButton: false,
+        timer: 650,
+      });
     }
   };
   return (
