@@ -98,9 +98,11 @@ function Profile() {
   useEffect(() => {
     dispatch(getStoreByUser(user?.id));
     dispatch(getUserApi(user.id));
-    setPetInfo(getPet(user?.id));
+    getPet(user?.id).then((res) => {
+      setPetInfo(res);
+    });
   }, []);
-  console.log(petInfo.length);
+
   return (
     <div className="flex min-h-[80vh] justify-start  bg-adopcion pb-28 pt-10 lg:items-center lg:justify-center">
       <div className="flex h-full w-full flex-col items-center justify-end gap-3 rounded-2xl  px-6 lg:w-full  lg:flex-row lg:justify-start   lg:gap-10 2xl:px-16 ">
@@ -280,7 +282,13 @@ function Profile() {
         {/* container pets form */}
         <div className="h-96 w-full max-w-xs rounded-2xl border-4 border-cornflowerblue  p-3 xl:w-96 ">
           <div>
-            {petInfo.length ? <PetCard petInfo={petInfo} /> : <FormAddPet />}
+            {petInfo.length ? (
+              petInfo.map((pet, i) => {
+                return <PetCard key={i} petInfo={pet} />;
+              })
+            ) : (
+              <FormAddPet />
+            )}
           </div>
         </div>
       </div>
