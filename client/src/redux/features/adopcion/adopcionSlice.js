@@ -15,8 +15,8 @@ export const Adopciones = createSlice({
   initialState,
   reducers: {
     getAdopciones: (state, { payload }) => {
-      state.adopcion = payload.paginated[0];
-      state.totalPages = payload.paginated[1];
+      state.adopcion = payload.adoptionList;
+      state.totalPages = payload.quantity;
     },
 
     getFilters: (state, { payload }) => {
