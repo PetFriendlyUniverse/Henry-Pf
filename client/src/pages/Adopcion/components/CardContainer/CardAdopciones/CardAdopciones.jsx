@@ -12,7 +12,7 @@ function CardAdopciones({
   place,
 }) {
   return (
-    <article className="my-4 flex h-[600px]  w-[328px]  flex-col items-start justify-between border-2  bg-white ">
+    <article className="my-4 flex h-[600px]  w-[328px]  flex-col items-start justify-between   bg-white ">
       <div className="flex items-center gap-x-4 text-xs">
         <time className="text-gray-500">{date.slice(0, 10)}</time>
         <a
