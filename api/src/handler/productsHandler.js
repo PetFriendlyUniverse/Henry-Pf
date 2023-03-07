@@ -33,7 +33,6 @@ const cloudinary = require("cloudinary").v2;
 const postProductHandler = async (req, res) => {
   const data = req.body;
   const files = req.files;
-  console.log(files);
   try {
     // const nueva = JSON.parse(req.body.data);
     const { requiredData, extraData } = splitData(data);
@@ -83,13 +82,17 @@ const getProductByIDlHandler = async (req, res) => {
 const putProductHandler = async (req, res) => {
   const { id } = req.params;
   const data = req.body;
+  const files = req.files;
+
   try {
-    const images = [];
-    for (const file of files) {
-      const image = await cloudinary.uploader.upload(file.path);
-      images.push(image.secure_url);
+    if (files) {
+      const images = [];
+      for (const file of files) {
+        const image = await cloudinary.uploader.upload(file.path);
+        images.push(image.secure_url);
+      }
+      data.img = images;
     }
-    data.img = images;
     const productEdited = await updateProduct(id, data);
     return res.status(200).json(productEdited);
   } catch (error) {
