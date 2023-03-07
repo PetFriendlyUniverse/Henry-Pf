@@ -49,7 +49,7 @@ export const ValidateStore = (property, value) => {
   } else if (property === "province") {
     if (!stringRegex.test(value)) {
       error.province = "Por favor ingrese su Provincia sin numeros o signos";
-    } else if (value.length > 15) {
+    } else if (value.length > 30) {
       error.province = "El nombre es demasiado largo";
     } else {
       error.province = "";
@@ -61,7 +61,7 @@ export const ValidateStore = (property, value) => {
   } else if (property === "locality") {
     if (!stringNumberRegex.test(value)) {
       error.locality = "Por favor ingrese su Localidad sin numeros o signos";
-    } else if (value.length > 15) {
+    } else if (value.length > 30) {
       error.locality = "El nombre es demasiado largo";
     } else {
       error.locality = "";
