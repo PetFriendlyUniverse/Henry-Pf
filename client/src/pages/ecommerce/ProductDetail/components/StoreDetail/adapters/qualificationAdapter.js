@@ -31,6 +31,7 @@ const adapter = {
 };
 
 export const qualificationAdapter = (type, qualification, titleOrMessage) => {
+  console.log(type, qualification, titleOrMessage);
   const qual = Math.ceil(qualification);
   return titleOrMessage == "title"
     ? adapter[type][qual][0]
