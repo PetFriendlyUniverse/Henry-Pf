@@ -249,7 +249,7 @@ function Login() {
               <label htmlFor={s["chk"]} aria-hidden="true">
                 PET FRIENDLY
               </label>
-              <div>
+              <div className="relative flex w-full justify-center">
                 <input
                   className={s.input}
                   onChange={handleChangeLogin}
@@ -260,7 +260,7 @@ function Login() {
                   required={true}
                 />
               </div>
-              <div className=" relative object-contain">
+              <div className="relative flex w-full justify-center">
                 <input
                   className={s.input}
                   onChange={handleChangeLogin}
@@ -272,7 +272,7 @@ function Login() {
                 />
 
                 <img
-                  className="absolute top-0 right-0 right-10 top-[4px] w-5"
+                  className="absolute right-[10%] top-[3px] w-5"
                   onClick={switchShown}
                   src={shown ? closedEye : openEye}
                 />
@@ -356,7 +356,7 @@ function Login() {
                   {errors.mail}
                 </span>
               )}
-              <div className=" relative object-contain ">
+              <div className=" relative flex w-full justify-center">
                 <input
                   className={s.input}
                   value={form.password}
@@ -368,26 +368,33 @@ function Login() {
                   required={true}
                 />
                 <img
-                  className="absolute top-0 right-0 right-10 top-[4px] w-5"
+                  className=" absolute right-[10%] top-[3px] w-5"
                   onClick={switchShown}
                   src={shown ? closedEye : openEye}
                 />
-                {errors.password && (
-                  <span className="ml-1 -mt-3 text-center text-sm tracking-wide text-red-700">
-                    {errors.password}
-                  </span>
-                )}
               </div>
-              <input
-                onChange={handleChangeRepeatPassword}
-                className={s.input}
-                type="password"
-                name="repeatPassword"
-                value={repeatPassword}
-                placeholder="Repetir Contraseña "
-                autoComplete="off"
-                required={true}
-              />
+              {errors.password && (
+                <span className="ml-1 -mt-3 text-center text-sm tracking-wide text-red-700">
+                  {errors.password}
+                </span>
+              )}
+              <div className=" relative flex w-full justify-center">
+                <input
+                  onChange={handleChangeRepeatPassword}
+                  className={s.input}
+                  type={shown ? "text" : "password"}
+                  name="repeatPassword"
+                  value={repeatPassword}
+                  placeholder="Repetir Contraseña "
+                  autoComplete="off"
+                  required={true}
+                />
+                <img
+                  className=" absolute right-[10%] top-[3px] w-5"
+                  onClick={switchShown}
+                  src={shown ? closedEye : openEye}
+                />
+              </div>
               {repeatPassword !== form.password && (
                 <p className="text-xs text-red-700">{`Passwords does not match`}</p>
               )}
