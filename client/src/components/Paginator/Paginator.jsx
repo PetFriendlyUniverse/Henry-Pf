@@ -18,6 +18,7 @@ function Paginator() {
 
   const changePage = ({ selected }) => {
     dispatch(setCurrentPage(selected + 1));
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -97,10 +98,10 @@ function Paginator() {
 
       <CardContainer />
       <div className="relative mt-4 flex w-9/12 flex-col items-center justify-center gap-5 sm:w-96  2xl:flex-row">
-        <div className="w-full">
+        <div className="w-3/4">
           <Paginate
             pageCount={totalPages}
-            marginPagesDisplayed={0}
+            marginPagesDisplayed={1}
             onPageChange={changePage}
             forcePage={currentPage - 1}
             containerClassName={
