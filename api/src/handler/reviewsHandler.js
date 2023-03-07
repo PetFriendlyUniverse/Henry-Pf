@@ -5,6 +5,7 @@ const {
   updateReview,
   deleteReview,
 } = require("../controllers/reviewsController");
+const { createReviewValidateAndFormater } = require("../helpers/reviewHelpers");
 
 const getReviewByPoductHandler = async (req, res) => {
   const { productId } = req.params;
@@ -29,10 +30,9 @@ const getReviewByUserHandler = async (req, res) => {
 const postCreateReviewHandler = async (req, res) => {
   const data = req.body;
   const { userId } = req.params;
-
-  // verificar datos
   try {
-    const newReview = await createNewReview(userId, data);
+    const dataFormated = createReviewValidateAndFormater(userId, data);
+    const newReview = await createNewReview(dataFormated);
     return res.status(200).json(newReview);
   } catch (error) {
     return res.status(404).json({ error: error.message });
