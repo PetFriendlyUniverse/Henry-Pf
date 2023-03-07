@@ -80,26 +80,16 @@ const getProductByIDlHandler = async (req, res) => {
   }
 };
 
-/*
-const postProductHandler = async (req, res) => {
-  const data = req.body;
-  const file = req.file;
-  try {
-    //const nueva = JSON.parse(req.body.data); //solo se usa para cuando se quiere probar en insomnia
-    const { requiredData, extraData } = splitData(nueva);
-    const image = await cloudinary.uploader.upload(file.path);
-    extraData.img = image.secure_url;
-    const newProduct = await createProduct(requiredData, extraData, file);
-    return res.status(200).json(newProduct);
-  } catch (error) {
-    return res.status(404).json(error.message);
-  }
-};
-*/
 const putProductHandler = async (req, res) => {
   const { id } = req.params;
   const data = req.body;
   try {
+    const images = [];
+    for (const file of files) {
+      const image = await cloudinary.uploader.upload(file.path);
+      images.push(image.secure_url);
+    }
+    data.img = images;
     const productEdited = await updateProduct(id, data);
     return res.status(200).json(productEdited);
   } catch (error) {

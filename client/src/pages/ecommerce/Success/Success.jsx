@@ -38,13 +38,21 @@ function Success() {
   //  ----------------------------
   const screenshotInvoice = (id) => {
     const invoice = document.getElementById("invoice");
-
-    html2canvas(invoice).then((canvas) => {
-      const link = document.createElement("a");
-      link.download = `invoice-petfriendly-${id}.png`;
-      link.href = canvas.toDataURL();
-      link.click();
-    });
+    try {
+      html2canvas(invoice).then((canvas) => {
+        const link = document.createElement("a");
+        link.download = `invoice-petfriendly-${id}.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "No se pudo generar el comprobante",
+        showConfirmButton: false,
+        timer: 1100,
+      });
+    }
   };
   useEffect(() => {
     async function getPaymentData() {
@@ -74,7 +82,7 @@ function Success() {
             <span className="text-yellow-400">compra:</span>
           </h3>
           <h4 className="text-white">
-            Número de factura:{" "}
+            Número de comprobante:{" "}
             <span className="text-yellow-400">{dataState.id}</span>{" "}
           </h4>
           <div className="">
@@ -113,7 +121,7 @@ function Success() {
       <div className=" m-4 flex w-full justify-center  pt-8">
         <button
           className=" flex items-center gap-2 rounded-lg bg-cornflowerblue px-4 py-1 uppercase text-white shadow-lg shadow-[rgba(0,0,0,0.6)] transition-all duration-300 focus:translate-y-1"
-          onClick={() => screenshotInvoice(objeto.id)}
+          onClick={() => screenshotInvoice(dataState.id)}
         >
           Guardar factura
           <svg
