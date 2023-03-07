@@ -11,6 +11,7 @@ import {
 import LinkButton from "../../../../components/Button/LinkButton";
 import { Carousel } from "flowbite-react";
 import Swal from "sweetalert2";
+import { isPending } from "@reduxjs/toolkit";
 
 function FormAdoption() {
   const dispatch = useDispatch();
@@ -29,14 +30,20 @@ function FormAdoption() {
   }, []);
 
   const [form, setForm] = useState({
+    id: "",
+    name: "",
     province: "",
     locality: "",
     description: "",
+    img: "",
   });
   const [errors, setErrors] = useState({
+    id: "",
+    name: "",
     province: "",
     locality: "",
     description: "",
+    img: "",
   });
   const handleChange = (e) => {
     const property = e.target.name;
@@ -105,16 +112,16 @@ function FormAdoption() {
     }
   };
   return (
-    <div className="flex h-full justify-center ">
+    <div className=" flex h-full w-80 justify-center md:w-full ">
       <form
         onSubmit={handleSubmit}
-        className="mt-10 flex max-h-screen max-w-[700px] flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue drop-shadow-2xl md:w-3/5 lg:h-auto "
+        className="mt-10 flex max-h-screen w-full max-w-[700px] flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue drop-shadow-2xl md:w-3/5 lg:h-auto "
       >
-        <h3 className="mb-6">Llena el registro de adopcion</h3>
+        <h3 className="mb-6">Formulario para publicar adopciones</h3>
         <div className="flex h-full w-full flex-col justify-between overflow-hidden rounded-2xl bg-slate-50 pb-20">
           {/* //div con el fomulario izquierdo */}
           <div className="w-full pl-4 pt-4">
-            <div className="mb-7 flex w-full justify-between">
+            <div className="mb-7 flex w-full flex-col justify-between md:flex-row">
               <div className="group relative  z-0 mb-6 h-11 ">
                 <select
                   onChange={handleChange}
@@ -129,7 +136,7 @@ function FormAdoption() {
                   ))}
                 </select>
               </div>
-              <div className="group relative z-0 mb-6 h-11 w-full">
+              <div className="group relative z-0 h-11 w-full">
                 <select
                   onChange={handleChange}
                   name="locality"
@@ -145,13 +152,28 @@ function FormAdoption() {
                 </select>
               </div>
             </div>
-            <div className="group relative z-0 mb-6 h-5/6 w-[97%]">
+            <div className="group relative z-0 mb-2 h-10 w-[97%]">
+              <input
+                onChange={handleChange}
+                type="text"
+                name="name"
+                value={form.name}
+                className="peer block h-full w-full appearance-none rounded-md border-2 border-gray-300 bg-transparent  px-0 text-xs text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 md:text-sm "
+                placeholder=" "
+                autoComplete="off"
+                style={{ resize: "none" }}
+              />
+              <label className="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+                nombre
+              </label>
+            </div>
+            <div className="group relative z-0 h-24 w-[97%] ">
               <textarea
                 onChange={handleChange}
                 type="text"
                 name="description"
                 value={form.description}
-                className="peer block h-full w-full appearance-none rounded-md border-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+                className="peer block h-full w-full appearance-none rounded-md border-2 border-gray-300 bg-transparent  px-0 text-xs text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 md:text-sm "
                 placeholder=" "
                 autoComplete="off"
                 style={{ resize: "none" }}
@@ -163,32 +185,30 @@ function FormAdoption() {
                 <span className="text-red-500">{errors.description}</span>
               )}
             </div>
+          </div>
 
-            <div className="mb-7 grid md:grid-cols-2 md:gap-6"></div>
+          <div className="flex h-1/2 justify-center">
+            <Carousel className="mt-32 md:mt-20">
+              {selectedFiles &&
+                selectedFiles.map((file) => (
+                  <picture className="flex aspect-square h-full items-center justify-center ">
+                    <img src={file} alt="" key={id} className="h-full" />
+                  </picture>
+                ))}
+            </Carousel>
           </div>
-          <div className="">
-            <div className="flex h-1/2 justify-center">
-              <Carousel className="mt-32 md:mt-20">
-                {selectedFiles &&
-                  selectedFiles.map((file) => (
-                    <picture className="flex aspect-square h-full items-center justify-center ">
-                      <img src={file} alt="" key={id} className="h-full" />
-                    </picture>
-                  ))}
-              </Carousel>
-            </div>
-            <div className="pl:20 mt-32 h-1/2 p-8 md:mt-20 md:pl-28 ">
-              <div className="group relative z-0 mb-14 flex h-11">
-                <input
-                  type="file"
-                  multiple
-                  accept="image/*"
-                  onChange={changeHandlerImg}
-                  value=""
-                />
-              </div>
+          <div className="pl:20 mt-24 h-1/2 p-8 md:mt-20 md:pl-28 ">
+            <div className="group relative z-0  flex h-11">
+              <input
+                type="file"
+                multiple
+                accept="image/*"
+                onChange={changeHandlerImg}
+                value=""
+              />
             </div>
           </div>
+
           <LinkButton component={"Enviar"} />
         </div>
       </form>
