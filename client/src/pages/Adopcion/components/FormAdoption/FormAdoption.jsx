@@ -120,7 +120,7 @@ function FormAdoption() {
         <h3 className="mb-6">Formulario para publicar adopciones</h3>
         <div className="flex h-full w-full flex-col justify-between overflow-hidden rounded-2xl bg-slate-50 pb-20">
           {/* //div con el fomulario izquierdo */}
-          <div className="w-full pl-4 pt-4">
+          <div className="flex w-full flex-col gap-4 pl-4 pt-4 ">
             <div className="mb-7 flex w-full flex-col justify-between md:flex-row">
               <div className="group relative  z-0 mb-6 h-11 ">
                 <select
