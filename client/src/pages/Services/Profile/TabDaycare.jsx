@@ -66,16 +66,6 @@ function TabDaycare() {
                   </button>
                 </li>
                 <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
-                  <button
-                    onClick={handleShowInfo}
-                    name="products"
-                    className="inline-block p-4"
-                    title="aqui puedes ver tus productos disponibles"
-                  >
-                    Productos
-                  </button>
-                </li>
-                <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
                   {/* Reveer esto de volver al hacer Health/Services */}
                   <button
                     onClick={() => navigate(-1)}

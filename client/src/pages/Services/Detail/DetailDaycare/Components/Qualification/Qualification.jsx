@@ -3,7 +3,7 @@ const starColor = (rating, starNumber) =>
 
 function Qualification({ title, rating }) {
   return (
-    <div className="mt-1 lg:mt-4">
+    <div className="mt-1 flex lg:mt-4">
       <h3 className="mb-2 text-sm font-bold">{title}</h3>
       {/* -----------------------------  Inicio de Rating General ------------------------------- */}
       <div className="flex items-center sm:flex-row">

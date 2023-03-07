@@ -16,6 +16,7 @@ const walkersRouter = require("./servicesRouters/walkersRouter");
 const provincias = require("./provinciasRouter");
 const localidades = require("./localidadesRoutes");
 const tokenRouter = require("./tokenRoutes");
+const adoptionRouter = require("./adoptionRouter/adoptionRouter");
 require("../helpers/google.js");
 const { TIME_GENERATOR } = process.env;
 
@@ -48,6 +49,7 @@ router.use("/walker", walkersRouter);
 router.use("/pets", petsRouter);
 router.use("/dashboard", dashboardRouter);
 router.use("/token", tokenRouter);
+router.use("/adoption", adoptionRouter);
 
 router.get(
   "/auth",
