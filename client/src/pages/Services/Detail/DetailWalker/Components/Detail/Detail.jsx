@@ -30,16 +30,23 @@ function Detail({
           {price_day ? <p>Precio por dia: {`${price_day}`} (c/u)</p> : null}
         </div>
         <div>
-          <p>Localidad: {`${province} - ${locality}`}</p>
-          {street_name ? (
+          <p>
+            Provincia:
+            {province ? ` ${province} ` : " No disponible"}
+          </p>
+          <p>
+            Localidad:
+            {locality ? ` ${locality}` : " No disponible"}
+          </p>
+          {street_name && (
             <p>Direccion: {`${street_name} - ${street_number}`}</p>
-          ) : null}
+          )}
         </div>
         <div>
           <h6>Contacto:</h6>
           <div className="flex justify-evenly">
-            <p>{`${area_code} - ${number}`}</p>
-            <p>{`${mail}`}</p>
+            {area_code ? <p>{`${area_code} - ${number}`}</p> : "No disponible"}
+            {mail && <p>{`${mail}`}</p>}
           </div>
         </div>
       </div>

@@ -38,6 +38,21 @@ function DashboardAdmin() {
                     Cuentas
                   </button>
                 </li>
+                <li
+                  className={
+                    show === "posts"
+                      ? "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 bg-cornflowerblue text-neutral-900 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
+                      : "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
+                  }
+                >
+                  <button
+                    onClick={handleShow}
+                    name="posts"
+                    className="inline-block p-4"
+                  >
+                    Posts
+                  </button>
+                </li>
                 {/*  <li
                   className={
                     show === "sales"
@@ -88,14 +103,22 @@ function DashboardAdmin() {
           </div>
 
           <div className="w-full">
-            <div className="px-10">
-              <div className="flex justify-center py-10 px-3">
-                <CardsAccounts />
+            {show === "accounts" ? (
+              <div className="px-10">
+                <div className="flex justify-center py-10 px-3">
+                  <CardsAccounts />
+                </div>
+                <div className="py-10">
+                  <BarGraphs />
+                </div>
               </div>
-              <div className="py-10">
-                <BarGraphs />
+            ) : (
+              <div className="px-10">
+                <div className="flex justify-center py-10 px-3">
+                  <CardsAccounts />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

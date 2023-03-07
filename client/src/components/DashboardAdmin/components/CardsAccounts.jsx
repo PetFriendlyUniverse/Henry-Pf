@@ -26,14 +26,17 @@ function CardsAccounts() {
     dispatch(getUsersFilter(user.name, user.type));
   }, []);
 
-  const hadlerChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+  const handlerChange = (e) => {
+    const { name, value } = e.target;
+    setUser({
+      ...user,
+      [name]: value.charAt(0).toUpperCase() + value.slice(1),
+    });
   };
 
   const handlerSubmit = (e) => {
     e.preventDefault();
     dispatch(getUsersFilter(user.name, user.type));
-    console.log(users[0]);
   };
 
   const handleDelete = (e) => {
@@ -69,14 +72,14 @@ function CardsAccounts() {
             type="text"
             value={user.name}
             name="name"
-            onChange={hadlerChange}
+            onChange={handlerChange}
             className="w-28 text-black md:w-32"
             autoComplete="off"
           />
           <select
             name="type"
             value={user.type}
-            onChange={hadlerChange}
+            onChange={handlerChange}
             className="h-6 rounded-r bg-cornflowerblue hover:bg-blue-600"
           >
             <option value="" hidden>
