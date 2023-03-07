@@ -47,7 +47,7 @@ const getInvoicesIdByUser = async (userId) => {
         {
           model: Product,
           through: {
-            attributes: ["unitPrice", "amount"],
+            attributes: ["unitPrice", "amount", "reviewSent"],
           },
         },
       ],
