@@ -47,7 +47,7 @@ const getInvoicesIdByUser = async (userId) => {
         {
           model: Product,
           through: {
-            attributes: ["unitPrice", "amount", "reviewSent"],
+            attributes: ["ProductId", "unitPrice", "amount", "reviewSent"],
           },
         },
       ],
@@ -58,9 +58,11 @@ const getInvoicesIdByUser = async (userId) => {
         invoiceDate: invoice.createdAt,
         products: invoice.Products.map((product) => {
           return {
+            productId: product.Invoices_Products.ProductId,
             productName: product.name,
             store: product.StoreId,
             amount: product.Invoices_Products.amount,
+            reviewSent: product.Invoices_Products.reviewSent,
             unitPrice: product.Invoices_Products.unitPrice,
             totalValue:
               product.Invoices_Products.amount *
