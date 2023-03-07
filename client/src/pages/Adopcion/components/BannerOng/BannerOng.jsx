@@ -1,5 +1,5 @@
 import proPatas from "../../../../assets/imagenes/propatas.png";
-import estoyAqui from "../../../../assets/imagenes/estoyAqui.png";
+import estoyAqui from "../../../../assets/imagenes/estoyaqui.png";
 
 function BannerOng() {
   return (
