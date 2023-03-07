@@ -56,7 +56,6 @@ function ReviewModal({ showModal, setShowModal, productId }) {
       ></div>
       <form
         onSubmit={handleSubmitReview}
-        Reseña
         className="absolute top-[45%] flex h-[500px] w-[550px] max-w-[90%] translate-y-[-50%] flex-col items-center justify-center rounded-lg bg-russianviolet"
       >
         <h2 className="mb-8 text-3xl font-bold tracking-wide text-white"></h2>

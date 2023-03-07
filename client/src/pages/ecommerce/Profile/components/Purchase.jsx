@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getInvoicesById } from "../../../../redux/features/users/usersActions";
-import RatingStar from "../assets/RatingStar";
 import ReviewModal from "./components/ReviewModal/ReviewModal";
 function Purchase() {
   const userId = localStorage.getItem("id");
 
   const dispatch = useDispatch();
   const userInvoice = useSelector((state) => state.User?.userInvoicesId);
-  console.log(userInvoice);
 
   useEffect(() => {
     dispatch(getInvoicesById(userId));
