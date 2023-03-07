@@ -147,7 +147,7 @@ function About() {
     return loaderr();
   } else {
     return (
-      <div className="lg: flex h-max w-full  flex-col items-center justify-center  bg-gray-600 bg-[url('https://petfood.com.ar/img/cms/symphony.png')]  lg:pt-14">
+      <div className="flex h-max w-full  flex-col items-center justify-center  bg-gray-600 bg-adopcion lg:pt-14">
         <div className="flex flex-col items-center justify-center sm:col-start-1 sm:col-end-3">
           <h1 className="text-center font-bold uppercase sm:text-2xl">
             PET FRIENDLY DEVELOPMENT
