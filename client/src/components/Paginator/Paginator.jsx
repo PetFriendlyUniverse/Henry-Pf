@@ -18,6 +18,7 @@ function Paginator() {
 
   const changePage = ({ selected }) => {
     dispatch(setCurrentPage(selected + 1));
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -100,7 +101,7 @@ function Paginator() {
         <div className="w-3/4">
           <Paginate
             pageCount={totalPages}
-            marginPagesDisplayed={0}
+            marginPagesDisplayed={1}
             onPageChange={changePage}
             forcePage={currentPage - 1}
             containerClassName={
