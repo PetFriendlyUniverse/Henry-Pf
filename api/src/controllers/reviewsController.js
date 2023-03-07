@@ -20,11 +20,16 @@ const getReviewByUser = async (userId) => {
   throw Error("This user has not reviewed yet");
 };
 
-const createNewReview = async (userId, content, productId) => {
+const createNewReview = async (userId, data) => {
+  // userId = 11 , data = { productId, dispatchtime, qualification, support, comment }
+
   const newReview = await Review.create({
-    UserId: userId,
-    content,
-    ProductId: productId,
+    ProductId: parseInt(data.productId),
+    UserId: parseInt(userId),
+    comment: data.comment,
+    dispatchtime: data.dispatchtime,
+    qualification: data.qualification,
+    support: data.support,
   });
 
   if (newReview) return newReview;

@@ -27,15 +27,12 @@ const getReviewByUserHandler = async (req, res) => {
 };
 
 const postCreateReviewHandler = async (req, res) => {
-  const { userId, content, productId } = req.body;
+  const data = req.body;
+  const { userId } = req.params;
 
-  if (!content)
-    return res
-      .status(400)
-      .send("No se puede crear comentarios sin un contenido");
-
+  // verificar datos
   try {
-    const newReview = await createNewReview(userId, content, productId);
+    const newReview = await createNewReview(userId, data);
     return res.status(200).json(newReview);
   } catch (error) {
     return res.status(404).json({ error: error.message });
