@@ -108,7 +108,7 @@ function ProductDetail() {
               </button>
             </div>
             <span className="text-xs">({product?.price + "x Kg"})</span>
-            <h3>Seleccione Tamaño:</h3>
+            <h3> Tamaño:</h3>
             <div className=" md:w-1/5 lg:w-1/4">
               <MoarButton component={product?.weight + "kg"} />
             </div>
