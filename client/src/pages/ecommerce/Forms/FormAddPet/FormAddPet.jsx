@@ -15,6 +15,7 @@ function FormAddPet() {
   const [form, setForm] = useState({
     name: "",
     specie: "",
+    size: "",
     race: "",
     age: "",
   });
@@ -35,20 +36,17 @@ function FormAddPet() {
     setForm({ ...form, [property]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const newForm = new FormData();
+    /*  const newForm = new FormData();
     newForm.append("img", img);
     newForm.append("name", form.name);
     newForm.append("specie", form.specie);
     newForm.append("race", form.race);
     newForm.append("age", form.age);
-    axios
-      .post(`/pets/create/${id}`, newForm, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        }, //importante en form de imagen poner este headers
-      })
+    console.log(newForm); */
+    await axios
+      .post(`/pets/create/${id}`, form)
       .then(() => {
         Swal.fire({
           title: "Mascota creada exitosamente",
@@ -62,6 +60,7 @@ function FormAddPet() {
         setForm({
           name: "",
           specie: "",
+          size: "",
           race: "",
           age: "",
         });
@@ -108,6 +107,18 @@ function FormAddPet() {
               type="text"
               name="race"
               value={form.race}
+              className="block w-28 rounded-lg border border-cornflowerblue"
+            />
+          </div>
+          <div className="flex justify-between pt-1">
+            <label className="mb-2 block pr-2 text-sm font-medium text-gray-900">
+              Tamaño:
+            </label>
+            <input
+              onChange={handleChange}
+              type="text"
+              name="size"
+              value={form.size}
               className="block w-28 rounded-lg border border-cornflowerblue"
             />
           </div>

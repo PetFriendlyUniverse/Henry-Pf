@@ -9,25 +9,31 @@ function PetCard(props) {
           <label className="mb-2 block pr-2 text-sm font-medium text-gray-900">
             Nombre:
           </label>
-          {props?.name}
+          {props.petInfo?.name}
         </div>
         <div className="flex justify-between pt-1">
           <label className="mb-2 block pr-2 text-sm font-medium text-gray-900">
             Especie:
           </label>
-          <span>{props?.specie}</span>
+          <span>{props.petInfo?.specie}</span>
         </div>
         <div className="flex justify-between pt-1">
           <label className="mb-2 block pr-2 text-sm font-medium text-gray-900">
-            Raza
+            Raza:
           </label>
-          <span>{props?.raza}</span>
+          <span>{props.petInfo?.race}</span>
+        </div>
+        <div className="flex justify-between pt-1">
+          <label className="mb-2 block pr-2 text-sm font-medium text-gray-900">
+            Tamaño:
+          </label>
+          <span>{props.petInfo?.size}</span>
         </div>
         <div className="flex justify-between pt-1 pb-3">
           <label className="mb-2 block pr-2 text-sm font-medium text-gray-900">
-            Edad
+            Edad:
           </label>
-          <span>{props?.age}</span>
+          <span>{props.petInfo?.age}</span>
         </div>
       </div>
     </div>
