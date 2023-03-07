@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { getPronvinciasAsync } from "../../redux/features/ubicaciones/ubicacionesActions";
 import PaginatorAdoption from "./components/PaginarionAdoption.jsx/PaginationAdoption";
 import BannerOng from "./components/BannerOng/BannerOng";
+import FormAdoption from "./components/FormAdoption/FormAdoption";
 
 function Adopcion() {
   const dispatch = useDispatch();
@@ -70,8 +71,12 @@ function Adopcion() {
             {/* <!-- More posts... --> */}
           </div>
           {/* el de abajo es el div de la card */}
-          <div className=" mt-10  flex h-full  w-full flex-wrap justify-center gap-2 border-t  border-gray-200 pt-10  lg:mx-0 lg:max-w-none   lg:grid-cols-3 lg:gap-20 2xl:h-[600px]">
+          <div className=" z-10 mt-10 flex h-full  w-full flex-wrap justify-center gap-2 border-t  border-gray-200 pt-10  lg:mx-0 lg:max-w-none   lg:grid-cols-3 lg:gap-20 2xl:h-[600px]">
             <PaginatorAdoption />
+          </div>
+          {/* abajo esta el formulario para subir adopciones para el user*/}
+          <div className="mt-96 flex w-full justify-center">
+            <FormAdoption />
           </div>
         </div>
       </div>
