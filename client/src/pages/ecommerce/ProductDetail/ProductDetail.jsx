@@ -87,7 +87,7 @@ function ProductDetail() {
             <h2 className="font-bold md:text-2xl lg:text-3xl">
               {product?.name}
             </h2>
-            <button className="text-xs">Old Pince</button>
+            <button className="text-xs">{product?.brand}</button>
             <span className="text-xs">-Código del producto:{product?.id}</span>
             {/* --------------------------------------     [ Stars ]     ------------------------------------------ */}
             {!!rating ? (

@@ -1,10 +1,10 @@
 import {
   getProducts,
   getFilters,
-  setFilters,
   getProductsById,
   deletedProducts,
   getAllBrands,
+  setFilters,
   deleteFavorite,
 } from "./productsSlice";
 import axios from "axios";
@@ -39,9 +39,9 @@ const deleteFavoriteById = (id) => async (dispatch) => {
 export {
   getProductsApi,
   getFiltersApi,
-  setFilters,
   getProductsId,
   deleteProductId,
   getAllBrandsApi,
+  setFilters,
   deleteFavoriteById,
 };

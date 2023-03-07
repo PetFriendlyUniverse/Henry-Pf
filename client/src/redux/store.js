@@ -6,6 +6,7 @@ import Ubicaciones from "./features/ubicaciones/ubicacionesSlice";
 import Stats from "./features/stats/statsSlice";
 import Filters from "./features/filters/filtersSlice";
 import Services from "./features/services/servicesSlice";
+import Adopciones from "./features/adopcion/adopcionSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
     Ubicaciones,
     Stats,
     Filters,
+    Adopciones,
   },
 });

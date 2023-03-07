@@ -7,7 +7,6 @@ function Description(description) {
         <Tabs.Group aria-label="Tabs with underline" style="underline">
           <Tabs.Item title="Descripción">
             <div>
-              <h2>Esta con nosotros desde: {}</h2>
               <h6>{`${description}`}</h6>
             </div>
           </Tabs.Item>
