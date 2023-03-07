@@ -4,6 +4,7 @@ import {
   getProductsById,
   deletedProducts,
   getAllBrands,
+  setFilters,
   deleteFavorite,
 } from "./productsSlice";
 import axios from "axios";
@@ -41,5 +42,6 @@ export {
   getProductsId,
   deleteProductId,
   getAllBrandsApi,
+  setFilters,
   deleteFavoriteById,
 };
