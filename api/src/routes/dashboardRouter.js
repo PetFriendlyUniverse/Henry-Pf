@@ -8,6 +8,7 @@ const {
   getFilterUsers,
   getEarnings,
   getEarningsByStore,
+  getHandlerList,
 } = require("../handler/dashboardHandler");
 
 const dashboardRouter = Router();
@@ -20,5 +21,6 @@ dashboardRouter.get("/products", getCountProducts);
 dashboardRouter.get("/earnings", getEarnings);
 dashboardRouter.get("/earnings/:idStore", getEarningsByStore);
 dashboardRouter.get("/filterusers", getFilterUsers);
+dashboardRouter.get("/list", getHandlerList);
 
 module.exports = dashboardRouter;
