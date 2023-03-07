@@ -32,6 +32,7 @@ function CardContainer() {
                 id={s?.id}
                 date={s?.createdAt}
                 locality={s?.locality}
+                province={s?.province}
                 img={s?.img}
                 dogImg={s?.Img}
                 UserImg={s?.User?.img}
