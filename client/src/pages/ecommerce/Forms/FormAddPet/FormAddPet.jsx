@@ -71,7 +71,7 @@ function FormAddPet() {
   };
 
   return (
-    <div className=" w-full justify-center bg-[url('https://petfood.com.ar/img/cms/symphony.png')] ">
+    <div className=" w-full bg-adopcion ">
       <div className="flex justify-center">
         <form onSubmit={handleSubmit}>
           <div className="flex justify-between">
