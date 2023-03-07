@@ -97,7 +97,7 @@ function Paginator() {
       </div>
 
       <CardContainer />
-      <div className="relative mt-4 flex w-9/12 flex-col items-center justify-center gap-5 sm:w-96  2xl:flex-row">
+      <div className="relative mt-4 flex w-9/12 flex-col items-center justify-center gap-5 sm:w-96  2xl:w-3/6 2xl:flex-row">
         <div className="w-3/4">
           <Paginate
             pageCount={totalPages}

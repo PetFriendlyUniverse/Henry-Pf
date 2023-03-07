@@ -60,11 +60,11 @@ function Checkout() {
     <div className="flex h-screen w-full items-center justify-center bg-slate-100 pt-24">
       <div className="my-4 flex h-[80vh] w-full flex-col items-center justify-center gap-8 bg-slate-100 md:w-[80vw] lg:flex-row lg:gap-0 xl:w-[60vw]">
         <div className="flex h-full w-full flex-col rounded-lg border  bg-white lg:m-4 lg:w-4/6 lg:items-center lg:justify-center lg:px-6 ">
-          <div className="m-6 hidden h-[8%] w-full items-center justify-center rounded-lg border bg-blue-200 px-6 text-center text-xs  text-gray-600  lg:flex">
+          {/* <div className="m-6 hidden h-[8%] w-full items-center justify-center rounded-lg border bg-blue-200 px-6 text-center text-xs  text-gray-600  lg:flex">
             There are many variations of passages of Lorem Ipsum available, but
             the majority have suffered alteration in some form, by injected
             humour
-          </div>
+          </div> */}
 
           <div
             className={` h-11/12 flex w-full flex-col items-center justify-center gap-2 lg:h-3/6  ${
@@ -93,9 +93,9 @@ function Checkout() {
             <h3 className="self-start text-xl font-medium text-blue-700">
               Promociones aplicadas
             </h3>
-            <span className="self-start text-gray-500">
+            {/*  <span className="self-start text-gray-500">
               producto descripcion breve lorem iptsu
-            </span>
+            </span> */}
             <hr className="my-2 h-[0.10rem] w-full border-0 bg-gray-400" />
             <div className="flex w-full justify-between">
               <span className="font-semibold uppercase tracking-widest text-gray-500">
