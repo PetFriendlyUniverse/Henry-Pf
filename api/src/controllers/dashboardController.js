@@ -9,6 +9,29 @@ const {
 } = require("../db");
 const { Op } = require("sequelize");
 
+const getList = async () => {
+  const models = {
+    User,
+    Walker,
+    Store,
+    Daycare,
+  };
+
+  const modelList = {};
+
+  for (const modelName in models) {
+    const model = models[modelName];
+    const list = await model.findAll();
+    const mappedList = list.reduce((prev, current) => {
+      prev[current.name] = current;
+      return prev;
+    }, {});
+    modelList[modelName] = mappedList;
+  }
+
+  return modelList;
+};
+
 const getUser = async () => {
   const user = await User.count();
   return user;
@@ -109,4 +132,5 @@ module.exports = {
   getUserFilter,
   getEarningsByInvoices,
   getEarningsByInvoiceStore,
+  getList,
 };

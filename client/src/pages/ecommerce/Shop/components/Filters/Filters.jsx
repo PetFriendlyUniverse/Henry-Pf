@@ -8,7 +8,6 @@ import usePriceRangeControll from "./hooks/usePriceRangeControll";
 import Loader from "../../../../../components/Loader/Loader";
 import FiltersSkeleton from "./FiltersSkeleton";
 
-
 function Filters() {
   const [loading, filterLists] = useGetFilters();
   const [show, toggleShow] = useToggleBoolean(); // recibe el estado inicial (default => false)

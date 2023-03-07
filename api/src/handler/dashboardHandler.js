@@ -7,6 +7,7 @@ const {
   getUserFilter,
   getEarningsByInvoices,
   getEarningsByInvoiceStore,
+  getList,
 } = require("../controllers/dashboardController");
 
 const getCountUser = async (req, res) => {
@@ -44,6 +45,41 @@ const getCountDaycare = async (req, res) => {
     res.status(404).send(error.message);
   }
 };
+const getHandlerList = async (req, res) => {
+  try {
+    const user = await getList();
+    return res.status(200).json(user);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+};
+
+// const getHandlerListStore = async (req, res) => {
+//   try {
+//     const Store = await getStoreList();
+//     return res.status(200).json(Store);
+//   } catch (error) {
+//     res.status(404).send(error.message);
+//   }
+// };
+
+// const getHandlerListWalker = async (req, res) => {
+//   try {
+//     const Walker = await getWalkerList();
+//     return res.status(200).json(Walker);
+//   } catch (error) {
+//     res.status(404).send(error.message);
+//   }
+// };
+
+// const getHandlerListDaycare = async (req, res) => {
+//   try {
+//     const Daycare = await getDaycareList();
+//     return res.status(200).json(Daycare);
+//   } catch (error) {
+//     res.status(404).send(error.message);
+//   }
+// };
 
 const getCountProducts = async (req, res) => {
   try {
@@ -88,6 +124,7 @@ module.exports = {
   getCountStore,
   getCountWalker,
   getCountDaycare,
+  getHandlerList,
   getCountProducts,
   getFilterUsers,
   getEarnings,
