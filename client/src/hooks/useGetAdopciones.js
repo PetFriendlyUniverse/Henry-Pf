@@ -5,7 +5,7 @@ import { getAdopcionesApi } from "../redux/features/adopcion/adopcionActions";
 function useGetAdopciones() {
   const [loading, setLoading] = useState(true);
   const { adopcion, adopcionPerPage, currentPage, province } = useSelector(
-    (state) => state.Services
+    (state) => state.Adopciones
   );
   const dispatch = useDispatch();
 
