@@ -25,16 +25,10 @@ module.exports = (sequelize) => {
       province: {
         type: DataTypes.STRING,
         allowNull: true,
-        validate: {
-          len: [1, 30],
-        },
       },
       locality: {
         type: DataTypes.STRING,
         allowNull: true,
-        validate: {
-          len: [1, 30],
-        },
       },
       zip_code: {
         type: DataTypes.INTEGER,
