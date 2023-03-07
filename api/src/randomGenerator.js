@@ -624,6 +624,85 @@ const generator = () => {
     },
   ];
 
+  const comment40 = [
+    "El alimento que compré para mi perro es de excelente calidad. Le ha sentado muy bien y ha mejorado su salud notablemente. Definitivamente volveré a comprar aquí",
+
+    "Los juguetes para gatos que compré son divertidos y duraderos. Mi gato ha estado jugando con ellos durante horas y siguen en perfecto estado",
+
+    "El collar que compré para mi perro es muy resistente y se ve muy bien en él. Además, la selección de colores y estilos en la API es increíble",
+
+    "Compré una caja de arena para mi gato y ha sido una gran adición a su rutina diaria. Es fácil de limpiar y el tamaño es perfecto para mi gato",
+
+    "Los productos para el cuidado dental de mi perro han sido muy efectivos. He notado una gran mejoría en sus dientes y encías desde que empecé a usarlos",
+
+    "La cama que compré para mi perro es muy cómoda y de alta calidad. Ha sido un gran cambio en su descanso diario",
+
+    "Compré una caseta para mi perro y ha sido una gran inversión. Es resistente al clima y se ve muy bien en mi jardín",
+
+    "La comida para mi gato es de alta calidad y se nota en su salud y apariencia. Además, la selección de marcas y sabores es excelente",
+
+    "Los productos para la higiene de mi perro son muy efectivos. Han ayudado a mantener su pelaje brillante y saludable",
+
+    "Los accesorios para la jaula de mi pájaro son de alta calidad y han sido muy útiles en su cuidado diario. Definitivamente recomiendo esta API para los dueños de aves",
+
+    "Compré un comedero automático para mi gato y ha sido una gran adición a su alimentación diaria. Es fácil de programar y me da tranquilidad saber que siempre tendrá comida disponible",
+
+    "La caja transportadora que compré para mi perro es muy resistente y segura. Ha sido muy útil para llevarlo al veterinario y en viajes largos",
+
+    "Los productos de limpieza para mi acuario son muy efectivos y me han ayudado a mantener un ambiente saludable para mis peces. La API tiene una gran selección de productos para acuarios",
+
+    "La ropa para mi perro es de alta calidad y se ve muy bien en él. Además, la selección de diseños y tallas en la API es excelente",
+
+    "Compré un rascador para mi gato y ha sido un éxito total. Le encanta usarlo y ha dejado de arañar mis muebles. La calidad del producto es excelente",
+
+    "Los productos para el cuidado de las uñas de mi perro son muy efectivos. Han sido muy útiles para mantener sus uñas saludables y evitar daños en mis muebles y pisos",
+
+    "Compré un bebedero automático para mi perro y ha sido muy conveniente. Es fácil de limpiar y me da tranquilidad saber que siempre tendrá agua fresca disponible",
+
+    "La comida para mi periquito es de alta calidad y él la disfruta mucho. La API tiene una gran selección de alimentos y accesorios para aves",
+
+    "Compré una correa retráctil para mi perro y ha sido muy útil para caminar con él en diferentes lugares. La calidad del producto es excelente y es muy fácil de usar",
+
+    "Los productos para el cuidado de la piel de mi perro son muy efectivos. Han ayudado a tratar sus problemas de piel y a mantenerla saludable",
+    "Compré un arnés para mi perro y ha sido una gran adición a nuestras caminatas diarias. Es cómodo para él y me da tranquilidad saber que está seguro",
+
+    "Los productos para el cuidado de los oídos de mi perro son muy efectivos. Han ayudado a prevenir infecciones y mantener sus oídos saludables",
+
+    "Compré un kit de juguetes para mi perro y ha sido una gran inversión. Los juguetes son resistentes y divertidos para él. La variedad de juguetes en la API es excelente",
+
+    "La comida para mi gato es de alta calidad y le ha ayudado a mantener un peso saludable. La API tiene una gran selección de alimentos para gatos de diferentes edades y necesidades",
+    "Compré una jaula para mi hámster y ha sido perfecta para él. Es espaciosa y segura. La API tiene una gran selección de jaulas y accesorios para roedores",
+
+    "Los productos para el cuidado de los ojos de mi perro son muy efectivos. Han ayudado a prevenir problemas oculares y mantener sus ojos saludables",
+
+    "Compré una casa para mi conejo y ha sido perfecta para él. Es espaciosa y fácil de limpiar. La API tiene una gran selección de casas y accesorios para conejos",
+
+    "La comida para mi perro es de alta calidad y él la disfruta mucho. La API tiene una gran selección de marcas y sabores para elegir",
+
+    "Compré un bebedero automático para mi gato y ha sido muy conveniente. Es fácil de usar y me da tranquilidad saber que siempre tendrá agua fresca disponible",
+
+    "Los productos para el cuidado de los dientes de mi gato son muy efectivos. Han ayudado a prevenir problemas dentales y mantener sus dientes saludables",
+    "Compré una cama ortopédica para mi perro mayor y ha sido una gran ayuda para su comodidad. La cama es resistente y duradera, y ha ayudado a aliviar su dolor en las articulaciones",
+
+    "Los productos para el cuidado del pelaje de mi gato son muy efectivos. Han ayudado a mantener su pelaje brillante y saludable, y reducir la formación de bolas de pelo",
+
+    "Compré un transportín para mi gato y ha sido muy práctico para nuestras visitas al veterinario. Es seguro y cómodo para él",
+
+    "La comida para mi hámster es de alta calidad y él la disfruta mucho. La API tiene una gran selección de alimentos y accesorios para roedores",
+
+    "Compré un collar de identificación para mi perro y me da tranquilidad saber que, en caso de pérdida, podrá ser identificado fácilmente. La calidad del collar es excelente",
+
+    "Los productos para el cuidado de los huesos y articulaciones de mi perro son muy efectivos. Han ayudado a mantener sus huesos y articulaciones saludables, especialmente en su etapa adulta",
+
+    "Compré un juguete interactivo para mi gato y ha sido muy divertido para él. La calidad del producto es excelente y lo mantiene activo y estimulado",
+
+    "La comida para mi conejo es de alta calidad y él la disfruta mucho. La API tiene una gran selección de alimentos y accesorios para conejos",
+
+    "Compré un dispensador automático de golosinas para mi perro y ha sido una gran adición a nuestra rutina diaria. Es fácil de programar y le da una golosina a mi perro en momentos específicos del día",
+
+    "Los productos para el cuidado de las patas de mi perro son muy efectivos. Han ayudado a mantener sus patas saludables y prevenir problemas como agrietamientos o infecciones",
+  ];
+
   setTimeout(async () => {
     const storesToCreate = [];
     const productsToCreate = [];
@@ -751,7 +830,7 @@ const generator = () => {
         UserId: Math.ceil(i / 2),
         ProductId: i,
         comment:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknow",
+          "Compré un comedero automático para mi gato y ha sido una gran adición a su alimentación diaria. Es fácil de programar y me da tranquilidad saber que siempre tendrá comida disponible",
         qualification: randomQualification[qual][Math.ceil(Math.random() * 10)],
         dispatchtime: randomQualification[dis][Math.ceil(Math.random() * 10)],
         support: randomQualification[sup][Math.ceil(Math.random() * 10)],
@@ -760,7 +839,7 @@ const generator = () => {
         UserId: Math.ceil(i / 2),
         ProductId: i,
         comment:
-          "Hola, Hola  Hola, Hola  Hola, Hola  Hola, Hola  Hola, Hola  Hola, Hola  Hola, Hola  ",
+          "Los productos para el cuidado de la piel de mi perro son muy efectivos. Han ayudado a tratar sus problemas de piel y a mantenerla saludable",
         qualification: randomQualification[qual][Math.ceil(Math.random() * 10)],
         dispatchtime: randomQualification[dis][Math.ceil(Math.random() * 10)],
         support: randomQualification[sup][Math.ceil(Math.random() * 10)],
