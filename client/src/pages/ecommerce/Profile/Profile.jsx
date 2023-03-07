@@ -1,6 +1,6 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+import axios from "axios";
 import interrogation from "../../../assets/general/interrogation.svg";
 import edit from "../../../assets/general/edit.svg";
 
@@ -17,12 +17,14 @@ import {
   getUserApi,
 } from "../../../redux/features/users/usersActions";
 import Purchase from "./components/Purchase";
+import PetCard from "../../../components/PetCard/PetCard";
 
 function Profile() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showInfo, setShowInfo] = useState("profile");
   const user = useSelector((state) => state.User?.userId);
+  const [petInfo, setPetInfo] = useState("");
   const handleShowInfo = (e) => {
     setShowInfo(e.target.name);
   };
@@ -88,10 +90,17 @@ function Profile() {
       />
     ),
   };
+  const getPet = async (id) => {
+    const { data } = await axios.get(`/pets/${id}`);
+    console.log(data);
+    return data;
+  };
   useEffect(() => {
     dispatch(getStoreByUser(user?.id));
     dispatch(getUserApi(user.id));
+    setPetInfo(getPet(user?.id));
   }, []);
+  console.log(petInfo.length);
   return (
     <div className="flex min-h-[80vh] justify-start  bg-adopcion pb-28 pt-10 lg:items-center lg:justify-center">
       <div className="flex h-full w-full flex-col items-center justify-end gap-3 rounded-2xl  px-6 lg:w-full  lg:flex-row lg:justify-start   lg:gap-10 2xl:px-16 ">
@@ -271,7 +280,7 @@ function Profile() {
         {/* container pets form */}
         <div className="h-96 w-full max-w-xs rounded-2xl border-4 border-cornflowerblue  p-3 xl:w-96 ">
           <div>
-            <FormAddPet />
+            {petInfo.length ? <PetCard petInfo={petInfo} /> : <FormAddPet />}
           </div>
         </div>
       </div>
