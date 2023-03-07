@@ -87,7 +87,7 @@ function About() {
     window.scrollTo(0, 0);
   }, []);
 
-  const loaderr = () => {
+  const loader = () => {
     return (
       <SkeletonTheme baseColor="#9c9c9c" highlightColor="white">
         <div className="lg: flex h-max  w-full items-center justify-center bg-adopcion  lg:pt-14">
@@ -144,7 +144,7 @@ function About() {
     );
   };
   if (loading) {
-    return loaderr();
+    return loader();
   } else {
     return (
       <div className="lg: flex h-max w-full  flex-col items-center justify-center  bg-gray-600 bg-[url('https://petfood.com.ar/img/cms/symphony.png')]  lg:pt-14">

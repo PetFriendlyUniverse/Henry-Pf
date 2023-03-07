@@ -7,6 +7,8 @@ import LinkButton from "../Button/LinkButton";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import close from "../../assets/general/close.svg";
+import closedEye from "../../assets/general/closedEye.svg";
+import openEye from "../../assets/general/openEye.svg";
 
 function Login() {
   const navigate = useNavigate();
@@ -29,6 +31,12 @@ function Login() {
     password: "",
   });
   const [repeatPassword, setRepeatPassword] = useState("");
+
+  const [shown, setShown] = useState(false);
+  const switchShown = () => setShown(!shown);
+
+  const [password, setPassword] = useState("");
+  const onChange = ({ currentTarget }) => setPassword(currentTarget.value);
 
   const handleChange = (e) => {
     const property = e.target.name;
@@ -240,25 +248,35 @@ function Login() {
               <label htmlFor={s["chk"]} aria-hidden="true">
                 PET FRIENDLY
               </label>
+              <div>
+                <input
+                  className={s.input}
+                  onChange={handleChangeLogin}
+                  value={login.mail}
+                  type="email"
+                  name="mail"
+                  placeholder="Mail"
+                  required={true}
+                />
+              </div>
+              <div className=" relative object-contain">
+                <input
+                  className={s.input}
+                  onChange={handleChangeLogin}
+                  value={login.password}
+                  type={shown ? "text" : "password"}
+                  name="password"
+                  placeholder="Contraseña"
+                  required={true}
+                />
 
-              <input
-                className={s.input}
-                onChange={handleChangeLogin}
-                value={login.mail}
-                type="email"
-                name="mail"
-                placeholder="Mail"
-                required={true}
-              />
-              <input
-                className={s.input}
-                onChange={handleChangeLogin}
-                value={login.password}
-                type="password"
-                name="password"
-                placeholder="Contraseña"
-                required={true}
-              />
+                <img
+                  className="absolute top-0 right-0 right-10 top-[4px] w-5"
+                  onClick={switchShown}
+                  src={shown ? closedEye : openEye}
+                />
+              </div>
+
               <button>Ingresar</button>
               <button type="button" onClick={handleShowModal}>
                 Olvidaste tu contraseña?
@@ -337,21 +355,28 @@ function Login() {
                   {errors.mail}
                 </span>
               )}
-              <input
-                className={s.input}
-                value={form.password}
-                onChange={handleChange}
-                type="password"
-                name="password"
-                placeholder="Contraseña"
-                autoComplete="off"
-                required={true}
-              />
-              {errors.password && (
-                <span className="ml-1 -mt-3 text-center text-sm tracking-wide text-red-700">
-                  {errors.password}
-                </span>
-              )}
+              <div className=" relative object-contain ">
+                <input
+                  className={s.input}
+                  value={form.password}
+                  onChange={handleChange}
+                  type={shown ? "text" : "password"}
+                  name="password"
+                  placeholder="Contraseña"
+                  autoComplete="off"
+                  required={true}
+                />
+                <img
+                  className="absolute top-0 right-0 right-10 top-[4px] w-5"
+                  onClick={switchShown}
+                  src={shown ? closedEye : openEye}
+                />
+                {errors.password && (
+                  <span className="ml-1 -mt-3 text-center text-sm tracking-wide text-red-700">
+                    {errors.password}
+                  </span>
+                )}
+              </div>
               <input
                 onChange={handleChangeRepeatPassword}
                 className={s.input}
