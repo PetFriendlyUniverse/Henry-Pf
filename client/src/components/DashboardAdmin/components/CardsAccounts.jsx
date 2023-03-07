@@ -27,11 +27,15 @@ function CardsAccounts() {
   }, []);
 
   const handlerChange = (e) => {
-    const { name, value } = e.target;
-    setUser({
-      ...user,
-      [name]: value.charAt(0).toUpperCase() + value.slice(1),
-    });
+    if (e.target.name === "name") {
+      setUser({
+        ...user,
+        [e.target.name]:
+          e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1),
+      });
+    } else {
+      setUser({ ...user, [e.target.name]: e.target.value });
+    }
   };
 
   const handlerSubmit = (e) => {
