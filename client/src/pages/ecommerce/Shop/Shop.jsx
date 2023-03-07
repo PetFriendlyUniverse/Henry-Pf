@@ -13,13 +13,11 @@ export default function HomeShop({ brands }) {
 
   useEffect(() => {
     if (id && token) {
-      console.log("etoy en el if");
       localStorage.setItem("token", token);
       localStorage.setItem("id", id);
       navigate("/shop");
     }
     const tokenLocal = localStorage.getItem("token");
-    console.log(tokenLocal);
     if (tokenLocal) {
       setTimeout(() => {
         localStorage.removeItem("token");
@@ -36,10 +34,8 @@ export default function HomeShop({ brands }) {
             navigate("/login");
           }
         });
-        console.log("holaaaaa");
       }, 3600000);
     }
-
     window.scrollTo(0, 0);
   }, []);
   return (

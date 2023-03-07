@@ -11,10 +11,8 @@ const postAdoptionHandler = async (req, res) => {
   const data = req.body;
   const file = req.file;
   try {
-    if (file) {
-      const image = await cloudinary.uploader.upload(file.path);
-      data.img = image.secure_url;
-    }
+    const image = await cloudinary.uploader.upload(file.path);
+    data.img = image.secure_url;
     const newAdoption = await createAdoption(userId, data);
     res.status(200).json(newAdoption);
   } catch (error) {

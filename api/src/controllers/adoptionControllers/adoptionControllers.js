@@ -9,6 +9,7 @@ const createAdoption = async (userId, data) => {
     {
       description: data.description,
       province: data.province,
+      img: data.img,
       locality: data.locality,
       UserId: userId,
     },
