@@ -94,6 +94,12 @@ const createInvoice = async (
 
     await user.addInvoices(newInvoice);
     //console.log(products); //   {id:1 ,unitPrice:2000, quantity:5}
+    products.forEach(async (prod) => {
+      const updateProduct = await Product.findByPk(prod.id);
+      updateProduct.stock = updateProduct.stock - prod.quantity;
+      await updateProduct.save();
+    });
+
     await products.forEach((element) => {
       newInvoice.addProducts(element.id, {
         through: {
