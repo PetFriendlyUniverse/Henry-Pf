@@ -14,15 +14,15 @@ function ListAccounts() {
 
   return (
     <div>
-      <h2 className="rounded-t-md bg-violet-800 text-lg font-medium">
+      <h2 className="rounded-t-md bg-cornflowerblue text-lg font-medium">
         Lista total de usuarios
       </h2>
-      <div className="flex max-h-[54vh] min-w-[70vw] flex-wrap justify-center gap-y-4 overflow-y-scroll border-t-2 border-b-2 border-violet-800 py-4">
+      <div className="flex max-h-[54vh] flex-wrap justify-center gap-y-4 overflow-y-scroll border-t-2 border-b-2 border-cornflowerblue py-4">
         {listUsers.User?.map((e) => {
           return (
             <div
               key={e.id}
-              className="mx-5 flex w-[500px] items-center rounded-lg border border-gray-200 bg-gray-200 px-10 dark:border-gray-700"
+              className="flex w-[500px] items-center rounded-lg border border-gray-200 bg-gray-200 px-10 dark:border-gray-700 lg:mx-5"
             >
               <div>
                 <div className="flex justify-center p-2">
@@ -122,12 +122,12 @@ function ListAccounts() {
                   <p class="mb-3 flex justify-center font-normal text-black ">
                     {e.area_code && e.number
                       ? `${e.area_code}${e.number}`
-                      : "Sin teléfono"}
+                      : "Sin telefono"}
                   </p>
                   <p class="mb-3 font-normal text-black ">
                     {e.street_name && e.street_number
                       ? `${e.street_name} - ${e.street_number}`
-                      : "Sin dirección"}
+                      : "Sin direccion"}
                   </p>
                 </div>
               </div>
@@ -162,15 +162,8 @@ function ListAccounts() {
                   <p class="mb-3 flex justify-center font-normal text-black ">
                     {e.area_code && e.number
                       ? `${e.area_code}${e.number}`
-                      : "Sin teléfono"}
+                      : "Sin telefono"}
                   </p>
-
-                  <p class="mb-3 font-normal text-black ">
-                    {e.street_name && e.street_number
-                      ? `${e.street_name} - ${e.street_number}`
-                      : "Sin dirección"}
-                  </p>
-
                 </div>
               </div>
             </div>

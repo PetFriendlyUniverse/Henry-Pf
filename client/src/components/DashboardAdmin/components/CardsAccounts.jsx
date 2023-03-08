@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
-import ListAccounts from "./ListAccounts";
+
 import Profile from "../../../assets/general/profile.svg";
 import {
   getUsers,
@@ -211,7 +211,7 @@ function CardsAccounts() {
                       {e.area_code && e.number
                         ? `${e.area_code}${e.number}`
                         : "Sin Teléfono"}
-                   </p>
+                    </p>
                     <p className="mb-3 font-normal text-black ">
                       {e.street_name && e.street_number
                         ? `${e.street_name} - ${e.street_number}`
@@ -222,9 +222,6 @@ function CardsAccounts() {
               </div>
             );
           })}
-      </div>
-      <div className="pt-10">
-        <ListAccounts />
       </div>
     </div>
   );
