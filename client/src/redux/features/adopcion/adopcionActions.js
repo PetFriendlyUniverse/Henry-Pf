@@ -23,8 +23,8 @@ const getAdopcionesIdApi = (id) => async (dispatch) => {
   return dispatch(getAdopcionById(data));
 };
 
-const getAllInstagramUrlByApi = () => async (dispatch) => {
-  const { data } = await axios.get(`/adoption/instagram`);
+const getAllInstagramUrlByApi = (page, pq) => async (dispatch) => {
+  const { data } = await axios.get(`/adoption/instagram?page=${page}&pq=${pq}`);
   return dispatch(getAllInstagramUrl(data));
 };
 
