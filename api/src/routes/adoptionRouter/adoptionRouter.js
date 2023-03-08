@@ -4,6 +4,8 @@ const {
   getAdoptionHandler,
   postHandlerInstagram,
   getHandlerInstagram,
+  deleteInstagramHandler,
+  deleteAdoptionHandler,
 } = require("../../handler/adoptionHandler/adoptionHandler");
 const adoptionRouter = Router();
 
@@ -12,11 +14,13 @@ const upload = multer({ dest: "uploads/" });
 
 adoptionRouter.post(
   "/create/:UserId",
-  upload.single("img"),
+  upload.array("img"),
   postAdoptionHandler
 );
 adoptionRouter.get("/", getAdoptionHandler);
+adoptionRouter.delete("/:id", deleteAdoptionHandler);
 adoptionRouter.post("/instagram/create", postHandlerInstagram);
 adoptionRouter.get("/instagram", getHandlerInstagram);
+adoptionRouter.delete("/instagram/:id", deleteInstagramHandler);
 
 module.exports = adoptionRouter;

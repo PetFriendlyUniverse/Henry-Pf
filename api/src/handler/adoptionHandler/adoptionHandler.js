@@ -4,6 +4,8 @@ const {
   getAllAdoptions,
   createInstagramPost,
   getInstagramPost,
+  getInstagramDelete,
+  getPostDelete,
 } = require("../../controllers/adoptionControllers/adoptionControllers");
 
 const cloudinary = require("cloudinary").v2;
@@ -11,12 +13,14 @@ const cloudinary = require("cloudinary").v2;
 const postAdoptionHandler = async (req, res) => {
   const { UserId: userId } = req.params;
   const data = req.body;
-  const file = req.file;
+  const files = req.files;
   try {
-    if (file) {
+    const images = [];
+    for (const file of files) {
       const image = await cloudinary.uploader.upload(file.path);
-      data.img = image.secure_url;
+      images.push(image.secure_url);
     }
+    data.img = images;
     const newAdoption = await createAdoption(userId, data);
     res.status(200).json(newAdoption);
   } catch (error) {
@@ -60,9 +64,31 @@ const getHandlerInstagram = async (req, res) => {
   }
 };
 
+const deleteInstagramHandler = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const instagramDelete = await getInstagramDelete(id);
+    res.status(200).json(instagramDelete);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
+
+const deleteAdoptionHandler = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const postDelete = await getPostDelete(id);
+    res.status(200).json(postDelete);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
+
 module.exports = {
   postAdoptionHandler,
   getAdoptionHandler,
   postHandlerInstagram,
   getHandlerInstagram,
+  deleteInstagramHandler,
+  deleteAdoptionHandler,
 };
