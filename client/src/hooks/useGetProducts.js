@@ -16,6 +16,7 @@ function useGetProducts() {
     };
   }, [products]);
 
+  console.log(products);
   useEffect(() => {
     setLoading(true);
     dispatch(getProductsApi(productsPerPage, currentPage, setFilters));
