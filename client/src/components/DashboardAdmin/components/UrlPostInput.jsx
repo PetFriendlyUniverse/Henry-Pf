@@ -17,14 +17,14 @@ function UrlPostInput() {
       </span>
       <div className="flex w-full justify-center  py-10">
         <input
-          className="w-2/4 text-black"
+          className="w-[200px] text-black  sm:w-2/6"
           type="text"
           placeholder="pega el link aqui"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
         <button
-          className="w-1/4 border-2 border-white"
+          className=" w-[80px] border-2 border-white sm:w-1/6"
           title="subir publicacion a adopciones"
         >
           Postear
