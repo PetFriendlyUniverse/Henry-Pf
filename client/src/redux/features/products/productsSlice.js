@@ -74,13 +74,54 @@ export const Products = createSlice({
       state.brands = payload;
     },
     setShopCart: (state, { payload }) => {
-      // payload = { id: id, data:{ product } | "delete" } si recibimos product se agrega al carrito y sino se elimina
-      const { data, id } = payload; // data = { id, img, ...todos los datos del producto entero }
-      data == "delete"
-        ? delete state.shopCart[id]
-        : (state.shopCart[id] = { ...state.shopCart[id], ...data });
+      const { data, id } = payload;
+      // console.log("slice, id", id);
+      // console.log("slice, data", data);  dropdown => id = 1    ...   data = {amount: 1}
+      if (data == "delete") {
+        const newAllProducts = state.products.map((prod) => {
+          if (prod.id == id) {
+            return {
+              ...prod,
+              stock: parseInt(prod.stock) + parseInt(state.shopCart[id].amount),
+            };
+          }
+          return prod;
+        });
+        delete state.shopCart[id];
+        state.products = newAllProducts;
+      } else {
+        if (data === "increment") {
+          state.shopCart[id].amount += 1;
+          state.products = state.products.map((prod) =>
+            prod.id == id ? { ...prod, stock: prod.stock - 1 } : prod
+          );
+        } else {
+          state.shopCart[id].amount -= 1;
+          state.products = state.products.map((prod) =>
+            prod.id == id ? { ...prod, stock: prod.stock + 1 } : prod
+          );
+        }
+      }
+    },
+    addNewProdShopCard: (state, { payload }) => {
+      const { id } = payload;
+      state.shopCart[id] = !state.shopCart[id]
+        ? payload
+        : {
+            ...state.shopCart[id],
+            amount: state.shopCart[id].amount + payload.amount,
+          };
+      state.products = state.products.map((prod) =>
+        prod.id == id ? { ...prod, stock: prod.stock - payload.amount } : prod
+      );
     },
     clearShopCart: (state) => {
+      const productIds = Object.keys(state.shopCart);
+      state.products.forEach((prod) => {
+        if (productIds.includes(prod.id.toString())) {
+          prod.stock += state.shopCart[prod.id].amount;
+        }
+      });
       state.shopCart = {};
     },
     deleteFavorite: (state, { payload }) => {
@@ -98,6 +139,7 @@ export const {
   clearFilters,
   getProductsById,
   deletedProducts,
+  addNewProdShopCard,
   setShopCart,
   clearShopCart,
   clearProductId,

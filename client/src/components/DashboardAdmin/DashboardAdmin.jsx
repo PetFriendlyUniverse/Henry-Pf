@@ -7,6 +7,7 @@ import DonutGraphs from "./components/DonutGraphs";
 import LineGraphsSales from "./components/LineGraphsSales";
 import LineGraphsTraffic from "./components/LineGraphsTraffic";
 import Tickets from "./components/Tickets";
+import UrlPostInput from "./components/UrlPostInput";
 
 function DashboardAdmin() {
   const [show, setShow] = useState("accounts");
@@ -113,11 +114,7 @@ function DashboardAdmin() {
                 </div>
               </div>
             ) : (
-              <div className="px-10">
-                <div className="flex justify-center py-10 px-3">
-                  <CardsAccounts />
-                </div>
-              </div>
+              <UrlPostInput />
             )}
           </div>
         </div>

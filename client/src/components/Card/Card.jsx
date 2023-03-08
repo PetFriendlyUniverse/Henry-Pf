@@ -2,7 +2,10 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import { setShopCart } from "../../redux/features/products/productsSlice";
+import {
+  addNewProdShopCard,
+  // setShopCart,
+} from "../../redux/features/products/productsSlice";
 import AddShopButton from "../Button/AddShopButton";
 // import { Carousel } from "flowbite-react";
 import CountProduct from "../CountProduct/CountProduct";
@@ -20,9 +23,15 @@ function Card({ name, img, weight, price, stock, id }) {
   const handleAddShopCart = () => {
     if (value !== 0) {
       dispatch(
-        setShopCart({
-          id: id,
-          data: { name, img, weight, price, stock, id, amount: value },
+        addNewProdShopCard({
+          id,
+          name,
+          img,
+          weight,
+          price,
+          stock,
+          id,
+          amount: value,
         })
       );
       setValue(0);
@@ -66,7 +75,7 @@ function Card({ name, img, weight, price, stock, id }) {
             {weight} kg
           </p>
           <p className="rounded bg-ultraviolet py-2 px-4 text-xs font-semibold text-white">
-            Stock: {stock - value}
+            Stock: {stock}
           </p>
         </div>
         <div className="w-full ">

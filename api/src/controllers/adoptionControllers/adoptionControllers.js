@@ -1,4 +1,4 @@
-const { Adoption, User } = require("../../db");
+const { Adoption, User, InstagramPosts } = require("../../db");
 
 const createAdoption = async (userId, data) => {
   const user = await User.findByPk(userId);
@@ -67,4 +67,19 @@ const filterAdoption = async (query, page, pq) => {
   return { adoptionList, quantity };
 };
 
-module.exports = { createAdoption, filterAdoption, getAllAdoptions };
+const createInstagramPost = async (data) => {
+  const post = await InstagramPosts.create(data);
+  return post;
+};
+const getInstagramPost = async () => {
+  const data = await InstagramPosts.findAll();
+  return data;
+};
+
+module.exports = {
+  createAdoption,
+  filterAdoption,
+  getAllAdoptions,
+  createInstagramPost,
+  getInstagramPost,
+};

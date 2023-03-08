@@ -2,6 +2,8 @@ const {
   createAdoption,
   filterAdoption,
   getAllAdoptions,
+  createInstagramPost,
+  getInstagramPost,
 } = require("../../controllers/adoptionControllers/adoptionControllers");
 
 const cloudinary = require("cloudinary").v2;
@@ -37,7 +39,28 @@ const getAdoptionHandler = async (req, res) => {
     res.status(404).json({ error: error.message });
   }
 };
+const postHandlerInstagram = async (req, res) => {
+  const data = req.body;
+  try {
+    const instagramPost = await createInstagramPost(data);
+    res.status(200).json(instagramPost);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
+
+const getHandlerInstagram = async (req, res) => {
+  try {
+    const instagramPost = await getInstagramPost();
+    res.status(200).json(instagramPost);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
+
 module.exports = {
   postAdoptionHandler,
   getAdoptionHandler,
+  postHandlerInstagram,
+  getHandlerInstagram,
 };

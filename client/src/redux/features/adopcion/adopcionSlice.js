@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  instagramUrls: [],
   adopcion: [],
   totalPages: 1,
   currentPage: 1,
@@ -9,7 +10,6 @@ const initialState = {
   setFilters: [],
   adopcionId: [],
 };
-
 export const Adopciones = createSlice({
   name: "Adopciones",
   initialState,
@@ -57,10 +57,14 @@ export const Adopciones = createSlice({
     getAllAdopciones: (state, { payload }) => {
       state.adopcion = payload;
     },
+    getAllInstagramUrl: (state, { payload }) => {
+      state.instagramUrls = payload;
+    },
   },
 });
 
 export const {
+  getAllInstagramUrl,
   getAllAdopciones,
   deletedAdopcion,
   clearAdopcionesId,

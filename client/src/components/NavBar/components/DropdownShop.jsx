@@ -97,7 +97,9 @@ function DropdownShop() {
           }  py-3 md:h-56 lg:h-[340px] `}
         >
           {products.length ? (
-            products?.map((prod) => <Subcard prod={prod} key={prod.id} />)
+            products?.map((prod) => (
+              <Subcard prod={prod} key={prod.id + "prodInDrowpdownShop"} />
+            ))
           ) : (
             <span className="flex h-full w-full items-center justify-center text-xl">
               <h2>No hay productos agregados al carrito</h2>
