@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
 import Profile from "../../../assets/general/profile.svg";
 import { getUsersFilter } from "../../../redux/features/filters/filtersActions";
@@ -46,23 +47,71 @@ function CardsAccounts() {
   const handleDelete = (e) => {
     if (user.type === "store") {
       dispatch(deleteStoreByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "La Tienda fue eliminado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else if (user.type === "daycare") {
       dispatch(deleteDaycareByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "La Guarderia fue eliminado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else if (user.type === "walker") {
       dispatch(deleteWalkerByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "El Paseador fue eliminado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else {
       dispatch(deleteUserApi(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "El Usuario fue eliminado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     }
   };
   const handleApproved = (e) => {
     if (user.type === "store") {
       dispatch(approvedStoreByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "La Tienda fue reincorporado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else if (user.type === "daycare") {
       dispatch(approvedDaycareByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "La Guarderia fue reincorporado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else if (user.type === "walker") {
       dispatch(approvedWalkerByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "El Paseador fue reincorporado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else {
       dispatch(approvedUserApi(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "El Usuario fue reincorporado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     }
   };
   return (
