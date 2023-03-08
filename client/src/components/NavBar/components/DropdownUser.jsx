@@ -45,16 +45,21 @@ function DropdownUser() {
         className="group flex w-full items-center gap-1 lg:justify-center"
         type="button"
       >
-        <img src={arrowDropdown} alt="" />
+        <img
+          src={arrowDropdown}
+          alt=""
+          className="transition-transform group-hover:rotate-180"
+          ref={arrow}
+        />
         <span className="mr-2 font-bold uppercase text-cornflowerblue">
           {userDetailId?.name}
         </span>
-        <img
+        {/* <img
           ref={arrow}
           src={userDetailId?.img}
           alt=""
           className="h-12 rounded-full transition-transform group-focus:rotate-180"
-        />
+        /> */}
       </button>
 
       <ul
