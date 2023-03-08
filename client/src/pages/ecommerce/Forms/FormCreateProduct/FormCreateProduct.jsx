@@ -86,7 +86,6 @@ function FormCreateProduct() {
     newForm.append("color", form.color);
     newForm.append("size", form.size);
     newForm.append("storeId", form.storeId);
-    console.log(newForm);
     if (isFormValid) {
       Swal.fire({
         title: "Now loading",
