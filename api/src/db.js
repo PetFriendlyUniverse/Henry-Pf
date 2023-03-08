@@ -134,7 +134,7 @@ const Brands = require("./models/FilterModels/Brands.js");
 const Breeds = require("./models/FilterModels/Breeds.js");
 const Species = require("./models/FilterModels/Species.js");
 const Colors = require("./models/FilterModels/Colors.js");
-const Weights = require("./models/FilterModels/Weight.js");
+const Weights = require("./models/FilterModels/Weights.js");
 Brands(sequelize);
 Breeds(sequelize);
 Species(sequelize);
