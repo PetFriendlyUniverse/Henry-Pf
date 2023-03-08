@@ -8,6 +8,7 @@ const {
   Breeds,
   Species,
   Colors,
+  Weights,
 } = require("../db");
 
 const getAllProducts = async () => {
@@ -85,6 +86,9 @@ const createProduct = async (requiredData, extraData) => {
   });
   await Species.findOrCreate({
     where: { id: requiredData.specie },
+  });
+  await Weights.findOrCreate({
+    where: { id: extraData.weight },
   });
   if (extraData?.color)
     await Colors.findOrCreate({

@@ -142,8 +142,9 @@ function FormCreateStore() {
     <div className="flex h-full justify-center pb-16 ">
       <form
         onSubmit={handleSubmit}
-        className="mt-10 flex  h-full w-full flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue shadow-2xl shadow-black md:w-3/5 lg:h-auto "
+        className="mt-10 flex h-full w-2/3 max-w-[900px] flex-col items-center justify-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue shadow-2xl shadow-black md:w-3/5 lg:h-auto lg:w-full "
       >
+
         <div>
           <h3 className="mb-6 text-center text-sm">
             Modifica o agrega informacion para crear tu tienda
@@ -154,16 +155,17 @@ function FormCreateStore() {
           <div className="h-full p-4 lg:w-1/2">
             {/* nombre de tienda */}
             <div className="group relative z-0 mb-6  h-11 lg:w-4/5 ">
+
               <input
                 onChange={handleChange}
                 type="text"
                 name="name"
                 value={form.name}
-                className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+                className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 sm:w-full "
                 placeholder=" "
                 autoComplete="off"
               />
-              <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+              <label className="absolute top-3 -z-10 w-full origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 sm:w-full">
                 Nombre de la tienda
               </label>
               {errors.name && (
@@ -171,18 +173,20 @@ function FormCreateStore() {
               )}
             </div>
             {/* corre electronico */}
+
             <div className="group relative z-0 mb-6 h-11 lg:w-4/5  ">
+
               <input
                 onChange={handleChange}
                 type="text"
                 name="mail"
                 value={form.mail}
-                className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+                className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900"
                 placeholder=" "
                 autoComplete="off"
               />
-              <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                Correo Electronico
+              <label className="absolute top-3 -z-10 w-44 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 sm:w-full">
+                Correo Electrónico
               </label>
               {errors.mail && (
                 <span className="text-xs text-red-500">{errors.mail}</span>
@@ -190,12 +194,12 @@ function FormCreateStore() {
             </div>
 
             {/* provincia */}
-            <div className=" grid   md:grid-cols-2 md:gap-6">
-              <div className="group relative  z-0 mb-6 h-11 ">
+            <div className=" grid px-10  md:grid-cols-2 md:gap-6">
+              <div className="group relative z-0 mb-6 h-11 w-full">
                 <select
                   onChange={handleChange}
                   name="province"
-                  className="max-w-full bg-transparent"
+                  className="w-[240px] bg-transparent"
                   value={form.province}
                 >
                   {provincia.map((p) => (
@@ -210,7 +214,7 @@ function FormCreateStore() {
                   onChange={handleChange}
                   name="locality"
                   value={form.locality}
-                  className="max-w-full bg-transparent"
+                  className="w-[240px] bg-transparent"
                 >
                   {localidad.municipios?.map((l) => (
                     <option key={l.id} value={l.nombre}>
@@ -222,18 +226,20 @@ function FormCreateStore() {
               </div>
             </div>
             {/* cod postal */}
+
             <div className="mb-7 flex flex-col gap-4 lg:flex-row">
               <div className="group relative z-0 mb-6 h-11 ">
+
                 <input
                   onChange={handleChange}
                   type="number"
                   name="zip_code"
                   value={form.zip_code}
-                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 sm:w-full "
                   placeholder=" "
                   autoComplete="off"
                 />
-                <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+                <label className="absolute top-3 -z-10 w-full origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 sm:w-full">
                   Cod. Postal
                 </label>
                 {errors.zip_code && (
@@ -242,13 +248,15 @@ function FormCreateStore() {
                   </span>
                 )}
               </div>
+
               <div className="group relative z-0 mb-6 h-11 ">
+
                 <input
                   onChange={handleChange}
                   type="text"
                   name="street_name"
                   value={form.street_name}
-                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 sm:w-full "
                   placeholder=" "
                   autoComplete="off"
                 />
@@ -267,7 +275,7 @@ function FormCreateStore() {
                   type="number"
                   name="street_number"
                   value={form.street_number}
-                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 sm:w-full "
                   placeholder=" "
                   autoComplete="off"
                 />
@@ -281,19 +289,20 @@ function FormCreateStore() {
                 )}
               </div>
             </div>
+
             <div className="group relative z-0 mb-6 flex h-2/4 w-full flex-col">
+
               <textarea
                 type="text"
                 value={form.description}
                 name="description"
                 onChange={handleChange}
+
                 className=" peer block w-full appearance-none rounded-2xl border-b-2 border-gray-100 bg-gray-100 px-1 py-4 text-sm text-gray-900   focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
                 placeholder="Agregue una breve descrpcion de su producto  "
+
                 autoComplete="off"
               />
-              <label className="absolute bottom-2 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                Descripción:
-              </label>
               {errors.description && (
                 <span className="text-xs text-red-500">
                   {errors.description}
@@ -302,9 +311,11 @@ function FormCreateStore() {
             </div>
           </div>
           {/* //empieza el div con imagenes */}
+
           <div className="lg:w-1/2">
             <div className="flex h-1/2 justify-center">
               <Carousel className="min-h-[100px] w-full lg:w-10/12 ">
+
                 {selectedFiles &&
                   selectedFiles.map((file, i) => (
                     <picture
@@ -321,7 +332,7 @@ function FormCreateStore() {
                   ))}
               </Carousel>
             </div>
-            <div className="h-1/2 p-8 px-8 ">
+            <div className="p-8 px-8 lg:h-1/2 ">
               <div className="group relative z-0 mb-14 flex h-11 w-full ">
                 <input
                   type="file"
@@ -331,8 +342,9 @@ function FormCreateStore() {
                   value=""
                   className="text-xs lg:text-base"
                 />
-              </div>
+
               <div className="flex flex-col gap-10 md:grid-cols-2 md:gap-6">
+
                 {/* cod de area */}
                 <div className="group relative z-0  h-11 w-full">
                   <input
@@ -345,7 +357,7 @@ function FormCreateStore() {
                     autoComplete="off"
                   />
                   <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                    Cod. de area
+                    Cod. de área
                   </label>
                   {errors.area_code && (
                     <span className="text-xs text-red-500">

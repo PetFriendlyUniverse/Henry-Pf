@@ -34,11 +34,11 @@ function BarGraphs() {
     },
     {
       name: "Paseadores",
-      "Numero de cuentas": walkers,
+      "Número de cuentas": walkers,
     },
     {
       name: "Guarderias",
-      "Numero de cuentas": daycares,
+      "Número de cuentas": daycares,
     },
   ];
 
@@ -49,9 +49,9 @@ function BarGraphs() {
   return (
     <div>
       <Card>
-        <Title>Cuentas (2021)</Title>
+        <Title>Cuentas (2023)</Title>
         <Subtitle>
-          Esto muestra la cantidad de cuentas por funcionaldiad
+          Esto muestra la cantidad de cuentas por funcionalidad
         </Subtitle>
         <BarChart
           data={chartdata}

@@ -1,21 +1,23 @@
 function Comments({ comments }) {
   return (
-    <div className="mx-auto w-4/5 ">
+    <div className=" flex w-3/5 flex-col items-start">
       {!!comments?.length ? (
         comments?.map((c, i) => (
           <div
             key={c.user + i}
-            className="m-4 flex w-3/5 flex-col rounded-md bg-white p-2"
+            className="m-4 flex w-3/5 flex-col rounded-md bg-slate-50  p-2 font-sans text-lg font-normal"
           >
-            <p>{c.user}</p>
-            <p>{c.comment}</p>
-            <span className="self-end text-gray-300">
+            <p className="pl-2 text-lg font-bold text-gray-700">{c.user}</p>
+            <p className="pl-2 text-gray-700">{c.comment}</p>
+            <span className="self-end italic text-gray-400">
               {c.date.split("T")[0]}
             </span>
           </div>
         ))
       ) : (
-        <p>Actualmente este producto no posee comentarios</p>
+        <p className=" font-semibold sm:text-xs md:text-base lg:text-base">
+          Actualmente este producto no posee comentarios
+        </p>
       )}
     </div>
   );

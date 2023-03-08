@@ -87,6 +87,7 @@ const {
   Walker,
   Pet,
   Adoption,
+  InstagramPosts,
 } = sequelize.models;
 
 Invoices.belongsToMany(Product, { through: Invoices_Products });
@@ -133,10 +134,12 @@ const Brands = require("./models/FilterModels/Brands.js");
 const Breeds = require("./models/FilterModels/Breeds.js");
 const Species = require("./models/FilterModels/Species.js");
 const Colors = require("./models/FilterModels/Colors.js");
+const Weights = require("./models/FilterModels/Weights.js");
 Brands(sequelize);
 Breeds(sequelize);
 Species(sequelize);
 Colors(sequelize);
+Weights(sequelize);
 
 module.exports = {
   sequelize,

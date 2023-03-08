@@ -5,7 +5,7 @@ const { PORT, FORCE_TRUE } = process.env;
 
 const port = PORT || 3001;
 
-conn.sync(FORCE_TRUE == "true" && { force: true }).then(() => {
+conn.sync({ async: true }).then(() => {
   server.listen(port, () => {
     console.log("%s listening at 3001");
   });

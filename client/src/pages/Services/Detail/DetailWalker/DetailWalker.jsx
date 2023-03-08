@@ -12,7 +12,7 @@ function ServicesDetail() {
   useEffect(() => {
     dispatch(getWalkerByIdApi(id));
   }, []);
-  console.log(walker);
+
   return (
     <div className="pt-10">
       <div>

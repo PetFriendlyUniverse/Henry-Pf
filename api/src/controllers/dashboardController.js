@@ -22,11 +22,7 @@ const getList = async () => {
   for (const modelName in models) {
     const model = models[modelName];
     const list = await model.findAll();
-    const mappedList = list.reduce((prev, current) => {
-      prev[current.name] = current;
-      return prev;
-    }, {});
-    modelList[modelName] = mappedList;
+    modelList[modelName] = list.map((item) => item.toJSON());
   }
 
   return modelList;

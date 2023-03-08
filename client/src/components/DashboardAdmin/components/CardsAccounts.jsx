@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
 import Profile from "../../../assets/general/profile.svg";
-import { getUsersFilter } from "../../../redux/features/filters/filtersActions";
 import {
+  getUsers,
+  getUsersFilter,
   deleteDaycareByUser,
   deleteStoreByUser,
   deleteUserApi,
@@ -20,18 +22,23 @@ function CardsAccounts() {
     name: "",
     type: "",
   });
-
+  const list = useSelector((state) => state.Filters?.list);
   const users = useSelector((state) => state.Filters?.usersFiltered);
   useEffect(() => {
+    dispatch(getUsers());
     dispatch(getUsersFilter(user.name, user.type));
   }, []);
 
   const handlerChange = (e) => {
-    const { name, value } = e.target;
-    setUser({
-      ...user,
-      [name]: value.charAt(0).toUpperCase() + value.slice(1),
-    });
+    if (e.target.name === "name") {
+      setUser({
+        ...user,
+        [e.target.name]:
+          e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1),
+      });
+    } else {
+      setUser({ ...user, [e.target.name]: e.target.value });
+    }
   };
 
   const handlerSubmit = (e) => {
@@ -42,23 +49,71 @@ function CardsAccounts() {
   const handleDelete = (e) => {
     if (user.type === "store") {
       dispatch(deleteStoreByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "La Tienda fue eliminado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else if (user.type === "daycare") {
       dispatch(deleteDaycareByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "La Guarderia fue eliminado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else if (user.type === "walker") {
       dispatch(deleteWalkerByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "El Paseador fue eliminado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else {
       dispatch(deleteUserApi(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "El Usuario fue eliminado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     }
   };
   const handleApproved = (e) => {
     if (user.type === "store") {
       dispatch(approvedStoreByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "La Tienda fue reincorporado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else if (user.type === "daycare") {
       dispatch(approvedDaycareByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "La Guarderia fue reincorporado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else if (user.type === "walker") {
       dispatch(approvedWalkerByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "El Paseador fue reincorporado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else {
       dispatch(approvedUserApi(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "El Usuario fue reincorporado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     }
   };
   return (
@@ -103,7 +158,7 @@ function CardsAccounts() {
       <div
         className={
           users
-            ? "flex max-h-[54vh] min-w-[70vw] flex-wrap justify-center gap-y-4 overflow-y-scroll border-t-2 border-b-2 py-4"
+            ? "flex max-h-[54vh] min-w-[70vw] flex-wrap justify-center gap-y-4 overflow-y-scroll"
             : "py-4"
         }
       >
@@ -112,14 +167,14 @@ function CardsAccounts() {
             return (
               <div
                 key={e.id}
-                className="mx-5 min-w-[250px] items-center rounded-lg border  border-gray-200 bg-gray-200 px-10 dark:border-gray-700 md:max-w-[330px] md:flex-row"
+                className="mx-5 flex w-[500px] items-center rounded-lg border border-gray-200 bg-gray-200 px-10 dark:border-gray-700"
               >
                 <div>
-                  <div className="flex justify-center">
+                  <div className="flex justify-center pb-5">
                     <img
                       src={e.img ? e.img : Profile}
                       alt=""
-                      class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                      className="min-w-[100px] max-w-[100px] rounded-sm object-cover"
                     />
                   </div>
                   {users && users[0]?.enable ? (
@@ -142,34 +197,25 @@ function CardsAccounts() {
                     </div>
                   )}
                 </div>
-                <div class="flex flex-col justify-between p-4 leading-normal">
-                  <div>
+                <div class="flex w-full flex-col justify-center p-4 leading-normal ">
+                  <div className="flex justify-center">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-black ">
                       {`${e.name}`}
                     </h5>
-                    {e.lastname ? <h5>{`${e.lastname}`}</h5> : null}
                   </div>
-                  <p class="mb-3 font-normal text-black ">
-                    Finalidad del Usuario
-                  </p>
                   <div>
-                    <p class="mb-3 font-normal text-black ">
-                      {e.Province && e.Locality
-                        ? `${e.Province} - ${e.Locality}`
-                        : "Sin Provincia - Sin Localidad"}
+                    <p className="mb-3 flex justify-center font-normal text-black">
+                      {e.mail ? `${e.mail}` : "Sin mail"}
                     </p>
-                    <p class="mb-3 flex font-normal text-black">
-                      {e.mail ? `${e.mail}` : null}
-                    </p>
-                    <p class="mb-3 flex justify-center font-normal text-black ">
+                    <p className="mb-3 flex justify-center font-normal text-black ">
                       {e.area_code && e.number
                         ? `${e.area_code}${e.number}`
-                        : "Sin Telefono"}
+                        : "Sin Teléfono"}
                     </p>
-                    <p class="mb-3 font-normal text-black ">
+                    <p className="mb-3 font-normal text-black ">
                       {e.street_name && e.street_number
                         ? `${e.street_name} - ${e.street_number}`
-                        : "Sin Direccion"}
+                        : "Sin Dirección"}
                     </p>
                   </div>
                 </div>
