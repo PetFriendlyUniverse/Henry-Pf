@@ -3,6 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   instagramUrls: [],
   adopcion: [],
+  totalPagesIg: 1,
+  currentPageIg: 1,
+  postPerPageIg: 4,
   totalPages: 1,
   currentPage: 1,
   adopcionPerPage: 4,
@@ -25,6 +28,10 @@ export const Adopciones = createSlice({
     setCurrentPage: (state, { payload }) => {
       state.currentPage = payload;
     },
+    setCurrentPageIg: (state, { payload }) => {
+      state.currentPageIg = payload;
+    },
+
     setFilters: (state, { payload }) => {
       const newSetFilters = { ...state.setFilters };
       const { filter, value } = payload; //{filter:"Breed", value: "breed1"}
@@ -58,7 +65,8 @@ export const Adopciones = createSlice({
       state.adopcion = payload;
     },
     getAllInstagramUrl: (state, { payload }) => {
-      state.instagramUrls = payload;
+      state.instagramUrls = payload.adoptionListInstagram;
+      state.totalPagesIg = payload.quantity;
     },
   },
 });
@@ -70,6 +78,7 @@ export const {
   clearAdopcionesId,
   setFilters,
   setCurrentPage,
+  setCurrentPageIg,
   getFilters,
   getAdopciones,
   getAdopcionById,
