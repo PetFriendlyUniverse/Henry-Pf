@@ -11,12 +11,12 @@ function Subcard({ prod, gridProperties }) {
     if (amount === 1) {
       dispatch(setShopCart({ id, data: "delete" }));
     } else {
-      dispatch(setShopCart({ id, data: { amount: amount - 1 } }));
+      dispatch(setShopCart({ id, data: "decrement" }));
     }
   };
   const handleClickAdd = () => {
     if (amount < stock) {
-      dispatch(setShopCart({ id, data: { amount: amount + 1 } }));
+      dispatch(setShopCart({ id, data: "increment" }));
     } else {
       // notificar que no hay mas stock disponible
       // [ sweet alert ]
