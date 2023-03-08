@@ -4,6 +4,7 @@ const {
   getAdoptionHandler,
   postHandlerInstagram,
   getHandlerInstagram,
+  deleteInstagramHandler,
 } = require("../../handler/adoptionHandler/adoptionHandler");
 const adoptionRouter = Router();
 
@@ -18,5 +19,7 @@ adoptionRouter.post(
 adoptionRouter.get("/", getAdoptionHandler);
 adoptionRouter.post("/instagram/create", postHandlerInstagram);
 adoptionRouter.get("/instagram", getHandlerInstagram);
+adoptionRouter.get("/instagram", getHandlerInstagram);
+adoptionRouter.delete("/instagram/:id", deleteInstagramHandler);
 
 module.exports = adoptionRouter;
