@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo/logo.png";
-
+import blog from "../../assets/general/blog.svg";
 import shop from "../../assets/general/shop.svg";
 import services from "../../assets/general/services.svg";
 import about from "../../assets/general/about.svg";
@@ -41,7 +41,7 @@ function NavBarPrueba() {
           />
         </Link>
         {/* Button bars mobile */}
-        <div className="block lg:hidden">
+        <div className="block xl:hidden">
           <button onClick={toggleSvgBars}>
             {!active ? (
               <svg
@@ -102,8 +102,25 @@ function NavBarPrueba() {
       {/* Contenedor links ([ "shop", "services", "aboutUs", "userMenu"]) */}
       <div
         ref={menu}
-        className=" hidden  w-full pt-5 lg:absolute  lg:right-0  lg:top-7 lg:flex  lg:w-[900px] lg:items-center lg:gap-3  lg:p-0 lg:pt-0   2xl:top-6 2xl:right-0   2xl:w-[750px]"
+        className=" hidden  w-full pt-5 xl:absolute  xl:right-0  xl:top-7 xl:flex  xl:w-[900px] xl:items-center xl:gap-3  xl:p-0 xl:pt-0   2xl:top-6 2xl:right-0  "
       >
+        {/* link to blog */}
+        <NavLink
+          onClick={selectOption}
+          to="/adopcion/blog"
+          className="flex w-full gap-3 py-3 text-cornflowerblue "
+        >
+          {({ isActive }) => (
+            <div
+              className={`${
+                isActive ? activeClassName : undefined
+              } flex w-full  gap-3 pb-1 lg:justify-center`}
+            >
+              <img src={blog} alt="" />
+              <span className="font-bold uppercase">blog</span>
+            </div>
+          )}
+        </NavLink>
         {/* link to landing shop */}
         <NavLink
           onClick={selectOption}
@@ -179,7 +196,7 @@ function NavBarPrueba() {
       </div>
 
       {/* contenedor serchBar and modalShop */}
-      <div className="xl:w- flex w-full flex-col items-center justify-center gap-4 sm:w-[500px] md:w-full md:flex-row md:justify-end lg:h-16 2xl:absolute 2xl:left-36  2xl:top-4 2xl:w-[800px] 2xl:flex-row-reverse ">
+      <div className=" flex w-full flex-col items-center justify-center gap-4  sm:w-[500px] md:w-full md:flex-row md:justify-end lg:h-16 2xl:absolute 2xl:left-36  2xl:top-4 2xl:w-[600px] 2xl:flex-row-reverse ">
         {/* searchBar  */}
         <SearchForm />
 
