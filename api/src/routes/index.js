@@ -28,10 +28,10 @@ const router = Router();
 const { generator } = require("../randomGenerator");
 
 // TIME_GENERATOR && generator();
-// router.use("/randomgenerator", (req, res) => {
-//   generator();
-//   res.send("Ejecucion de randomGenerator exitosa");
-// });
+router.use("/randomgenerator", (req, res) => {
+  generator();
+  res.send("Ejecucion de randomGenerator exitosa");
+});
 
 router.use("/localidades", localidades);
 router.use("/provincias", provincias);

@@ -71,9 +71,18 @@ const createInstagramPost = async (data) => {
   const post = await InstagramPosts.create(data);
   return post;
 };
-const getInstagramPost = async () => {
-  const data = await InstagramPosts.findAll();
-  return data;
+const getInstagramPost = async (page, pq) => {
+  const offset = (page - 1) * pq;
+
+  const adoptionListInstagram = await InstagramPosts.findAll({
+    limit: pq,
+    offset: offset,
+  });
+  const count = await InstagramPosts.count();
+
+  const quantity = Math.ceil(count / pq);
+
+  return { adoptionListInstagram, quantity };
 };
 
 module.exports = {

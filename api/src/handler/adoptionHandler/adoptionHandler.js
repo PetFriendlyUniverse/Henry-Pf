@@ -50,8 +50,10 @@ const postHandlerInstagram = async (req, res) => {
 };
 
 const getHandlerInstagram = async (req, res) => {
+  const query = req.query;
   try {
-    const instagramPost = await getInstagramPost();
+    const { page, pq } = query;
+    const instagramPost = await getInstagramPost(page, pq);
     res.status(200).json(instagramPost);
   } catch (error) {
     res.status(404).json({ error: error.message });
