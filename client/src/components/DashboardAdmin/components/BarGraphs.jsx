@@ -49,7 +49,7 @@ function BarGraphs() {
   return (
     <div>
       <Card>
-        <Title>Cuentas (2021)</Title>
+        <Title>Cuentas (2023)</Title>
         <Subtitle>
           Esto muestra la cantidad de cuentas por funcionaldiad
         </Subtitle>
