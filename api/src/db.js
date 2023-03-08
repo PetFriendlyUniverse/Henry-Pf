@@ -88,7 +88,6 @@ const {
   Walker,
   Pet,
   Adoption,
-  InstagramPosts,
 } = sequelize.models;
 
 Invoices.belongsToMany(Product, { through: Invoices_Products });
