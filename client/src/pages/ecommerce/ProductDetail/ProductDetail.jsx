@@ -108,11 +108,11 @@ function ProductDetail() {
               </button>
             </div>
             <span className="text-xs">({product?.price + "x Kg"})</span>
-            <h3> Tamaño:</h3>
+            <h3 className="text-lg font-semibold"> Tamaño:</h3>
             <div className=" md:w-1/5 lg:w-1/4">
               <MoarButton component={product?.weight + "kg"} />
             </div>
-            <span> Seleccione Cantidad:</span>
+            <span className="text-lg font-semibold"> Seleccione Cantidad:</span>
             <div className="w-1/2">
               <CountProduct
                 handleClickDeduct={handleClickDeduct}
@@ -121,27 +121,25 @@ function ProductDetail() {
               />
             </div>
             <button
-              className="my-2 rounded-lg bg-[#4dbb47] py-2 px-4 md:min-w-full lg:w-1/2"
+              className="my-2 rounded-lg bg-[#4dbb47] py-2 px-4 text-lg font-normal text-white md:min-w-full lg:w-1/2"
               onClick={() => handleClickAddProduct(product)}
             >
               Añadir al carrito
             </button>
             <div className="text-sm">
-              <p>Opciones de Envío</p>
-              <p> Envío a Domicilio </p>
+              <p className="text-lg font-semibold">Opciones de Envío</p>
+              <p className="mt-2 text-base font-semibold">Envío a Domicilio </p>
               <p className="md:text-xs lg:text-sm ">
                 Envío gratis +$7500 en CABA y zonas de GBA. No aplica para
                 envíos al Interior
               </p>
-              <p>Envío Flash</p>
-              <p className="text-xs">
-                Envíos a todo CABA y zonas seleccionadas de AMBA. Envíos a todo
-                CABA y zonas seleccionadas de AMBA. Envíos a todo CABA y zonas
-                seleccionadas de AMBA.
+              <p className="mt-2 text-base font-semibold">Envío Flash:</p>
+              <p className="text-sm">
+                Envíos a todo CABA y zonas seleccionadas de AMBA.
               </p>
             </div>
-            <p>Retiro en Sucursal</p>
-            <p className="text-xs">
+            <p className="mt-2 text-base font-semibold">Retiro en Sucursal:</p>
+            <p className="text-sm">
               Retirá sin cargo por tu sucursal preferida
             </p>
           </div>
