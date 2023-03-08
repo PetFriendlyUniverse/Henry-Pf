@@ -2,6 +2,8 @@ const { Router } = require("express");
 const {
   postAdoptionHandler,
   getAdoptionHandler,
+  postHandlerInstagram,
+  getHandlerInstagram,
 } = require("../../handler/adoptionHandler/adoptionHandler");
 const adoptionRouter = Router();
 
@@ -14,5 +16,7 @@ adoptionRouter.post(
   postAdoptionHandler
 );
 adoptionRouter.get("/", getAdoptionHandler);
+adoptionRouter.post("/instagram/create", postHandlerInstagram);
+adoptionRouter.get("/instagram", getHandlerInstagram);
 
 module.exports = adoptionRouter;
