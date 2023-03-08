@@ -12,7 +12,7 @@ export const Validate = (property, value) => {
     error.name = "Ingrese un nombre";
   } else if (property === "name") {
     if (!stringNumberRegex.test(value)) {
-      error.name = "Por favor ingrese un nombre sin numeros o signos";
+      error.name = "Por favor ingrese un nombre sin números o signos";
     } else if (value.length > 30) {
       error.name = "El nombre es demasiado largo";
     } else {
@@ -21,10 +21,10 @@ export const Validate = (property, value) => {
   }
 
   if (property === "area_code" && value <= 0) {
-    error.area_code = "Ingrese su codigo de area de su tienda";
+    error.area_code = "Ingrese su código de área de su tienda";
   } else if (property === "area_code") {
     if (!numberRegex.test(value)) {
-      error.area_code = "Por favor ingrese bien el codigo de area";
+      error.area_code = "Por favor ingrese bien el código de área";
     } else if (value.length > 7) {
       error.area_code = "Demasiado largo";
     } else {
@@ -33,12 +33,12 @@ export const Validate = (property, value) => {
   }
 
   if (property === "number" && !value) {
-    error.number = "Debe ingresar un numero telefonico para su tienda";
+    error.number = "Debe ingresar un número telefónico para su tienda";
   } else if (property === "number") {
     if (!numberRegex.test(value)) {
-      error.number = "Por favor ingrese un telefono sin letras o signos";
+      error.number = "Por favor ingrese un teléfono sin letras o signos";
     } else if (value.length > 30 || value.length < 6) {
-      error.number = "Por favor ingrese un telefono valido";
+      error.number = "Por favor ingrese un teléfono válido";
     } else {
       error.number = "";
     }
@@ -48,7 +48,7 @@ export const Validate = (property, value) => {
     error.province = "Ingrese la provincia en la que se encuentra su Tienda";
   } else if (property === "province") {
     if (!stringRegex.test(value)) {
-      error.province = "Por favor ingrese su Provincia sin numeros o signos";
+      error.province = "Por favor ingrese su Provincia sin números o signos";
     } else if (value.length > 15) {
       error.province = "El nombre es demasiado largo";
     } else {
@@ -60,7 +60,7 @@ export const Validate = (property, value) => {
     error.locality = "Ingrese la localidad en la que se encuentra su Tienda";
   } else if (property === "locality") {
     if (!stringNumberRegex.test(value)) {
-      error.locality = "Por favor ingrese su Localidad sin numeros o signos";
+      error.locality = "Por favor ingrese su Localidad sin números o signos";
     } else if (value.length > 15) {
       error.locality = "El nombre es demasiado largo";
     } else {
@@ -69,12 +69,12 @@ export const Validate = (property, value) => {
   }
 
   if (property === "zip_code" && value <= 0) {
-    error.zip_code = "Ingrese el codigo postal de su Tienda";
+    error.zip_code = "Ingrese el código postal de su Tienda";
   } else if (property === "zip_code") {
     if (!numberRegex.test(value)) {
-      error.zip_code = "Por favor ingrese bien el codigo postal";
+      error.zip_code = "Por favor ingrese bien el código postal";
     } else if (value.length > 7) {
-      error.zip_code = "No valido";
+      error.zip_code = "No válido";
     } else {
       error.zip_code = "";
     }
@@ -95,22 +95,22 @@ export const Validate = (property, value) => {
   }
 
   if (property === "street_number" && value <= 0) {
-    error.street_number = "Ingrese su numeracion";
+    error.street_number = "Ingrese su numeración";
   } else if (property === "street_number") {
     if (!numberRegex.test(value)) {
-      error.street_number = "Por favor ingrese la numeracion correcta";
+      error.street_number = "Por favor ingrese la numeración correcta";
     } else if (value.length > 7) {
-      error.street_number = "No valido";
+      error.street_number = "No válido";
     } else {
       error.street_number = "";
     }
   }
 
   if (property === "description" && value <= 0) {
-    error.description = "Ingrese una descripcion/ofertas para su Tienda";
+    error.description = "Ingrese una descripción/ofertas para su Tienda";
   } else if (property === "description") {
     if (!stringNumberRegex.test(value)) {
-      error.description = "Por favor ingrese una descripcion sin signos";
+      error.description = "Por favor ingrese una descripción sin signos";
     } else if (value.length > 2000) {
       error.description = "Demasiado largo";
     } else {

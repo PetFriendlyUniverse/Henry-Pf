@@ -83,9 +83,9 @@ const FormCreateWalker = lazy(() =>
 function App() {
   const shopCart = useSelector((state) => state.Products.shopCart);
   const { pathname } = useLocation();
-  window.addEventListener("beforeunload", () => {
-    localStorage.setItem("shopCart", JSON.stringify(shopCart));
-  });
+  // window.addEventListener("beforeunload", () => {
+  //   localStorage.setItem("shopCart", JSON.stringify(shopCart));
+  // });
 
   return (
     <div className="App min-h-screen">

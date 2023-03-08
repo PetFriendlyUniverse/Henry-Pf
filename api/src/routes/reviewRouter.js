@@ -12,7 +12,7 @@ const reviewRouter = Router();
 reviewRouter.get("/byProduct/:productId", getReviewByPoductHandler);
 reviewRouter.get("/byUser/:userId", getReviewByUserHandler);
 
-reviewRouter.post("/create/:userId", postCreateReviewHandler); // recibe [userId & content] (body)
+reviewRouter.post("/create/:userId/:invoiceId", postCreateReviewHandler);
 
 reviewRouter.put("/update/:reviewId", putUpdateReviewHandler);
 
