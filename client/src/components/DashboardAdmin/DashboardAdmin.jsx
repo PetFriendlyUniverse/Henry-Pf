@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import CardsAccounts from "./components/CardsAccounts";
 import Graphs from "./components/Graphs";
@@ -8,12 +8,23 @@ import LineGraphsSales from "./components/LineGraphsSales";
 import LineGraphsTraffic from "./components/LineGraphsTraffic";
 import Tickets from "./components/Tickets";
 import UrlPostInput from "./components/UrlPostInput";
+import { InstagramEmbed } from "react-social-media-embed";
+import { getAllInstagramUrlByApi } from "../../redux/features/adopcion/adopcionActions";
+import { useDispatch, useSelector } from "react-redux";
+import PaginationInstagram from "../../pages/Adopcion/components/PaginationInstagram/PaginationInstagram";
 
 function DashboardAdmin() {
   const [show, setShow] = useState("accounts");
+  const instagramUrl1 = useSelector((state) => state.Adopciones.instagramUrls);
   const handleShow = (e) => {
     setShow(e.target.name);
   };
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllInstagramUrlByApi());
+  }, []);
+
   return (
     <div className="flex w-full justify-center text-center">
       <div className="w-11/12 py-32 text-white md:w-3/5 lg:w-4/5">
@@ -114,7 +125,12 @@ function DashboardAdmin() {
                 </div>
               </div>
             ) : (
-              <UrlPostInput />
+              <>
+                <UrlPostInput />
+                <div className="  flex w-full flex-col justify-center gap-10 rounded-xl  px-6 py-10 pb-28 lg:px-8">
+                  <PaginationInstagram />
+                </div>
+              </>
             )}
           </div>
         </div>
