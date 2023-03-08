@@ -20,15 +20,10 @@ const getReviewByUser = async (userId) => {
   throw Error("This user has not reviewed yet");
 };
 
-const createNewReview = async (userId, content, productId) => {
-  const newReview = await Review.create({
-    UserId: userId,
-    content,
-    ProductId: productId,
-  });
-
+const createNewReview = async (formatedData) => {
+  const newReview = await Review.create(formatedData);
   if (newReview) return newReview;
-  throw Error("Sorry, there was an error trying to create the review");
+  throw Error("Lo sentimos, ha ocurrido un error y no se pudo crear la reseña");
 };
 
 const updateReview = async (reviewId, userId, content) => {
