@@ -24,7 +24,7 @@ function SearchForm() {
     <form
       action=""
       onSubmit={handleSearch}
-      className="w-2/3 md:mt-2 md:w-96 2xl:w-96  "
+      className="w-2/3 md:mt-2 md:w-96 2xl:w-64  "
     >
       <div className="mx-auto h-full w-full ">
         <div className="relative mt-5 flex h-[42px] w-full items-center overflow-hidden rounded-xl bg-white focus-within:shadow-lg md:mt-0">
