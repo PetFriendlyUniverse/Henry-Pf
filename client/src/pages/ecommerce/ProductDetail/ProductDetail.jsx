@@ -56,7 +56,7 @@ function ProductDetail() {
         icon: "success",
         title: "Tu producto ha sido agregado con éxito!",
         showConfirmButton: false,
-        timer: 1100,
+        timer: 800,
       });
       setAmount(1);
     } else {
@@ -64,7 +64,7 @@ function ProductDetail() {
         icon: "error",
         title: "No hay stock disponible",
         showConfirmButton: false,
-        timer: 1100,
+        timer: 800,
       });
     }
   };
