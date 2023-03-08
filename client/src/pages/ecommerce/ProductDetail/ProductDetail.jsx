@@ -128,20 +128,26 @@ function ProductDetail() {
             </button>
             <div className="text-sm">
               <p className="text-lg font-semibold">Opciones de Envío</p>
-              <p className="mt-2 text-base font-semibold">Envío a Domicilio </p>
-              <p className="md:text-xs lg:text-sm ">
-                Envío gratis +$7500 en CABA y zonas de GBA. No aplica para
-                envíos al Interior
-              </p>
-              <p className="mt-2 text-base font-semibold">Envío Flash:</p>
-              <p className="text-sm">
-                Envíos a todo CABA y zonas seleccionadas de AMBA.
-              </p>
+              <div className="pl-2">
+                <p className="mt-1 text-base font-semibold">
+                  Envío a Domicilio{" "}
+                </p>
+                <p className="md:text-xs lg:text-sm ">
+                  Envío gratis +$7500 en CABA y zonas de GBA. No aplica para
+                  envíos al Interior
+                </p>
+                <p className="mt-2 text-base font-semibold">Envío Flash:</p>
+                <p className="text-sm">
+                  Envíos a todo CABA y zonas seleccionadas de AMBA.
+                </p>
+                <p className="mt-2 text-base font-semibold">
+                  Retiro en Sucursal:
+                </p>
+                <p className="text-sm">
+                  Retirá sin cargo por tu sucursal preferida
+                </p>
+              </div>
             </div>
-            <p className="mt-2 text-base font-semibold">Retiro en Sucursal:</p>
-            <p className="text-sm">
-              Retirá sin cargo por tu sucursal preferida
-            </p>
           </div>
         </div>
       </div>
