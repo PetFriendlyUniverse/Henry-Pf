@@ -625,82 +625,105 @@ const generator = () => {
   ];
 
   const comment40 = [
-    "El alimento que compré para mi perro es de excelente calidad. Le ha sentado muy bien y ha mejorado su salud notablemente. Definitivamente volveré a comprar aquí",
+    "Me encanta comprar en esta tienda web de alimentos para mascotas. La página es fácil de navegar y siempre tienen una gran selección de alimentos de alta calidad",
 
-    "Los juguetes para gatos que compré son divertidos y duraderos. Mi gato ha estado jugando con ellos durante horas y siguen en perfecto estado",
+    "La entrega es rápida y eficiente. Siempre recibo mis productos a tiempo y en perfectas condiciones",
 
-    "El collar que compré para mi perro es muy resistente y se ve muy bien en él. Además, la selección de colores y estilos en la API es increíble",
+    "Me gusta que esta tienda web ofrezca una suscripción mensual para los alimentos de mi mascota. Me ahorra tiempo y dinero, y siempre tengo lo que necesito en casa",
 
-    "Compré una caja de arena para mi gato y ha sido una gran adición a su rutina diaria. Es fácil de limpiar y el tamaño es perfecto para mi gato",
+    "El servicio al cliente es excepcional. Siempre me ayudan con cualquier pregunta o problema que tenga, y siempre están dispuestos a hacer lo necesario para asegurarse de que estoy satisfecho",
 
-    "Los productos para el cuidado dental de mi perro han sido muy efectivos. He notado una gran mejoría en sus dientes y encías desde que empecé a usarlos",
+    "La tienda web tiene una gran variedad de alimentos para mascotas, incluyendo opciones orgánicas y naturales. Me siento seguro al comprar aquí sabiendo que estoy alimentando a mi mascota con lo mejor",
 
-    "La cama que compré para mi perro es muy cómoda y de alta calidad. Ha sido un gran cambio en su descanso diario",
+    "Me gusta que la tienda web tenga información detallada sobre los ingredientes en cada alimento para mascotas. Me da confianza saber exactamente lo que estoy alimentando a mi mascota",
 
-    "Compré una caseta para mi perro y ha sido una gran inversión. Es resistente al clima y se ve muy bien en mi jardín",
+    "Los precios en esta tienda web son competitivos y asequibles. Siempre puedo encontrar lo que necesito sin gastar demasiado dinero",
 
-    "La comida para mi gato es de alta calidad y se nota en su salud y apariencia. Además, la selección de marcas y sabores es excelente",
+    "Me encanta que la tienda web ofrezca opciones de envío gratis en compras superiores a un cierto monto. Me ahorra dinero y me hace sentir valorado como cliente",
 
-    "Los productos para la higiene de mi perro son muy efectivos. Han ayudado a mantener su pelaje brillante y saludable",
+    "La tienda web tiene una gran cantidad de comentarios y reseñas de clientes, lo que me ayuda a tomar una decisión informada sobre qué alimento comprar para mi mascota",
 
-    "Los accesorios para la jaula de mi pájaro son de alta calidad y han sido muy útiles en su cuidado diario. Definitivamente recomiendo esta API para los dueños de aves",
+    "He comprado en esta tienda web varias veces y siempre he tenido una excelente experiencia. Recomiendo esta tienda a cualquier persona que esté buscando alimentos de alta calidad para su mascota",
+    "Esta tienda de alimentos para perros y gatos tiene una gran variedad de opciones de alimentos de alta calidad. Siempre puedo encontrar lo que necesito para alimentar a mi mascota de manera saludable",
 
-    "Compré un comedero automático para mi gato y ha sido una gran adición a su alimentación diaria. Es fácil de programar y me da tranquilidad saber que siempre tendrá comida disponible",
+    "El servicio al cliente es excelente en esta tienda. Siempre son amables y están dispuestos a ayudar con cualquier pregunta que tenga sobre los alimentos para mi mascota",
 
-    "La caja transportadora que compré para mi perro es muy resistente y segura. Ha sido muy útil para llevarlo al veterinario y en viajes largos",
+    "Me gusta que esta tienda tenga opciones de alimentos orgánicos y naturales para perros y gatos. Me siento bien sabiendo que estoy alimentando a mi mascota con ingredientes saludables y de alta calidad",
 
-    "Los productos de limpieza para mi acuario son muy efectivos y me han ayudado a mantener un ambiente saludable para mis peces. La API tiene una gran selección de productos para acuarios",
+    "La tienda tiene una amplia selección de alimentos para perros y gatos de todas las edades y tamaños. Puedo encontrar fácilmente lo que necesito para mi cachorro o mi gato anciano",
 
-    "La ropa para mi perro es de alta calidad y se ve muy bien en él. Además, la selección de diseños y tallas en la API es excelente",
+    "La tienda ofrece opciones de entrega programada, lo que me permite recibir mis alimentos para mascotas en el momento que mejor me convenga. Siempre llegan en perfectas condiciones",
 
-    "Compré un rascador para mi gato y ha sido un éxito total. Le encanta usarlo y ha dejado de arañar mis muebles. La calidad del producto es excelente",
+    "La tienda ofrece una política de devolución excelente. Nunca he tenido problemas para devolver un producto si no estaba satisfecho con él",
 
-    "Los productos para el cuidado de las uñas de mi perro son muy efectivos. Han sido muy útiles para mantener sus uñas saludables y evitar daños en mis muebles y pisos",
+    "Me gusta que la tienda tenga opciones de suscripción mensual para los alimentos de mi mascota. Es conveniente y me ahorra tiempo y dinero",
 
-    "Compré un bebedero automático para mi perro y ha sido muy conveniente. Es fácil de limpiar y me da tranquilidad saber que siempre tendrá agua fresca disponible",
+    "La tienda ofrece precios competitivos y asequibles. Nunca tengo que preocuparme por gastar demasiado dinero en los alimentos para mi mascota",
 
-    "La comida para mi periquito es de alta calidad y él la disfruta mucho. La API tiene una gran selección de alimentos y accesorios para aves",
+    "La tienda tiene una sección de preguntas frecuentes muy útil que responde a cualquier pregunta que pueda tener sobre los alimentos para mascotas",
 
-    "Compré una correa retráctil para mi perro y ha sido muy útil para caminar con él en diferentes lugares. La calidad del producto es excelente y es muy fácil de usar",
+    "La tienda tiene una excelente selección de alimentos para perros y gatos de marcas confiables. Siempre puedo encontrar lo que necesito para alimentar a mi mascota de manera saludable y feliz",
+    "La tienda web es fácil de navegar y encontrar lo que necesito para mi perro o gato. Me encanta la organización y la claridad en la presentación de los productos",
 
-    "Los productos para el cuidado de la piel de mi perro son muy efectivos. Han ayudado a tratar sus problemas de piel y a mantenerla saludable",
-    "Compré un arnés para mi perro y ha sido una gran adición a nuestras caminatas diarias. Es cómodo para él y me da tranquilidad saber que está seguro",
+    "La tienda ofrece una amplia selección de alimentos para perros y gatos, incluyendo opciones para mascotas con necesidades especiales de alimentación. Me siento seguro sabiendo que puedo encontrar lo que necesito para mi mascota aquí",
 
-    "Los productos para el cuidado de los oídos de mi perro son muy efectivos. Han ayudado a prevenir infecciones y mantener sus oídos saludables",
+    "La tienda ofrece envío gratuito en pedidos superiores a una cantidad específica, lo cual es una gran ventaja. Me ahorra dinero en gastos de envío",
 
-    "Compré un kit de juguetes para mi perro y ha sido una gran inversión. Los juguetes son resistentes y divertidos para él. La variedad de juguetes en la API es excelente",
+    "Los productos en esta tienda son de alta calidad y estoy seguro de que estoy comprando alimentos saludables para mi mascota. Nunca he tenido problemas de salud o digestivos con los alimentos que he comprado aquí",
 
-    "La comida para mi gato es de alta calidad y le ha ayudado a mantener un peso saludable. La API tiene una gran selección de alimentos para gatos de diferentes edades y necesidades",
-    "Compré una jaula para mi hámster y ha sido perfecta para él. Es espaciosa y segura. La API tiene una gran selección de jaulas y accesorios para roedores",
+    "Me gusta que la tienda ofrezca información nutricional detallada para cada producto, lo que me permite tomar decisiones informadas sobre la alimentación de mi mascota",
 
-    "Los productos para el cuidado de los ojos de mi perro son muy efectivos. Han ayudado a prevenir problemas oculares y mantener sus ojos saludables",
+    "La tienda tiene un excelente sistema de comentarios y calificaciones de los productos, lo que me ayuda a decidir qué productos comprar. Me gusta leer las opiniones de otros propietarios de mascotas antes de tomar una decisión de compra",
 
-    "Compré una casa para mi conejo y ha sido perfecta para él. Es espaciosa y fácil de limpiar. La API tiene una gran selección de casas y accesorios para conejos",
+    "El servicio al cliente en esta tienda es excepcional. Siempre son rápidos para responder y solucionar cualquier problema que pueda tener con mi pedido o producto",
 
-    "La comida para mi perro es de alta calidad y él la disfruta mucho. La API tiene una gran selección de marcas y sabores para elegir",
+    "Me gusta que la tienda ofrezca opciones de alimentos frescos y refrigerados para perros y gatos. Es una gran opción para aquellos que quieren alimentar a sus mascotas con alimentos frescos y naturales",
 
-    "Compré un bebedero automático para mi gato y ha sido muy conveniente. Es fácil de usar y me da tranquilidad saber que siempre tendrá agua fresca disponible",
+    "La tienda ofrece una garantía de satisfacción del cliente. Si no estoy satisfecho con un producto, puedo devolverlo sin problemas",
 
-    "Los productos para el cuidado de los dientes de mi gato son muy efectivos. Han ayudado a prevenir problemas dentales y mantener sus dientes saludables",
-    "Compré una cama ortopédica para mi perro mayor y ha sido una gran ayuda para su comodidad. La cama es resistente y duradera, y ha ayudado a aliviar su dolor en las articulaciones",
+    "La tienda tiene promociones y ofertas especiales de forma regular, lo que me permite ahorrar dinero en alimentos para mi mascota. Me encanta aprovechar las ofertas y promociones especiales que ofrecen",
+    "Estoy muy contento con los alimentos para perros y gatos que he comprado en esta tienda. Mi mascota ha mostrado una mejoría en su salud y energía desde que cambié a estos alimentos de alta calidad",
 
-    "Los productos para el cuidado del pelaje de mi gato son muy efectivos. Han ayudado a mantener su pelaje brillante y saludable, y reducir la formación de bolas de pelo",
+    "Me gusta que la tienda tenga opciones de alimentos para perros y gatos sin granos y sin gluten. Me siento bien sabiendo que estoy alimentando a mi mascota con alimentos saludables y naturales",
 
-    "Compré un transportín para mi gato y ha sido muy práctico para nuestras visitas al veterinario. Es seguro y cómodo para él",
+    "La tienda ofrece opciones de alimentos húmedos y secos para perros y gatos, lo que me permite encontrar lo que mi mascota necesita y prefiere",
 
-    "La comida para mi hámster es de alta calidad y él la disfruta mucho. La API tiene una gran selección de alimentos y accesorios para roedores",
+    "Los alimentos de esta tienda tienen una buena relación calidad-precio. Estoy contento de haber encontrado una tienda donde puedo comprar alimentos de alta calidad para mi mascota a precios razonables",
 
-    "Compré un collar de identificación para mi perro y me da tranquilidad saber que, en caso de pérdida, podrá ser identificado fácilmente. La calidad del collar es excelente",
+    "La tienda ofrece opciones de alimentos para perros y gatos de diferentes edades y tamaños. Es fácil encontrar lo que mi mascota necesita y asegurarme de que esté recibiendo una nutrición adecuada",
 
-    "Los productos para el cuidado de los huesos y articulaciones de mi perro son muy efectivos. Han ayudado a mantener sus huesos y articulaciones saludables, especialmente en su etapa adulta",
+    "Los ingredientes de los alimentos para perros y gatos que he comprado en esta tienda son de alta calidad y no contienen subproductos. Me gusta saber que estoy comprando alimentos de calidad para mi mascota",
 
-    "Compré un juguete interactivo para mi gato y ha sido muy divertido para él. La calidad del producto es excelente y lo mantiene activo y estimulado",
+    "La tienda tiene opciones de alimentos para perros y gatos con necesidades especiales de salud, como alimentos para mascotas con alergias o intolerancias alimentarias",
 
-    "La comida para mi conejo es de alta calidad y él la disfruta mucho. La API tiene una gran selección de alimentos y accesorios para conejos",
+    "Los alimentos para perros y gatos de esta tienda son fáciles de digerir. Mi mascota no ha tenido problemas digestivos desde que cambiamos a estos alimentos de alta calidad",
 
-    "Compré un dispensador automático de golosinas para mi perro y ha sido una gran adición a nuestra rutina diaria. Es fácil de programar y le da una golosina a mi perro en momentos específicos del día",
+    "La tienda ofrece opciones de alimentos orgánicos y naturales para perros y gatos. Me siento bien sabiendo que estoy alimentando a mi mascota con alimentos saludables y de alta calidad",
 
-    "Los productos para el cuidado de las patas de mi perro son muy efectivos. Han ayudado a mantener sus patas saludables y prevenir problemas como agrietamientos o infecciones",
+    "La tienda tiene opciones de alimentos de marcas de confianza y populares. Me gusta saber que estoy comprando alimentos de calidad para mi mascota de marcas que tienen una buena reputación en la industria",
+  ];
+
+  const stores20 = [
+    " PetCity",
+    "Animal World",
+    "Paws & Claws",
+    "Pet Depot",
+    "Pet Palace",
+    "Pet Emporium",
+    "Furry Friends",
+    "Pet Junction",
+    "The Pet Spot",
+    "Critter Corner",
+    "Pet Haven",
+    "Creature Comforts",
+    "Pet Central",
+    "The Animal House",
+    "Pet Universe",
+    "Pet Perfection",
+    "Pet Parade",
+    "Bark Avenue",
+    "The Pet Pantry",
+    "Four Paws Junction",
   ];
 
   setTimeout(async () => {
