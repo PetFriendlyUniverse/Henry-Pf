@@ -84,7 +84,7 @@ function Purchase() {
                       </span>
                       {!prod.reviewSent && (
                         <button
-                          className="absolute bottom-4  right-7 w-fit self-end rounded-md border bg-yellow-300 p-1 text-xs font-semibold text-ultraviolet transition-all duration-100 hover:border-ultraviolet"
+                          className="absolute bottom-4  right-7 w-fit self-end rounded-md  bg-cornflowerblue p-1 text-xs font-semibold text-slate-100 transition-all duration-100 hover:bg-blue-500"
                           onClick={() =>
                             handleSendReview(prod.productId, invoice.invoiceId)
                           }
