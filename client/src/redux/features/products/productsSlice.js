@@ -76,9 +76,30 @@ export const Products = createSlice({
     setShopCart: (state, { payload }) => {
       // payload = { id: id, data:{ product } | "delete" } si recibimos product se agrega al carrito y sino se elimina
       const { data, id } = payload; // data = { id, img, ...todos los datos del producto entero }
-      data == "delete"
-        ? delete state.shopCart[id]
-        : (state.shopCart[id] = { ...state.shopCart[id], ...data });
+      if (data == "delete") {
+        const newAllProducts = state.products.map((prod) => {
+          if (prod.id == id)
+            return {
+              ...prod,
+              stock: parseInt(prod.stock) + parseInt(data.amount),
+            };
+          return prod;
+        });
+
+        delete state.shopCart[id];
+        state.products = newAllProducts;
+      } else {
+        state.products.forEach((prod) => {
+          if (prod.id == id) prod.stock -= data.amount;
+        });
+        let newSetProduct = {
+          ...data,
+          amount: state.shopCart[id]
+            ? data.amount + state.shopCart[id].amount
+            : data.amount,
+        };
+        state.shopCart[id] = newSetProduct;
+      }
     },
     clearShopCart: (state) => {
       state.shopCart = {};
