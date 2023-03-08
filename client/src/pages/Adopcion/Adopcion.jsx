@@ -1,247 +1,93 @@
-import { Carousel } from "flowbite-react";
-import { InstagramEmbed, EmbedToggler } from "react-social-media-embed";
+import { InstagramEmbed } from "react-social-media-embed";
+
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPronvinciasAsync } from "../../redux/features/ubicaciones/ubicacionesActions";
+import PaginatorAdoption from "./components/PaginarionAdoption.jsx/PaginationAdoption";
+import BannerOng from "./components/BannerOng/BannerOng";
+import FormAdoption from "./components/FormAdoption/FormAdoption";
+import { getAllInstagramUrlByApi } from "../../redux/features/adopcion/adopcionActions";
 
 function Adopcion() {
+  const instagramUrl1 = useSelector((state) => state.Adopciones.instagramUrls);
+  const dispatch = useDispatch();
+
+  console.log(instagramUrl1);
+
+  useEffect(() => {
+    dispatch(getPronvinciasAsync());
+    dispatch(getAllInstagramUrlByApi());
+  }, []);
+
   return (
-    <div className="h-full w-full  bg-adopcion ">
-      <div class="flex  justify-center bg-transparent py-24 sm:py-32">
-        <div class=" border-fray-200 flex w-4/5 flex-col justify-center rounded-xl border-2 px-6 py-28 lg:px-8">
-          {/* este div de abajo tiene el titular pro patas */}
-          <div class=" max-w-full  lg:mx-0">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Pro Patas Rosario & Pet Friendly Universe
-            </h2>
-            <p class="mt-2 text-lg leading-8 text-gray-600">Ong animalista</p>
-          </div>
-          {/* el de abajo es el div de la card */}
-          <div class=" mt-10 flex h-full w-full grid-cols-1 flex-wrap  justify-center gap-y-2 overflow-y-scroll  border-t border-gray-200 pt-10 lg:mx-0 lg:max-w-none   lg:grid-cols-3 lg:gap-20 2xl:h-[600px]">
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
-              <InstagramEmbed
-                url="https://www.instagram.com/reel/CpSf8fJuQbl/"
-                width={400}
-                height={800}
-              />
-            </div>
+    <div className="mb-36 flex h-full w-full flex-col items-center bg-adopcion ">
+      <h2 className="my-10 flex text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        <p className="text-russianviolet">Pet </p>
+        <p className="text-cornflowerblue">Friendly </p>
+        <p className="text-yellow-500">Universe</p>
+      </h2>
+      <BannerOng />
 
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <InstagramEmbed
-                url="https://www.instagram.com/reel/CpRDz4vtIq1/"
-                width={400}
-                height={800}
-              />
-            </div>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <InstagramEmbed
-                url="https://www.instagram.com/p/CpOrZgNuF3L/"
-                width={400}
-                height={800}
-              />
-            </div>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <InstagramEmbed
-                url="https://www.instagram.com/reel/CpEDBusNcB4/"
-                width={400}
-                height={800}
-              />
-            </div>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <InstagramEmbed
-                url="https://www.instagram.com/p/CpDhrWJJuDQ/"
-                width={400}
-                height={800}
-              />
-            </div>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <InstagramEmbed
-                url="https://www.instagram.com/p/Co-KvuyOZ_I/"
-                width={400}
-                height={800}
-              />
-            </div>
-
-            {/* <!-- More posts... --> */}
+      <div className="  flex w-full flex-col justify-center gap-10 rounded-xl  px-6 py-10 pb-28 lg:px-8">
+        {/* este div de abajo tiene los embeed de instagram de propatas */}
+        <div className="  flex w-full flex-wrap  justify-center  gap-2  rounded-xl ">
+          {instagramUrl1?.map((i) => {
+            return (
+              <div
+                key={i.id}
+                className="flex h-[500px] w-[328px] justify-center"
+              >
+                <InstagramEmbed url={i.url} width={328} height={500} />
+              </div>
+            );
+          })}
+          ; ;
+          {/* <div className="my-4 flex w-96 justify-center">
+            <InstagramEmbed
+              url="https://www.instagram.com/reel/CpRDz4vtIq1/"
+              width={328}
+              height={500}
+            />
           </div>
-          <div class=" mt-10 grid h-full w-full grid-cols-1 justify-center gap-y-2 overflow-y-scroll  border-t border-gray-200 pt-10 lg:mx-0 lg:max-w-none   lg:grid-cols-3 lg:gap-20 2xl:h-[600px]">
-            <article class="flex max-w-xl flex-col items-start justify-between ">
-              <div class="flex items-center gap-x-4 text-xs">
-                <time datetime="2020-03-16" class="text-gray-500">
-                  Mar 16, 2020
-                </time>
-                <a
-                  href="#"
-                  class="relative z-10 rounded-full bg-gray-50 py-1.5 px-3 font-medium text-gray-600 hover:bg-gray-100"
-                >
-                  Ubicacion
-                </a>
-              </div>
-              <Carousel>
-                <img
-                  src="https://dogfriendlysanantonio.com/wp-content/uploads/2020/06/dog-adoption-san-antonio-1024x768.png"
-                  alt=""
-                />
-                <img
-                  src="https://dogfriendlysanantonio.com/wp-content/uploads/2020/06/dog-adoption-san-antonio-1024x768.png"
-                  alt=""
-                />
-                <img
-                  src="https://dogfriendlysanantonio.com/wp-content/uploads/2020/06/dog-adoption-san-antonio-1024x768.png"
-                  alt=""
-                />
-              </Carousel>
-              <div class="group relative">
-                <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                  <a href="#">
-                    <span class="absolute inset-0"></span>
-                    Adopcion RESPONSABLE
-                  </a>
-                </h3>
-                <p class="line-clamp-3 mt-5 text-sm leading-6 text-gray-600">
-                  este texto es para una descripcion breve de las
-                  caracteristicas correspondientes a la mascota, situacion
-                  medica, zona donde se encuentra, requisitos para adopcion en
-                  caso de ser requeridos
-                </p>
-              </div>
-              <div class="relative mt-8 flex items-center gap-x-4">
-                <img
-                  src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
-                  class="h-10 w-10 rounded-full bg-gray-50"
-                />
-                <div class="text-sm leading-6">
-                  <p class="font-semibold text-gray-900">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      <p>Raul Gimenez</p>
-                      <p>3417777777</p>
-                    </a>
-                  </p>
-                  <p class="text-gray-600">Alojamiento: hogar de transito </p>
-                </div>
-              </div>
-            </article>
-            <article class="flex max-w-xl flex-col items-start justify-between ">
-              <div class="flex items-center gap-x-4 text-xs">
-                <time datetime="2020-03-16" class="text-gray-500">
-                  Mar 16, 2020
-                </time>
-                <a
-                  href="#"
-                  class="relative z-10 rounded-full bg-gray-50 py-1.5 px-3 font-medium text-gray-600 hover:bg-gray-100"
-                >
-                  Ubicacion
-                </a>
-              </div>
-              <Carousel>
-                <img
-                  src="https://dogfriendlysanantonio.com/wp-content/uploads/2020/06/dog-adoption-san-antonio-1024x768.png"
-                  alt=""
-                />
-                <img
-                  src="https://dogfriendlysanantonio.com/wp-content/uploads/2020/06/dog-adoption-san-antonio-1024x768.png"
-                  alt=""
-                />
-                <img
-                  src="https://dogfriendlysanantonio.com/wp-content/uploads/2020/06/dog-adoption-san-antonio-1024x768.png"
-                  alt=""
-                />
-              </Carousel>
-              <div class="group relative">
-                <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                  <a href="#">
-                    <span class="absolute inset-0"></span>
-                    Adopcion RESPONSABLE
-                  </a>
-                </h3>
-                <p class="line-clamp-3 mt-5 text-sm leading-6 text-gray-600">
-                  este texto es para una descripcion breve de las
-                  caracteristicas correspondientes a la mascota, situacion
-                  medica, zona donde se encuentra, requisitos para adopcion en
-                  caso de ser requeridos
-                </p>
-              </div>
-              <div class="relative mt-8 flex items-center gap-x-4">
-                <img
-                  src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
-                  class="h-10 w-10 rounded-full bg-gray-50"
-                />
-                <div class="text-sm leading-6">
-                  <p class="font-semibold text-gray-900">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      <p>Martin Garcia</p>
-                      <p>341888888</p>
-                    </a>
-                  </p>
-                  <p class="text-gray-600">Alojamiento: hogar de transito </p>
-                </div>
-              </div>
-            </article>
-            <article class="flex max-w-xl flex-col items-start justify-between ">
-              <div class="flex items-center gap-x-4 text-xs">
-                <time datetime="2020-03-16" class="text-gray-500">
-                  Mar 16, 2020
-                </time>
-                <a
-                  href="#"
-                  class="relative z-10 rounded-full bg-gray-50 py-1.5 px-3 font-medium text-gray-600 hover:bg-gray-100"
-                >
-                  Ubicacion
-                </a>
-              </div>
-              <Carousel>
-                <img
-                  src="https://dogfriendlysanantonio.com/wp-content/uploads/2020/06/dog-adoption-san-antonio-1024x768.png"
-                  alt=""
-                />
-                <img
-                  src="https://dogfriendlysanantonio.com/wp-content/uploads/2020/06/dog-adoption-san-antonio-1024x768.png"
-                  alt=""
-                />
-                <img
-                  src="https://dogfriendlysanantonio.com/wp-content/uploads/2020/06/dog-adoption-san-antonio-1024x768.png"
-                  alt=""
-                />
-              </Carousel>
-              <div class="group relative">
-                <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                  <a href="#">
-                    <span class="absolute inset-0"></span>
-                    Adopcion RESPONSABLE
-                  </a>
-                </h3>
-                <p class="line-clamp-3 mt-5 text-sm leading-6 text-gray-600">
-                  este texto es para una descripcion breve de las
-                  caracteristicas correspondientes a la mascota, situacion
-                  medica, zona donde se encuentra, requisitos para adopcion en
-                  caso de ser requeridos
-                </p>
-              </div>
-              <div class="relative mt-8 flex items-center gap-x-4">
-                <img
-                  src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
-                  class="h-10 w-10 rounded-full bg-gray-50"
-                />
-                <div class="text-sm leading-6">
-                  <p class="font-semibold text-gray-900">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      <p>Diego gutierrez</p>
-                      <p>34166666</p>
-                    </a>
-                  </p>
-                  <p class="text-gray-600">Alojamiento: hogar de transito </p>
-                </div>
-              </div>
-            </article>
+          <div className="my-4 flex w-96 justify-center">
+            <InstagramEmbed
+              url="https://www.instagram.com/p/CpOrZgNuF3L/"
+              width={328}
+              height={500}
+            />
+          </div> */}
+        </div>
+        {/* <!-- More posts... --> */}
+        {/* este div de abajo tiene los embeed de instagram de estoyaqui */}
+        {/* <div className="  flex w-full flex-wrap  justify-center  gap-2  rounded-xl lg:mx-0 lg:max-w-none   lg:grid-cols-3  ">
+          {" "}
+          <div className="my-4 flex w-96 justify-center">
+            <InstagramEmbed
+              url="https://www.instagram.com/p/CpdsLCKvD-n/"
+              width={328}
+              height={500}
+            />
           </div>
+          <div className="my-4 flex w-96 justify-center">
+            <InstagramEmbed
+              url="https://www.instagram.com/p/CpddlEsvuxa/"
+              width={328}
+              height={500}
+            />
+          </div>
+          <div className="my-4 flex w-96 justify-center">
+            <InstagramEmbed
+              url="https://www.instagram.com/p/CpdY4VlvLy1/"
+              width={328}
+              height={500}
+            />
+          </div>
+        </div> */}
+        {/* el de abajo es el div de la card */}
+        <PaginatorAdoption />
+        {/* abajo esta el formulario para subir adopciones para el user*/}
+        <div className="flex w-full justify-center">
+          <FormAdoption />
         </div>
       </div>
     </div>

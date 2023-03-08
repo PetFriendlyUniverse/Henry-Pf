@@ -35,7 +35,12 @@ const Shop = lazy(() => import("./pages/ecommerce/Shop/Shop"));
 const Services = lazy(() =>
   import("./pages/Services/HomeServices/HomeServices")
 );
-
+const WalkerDetail = lazy(() =>
+  import("./pages/Services/Detail/DetailWalker/DetailWalker")
+);
+const DaycareDetail = lazy(() =>
+  import("./pages/Services/Detail/DetailDaycare/DetailDaycare")
+);
 const ProductDetail = lazy(() =>
   import("./pages/ecommerce/ProductDetail/ProductDetail")
 );
@@ -58,11 +63,21 @@ const FormModifyStore = lazy(() =>
   import("./pages/ecommerce/Forms/FormModifyStore/FormModifyStore")
 );
 
+const FormCreateStore = lazy(() =>
+  import("./pages/ecommerce/Forms/FormCreateStore/FormCreateStore")
+);
+
 const FormModifyDaycare = lazy(() =>
   import("./pages/Services/Forms/FormModifyDaycare/FormModifyDaycare")
 );
+const FormCreateDaycare = lazy(() =>
+  import("./pages/Services/Forms/FormCreateDaycare/FormCreateDaycare")
+);
 const FormModifyWalker = lazy(() =>
   import("./pages/Services/Forms/FormModifyWalker/FormModifyWalker")
+);
+const FormCreateWalker = lazy(() =>
+  import("./pages/Services/Forms/FormCreateWalker/FormCreateWalker")
 );
 
 function App() {
@@ -80,7 +95,8 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/landingservices" element={<LandingServices />} />
           <Route path="/services" element={<Services />} />
-
+          <Route path="/walker/detail/:id" element={<WalkerDetail />} />
+          <Route path="/daycare/detail/:id" element={<DaycareDetail />} />
           <Route path="/landingshop" element={<LandingShop />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/detail/:id" element={<ProductDetail />} />
@@ -105,11 +121,15 @@ function App() {
           <Route path="/about" element={<About />} />
           {/* <Route path="/loginpassword" element={<FormPassword />} /> */}
 
+          <Route path="/store/create/:id" element={<FormCreateStore />} />
           <Route path="/store/modify/:id" element={<FormModifyStore />} />
 
           <Route path="/dashboardadmin" element={<DashboardAdmin />} />
 
+          <Route path="/walker/create/:id" element={<FormCreateWalker />} />
           <Route path="/walker/modify/:id" element={<FormModifyWalker />} />
+
+          <Route path="/daycare/create/:id" element={<FormCreateDaycare />} />
           <Route path="/daycare/modify/:id" element={<FormModifyDaycare />} />
 
           <Route path="*" element={<NotFound />} />

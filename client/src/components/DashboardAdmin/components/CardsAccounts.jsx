@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import Swal from "sweetalert2";
+import ListAccounts from "./ListAccounts";
 import Profile from "../../../assets/general/profile.svg";
-import { getUsersFilter } from "../../../redux/features/filters/filtersActions";
 import {
+  getUsers,
+  getUsersFilter,
   deleteDaycareByUser,
   deleteStoreByUser,
   deleteUserApi,
@@ -20,42 +22,98 @@ function CardsAccounts() {
     name: "",
     type: "",
   });
-
+  const list = useSelector((state) => state.Filters?.list);
   const users = useSelector((state) => state.Filters?.usersFiltered);
   useEffect(() => {
+    dispatch(getUsers());
     dispatch(getUsersFilter(user.name, user.type));
   }, []);
 
-  const hadlerChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+  const handlerChange = (e) => {
+    if (e.target.name === "name") {
+      setUser({
+        ...user,
+        [e.target.name]:
+          e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1),
+      });
+    } else {
+      setUser({ ...user, [e.target.name]: e.target.value });
+    }
   };
 
   const handlerSubmit = (e) => {
     e.preventDefault();
     dispatch(getUsersFilter(user.name, user.type));
-    console.log(users[0]);
   };
 
   const handleDelete = (e) => {
     if (user.type === "store") {
       dispatch(deleteStoreByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "La Tienda fue eliminado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else if (user.type === "daycare") {
       dispatch(deleteDaycareByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "La Guarderia fue eliminado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else if (user.type === "walker") {
       dispatch(deleteWalkerByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "El Paseador fue eliminado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else {
       dispatch(deleteUserApi(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "El Usuario fue eliminado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     }
   };
   const handleApproved = (e) => {
     if (user.type === "store") {
       dispatch(approvedStoreByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "La Tienda fue reincorporado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else if (user.type === "daycare") {
       dispatch(approvedDaycareByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "La Guarderia fue reincorporado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else if (user.type === "walker") {
       dispatch(approvedWalkerByUser(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "El Paseador fue reincorporado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     } else {
       dispatch(approvedUserApi(users[0]?.id));
+      Swal.fire({
+        icon: "success",
+        title: "El Usuario fue reincorporado correctamente",
+        showConfirmButton: true,
+        timer: 1500,
+      });
     }
   };
   return (
@@ -69,14 +127,14 @@ function CardsAccounts() {
             type="text"
             value={user.name}
             name="name"
-            onChange={hadlerChange}
+            onChange={handlerChange}
             className="w-28 text-black md:w-32"
             autoComplete="off"
           />
           <select
             name="type"
             value={user.type}
-            onChange={hadlerChange}
+            onChange={handlerChange}
             className="h-6 rounded-r bg-cornflowerblue hover:bg-blue-600"
           >
             <option value="" hidden>
@@ -100,7 +158,7 @@ function CardsAccounts() {
       <div
         className={
           users
-            ? "flex max-h-[54vh] min-w-[70vw] flex-wrap justify-center gap-y-4 overflow-y-scroll border-t-2 border-b-2 py-4"
+            ? "flex max-h-[54vh] min-w-[70vw] flex-wrap justify-center gap-y-4 overflow-y-scroll"
             : "py-4"
         }
       >
@@ -144,11 +202,10 @@ function CardsAccounts() {
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-black ">
                       {`${e.name}`}
                     </h5>
-                    {e.lastname ? <h5>{`${e.lastname}`}</h5> : null}
+                    {e.lastname ? (
+                      <h5 className="mb-2 text-2xl font-bold tracking-tight text-black ">{`${e.lastname}`}</h5>
+                    ) : null}
                   </div>
-                  <p class="mb-3 font-normal text-black ">
-                    Finalidad del Usuario
-                  </p>
                   <div>
                     <p class="mb-3 font-normal text-black ">
                       {e.Province && e.Locality
@@ -173,6 +230,9 @@ function CardsAccounts() {
               </div>
             );
           })}
+      </div>
+      <div className="pt-10">
+        <ListAccounts />
       </div>
     </div>
   );

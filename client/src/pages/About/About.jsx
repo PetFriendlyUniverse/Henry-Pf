@@ -87,7 +87,7 @@ function About() {
     window.scrollTo(0, 0);
   }, []);
 
-  const loaderr = () => {
+  const loader = () => {
     return (
       <SkeletonTheme baseColor="#9c9c9c" highlightColor="white">
         <div className="lg: flex h-max  w-full items-center justify-center bg-adopcion  lg:pt-14">
@@ -144,24 +144,24 @@ function About() {
     );
   };
   if (loading) {
-    return loaderr();
+    return loader();
   } else {
     return (
       <div className="lg: flex h-max w-full  flex-col items-center justify-center  bg-gray-600 bg-[url('https://petfood.com.ar/img/cms/symphony.png')]  lg:pt-14">
         <div className="flex flex-col items-center justify-center sm:col-start-1 sm:col-end-3">
           <h1 className="text-center font-bold uppercase sm:text-2xl">
-            PET FRIENDLY
+            PET FRIENDLY DEVELOPMENT
             <span className="font-bold uppercase text-cornflowerblue sm:text-2xl">
               {" "}
-              TEAMS
+              TEAM
             </span>
           </h1>
         </div>
-        <section className="grid place-content-center gap-10  py-3 md:pb-10 md:pt-14 md:text-sm lg:h-2/3 lg:w-2/3 lg:grid-cols-4">
+        <section className="flex flex-wrap place-content-center gap-10  py-3 md:pb-10 md:pt-14 md:text-sm lg:h-2/3 lg:w-2/3 lg:grid-cols-4">
           {members.map((person) => (
             <article
               key={person.name}
-              className="flex h-full w-full flex-col items-center justify-center gap-5 rounded-xl bg-slate-600  bg-gradient-to-b  from-slate-600 to-cornflowerblue p-5 text-white drop-shadow-button "
+              className="flex h-[350px] w-[250px] flex-col items-center justify-center gap-5 rounded-xl bg-slate-600  bg-gradient-to-b  from-slate-600 to-cornflowerblue p-5 text-white drop-shadow-button "
             >
               <div className="flex flex-col items-center justify-center gap-3">
                 <img
@@ -194,12 +194,8 @@ function About() {
             </article>
           ))}
         </section>
-        <div className="flex flex-col items-center justify-center sm:col-start-1 sm:col-end-3">
-          <h1 className="text-center font-bold uppercase sm:text-2xl">
-            UTILIZAMOS ESTAS TECNOLOGIAS :
-          </h1>
-        </div>
-        <div className="mt-10 mb-10 flex gap-6 self-center">
+
+        <div className="mt-10 mb-10 flex flex-wrap items-center justify-center gap-6 self-center">
           <img src={htmlLogo} alt="Html" title="Html" className="w-24" />
           <img src={cssLogo} alt="Css" title="Css" className="w-24" />
           <img

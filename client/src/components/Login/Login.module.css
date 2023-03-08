@@ -205,14 +205,14 @@ label {
 @media (max-width:800px){
 .input {
   width: 100%;
-  margin: 4px;
+  /* margin: 4px; */
 }
 }
 
 @media (min-width:801px){
   .input {
     width: 80%;
-    margin: 4px;
+    /* margin: 4px; */
 }
 }
 

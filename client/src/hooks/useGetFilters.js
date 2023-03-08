@@ -8,15 +8,16 @@ function useGetFilters() {
   const dispatch = useDispatch();
   useEffect(() => {
     setLoading(false);
-    !Object.keys(filters).length && dispatch(getFiltersApi());
-  }, []);
-
-  useEffect(() => {
-    setLoading(false);
     return () => {
       setLoading(true);
     };
   }, [filters]);
+  useEffect(() => {
+    if (!Object.keys(filters).length) {
+      setLoading(true);
+      dispatch(getFiltersApi());
+    }
+  }, []);
 
   return [loading, filters];
 }

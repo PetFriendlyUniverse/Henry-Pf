@@ -7,6 +7,8 @@ import LinkButton from "../Button/LinkButton";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import close from "../../assets/general/close.svg";
+import closedEye from "../../assets/general/closedEye.svg";
+import openEye from "../../assets/general/openEye.svg";
 
 function Login() {
   const navigate = useNavigate();
@@ -29,6 +31,12 @@ function Login() {
     password: "",
   });
   const [repeatPassword, setRepeatPassword] = useState("");
+
+  const [shown, setShown] = useState(false);
+  const switchShown = () => setShown(!shown);
+
+  const [password, setPassword] = useState("");
+  const onChange = ({ currentTarget }) => setPassword(currentTarget.value);
 
   const handleChange = (e) => {
     const property = e.target.name;
@@ -103,25 +111,26 @@ function Login() {
             Swal.showLoading();
           },
         });
-        await axios.post("user/create", form).then(async (res) => {
-          await Swal.fire({
-            icon: "success",
-            title: "El registro se ha sido realizado con éxito!",
-            showConfirmButton: true,
-            timer: 1500,
-            closeOnClickOutside: true,
-            closeOnEsc: true,
-          });
-          setForm({
-            user: "",
-            name: "",
-            lastname: "",
-            mail: "",
-            password: "",
-          });
-          setRepeatPassword("");
+        await axios.post("user/create", form);
+
+        Swal.fire({
+          icon: "success",
+          title: "El registro se ha sido realizado con éxito!",
+          showConfirmButton: true,
+          timer: 1500,
+          closeOnClickOutside: true,
+          closeOnEsc: true,
         });
+        setForm({
+          user: "",
+          name: "",
+          lastname: "",
+          mail: "",
+          password: "",
+        });
+        setRepeatPassword("");
       } catch (error) {
+        console.log(error);
         Swal.fire({
           icon: "error",
           title: "El registro no se ha sido realizado!",
@@ -240,25 +249,35 @@ function Login() {
               <label htmlFor={s["chk"]} aria-hidden="true">
                 PET FRIENDLY
               </label>
+              <div className="relative flex w-full justify-center">
+                <input
+                  className={s.input}
+                  onChange={handleChangeLogin}
+                  value={login.mail}
+                  type="email"
+                  name="mail"
+                  placeholder="Mail"
+                  required={true}
+                />
+              </div>
+              <div className="relative flex w-full justify-center">
+                <input
+                  className={s.input}
+                  onChange={handleChangeLogin}
+                  value={login.password}
+                  type={shown ? "text" : "password"}
+                  name="password"
+                  placeholder="Contraseña"
+                  required={true}
+                />
 
-              <input
-                className={s.input}
-                onChange={handleChangeLogin}
-                value={login.mail}
-                type="email"
-                name="mail"
-                placeholder="Mail"
-                required={true}
-              />
-              <input
-                className={s.input}
-                onChange={handleChangeLogin}
-                value={login.password}
-                type="password"
-                name="password"
-                placeholder="Contraseña"
-                required={true}
-              />
+                <img
+                  className="absolute right-[10%] top-[3px] w-5"
+                  onClick={switchShown}
+                  src={shown ? closedEye : openEye}
+                />
+              </div>
+
               <button>Ingresar</button>
               <button type="button" onClick={handleShowModal}>
                 Olvidaste tu contraseña?
@@ -337,31 +356,45 @@ function Login() {
                   {errors.mail}
                 </span>
               )}
-              <input
-                className={s.input}
-                value={form.password}
-                onChange={handleChange}
-                type="password"
-                name="password"
-                placeholder="Contraseña"
-                autoComplete="off"
-                required={true}
-              />
+              <div className=" relative flex w-full justify-center">
+                <input
+                  className={s.input}
+                  value={form.password}
+                  onChange={handleChange}
+                  type={shown ? "text" : "password"}
+                  name="password"
+                  placeholder="Contraseña"
+                  autoComplete="off"
+                  required={true}
+                />
+                <img
+                  className=" absolute right-[10%] top-[3px] w-5"
+                  onClick={switchShown}
+                  src={shown ? closedEye : openEye}
+                />
+              </div>
               {errors.password && (
                 <span className="ml-1 -mt-3 text-center text-sm tracking-wide text-red-700">
                   {errors.password}
                 </span>
               )}
-              <input
-                onChange={handleChangeRepeatPassword}
-                className={s.input}
-                type="password"
-                name="repeatPassword"
-                value={repeatPassword}
-                placeholder="Repetir Contraseña "
-                autoComplete="off"
-                required={true}
-              />
+              <div className=" relative flex w-full justify-center">
+                <input
+                  onChange={handleChangeRepeatPassword}
+                  className={s.input}
+                  type={shown ? "text" : "password"}
+                  name="repeatPassword"
+                  value={repeatPassword}
+                  placeholder="Repetir Contraseña "
+                  autoComplete="off"
+                  required={true}
+                />
+                <img
+                  className=" absolute right-[10%] top-[3px] w-5"
+                  onClick={switchShown}
+                  src={shown ? closedEye : openEye}
+                />
+              </div>
               {repeatPassword !== form.password && (
                 <p className="text-xs text-red-700">{`Passwords does not match`}</p>
               )}
