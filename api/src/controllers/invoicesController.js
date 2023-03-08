@@ -47,7 +47,7 @@ const getInvoicesIdByUser = async (userId) => {
         {
           model: Product,
           through: {
-            attributes: ["unitPrice", "amount"],
+            attributes: ["ProductId", "unitPrice", "amount", "reviewSent"],
           },
         },
       ],
@@ -58,9 +58,11 @@ const getInvoicesIdByUser = async (userId) => {
         invoiceDate: invoice.createdAt,
         products: invoice.Products.map((product) => {
           return {
+            productId: product.Invoices_Products.ProductId,
             productName: product.name,
             store: product.StoreId,
             amount: product.Invoices_Products.amount,
+            reviewSent: product.Invoices_Products.reviewSent,
             unitPrice: product.Invoices_Products.unitPrice,
             totalValue:
               product.Invoices_Products.amount *
@@ -94,6 +96,12 @@ const createInvoice = async (
 
     await user.addInvoices(newInvoice);
     //console.log(products); //   {id:1 ,unitPrice:2000, quantity:5}
+    products.forEach(async (prod) => {
+      const updateProduct = await Product.findByPk(prod.id);
+      updateProduct.stock = updateProduct.stock - prod.quantity;
+      await updateProduct.save();
+    });
+
     await products.forEach((element) => {
       newInvoice.addProducts(element.id, {
         through: {

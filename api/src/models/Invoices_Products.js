@@ -18,6 +18,10 @@ module.exports = (sequelize) => {
           min: 0,
         },
       },
+      reviewSent: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
     {
       timestamps: false,
