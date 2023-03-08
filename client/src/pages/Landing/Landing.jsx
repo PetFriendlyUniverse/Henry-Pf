@@ -52,7 +52,7 @@ function Landing() {
               <span className="rounded-xl bg-cornflowerblue px-1 text-white">
                 ADOPCIONES
               </span>{" "}
-              para publicar mascotas en busqueda de hogares transitorios y
+              para publicar mascotas en búsqueda de hogares transitorios y
               permanentes para darle visibilad y mayor alcance e intentar
               acelerar las adopciones{" "}
               <span className="rounded-xl bg-cornflowerblue px-1 text-white">

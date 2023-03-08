@@ -29,7 +29,7 @@ function Card({ name, img, price_hour, id }) {
         </div>
         <div className=" flex w-full  items-center justify-center gap-2 ">
           <p className="my-1 rounded bg-ultraviolet py-2 px-4 text-xs font-semibold text-white">
-            precio por hora: {priceFormatter(price_hour)}
+            Precio por hora: {priceFormatter(price_hour)}
           </p>
         </div>
       </div>

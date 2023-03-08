@@ -84,9 +84,9 @@ function FormAdoption() {
         })
         .then(() => {
           Swal.fire({
-            title: "Adopcion registrada correctamente!",
+            title: "Adopción registrada correctamente!",
             icon: "success",
-            text: "La adopcion se ha registrado correctamente, pendiente de aprobacion",
+            text: "La adopción se ha registrado correctamente, pendiente de aprobación",
             closeOnEsc: true,
             closeOnClickOutside: true,
           });

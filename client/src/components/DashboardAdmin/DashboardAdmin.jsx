@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import CardsAccounts from "./components/CardsAccounts";
+import ListAccounts from "./components/ListAccounts";
 import Graphs from "./components/Graphs";
 import BarGraphs from "./components/BarGraphs";
 import DonutGraphs from "./components/DonutGraphs";
@@ -16,19 +17,16 @@ function DashboardAdmin() {
   };
   return (
     <div className="flex w-full justify-center text-center">
-      <div className="w-11/12 py-32 text-white md:w-3/5 lg:w-4/5">
-        <div className="rounded-t-lg bg-russianviolet">
-          <h1 className="py-8 font-bold md:text-3xl">Panel de Administrador</h1>
-        </div>
-        <div className="bg-russianviolet">
+      <div className="w-full py-32 text-white lg:w-4/5">
+        <div className="flex justify-between rounded-t-lg border-b-2 border-white bg-russianviolet">
           <div className="flex justify-between px-6">
-            <div className="mb-3 flex">
+            <div className="mt-2 flex">
               <ul className="flex text-center text-sm font-medium md:ml-10">
                 <li
                   className={
                     show === "accounts"
-                      ? "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 bg-cornflowerblue text-neutral-900 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
-                      : "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
+                      ? "mr-2 h-12 rounded-tr-lg rounded-tl-lg bg-cornflowerblue text-neutral-900 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
+                      : "mr-2 h-12 rounded-tr-lg rounded-tl-lg hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
                   }
                 >
                   <button
@@ -42,8 +40,8 @@ function DashboardAdmin() {
                 <li
                   className={
                     show === "posts"
-                      ? "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 bg-cornflowerblue text-neutral-900 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
-                      : "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
+                      ? "mr-2 h-12 rounded-tr-lg rounded-tl-lg bg-cornflowerblue text-neutral-900 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
+                      : "mr-2 h-12 rounded-tr-lg rounded-tl-lg hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
                   }
                 >
                   <button
@@ -102,7 +100,11 @@ function DashboardAdmin() {
               </ul>
             </div>
           </div>
-
+          <h1 className="flex items-center pr-10 text-center align-middle font-bold md:text-3xl">
+            Panel de Administrador
+          </h1>
+        </div>
+        <div className="bg-colorFilter">
           <div className="w-full">
             {show === "accounts" ? (
               <div className="px-10">
@@ -111,6 +113,9 @@ function DashboardAdmin() {
                 </div>
                 <div className="py-10">
                   <BarGraphs />
+                </div>
+                <div className="flex justify-center py-10 px-3">
+                  <ListAccounts />
                 </div>
               </div>
             ) : (
