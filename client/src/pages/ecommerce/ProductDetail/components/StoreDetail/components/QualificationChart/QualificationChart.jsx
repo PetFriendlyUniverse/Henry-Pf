@@ -5,7 +5,6 @@ import SupportImg from "./components/SupportImg";
 //type debe ser support / dispatchtime || qualification (number)
 function QualificationChart({ type, qualification }) {
   if (!type || !qualification) return <h2>skeleton</h2>;
-  console.log(qualification);
   return (
     <article className="flex aspect-[2/1.5] w-52 flex-col items-center justify-between rounded-xl border bg-customProfile p-4 sm:w-80 lg:-tracking-[1px] ">
       <picture className="relative aspect-[2/1.5] w-1/2">
