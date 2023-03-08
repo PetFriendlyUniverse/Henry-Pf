@@ -5,6 +5,7 @@ const {
   createInstagramPost,
   getInstagramPost,
   getInstagramDelete,
+  getPostDelete,
 } = require("../../controllers/adoptionControllers/adoptionControllers");
 
 const cloudinary = require("cloudinary").v2;
@@ -71,10 +72,21 @@ const deleteInstagramHandler = async (req, res) => {
   }
 };
 
+const deleteAdoptionHandler = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const postDelete = await getPostDelete(id);
+    res.status(200).json(postDelete);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
+
 module.exports = {
   postAdoptionHandler,
   getAdoptionHandler,
   postHandlerInstagram,
   getHandlerInstagram,
   deleteInstagramHandler,
+  deleteAdoptionHandler,
 };
