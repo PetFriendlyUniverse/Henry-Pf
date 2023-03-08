@@ -167,14 +167,14 @@ function CardsAccounts() {
             return (
               <div
                 key={e.id}
-                className="mx-5 min-w-[250px] items-center rounded-lg border  border-gray-200 bg-gray-200 px-10 dark:border-gray-700 md:max-w-[330px] md:flex-row"
+                className="mx-5 flex w-[500px] items-center rounded-lg border border-gray-200 bg-gray-200 px-10 dark:border-gray-700"
               >
                 <div>
-                  <div className="flex justify-center">
+                  <div className="flex justify-center pb-5">
                     <img
                       src={e.img ? e.img : Profile}
                       alt=""
-                      class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                      className="min-w-[100px] max-w-[100px] rounded-sm object-cover"
                     />
                   </div>
                   {users && users[0]?.enable ? (
@@ -197,30 +197,22 @@ function CardsAccounts() {
                     </div>
                   )}
                 </div>
-                <div class="flex flex-col justify-between p-4 leading-normal">
-                  <div>
+                <div class="flex w-full flex-col justify-center p-4 leading-normal ">
+                  <div className="flex justify-center">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-black ">
                       {`${e.name}`}
                     </h5>
-                    {e.lastname ? (
-                      <h5 className="mb-2 text-2xl font-bold tracking-tight text-black ">{`${e.lastname}`}</h5>
-                    ) : null}
                   </div>
                   <div>
-                    <p class="mb-3 font-normal text-black ">
-                      {e.Province && e.Locality
-                        ? `${e.Province} - ${e.Locality}`
-                        : "Sin Provincia - Sin Localidad"}
+                    <p className="mb-3 flex justify-center font-normal text-black">
+                      {e.mail ? `${e.mail}` : "Sin mail"}
                     </p>
-                    <p class="mb-3 flex font-normal text-black">
-                      {e.mail ? `${e.mail}` : null}
-                    </p>
-                    <p class="mb-3 flex justify-center font-normal text-black ">
+                    <p className="mb-3 flex justify-center font-normal text-black ">
                       {e.area_code && e.number
                         ? `${e.area_code}${e.number}`
                         : "Sin Teléfono"}
-                    </p>
-                    <p class="mb-3 font-normal text-black ">
+                   </p>
+                    <p className="mb-3 font-normal text-black ">
                       {e.street_name && e.street_number
                         ? `${e.street_name} - ${e.street_number}`
                         : "Sin Dirección"}
