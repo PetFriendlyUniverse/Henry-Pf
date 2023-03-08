@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import ListAccounts from "./ListAccounts";
 import Profile from "../../../assets/general/profile.svg";
-import { getUsersFilter } from "../../../redux/features/filters/filtersActions";
 import {
+  getUsers,
+  getUsersFilter,
   deleteDaycareByUser,
   deleteStoreByUser,
   deleteUserApi,
@@ -20,9 +21,10 @@ function CardsAccounts() {
     name: "",
     type: "",
   });
-
+  const list = useSelector((state) => state.Filters?.list);
   const users = useSelector((state) => state.Filters?.usersFiltered);
   useEffect(() => {
+    dispatch(getUsers());
     dispatch(getUsersFilter(user.name, user.type));
   }, []);
 
@@ -103,7 +105,7 @@ function CardsAccounts() {
       <div
         className={
           users
-            ? "flex max-h-[54vh] min-w-[70vw] flex-wrap justify-center gap-y-4 overflow-y-scroll border-t-2 border-b-2 py-4"
+            ? "flex max-h-[54vh] min-w-[70vw] flex-wrap justify-center gap-y-4 overflow-y-scroll"
             : "py-4"
         }
       >
@@ -147,11 +149,10 @@ function CardsAccounts() {
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-black ">
                       {`${e.name}`}
                     </h5>
-                    {e.lastname ? <h5>{`${e.lastname}`}</h5> : null}
+                    {e.lastname ? (
+                      <h5 className="mb-2 text-2xl font-bold tracking-tight text-black ">{`${e.lastname}`}</h5>
+                    ) : null}
                   </div>
-                  <p class="mb-3 font-normal text-black ">
-                    Finalidad del Usuario
-                  </p>
                   <div>
                     <p class="mb-3 font-normal text-black ">
                       {e.Province && e.Locality
@@ -176,6 +177,9 @@ function CardsAccounts() {
               </div>
             );
           })}
+      </div>
+      <div className="pt-10">
+        <ListAccounts />
       </div>
     </div>
   );
