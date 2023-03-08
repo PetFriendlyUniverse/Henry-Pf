@@ -32,7 +32,7 @@ function DropdownUser() {
     dropdownUser.current.classList.toggle("hidden");
     arrow.current.classList.toggle("rotate-180");
   };
-  let activeClassName = "border-t border-white ";
+  let activeClassName = "border-b border-white ";
   const mouseOut = () => {
     dropdownUser.current.classList.add("hidden");
     arrow.current.classList.remove("rotate-180");
@@ -100,15 +100,9 @@ function DropdownUser() {
             onClick={logOut}
             className="flex w-full gap-3 text-cornflowerblue lg:inline-block"
           >
-            {({ isActive }) => (
-              <div
-                className={`${
-                  isActive ? activeClassName : undefined
-                } flex w-full gap-3 pb-1`}
-              >
-                <span className=" font-bold ">Cerrar Sesión</span>
-              </div>
-            )}
+            <div className="flex w-full gap-3 pb-1">
+              <span className=" font-bold ">Cerrar Sesión</span>
+            </div>
           </NavLink>
         </li>
       </ul>
