@@ -39,7 +39,7 @@ function Card({ name, img, weight, price, stock, id }) {
           weight,
           price,
           stock,
-          id,
+
           amount: value,
         })
       );
