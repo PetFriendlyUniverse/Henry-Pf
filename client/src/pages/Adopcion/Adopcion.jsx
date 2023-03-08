@@ -1,4 +1,5 @@
 import { InstagramEmbed } from "react-social-media-embed";
+import { getAllInstagramUrlByApi } from "../../redux/features/adopcion/adopcionActions";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,13 +7,10 @@ import { getPronvinciasAsync } from "../../redux/features/ubicaciones/ubicacione
 import PaginatorAdoption from "./components/PaginarionAdoption.jsx/PaginationAdoption";
 import BannerOng from "./components/BannerOng/BannerOng";
 import FormAdoption from "./components/FormAdoption/FormAdoption";
-import { getAllInstagramUrlByApi } from "../../redux/features/adopcion/adopcionActions";
 
 function Adopcion() {
   const instagramUrl1 = useSelector((state) => state.Adopciones.instagramUrls);
   const dispatch = useDispatch();
-
-  console.log(instagramUrl1);
 
   useEffect(() => {
     dispatch(getPronvinciasAsync());
@@ -29,7 +27,6 @@ function Adopcion() {
       <BannerOng />
 
       <div className="  flex w-full flex-col justify-center gap-10 rounded-xl  px-6 py-10 pb-28 lg:px-8">
-        {/* este div de abajo tiene los embeed de instagram de propatas */}
         <div className="  flex w-full flex-wrap  justify-center  gap-2  rounded-xl ">
           {instagramUrl1?.map((i) => {
             return (
@@ -41,21 +38,6 @@ function Adopcion() {
               </div>
             );
           })}
-          ; ;
-          {/* <div className="my-4 flex w-96 justify-center">
-            <InstagramEmbed
-              url="https://www.instagram.com/reel/CpRDz4vtIq1/"
-              width={328}
-              height={500}
-            />
-          </div>
-          <div className="my-4 flex w-96 justify-center">
-            <InstagramEmbed
-              url="https://www.instagram.com/p/CpOrZgNuF3L/"
-              width={328}
-              height={500}
-            />
-          </div> */}
         </div>
         {/* <!-- More posts... --> */}
         {/* este div de abajo tiene los embeed de instagram de estoyaqui */}
