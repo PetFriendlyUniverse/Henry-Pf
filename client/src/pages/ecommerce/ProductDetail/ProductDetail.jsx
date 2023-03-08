@@ -7,7 +7,7 @@ import MoarButton from "../../../components/Button/MoarButton";
 import CountProduct from "../../../components/CountProduct/CountProduct";
 import cardCredit from "../../../assets/cardCredit/cardCredit.svg";
 import transport from "../../../assets/transport/transport.svg";
-import { setShopCart } from "../../../redux/features/products/productsSlice";
+import { addNewProdShopCard } from "../../../redux/features/products/productsSlice";
 import StoreDetail from "./components/StoreDetail/StoreDetail";
 import ProductDetailSkeleton from "./ProductDetailSkeleton";
 import useGetProductInfo from "./hooks/useGetProductInfo";
@@ -25,45 +25,40 @@ function ProductDetail() {
   const auxCartAmount = shopCartProducts[id] ? shopCartProducts[id].amount : 0;
 
   const [product, comments, qualification, loading] = useGetProductInfo(id);
-  const auxCartStock = product?.stock;
   const rating =
     !!qualification?.[0].avg && parseFloat(qualification?.[0].avg).toFixed(2);
+
   const handleClickDeduct = () => {
     if (amount > 1) setAmount(amount - 1);
   };
   const handleClickAdd = () => {
-    if (auxCartAmount + amount < auxCartStock) setAmount(amount + 1);
+    if (auxCartAmount + amount < product?.stock) {
+      setAmount(amount + 1);
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Has alcanzado el limite de stock",
+        showConfirmButton: false,
+        timer: 800,
+      });
+    }
   };
-  const handleClickAddProduct = async ({
-    name,
-    img,
-    weight,
-    price,
-    stock,
-    id,
-  }) => {
-    if (auxCartAmount + amount <= auxCartStock) {
+
+  const handleClickAddProduct = async () => {
+    if (auxCartAmount + amount <= product?.stock) {
       dispatch(
-        setShopCart({
-          id,
-          data: {
-            name,
-            img,
-            weight,
-            price,
-            stock,
-            id,
-            amount: auxCartAmount + amount,
-          },
+        addNewProdShopCard({
+          ...product,
+          amount: amount,
         })
       );
-
       await Swal.fire({
         icon: "success",
         title: "Tu producto ha sido agregado con éxito!",
         showConfirmButton: false,
         timer: 1100,
       });
+      setAmount(1);
     } else {
       await Swal.fire({
         icon: "error",
@@ -112,6 +107,7 @@ function ProductDetail() {
             <div className=" md:w-1/5 lg:w-1/4">
               <MoarButton component={product?.weight + "kg"} />
             </div>
+            <p>Stock: {product?.stock - auxCartAmount}</p>
             <span className="text-lg font-semibold"> Seleccione Cantidad:</span>
             <div className="w-1/2">
               <CountProduct
@@ -122,7 +118,7 @@ function ProductDetail() {
             </div>
             <button
               className="my-2 rounded-lg bg-[#4dbb47] py-2 px-4 text-lg font-normal text-white md:min-w-full lg:w-1/2"
-              onClick={() => handleClickAddProduct(product)}
+              onClick={handleClickAddProduct}
             >
               Añadir al carrito
             </button>
