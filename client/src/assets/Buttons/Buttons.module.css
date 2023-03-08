@@ -122,7 +122,7 @@
   }
 
 
-  @media (max-width: 415px) {
+  @media (max-width: 1000px) {
     .cta1 {
       height: 50px;
       flex-direction: row;
@@ -161,7 +161,7 @@
     }
   }
   
-  @media (min-width: 416px) {
+  @media (min-width: 1001px) {
     .cta1 {
       height: 99vh;
       flex-direction: column;

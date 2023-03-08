@@ -19,8 +19,8 @@ import nativeLogo from "../../assets/general/react-native-1.svg";
 
 function Landing() {
   return (
-    <div className=" flex h-full w-full flex-col-reverse  bg-adopcion font-mono font-semibold sm:flex-row ">
-      <div className=" z-20 mt-10 flex h-14 w-full justify-center gap-4 sm:mt-0 sm:justify-start lg:h-full  lg:w-96 ">
+    <div className=" flex h-full w-full flex-col-reverse bg-adopcion  font-mono font-semibold  lg:flex-row ">
+      <div className=" z-20 mt-10 flex h-14 w-full justify-center  gap-4 border-2 border-black sm:mt-0 lg:h-full lg:w-96  lg:justify-start ">
         <Buttons />
       </div>
 
@@ -38,7 +38,7 @@ function Landing() {
           </h1>
           <hr className="h-1 w-10/12 rounded-full bg-gray-600 text-base opacity-20 sm:w-6/12"></hr>
           <article className=" flex flex-col items-center justify-center p-4  text-start sm:mb-4 sm:w-full">
-            <p className="w-full pt-2 sm:w-8/12 sm:text-sm">
+            <p className="w-full pt-2 sm:w-6/12 sm:text-sm">
               Nuestra sección de{" "}
               <span className="rounded-xl bg-cornflowerblue px-1 text-white">
                 SHOP
