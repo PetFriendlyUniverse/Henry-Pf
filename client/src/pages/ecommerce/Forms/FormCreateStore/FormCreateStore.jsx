@@ -142,7 +142,7 @@ function FormCreateStore() {
         className="mt-10 flex h-full w-2/3 max-w-[900px] flex-col items-center justify-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue shadow-2xl shadow-black md:w-3/5 lg:h-auto lg:w-full "
       >
         <h3 className="mb-6 ">
-          Modifica o agrega informacion para crear tu tienda
+          Modifica o agrega información para crear tu tienda
         </h3>
         <div className="h-full w-full justify-center overflow-hidden rounded-2xl bg-slate-50 py-10 sm:justify-between lg:flex">
           {/* //div con el fomulario izquierdo */}
@@ -177,7 +177,7 @@ function FormCreateStore() {
                 autoComplete="off"
               />
               <label className="absolute top-3 -z-10 w-44 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 sm:w-full">
-                Correo Electronico
+                Correo Electrónico
               </label>
               {errors.mail && (
                 <span className="text-red-500">{errors.mail}</span>
@@ -327,7 +327,7 @@ function FormCreateStore() {
                     autoComplete="off"
                   />
                   <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                    Cod. de area
+                    Cod. de área
                   </label>
                   {errors.area_code && (
                     <span className="text-red-500">{errors.area_code}</span>

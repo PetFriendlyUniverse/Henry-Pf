@@ -12,7 +12,7 @@ export const GeneralValidations = (property, value) => {
     error.province = "Ingrese la provincia en la que se encuentra su Tienda";
   } else if (property === "province") {
     if (!stringRegex.test(value)) {
-      error.province = "Por favor ingrese su Provincia sin numeros o signos";
+      error.province = "Por favor ingrese su Provincia sin números o signos";
     } else if (value.length > 15) {
       error.province = "El nombre es demasiado largo";
     } else {
@@ -24,7 +24,7 @@ export const GeneralValidations = (property, value) => {
     error.locality = "Ingrese la localidad en la que se encuentra su Tienda";
   } else if (property === "locality") {
     if (!stringNumberRegex.test(value)) {
-      error.locality = "Por favor ingrese su Localidad sin numeros o signos";
+      error.locality = "Por favor ingrese su Localidad sin números o signos";
     } else if (value.length > 15) {
       error.locality = "El nombre es demasiado largo";
     } else {
@@ -33,10 +33,10 @@ export const GeneralValidations = (property, value) => {
   }
 
   if (property === "description" && !value) {
-    error.description = "Por favor ingrese una descripcion extensa";
+    error.description = "Por favor ingrese una descripción extensa";
   } else if (property === "description") {
     if (property.includes("http://")) {
-      error.description = "No aceptamos links en la descripcion";
+      error.description = "No aceptamos links en la descripción";
     } else {
       error.description = "";
     }

@@ -146,12 +146,12 @@ function ListAccounts() {
                   <p class="mb-3 flex justify-center font-normal text-black ">
                     {e.area_code && e.number
                       ? `${e.area_code}${e.number}`
-                      : "Sin telefono"}
+                      : "Sin teléfono"}
                   </p>
                   <p class="mb-3 font-normal text-black ">
                     {e.street_name && e.street_number
                       ? `${e.street_name} - ${e.street_number}`
-                      : "Sin direccion"}
+                      : "Sin dirección"}
                   </p>
                 </div>
               </div>
@@ -192,12 +192,12 @@ function ListAccounts() {
                   <p class="mb-3 flex justify-center font-normal text-black ">
                     {e.area_code && e.number
                       ? `${e.area_code}${e.number}`
-                      : "Sin telefono"}
+                      : "Sin teléfono"}
                   </p>
                   <p class="mb-3 font-normal text-black ">
                     {e.street_name && e.street_number
                       ? `${e.street_name} - ${e.street_number}`
-                      : "Sin direccion"}
+                      : "Sin dirección"}
                   </p>
                 </div>
               </div>

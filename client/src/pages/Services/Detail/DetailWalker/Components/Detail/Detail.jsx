@@ -39,7 +39,7 @@ function Detail({
             {locality ? ` ${locality}` : " No disponible"}
           </p>
           {street_name && (
-            <p>Direccion: {`${street_name} - ${street_number}`}</p>
+            <p>Dirección: {`${street_name} - ${street_number}`}</p>
           )}
         </div>
         <div>
