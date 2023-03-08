@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  getAllUsers,
   getUsersFiltered,
   deleteUser,
   deleteStore,
@@ -10,6 +11,11 @@ import {
   approvedWalker,
   approvedDaycare,
 } from "./filtersSlice";
+
+const getUsers = () => async (dispatch) => {
+  const { data } = await axios.get(`/dashboard/list`);
+  return dispatch(getAllUsers(data));
+};
 
 const getUsersFilter = (name, type) => async (dispatch) => {
   const { data } = await axios.get(
@@ -59,6 +65,7 @@ const approvedWalkerByUser = (id) => async (dispatch) => {
 };
 
 export {
+  getUsers,
   getUsersFilter,
   deleteUserApi,
   deleteStoreByUser,

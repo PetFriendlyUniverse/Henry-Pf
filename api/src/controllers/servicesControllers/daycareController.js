@@ -1,6 +1,6 @@
 const { Daycare, User } = require("../../db");
 
-const createDaycare = async (userId) => {
+const createDaycare = async (userId, data) => {
   const user = await User.findByPk(userId);
   if (!user) {
     throw new Error(`No se pudo encontrar el usuario con ID ${userId}`);
@@ -13,7 +13,7 @@ const createDaycare = async (userId) => {
         },
       }
     );
-    const daycare = await Daycare.create();
+    const daycare = await Daycare.create(data);
     await daycare.setUser(user);
     await User.update(
       { daycareId: daycare.id },
@@ -31,15 +31,18 @@ const getAllDaycares = async (page, pq) => {
   const offset = (page - 1) * pq;
 
   const daycareList = await Daycare.findAll({
+    where: { enable: true },
     limit: pq,
     offset: offset,
   });
+  const count = await Daycare.count();
+  const quantity = Math.ceil(count / pq);
 
-  return daycareList;
+  return { daycareList, quantity };
 };
 
 const filterDaycare = async (query, page, pq) => {
-  let whereClause = {};
+  let whereClause = { enable: true };
   if (query.province) {
     whereClause.province = query.province;
     if (query.locality) {
@@ -52,8 +55,9 @@ const filterDaycare = async (query, page, pq) => {
     limit: pq,
     offset: offset,
   });
-
-  return daycareList;
+  const count = await Daycare.count({ where: whereClause });
+  const quantity = Math.ceil(count / pq);
+  return { daycareList, quantity };
 };
 
 const getDaycareByID = async (id) => {

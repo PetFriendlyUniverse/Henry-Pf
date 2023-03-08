@@ -14,15 +14,17 @@ import {
 } from "../../../../redux/features/ubicaciones/ubicacionesActions";
 
 function FormModifyDaycare() {
-  const idUser = localStorage.getItem("id");
+  const userId = localStorage.getItem("id");
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.User?.userDaycareId);
   const provincia = useSelector((state) => state.Ubicaciones.provincias);
   const localidad = useSelector((state) => state.Ubicaciones.localidades);
 
   useEffect(() => {
-    dispatch(getDaycareByUser(id));
+    dispatch(getDaycareByUser(userId));
     dispatch(getPronvinciasAsync());
   }, []);
 
@@ -31,18 +33,18 @@ function FormModifyDaycare() {
   const [img, setImg] = useState(null);
   const [imgFile, setImgFile] = useState(null);
   const [form, setForm] = useState({
-    name: "",
-    area_code: "",
-    number: "",
-    province: "",
-    locality: "",
-    zip_code: "",
-    street_name: "",
-    street_number: "",
-    description: "",
-    mail: "",
-    price_hour: "",
-    price_day: "",
+    name: user.name,
+    area_code: user.area_code,
+    number: user.number,
+    province: user.province,
+    locality: user.locality,
+    zip_code: user.zip_code,
+    street_name: user.street_name,
+    street_number: user.street_number,
+    description: user.description,
+    mail: user.mail,
+    price_hour: user.price_hour,
+    price_day: user.price_day,
   });
   const [errors, setErrors] = useState({
     name: "",
@@ -89,8 +91,9 @@ function FormModifyDaycare() {
     const errorValues = Object.values(errors);
     const isFormValid = errorValues.every((val) => val === "");
     const newForm = new FormData();
-    newForm.append("id", id);
-    newForm.append("img", img);
+    if (img) {
+      newForm.append("img", img);
+    }
     newForm.append("name", form.name);
     newForm.append("area_code", form.area_code);
     newForm.append("number", form.number);
@@ -121,13 +124,13 @@ function FormModifyDaycare() {
         })
         .then(() => {
           Swal.fire({
-            title: "Guarderia creada",
+            title: "Guarderia modificada",
             icon: "success",
-            text: "La Guarderia ha sido creada correctamente",
+            text: "La Guarderia ha sido modificada correctamente",
             closeOnEsc: true,
             closeOnClickOutside: true,
           }).then(() => {
-            navigate(`/profile/${idUser}`);
+            navigate(-1);
           });
         })
         .catch((err) => {

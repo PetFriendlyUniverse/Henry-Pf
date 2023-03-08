@@ -11,9 +11,12 @@ const cloudinary = require("cloudinary").v2;
 
 const postDaycareHandler = async (req, res) => {
   const { UserId: userId } = req.params;
-
+  const data = req.body;
+  const file = req.file;
   try {
-    const newDaycare = await createDaycare(userId);
+    const image = await cloudinary.uploader.upload(file.path);
+    data.img = image.secure_url;
+    const newDaycare = await createDaycare(userId, data);
     res.status(200).json(newDaycare);
   } catch (error) {
     res.status(404).json({ error: error.message });
@@ -23,7 +26,7 @@ const getDaycaresHandler = async (req, res) => {
   const query = req.query;
   try {
     let daycares;
-    if (Object.keys(query).length) {
+    if ("province" in query) {
       const { page, pq, ...filterParams } = query;
       daycares = await filterDaycare(filterParams, page, pq);
     } else {
@@ -49,8 +52,10 @@ const putDaycareHandler = async (req, res) => {
   const { id } = req.params;
   const file = req.file;
   try {
-    const image = await cloudinary.uploader.upload(file.path);
-    data.img = image.secure_url;
+    if (file) {
+      const image = await cloudinary.uploader.upload(file.path);
+      data.img = image.secure_url;
+    }
     const daycareEdited = await updateDaycare(data, id, file);
     res.status(200).json(daycareEdited);
   } catch (error) {

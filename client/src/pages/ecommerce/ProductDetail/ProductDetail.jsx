@@ -12,6 +12,7 @@ import StoreDetail from "./components/StoreDetail/StoreDetail";
 import ProductDetailSkeleton from "./ProductDetailSkeleton";
 import useGetProductInfo from "./hooks/useGetProductInfo";
 import QualificationStars from "./components/QualificationStars/QualificationStars";
+import Comments from "./components/Comments/Comments";
 
 function ProductDetail() {
   window.scrollTo(0, 0);
@@ -25,8 +26,8 @@ function ProductDetail() {
 
   const [product, comments, qualification, loading] = useGetProductInfo(id);
   const auxCartStock = product?.stock;
-  const rating = parseFloat(qualification?.[0].avg).toFixed(2);
-
+  const rating =
+    !!qualification?.[0].avg && parseFloat(qualification?.[0].avg).toFixed(2);
   const handleClickDeduct = () => {
     if (amount > 1) setAmount(amount - 1);
   };
@@ -86,12 +87,16 @@ function ProductDetail() {
             <h2 className="font-bold md:text-2xl lg:text-3xl">
               {product?.name}
             </h2>
-            <button className="text-xs">Old Pince</button>
+            <button className="text-xs">{product?.brand}</button>
             <span className="text-xs">-Código del producto:{product?.id}</span>
             {/* --------------------------------------     [ Stars ]     ------------------------------------------ */}
-            <div className="-mt-3">
-              <QualificationStars rating={rating} />
-            </div>
+            {!!rating ? (
+              <div className="-mt-3">
+                <QualificationStars rating={rating} />
+              </div>
+            ) : (
+              <p className="text-xs text-gray-400">Sin calificación</p>
+            )}
             <div className="flex flex-col flex-wrap items-start gap-4 md:flex-row md:gap-8">
               <h3>{"$" + product?.price}</h3>
               <button className="flex items-center text-[12px] font-bold uppercase text-pink-700">
@@ -103,7 +108,7 @@ function ProductDetail() {
               </button>
             </div>
             <span className="text-xs">({product?.price + "x Kg"})</span>
-            <h3>Seleccione Tamaño:</h3>
+            <h3> Tamaño:</h3>
             <div className=" md:w-1/5 lg:w-1/4">
               <MoarButton component={product?.weight + "kg"} />
             </div>
@@ -148,7 +153,7 @@ function ProductDetail() {
             <p>{product?.description}</p>
           </Tabs.Item>
           <Tabs.Item title="Comentarios">
-            <div>Reseñas de clientes</div>
+            <Comments comments={comments} />
           </Tabs.Item>
           <Tabs.Item title="Vendedor">
             <StoreDetail />

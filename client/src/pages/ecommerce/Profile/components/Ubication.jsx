@@ -36,9 +36,7 @@ function Ubication({
           <h4 className="pl-2 font-bold">Calle:</h4>
         </div>
         <div className="rounded-lg bg-slate-200 py-1 font-semibold">
-          <p className="pl-4 text-xs sm:text-base">
-            {street_name}Republica del Libano
-          </p>
+          <p className="pl-4 text-xs sm:text-base">{street_name}</p>
         </div>
       </div>
       <div className="py-2">

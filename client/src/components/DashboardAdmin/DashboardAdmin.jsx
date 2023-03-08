@@ -7,6 +7,7 @@ import DonutGraphs from "./components/DonutGraphs";
 import LineGraphsSales from "./components/LineGraphsSales";
 import LineGraphsTraffic from "./components/LineGraphsTraffic";
 import Tickets from "./components/Tickets";
+import UrlPostInput from "./components/UrlPostInput";
 
 function DashboardAdmin() {
   const [show, setShow] = useState("accounts");
@@ -39,6 +40,21 @@ function DashboardAdmin() {
                   </button>
                 </li>
                 <li
+                  className={
+                    show === "posts"
+                      ? "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 bg-cornflowerblue text-neutral-900 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
+                      : "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
+                  }
+                >
+                  <button
+                    onClick={handleShow}
+                    name="posts"
+                    className="inline-block p-4"
+                  >
+                    Posts
+                  </button>
+                </li>
+                {/*  <li
                   className={
                     show === "sales"
                       ? "mr-2 h-12 rounded-tr-lg rounded-tl-lg border-b-2 bg-cornflowerblue text-neutral-900 hover:bg-cornflowerblue hover:text-neutral-900 lg:w-32"
@@ -82,7 +98,7 @@ function DashboardAdmin() {
                   >
                     Soporte
                   </button>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
@@ -97,37 +113,8 @@ function DashboardAdmin() {
                   <BarGraphs />
                 </div>
               </div>
-            ) : show === "sales" ? (
-              <div className="px-10">
-                <div className="py-10">
-                  <DonutGraphs />
-                </div>
-                <div className="py-10">
-                  <LineGraphsSales />
-                </div>
-                <div className="py-10">
-                  <Graphs />
-                </div>
-              </div>
-            ) : show === "traffic" ? (
-              <div className="px-10">
-                <div className="py-10">
-                  <LineGraphsTraffic />
-                </div>
-              </div>
-            ) : show === "requests" ? (
-              <div className="px-10">
-                <Tickets />
-              </div>
             ) : (
-              <div className="px-10">
-                <div className="flex justify-center py-10 px-3">
-                  <CardsAccounts />
-                </div>
-                <div className="py-10">
-                  <BarGraphs />
-                </div>
-              </div>
+              <UrlPostInput />
             )}
           </div>
         </div>

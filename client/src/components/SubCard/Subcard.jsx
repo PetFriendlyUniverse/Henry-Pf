@@ -23,9 +23,9 @@ function Subcard({ prod, gridProperties }) {
     }
   };
   return (
-    <article className="mx-auto flex w-11/12 items-center justify-between rounded-l-lg border-[1px] border-black px-2">
-      <picture className="w-20 p-1">
-        <img src={img} alt={name} />
+    <article className=" mx-auto flex w-11/12 flex-col items-center  justify-between gap-2 rounded-l-lg border-[1px] border-black px-2 sm:flex-row">
+      <picture className="h-52 p-1  sm:h-auto sm:w-1/3">
+        <img className="h-full" src={img} alt={name} />
       </picture>
       <div>
         <h2>{name}</h2>

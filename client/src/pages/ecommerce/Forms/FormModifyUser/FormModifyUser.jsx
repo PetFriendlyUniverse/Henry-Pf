@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ValidationProfile } from "../Validations/Profile";
 import Swal from "sweetalert2";
 import LinkButton from "../../../../components/Button/LinkButton";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Carousel } from "flowbite-react";
 import {
@@ -15,7 +15,7 @@ import { getStoreByUser } from "../../../../redux/features/users/usersActions";
 function FormModifyUser() {
   const { id } = useParams();
   const [selectedFiles, setSelectedFiles] = useState([]);
-
+  const navigate = useNavigate();
   const user = useSelector((state) => state.User?.userId);
   const [formComplete, setFormComplete] = useState(false);
   const [img, setImg] = useState(null);
@@ -68,6 +68,7 @@ function FormModifyUser() {
     if (e.target.name === "province") {
       dispatch(getLocalidadesAsync(e.target.value));
     }
+    console.log(img);
   };
 
   const changeHandlerImg = (e) => {
@@ -86,7 +87,9 @@ function FormModifyUser() {
     const errorValues = Object.values(errors);
     const isFormValid = errorValues.every((val) => val === "");
     const newForm = new FormData();
-    newForm.append("img", img);
+    if (img) {
+      newForm.append("img", img);
+    }
     newForm.append("user", form.user);
     newForm.append("name", form.name);
     newForm.append("lastname", form.lastname);
@@ -128,6 +131,9 @@ function FormModifyUser() {
             zip_code: "",
             street_number: "",
           });
+        })
+        .then(() => {
+          navigate(-1);
         });
     } else {
       Swal.fire({
@@ -365,7 +371,7 @@ function FormModifyUser() {
                     <span className="text-red-500">{errors.number}</span>
                   )}
                 </div>
-                {formComplete && <LinkButton component={"Enviar"} />}
+                <LinkButton component={"Enviar"} />
               </div>
             </div>
           </div>

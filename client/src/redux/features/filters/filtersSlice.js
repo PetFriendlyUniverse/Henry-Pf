@@ -2,12 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   usersFiltered: [],
+  listObject: {},
 };
 
 export const Filters = createSlice({
   name: "Filters",
   initialState,
   reducers: {
+    getAllUsers: (state, { payload }) => {
+      state.listObject = payload;
+    },
     getUsersFiltered: (state, { payload }) => {
       state.usersFiltered = payload;
     },
@@ -39,6 +43,7 @@ export const Filters = createSlice({
 });
 
 export const {
+  getAllUsers,
   getUsersFiltered,
   deleteUser,
   deleteStore,

@@ -10,18 +10,18 @@ function useGetProducts() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setLoading(true);
-    dispatch(getProductsApi(productsPerPage, currentPage, setFilters));
-  }, [setFilters, productsPerPage, currentPage]);
-
-  useEffect(() => {
     setLoading(false);
     return () => {
       setLoading(true);
     };
   }, [products]);
 
-  return [loading, products];
+  useEffect(() => {
+    setLoading(true);
+    dispatch(getProductsApi(productsPerPage, currentPage, setFilters));
+  }, [setFilters, productsPerPage, currentPage]);
+
+  return [loading, products, productsPerPage];
 }
 
 export default useGetProducts;

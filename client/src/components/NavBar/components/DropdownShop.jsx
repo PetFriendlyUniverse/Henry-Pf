@@ -77,9 +77,12 @@ function DropdownShop() {
         className=" z-10 mt-2 hidden w-full rounded-b-lg bg-blue-100 hover:block md:absolute md:right-0 md:top-10 md:h-80  md:w-[500px] lg:h-96 2xl:left-0"
       >
         <div className=" flex w-full items-center justify-between border-b border-black px-4 py-1 ">
-          <p className="inline-block">{products.length} productos</p>
-          {products.length && (
-            <span onClick={handleDelete}>
+          {!!products.length && (
+            <span
+              className="flex w-full justify-between"
+              onClick={handleDelete}
+            >
+              <p className="inline-block">{products.length} productos</p>
               <img
                 src={deleteBtn}
                 className="w-7 cursor-pointer hover:scale-105"
@@ -93,12 +96,16 @@ function DropdownShop() {
             products.length && "overflow-scroll overflow-x-hidden"
           }  py-3 md:h-56 lg:h-[340px] `}
         >
-          {products?.map((prod) => (
-            <Subcard prod={prod} key={prod.id} />
-          ))}
+          {products.length ? (
+            products?.map((prod) => <Subcard prod={prod} key={prod.id} />)
+          ) : (
+            <span className="flex h-full w-full items-center justify-center text-xl">
+              <h2>No hay productos agregados al carrito</h2>
+            </span>
+          )}
         </div>
         <hr />
-        {products.length && (
+        {!!products.length && (
           <div className="flex items-center justify-between rounded-b-lg bg-blue-200 p-2 ">
             <Link to="/shop/checkout">
               <LinkButton component={"Confirmar Compra"} />
