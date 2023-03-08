@@ -13,12 +13,14 @@ const cloudinary = require("cloudinary").v2;
 const postAdoptionHandler = async (req, res) => {
   const { UserId: userId } = req.params;
   const data = req.body;
-  const file = req.file;
+  const files = req.files;
   try {
-    if (file) {
+    const images = [];
+    for (const file of files) {
       const image = await cloudinary.uploader.upload(file.path);
-      data.img = image.secure_url;
+      images.push(image.secure_url);
     }
+    data.img = images;
     const newAdoption = await createAdoption(userId, data);
     res.status(200).json(newAdoption);
   } catch (error) {

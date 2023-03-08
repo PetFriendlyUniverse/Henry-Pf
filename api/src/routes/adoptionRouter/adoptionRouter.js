@@ -14,7 +14,7 @@ const upload = multer({ dest: "uploads/" });
 
 adoptionRouter.post(
   "/create/:UserId",
-  upload.single("img"),
+  upload.array("img"),
   postAdoptionHandler
 );
 adoptionRouter.get("/", getAdoptionHandler);
