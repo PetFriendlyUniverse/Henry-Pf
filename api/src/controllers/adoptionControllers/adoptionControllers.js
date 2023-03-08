@@ -95,6 +95,15 @@ const getInstagramDelete = async (id) => {
 
   return instragramDelete;
 };
+const getPostDelete = async (id) => {
+  const update = await Adoption.update(
+    { enable: false },
+    { where: { id: id } }
+  );
+  const postDelete = await Adoption.findOne({ where: { id: id } });
+
+  return postDelete;
+};
 
 module.exports = {
   createAdoption,
@@ -103,4 +112,5 @@ module.exports = {
   createInstagramPost,
   getInstagramPost,
   getInstagramDelete,
+  getPostDelete,
 };
