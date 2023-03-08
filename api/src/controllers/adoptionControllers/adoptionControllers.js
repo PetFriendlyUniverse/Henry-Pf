@@ -75,6 +75,7 @@ const getInstagramPost = async (page, pq) => {
   const offset = (page - 1) * pq;
 
   const adoptionListInstagram = await InstagramPosts.findAll({
+    where: { enable: true },
     limit: pq,
     offset: offset,
   });
@@ -85,10 +86,31 @@ const getInstagramPost = async (page, pq) => {
   return { adoptionListInstagram, quantity };
 };
 
+const getInstagramDelete = async (id) => {
+  const update = await InstagramPosts.update(
+    { enable: false },
+    { where: { id: id } }
+  );
+  const instragramDelete = await InstagramPosts.findOne({ where: { id: id } });
+
+  return instragramDelete;
+};
+const getPostDelete = async (id) => {
+  const update = await Adoption.update(
+    { enable: false },
+    { where: { id: id } }
+  );
+  const postDelete = await Adoption.findOne({ where: { id: id } });
+
+  return postDelete;
+};
+
 module.exports = {
   createAdoption,
   filterAdoption,
   getAllAdoptions,
   createInstagramPost,
   getInstagramPost,
+  getInstagramDelete,
+  getPostDelete,
 };

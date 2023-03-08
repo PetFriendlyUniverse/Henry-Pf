@@ -154,7 +154,11 @@ function ProductDetail() {
       <div className="mt-20 h-full min-h-[200px] w-full bg-gray-100">
         <Tabs.Group aria-label="Tabs with underline" style="underline">
           <Tabs.Item title="Descripción">
-            <p>{product?.description}</p>
+            <div className="m-4 w-[60%] rounded-md bg-slate-50 p-4 ">
+              <p className="font-normal text-gray-600">
+                {product?.description}
+              </p>
+            </div>
           </Tabs.Item>
           <Tabs.Item title="Comentarios">
             <Comments comments={comments} />
