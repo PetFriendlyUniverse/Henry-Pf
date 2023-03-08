@@ -5,7 +5,7 @@ function Comments({ comments }) {
         comments?.map((c, i) => (
           <div
             key={c.user + i}
-            className="m-4 flex w-3/5 flex-col rounded-md bg-slate-50  p-2 font-sans text-lg font-normal"
+            className="m-4 flex w-3/5 flex-col rounded-md bg-slate-50 p-2  font-sans text-lg font-normal xsm:w-[370px]"
           >
             <p className="pl-2 text-lg font-bold text-gray-700">{c.user}</p>
             <p className="pl-2 text-gray-700">{c.comment}</p>
@@ -15,7 +15,7 @@ function Comments({ comments }) {
           </div>
         ))
       ) : (
-        <p className=" font-semibold sm:text-xs md:text-base lg:text-base">
+        <p className="font-semibold xsm:text-sm md:text-sm lg:text-sm">
           Actualmente este producto no posee comentarios
         </p>
       )}
