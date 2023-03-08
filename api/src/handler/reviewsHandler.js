@@ -29,10 +29,14 @@ const getReviewByUserHandler = async (req, res) => {
 
 const postCreateReviewHandler = async (req, res) => {
   const data = req.body;
-  const { userId } = req.params;
+  const { userId, invoiceId } = req.params;
   try {
-    const dataFormated = createReviewValidateAndFormater(userId, data);
-    const newReview = await createNewReview(dataFormated);
+    const dataFormated = createReviewValidateAndFormater(
+      userId,
+      invoiceId,
+      data
+    );
+    const newReview = await createNewReview(dataFormated, invoiceId);
     return res.status(200).json(newReview);
   } catch (error) {
     return res.status(404).json({ error: error.message });

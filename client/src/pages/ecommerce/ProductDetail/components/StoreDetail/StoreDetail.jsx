@@ -61,7 +61,9 @@ function StoreDetail() {
           </div>
         </>
       ) : (
-        <p>Actualmente esta tienda no posee reseñas</p>
+        <p className="font-semibold sm:text-xs md:text-base lg:text-base">
+          Actualmente esta tienda no posee reseñas
+        </p>
       )}
     </div>
   );
