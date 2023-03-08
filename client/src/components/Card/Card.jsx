@@ -18,7 +18,16 @@ function Card({ name, img, weight, price, stock, id }) {
     if (value > 0) setValue(value - 1);
   };
   const handleClickAdd = () => {
-    if (value < stock) setValue(value + 1);
+    if (value < stock) {
+      setValue(value + 1);
+    } else if (value == stock) {
+      Swal.fire({
+        icon: "warning",
+        title: "Has alcanzado el limite de stock",
+        showConfirmButton: false,
+        timer: 650,
+      });
+    }
   };
   const handleAddShopCart = () => {
     if (value !== 0) {

@@ -101,7 +101,7 @@ function Profile() {
       setPetInfo(res);
     });
   }, []);
-
+  console.log(petInfo);
   return (
     <div className="flex min-h-[80vh] justify-start  bg-adopcion pb-28 pt-10 lg:items-center lg:justify-center">
       <div className="flex h-full w-full flex-col items-center justify-end gap-3 rounded-2xl  px-6 lg:w-full  lg:flex-row lg:justify-start   lg:gap-10 2xl:px-16 ">
@@ -266,29 +266,27 @@ function Profile() {
               )}
               <div className="flex justify-center  gap-2 py-2">
                 <img src={interrogation} alt="help" className="w-5" />
-                <button
+
+                <Link
+                  to={`/profile/edit/${user.id}`}
                   title="ingresa aqui para editar tu informacion personal"
                   className="active:traslate-y-1 w-14 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 shadow-md shadow-black transition-all duration-200 hover:bg-slate-300"
                 >
-                  <Link to={`/profile/edit/${user.id}`}>
-                    <img src={edit} alt="edit" />
-                  </Link>
-                </button>
+                  <img src={edit} alt="edit" />
+                </Link>
               </div>
             </div>
           </div>
         </div>
         {/* container pets form */}
         <div className="h-96 w-full max-w-xs rounded-2xl border-4 border-cornflowerblue  p-3 xl:w-96 ">
-          <div>
-            {petInfo.length ? (
-              petInfo.map((pet, i) => {
-                return <PetCard key={i} petInfo={pet} />;
-              })
-            ) : (
-              <FormAddPet />
-            )}
-          </div>
+          {petInfo.length ? (
+            petInfo.map((pet, i) => {
+              return <PetCard key={i} petInfo={pet} />;
+            })
+          ) : (
+            <FormAddPet />
+          )}
         </div>
       </div>
     </div>
