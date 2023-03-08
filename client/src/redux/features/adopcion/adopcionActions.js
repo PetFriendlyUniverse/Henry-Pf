@@ -1,4 +1,8 @@
-import { getAdopciones, getAdopcionById } from "./adopcionSlice";
+import {
+  getAdopciones,
+  getAdopcionById,
+  getAllInstagramUrl,
+} from "./adopcionSlice";
 
 import axios from "axios";
 
@@ -19,4 +23,9 @@ const getAdopcionesIdApi = (id) => async (dispatch) => {
   return dispatch(getAdopcionById(data));
 };
 
-export { getAdopcionesApi, getAdopcionesIdApi };
+const getAllInstagramUrlByApi = () => async (dispatch) => {
+  const { data } = await axios.get(`/adoption/instagram`);
+  return dispatch(getAllInstagramUrl(data));
+};
+
+export { getAdopcionesApi, getAdopcionesIdApi, getAllInstagramUrlByApi };
