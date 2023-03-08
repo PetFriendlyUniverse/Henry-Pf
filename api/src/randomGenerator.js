@@ -726,6 +726,18 @@ const generator = () => {
     "Four Paws Junction",
   ];
 
+  const localidades10 = [
+    "Buenos Aires: Ciudad Autónoma de Buenos Aires (CABA)",
+    "La Plata: Buenos Aires",
+    "Rosario: Santa Fe",
+    "Mendoza: Mendoza",
+    "San Miguel de Tucumán: Tucumán",
+    "Salta: Salta",
+    "Mar del Plata: Buenos Aires",
+    "San Juan: San Juan",
+    "Resistencia: Chaco",
+  ];
+
   setTimeout(async () => {
     const storesToCreate = [];
     const productsToCreate = [];
