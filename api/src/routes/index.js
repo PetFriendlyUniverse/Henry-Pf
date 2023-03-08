@@ -25,13 +25,13 @@ const { TIME_GENERATOR } = process.env;
 
 const router = Router();
 
-const { generator } = require("../randomGenerator");
+const { generator } = require("../generator/randomGenerator");
 
-// TIME_GENERATOR && generator();
-// router.use("/randomgenerator", (req, res) => {
-//   generator();
-//   res.send("Ejecucion de randomGenerator exitosa");
-// });
+TIME_GENERATOR && generator();
+router.use("/randomgenerator", (req, res) => {
+  generator();
+  res.send("Ejecucion de randomGenerator exitosa");
+});
 
 router.use("/localidades", localidades);
 router.use("/provincias", provincias);
