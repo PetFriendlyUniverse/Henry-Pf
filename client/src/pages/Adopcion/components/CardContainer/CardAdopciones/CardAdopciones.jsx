@@ -27,7 +27,7 @@ function CardAdopciones({
         <h3 className="mt-3 text-lg  font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
           <a href="#">
             <span className="absolute inset-0"></span>
-            Adopcion RESPONSABLE
+            Adopción RESPONSABLE
           </a>
         </h3>
         <h5>{name}</h5>

@@ -87,7 +87,7 @@ function PriceRange({ title, min, max, onSet, mobile = true }) {
           </>
         ) : (
           <span className="block">
-            rango actual:
+            Rango actual:
             <span className="font-semibold">
               ${minVal}-${maxVal}
             </span>

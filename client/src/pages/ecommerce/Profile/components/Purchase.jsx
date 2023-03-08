@@ -65,14 +65,14 @@ function Purchase() {
                       </span>
 
                       <span className=" my-1 rounded-md text-xs  font-semibold uppercase underline underline-offset-4">
-                        precio por unidad:{" "}
+                        Precio por unidad:{" "}
                         <span className="rounded-md bg-ultraviolet py-[2px] px-2 text-white">
                           ${prod.unitPrice}
                         </span>
                       </span>
 
                       <span className="mb-2 py-1 text-xs  font-semibold uppercase underline underline-offset-4">
-                        precio total:{" "}
+                        Precio total:{" "}
                         <span className="rounded-md bg-ultraviolet py-[2px] px-2 text-white">
                           ${prod.totalValue}
                         </span>

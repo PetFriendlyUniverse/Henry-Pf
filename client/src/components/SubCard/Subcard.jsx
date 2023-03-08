@@ -33,7 +33,7 @@ function Subcard({ prod, gridProperties }) {
         <span className="text-xs text-zinc-500">stock: {stock - amount}</span>
       </div>
       <div>
-        <p>precio: {priceFormatter(price * amount)}</p>
+        <p>Precio: {priceFormatter(price * amount)}</p>
       </div>
       <div className="w-24 ">
         <CountProduct

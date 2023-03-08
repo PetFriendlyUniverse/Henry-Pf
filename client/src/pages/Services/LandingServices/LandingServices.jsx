@@ -374,7 +374,7 @@ function LandingServices() {
               medios <span className="uppercase text-white">de pago</span>
             </h4>
             <p className="mt-3 text-center font-semibold uppercase sm:mt-5 sm:px-2 sm:text-xl">
-              Trabajamos con todos los medios de pago ofrecidos por <br />
+              Trabajamos con todos los medios de pagos ofrecidos por <br />
               <span className="text-blue-700">MERCADO PAGO</span>
             </p>
           </div>
@@ -396,8 +396,8 @@ function LandingServices() {
           <img src={logo} alt="" className="w-28" />
           <p className="text-center font-medium text-white sm:text-lg">
             Nuestra sección de shop tiene un final solidario, parte de la
-            recaudacion sera donada a una protectora designada en la seccion de
-            adopcion responsable para poder colaborar a una mejora cultural en
+            recaudación será donada a una protectora designada en la sección de
+            adopción responsable para poder colaborar a una mejora cultural en
             el cuidado de nuestros animalitos. Esperamos disfruten su estadia !
           </p>
         </section>

@@ -103,7 +103,7 @@ function TabUser() {
           ) : (
             <div className="border-gray-400 p-3 lg:border-b-2">
               <h1 className="flex justify-center pl-2 text-3xl font-semibold">
-                Metodos de Pago
+                Métodos de Pago
               </h1>
             </div>
           )}
