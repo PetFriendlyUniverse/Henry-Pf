@@ -396,7 +396,7 @@ function Login() {
                 />
               </div>
               {repeatPassword !== form.password && (
-                <p className="text-xs text-red-700">{`Passwords does not match`}</p>
+                <p className="text-xs text-red-700">{`Las contraseñas no coinciden`}</p>
               )}
               <LinkButton component={"Registrate"} />
               <button type="button" onClick={handleClickGoogle}>
