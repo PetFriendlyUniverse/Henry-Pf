@@ -124,9 +124,6 @@ function TabStore() {
               <h1 className="flex items-center justify-center pl-2 text-3xl font-semibold">
                 Productos Disponibles
               </h1>
-              <div className="rounded-2xl border-2">
-                <SearchForm />
-              </div>
             </div>
           )}
           <div className="flex flex-col pt-2 lg:flex xl:flex">

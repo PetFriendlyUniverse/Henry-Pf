@@ -1,6 +1,6 @@
 function ContactsStore({ area_code, number, mail }) {
   return (
-    <div class="flex w-full flex-col justify-between py-6 px-4  pt-2">
+    <div className="flex w-full flex-col justify-between py-6 px-4  pt-2">
       <div className="w-full rounded-2xl border-2  px-4 pt-2  sm:px-0  xl:flex-row">
         <table className="flex w-full border-collapse flex-col ">
           <tr className="flex justify-around bg-white py-1">

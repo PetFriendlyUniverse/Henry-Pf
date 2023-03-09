@@ -83,7 +83,7 @@ function ChangePassword() {
             value={newpassword}
             type="password"
             name="password2"
-            placeholder="  Ingrese nuevamente la nueva contraseña"
+            placeholder="  Ingrese nuevamente la contraseña"
             required={true}
           />
           {newpassword !== password && newpassword && (
