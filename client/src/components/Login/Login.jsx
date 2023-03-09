@@ -90,7 +90,7 @@ function Login() {
   };
 
   const handleClickGoogle = () => {
-    window.location.href = "https://petfriendly-backend.onrender.com/auth";
+    window.location.href = "https://henry-pf-production-f816.up.railway.app/auth";
     //window.location.href = "http://localhost:3001/auth";
     setTimeout(() => {
       console.log("hola");
