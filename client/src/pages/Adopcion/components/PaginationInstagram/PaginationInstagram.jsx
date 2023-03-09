@@ -1,34 +1,38 @@
-import CardContainer from "../CardContainer/CardContainer";
 import Paginate from "react-paginate";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getAdopciones,
-  setCurrentPage,
+  getAllInstagramUrl,
+  setCurrentPageIg,
 } from "../../../../redux/features/adopcion/adopcionSlice";
+import CardContainerIg from "./CardContainerIg/CardContainerIg";
 
-function PaginatorAdoption() {
-  let { totalPages, adopcionPerPage, currentPage, province } = useSelector(
+// totalPagesIgIg: 1,
+// currentPageIgIg: 1,
+// postPerPageIg: 4,
+
+function PaginationInstagram() {
+  let { totalPagesIg, postPerPageIg, currentPageIg } = useSelector(
     (state) => state.Adopciones
   );
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAdopciones(adopcionPerPage, currentPage, province));
+    dispatch(getAllInstagramUrl(postPerPageIg, currentPageIg));
   }, []);
 
   const changePage = ({ selected }) => {
-    dispatch(setCurrentPage(selected + 1));
+    dispatch(setCurrentPageIg(selected + 1));
   };
 
   return (
     <div className="scrollbar scrollbar-rounded-xl scrollbar-thumb-blue-500 scrollbar-track-blue-300 flex w-full flex-col items-center justify-center bg-adopcion lg:min-h-screen lg:flex-col lg:gap-12 lg:bg-slate-500  xl:items-center">
       <div className="flex w-3/4 justify-center sm:w-2/4 lg:w-1/4">
         <Paginate
-          pageCount={totalPages}
+          pageCount={totalPagesIg}
           marginPagesDisplayed={1}
           onPageChange={changePage}
-          forcePage={currentPage - 1}
+          forcePage={currentPageIg - 1}
           containerClassName={
             "flex text-lg h-10 font-mono w-full justify-between  items-center  rounded-xl border-2 border-russianviolet text-russianviolet font-bold "
           }
@@ -92,10 +96,9 @@ function PaginatorAdoption() {
           }
         />
       </div>
-
-      <CardContainer />
+      <CardContainerIg />
     </div>
   );
 }
 
-export default PaginatorAdoption;
+export default PaginationInstagram;

@@ -24,16 +24,13 @@ module.exports = (sequelize) => {
         },
       },
       img: {
-        type: DataTypes.STRING,
-        validate: {
-          len: [1, 500],
-        },
+        type: DataTypes.ARRAY(DataTypes.STRING),
       },
       description: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [10, 100],
+          len: [10, 200],
         },
       },
       enable: {

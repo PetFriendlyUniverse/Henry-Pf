@@ -84,9 +84,9 @@ function FormAdoption() {
         })
         .then(() => {
           Swal.fire({
-            title: "Adopcion registrada correctamente!",
+            title: "Adopción registrada correctamente!",
             icon: "success",
-            text: "La adopcion se ha registrado correctamente, pendiente de aprobacion",
+            text: "La adopción se ha registrado correctamente, pendiente de aprobación",
             closeOnEsc: true,
             closeOnClickOutside: true,
           });
@@ -112,10 +112,10 @@ function FormAdoption() {
     }
   };
   return (
-    <div className=" flex h-full w-80 justify-center md:w-full ">
+    <div className=" flex h-full  w-full justify-center ">
       <form
         onSubmit={handleSubmit}
-        className="mt-10 flex max-h-screen w-full max-w-[700px] flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue drop-shadow-2xl md:w-3/5 lg:h-auto "
+        className="flex max-h-screen w-full max-w-[700px] flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue drop-shadow-2xl md:w-3/5 lg:h-auto "
       >
         <h3 className="mb-6">Formulario para publicar adopciones</h3>
         <div className="flex h-full w-full flex-col justify-between overflow-hidden rounded-2xl bg-slate-50 pb-20">
@@ -192,7 +192,7 @@ function FormAdoption() {
               {selectedFiles &&
                 selectedFiles.map((file) => (
                   <picture className="flex aspect-square h-full items-center justify-center ">
-                    <img src={file} alt="" key={id} className="h-full" />
+                    <img src={file} alt="" key={file.id} className="h-full" />
                   </picture>
                 ))}
             </Carousel>

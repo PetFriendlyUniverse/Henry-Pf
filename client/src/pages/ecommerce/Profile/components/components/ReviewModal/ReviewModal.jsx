@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import RatingStar from "../../../assets/RatingStar";
 import close from "../../../../../../assets/general/close.svg";
 import axios from "axios";
+import Swal from "sweetalert2";
+import { reviewValidation } from "./helpers/reviewValidation";
+import { useDispatch } from "react-redux";
+import { getInvoicesById } from "../../../../../../redux/features/users/usersActions";
 
-function ReviewModal({ showModal, setShowModal, productId }) {
+function ReviewModal({ showModal, setShowModal, productId, invoiceId }) {
   const userId = localStorage.getItem("id");
+  const dispatch = useDispatch();
+
   const handleShowModal = () => {
     setShowModal((prev) => !prev);
     setReview({
@@ -22,6 +28,13 @@ function ReviewModal({ showModal, setShowModal, productId }) {
     support: "",
     comment: "",
   });
+
+  useEffect(() => {
+    setReview((prev) => {
+      return { ...prev, productId };
+    });
+  }, [productId]);
+
   const handleClickRating = (name, value) => {
     setReview((prev) => {
       return { ...prev, [name]: value };
@@ -38,8 +51,47 @@ function ReviewModal({ showModal, setShowModal, productId }) {
     e.preventDefault();
     const reviewVals = Object.values(review);
     if (reviewVals.every((val) => !!val)) {
-      await axios.post(`/review/create/${userId}`, review);
+      try {
+        reviewValidation(review);
+        Swal.fire({
+          title: "Procesando los datos",
+          allowEscapeKey: true,
+          allowOutsideClick: true,
+          didOpen: () => {
+            Swal.showLoading();
+          },
+        });
+        await axios.post(`/review/create/${userId}/${invoiceId}`, review);
+        dispatch(getInvoicesById(userId));
+        await Swal.fire({
+          icon: "success",
+          title: "Gracias por brindarnos tu reseña!",
+          showConfirmButton: true,
+          timer: 1500,
+          allowEscapeKey: true,
+          allowOutsideClick: true,
+        });
+
+        setShowModal((prev) => !prev);
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: error.response?.data.error || error,
+          showConfirmButton: true,
+          timer: 1500,
+          closeOnClickOutside: true,
+          closeOnEsc: true,
+        });
+      }
     } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Debe completar todos los campos",
+        showConfirmButton: true,
+        closeOnClickOutside: true,
+        closeOnEsc: true,
+        timer: 1500,
+      });
     }
   };
   return (

@@ -2,7 +2,10 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import { setShopCart } from "../../redux/features/products/productsSlice";
+import {
+  addNewProdShopCard,
+  // setShopCart,
+} from "../../redux/features/products/productsSlice";
 import AddShopButton from "../Button/AddShopButton";
 // import { Carousel } from "flowbite-react";
 import CountProduct from "../CountProduct/CountProduct";
@@ -15,15 +18,30 @@ function Card({ name, img, weight, price, stock, id }) {
     if (value > 0) setValue(value - 1);
   };
   const handleClickAdd = () => {
-    if (value < stock) setValue(value + 1);
+    if (value < stock) {
+      setValue(value + 1);
+    } else if (value == stock) {
+      Swal.fire({
+        icon: "warning",
+        title: "Has alcanzado el limite de stock",
+        showConfirmButton: false,
+        timer: 800,
+      });
+    }
   };
   const handleAddShopCart = () => {
     if (value !== 0) {
       dispatch(
-        setShopCart({
-          id: id,
-          data: { name, img, weight, price, stock, id, amount: value },
+        addNewProdShopCard({
+          id,
+          name,
+          img,
+          weight,
+          price,
+          stock,
+          amount: value,
         })
+
       );
       setValue(0);
       Swal.fire({
@@ -39,7 +57,9 @@ function Card({ name, img, weight, price, stock, id }) {
         icon: "warning",
         title: "No puede agregar cantidad 0 al carrito",
         showConfirmButton: false,
-        timer: 1500,
+        timer: 800,
+        closeOnEsc: true,
+        closeOnClickOutside: true,
       });
     }
   };
@@ -66,7 +86,7 @@ function Card({ name, img, weight, price, stock, id }) {
             {weight} kg
           </p>
           <p className="rounded bg-ultraviolet py-2 px-4 text-xs font-semibold text-white">
-            Stock: {stock - value}
+            Stock: {stock}
           </p>
         </div>
         <div className="w-full ">

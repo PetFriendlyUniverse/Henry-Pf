@@ -134,7 +134,6 @@ function FormModifyDaycare() {
           });
         })
         .catch((err) => {
-          console.log(err);
           Swal.fire({
             icon: "error",
             title: "Error en el formulario",
@@ -152,7 +151,7 @@ function FormModifyDaycare() {
         className="mt-10 flex h-full w-full flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue drop-shadow-2xl md:w-3/5 lg:h-auto "
       >
         <h3 className="mb-6">
-          Modifica o agrega informacion para crear tu guarderia
+          Modifica o agrega información para crear tu guarderia
         </h3>
         <div className="flex h-full w-full flex-row justify-between overflow-hidden rounded-2xl bg-slate-50 py-10">
           {/* //div con el fomulario izquierdo */}
@@ -187,7 +186,7 @@ function FormModifyDaycare() {
                 autoComplete="off"
               />
               <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                Correo Electronico
+                Correo Electrónico
               </label>
               {errors.mail && (
                 <span className="text-red-500">{errors.mail}</span>
@@ -203,6 +202,9 @@ function FormModifyDaycare() {
                   className="max-w-full"
                   value={form.province}
                 >
+                  <option value="" disabled selected>
+                    Provincia
+                  </option>
                   {provincia.map((p) => (
                     <option key={p.id} value={p.nombre}>
                       {p.nombre.slice(0, 25)}
@@ -216,6 +218,9 @@ function FormModifyDaycare() {
                   name="locality"
                   value={form.locality}
                 >
+                  <option value="" disabled selected>
+                    Localidad
+                  </option>
                   {localidad.municipios?.map((l) => (
                     <option key={l.id} value={l.nombre}>
                       {l.nombre}
@@ -272,7 +277,7 @@ function FormModifyDaycare() {
                   autoComplete="off"
                 />
                 <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                  Numeracion
+                  Numeración
                 </label>
                 {errors.street_number && (
                   <span className="text-red-500">{errors.street_number}</span>
@@ -370,7 +375,7 @@ function FormModifyDaycare() {
                     autoComplete="off"
                   />
                   <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                    Cod. de area
+                    Cod. de área
                   </label>
                   {errors.area_code && (
                     <span className="text-red-500">{errors.area_code}</span>
@@ -388,7 +393,7 @@ function FormModifyDaycare() {
                     autoComplete="off"
                   />
                   <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                    Telefono
+                    Teléfono
                   </label>
                   {errors.number && (
                     <span className="text-red-500">{errors.number}</span>

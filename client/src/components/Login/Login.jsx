@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import close from "../../assets/general/close.svg";
 import closedEye from "../../assets/general/closedEye.svg";
 import openEye from "../../assets/general/openEye.svg";
+import google from "../../assets/socialmedia/google.svg";
 
 function Login() {
   const navigate = useNavigate();
@@ -247,11 +248,11 @@ function Login() {
           <div className={s.login}>
             <form onSubmit={handletSubmitLogin} className={s.form}>
               <label htmlFor={s["chk"]} aria-hidden="true">
-                PET FRIENDLY
+                INGRESAR
               </label>
               <div className="relative flex w-full justify-center">
                 <input
-                  className={s.input}
+                  className={`${s.input} rounded-md px-2 py-1  focus-visible:outline-offset-2`}
                   onChange={handleChangeLogin}
                   value={login.mail}
                   type="email"
@@ -262,7 +263,7 @@ function Login() {
               </div>
               <div className="relative flex w-full justify-center">
                 <input
-                  className={s.input}
+                  className={`${s.input} rounded-md px-2 py-1  focus-visible:outline-offset-2`}
                   onChange={handleChangeLogin}
                   value={login.password}
                   type={shown ? "text" : "password"}
@@ -272,18 +273,28 @@ function Login() {
                 />
 
                 <img
-                  className="absolute right-[10%] top-[3px] w-5"
+                  className="absolute right-10 top-[6px] w-5 "
                   onClick={switchShown}
                   src={shown ? closedEye : openEye}
                 />
               </div>
 
-              <button>Ingresar</button>
-              <button type="button" onClick={handleShowModal}>
-                Olvidaste tu contraseña?
+              <button className="tracking-wide  shadow-md shadow-black">
+                Ingresar
               </button>
-              <button type="button" onClick={handleClickGoogle}>
-                Seguir con Google
+              <button
+                type="button"
+                onClick={handleShowModal}
+                className="tracking-wide  shadow-md shadow-black"
+              >
+                ¿Olvidaste tu contraseña?
+              </button>
+              <button
+                type="button"
+                onClick={handleClickGoogle}
+                className="flex items-center justify-center gap-2 tracking-wide  shadow-md shadow-black"
+              >
+                Seguir con Google <img src={google} alt="" />
               </button>
               <div className={s.loginGoogle}>
                 <div className="relative w-full"></div>
@@ -291,7 +302,7 @@ function Login() {
             </form>
           </div>
           {/* ------------------------------------------  register   ----------------------------------------- */}
-          <div className={s.register}>
+          <div className={`${s.register} shadow-2xl shadow-white`}>
             <form className={s.form} onSubmit={handleSubmitRegister}>
               <label htmlFor={s["chk"]} aria-hidden="true">
                 REGISTRARSE
@@ -301,7 +312,7 @@ function Login() {
                 type="text"
                 name="user"
                 value={form.user}
-                className={s.input}
+                className={`${s.input} rounded-md px-2 py-1  focus-visible:outline-offset-2`}
                 placeholder="Usuario "
                 autoComplete="off"
                 required={true}
@@ -313,7 +324,7 @@ function Login() {
               )}
               <input
                 onChange={handleChange}
-                className={s.input}
+                className={`${s.input} rounded-md px-2 py-1  focus-visible:outline-offset-2`}
                 value={form.name}
                 type="text"
                 name="name"
@@ -329,7 +340,7 @@ function Login() {
               <input
                 onChange={handleChange}
                 value={form.lastname}
-                className={s.input}
+                className={`${s.input} rounded-md px-2 py-1  focus-visible:outline-offset-2`}
                 type="text"
                 name="lastname"
                 placeholder="Apellido "
@@ -343,7 +354,7 @@ function Login() {
               )}
               <input
                 onChange={handleChange}
-                className={s.input}
+                className={`${s.input} rounded-md px-2 py-1  focus-visible:outline-offset-2`}
                 value={form.mail}
                 type="email"
                 name="mail"
@@ -358,7 +369,7 @@ function Login() {
               )}
               <div className=" relative flex w-full justify-center">
                 <input
-                  className={s.input}
+                  className={`${s.input} rounded-md px-2 py-1  focus-visible:outline-offset-2`}
                   value={form.password}
                   onChange={handleChange}
                   type={shown ? "text" : "password"}
@@ -368,7 +379,7 @@ function Login() {
                   required={true}
                 />
                 <img
-                  className=" absolute right-[10%] top-[3px] w-5"
+                  className=" absolute right-10 top-[6px] w-5"
                   onClick={switchShown}
                   src={shown ? closedEye : openEye}
                 />
@@ -381,7 +392,7 @@ function Login() {
               <div className=" relative flex w-full justify-center">
                 <input
                   onChange={handleChangeRepeatPassword}
-                  className={s.input}
+                  className={`${s.input} rounded-md px-2 py-1  focus-visible:outline-offset-2`}
                   type={shown ? "text" : "password"}
                   name="repeatPassword"
                   value={repeatPassword}
@@ -390,17 +401,21 @@ function Login() {
                   required={true}
                 />
                 <img
-                  className=" absolute right-[10%] top-[3px] w-5"
+                  className="absolute right-10 top-[6px] w-5"
                   onClick={switchShown}
                   src={shown ? closedEye : openEye}
                 />
               </div>
               {repeatPassword !== form.password && (
-                <p className="text-xs text-red-700">{`Passwords does not match`}</p>
+                <p className="text-xs text-red-700">{`Las contraseñas no coinciden`}</p>
               )}
               <LinkButton component={"Registrate"} />
-              <button type="button" onClick={handleClickGoogle}>
-                Continuar con Google
+              <button
+                type="button"
+                onClick={handleClickGoogle}
+                className="flex items-center justify-center gap-2  shadow-md shadow-black"
+              >
+                Continuar con Google <img src={google} alt="" />
               </button>
             </form>
           </div>

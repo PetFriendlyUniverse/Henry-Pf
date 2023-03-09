@@ -22,9 +22,9 @@ function Detail({
         <div>
           <p className="font-bold md:text-2xl lg:text-3xl">{`${name}`}</p>
         </div>
-        <div>
+        {/* <div>
           <Qualification />
-        </div>
+        </div> */}
         <div>
           <p>Precio por hora: {`${price_hour}`} (c/u)</p>
           {price_day ? <p>Precio por dia: {`${price_day}`} (c/u)</p> : null}

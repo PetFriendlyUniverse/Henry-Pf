@@ -16,8 +16,9 @@ function Success() {
   const navigate = useNavigate();
 
   const getToken = async () => {
-
-    const { data } = await axios.get(`/token?merchantOrder=${merchantOrder}`);
+    const { data } = await axios.get(
+      `/token?merchantOrder=${merchantOrder}&id=${userId}`
+    );
     setDataState(data);
 
     const requestData = {

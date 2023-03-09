@@ -12,7 +12,7 @@ function CardAdopciones({
   place,
 }) {
   return (
-    <article className="my-4 flex h-[600px]  w-[328px]  flex-col items-start justify-between   bg-white ">
+    <article className="my-4 flex h-[500px] w-[328px] flex-col justify-between border   bg-white ">
       <div className="flex items-center gap-x-4 text-xs">
         <time className="text-gray-500">{date.slice(0, 10)}</time>
         <a
@@ -22,18 +22,18 @@ function CardAdopciones({
           {location}
         </a>
       </div>
-      <Carousel>{img}</Carousel>
-      <div className="group relative">
+      <div className="flex h-1/2 w-full flex-col  justify-center ">
+        <Carousel>
+          <img src={img} atl="" className="w-full" />
+        </Carousel>
+      </div>
+      <div className="">
         <h3 className="mt-3 text-lg  font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-          <a href="#">
-            <span className="absolute inset-0"></span>
-            Adopcion RESPONSABLE
-          </a>
+          Adopción RESPONSABLE
         </h3>
         <h5>{name}</h5>
-        <p className="line-clamp-3 mt-5 text-sm leading-6 text-gray-600">
-          {description}
-        </p>
+
+        <span className=" text-sm text-gray-600">{description}</span>
       </div>
       <div className="relative mt-8 flex items-center gap-x-4">
         <img

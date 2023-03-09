@@ -17,13 +17,13 @@ function UbicationWalker({
               <h4 className=" font-bold">Localidad:</h4>
             </th>
             <th className="w-1/5 border-r-2">
-              <h4 className=" font-bold">Codigo Postal:</h4>
+              <h4 className=" font-bold">Código Postal:</h4>
             </th>
             <th className="w-1/5 border-r-2">
               <h4 className=" font-bold">Calle:</h4>
             </th>
             <th className="w-1/5 ">
-              <h4 className=" font-bold">Numeracion:</h4>
+              <h4 className=" font-bold">Numeración:</h4>
             </th>
           </tr>
 

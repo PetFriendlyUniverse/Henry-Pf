@@ -18,8 +18,8 @@ export const Favorite = () => {
   const handleClick = () => {
     Swal.fire({
       icon: "warning",
-      title: "¿Estas seguro?",
-      text: `¿Estas seguro que desea elminar la lista de favoritos por completo?`,
+      title: "¿Estás seguro?",
+      text: `¿Estás seguro que desea eliminar la lista de favoritos por completo?`,
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",

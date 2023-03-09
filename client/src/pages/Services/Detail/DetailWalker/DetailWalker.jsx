@@ -16,7 +16,7 @@ function ServicesDetail() {
   return (
     <div className="pt-10">
       <div>
-        <div>
+        <div className="pb-10">
           <Detail
             name={walker?.name}
             img={walker?.img}
@@ -28,9 +28,9 @@ function ServicesDetail() {
             mail={walker?.mail}
           />
         </div>
-        <div>
+        {/* <div>
           <Description description={walker?.description} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

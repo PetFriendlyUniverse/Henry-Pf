@@ -34,7 +34,7 @@ function DonutGraphs() {
       sales: 2400,
     },
     {
-      name: "Cordoba",
+      name: "Córdoba",
       sales: 1908,
     },
     {
