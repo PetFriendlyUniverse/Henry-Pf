@@ -137,15 +137,6 @@ function FormAddPet() {
           <LinkButton component={"Registra tu mascota"} />
         </form>
       </div>
-      <button
-        onClick={() => {
-          navigate(-1);
-        }}
-        className="mt-6 rounded-md bg-ultraviolet p-2 text-lg text-white hover:bg-russianviolet"
-        type="button"
-      >
-        Volver
-      </button>
     </div>
   );
 }

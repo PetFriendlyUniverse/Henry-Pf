@@ -139,7 +139,16 @@ function FormCreateStore() {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="flex h-full justify-center pb-16 ">
+    <div className="flex h-full flex-col items-center justify-center pb-16 ">
+      <button
+        onClick={() => {
+          navigate(-1);
+        }}
+        className="mt-6 rounded-md bg-ultraviolet p-2 text-lg text-white hover:bg-russianviolet"
+        type="button"
+      >
+        Volver
+      </button>
       <form
         onSubmit={handleSubmit}
         className="mt-10 flex h-full w-2/3 max-w-[900px] flex-col items-center justify-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue shadow-2xl shadow-black md:w-3/5 lg:h-auto lg:w-full "
@@ -388,16 +397,6 @@ function FormCreateStore() {
                   {formComplete && <LinkButton component={"Crear Tienda"} />}
                 </button>
               </div>
-
-              <button
-                onClick={() => {
-                  navigate(-1);
-                }}
-                className="mt-6 rounded-md bg-ultraviolet p-2 text-lg text-white hover:bg-russianviolet"
-                type="button"
-              >
-                Volver
-              </button>
             </div>
           </div>
         </div>
