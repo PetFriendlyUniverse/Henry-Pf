@@ -7,7 +7,7 @@ function Purchase() {
 
   const dispatch = useDispatch();
   const userInvoice = useSelector((state) => state.User?.userInvoicesId);
-
+  console.log(userInvoice);
   useEffect(() => {
     dispatch(getInvoicesById(userId));
     window.scrollTo(0, 0);
@@ -33,7 +33,16 @@ function Purchase() {
 
       {/* ------------------------- -- {fin de modal} - - -------------------------- */}
 
-      <div className=" mx-4 h-[466px] w-full overflow-scroll overflow-x-hidden rounded-2xl border-2 py-6  px-4  pt-2 sm:px-0 lg:w-1/2 xl:flex-row ">
+      <div
+        className={` mx-4 h-[466px] w-full ${
+          userInvoice.length > 4 && "overflow-scroll"
+        }overflow-x-hidden rounded-2xl border-2 py-6  px-4  pt-2 sm:px-0 lg:w-1/2 xl:flex-row `}
+      >
+        {userInvoice.length == 0 && (
+          <h2 className="pt-52 text-center font-bold uppercase tracking-widest">
+            Aún has realizado ninguna compra
+          </h2>
+        )}
         <ol className="relative mx-5 flex w-full  flex-col-reverse border-l border-gray-200 dark:border-gray-700">
           {userInvoice?.map((invoice) => {
             let totalPriceInvoice = 0;

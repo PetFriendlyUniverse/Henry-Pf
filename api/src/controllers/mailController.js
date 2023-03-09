@@ -1,7 +1,11 @@
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 const { contentHtml } = require("../helpers/styleMails/htmlMailBienvenida");
+const { MailConfirmBuy } = require("../helpers/styleMails/MailConfirmBuy");
 const { User } = require("../db");
+const {
+  MailResetPassword,
+} = require("../helpers/styleMails/MailResetPassword");
 
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
@@ -81,7 +85,7 @@ const sendResetPasswordEmail = async (email, resetToken) => {
       from: "Pet Friendly Universe <petfriendyleuniverse@gmail.com>",
       to: email,
       subject: "Reestablecer contraseña en Pet Friendly Universe",
-      html: contentHtml,
+      html: MailResetPassword(process.env.ORIGIN, resetToken),
     };
 
     const result = await transporter.sendMail(mailInfo);
@@ -93,12 +97,6 @@ const sendResetPasswordEmail = async (email, resetToken) => {
 
 const userBuyMail = async (id) => {
   const dataUser = await User.findByPk(id);
-
-  const contentHtml = `
-    <h1>Felicidades por tu compra!!</h1>
-    <h3>Hola ${dataUser.name} ${dataUser.lastname}, esta es la confirmacion de que has realizado una compra en nuestra pagina</h3>
-    <h4>Muchas gracias por confiar en la tienda, Hasta pronto!!</h4>
-    `;
 
   // prettier-ignore
   const OAuth2Client = new google.auth.OAuth2( CLIENT_ID, CLIENT_SECRET, REDIRECT_URI );
@@ -128,7 +126,7 @@ const userBuyMail = async (id) => {
       to: `${dataUser.name} ${dataUser.lastname} <${dataUser.mail}>`,
       subject: `Pet Friendly Universe -- Confirmar tu cuenta`,
       text: `Confirma tu cuenta de nuestra pagina "Pet Friendly Universe"`,
-      html: contentHtml,
+      html: MailConfirmBuy,
     };
 
     const result = await transporter.sendMail(mailInfo);

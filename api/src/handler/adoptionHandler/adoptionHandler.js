@@ -1,6 +1,5 @@
 const {
   createAdoption,
-  filterAdoption,
   getAllAdoptions,
   createInstagramPost,
   getInstagramPost,
@@ -30,15 +29,9 @@ const postAdoptionHandler = async (req, res) => {
 const getAdoptionHandler = async (req, res) => {
   const query = req.query;
   try {
-    let daycares;
-    if ("province" in query) {
-      const { page, pq, ...filterParams } = query;
-      daycares = await filterAdoption(filterParams, page, pq);
-    } else {
-      const { page, pq } = query;
-      daycares = await getAllAdoptions(page, pq);
-    }
-    res.status(200).json(daycares);
+    const { page, pq } = query;
+    const adoption = await getAllAdoptions(page, pq);
+    res.status(200).json(adoption);
   } catch (error) {
     res.status(404).json({ error: error.message });
   }

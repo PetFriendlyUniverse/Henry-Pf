@@ -104,7 +104,7 @@ function FormCreateWalker() {
     newForm.append("price_day", form.price_day);
     if (isFormValid) {
       Swal.fire({
-        title: "Now loading",
+        title: "Cargando",
         allowEscapeKey: false,
         allowOutsideClick: false,
 
@@ -141,7 +141,16 @@ function FormCreateWalker() {
     }
   };
   return (
-    <div className="flex h-full justify-center pb-16 ">
+    <div className="flex h-full flex-col items-center justify-center  pb-16">
+      <button
+        onClick={() => {
+          navigate(-1);
+        }}
+        className="mt-6  rounded-md bg-ultraviolet p-2 text-lg text-white hover:bg-russianviolet"
+        type="button"
+      >
+        Volver
+      </button>
       <form
         onSubmit={handleSubmit}
         className="mt-10 flex h-full w-full flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue drop-shadow-2xl md:w-3/5 lg:h-auto "
@@ -165,7 +174,7 @@ function FormCreateWalker() {
                 Nombre de paseador
               </label>
               {errors.name && (
-                <span className="text-red-500">{errors.name}</span>
+                <span className="text-xs text-red-500">{errors.name}</span>
               )}
             </div>
             {/* corre electronico */}
@@ -183,7 +192,7 @@ function FormCreateWalker() {
                 Correo Electrónico
               </label>
               {errors.mail && (
-                <span className="text-red-500">{errors.mail}</span>
+                <span className="text-xs text-red-500">{errors.name}</span>
               )}
             </div>
 
@@ -240,7 +249,9 @@ function FormCreateWalker() {
                   Cod. Postal
                 </label>
                 {errors.zip_code && (
-                  <span className="text-red-500">{errors.zip_code}</span>
+                  <span className="text-xs text-red-500">{errors.name}</span>
+                    {errors.zip_code}
+                  </span>
                 )}
               </div>
               <div className="group relative z-0 mx-4 mb-6 h-11 w-full">
@@ -257,7 +268,9 @@ function FormCreateWalker() {
                   Calle
                 </label>
                 {errors.street_name && (
-                  <span className="text-red-500">{errors.street_name}</span>
+                  <span className="text-xs text-red-500">{errors.name}</span>
+                    {errors.street_name}
+                  </span>
                 )}
               </div>
               <div className="group relative z-0 mb-6 h-11 w-full">
@@ -274,7 +287,9 @@ function FormCreateWalker() {
                   Numeración
                 </label>
                 {errors.street_number && (
-                  <span className="text-red-500">{errors.street_number}</span>
+                  <span className="text-xs text-red-500">{errors.name}</span>
+                    {errors.street_number}
+                  </span>
                 )}
               </div>
             </div>
@@ -293,7 +308,9 @@ function FormCreateWalker() {
                   Precio por Hora
                 </label>
                 {errors.price_hour && (
-                  <span className="text-red-500">{errors.price_hour}</span>
+                  <span className="text-xs text-red-500">{errors.name}</span>
+                    {errors.price_hour}
+                  </span>
                 )}
               </div>
               <div className="group relative z-0 mb-6 h-11 w-full">
@@ -309,8 +326,9 @@ function FormCreateWalker() {
                 <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
                   Precio por Dia
                 </label>
-                {errors.price_day && (
-                  <span className="text-red-500">{errors.price_day}</span>
+                {errors.price_day && (<span className="text-xs text-red-500">{errors.name}</span>
+                    {errors.price_day}
+                  </span>
                 )}
               </div>
             </div>
@@ -328,7 +346,7 @@ function FormCreateWalker() {
                 Descripción:
               </label>
               {errors.description && (
-                <span className="absolute -bottom-6 text-red-500">
+                <span className="text-xs text-red-500">{errors.name}</span>
                   {errors.description}
                 </span>
               )}
@@ -346,7 +364,7 @@ function FormCreateWalker() {
                   ))}
               </Carousel>
             </div>
-            <div className="h-1/2 p-8 px-8 ">
+            <div className="h-2/5 p-8 px-8 ">
               <div className="group relative z-0 mb-14 flex h-11 w-full ">
                 <input
                   type="file"
@@ -369,10 +387,12 @@ function FormCreateWalker() {
                     autoComplete="off"
                   />
                   <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                    Cod. de area
+                    Cod. de área
                   </label>
                   {errors.area_code && (
-                    <span className="text-red-500">{errors.area_code}</span>
+                    <span className="text-xs text-red-500">{errors.name}</span>
+                      {errors.area_code}
+                    </span>
                   )}
                 </div>
                 {/* telefono */}
@@ -390,12 +410,14 @@ function FormCreateWalker() {
                     Teléfono
                   </label>
                   {errors.number && (
-                    <span className="text-red-500">{errors.number}</span>
+                    <span className="text-xs text-red-500">{errors.name}</span>
+                      {errors.number}
+                    </span>
                   )}
                 </div>
               </div>
             </div>
-            <div className="h-[10px]">
+            <div className="mt-8 h-[10px] lg:mt-0">
               <button>
                 {formComplete && (
                   <LinkButton component={"Habilitate como Paseador"} />

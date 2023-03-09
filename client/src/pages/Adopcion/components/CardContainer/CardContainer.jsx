@@ -1,10 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import CardSkeleton from "../../../../components/Card/CardSkeleton";
 import useGetAdopciones from "../../../../hooks/useGetAdopciones";
 import CardAdopciones from "./CardAdopciones/CardAdopciones";
 
 function CardContainer() {
   const [loading, adoption, adopcionPerPage] = useGetAdopciones();
+
   const skeletonMap = [];
   for (let index = 0; index < adopcionPerPage; index++) {
     skeletonMap.push(index);
@@ -34,12 +36,12 @@ function CardContainer() {
                 locality={s?.locality}
                 province={s?.province}
                 img={s?.img}
-                dogImg={s?.Img}
-                UserImg={s?.User?.img}
                 description={s?.description}
-                UserName={s?.User?.user}
+                UserImg={s?.User?.img}
+                UserName={s?.User?.name}
+                UserLastName={s?.User?.lastname}
                 area_code={s?.User?.area_code}
-                number={s.User?.number}
+                number={s?.User?.number}
               />
             );
           })

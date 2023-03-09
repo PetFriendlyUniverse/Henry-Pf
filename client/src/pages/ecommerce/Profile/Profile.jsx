@@ -184,32 +184,86 @@ function Profile() {
                 </button>
               </li>
               {user.admin && (
-                <li className="mr-2 rounded-lg border-b-2 bg-slate-50 py-3  hover:bg-slate-100 hover:text-gray-500">
+                <li
+                  className={`mr-2 rounded-lg border-b-2 bg-slate-50 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black active:shadow-inner active:shadow-black ${
+                    showInfo == "admin" &&
+                    "  bg-ultraviolet text-slate-300 hover:text-black"
+                  } hover:text-gray-500`}
+                >
                   <Link to={`/dashboardadmin`}>
-                    <button title="panel de admin">Panel de admin</button>
+                    <button
+                      name="admin"
+                      className={`inline-block  p-4 tracking-wider ${
+                        showInfo == "admin" &&
+                        "tracking-wider underline underline-offset-4"
+                      }`}
+                      title="panel de admin"
+                    >
+                      Panel de admin
+                    </button>
                   </Link>
                 </li>
               )}
               {user.store && (
-                <li className="mr-2 rounded-lg border-b-2 bg-slate-50 py-3  hover:bg-slate-100 hover:text-gray-500">
+                <li
+                  className={`mr-2 rounded-lg border-b-2 bg-slate-50 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black active:shadow-inner active:shadow-black ${
+                    showInfo == "store" &&
+                    "  bg-ultraviolet text-slate-300 hover:text-black"
+                  } hover:text-gray-500`}
+                >
                   <Link to={`/profile/store/${user.storeId}`}>
-                    <button title="ingresa a tu tienda">Tienda</button>
+                    <button
+                      name="store"
+                      className={`inline-block  p-4 tracking-wider ${
+                        showInfo == "store" &&
+                        "tracking-wider underline underline-offset-4"
+                      }`}
+                      title="ingresa a tu tienda"
+                    >
+                      Tienda
+                    </button>
                   </Link>
                 </li>
               )}
               {user.walker && (
-                <li className="mr-2 rounded-lg border-b-2 bg-slate-50 py-3  hover:bg-slate-100 hover:text-gray-500">
+                <li
+                  className={`mr-2 rounded-lg border-b-2 bg-slate-50 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black active:shadow-inner active:shadow-black ${
+                    showInfo == "walker" &&
+                    "  bg-ultraviolet text-slate-300 hover:text-black"
+                  } hover:text-gray-500`}
+                >
                   <Link to={`/profile/walker/${user.walkerId}`}>
-                    <button title="ingresa a tu perfil de paseador">
+                    <button
+                      name="walker"
+                      className={`inline-block  p-4 tracking-wider ${
+                        showInfo == "walker" &&
+                        "tracking-wider underline underline-offset-4"
+                      }`}
+                      title="ingresa a tu perfil de paseador"
+                    >
                       Paseador
                     </button>
                   </Link>
                 </li>
               )}
               {user.daycare && (
-                <li className="mr-2 rounded-lg border-b-2 bg-slate-50 py-3  hover:bg-slate-100 hover:text-gray-500">
+                <li
+                  className={`mr-2 rounded-lg border-b-2 bg-slate-50 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black active:shadow-inner active:shadow-black ${
+                    showInfo == "daycare" &&
+                    "  bg-ultraviolet text-slate-300 hover:text-black"
+                  } hover:text-gray-500`}
+                >
                   <Link to={`/profile/daycare/${user.daycareId}`}>
-                    <button title="ingresa a tu guarderia">Guarderia</button>
+                    <button
+                      name="daycare"
+                      className={`inline-block  p-4 tracking-wider ${
+                        showInfo == "daycare" &&
+                        "tracking-wider underline underline-offset-4"
+                      }`}
+                      title="ingresa a tu guarderia"
+                    >
+                      Guarderia
+                    </button>
                   </Link>
                 </li>
               )}

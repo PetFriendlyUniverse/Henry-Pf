@@ -22,7 +22,7 @@ function PaginationAdoption() {
   };
 
   return (
-    <div className="scrollbar scrollbar-rounded-xl scrollbar-thumb-blue-500 scrollbar-track-blue-300 flex w-full flex-col items-center justify-center bg-adopcion lg:min-h-screen lg:flex-col lg:gap-12 lg:bg-slate-500  xl:items-center">
+    <div className="scrollbar scrollbar-rounded-xl scrollbar-thumb-blue-500 scrollbar-track-blue-300 flex w-full flex-col items-center justify-center bg-adopcion lg:min-h-screen lg:flex-col  lg:bg-slate-500  xl:items-center">
       <div className="flex w-3/4 justify-center sm:w-2/4 lg:w-1/4">
         <Paginate
           pageCount={totalPages}
