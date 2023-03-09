@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Detail from "./Components/Detail/Detail";
-import Description from "./Components/Description/Description";
 import { getWalkerByIdApi } from "../../../../redux/features/services/servicesActions";
 
 function ServicesDetail() {
@@ -28,9 +27,6 @@ function ServicesDetail() {
             mail={walker?.mail}
           />
         </div>
-        {/* <div>
-          <Description description={walker?.description} />
-        </div> */}
       </div>
     </div>
   );
