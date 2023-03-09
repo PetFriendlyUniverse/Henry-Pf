@@ -11,7 +11,7 @@ import axios from "axios";
 
 const { VITE_BASE_URL } = import.meta.env;
 axios.defaults.baseURL =
-  VITE_BASE_URL || "https://petfriendly-backend.onrender.com";
+  VITE_BASE_URL || "https://henry-pf-production-f816.up.railway.app";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
