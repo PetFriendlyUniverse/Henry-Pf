@@ -1,9 +1,8 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import React, { useState } from "react";
 import { Tabs } from "flowbite-react";
-import MoarButton from "../../../components/Button/MoarButton";
 import CountProduct from "../../../components/CountProduct/CountProduct";
 import cardCredit from "../../../assets/cardCredit/cardCredit.svg";
 import transport from "../../../assets/transport/transport.svg";
@@ -93,7 +92,7 @@ function ProductDetail() {
               <p className="text-xs text-gray-400">Sin calificación</p>
             )}
             <div className="flex flex-col flex-wrap items-start gap-4 md:flex-row md:gap-8">
-              <h3>{"$" + product?.price}</h3>
+              <h3 className="font-semibold">{"$" + product?.price}</h3>
               <button className="flex items-center text-[12px] font-bold uppercase text-pink-700">
                 <img className="pr-2" src={cardCredit} alt="" /> Ver medios de
                 pagos
@@ -105,8 +104,10 @@ function ProductDetail() {
             </div>
             <span className="text-xs">({product?.price + "x Kg"})</span>
             <div className="mt-1 flex">
-              <h3 className="text-lg font-semibold"> Tamaño:</h3>
-              <p className="text-lg font-semibold">{product?.weight + "kg"}</p>
+              <h3 className="text-lg font-semibold">Tamaño: </h3>
+              <p className="pl-1 text-lg font-semibold">
+                {product?.weight + "kg"}
+              </p>
             </div>
 
             <p className="mt-1 border-b border-b-black text-lg font-semibold">
@@ -123,7 +124,7 @@ function ProductDetail() {
               />
             </div>
             <button
-              className="my-2 rounded-lg bg-[#4dbb47] py-2 px-4 text-lg font-normal text-white md:min-w-full lg:w-1/2"
+              className="my-2 rounded-lg bg-[#4dbb47] py-2 px-4 text-lg font-normal text-white hover:bg-[#3d9338] md:min-w-full lg:w-1/2"
               onClick={handleClickAddProduct}
             >
               Añadir al carrito
@@ -149,6 +150,11 @@ function ProductDetail() {
                   Retirá sin cargo por tu sucursal preferida
                 </p>
               </div>
+              <Link to={"/shop"}>
+                <button className="mt-6 rounded-md bg-ultraviolet p-2 text-lg text-white hover:bg-russianviolet">
+                  Volver a la tienda
+                </button>
+              </Link>
             </div>
           </div>
         </div>
