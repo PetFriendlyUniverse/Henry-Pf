@@ -112,10 +112,10 @@ function FormAdoption() {
     }
   };
   return (
-    <div className=" flex h-full  w-full justify-center ">
+    <div className=" flex h-full  w-full   justify-center  ">
       <form
         onSubmit={handleSubmit}
-        className="flex max-h-screen w-full max-w-[700px] flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue drop-shadow-2xl md:w-3/5 lg:h-auto "
+        className="flex  max-h-screen w-full max-w-[700px] flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue shadow-md drop-shadow-2xl md:w-3/5 lg:h-auto "
       >
         <h3 className="mb-6">Formulario para publicar adopciones</h3>
         <div className="flex h-full w-full flex-col justify-between overflow-hidden rounded-2xl bg-slate-50 pb-20">
@@ -129,6 +129,9 @@ function FormAdoption() {
                   className="min-w-[200px] max-w-[200px] bg-transparent"
                   value={form.province}
                 >
+                  <option value="" disabled selected>
+                    Provincia
+                  </option>
                   {provincia.map((p) => (
                     <option key={p.id} value={p.nombre}>
                       {p.nombre.slice(0, 25)}
@@ -143,6 +146,9 @@ function FormAdoption() {
                   value={form.locality}
                   className="min-w-[200px] max-w-[200px] bg-transparent"
                 >
+                  <option value="" disabled selected>
+                    Localidad
+                  </option>
                   {localidad.municipios?.map((l) => (
                     <option key={l.id} value={l.nombre}>
                       {l.nombre}
