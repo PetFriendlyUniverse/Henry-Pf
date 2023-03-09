@@ -234,6 +234,9 @@ function FormModifyUser() {
                   className="max-w-full bg-transparent"
                   value={form.province}
                 >
+                  <option value="" disabled selected>
+                    Provincia
+                  </option>
                   {provincia.map((p) => (
                     <option key={p.id} value={p.nombre}>
                       {p.nombre.slice(0, 25)}
@@ -248,6 +251,9 @@ function FormModifyUser() {
                   value={form.locality}
                   className="max-w-full bg-transparent"
                 >
+                  <option value="" disabled selected>
+                    Localidad
+                  </option>
                   {localidad.municipios?.map((l) => (
                     <option key={l.id} value={l.nombre}>
                       {l.nombre}

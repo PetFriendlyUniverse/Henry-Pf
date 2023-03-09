@@ -134,7 +134,6 @@ function FormModifyDaycare() {
           });
         })
         .catch((err) => {
-          console.log(err);
           Swal.fire({
             icon: "error",
             title: "Error en el formulario",
@@ -203,6 +202,9 @@ function FormModifyDaycare() {
                   className="max-w-full"
                   value={form.province}
                 >
+                  <option value="" disabled selected>
+                    Provincia
+                  </option>
                   {provincia.map((p) => (
                     <option key={p.id} value={p.nombre}>
                       {p.nombre.slice(0, 25)}
@@ -216,6 +218,9 @@ function FormModifyDaycare() {
                   name="locality"
                   value={form.locality}
                 >
+                  <option value="" disabled selected>
+                    Localidad
+                  </option>
                   {localidad.municipios?.map((l) => (
                     <option key={l.id} value={l.nombre}>
                       {l.nombre}

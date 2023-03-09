@@ -25,7 +25,7 @@ function Card({ name, img, weight, price, stock, id }) {
         icon: "warning",
         title: "Has alcanzado el limite de stock",
         showConfirmButton: false,
-        timer: 650,
+        timer: 800,
       });
     }
   };
@@ -41,6 +41,7 @@ function Card({ name, img, weight, price, stock, id }) {
           stock,
           amount: value,
         })
+
       );
       setValue(0);
       Swal.fire({
@@ -56,7 +57,9 @@ function Card({ name, img, weight, price, stock, id }) {
         icon: "warning",
         title: "No puede agregar cantidad 0 al carrito",
         showConfirmButton: false,
-        timer: 1500,
+        timer: 800,
+        closeOnEsc: true,
+        closeOnClickOutside: true,
       });
     }
   };

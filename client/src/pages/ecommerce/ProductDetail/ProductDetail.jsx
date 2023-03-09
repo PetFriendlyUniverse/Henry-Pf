@@ -1,13 +1,12 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import React, { useState } from "react";
 import { Tabs } from "flowbite-react";
-import MoarButton from "../../../components/Button/MoarButton";
 import CountProduct from "../../../components/CountProduct/CountProduct";
 import cardCredit from "../../../assets/cardCredit/cardCredit.svg";
 import transport from "../../../assets/transport/transport.svg";
-import { setShopCart } from "../../../redux/features/products/productsSlice";
+import { addNewProdShopCard } from "../../../redux/features/products/productsSlice";
 import StoreDetail from "./components/StoreDetail/StoreDetail";
 import ProductDetailSkeleton from "./ProductDetailSkeleton";
 import useGetProductInfo from "./hooks/useGetProductInfo";
@@ -25,51 +24,46 @@ function ProductDetail() {
   const auxCartAmount = shopCartProducts[id] ? shopCartProducts[id].amount : 0;
 
   const [product, comments, qualification, loading] = useGetProductInfo(id);
-  const auxCartStock = product?.stock;
   const rating =
     !!qualification?.[0].avg && parseFloat(qualification?.[0].avg).toFixed(2);
+
   const handleClickDeduct = () => {
     if (amount > 1) setAmount(amount - 1);
   };
   const handleClickAdd = () => {
-    if (auxCartAmount + amount < auxCartStock) setAmount(amount + 1);
+    if (auxCartAmount + amount < product?.stock) {
+      setAmount(amount + 1);
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Has alcanzado el limite de stock",
+        showConfirmButton: false,
+        timer: 800,
+      });
+    }
   };
-  const handleClickAddProduct = async ({
-    name,
-    img,
-    weight,
-    price,
-    stock,
-    id,
-  }) => {
-    if (auxCartAmount + amount <= auxCartStock) {
+
+  const handleClickAddProduct = async () => {
+    if (auxCartAmount + amount <= product?.stock) {
       dispatch(
-        setShopCart({
-          id,
-          data: {
-            name,
-            img,
-            weight,
-            price,
-            stock,
-            id,
-            amount: auxCartAmount + amount,
-          },
+        addNewProdShopCard({
+          ...product,
+          amount: amount,
         })
       );
-
       await Swal.fire({
         icon: "success",
         title: "Tu producto ha sido agregado con éxito!",
         showConfirmButton: false,
-        timer: 1100,
+        timer: 800,
       });
+      setAmount(1);
     } else {
       await Swal.fire({
         icon: "error",
         title: "No hay stock disponible",
         showConfirmButton: false,
-        timer: 1100,
+        timer: 800,
       });
     }
   };
@@ -80,7 +74,7 @@ function ProductDetail() {
     <div className=" flex min-h-screen w-full flex-col items-center  justify-center pt-20">
       <div className=" max-w-[60vw] ">
         <div className="flex flex-col md:flex-col lg:flex-row">
-          <picture className="block  w-full  items-center justify-center lg:w-6/12">
+          <picture className="block w-full items-center justify-center lg:w-6/12">
             <img src={product?.img} alt="" className="w-[460px] " />
           </picture>
           <div className="inline-block w-full lg:w-6/12 ">
@@ -98,22 +92,31 @@ function ProductDetail() {
               <p className="text-xs text-gray-400">Sin calificación</p>
             )}
             <div className="flex flex-col flex-wrap items-start gap-4 md:flex-row md:gap-8">
-              <h3>{"$" + product?.price}</h3>
+              <h3 className="font-semibold">{"$" + product?.price}</h3>
               <button className="flex items-center text-[12px] font-bold uppercase text-pink-700">
-                <img src={cardCredit} alt="" /> Ver medios de pagos
+                <img className="pr-2" src={cardCredit} alt="" /> Ver medios de
+                pagos
               </button>
-              <button className="flex  items-center text-[12px] font-bold uppercase text-pink-700">
-                <img src={transport} alt="" />
+              <button className="flex items-center text-[12px] font-bold uppercase text-pink-700">
+                <img className="pr-2" src={transport} alt="" />
                 Producto con envio gratis
               </button>
             </div>
             <span className="text-xs">({product?.price + "x Kg"})</span>
-            <h3 className="text-lg font-semibold"> Tamaño:</h3>
-            <div className=" md:w-1/5 lg:w-1/4">
-              <MoarButton component={product?.weight + "kg"} />
+            <div className="mt-1 flex">
+              <h3 className="text-lg font-semibold">Tamaño: </h3>
+              <p className="pl-1 text-lg font-semibold">
+                {product?.weight + "kg"}
+              </p>
             </div>
-            <span className="text-lg font-semibold"> Seleccione Cantidad:</span>
-            <div className="w-1/2">
+
+            <p className="mt-1 border-b border-b-black text-lg font-semibold">
+              Stock: {product?.stock - auxCartAmount}
+            </p>
+            <div className="mt-2 w-2/4">
+              <span className="mt-1 text-lg font-semibold">
+                Seleccione Cantidad:
+              </span>
               <CountProduct
                 handleClickDeduct={handleClickDeduct}
                 handleClickAdd={handleClickAdd}
@@ -121,8 +124,8 @@ function ProductDetail() {
               />
             </div>
             <button
-              className="my-2 rounded-lg bg-[#4dbb47] py-2 px-4 text-lg font-normal text-white md:min-w-full lg:w-1/2"
-              onClick={() => handleClickAddProduct(product)}
+              className="my-2 rounded-lg bg-[#4dbb47] py-2 px-4 text-lg font-normal text-white hover:bg-[#3d9338] md:min-w-full lg:w-1/2"
+              onClick={handleClickAddProduct}
             >
               Añadir al carrito
             </button>
@@ -147,6 +150,11 @@ function ProductDetail() {
                   Retirá sin cargo por tu sucursal preferida
                 </p>
               </div>
+              <Link to={"/shop"}>
+                <button className="mt-6 rounded-md bg-ultraviolet p-2 text-lg text-white hover:bg-russianviolet">
+                  Volver a la tienda
+                </button>
+              </Link>
             </div>
           </div>
         </div>
