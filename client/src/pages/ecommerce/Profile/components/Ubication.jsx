@@ -12,7 +12,9 @@ function Ubication({
           <h4 className="pl-2 font-bold">Provincia:</h4>
         </div>
         <div className="rounded-lg bg-slate-200 py-1 font-semibold">
-          <p className="pl-4 text-xs sm:text-base">{province}</p>
+          <p className="pl-4 text-xs sm:text-base">
+            {province ? province : "No disponible"}
+          </p>
         </div>
       </div>
       <div className="py-2">
@@ -20,7 +22,9 @@ function Ubication({
           <h4 className="pl-2 font-bold">Localidad:</h4>
         </div>
         <div className="rounded-lg bg-slate-200 py-1 font-semibold">
-          <p className="pl-4 text-xs sm:text-base">{locality}</p>
+          <p className="pl-4 text-xs sm:text-base">
+            {locality ? locality : "No disponible"}
+          </p>
         </div>
       </div>
       <div className="py-2">
@@ -28,7 +32,9 @@ function Ubication({
           <h4 className="pl-2 font-bold">Código postal:</h4>
         </div>
         <div className="rounded-lg bg-slate-200 py-1 font-semibold">
-          <p className="pl-4 text-xs sm:text-base">{zip_code}</p>
+          <p className="pl-4 text-xs sm:text-base">
+            {zip_code ? zip_code : "No disponible"}
+          </p>
         </div>
       </div>
       <div className="py-2">
@@ -36,7 +42,9 @@ function Ubication({
           <h4 className="pl-2 font-bold">Calle:</h4>
         </div>
         <div className="rounded-lg bg-slate-200 py-1 font-semibold">
-          <p className="pl-4 text-xs sm:text-base">{street_name}</p>
+          <p className="pl-4 text-xs sm:text-base">
+            {street_name ? street_name : "No disponible"}
+          </p>
         </div>
       </div>
       <div className="py-2">
@@ -44,7 +52,9 @@ function Ubication({
           <h4 className="pl-2 font-bold">Numeración:</h4>
         </div>
         <div className="rounded-lg bg-slate-200 py-1 font-semibold">
-          <p className="pl-4 text-xs sm:text-base">{street_number}</p>
+          <p className="pl-4 text-xs sm:text-base">
+            {street_number ? street_number : "No disponible"}
+          </p>
         </div>
       </div>
     </div>
