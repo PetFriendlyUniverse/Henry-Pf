@@ -66,7 +66,7 @@ function FormAdoption() {
     setImgFile(fileArray);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errorValues = Object.values(errors);
     const isFormValid = errorValues.every((val) => val === "");
@@ -76,31 +76,41 @@ function FormAdoption() {
     newForm.append("locality", form.locality);
     newForm.append("description", form.description);
     if (isFormValid) {
-      axios
-        .post(`/adoption/create/${id}`, newForm, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          }, //importante en form de imagen poner este headers
-        })
-        .then(() => {
-          Swal.fire({
-            title: "Adopción registrada correctamente!",
-            icon: "success",
-            text: "La adopción se ha registrado correctamente, pendiente de aprobación",
-            closeOnEsc: true,
-            closeOnClickOutside: true,
+      try {
+        await axios
+          .post(`/adoption/create/${id}`, newForm, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            }, //importante en form de imagen poner este headers
+          })
+          .then(() => {
+            Swal.fire({
+              title: "Adopción registrada correctamente!",
+              icon: "success",
+              text: "La adopción se ha registrado correctamente, pendiente de aprobación",
+              closeOnEsc: true,
+              closeOnClickOutside: true,
+            });
+          })
+          .then(() => {
+            setForm({
+              province: "",
+              locality: "",
+              description: "",
+            });
+            setImg(null);
+            setImgFile(null);
+            setSelectedFiles([]);
           });
-        })
-        .then(() => {
-          setForm({
-            province: "",
-            locality: "",
-            description: "",
-          });
-          setImg(null);
-          setImgFile(null);
-          setSelectedFiles([]);
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "Error en el formulario",
+          text: "No se pudo crear el post",
+          closeOnEsc: true,
+          closeOnClickOutside: true,
         });
+      }
     } else {
       Swal.fire({
         icon: "error",
