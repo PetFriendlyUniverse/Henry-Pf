@@ -14,27 +14,27 @@ function Detail({
   street_number,
 }) {
   return (
-    <div className="flex justify-center">
-      <div className="w-4/6">
-        <div className="">
-          <img src={`${img}`} alt={`${img}`} className="w-full" />
+    <div className="flex justify-center text-white">
+      <div className="max-w-[600px] rounded-lg border-2 border-black bg-cornflowerblue p-2">
+        <div className="flex justify-center">
+          <img src={`${img}`} alt={`${img}`} className=" rounded-lg" />
         </div>
-        <div>
+        <div className="flex justify-center py-4">
           <p className="font-bold md:text-2xl lg:text-3xl">{`${name}`}</p>
         </div>
-        <div>
+        {/* <div>
           <Qualification />
-        </div>
-        <div>
-          <p>Precio por hora: {`${price_hour}`} (c/u)</p>
+        </div> */}
+        <div className="px-10 py-2">
+          <p className="">Precio por hora: {`${price_hour}`} (c/u)</p>
           {price_day ? <p>Precio por dia: {`${price_day}`} (c/u)</p> : null}
         </div>
-        <div>
-          <p>
+        <div className="px-10 py-2">
+          <p className="py-4">
             Provincia:
             {province ? ` ${province} ` : " No disponible"}
           </p>
-          <p>
+          <p className="py-4">
             Localidad:
             {locality ? ` ${locality}` : " No disponible"}
           </p>
@@ -42,7 +42,7 @@ function Detail({
             <p>Dirección: {`${street_name} - ${street_number}`}</p>
           )}
         </div>
-        <div>
+        <div className="px-10 py-2">
           <h6>Contacto:</h6>
           <div className="flex justify-evenly">
             {area_code ? <p>{`${area_code} - ${number}`}</p> : "No disponible"}
