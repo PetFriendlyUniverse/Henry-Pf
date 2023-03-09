@@ -33,7 +33,7 @@ function CardAdopciones({
         </h3>
         <h5>{name}</h5>
 
-        <div className="text-sm text-gray-600">{description}</div>
+        <span className="text-sm text-gray-600">{description}</span>
 
         <div className="mt-8 flex items-center gap-x-4">
           <img
