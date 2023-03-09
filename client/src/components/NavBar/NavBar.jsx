@@ -9,8 +9,12 @@ import SearchForm from "./components/SearchForm";
 import DropdownUser from "./components/DropdownUser";
 import login from "../../assets/general/login.svg";
 import DropdownShop from "./components/DropdownShop";
+import { useLocation } from "react-router-dom";
 
 function NavBarPrueba() {
+  const location = useLocation();
+  const isShopPage = location.pathname.includes("shop");
+
   // Logica de usuario
   const token = localStorage.getItem("token");
   // -------------------------------------
@@ -198,8 +202,8 @@ function NavBarPrueba() {
       {/* contenedor serchBar and modalShop */}
       <div className=" flex w-full flex-col items-center justify-center gap-4  sm:w-[500px] md:w-full md:flex-row md:justify-end lg:h-16 2xl:absolute 2xl:left-36  2xl:top-4 2xl:w-[600px] 2xl:flex-row-reverse ">
         {/* searchBar  */}
-        <SearchForm />
-
+        {isShopPage && <SearchForm />}{" "}
+        {/* Renderiza SearchForm solo en la página de tienda */}
         {/* ShopModal */}
         <DropdownShop />
       </div>
