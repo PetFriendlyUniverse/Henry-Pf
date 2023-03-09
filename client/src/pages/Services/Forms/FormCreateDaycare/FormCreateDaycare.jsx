@@ -169,7 +169,7 @@ function FormCreateDaycare() {
               </label>
               {errors.name && (
                 <span className="text-xs text-red-500">{errors.name}</span>
-               )}
+              )}
             </div>
             {/* corre electronico */}
             <div className="group relative z-0 mb-6 h-11 w-4/5">
@@ -186,7 +186,7 @@ function FormCreateDaycare() {
                 Correo Electronico
               </label>
               {errors.mail && (
-                <span className="text-sm text-red-500">{errors.mail}</span>
+                <span className="text-xs text-red-500">{errors.mail}</span>
               )}
             </div>
 
@@ -243,7 +243,7 @@ function FormCreateDaycare() {
                   Cod. Postal
                 </label>
                 {errors.zip_code && (
-                  <span className="text-sm text-red-500">
+                  <span className="text-xs text-red-500">
                     {errors.zip_code}
                   </span>
                 )}
@@ -262,7 +262,7 @@ function FormCreateDaycare() {
                   Calle
                 </label>
                 {errors.street_name && (
-                  <span className="text-sm text-red-500">
+                  <span className="text-xs text-red-500">
                     {errors.street_name}
                   </span>
                 )}
@@ -281,7 +281,7 @@ function FormCreateDaycare() {
                   Numeración
                 </label>
                 {errors.street_number && (
-                  <span className="text-sm text-red-500">
+                  <span className="text-xs text-red-500">
                     {errors.street_number}
                   </span>
                 )}
@@ -302,7 +302,7 @@ function FormCreateDaycare() {
                   Precio por Hora
                 </label>
                 {errors.price_hour && (
-                  <span className="text-sm text-red-500">
+                  <span className="text-xs text-red-500">
                     {errors.price_hour}
                   </span>
                 )}
@@ -321,7 +321,7 @@ function FormCreateDaycare() {
                   Precio por Dia
                 </label>
                 {errors.price_day && (
-                  <span className="text-sm text-red-500">
+                  <span className="text-xs text-red-500">
                     {errors.price_day}
                   </span>
                 )}
@@ -341,7 +341,7 @@ function FormCreateDaycare() {
                 Descripción:
               </label>
               {errors.description && (
-                <span className="text-sm text-red-500">
+                <span className="absolute -bottom-6 text-xs text-red-500">
                   {errors.description}
                 </span>
               )}
@@ -385,7 +385,7 @@ function FormCreateDaycare() {
                     Cod. de area
                   </label>
                   {errors.area_code && (
-                    <span className="text-sm text-red-500">
+                    <span className="text-xs text-red-500">
                       {errors.area_code}
                     </span>
                   )}
@@ -405,7 +405,7 @@ function FormCreateDaycare() {
                     Teléfono
                   </label>
                   {errors.number && (
-                    <span className="text-sm text-red-500">
+                    <span className="text-xs text-red-500">
                       {errors.number}
                     </span>
                   )}
