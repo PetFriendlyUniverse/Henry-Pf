@@ -53,6 +53,7 @@ function FormAdoption() {
     if (e.target.name === "province") {
       dispatch(getLocalidadesAsync(e.target.value));
     }
+    console.log(form);
   };
 
   const changeHandlerImg = (e) => {
@@ -75,47 +76,39 @@ function FormAdoption() {
     newForm.append("province", form.province);
     newForm.append("locality", form.locality);
     newForm.append("description", form.description);
-    if (isFormValid) {
-      try {
-        await axios
-          .post(`/adoption/create/${id}`, newForm, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            }, //importante en form de imagen poner este headers
-          })
-          .then(() => {
-            Swal.fire({
-              title: "Adopción registrada correctamente!",
-              icon: "success",
-              text: "La adopción se ha registrado correctamente, pendiente de aprobación",
-              closeOnEsc: true,
-              closeOnClickOutside: true,
-            });
-          })
-          .then(() => {
-            setForm({
-              province: "",
-              locality: "",
-              description: "",
-            });
-            setImg(null);
-            setImgFile(null);
-            setSelectedFiles([]);
+
+    try {
+      await axios
+        .post(`/adoption/create/${id}`, newForm, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          }, //importante en form de imagen poner este headers
+        })
+        .then(() => {
+          Swal.fire({
+            title: "Adopción registrada correctamente!",
+            icon: "success",
+            text: "La adopción se ha registrado correctamente, pendiente de aprobación",
+            closeOnEsc: true,
+            closeOnClickOutside: true,
           });
-      } catch (error) {
-        Swal.fire({
-          icon: "error",
-          title: "Error en el formulario",
-          text: "No se pudo crear el post",
-          closeOnEsc: true,
-          closeOnClickOutside: true,
+        })
+        .then(() => {
+          setForm({
+            province: "",
+            locality: "",
+            description: "",
+          });
+          setImg(null);
+          setImgFile(null);
+          setSelectedFiles([]);
+          location.reload();
         });
-      }
-    } else {
+    } catch (error) {
       Swal.fire({
         icon: "error",
         title: "Error en el formulario",
-        text: "No se pueden mandar direcciones http por el formulario",
+        text: "No se pudo crear el post",
         closeOnEsc: true,
         closeOnClickOutside: true,
       });
