@@ -192,7 +192,7 @@ function FormCreateWalker() {
                 Correo Electrónico
               </label>
               {errors.mail && (
-                <span className="text-xs text-red-500">{errors.name}</span>
+                <span className="text-xs text-red-500">{errors.mail}</span>
               )}
             </div>
 
@@ -249,7 +249,8 @@ function FormCreateWalker() {
                   Cod. Postal
                 </label>
                 {errors.zip_code && (
-                  <span className="text-xs text-red-500">{errors.name}</span>
+                  <span className="text-xs text-red-500">
+                    {errors.name}
                     {errors.zip_code}
                   </span>
                 )}
@@ -268,7 +269,7 @@ function FormCreateWalker() {
                   Calle
                 </label>
                 {errors.street_name && (
-                  <span className="text-xs text-red-500">{errors.name}</span>
+                  <span className="text-xs text-red-500">
                     {errors.street_name}
                   </span>
                 )}
@@ -287,7 +288,7 @@ function FormCreateWalker() {
                   Numeración
                 </label>
                 {errors.street_number && (
-                  <span className="text-xs text-red-500">{errors.name}</span>
+                  <span className="text-xs text-red-500">
                     {errors.street_number}
                   </span>
                 )}
@@ -308,7 +309,7 @@ function FormCreateWalker() {
                   Precio por Hora
                 </label>
                 {errors.price_hour && (
-                  <span className="text-xs text-red-500">{errors.name}</span>
+                  <span className="text-xs text-red-500">
                     {errors.price_hour}
                   </span>
                 )}
@@ -326,13 +327,14 @@ function FormCreateWalker() {
                 <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
                   Precio por Dia
                 </label>
-                {errors.price_day && (<span className="text-xs text-red-500">{errors.name}</span>
+                {errors.price_day && (
+                  <span className="text-xs text-red-500">
                     {errors.price_day}
                   </span>
                 )}
               </div>
             </div>
-            <div className="group relative z-0 mb-6 flex h-2/4 w-full">
+            <div className="group relative z-0 mb-6 flex h-2/4 w-full flex-col">
               <textarea
                 type="text"
                 value={form.description}
@@ -346,7 +348,7 @@ function FormCreateWalker() {
                 Descripción:
               </label>
               {errors.description && (
-                <span className="text-xs text-red-500">{errors.name}</span>
+                <span className="text-xs text-red-500">
                   {errors.description}
                 </span>
               )}
@@ -390,7 +392,8 @@ function FormCreateWalker() {
                     Cod. de área
                   </label>
                   {errors.area_code && (
-                    <span className="text-xs text-red-500">{errors.name}</span>
+                    <span className="text-xs text-red-500">
+                      {}
                       {errors.area_code}
                     </span>
                   )}
@@ -410,7 +413,8 @@ function FormCreateWalker() {
                     Teléfono
                   </label>
                   {errors.number && (
-                    <span className="text-xs text-red-500">{errors.name}</span>
+                    <span className="text-xs text-red-500">
+                      {}
                       {errors.number}
                     </span>
                   )}

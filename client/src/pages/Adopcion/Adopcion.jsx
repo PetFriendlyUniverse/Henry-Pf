@@ -7,7 +7,7 @@ function Adopcion() {
   const id = localStorage.getItem("id");
 
   return (
-    <div className="mb-36 flex h-full w-full flex-col items-center bg-adopcion ">
+    <div className="flex h-full w-full flex-col items-center bg-adopcion pb-36 ">
       <h2 className="my-10 flex text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
         <p className="text-russianviolet">Pet </p>
         <p className="text-cornflowerblue">Friendly </p>

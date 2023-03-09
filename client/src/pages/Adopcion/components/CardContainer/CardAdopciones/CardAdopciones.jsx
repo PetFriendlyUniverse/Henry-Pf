@@ -16,9 +16,9 @@ function CardAdopciones({
 }) {
   return (
     <article className="my-4 flex h-[500px] w-[328px] flex-col rounded-xl border-4 border-cornflowerblue  bg-white  shadow-lg ">
-      <div className="flex items-center gap-x-4 text-xs">
+      <div className="flex items-center gap-4 text-xs">
         <time className="text-gray-500">{date.slice(0, 10)}</time>
-        <span className="relative z-10 rounded-full bg-gray-50 py-1.5 px-3 font-medium text-gray-600 hover:bg-gray-100">
+        <span className="rounded-full bg-gray-50 py-1.5 px-3 font-medium text-gray-600 hover:bg-gray-100">
           {province}, {locality}
         </span>
       </div>
@@ -33,7 +33,7 @@ function CardAdopciones({
         </h3>
         <h5>{name}</h5>
 
-        <span className="text-sm text-gray-600">{description}</span>
+        <div className="text-sm text-gray-600">{description}</div>
 
         <div className="mt-8 flex items-center gap-x-4">
           <img
