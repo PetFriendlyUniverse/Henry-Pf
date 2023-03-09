@@ -104,7 +104,7 @@ function FormCreateDaycare() {
     newForm.append("price_day", form.price_day);
     if (isFormValid) {
       Swal.fire({
-        title: "Now loading",
+        title: "Cargando",
         allowEscapeKey: false,
         allowOutsideClick: false,
 
