@@ -68,7 +68,6 @@ function FormModifyUser() {
     if (e.target.name === "province") {
       dispatch(getLocalidadesAsync(e.target.value));
     }
-    console.log(img);
   };
 
   const changeHandlerImg = (e) => {
@@ -86,6 +85,9 @@ function FormModifyUser() {
     e.preventDefault();
     const errorValues = Object.values(errors);
     const isFormValid = errorValues.every((val) => val === "");
+    const formValue = Object.values(form);
+    const formReady = formValue.every((val) => val !== null);
+    console.log(formReady);
     const newForm = new FormData();
     if (img) {
       newForm.append("img", img);
@@ -101,49 +103,59 @@ function FormModifyUser() {
     newForm.append("number", form.number);
     newForm.append("zip_code", form.zip_code);
     newForm.append("street_number", form.street_number);
-    if (isFormValid) {
-      axios
-        .put(`/user/${id}`, newForm, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          }, //importante en form de imagen poner este headers
-        })
-        .then(() => {
-          Swal.fire({
-            title: "Perfil actualizado correctamente!",
-            icon: "success",
-            text: "El perfil ha sido actualizado correctamente",
-            closeOnEsc: true,
-            closeOnClickOutside: true,
+    console.log(newForm);
+    if (formReady) {
+      if (isFormValid) {
+        axios
+          .put(`/user/${id}`, newForm, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            }, //importante en form de imagen poner este headers
+          })
+          .then(() => {
+            Swal.fire({
+              title: "Perfil actualizado correctamente!",
+              icon: "success",
+              text: "El perfil ha sido actualizado correctamente",
+              closeOnEsc: true,
+              closeOnClickOutside: true,
+            });
+          })
+          .then(() => {
+            setForm({
+              user: "",
+              name: "",
+              lastname: "",
+              mail: "",
+              province: "",
+              locality: "",
+              street_name: "",
+              area_code: "",
+              number: "",
+              zip_code: "",
+              street_number: "",
+            });
+          })
+          .then(() => {
+            navigate(-1);
           });
-        })
-        .then(() => {
-          setForm({
-            user: "",
-            name: "",
-            lastname: "",
-            mail: "",
-            province: "",
-            locality: "",
-            street_name: "",
-            area_code: "",
-            number: "",
-            zip_code: "",
-            street_number: "",
-          });
-        })
-        .then(() => {
-          navigate(-1);
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error en el formulario",
+          text: "Por favor, revisa los campos del formulario",
+          closeOnEsc: true,
+          closeOnClickOutside: true,
         });
-    } else {
+      }
+    } else
       Swal.fire({
         icon: "error",
         title: "Error en el formulario",
-        text: "Por favor, revisa los campos del formulario",
+        text: "Por favor, rellena todos los campos del formulario",
         closeOnEsc: true,
         closeOnClickOutside: true,
       });
-    }
   };
   return (
     <div className="flex h-full justify-center ">
