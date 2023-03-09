@@ -128,8 +128,17 @@ function FormCreateProduct() {
 
   return (
     // este es el contenedor completo
-    <div className="flex min-h-screen w-full justify-center bg-[url('https://petfood.com.ar/img/cms/symphony.png')] pt-28 pb-10 ">
+    <div className="flex min-h-screen w-full flex-col items-center justify-center bg-[url('https://petfood.com.ar/img/cms/symphony.png')] pt-28 pb-10 ">
       {/* este es el form completo */}
+      <button
+        onClick={() => {
+          navigate(-1);
+        }}
+        className="mt-6 rounded-md bg-ultraviolet p-2 text-lg text-white hover:bg-russianviolet"
+        type="button"
+      >
+        Volver
+      </button>
       <form
         onSubmit={submitHandler}
         className="mt-10 flex h-full w-full flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue shadow-2xl shadow-black drop-shadow-2xl md:w-3/5 lg:h-auto "
@@ -335,15 +344,6 @@ function FormCreateProduct() {
                   </span>
                 )}
               </div>
-              <button
-                onClick={() => {
-                  navigate(-1);
-                }}
-                className="mt-6 rounded-md bg-ultraviolet p-2 text-lg text-white hover:bg-russianviolet"
-                type="button"
-              >
-                Volver
-              </button>
             </div>
           </div>
         </div>
