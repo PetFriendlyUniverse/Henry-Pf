@@ -154,40 +154,48 @@ function TabStore() {
         </div>
 
         {/* este es el div que contiene el renderizado condicional del titulo */}
-        <div className=" ml-28  flex w-full flex-col flex-wrap rounded-2xl border-4  border-cornflowerblue">
-          <div className="border-gray-400 p-3 lg:border-b-2">
-            <h1 className="flex justify-center pl-2 text-3xl font-semibold">
+        <div className="flex h-full min-h-[450px] w-full flex-col flex-wrap  justify-between rounded-2xl border-4 border-cornflowerblue py-3   ">
+          <div className="border-cornflowerblue p-3 lg:border-b-2">
+            <h1 className="pl-2 text-center text-3xl font-semibold">
               {titles[showInfo]}
             </h1>
           </div>
 
-          <div className="flex flex-col pt-2 lg:flex xl:flex">
+          <div className="flex w-full flex-col items-center justify-center gap-3 py-2  ">
             {components[showInfo]}
 
-            <div className="flex pl-4 pt-5 sm:pl-12">
-              <div className="flex py-2">
-                <img
-                  src={interrogation}
-                  alt="help"
-                  title="aqui puedes crear nuevos productos"
-                  className="w-3 sm:w-5"
-                />
-                <Link to={`/profile/store/create/${user?.id}`}>
-                  <LinkButton component={"Crear producto"} />
-                </Link>
+            {/* boton crear producto */}
+
+            {showInfo == "products" && (
+              <div className="flex pl-4 pt-5 sm:pl-12">
+                <div className="flex py-2">
+                  <img
+                    src={interrogation}
+                    alt="help"
+                    title="aqui puedes crear nuevos productos"
+                    className="w-3 sm:w-5"
+                  />
+                  <Link to={`/profile/store/create/${user?.id}`}>
+                    <LinkButton component={"Crear producto"} />
+                  </Link>
+                </div>
               </div>
-            </div>
-            <div className="flex justify-center  gap-2 py-2">
-              <img src={interrogation} alt="help" className="w-5" />
-              <button
-                title="ingresa aqui para editar tu informacion personal"
-                className="active:traslate-y-1 w-14 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 shadow-md shadow-black transition-all duration-200 hover:bg-slate-300"
-              >
-                <Link to={`/store/modify/${user?.id}`}>
-                  <img src={edit} alt="edit" />
-                </Link>
-              </button>
-            </div>
+            )}
+
+            {/* boton editar perfil */}
+            {showInfo == "profile" && (
+              <div className="mr-5 flex  justify-center gap-2 self-end py-2">
+                <img src={interrogation} alt="help" className="w-5" />
+                <button
+                  title="ingresa aqui para editar tu informacion personal"
+                  className="active:traslate-y-1 w-14 rounded-lg border-2 border-black bg-slate-100 px-2 py-1 shadow-md shadow-black transition-all duration-200 hover:bg-slate-300"
+                >
+                  <Link to={`/store/modify/${user?.id}`}>
+                    <img src={edit} alt="edit" />
+                  </Link>
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
