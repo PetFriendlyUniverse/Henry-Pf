@@ -34,9 +34,9 @@ function CardContainerIg() {
               return (
                 <div
                   key={i.id}
-                  className="flex h-[500px] w-[328px] justify-center"
+                  className="flex h-[500px] w-[328px] justify-center shadow-md"
                 >
-                  <InstagramEmbed url={i.url} width={328} height={500} />
+                  <InstagramEmbed url={i.url} width={328} height={494} />
                 </div>
               );
             })}
