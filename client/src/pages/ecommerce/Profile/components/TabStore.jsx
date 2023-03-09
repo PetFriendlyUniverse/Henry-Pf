@@ -61,95 +61,97 @@ function TabStore() {
   }, []);
 
   return (
-    <div className="flex min-h-[80vh] justify-start  bg-adopcion pb-28 pt-10 lg:items-center lg:justify-center">
-      <div className="flex h-full w-full flex-col items-center justify-end gap-3 rounded-2xl  px-6 lg:w-full  lg:flex-row lg:justify-start   lg:gap-10 2xl:px-16 ">
-        <div className="h-full w-full max-w-xs rounded-2xl border-4 border-cornflowerblue  p-3 xl:w-96 ">
-          <PhotoStore img={user?.img} name={user?.name} />
-          <div className="mb-4 mt-4   dark:border-gray-700">
-            <ul className="-mb-px text-center text-sm font-medium">
-              <li
-                className={`mr-2 rounded-lg border-b-2 bg-slate-50 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black active:shadow-inner active:shadow-black ${
-                  showInfo == "profile" &&
-                  "  bg-ultraviolet text-slate-300 hover:text-black"
-                } hover:text-gray-500`}
-              >
-                <button
-                  onClick={handleShowInfo}
-                  name="profile"
-                  className={`inline-block  p-4 tracking-wider ${
+    <div className="flex justify-start bg-adopcion pb-28 pt-10 lg:items-center">
+      <div className=" jborder-2 flex h-full w-full flex-row ">
+        <div className="mb-3p-3 xl:w-96 ">
+          <div className="mb-3  h-full rounded-2xl border-4 border-cornflowerblue  p-3 xl:w-96 ">
+            <PhotoStore img={user?.img} name={user?.name} />
+            <div className="mb-4 mt-4 border-gray-200  dark:border-gray-200">
+              <ul className="-mb-px text-center text-sm font-medium">
+                <li
+                  className={`mr-2 rounded-lg border-b-2 bg-slate-50 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black active:shadow-inner active:shadow-black ${
                     showInfo == "profile" &&
-                    "tracking-wider underline underline-offset-4"
-                  }`}
-                  title="informacion del propietario"
+                    "  bg-ultraviolet text-slate-300 hover:text-black"
+                  } hover:text-gray-500`}
                 >
-                  Perfil de Tienda
-                </button>
-              </li>
-              <li
-                className={`mr-2 rounded-lg border-b-2 bg-slate-50 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black active:shadow-inner active:shadow-black ${
-                  showInfo == "contact" &&
-                  "  bg-ultraviolet text-slate-300 hover:text-slate-300"
-                } hover:text-gray-500`}
-              >
-                <button
-                  onClick={handleShowInfo}
-                  name="contact"
-                  className={`inline-block  p-4 tracking-wider ${
+                  <button
+                    onClick={handleShowInfo}
+                    name="profile"
+                    className={`inline-block  p-4 tracking-wider ${
+                      showInfo == "profile" &&
+                      "tracking-wider underline underline-offset-4"
+                    }`}
+                    title="informacion del propietario"
+                  >
+                    Perfil de Tienda
+                  </button>
+                </li>
+                <li
+                  className={`mr-2 rounded-lg border-b-2 bg-slate-50 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black active:shadow-inner active:shadow-black ${
                     showInfo == "contact" &&
-                    "tracking-wider underline underline-offset-4"
-                  }`}
-                  title="aquie puede ver la informacion de contacto de la tienda"
+                    "  bg-ultraviolet text-slate-300 hover:text-black"
+                  } hover:text-gray-500`}
                 >
-                  Contacto
-                </button>
-              </li>
-              <li
-                className={`mr-2 rounded-lg border-b-2 bg-slate-50 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black active:shadow-inner active:shadow-black ${
-                  showInfo == "location" &&
-                  "  bg-ultraviolet text-slate-300 hover:text-slate-300"
-                } hover:text-gray-500`}
-              >
-                <button
-                  onClick={handleShowInfo}
-                  name="location"
-                  className={`inline-block  p-4 tracking-wider ${
+                  <button
+                    onClick={handleShowInfo}
+                    name="contact"
+                    className={`inline-block  p-4 tracking-wider ${
+                      showInfo == "contact" &&
+                      "tracking-wider underline underline-offset-4"
+                    }`}
+                    title="aquie puede ver la informacion de contacto de la tienda"
+                  >
+                    Contacto
+                  </button>
+                </li>
+                <li
+                  className={`mr-2 rounded-lg border-b-2 bg-slate-50 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black active:shadow-inner active:shadow-black ${
                     showInfo == "location" &&
-                    "tracking-wider underline underline-offset-4"
-                  }`}
-                  title="aqui puedes ver la direccion de la tienda"
+                    "  bg-ultraviolet text-slate-300 hover:text-black"
+                  } hover:text-gray-500`}
                 >
-                  Direcciones
-                </button>
-              </li>
-              <li
-                className={`mr-2 rounded-lg border-b-2 bg-slate-50 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black active:shadow-inner active:shadow-black ${
-                  showInfo == "products" &&
-                  "  bg-ultraviolet text-slate-300 hover:text-slate-300"
-                } hover:text-gray-500`}
-              >
-                <button
-                  onClick={handleShowInfo}
-                  name="products"
-                  className={`inline-block  p-4 tracking-wider ${
+                  <button
+                    onClick={handleShowInfo}
+                    name="location"
+                    className={`inline-block  p-4 tracking-wider ${
+                      showInfo == "location" &&
+                      "tracking-wider underline underline-offset-4"
+                    }`}
+                    title="aqui puedes ver la direccion de la tienda"
+                  >
+                    Direcciones
+                  </button>
+                </li>
+                <li
+                  className={`mr-2 rounded-lg border-b-2 bg-slate-50 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black active:shadow-inner active:shadow-black ${
                     showInfo == "products" &&
-                    "tracking-wider underline underline-offset-4"
-                  }`}
-                  title="aqui puedes ver tus productos disponibles"
+                    "  bg-ultraviolet text-slate-300 hover:text-black"
+                  } hover:text-gray-500`}
                 >
-                  Productos
-                </button>
-              </li>
-              <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
-                {/* Reveer esto de volver al hacer Health/Services */}
-                <button
-                  onClick={() => navigate(-1)}
-                  title="vuelve a tu perfil"
-                  className="inline-block p-4"
-                >
-                  Volver
-                </button>
-              </li>
-            </ul>
+                  <button
+                    onClick={handleShowInfo}
+                    name="products"
+                    className={`inline-block  p-4 tracking-wider ${
+                      showInfo == "products" &&
+                      "tracking-wider underline underline-offset-4"
+                    }`}
+                    title="aqui puedes ver tus productos disponibles"
+                  >
+                    Productos
+                  </button>
+                </li>
+                <li className="mr-2 rounded-lg border-b-2 bg-ultraviolet text-slate-300 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black  active:shadow-inner active:shadow-black">
+                  {/* Reveer esto de volver al hacer Health/Services */}
+                  <button
+                    onClick={() => navigate(-1)}
+                    title="vuelve a tu perfil"
+                    className="inline-block p-4"
+                  >
+                    Volver
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 

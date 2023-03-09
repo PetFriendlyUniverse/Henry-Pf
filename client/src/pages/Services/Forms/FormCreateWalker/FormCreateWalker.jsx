@@ -174,7 +174,7 @@ function FormCreateWalker() {
                 Nombre de paseador
               </label>
               {errors.name && (
-                <span className="text-sm text-red-500">{errors.name}</span>
+                <span className="text-xs text-red-500">{errors.name}</span>
               )}
             </div>
             {/* corre electronico */}
@@ -192,7 +192,7 @@ function FormCreateWalker() {
                 Correo Electrónico
               </label>
               {errors.mail && (
-                <span className="text-sm text-red-500">{errors.mail}</span>
+                <span className="text-xs text-red-500">{errors.name}</span>
               )}
             </div>
 
@@ -249,7 +249,7 @@ function FormCreateWalker() {
                   Cod. Postal
                 </label>
                 {errors.zip_code && (
-                  <span className="text-sm text-red-500">
+                  <span className="text-xs text-red-500">{errors.name}</span>
                     {errors.zip_code}
                   </span>
                 )}
@@ -268,7 +268,7 @@ function FormCreateWalker() {
                   Calle
                 </label>
                 {errors.street_name && (
-                  <span className="text-sm text-red-500">
+                  <span className="text-xs text-red-500">{errors.name}</span>
                     {errors.street_name}
                   </span>
                 )}
@@ -287,7 +287,7 @@ function FormCreateWalker() {
                   Numeración
                 </label>
                 {errors.street_number && (
-                  <span className="text-sm text-red-500">
+                  <span className="text-xs text-red-500">{errors.name}</span>
                     {errors.street_number}
                   </span>
                 )}
@@ -308,7 +308,7 @@ function FormCreateWalker() {
                   Precio por Hora
                 </label>
                 {errors.price_hour && (
-                  <span className="text-sm text-red-500">
+                  <span className="text-xs text-red-500">{errors.name}</span>
                     {errors.price_hour}
                   </span>
                 )}
@@ -326,8 +326,7 @@ function FormCreateWalker() {
                 <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
                   Precio por Dia
                 </label>
-                {errors.price_day && (
-                  <span className="text-sm text-red-500">
+                {errors.price_day && (<span className="text-xs text-red-500">{errors.name}</span>
                     {errors.price_day}
                   </span>
                 )}
@@ -347,7 +346,7 @@ function FormCreateWalker() {
                 Descripción:
               </label>
               {errors.description && (
-                <span className="absolute -bottom-6 text-sm text-red-500">
+                <span className="text-xs text-red-500">{errors.name}</span>
                   {errors.description}
                 </span>
               )}
@@ -365,7 +364,7 @@ function FormCreateWalker() {
                   ))}
               </Carousel>
             </div>
-            <div className="h-1/2 p-8 px-8 ">
+            <div className="h-2/5 p-8 px-8 ">
               <div className="group relative z-0 mb-14 flex h-11 w-full ">
                 <input
                   type="file"
@@ -391,7 +390,7 @@ function FormCreateWalker() {
                     Cod. de área
                   </label>
                   {errors.area_code && (
-                    <span className="text-sm text-red-500">
+                    <span className="text-xs text-red-500">{errors.name}</span>
                       {errors.area_code}
                     </span>
                   )}
@@ -411,7 +410,7 @@ function FormCreateWalker() {
                     Teléfono
                   </label>
                   {errors.number && (
-                    <span className="text-sm text-red-500">
+                    <span className="text-xs text-red-500">{errors.name}</span>
                       {errors.number}
                     </span>
                   )}

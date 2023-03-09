@@ -168,8 +168,8 @@ function FormCreateDaycare() {
                 Nombre de la guarderia
               </label>
               {errors.name && (
-                <span className="text-sm text-red-500">{errors.name}</span>
-              )}
+                <span className="text-xs text-red-500">{errors.name}</span>
+               )}
             </div>
             {/* corre electronico */}
             <div className="group relative z-0 mb-6 h-11 w-4/5">
@@ -302,7 +302,7 @@ function FormCreateDaycare() {
                   Precio por Hora
                 </label>
                 {errors.price_hour && (
-                  <span className="text-sm text-red-500 ">
+                  <span className="text-sm text-red-500">
                     {errors.price_hour}
                   </span>
                 )}
@@ -341,7 +341,7 @@ function FormCreateDaycare() {
                 Descripción:
               </label>
               {errors.description && (
-                <span className="absolute -bottom-6 text-sm text-red-500">
+                <span className="text-sm text-red-500">
                   {errors.description}
                 </span>
               )}
@@ -359,7 +359,7 @@ function FormCreateDaycare() {
                   ))}
               </Carousel>
             </div>
-            <div className="h-1/2 p-8 px-8 ">
+            <div className="h-2/5 p-6 px-8 ">
               <div className="group relative z-0 mb-14 flex h-11 w-full ">
                 <input
                   type="file"

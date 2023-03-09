@@ -240,7 +240,7 @@ function FormCreateProduct() {
                 <span className="text-red-500">{error.brand}</span>
               )}
             </div>
-            <div className="grid px-10  md:grid-cols-2 md:gap-6">
+            <div className="grid w-5/12 px-10  md:grid-cols-2 md:gap-6">
               <label className="">Peso:</label>
               <div className="group relative z-0 mb-6 h-11 w-full">
                 <select
