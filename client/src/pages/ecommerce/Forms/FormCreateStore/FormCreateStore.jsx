@@ -196,9 +196,12 @@ function FormCreateStore() {
                 <select
                   onChange={handleChange}
                   name="province"
-                  className="w-[240px] bg-transparent"
+                  className="w-full bg-transparent"
                   value={form.province}
                 >
+                  <option value="" disabled selected>
+                    Provincia
+                  </option>
                   {provincia.map((p) => (
                     <option key={p.id} value={p.nombre}>
                       {p.nombre.slice(0, 25)}
@@ -213,6 +216,9 @@ function FormCreateStore() {
                   value={form.locality}
                   className="w-[240px] bg-transparent"
                 >
+                  <option value="" disabled selected>
+                    Localidad
+                  </option>
                   {localidad.municipios?.map((l) => (
                     <option key={l.id} value={l.nombre}>
                       {l.nombre}

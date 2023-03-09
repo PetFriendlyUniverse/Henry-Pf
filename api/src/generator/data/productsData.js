@@ -33,7 +33,7 @@ const imgs = {
   2: "https://d3ugyf2ht6aenh.cloudfront.net/stores/979/500/products/royal-gato-urinary-care1-c07ed7872f79588f8816376908403393-640-0.webp",
   3: "https://www.revistaneo.com/sites/default/files/2022-08/salmon.png",
   4: "https://maxipet.com.ar/wp-content/uploads/2020/08/pro-plan-cach-gde.png",
-  5: "https://ss-static-01.esmsv.com/id/69550/productos/obtenerimagen/?id=811&useDensity=false&width=1280&height=720&tipoEscala=contain",
+  5: "https://ss-static-01.esmsv.com/id/69550/productos/obtenerimagen/?id=811&useDensity=false&width=500&height=500&tipoEscala=contain",
   6: "https://www.metrive.com.ar/images/mascotas/Metrive-Sabrositos-pack-mix.png",
   7: "https://kangoopet.com.ar/wp-content/uploads/2019/12/Balance_FTE_15kg-768x1055-1-600x824.png",
   8: "https://www.timberline.com.ar/3253-medium_default/excellent-dog-adulto-chicken-rice-x-20-kg.jpg",
