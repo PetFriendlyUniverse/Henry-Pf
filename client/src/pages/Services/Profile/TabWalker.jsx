@@ -36,31 +36,55 @@ function TabWalker() {
             <PhotoWalker img={user?.img} name={user?.name} />
             <div className="mb-4 mt-4 border-gray-200  dark:border-gray-200">
               <ul className="-mb-px text-center text-sm font-medium">
-                <li className="mr-2 rounded-lg border-b-2 bg-slate-50 py-3 hover:bg-slate-100 hover:text-gray-500">
+                <li
+                  className={`mr-2 rounded-lg border-b-2 bg-slate-50 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black active:shadow-inner active:shadow-black ${
+                    showInfo == "profile" &&
+                    "  bg-ultraviolet text-slate-300 hover:text-black"
+                  } hover:text-gray-500`}
+                >
                   <button
                     onClick={handleShowInfo}
                     name="profile"
-                    className="inline-block p-4"
+                    className={`inline-block  p-4 tracking-wider ${
+                      showInfo == "profile" &&
+                      "tracking-wider underline underline-offset-4"
+                    }`}
                     title="informacion del propietario"
                   >
                     Perfil de Paseador
                   </button>
                 </li>
-                <li className="mr-2 rounded-lg border-b-2 bg-slate-50 py-3 hover:bg-slate-100 hover:text-gray-500">
+                <li
+                  className={`mr-2 rounded-lg border-b-2 bg-slate-50 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black active:shadow-inner active:shadow-black ${
+                    showInfo == "contact" &&
+                    "  bg-ultraviolet text-slate-300 hover:text-black"
+                  } hover:text-gray-500`}
+                >
                   <button
                     onClick={handleShowInfo}
                     name="contact"
-                    className="inline-block border-b-2 border-transparent p-4 "
+                    className={`inline-block  p-4 tracking-wider ${
+                      showInfo == "contact" &&
+                      "tracking-wider underline underline-offset-4"
+                    }`}
                     title="aquie puede ver la informacion de contacto de la tienda"
                   >
                     Contacto
                   </button>
                 </li>
-                <li className="mr-2 rounded-lg border-b-2 bg-slate-50 py-3 hover:bg-slate-100 hover:text-gray-500">
+                <li
+                  className={`mr-2 rounded-lg border-b-2 bg-slate-50 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black active:shadow-inner active:shadow-black ${
+                    showInfo == "location" &&
+                    "  bg-ultraviolet text-slate-300 hover:text-black"
+                  } hover:text-gray-500`}
+                >
                   <button
                     onClick={handleShowInfo}
                     name="location"
-                    className="inline-block p-4"
+                    className={`inline-block  p-4 tracking-wider ${
+                      showInfo == "location" &&
+                      "tracking-wider underline underline-offset-4"
+                    }`}
                     title="aqui puedes ver la direccion de la tienda"
                   >
                     Direcciones
