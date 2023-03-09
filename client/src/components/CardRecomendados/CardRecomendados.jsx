@@ -1,21 +1,43 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AddShopButton from "../Button/AddShopButton";
 import ribbon from "../../assets/imagenes/ribbon.png";
-import { setShopCart } from "../../redux/features/products/productsSlice";
-import { useState } from "react";
+import { addNewProdShopCard } from "../../redux/features/products/productsSlice";
 import { priceFormatter } from "../../adapters/priceFormatter";
+import Swal from "sweetalert2";
+
 function CardRecomendados({ name, img, weight, price, stock, id }) {
   const dispatch = useDispatch();
-  const [value, setValue] = useState(1);
+  const thisProduct = useSelector((state) => state.Products?.shopCart[id]);
 
   const handleAddShopCart = () => {
-    dispatch(
-      setShopCart({
-        id: id,
-        data: { name, img, weight, price, stock, id, amount: value },
-      })
-    );
-    setValue(1);
+    if ((thisProduct?.amount || 0) < (thisProduct?.stock || stock)) {
+      dispatch(
+        addNewProdShopCard({
+          name,
+          img,
+          weight,
+          price,
+          stock,
+          id,
+          amount: 1,
+        })
+      );
+      Swal.fire({
+        icon: "success",
+        title: "Producto añadido!",
+        showConfirmButton: true,
+        timer: 1500,
+      });
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "No hay stock",
+        showConfirmButton: true,
+        closeOnClickOutside: true,
+        closeOnEsc: true,
+        timer: 1500,
+      });
+    }
   };
 
   return (
