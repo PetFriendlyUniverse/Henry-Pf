@@ -6,6 +6,7 @@ import CardAdopciones from "./CardAdopciones/CardAdopciones";
 function CardContainer() {
   const [loading, adoption, adopcionPerPage] = useGetAdopciones();
   const skeletonMap = [];
+  console.log(adoption);
   for (let index = 0; index < adopcionPerPage; index++) {
     skeletonMap.push(index);
   }
