@@ -104,7 +104,7 @@ function FormCreateDaycare() {
     newForm.append("price_day", form.price_day);
     if (isFormValid) {
       Swal.fire({
-        title: "Now loading",
+        title: "Cargando",
         allowEscapeKey: false,
         allowOutsideClick: false,
 
@@ -142,7 +142,16 @@ function FormCreateDaycare() {
     }
   };
   return (
-    <div className="flex h-full justify-center pb-16 ">
+    <div className="flex h-full flex-col items-center justify-center pb-16 ">
+      <button
+        onClick={() => {
+          navigate(-1);
+        }}
+        className="mt-6 rounded-md bg-ultraviolet p-2 text-lg text-white hover:bg-russianviolet"
+        type="button"
+      >
+        Volver
+      </button>
       <form
         onSubmit={handleSubmit}
         className="mt-10 flex h-full w-full flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue drop-shadow-2xl md:w-3/5 lg:h-auto "
@@ -168,7 +177,7 @@ function FormCreateDaycare() {
                 Nombre de la guarderia
               </label>
               {errors.name && (
-                <span className="text-red-500">{errors.name}</span>
+                <span className="text-xs text-red-500">{errors.name}</span>
               )}
             </div>
             {/* corre electronico */}
@@ -186,7 +195,7 @@ function FormCreateDaycare() {
                 Correo Electronico
               </label>
               {errors.mail && (
-                <span className="text-red-500">{errors.mail}</span>
+                <span className="text-xs text-red-500">{errors.mail}</span>
               )}
             </div>
 
@@ -243,7 +252,9 @@ function FormCreateDaycare() {
                   Cod. Postal
                 </label>
                 {errors.zip_code && (
-                  <span className="text-red-500">{errors.zip_code}</span>
+                  <span className="text-xs text-red-500">
+                    {errors.zip_code}
+                  </span>
                 )}
               </div>
               <div className="group relative z-0 mx-4 mb-6 h-11 w-full">
@@ -260,7 +271,9 @@ function FormCreateDaycare() {
                   Calle
                 </label>
                 {errors.street_name && (
-                  <span className="text-red-500">{errors.street_name}</span>
+                  <span className="text-xs text-red-500">
+                    {errors.street_name}
+                  </span>
                 )}
               </div>
               <div className="group relative z-0 mb-6 h-11 w-full">
@@ -277,7 +290,9 @@ function FormCreateDaycare() {
                   Numeración
                 </label>
                 {errors.street_number && (
-                  <span className="text-red-500">{errors.street_number}</span>
+                  <span className="text-xs text-red-500">
+                    {errors.street_number}
+                  </span>
                 )}
               </div>
             </div>
@@ -296,7 +311,9 @@ function FormCreateDaycare() {
                   Precio por Hora
                 </label>
                 {errors.price_hour && (
-                  <span className="text-red-500">{errors.price_hour}</span>
+                  <span className="text-xs text-red-500">
+                    {errors.price_hour}
+                  </span>
                 )}
               </div>
               <div className="group relative z-0 mb-6 h-11 w-full">
@@ -313,7 +330,9 @@ function FormCreateDaycare() {
                   Precio por Dia
                 </label>
                 {errors.price_day && (
-                  <span className="text-red-500">{errors.price_day}</span>
+                  <span className="text-xs text-red-500">
+                    {errors.price_day}
+                  </span>
                 )}
               </div>
             </div>
@@ -331,7 +350,7 @@ function FormCreateDaycare() {
                 Descripción:
               </label>
               {errors.description && (
-                <span className="absolute -bottom-6 text-red-500">
+                <span className="absolute -bottom-6 text-xs text-red-500">
                   {errors.description}
                 </span>
               )}
@@ -349,7 +368,7 @@ function FormCreateDaycare() {
                   ))}
               </Carousel>
             </div>
-            <div className="h-1/2 p-8 px-8 ">
+            <div className="h-2/5 p-6 px-8 ">
               <div className="group relative z-0 mb-14 flex h-11 w-full ">
                 <input
                   type="file"
@@ -375,7 +394,9 @@ function FormCreateDaycare() {
                     Cod. de area
                   </label>
                   {errors.area_code && (
-                    <span className="text-red-500">{errors.area_code}</span>
+                    <span className="text-xs text-red-500">
+                      {errors.area_code}
+                    </span>
                   )}
                 </div>
                 {/* telefono */}
@@ -393,7 +414,9 @@ function FormCreateDaycare() {
                     Teléfono
                   </label>
                   {errors.number && (
-                    <span className="text-red-500">{errors.number}</span>
+                    <span className="text-xs text-red-500">
+                      {errors.number}
+                    </span>
                   )}
                 </div>
               </div>

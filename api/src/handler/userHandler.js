@@ -1,4 +1,5 @@
 require("dotenv").config();
+const { confirmMail } = require("../controllers/mailController");
 const {
   createUser,
   loginUser,
@@ -21,6 +22,7 @@ const postUserHandler = async (req, res) => {
 
   try {
     const newUser = await createUser(user, name, lastname, mail, password);
+    await confirmMail(name, lastname, mail);
     res.status(200).json(newUser);
   } catch (error) {
     res.status(404).json({ error: error.message });
@@ -36,7 +38,7 @@ const loginHandler = async (req, res) => {
   }
 };
 const logoutHandler = async (req, res) => {
-    try {
+  try {
     res.clearCookie("token");
     res.sendStatus(200);
   } catch (error) {

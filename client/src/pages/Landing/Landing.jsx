@@ -20,7 +20,7 @@ import nativeLogo from "../../assets/general/react-native-1.svg";
 function Landing() {
   return (
     <div className=" flex h-full w-full flex-col-reverse bg-adopcion  font-mono font-semibold  lg:flex-row ">
-      <div className=" z-20 mt-10 flex h-14 w-full justify-center  gap-4 border-2 border-black sm:mt-0 lg:h-full lg:w-96  lg:justify-start ">
+      <div className=" z-20 mt-10 flex h-14 w-full justify-center  gap-4  sm:mt-0 lg:h-full lg:w-96  lg:justify-start ">
         <Buttons />
       </div>
 

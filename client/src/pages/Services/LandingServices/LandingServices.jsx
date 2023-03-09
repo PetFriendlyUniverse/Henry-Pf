@@ -9,13 +9,13 @@ import img5 from "../../../assets/LandingServices/petdaycare1.png";
 import img6 from "../../../assets/LandingServices/petdaycare2.png";
 import Recomendados from "../../../components/Recomendados/Recomendados";
 import { useDispatch } from "react-redux";
-import { setFilters } from "../../../redux/features/products/productsSlice";
 import universe from "../../../assets/imagenes/ASD-01.png";
 
 function LandingServices() {
   const dispatch = useDispatch();
-  const handleSetFilter = (specie) => {
-    dispatch(setFilters({ filter: "Species", value: specie }));
+  const handleSetFilter = () => {
+    const walker = "walkers";
+    return walker;
   };
   return (
     <>
@@ -154,7 +154,7 @@ function LandingServices() {
             </Link>
           </div>
           <div className="mt-8 flex w-full flex-col items-center sm:col-start-1 sm:col-end-2">
-            <Link
+            {/* <Link
               to="/services"
               className="my-3 flex w-4/5 items-center justify-center gap-2 bg-russianviolet py-1 text-white sm:gap-5 sm:py-2  sm:px-4 lg:h-16"
             >
@@ -238,10 +238,13 @@ function LandingServices() {
                   </g>
                 </svg>
               </span>
-              <span className="text-xs uppercase sm:text-base">
+              <span
+                onClick={handleSetFilter()}
+                className="text-xs uppercase sm:text-base"
+              >
                 ver todos los paseadores
               </span>
-            </Link>
+            </Link> */}
             <div className="mt-12 h-96 w-full sm:h-64 xl:h-80 2xl:h-96">
               <Carousel>
                 <img src={img1} alt="..." />
@@ -251,7 +254,7 @@ function LandingServices() {
             </div>
           </div>
           <div className="mt-8 flex w-full flex-col items-center sm:col-start-2 sm:col-end-3">
-            <Link
+            {/* <Link
               to="/services"
               className="mb-3 mt-10  flex w-4/5 items-center justify-center gap-2 bg-russianviolet py-1 text-white sm:my-3 sm:gap-5 sm:py-2 sm:px-4 lg:h-16 "
             >
@@ -338,7 +341,7 @@ function LandingServices() {
               <span className="text-xs uppercase sm:text-base">
                 ver todas las guarderias
               </span>
-            </Link>
+            </Link> */}
             <div className="mt-12 h-96 w-full sm:h-64 xl:h-80 2xl:h-96">
               <Carousel>
                 <img src={img4} alt="..." />
@@ -368,37 +371,18 @@ function LandingServices() {
             </p>
           </div>
         </section>
-        <section className="clip-payMethod mt-5 flex h-96 flex-col items-center justify-center gap-6 bg-[#F7B508] px-4 sm:h-[420px] lg:px-52 xl:h-[500px] xl:px-64">
-          <div className="">
-            <h4 className="text-center font-bold uppercase sm:text-3xl">
-              medios <span className="uppercase text-white">de pago</span>
-            </h4>
-            <p className="mt-3 text-center font-semibold uppercase sm:mt-5 sm:px-2 sm:text-xl">
-              Trabajamos con todos los medios de pagos ofrecidos por <br />
-              <span className="text-blue-700">MERCADO PAGO</span>
-            </p>
-          </div>
-          <div className="flex flex-col items-center">
-            <img
-              src="https://petfood.com.ar/img/cms/mercado2.gif"
-              alt=""
-              className="w-40"
-            />
-            <img
-              src="https://petfood.com.ar/img/cms/mercadopago-horizontal-listo.png"
-              alt=""
-              className="w-4/5"
-            />
-          </div>
-        </section>
 
         <section className="relative mt-5 flex h-96 flex-col items-center justify-center gap-8 bg-slate-600  bg-gradient-to-b  from-slate-600 to-slate-900 bg-cover bg-center bg-no-repeat px-4 lg:px-52 xl:h-[500px] xl:px-64">
           <img src={logo} alt="" className="w-28" />
           <p className="text-center font-medium text-white sm:text-lg">
-            Nuestra sección de shop tiene un final solidario, parte de la
-            recaudación será donada a una protectora designada en la sección de
-            adopción responsable para poder colaborar a una mejora cultural en
-            el cuidado de nuestros animalitos. Esperamos disfruten su estadia !
+            En nuestra sección de servicios, nos enorgullece ofrecer un enfoque
+            solidario en nuestro negocio. Una parte de nuestros ingresos será
+            destinada a una organización benéfica seleccionada cuidadosamente,
+            que trabaja en proyectos que ayudan a mejorar la calidad de vida de
+            comunidades necesitadas. Nos comprometemos a seguir buscando maneras
+            de mejorar nuestra contribución a la sociedad y a continuar
+            trabajando con organizaciones benéficas para hacer una diferencia
+            positiva en nuestro mundo
           </p>
         </section>
         <section className="mt-5 ">

@@ -160,8 +160,8 @@ function TabStore() {
               {titles[showInfo]}
             </h1>
           </div>
-
           <div className="flex w-full flex-col items-center justify-center gap-3 py-2  ">
+
             {components[showInfo]}
 
             {/* boton crear producto */}

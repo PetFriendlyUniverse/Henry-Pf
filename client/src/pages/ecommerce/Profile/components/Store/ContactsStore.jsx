@@ -19,6 +19,7 @@ function ContactsStore({ area_code, number, mail }) {
         <div className="rounded-lg bg-slate-200 py-1 font-semibold">
           <p className="pl-4 text-xs sm:text-base"> {mail}</p>
         </div>
+
       </div>
     </div>
   );
