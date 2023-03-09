@@ -160,7 +160,6 @@ function TabStore() {
               {titles[showInfo]}
             </h1>
           </div>
-
           <div className="flex flex-col pt-2 lg:flex xl:flex">
             {components[showInfo]}
 

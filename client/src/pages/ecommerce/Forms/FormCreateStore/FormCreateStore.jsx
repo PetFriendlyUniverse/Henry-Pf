@@ -98,7 +98,7 @@ function FormCreateStore() {
     newForm.append("mail", form.mail);
     if (isFormValid) {
       Swal.fire({
-        title: "Now loading",
+        title: "Cargando",
         allowEscapeKey: false,
         allowOutsideClick: false,
 

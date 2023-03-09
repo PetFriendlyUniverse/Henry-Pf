@@ -31,7 +31,9 @@ function Contacts({ area_code, number, mail }) {
         </div>
         <div className="rounded-lg bg-slate-200 py-1 font-semibold">
           <p className=" pl-4 text-xs sm:text-base">
-            {!!area_code && !!number && `${area_code}- ${number}`}
+            {!!area_code && !!number
+              ? `${area_code}- ${number}`
+              : "No disponible"}
           </p>
         </div>
       </div>
