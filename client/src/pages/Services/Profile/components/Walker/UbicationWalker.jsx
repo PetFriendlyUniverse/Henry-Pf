@@ -32,19 +32,19 @@ function UbicationWalker({
               className="w-1/5 border-r-2
              border-white"
             >
-              <p>{province}</p>
+              <p>{province ? province : "No disponible"}</p>
             </th>
             <th className="w-1/5 border-r-2">
-              <p> {locality}</p>
+              <p> {locality ? locality : "No disponible"}</p>
             </th>
             <th className="w-1/5 border-r-2">
-              <p> {zip_code}</p>
+              <p> {zip_code ? zip_code : "No disponible"}</p>
             </th>
             <th className="w-1/5 border-r-2">
-              <p> {street_name}</p>
+              <p> {street_name ? street_name : "No disponible"}</p>
             </th>
             <th className="w-1/5 ">
-              <p> {street_number}</p>
+              <p> {street_number ? street_number : "No disponible"}</p>
             </th>
           </tr>
         </table>

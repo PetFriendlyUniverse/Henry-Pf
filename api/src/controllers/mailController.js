@@ -3,6 +3,9 @@ const { google } = require("googleapis");
 const { contentHtml } = require("../helpers/styleMails/htmlMailBienvenida");
 const { MailConfirmBuy } = require("../helpers/styleMails/MailConfirmBuy");
 const { User } = require("../db");
+const {
+  MailResetPassword,
+} = require("../helpers/styleMails/MailResetPassword");
 
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
@@ -82,7 +85,7 @@ const sendResetPasswordEmail = async (email, resetToken) => {
       from: "Pet Friendly Universe <petfriendyleuniverse@gmail.com>",
       to: email,
       subject: "Reestablecer contraseña en Pet Friendly Universe",
-      html: contentHtml,
+      html: MailResetPassword(process.env.ORIGIN, resetToken),
     };
 
     const result = await transporter.sendMail(mailInfo);

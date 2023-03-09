@@ -13,7 +13,6 @@ const getTokenHandler = async (req, res) => {
         },
       }
     );
-    console.log(id);
     await userBuyMail(id);
     return res.status(200).json(data);
   } catch (error) {
