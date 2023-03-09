@@ -36,7 +36,7 @@ function TabWalker() {
             <PhotoWalker img={user?.img} name={user?.name} />
             <div className="mb-4 mt-4 border-gray-200  dark:border-gray-200">
               <ul className="-mb-px text-center text-sm font-medium">
-                <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
+                <li className="mr-2 rounded-lg border-b-2 bg-slate-50 py-3 hover:bg-slate-100 hover:text-gray-500">
                   <button
                     onClick={handleShowInfo}
                     name="profile"
@@ -46,7 +46,7 @@ function TabWalker() {
                     Perfil de Paseador
                   </button>
                 </li>
-                <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
+                <li className="mr-2 rounded-lg border-b-2 bg-slate-50 py-3 hover:bg-slate-100 hover:text-gray-500">
                   <button
                     onClick={handleShowInfo}
                     name="contact"
@@ -56,7 +56,7 @@ function TabWalker() {
                     Contacto
                   </button>
                 </li>
-                <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
+                <li className="mr-2 rounded-lg border-b-2 bg-slate-50 py-3 hover:bg-slate-100 hover:text-gray-500">
                   <button
                     onClick={handleShowInfo}
                     name="location"
@@ -66,12 +66,12 @@ function TabWalker() {
                     Direcciones
                   </button>
                 </li>
-                <li className="mr-2 rounded-lg border-b-2 hover:bg-slate-100 hover:text-gray-500">
+                <li className="mr-2 rounded-lg border-b-2 bg-ultraviolet text-slate-300 hover:cursor-pointer hover:bg-ultravioletLight hover:text-black  active:shadow-inner active:shadow-black">
                   {/* Reveer esto de volver al hacer Health/Services */}
                   <button
                     onClick={() => navigate(-1)}
                     title="vuelve a tu perfil"
-                    className="inline-block p-4"
+                    className="inline-block p-4 "
                   >
                     Volver
                   </button>
