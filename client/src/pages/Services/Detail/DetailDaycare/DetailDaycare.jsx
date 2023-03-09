@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Detail from "./Components/Detail/Detail";
-import Description from "./Components/Description/Description";
 import { getDaycareApi } from "../../../../redux/features/services/servicesActions";
 
 function ServicesDetail() {
@@ -30,9 +29,6 @@ function ServicesDetail() {
             street_number={daycare?.street_number}
           />
         </div>
-        {/* <div>
-          <Description description={daycare?.description} />
-        </div> */}
       </div>
     </div>
   );
