@@ -1,6 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-// import { Suspense, lazy } from "react";
 import "./App.css";
 // import FormPassword from "./pages/FormPassword/FormPassword";
 
