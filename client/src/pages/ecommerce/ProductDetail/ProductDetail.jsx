@@ -75,7 +75,7 @@ function ProductDetail() {
     <div className=" flex min-h-screen w-full flex-col items-center  justify-center pt-20">
       <div className=" max-w-[60vw] ">
         <div className="flex flex-col md:flex-col lg:flex-row">
-          <picture className="block  w-full  items-center justify-center lg:w-6/12">
+          <picture className="block w-full items-center justify-center lg:w-6/12">
             <img src={product?.img} alt="" className="w-[460px] " />
           </picture>
           <div className="inline-block w-full lg:w-6/12 ">
@@ -95,21 +95,27 @@ function ProductDetail() {
             <div className="flex flex-col flex-wrap items-start gap-4 md:flex-row md:gap-8">
               <h3>{"$" + product?.price}</h3>
               <button className="flex items-center text-[12px] font-bold uppercase text-pink-700">
-                <img src={cardCredit} alt="" /> Ver medios de pagos
+                <img className="pr-2" src={cardCredit} alt="" /> Ver medios de
+                pagos
               </button>
-              <button className="flex  items-center text-[12px] font-bold uppercase text-pink-700">
-                <img src={transport} alt="" />
+              <button className="flex items-center text-[12px] font-bold uppercase text-pink-700">
+                <img className="pr-2" src={transport} alt="" />
                 Producto con envio gratis
               </button>
             </div>
             <span className="text-xs">({product?.price + "x Kg"})</span>
-            <h3 className="text-lg font-semibold"> Tamaño:</h3>
-            <div className=" md:w-1/5 lg:w-1/4">
-              <MoarButton component={product?.weight + "kg"} />
+            <div className="mt-1 flex">
+              <h3 className="text-lg font-semibold"> Tamaño:</h3>
+              <p className="text-lg font-semibold">{product?.weight + "kg"}</p>
             </div>
-            <p>Stock: {product?.stock - auxCartAmount}</p>
-            <span className="text-lg font-semibold"> Seleccione Cantidad:</span>
-            <div className="w-1/2">
+
+            <p className="mt-1 border-b border-b-black text-lg font-semibold">
+              Stock: {product?.stock - auxCartAmount}
+            </p>
+            <div className="mt-2 w-2/4">
+              <span className="mt-1 text-lg font-semibold">
+                Seleccione Cantidad:
+              </span>
               <CountProduct
                 handleClickDeduct={handleClickDeduct}
                 handleClickAdd={handleClickAdd}
