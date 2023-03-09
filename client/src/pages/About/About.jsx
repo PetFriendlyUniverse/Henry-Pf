@@ -81,9 +81,7 @@ function About() {
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
+    setLoading(false);
     window.scrollTo(0, 0);
   }, []);
 
