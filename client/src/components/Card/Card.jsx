@@ -32,8 +32,16 @@ function Card({ name, img, weight, price, stock, id }) {
   const handleAddShopCart = () => {
     if (value !== 0) {
       dispatch(
-        //prettier-ignore
-        addNewProdShopCard({ id, name, img, weight, price, stock, amount: value, })
+        addNewProdShopCard({
+          id,
+          name,
+          img,
+          weight,
+          price,
+          stock,
+          amount: value,
+        })
+
       );
       setValue(0);
       Swal.fire({

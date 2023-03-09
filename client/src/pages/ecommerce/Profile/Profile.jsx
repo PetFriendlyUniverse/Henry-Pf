@@ -279,7 +279,7 @@ function Profile() {
           </div>
         </div>
         {/* container pets form */}
-        <div className="h-96 w-full max-w-xs rounded-2xl border-4 border-cornflowerblue  p-3 xl:w-96 ">
+        {/* <div className="h-96 w-full max-w-xs rounded-2xl border-4 border-cornflowerblue  p-3 xl:w-96 ">
           {petInfo.length ? (
             petInfo.map((pet, i) => {
               return <PetCard key={i} petInfo={pet} />;
@@ -287,7 +287,7 @@ function Profile() {
           ) : (
             <FormAddPet />
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );
