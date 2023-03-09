@@ -25,23 +25,15 @@ function Card({ name, img, weight, price, stock, id }) {
         icon: "warning",
         title: "Has alcanzado el limite de stock",
         showConfirmButton: false,
-        timer: 650,
+        timer: 800,
       });
     }
   };
   const handleAddShopCart = () => {
     if (value !== 0) {
       dispatch(
-        addNewProdShopCard({
-          id,
-          name,
-          img,
-          weight,
-          price,
-          stock,
-
-          amount: value,
-        })
+        //prettier-ignore
+        addNewProdShopCard({ id, name, img, weight, price, stock, amount: value, })
       );
       setValue(0);
       Swal.fire({
@@ -57,7 +49,9 @@ function Card({ name, img, weight, price, stock, id }) {
         icon: "warning",
         title: "No puede agregar cantidad 0 al carrito",
         showConfirmButton: false,
-        timer: 1500,
+        timer: 800,
+        closeOnEsc: true,
+        closeOnClickOutside: true,
       });
     }
   };
