@@ -89,7 +89,9 @@ function App() {
 
   return (
     <div className="App min-h-screen">
-      {pathname !== "/" && pathname !== "/landingshop" && <NavBar />}
+      {pathname !== "/" &&
+        pathname !== "/landingshop" &&
+        pathname !== "/landingservices" && <NavBar />}
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Landing />} />

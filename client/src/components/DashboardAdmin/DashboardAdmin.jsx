@@ -21,11 +21,6 @@ function DashboardAdmin() {
     setShow(e.target.name);
   };
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllInstagramUrlByApi());
-  }, []);
-
   return (
     <div className="flex w-full justify-center text-center">
       <div className="w-full py-32 text-white lg:w-4/5">

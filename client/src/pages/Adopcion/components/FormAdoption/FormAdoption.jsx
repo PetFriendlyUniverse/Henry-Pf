@@ -53,6 +53,7 @@ function FormAdoption() {
     if (e.target.name === "province") {
       dispatch(getLocalidadesAsync(e.target.value));
     }
+    console.log(form);
   };
 
   const changeHandlerImg = (e) => {
@@ -66,7 +67,7 @@ function FormAdoption() {
     setImgFile(fileArray);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errorValues = Object.values(errors);
     const isFormValid = errorValues.every((val) => val === "");
@@ -75,8 +76,9 @@ function FormAdoption() {
     newForm.append("province", form.province);
     newForm.append("locality", form.locality);
     newForm.append("description", form.description);
-    if (isFormValid) {
-      axios
+
+    try {
+      await axios
         .post(`/adoption/create/${id}`, newForm, {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -100,12 +102,13 @@ function FormAdoption() {
           setImg(null);
           setImgFile(null);
           setSelectedFiles([]);
+          location.reload();
         });
-    } else {
+    } catch (error) {
       Swal.fire({
         icon: "error",
         title: "Error en el formulario",
-        text: "No se pueden mandar direcciones http por el formulario",
+        text: "No se pudo crear el post",
         closeOnEsc: true,
         closeOnClickOutside: true,
       });

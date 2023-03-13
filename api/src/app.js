@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const routes = require("./routes/index.js");
 
 const cloudinary = require("cloudinary").v2;
-const { ORIGIN, REMOTE_ORIGIN } = process.env; // configurar su origen en env (en mi caso es ORIGIN=127.0.0.1 pero puede ser ORIGIN=localhost)
+const { ORIGIN, REMOTE_ORIGIN } = process.env;
 
 require("./db.js");
 

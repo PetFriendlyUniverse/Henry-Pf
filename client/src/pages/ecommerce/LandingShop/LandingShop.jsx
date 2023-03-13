@@ -47,14 +47,14 @@ function LandingShop() {
   return (
     <>
       {loading && <LandingShopSkeleton />}
-      <header className="clip-header relative flex w-full flex-col overflow-hidden bg-gray-700 pt-0 text-black sm:h-[450px]  lg:h-[459px]  xl:h-[680px] ">
+      <header className="clip-header relative flex w-full flex-col overflow-hidden bg-gray-700 pt-0 text-black sm:h-[450px]  lg:h-[459px]  xl:h-[600px] ">
         <img
           onLoad={() => handleImgLoad("perro3")}
           onAbort={() => handleImgLoad("perro3")}
           onError={() => handleImgLoad("perro3")}
           src={perro3}
           alt=""
-          className=" lg:h- absolute -top-20 h-0 w-0 object-cover contrast-125 sm:top-0 sm:h-full sm:w-full md:max-h-screen xl:min-h-full"
+          className=" absolute -top-20 h-0 w-0 object-cover contrast-125 sm:top-0 sm:h-full sm:w-full md:max-h-screen xl:min-h-full"
         ></img>
         <div className="absolute inset-0 bg-black bg-opacity-30"></div>
         <div className="z-10 overflow-hidden sm:mx-auto  sm:grid sm:h-0 sm:w-0 sm:grid-cols-3 sm:items-center sm:justify-center sm:gap-1 md:justify-items-center lg:top-1/2 lg:grid-cols-6 lg:gap-4">
