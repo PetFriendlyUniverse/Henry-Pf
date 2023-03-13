@@ -12,7 +12,7 @@ passport.use(
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
       // callbackURL: "https://petfriendly-backend.onrender.com/auth/google",
-      callbackURL: `https://henry-pf-production-f816.up.railway.app/auth/google`,
+      callbackURL: `http://localhost:3001/auth/google`,
     },
     async function (accessToken, refreshToken, profile, done) {
       try {
