@@ -351,14 +351,21 @@ function FormModifyUser() {
                       Seleccionar archivos
                     </div>
                   </label>
-                  <input
-                    id="file-upload"
-                    type="file"
-                    multiple
-                    accept="image/*"
-                    onChange={changeHandlerImg}
-                    className="hidden"
-                  />
+                  <div className="group relative z-0 mb-14 flex h-11 w-full">
+                    <label htmlFor="file-upload" className="w-full">
+                      <div className="rounded border border-gray-400 bg-gray-100 py-2 px-4 font-semibold text-gray-800 shadow hover:bg-gray-200">
+                        Seleccionar archivos
+                      </div>
+                    </label>
+                    <input
+                      id="file-upload"
+                      type="file"
+                      multiple
+                      accept="image/*"
+                      onChange={changeHandlerImg}
+                      className="hidden"
+                    />
+                  </div>
                 </div>
               </div>
 
