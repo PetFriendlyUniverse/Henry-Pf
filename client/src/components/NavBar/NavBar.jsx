@@ -33,7 +33,7 @@ function NavBarPrueba() {
   let activeClassName = "border-b border-white ";
 
   return (
-    <nav className="sticky top-0  z-50 flex w-full flex-col items-center justify-between bg-russianviolet p-4 2xl:py-5">
+    <nav className="sticky top-0  z-50 flex w-full flex-col items-center justify-between bg-russianviolet py-4 px-5 ">
       {/* Contenedor flex logo y button mobile */}
       <div className="flex w-full items-center justify-between    pb-2">
         {/* Logo */}
@@ -41,7 +41,7 @@ function NavBarPrueba() {
           <img
             src={logo}
             alt=""
-            className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16"
+            className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14"
           />
         </Link>
         {/* Button bars mobile */}
@@ -108,24 +108,7 @@ function NavBarPrueba() {
         ref={menu}
         className=" hidden  w-full pt-5 xl:absolute  xl:right-0  xl:top-7 xl:flex  xl:w-[900px] xl:items-center xl:gap-3  xl:p-0 xl:pt-0   2xl:top-6 2xl:right-0  "
       >
-        {/* link to blog */}
-        <NavLink
-          onClick={selectOption}
-          to="/adopcion/blog"
-          className="flex w-full gap-3 py-3 text-cornflowerblue "
-        >
-          {({ isActive }) => (
-            <div
-              className={`${
-                isActive ? activeClassName : undefined
-              } flex w-full  gap-3 pb-1 lg:justify-center`}
-            >
-              <img src={blog} alt="" />
-              <span className="font-bold uppercase">blog</span>
-            </div>
-          )}
-        </NavLink>
-        {/* link to landing shop */}
+        {/* link to shop */}
         <NavLink
           onClick={selectOption}
           to="/shop"
@@ -138,7 +121,7 @@ function NavBarPrueba() {
               } flex w-full  gap-3 pb-1 lg:justify-center`}
             >
               <img src={shop} alt="" />
-              <span className="font-bold uppercase">shop</span>
+              <span className="font-bold uppercase">tienda</span>
             </div>
           )}
         </NavLink>
@@ -155,7 +138,24 @@ function NavBarPrueba() {
               } flex w-full gap-3 pb-1 lg:justify-center`}
             >
               <img src={services} alt="" />
-              <span className="font-bold uppercase">services</span>
+              <span className="font-bold uppercase">servicios</span>
+            </div>
+          )}
+        </NavLink>
+        {/* link to blog */}
+        <NavLink
+          onClick={selectOption}
+          to="/adopcion/blog"
+          className="flex w-full gap-3 py-3 text-cornflowerblue "
+        >
+          {({ isActive }) => (
+            <div
+              className={`${
+                isActive ? activeClassName : undefined
+              } flex w-full  gap-3 pb-1 lg:justify-center`}
+            >
+              <img src={blog} alt="" />
+              <span className="font-bold uppercase">blog</span>
             </div>
           )}
         </NavLink>
@@ -192,7 +192,7 @@ function NavBarPrueba() {
                 } flex w-full gap-3 pb-1 lg:justify-center lg:gap-2 xl:gap-3`}
               >
                 <img src={login} alt="" />
-                <span className=" font-bold uppercase">login</span>
+                <span className=" font-bold uppercase">ingresar</span>
               </div>
             )}
           </NavLink>
@@ -202,10 +202,10 @@ function NavBarPrueba() {
       {/* contenedor serchBar and modalShop */}
       <div className=" flex w-full flex-col items-center justify-center gap-4  sm:w-[500px] md:w-full md:flex-row md:justify-end lg:h-16 2xl:absolute 2xl:left-36  2xl:top-4 2xl:w-[600px] 2xl:flex-row-reverse ">
         {/* searchBar  */}
-        {isShopPage && <SearchForm />}{" "}
+        {isShopPage && <SearchForm />}
         {/* Renderiza SearchForm solo en la página de tienda */}
         {/* ShopModal */}
-        <DropdownShop />
+        {isShopPage && <DropdownShop />}
       </div>
     </nav>
   );
