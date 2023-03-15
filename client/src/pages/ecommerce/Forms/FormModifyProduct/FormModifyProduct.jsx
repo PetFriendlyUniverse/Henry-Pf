@@ -29,7 +29,6 @@ function FormModifyProduct() {
     weight: product[0].weight,
     color: product[0].color,
     size: product[0].size,
-    img: product[0].img,
   });
   const [error, setError] = useState({
     name: "",
@@ -42,7 +41,6 @@ function FormModifyProduct() {
     weight: "",
     color: "",
     size: "",
-    img: "",
   });
   const changeHandlerImg = (e) => {
     setImg(e.target.files[0]);
@@ -86,6 +84,7 @@ function FormModifyProduct() {
       axios
         .put(`products/${id}`, form, {
           headers: {
+            "Content-Type": "multipart/form-data",
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
         })
