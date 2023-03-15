@@ -107,9 +107,10 @@ function FormCreateStore() {
         },
       });
       axios
-        .post(`store/create/${id}`, newForm, {
+        .post(`store/create`, newForm, {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
         })
         .then(() => {

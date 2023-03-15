@@ -112,10 +112,7 @@ function App() {
           <Route path="/profile/walker/:id" element={<TabWalker />} />
           <Route path="/profile/daycare/:id" element={<TabDaycare />} />
           <Route path="adopcion/blog" element={<Adopcion />} />
-          <Route
-            path="/profile/store/create/:id"
-            element={<FormCreateProduct />}
-          />
+          <Route path="/profile/store/create" element={<FormCreateProduct />} />
           <Route
             path="/shop/detail/modify/:id"
             element={<FormModifyProduct />}
@@ -128,7 +125,7 @@ function App() {
 
           <Route path="/dashboardadmin" element={<DashboardAdmin />} />
 
-          <Route path="/walker/create/:id" element={<FormCreateWalker />} />
+          <Route path="/walker/create" element={<FormCreateWalker />} />
           <Route path="/walker/modify/:id" element={<FormModifyWalker />} />
 
           <Route path="/daycare/create/:id" element={<FormCreateDaycare />} />

@@ -54,7 +54,7 @@ const getUserHandler = async (req, res) => {
   }
 };
 const getUserDetailHandler = async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.user;
   try {
     const user = await getUserById(id);
     res.status(200).json(user);
@@ -112,7 +112,7 @@ const resetPasswordHandler = async (req, res) => {
 };
 
 const getUserStore = async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.user;
   try {
     const storeByUser = await storeById(id);
     res.status(200).json(storeByUser);
@@ -121,7 +121,7 @@ const getUserStore = async (req, res) => {
   }
 };
 const getUserWalker = async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.user;
   try {
     const walkerByUser = await walkerById(id);
     res.status(200).json(walkerByUser);
