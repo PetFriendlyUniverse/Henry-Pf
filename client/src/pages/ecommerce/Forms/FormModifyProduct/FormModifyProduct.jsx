@@ -84,7 +84,11 @@ function FormModifyProduct() {
     newForm.append("size", form.size);
     if (isFormValid) {
       axios
-        .put(`products/${id}`, form)
+        .put(`products/${id}`, form, {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        })
         .then(() => {
           Swal.fire({
             title: "Producto modificado",
@@ -95,7 +99,7 @@ function FormModifyProduct() {
           });
         })
         .then(() => {
-          Navigate(`/profile/${id}`);
+          Navigate(-1);
         });
     } else {
       Swal.fire({

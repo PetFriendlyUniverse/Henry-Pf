@@ -112,7 +112,10 @@ function App() {
           <Route path="/profile/walker/:id" element={<TabWalker />} />
           <Route path="/profile/daycare/:id" element={<TabDaycare />} />
           <Route path="adopcion/blog" element={<Adopcion />} />
-          <Route path="/profile/store/create" element={<FormCreateProduct />} />
+          <Route
+            path="/profile/store/create/:id"
+            element={<FormCreateProduct />}
+          />
           <Route
             path="/shop/detail/modify/:id"
             element={<FormModifyProduct />}

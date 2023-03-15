@@ -19,10 +19,24 @@ productsRoutes.get("/", getAllProductsHandler);
 productsRoutes.get("/filters", getFilters);
 productsRoutes.get("/:id", getProductByIDlHandler);
 
-productsRoutes.get("/store/:storeId", getProductByIDStorelHandler);
+productsRoutes.get(
+  "/store/:storeId",
+  authMiddleware,
+  getProductByIDStorelHandler
+);
 
-productsRoutes.post("/create", upload.array("img"), postProductHandler);
-productsRoutes.put("/:id", upload.array("img"), putProductHandler);
+productsRoutes.post(
+  "/create",
+  authMiddleware,
+  upload.array("img"),
+  postProductHandler
+);
+productsRoutes.put(
+  "/:id",
+  authMiddleware,
+  upload.array("img"),
+  putProductHandler
+);
 productsRoutes.delete("/:id", deleteProductHandler);
 
 module.exports = productsRoutes;
