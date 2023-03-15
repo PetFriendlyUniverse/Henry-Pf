@@ -22,7 +22,7 @@ const postUserHandler = async (req, res) => {
 
   try {
     const newUser = await createUser(user, name, lastname, mail, password);
-    await confirmMail(name, lastname, mail);
+    // await confirmMail(name, lastname, mail);
     res.status(200).json(newUser);
   } catch (error) {
     res.status(404).json({ error: error.message });

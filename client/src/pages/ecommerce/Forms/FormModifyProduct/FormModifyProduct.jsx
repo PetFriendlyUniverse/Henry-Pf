@@ -12,7 +12,6 @@ function FormModifyProduct() {
   const [imgFile, setImgFile] = useState(null);
   const [formComplete, setFormComplete] = useState(false);
   const [img, setImg] = useState(null);
-  const dispatch = useDispatch();
   const { id } = useParams();
   const products = useSelector((state) => state.Tiendas?.products);
   const product = products.filter((p) => p.id == id);
@@ -69,7 +68,9 @@ function FormModifyProduct() {
     const errorValues = Object.values(error);
     const isFormValid = errorValues.every((val) => val === "");
     const newForm = new FormData();
-    newForm.append("img", img);
+    if (img != null) {
+      newForm.append("img", img);
+    }
     newForm.append("name", form.name);
     newForm.append("price", form.price);
     newForm.append("description", form.description);
@@ -81,8 +82,18 @@ function FormModifyProduct() {
     newForm.append("color", form.color);
     newForm.append("size", form.size);
     if (isFormValid) {
+      console.log(img);
+      Swal.fire({
+        title: "Now loading",
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
       axios
-        .put(`products/${id}`, form, {
+        .put(`products/${id}`, newForm, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: "Bearer " + localStorage.getItem("token"),
