@@ -152,7 +152,7 @@ function FormCreateStore() {
       </button>
       <form
         onSubmit={handleSubmit}
-        className="mt-10 flex h-full w-2/3 max-w-[900px] flex-col items-center justify-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue shadow-2xl shadow-black md:w-3/5 lg:h-auto lg:w-full "
+        className="mt-10 flex w-2/3 max-w-[900px] flex-col items-center justify-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue shadow-2xl shadow-black sm:h-[1300px] md:w-3/5 lg:h-auto lg:w-full "
       >
         <div>
           <h3 className="mb-6 text-center text-sm">
@@ -201,7 +201,7 @@ function FormCreateStore() {
             </div>
 
             {/* provincia */}
-            <div className=" grid px-10  md:grid-cols-2 md:gap-6">
+            <div className="grid max-w-[80%] px-5 md:grid-cols-2 md:gap-6 md:px-3">
               <div className="group relative z-0 mb-6 h-11 w-full">
                 <select
                   onChange={handleChange}
@@ -239,7 +239,6 @@ function FormCreateStore() {
               </div>
             </div>
             {/* cod postal */}
-
             <div className="mb-7 flex flex-col gap-4 lg:flex-row">
               <div className="group relative z-0 mb-6 h-11 ">
                 <input
@@ -321,7 +320,7 @@ function FormCreateStore() {
           {/* //empieza el div con imagenes */}
 
           <div className="lg:w-1/2">
-            <div className="flex h-1/2 justify-center">
+            <div className="flex h-[23.8%] justify-center">
               <Carousel className="min-h-[100px] w-full lg:w-10/12 ">
                 {selectedFiles &&
                   selectedFiles.map((file, i) => (
@@ -340,10 +339,10 @@ function FormCreateStore() {
               </Carousel>
             </div>
             <div className="p-8 px-8 lg:h-1/2 ">
-              <div className="group relative z-0 mb-14 flex h-11 w-full ">
-                <div className="group relative z-0 mb-14 flex h-11 w-full">
+              <div className="group relative z-0 mb-14 w-full ">
+                <div className="group relative z-0 mb-14 flex w-full">
                   <label htmlFor="file-upload" className="w-full">
-                    <div className="rounded border border-gray-400 bg-gray-100 py-2 px-4 font-semibold text-gray-800 shadow hover:bg-gray-200">
+                    <div className="rounded border border-gray-400 bg-gray-100 px-4 text-center font-semibold text-gray-800 shadow hover:bg-gray-200">
                       Seleccionar archivos
                     </div>
                   </label>
@@ -356,10 +355,9 @@ function FormCreateStore() {
                     className="hidden"
                   />
                 </div>
-
                 <div className="flex flex-col gap-10 md:grid-cols-2 md:gap-6">
                   {/* cod de area */}
-                  <div className="group relative z-0  h-11 w-full">
+                  <div className="group relative z-0 w-full">
                     <input
                       onChange={handleChange}
                       type="number"
@@ -400,7 +398,7 @@ function FormCreateStore() {
                   </div>
                 </div>
               </div>
-              <div className="mt-8 h-[10px] lg:mt-0">
+              <div className="mt-8 h-[10px] lg:mt-0 lg:pl-56">
                 <button>
                   {formComplete && <LinkButton component={"Crear Tienda"} />}
                 </button>
