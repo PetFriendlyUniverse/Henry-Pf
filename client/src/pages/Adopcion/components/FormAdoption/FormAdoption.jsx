@@ -53,6 +53,7 @@ function FormAdoption() {
     if (e.target.name === "province") {
       dispatch(getLocalidadesAsync(e.target.value));
     }
+    console.log(form);
   };
 
   const changeHandlerImg = (e) => {
@@ -66,7 +67,7 @@ function FormAdoption() {
     setImgFile(fileArray);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errorValues = Object.values(errors);
     const isFormValid = errorValues.every((val) => val === "");
@@ -75,8 +76,9 @@ function FormAdoption() {
     newForm.append("province", form.province);
     newForm.append("locality", form.locality);
     newForm.append("description", form.description);
-    if (isFormValid) {
-      axios
+
+    try {
+      await axios
         .post(`/adoption/create/${id}`, newForm, {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -100,12 +102,13 @@ function FormAdoption() {
           setImg(null);
           setImgFile(null);
           setSelectedFiles([]);
+          location.reload();
         });
-    } else {
+    } catch (error) {
       Swal.fire({
         icon: "error",
         title: "Error en el formulario",
-        text: "No se pueden mandar direcciones http por el formulario",
+        text: "No se pudo crear el post",
         closeOnEsc: true,
         closeOnClickOutside: true,
       });
@@ -204,17 +207,22 @@ function FormAdoption() {
             </Carousel>
           </div>
           <div className="pl:20 mt-24 h-1/2 p-8 md:mt-20 md:pl-28 ">
-            <div className="group relative z-0  flex h-11">
+            <div className="group relative z-0 mb-14 flex h-11 w-full">
+              <label htmlFor="file-upload" className="w-full">
+                <div className="rounded border border-gray-400 bg-gray-100 py-2 px-4 font-semibold text-gray-800 shadow hover:bg-gray-200">
+                  Seleccionar archivos
+                </div>
+              </label>
               <input
+                id="file-upload"
                 type="file"
                 multiple
                 accept="image/*"
                 onChange={changeHandlerImg}
-                value=""
+                className="hidden"
               />
             </div>
           </div>
-
           <LinkButton component={"Enviar"} />
         </div>
       </form>

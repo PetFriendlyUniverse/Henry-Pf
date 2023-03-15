@@ -2,12 +2,16 @@ import PaginationInstagram from "./components/PaginationInstagram/PaginationInst
 import BannerOng from "./components/BannerOng/BannerOng";
 import FormAdoption from "./components/FormAdoption/FormAdoption";
 import PaginationAdoption from "./components/PaginationAdoption/PaginationAdoption.jsx";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function Adopcion() {
+  const adopcion = useSelector((state) => state.Adopciones?.adopcion);
+  console.log(adopcion);
   const id = localStorage.getItem("id");
-
+  useEffect(() => {}, [adopcion]);
   return (
-    <div className="mb-36 flex h-full w-full flex-col items-center bg-adopcion ">
+    <div className="flex h-full w-full flex-col items-center bg-adopcion pb-36 ">
       <h2 className="my-10 flex text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
         <p className="text-russianviolet">Pet </p>
         <p className="text-cornflowerblue">Friendly </p>

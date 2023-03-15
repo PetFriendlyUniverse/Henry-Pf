@@ -315,15 +315,21 @@ function FormCreateProduct() {
             {/* aca empieza el div con la descripcion */}
             <div className="h-1/2  p-8 px-8">
               <div className="group relative z-0 mb-6 flex h-11 w-full">
-                <input
-                  type="file"
-                  multiple
-                  accept="image/*"
-                  onChange={changeHandlerImg}
-                />
-                <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                  Imagen:
-                </label>
+                <div className="group relative z-0 mb-14 flex h-11 w-full">
+                  <label htmlFor="file-upload" className="w-full">
+                    <div className="rounded border border-gray-400 bg-gray-100 py-2 px-4 font-semibold text-gray-800 shadow hover:bg-gray-200">
+                      Seleccionar archivos
+                    </div>
+                  </label>
+                  <input
+                    id="file-upload"
+                    type="file"
+                    multiple
+                    accept="image/*"
+                    onChange={changeHandlerImg}
+                    className="hidden"
+                  />
+                </div>
               </div>
               <div className="group relative z-0 mb-6 flex h-2/4 w-full">
                 <textarea
