@@ -1,6 +1,6 @@
 function Comments({ comments }) {
   return (
-    <div className=" flex w-3/5 flex-col items-start">
+    <div className=" flex w-3/5 items-start">
       {!!comments?.length ? (
         comments?.map((c, i) => (
           <div
