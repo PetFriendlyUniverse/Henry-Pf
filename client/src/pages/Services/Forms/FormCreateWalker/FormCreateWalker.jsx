@@ -14,15 +14,14 @@ import {
 } from "../../../../redux/features/ubicaciones/ubicacionesActions";
 
 function FormCreateWalker() {
-  const UserId = localStorage.getItem("id");
+  // const UserId = localStorage.getItem("id");
   const navigate = useNavigate();
-  const { id } = useParams();
   const dispatch = useDispatch();
   const provincia = useSelector((state) => state.Ubicaciones.provincias);
   const localidad = useSelector((state) => state.Ubicaciones.localidades);
 
   useEffect(() => {
-    dispatch(getWalkerByUser(id));
+    dispatch(getWalkerByUser());
     dispatch(getPronvinciasAsync());
   }, []);
 
@@ -113,9 +112,10 @@ function FormCreateWalker() {
         },
       });
       axios
-        .post(`walker/create/${id}`, newForm, {
+        .post(`walker/create`, newForm, {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
         })
         .then(() => {
@@ -126,7 +126,7 @@ function FormCreateWalker() {
             closeOnEsc: true,
             closeOnClickOutside: true,
           }).then(() => {
-            navigate(`/profile/${UserId}`);
+            navigate(-1);
           });
         })
         .catch((err) => {

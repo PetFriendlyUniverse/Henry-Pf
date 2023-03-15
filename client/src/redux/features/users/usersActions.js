@@ -10,17 +10,20 @@ import {
 } from "./usersSlice";
 
 export const getUserApi = () => async (dispatch) => {
-  const token = localStorage.getItem("token");
   const { data } = await axios.get(`user/detail`, {
     headers: {
-      Authorization: "Bearer " + token,
+      Authorization: "Bearer " + localStorage.getItem("token"),
     },
   });
   return dispatch(getUser(data));
 };
 
-export const getStoreByUser = (id) => async (dispatch) => {
-  const { data } = await axios.get(`user/store/${id}`);
+export const getStoreByUser = () => async (dispatch) => {
+  const { data } = await axios.get(`user/store`, {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  });
   return dispatch(getStore(data));
 };
 
@@ -29,8 +32,12 @@ export const getDaycareByUser = (id) => async (dispatch) => {
   return dispatch(getDaycare(data));
 };
 
-export const getWalkerByUser = (id) => async (dispatch) => {
-  const { data } = await axios.get(`user/walker/${id}`);
+export const getWalkerByUser = () => async (dispatch) => {
+  const { data } = await axios.get(`user/walker`, {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  });
   return dispatch(getWalker(data));
 };
 
