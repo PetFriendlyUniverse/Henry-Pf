@@ -9,8 +9,13 @@ import {
   getUserInvoices,
 } from "./usersSlice";
 
-export const getUserApi = (id) => async (dispatch) => {
-  const { data } = await axios.get(`user/detail/${id}`);
+export const getUserApi = () => async (dispatch) => {
+  const token = localStorage.getItem("token");
+  const { data } = await axios.get(`user/detail`, {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
   return dispatch(getUser(data));
 };
 

@@ -96,12 +96,11 @@ function Profile() {
   };
   useEffect(() => {
     dispatch(getStoreByUser(user?.id));
-    dispatch(getUserApi(user.id));
+    dispatch(getUserApi());
     getPet(user?.id).then((res) => {
       setPetInfo(res);
     });
   }, []);
-  console.log(petInfo);
   return (
     <div className="flex min-h-[80vh] justify-start  bg-adopcion pb-28 pt-10 lg:items-center lg:justify-center">
       <div className="flex h-full w-full flex-col items-center justify-end gap-3 rounded-2xl  px-6 lg:w-full  lg:flex-row lg:justify-start   lg:gap-10 2xl:px-16 ">

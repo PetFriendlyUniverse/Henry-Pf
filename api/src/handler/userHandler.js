@@ -54,7 +54,7 @@ const getUserHandler = async (req, res) => {
   }
 };
 const getUserDetailHandler = async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.user;
   try {
     const user = await getUserById(id);
     res.status(200).json(user);
