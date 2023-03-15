@@ -10,9 +10,15 @@ const {
 const daycareRoutes = Router();
 
 const multer = require("multer");
+const authMiddleware = require("../../helpers/authMiddleware");
 const upload = multer({ dest: "uploads/" });
 
-daycareRoutes.post("/create/:UserId", upload.single("img"), postDaycareHandler);
+daycareRoutes.post(
+  "/create",
+  authMiddleware,
+  upload.single("img"),
+  postDaycareHandler
+);
 daycareRoutes.get("/", getDaycaresHandler);
 daycareRoutes.get("/detail/:id", getDaycareByIDHandler);
 daycareRoutes.put("/:id", upload.single("img"), putDaycareHandler);

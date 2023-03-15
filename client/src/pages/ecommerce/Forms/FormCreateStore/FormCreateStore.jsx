@@ -15,15 +15,15 @@ import LinkButton from "../../../../components/Button/LinkButton";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getStoreByUser } from "../../../../redux/features/users/usersActions";
 function FormCreateStore() {
-  const UserId = localStorage.getItem("id");
+  // const UserId = localStorage.getItem("id");
   const navigate = useNavigate();
-  const { id } = useParams();
+  // const { id } = useParams();
   const dispatch = useDispatch();
   const provincia = useSelector((state) => state.Ubicaciones.provincias);
   const localidad = useSelector((state) => state.Ubicaciones.localidades);
 
   useEffect(() => {
-    dispatch(getStoreByUser(id));
+    dispatch(getStoreByUser());
     dispatch(getPronvinciasAsync());
   }, []);
 
@@ -121,7 +121,7 @@ function FormCreateStore() {
             closeOnEsc: true,
             closeOnClickOutside: true,
           }).then(() => {
-            navigate(`/profile/${UserId}`);
+            navigate(-1);
           });
         })
         .catch((err) => {

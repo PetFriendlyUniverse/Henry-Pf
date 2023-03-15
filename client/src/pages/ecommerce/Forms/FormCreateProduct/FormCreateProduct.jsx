@@ -68,7 +68,6 @@ function FormCreateProduct() {
     } else {
       setFormComplete(false);
     }
-    console.log(form);
   };
   const submitHandler = (e) => {
     e.preventDefault();
@@ -101,6 +100,7 @@ function FormCreateProduct() {
         .post("/products/create", newForm, {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: "Bearer " + localStorage.getItem("token"),
           }, //importante en form de imagen poner este headers
         })
         .then(() => {
@@ -113,7 +113,7 @@ function FormCreateProduct() {
           });
         })
         .then(() => {
-          navigate(`/profile/store/${id}`);
+          navigate(-1);
         });
     } else {
       Swal.fire({

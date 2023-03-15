@@ -112,7 +112,10 @@ function App() {
           <Route path="/profile/walker/:id" element={<TabWalker />} />
           <Route path="/profile/daycare/:id" element={<TabDaycare />} />
           <Route path="adopcion/blog" element={<Adopcion />} />
-          <Route path="/profile/store/create" element={<FormCreateProduct />} />
+          <Route
+            path="/profile/store/create/:id"
+            element={<FormCreateProduct />}
+          />
           <Route
             path="/shop/detail/modify/:id"
             element={<FormModifyProduct />}
@@ -120,7 +123,7 @@ function App() {
           <Route path="/about" element={<About />} />
           {/* <Route path="/loginpassword" element={<FormPassword />} /> */}
 
-          <Route path="/store/create/:id" element={<FormCreateStore />} />
+          <Route path="/store/create" element={<FormCreateStore />} />
           <Route path="/store/modify/:id" element={<FormModifyStore />} />
 
           <Route path="/dashboardadmin" element={<DashboardAdmin />} />
@@ -128,7 +131,7 @@ function App() {
           <Route path="/walker/create" element={<FormCreateWalker />} />
           <Route path="/walker/modify/:id" element={<FormModifyWalker />} />
 
-          <Route path="/daycare/create/:id" element={<FormCreateDaycare />} />
+          <Route path="/daycare/create" element={<FormCreateDaycare />} />
           <Route path="/daycare/modify/:id" element={<FormModifyDaycare />} />
 
           <Route path="*" element={<NotFound />} />
