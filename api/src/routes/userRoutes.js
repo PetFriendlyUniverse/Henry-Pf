@@ -26,7 +26,7 @@ userRoutes.get("/", getUserHandler);
 userRoutes.get("/detail", authMiddleware, getUserDetailHandler);
 userRoutes.get("/store", authMiddleware, getUserStore);
 userRoutes.get("/walker", authMiddleware, getUserWalker);
-userRoutes.get("/daycare/:id", getUserDaycare);
+userRoutes.get("/daycare", authMiddleware, getUserDaycare);
 userRoutes.post("/create", postUserHandler);
 userRoutes.post("/login", loginHandler);
 userRoutes.post("/logout", logoutHandler);
