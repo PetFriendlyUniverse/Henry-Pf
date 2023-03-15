@@ -47,10 +47,10 @@ function Profile() {
   //   });
   // };
   const handleClickStore = () => {
-    navigate(`/store/create/${user.id}`);
+    navigate(`/store/create`);
   };
   const handleClickWalker = () => {
-    navigate(`/walker/create/${user.id}`);
+    navigate(`/walker/create`);
   };
   const handleClickDaycare = () => {
     navigate(`/daycare/create/${user.id}`);
