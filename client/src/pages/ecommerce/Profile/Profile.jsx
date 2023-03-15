@@ -53,7 +53,7 @@ function Profile() {
     navigate(`/walker/create`);
   };
   const handleClickDaycare = () => {
-    navigate(`/daycare/create/${user.id}`);
+    navigate(`/daycare/create`);
   };
   const titles = {
     profile: "Perfil",

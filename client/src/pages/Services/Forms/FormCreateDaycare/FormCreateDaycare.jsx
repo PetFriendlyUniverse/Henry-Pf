@@ -14,15 +14,15 @@ import {
 } from "../../../../redux/features/ubicaciones/ubicacionesActions";
 
 function FormCreateDaycare() {
-  const UserId = localStorage.getItem("id");
+  // const UserId = localStorage.getItem("id");
   const navigate = useNavigate();
-  const { id } = useParams();
+  // const { id } = useParams();
   const dispatch = useDispatch();
   const provincia = useSelector((state) => state.Ubicaciones.provincias);
   const localidad = useSelector((state) => state.Ubicaciones.localidades);
 
   useEffect(() => {
-    dispatch(getDaycareByUser(id));
+    dispatch(getDaycareByUser());
     dispatch(getPronvinciasAsync());
   }, []);
 
@@ -113,9 +113,10 @@ function FormCreateDaycare() {
         },
       });
       axios
-        .post(`daycare/create/${id}`, newForm, {
+        .post(`daycare/create`, newForm, {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
         })
         .then(() => {
@@ -126,7 +127,7 @@ function FormCreateDaycare() {
             closeOnEsc: true,
             closeOnClickOutside: true,
           }).then(() => {
-            navigate(`/profile/${UserId}`);
+            navigate(-1);
           });
         })
         .catch((err) => {

@@ -27,8 +27,12 @@ export const getStoreByUser = () => async (dispatch) => {
   return dispatch(getStore(data));
 };
 
-export const getDaycareByUser = (id) => async (dispatch) => {
-  const { data } = await axios.get(`user/daycare/${id}`);
+export const getDaycareByUser = () => async (dispatch) => {
+  const { data } = await axios.get(`user/daycare/`, {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  });
   return dispatch(getDaycare(data));
 };
 
