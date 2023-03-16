@@ -307,7 +307,7 @@ function FormCreateStore() {
                 name="description"
                 onChange={handleChange}
                 className=" peer block w-full appearance-none rounded-2xl border-b-2 border-gray-100 bg-gray-100 px-1 py-4 text-sm text-gray-900   focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
-                placeholder="Agregue una breve descrpcion de su producto  "
+                placeholder="Agregue una breve descripcion de su tienda"
                 autoComplete="off"
               />
               {errors.description && (
