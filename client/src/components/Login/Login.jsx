@@ -90,8 +90,7 @@ function Login() {
   };
 
   const handleClickGoogle = () => {
-    // window.location.href = "https://henry-pf-production-f816.up.railway.app/auth";
-    window.location.href = "http://localhost:3001/auth";
+    window.location.href = "https://henry-pf-production-f816.up.railway.app/auth";
   };
 
   const handleSubmitRegister = async (e) => {
