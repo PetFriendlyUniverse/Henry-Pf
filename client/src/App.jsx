@@ -1,6 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-// import { Suspense, lazy } from "react";
 import "./App.css";
 // import FormPassword from "./pages/FormPassword/FormPassword";
 
@@ -123,15 +122,15 @@ function App() {
           <Route path="/about" element={<About />} />
           {/* <Route path="/loginpassword" element={<FormPassword />} /> */}
 
-          <Route path="/store/create/:id" element={<FormCreateStore />} />
+          <Route path="/store/create" element={<FormCreateStore />} />
           <Route path="/store/modify/:id" element={<FormModifyStore />} />
 
           <Route path="/dashboardadmin" element={<DashboardAdmin />} />
 
-          <Route path="/walker/create/:id" element={<FormCreateWalker />} />
+          <Route path="/walker/create" element={<FormCreateWalker />} />
           <Route path="/walker/modify/:id" element={<FormModifyWalker />} />
 
-          <Route path="/daycare/create/:id" element={<FormCreateDaycare />} />
+          <Route path="/daycare/create" element={<FormCreateDaycare />} />
           <Route path="/daycare/modify/:id" element={<FormModifyDaycare />} />
 
           <Route path="*" element={<NotFound />} />

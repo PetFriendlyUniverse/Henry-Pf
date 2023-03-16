@@ -10,9 +10,15 @@ const {
 const walkersRoutes = Router();
 
 const multer = require("multer");
+const authMiddleware = require("../../helpers/authMiddleware");
 const upload = multer({ dest: "uploads/" });
 
-walkersRoutes.post("/create/:UserId", upload.single("img"), postWalkersHandler);
+walkersRoutes.post(
+  "/create",
+  authMiddleware,
+  upload.single("img"),
+  postWalkersHandler
+);
 walkersRoutes.get("/", getWalkersHandler);
 walkersRoutes.get("/detail/:id", getWalkersDetailHandler);
 walkersRoutes.put("/:id", upload.single("img"), putWalkersHandler);

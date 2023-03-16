@@ -11,7 +11,7 @@ const cloudinary = require("cloudinary").v2;
 const postStoreHandler = async (req, res) => {
   const data = req.body;
   const file = req.file;
-  const { UserId: userId } = req.params;
+  const { id: userId } = req.user;
   try {
     const image = await cloudinary.uploader.upload(file.path);
     data.img = image.secure_url;

@@ -14,15 +14,14 @@ import {
 } from "../../../../redux/features/ubicaciones/ubicacionesActions";
 
 function FormCreateWalker() {
-  const UserId = localStorage.getItem("id");
+  // const UserId = localStorage.getItem("id");
   const navigate = useNavigate();
-  const { id } = useParams();
   const dispatch = useDispatch();
   const provincia = useSelector((state) => state.Ubicaciones.provincias);
   const localidad = useSelector((state) => state.Ubicaciones.localidades);
 
   useEffect(() => {
-    dispatch(getWalkerByUser(id));
+    dispatch(getWalkerByUser());
     dispatch(getPronvinciasAsync());
   }, []);
 
@@ -113,9 +112,10 @@ function FormCreateWalker() {
         },
       });
       axios
-        .post(`walker/create/${id}`, newForm, {
+        .post(`walker/create`, newForm, {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: "Bearer " + localStorage.getItem("token"),
           },
         })
         .then(() => {
@@ -126,7 +126,7 @@ function FormCreateWalker() {
             closeOnEsc: true,
             closeOnClickOutside: true,
           }).then(() => {
-            navigate(`/profile/${UserId}`);
+            navigate(-1);
           });
         })
         .catch((err) => {
@@ -141,36 +141,36 @@ function FormCreateWalker() {
     }
   };
   return (
-    <div className="flex h-full flex-col items-center justify-center  pb-16">
+    <div className="flex h-full flex-col items-center justify-center pb-16 ">
       <button
         onClick={() => {
           navigate(-1);
         }}
-        className="mt-6  rounded-md bg-ultraviolet p-2 text-lg text-white hover:bg-russianviolet"
+        className="mt-6 rounded-md bg-ultraviolet p-2 text-lg text-white hover:bg-russianviolet"
         type="button"
       >
         Volver
       </button>
       <form
         onSubmit={handleSubmit}
-        className="mt-10 flex h-full w-full flex-col items-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue drop-shadow-2xl md:w-3/5 lg:h-auto "
+        className="mt-10 flex w-2/3 max-w-[900px] flex-col items-center justify-center rounded-xl bg-russianviolet p-3 text-lg font-extrabold text-cornflowerblue shadow-2xl shadow-black sm:h-[1300px] md:w-3/5 lg:h-auto lg:w-full "
       >
-        <h3 className="mb-6">
+        <h3 className="mb-6 text-center text-sm">
           Modifica o agrega información para tu perfil de paseador
         </h3>
-        <div className="flex h-full w-full flex-row justify-between overflow-hidden rounded-2xl bg-slate-50 py-10">
-          <div className="h-full w-1/2 pl-4 pt-4">
-            <div className="group relative z-0 mb-6 h-11 w-4/5">
+        <div className="flex h-full w-full flex-col justify-between overflow-hidden rounded-lg bg-slate-50 py-10 lg:flex-row">
+          <div className="h-full p-4 lg:w-1/2">
+            <div className="group relative z-0 mb-6  h-11 lg:w-4/5 ">
               <input
                 onChange={handleChange}
                 type="text"
                 name="name"
                 value={form.name}
-                className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+                className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 sm:w-full "
                 placeholder=" "
                 autoComplete="off"
               />
-              <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+              <label className="absolute top-3 -z-10 w-full origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 sm:w-full">
                 Nombre de paseador
               </label>
               {errors.name && (
@@ -178,17 +178,17 @@ function FormCreateWalker() {
               )}
             </div>
             {/* corre electronico */}
-            <div className="group relative z-0 mb-6 h-11 w-4/5">
+            <div className="group relative z-0 mb-6 h-11 lg:w-4/5  ">
               <input
                 onChange={handleChange}
                 type="text"
                 name="mail"
                 value={form.mail}
-                className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900  focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+                className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900"
                 placeholder=" "
                 autoComplete="off"
               />
-              <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+              <label className="absolute top-3 -z-10 w-44 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 sm:w-full">
                 Correo Electrónico
               </label>
               {errors.mail && (
@@ -197,12 +197,12 @@ function FormCreateWalker() {
             </div>
 
             {/* provincia */}
-            <div className=" grid   md:grid-cols-2 md:gap-6">
-              <div className="group relative  z-0 mb-6 h-11 ">
+            <div className="grid max-w-[80%] px-5 md:grid-cols-2 md:gap-6 md:px-3">
+              <div className="group relative z-0 mb-6 h-11 w-full">
                 <select
                   onChange={handleChange}
                   name="province"
-                  className="max-w-full"
+                  className="w-full bg-transparent"
                   value={form.province}
                 >
                   <option value="" disabled selected>
@@ -220,6 +220,7 @@ function FormCreateWalker() {
                   onChange={handleChange}
                   name="locality"
                   value={form.locality}
+                  className="w-[240px] bg-transparent"
                 >
                   <option value="" disabled selected>
                     Localidad
@@ -234,18 +235,18 @@ function FormCreateWalker() {
               </div>
             </div>
             {/* cod postal */}
-            <div className="mb-7 flex">
-              <div className="group relative z-0 mb-6 h-11 w-full">
+            <div className="mb-7 flex flex-col gap-4 lg:flex-row">
+              <div className="group relative z-0 mb-6 h-11 ">
                 <input
                   onChange={handleChange}
                   type="number"
                   name="zip_code"
                   value={form.zip_code}
-                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 sm:w-full "
                   placeholder=" "
                   autoComplete="off"
                 />
-                <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+                <label className="absolute top-3 -z-10 w-full origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 sm:w-full">
                   Cod. Postal
                 </label>
                 {errors.zip_code && (
@@ -255,13 +256,13 @@ function FormCreateWalker() {
                   </span>
                 )}
               </div>
-              <div className="group relative z-0 mx-4 mb-6 h-11 w-full">
+              <div className="group relative z-0 mb-6 h-11 ">
                 <input
                   onChange={handleChange}
                   type="text"
                   name="street_name"
                   value={form.street_name}
-                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 sm:w-full "
                   placeholder=" "
                   autoComplete="off"
                 />
@@ -274,13 +275,13 @@ function FormCreateWalker() {
                   </span>
                 )}
               </div>
-              <div className="group relative z-0 mb-6 h-11 w-full">
+              <div className="group relative z-0 mb-6 h-11 ">
                 <input
                   onChange={handleChange}
                   type="number"
                   name="street_number"
                   value={form.street_number}
-                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 sm:w-full "
                   placeholder=" "
                   autoComplete="off"
                 />
@@ -341,12 +342,9 @@ function FormCreateWalker() {
                 name="description"
                 onChange={handleChange}
                 className=" peer block w-full appearance-none rounded-2xl border-b-2 border-gray-100 bg-gray-100 px-1 py-4 text-sm text-gray-900   focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
-                placeholder=" agregue una breve descrpcion de su producto  "
+                placeholder="Agregue una brece descripcion como paseador"
                 autoComplete="off"
               />
-              <label className="absolute bottom-2 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                Descripción:
-              </label>
               {errors.description && (
                 <span className="text-xs text-red-500">
                   {errors.description}
@@ -355,30 +353,46 @@ function FormCreateWalker() {
             </div>
           </div>
           {/* //empieza el div con imagenes */}
-          <div className="w-1/2">
-            <div className="flex h-1/2 justify-center">
-              <Carousel className="w-10/12 ">
+          <div className="lg:w-1/2">
+            <div className="flex h-[23.8%] justify-center">
+              <Carousel className="min-h-[100px] w-full lg:w-10/12 ">
                 {selectedFiles &&
                   selectedFiles.map((file) => (
-                    <picture className="flex aspect-square h-full items-center justify-center ">
-                      <img src={file} alt="" key={file.id} className="h-full" />
+                    <picture
+                      key={i}
+                      className="flex min-h-[100px] items-center justify-center lg:aspect-square lg:w-1/2 "
+                    >
+                      <img
+                        src={file}
+                        alt=""
+                        key={file.id}
+                        className="h-full w-full"
+                      />
                     </picture>
                   ))}
               </Carousel>
             </div>
-            <div className="h-2/5 p-8 px-8 ">
-              <div className="group relative z-0 mb-14 flex h-11 w-full ">
-                <input
-                  type="file"
-                  multiple
-                  accept="image/*"
-                  onChange={changeHandlerImg}
-                  value=""
-                />
+            <div className="p-8 px-8 lg:h-1/2 ">
+              <div className="group relative z-0 mb-14 w-full ">
+                <div className="group relative z-0 mb-14 flex w-full">
+                  <label htmlFor="file-upload" className="w-full">
+                    <div className="rounded border border-gray-400 bg-gray-100 px-4 text-center font-semibold text-gray-800 shadow hover:bg-gray-200">
+                      Seleccionar archivos
+                    </div>
+                  </label>
+                  <input
+                    id="file-upload"
+                    type="file"
+                    multiple
+                    accept="image/*"
+                    onChange={changeHandlerImg}
+                    className="hidden"
+                  />
+                </div>
               </div>
-              <div className="grid md:grid-cols-2 md:gap-6">
+              <div className="flex flex-col gap-10 md:grid-cols-2 md:gap-6">
                 {/* cod de area */}
-                <div className="group relative z-0  h-11 w-full">
+                <div className="group relative z-0 w-full">
                   <input
                     onChange={handleChange}
                     type="number"
@@ -421,11 +435,9 @@ function FormCreateWalker() {
                 </div>
               </div>
             </div>
-            <div className="mt-8 h-[10px] lg:mt-0">
+            <div className="mt-8 h-[10px] lg:mt-0 lg:pl-56">
               <button>
-                {formComplete && (
-                  <LinkButton component={"Habilitate como Paseador"} />
-                )}
+                {formComplete && <LinkButton component={"Crear Paseador"} />}
               </button>
             </div>
           </div>

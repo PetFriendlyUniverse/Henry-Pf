@@ -74,7 +74,7 @@ function DropdownShop() {
       <div
         onMouseOut={mouseOut}
         ref={dropDown}
-        className=" z-10 mt-2 hidden w-full rounded-b-lg bg-blue-100 hover:block md:absolute md:right-0 md:top-10 md:h-80  md:w-[500px] lg:h-96 2xl:left-0"
+        className=" z-10 mt-2 hidden w-full rounded-b-lg bg-blue-100 hover:block md:absolute md:right-0 md:top-10 md:max-h-80  md:w-[500px] lg:max-h-96 2xl:left-0"
       >
         <div className=" flex w-full items-center justify-between border-b border-black px-4 py-1 ">
           {!!products.length && (
@@ -92,17 +92,17 @@ function DropdownShop() {
           )}
         </div>
         <div
-          className={`flex h-40 flex-col gap-2 ${
+          className={`flex max-h-40 flex-col gap-2 ${
             products.length && "overflow-scroll overflow-x-hidden"
-          }  py-3 md:h-56 lg:h-[340px] `}
+          }  py-3 md:max-h-56 lg:max-h-[340px] `}
         >
           {products.length ? (
             products?.map((prod) => (
               <Subcard prod={prod} key={prod.id + "prodInDrowpdownShop"} />
             ))
           ) : (
-            <span className="flex h-full w-full items-center justify-center text-xl">
-              <h2>No hay productos agregados al carrito</h2>
+            <span className="flex h-full w-full  items-center justify-center py-5 text-xl font-semibold">
+              No hay productos en el carrito
             </span>
           )}
         </div>

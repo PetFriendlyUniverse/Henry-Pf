@@ -12,24 +12,20 @@ function ServicesDetail() {
     dispatch(getDaycareApi(id));
   }, []);
   return (
-    <div className="pt-10">
-      <div>
-        <div className="pb-10">
-          <Detail
-            name={daycare?.name}
-            img={daycare?.img}
-            price_hour={daycare?.price_hour}
-            price_day={daycare?.price_day}
-            province={daycare?.province}
-            locality={daycare?.locality}
-            area_code={daycare?.area_code}
-            number={daycare?.number}
-            mail={daycare?.mail}
-            street_name={daycare?.street_name}
-            street_number={daycare?.street_number}
-          />
-        </div>
-      </div>
+    <div className="min-h-[80vh] bg-adopcion py-10">
+      <Detail
+        name={daycare?.name}
+        img={daycare?.img}
+        price_hour={daycare?.price_hour}
+        price_day={daycare?.price_day}
+        province={daycare?.province}
+        locality={daycare?.locality}
+        area_code={daycare?.area_code}
+        number={daycare?.number}
+        mail={daycare?.mail}
+        street_name={daycare?.street_name}
+        street_number={daycare?.street_number}
+      />
     </div>
   );
 }
