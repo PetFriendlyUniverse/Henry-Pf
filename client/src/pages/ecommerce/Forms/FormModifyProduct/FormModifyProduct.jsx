@@ -12,7 +12,6 @@ function FormModifyProduct() {
   const [imgFile, setImgFile] = useState(null);
   const [formComplete, setFormComplete] = useState(false);
   const [img, setImg] = useState(null);
-  const dispatch = useDispatch();
   const { id } = useParams();
   const products = useSelector((state) => state.Tiendas?.products);
   const product = products.filter((p) => p.id == id);
@@ -29,7 +28,6 @@ function FormModifyProduct() {
     weight: product[0].weight,
     color: product[0].color,
     size: product[0].size,
-    img: product[0].img,
   });
   const [error, setError] = useState({
     name: "",
@@ -42,7 +40,6 @@ function FormModifyProduct() {
     weight: "",
     color: "",
     size: "",
-    img: "",
   });
   const changeHandlerImg = (e) => {
     setImg(e.target.files[0]);
@@ -71,7 +68,9 @@ function FormModifyProduct() {
     const errorValues = Object.values(error);
     const isFormValid = errorValues.every((val) => val === "");
     const newForm = new FormData();
-    newForm.append("img", img);
+    if (img != null) {
+      newForm.append("img", img);
+    }
     newForm.append("name", form.name);
     newForm.append("price", form.price);
     newForm.append("description", form.description);
@@ -83,8 +82,23 @@ function FormModifyProduct() {
     newForm.append("color", form.color);
     newForm.append("size", form.size);
     if (isFormValid) {
+      console.log(img);
+      Swal.fire({
+        title: "Now loading",
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
       axios
-        .put(`products/${id}`, form)
+        .put(`products/${id}`, newForm, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        })
         .then(() => {
           Swal.fire({
             title: "Producto modificado",
@@ -95,7 +109,7 @@ function FormModifyProduct() {
           });
         })
         .then(() => {
-          Navigate(`/profile/${id}`);
+          Navigate(-1);
         });
     } else {
       Swal.fire({
@@ -290,12 +304,21 @@ function FormModifyProduct() {
             {/* aca empieza el div con la descripcion */}
             <div className="h-1/2  p-8 px-8">
               <div className="group relative z-0 mb-6 flex h-11 w-full">
-                <input
-                  type="file"
-                  multiple
-                  accept="image/*"
-                  onChange={changeHandlerImg}
-                />
+                <div className="group relative z-0 mb-14 flex h-11 w-full">
+                  <label htmlFor="file-upload" className="w-full">
+                    <div className="rounded border border-gray-400 bg-gray-100 py-2 px-4 font-semibold text-gray-800 shadow hover:bg-gray-200">
+                      Seleccionar archivos
+                    </div>
+                  </label>
+                  <input
+                    id="file-upload"
+                    type="file"
+                    multiple
+                    accept="image/*"
+                    onChange={changeHandlerImg}
+                    className="hidden"
+                  />
+                </div>
                 <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
                   Imagen:
                 </label>

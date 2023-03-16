@@ -28,17 +28,19 @@ function Subcard({ prod, gridProperties }) {
     }
   };
   return (
-    <article className=" mx-auto flex w-11/12 flex-col items-center  justify-between gap-2 rounded-l-lg border-[1px] border-black px-2 sm:flex-row">
-      <picture className="h-52 p-1  sm:h-auto sm:w-1/3">
+    <article className=" mx-auto flex h-36 w-11/12  items-center  justify-between gap-2 rounded-l-lg border-[1px] border-black px-2 ">
+      <picture className=" w-56 p-1  sm:h-auto sm:w-1/3">
         <img className="h-full" src={img} alt={name} />
       </picture>
-      <div>
-        <h2>{name}</h2>
-        <p>{weight}kg</p>
-        <span className="text-xs text-zinc-500">stock: {stock - amount}</span>
-      </div>
-      <div>
-        <p>Precio: {priceFormatter(price * amount)}</p>
+      <div className="flex flex-col ">
+        <div>
+          <h2 className="font-bold">{name}</h2>
+        </div>
+        <div className="flex flex-col">
+          <p>{weight}kg</p>
+          <span className="text-xs text-zinc-500">Stock: {stock - amount}</span>
+          <p className="self-end">{priceFormatter(price * amount)}</p>
+        </div>
       </div>
       <div className="w-24 ">
         <CountProduct

@@ -24,6 +24,8 @@ function HomeServices() {
 
   return (
     <div className="scrollbar scrollbar-rounded-xl scrollbar-thumb-blue-500 scrollbar-track-blue-300 w-full justify-center bg-adopcion lg:flex lg:min-h-screen lg:flex-col lg:gap-12 lg:bg-slate-500 lg:pt-16 xl:items-center">
+      <Recomendados />
+
       <div className=" rounded-lg bg-ultraviolet p-5 text-center text-white">
         <span className="m-5">Provincia:</span>
         <select

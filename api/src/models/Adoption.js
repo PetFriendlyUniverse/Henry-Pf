@@ -12,16 +12,10 @@ module.exports = (sequelize) => {
       province: {
         type: DataTypes.STRING,
         allowNull: true,
-        validate: {
-          len: [1, 30],
-        },
       },
       locality: {
         type: DataTypes.STRING,
         allowNull: true,
-        validate: {
-          len: [1, 30],
-        },
       },
       img: {
         type: DataTypes.ARRAY(DataTypes.STRING),

@@ -83,9 +83,9 @@ const putProductHandler = async (req, res) => {
   const { id } = req.params;
   const data = req.body;
   const files = req.files;
-
+  console.log(files);
   try {
-    if (files) {
+    if (files && files.length > 0) {
       const images = [];
       for (const file of files) {
         const image = await cloudinary.uploader.upload(file.path);

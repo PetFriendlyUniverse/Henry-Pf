@@ -32,11 +32,9 @@ const loginUser = async (mail, password) => {
       { where: { mail: "petfriendyleuniverse@gmail.com" } }
     );
   }
-  const token = jwt.sign(
-    { id: user.id, token: user.token },
-    process.env.JWT_SECRET,
-    { expiresIn: "1h" }
-  );
+  const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+    expiresIn: "1h",
+  });
   return { id: user.id, token };
 };
 

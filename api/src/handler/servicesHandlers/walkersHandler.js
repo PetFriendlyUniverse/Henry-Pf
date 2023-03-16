@@ -10,7 +10,7 @@ const {
 const cloudinary = require("cloudinary").v2;
 
 const postWalkersHandler = async (req, res) => {
-  const { UserId: userId } = req.params;
+  const { id: userId } = req.user;
   const data = req.body;
   const file = req.file;
   try {

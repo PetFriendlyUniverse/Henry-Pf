@@ -23,10 +23,10 @@ const authMiddleware = require("../helpers/authMiddleware");
 const userRoutes = Router();
 //===> aca estamos en /user
 userRoutes.get("/", getUserHandler);
-userRoutes.get("/detail/:id", getUserDetailHandler);
-userRoutes.get("/store/:id", getUserStore);
-userRoutes.get("/walker/:id", getUserWalker);
-userRoutes.get("/daycare/:id", getUserDaycare);
+userRoutes.get("/detail", authMiddleware, getUserDetailHandler);
+userRoutes.get("/store", authMiddleware, getUserStore);
+userRoutes.get("/walker", authMiddleware, getUserWalker);
+userRoutes.get("/daycare", authMiddleware, getUserDaycare);
 userRoutes.post("/create", postUserHandler);
 userRoutes.post("/login", loginHandler);
 userRoutes.post("/logout", logoutHandler);
