@@ -164,17 +164,17 @@ function FormCreateDaycare() {
           {/* //div con el fomulario izquierdo */}
           <div className="h-full p-4 lg:w-1/2">
             {/* nombre de tienda aaaaaaaaaaaaaaaaa */}
-            <div className="group relative z-0 mb-6  h-11 lg:w-4/5 ">
+            <div className="group relative z-0 mb-6  h-11 lg:w-4/5">
               <input
                 onChange={handleChange}
                 type="text"
                 name="name"
                 value={form.name}
-                className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 sm:w-full "
+                className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 sm:w-full"
                 placeholder=" "
                 autoComplete="off"
               />
-              <label className="absolute top-3 -z-10 w-full origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 sm:w-full">
+              <label className="absolute top-3 -z-10 w-full origin-[0] -translate-y-6 scale-75 transform text-xs text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 sm:w-full md:text-sm">
                 Nombre de la guarderia
               </label>
               {errors.name && (
@@ -182,7 +182,7 @@ function FormCreateDaycare() {
               )}
             </div>
             {/* corre electronico */}
-            <div className="group relative z-0 mb-6 h-11 lg:w-4/5  ">
+            <div className="group relative z-0 mb-6 h-11 lg:w-4/5">
               <input
                 onChange={handleChange}
                 type="text"
@@ -192,14 +192,13 @@ function FormCreateDaycare() {
                 placeholder=" "
                 autoComplete="off"
               />
-              <label className="absolute top-3 -z-10 w-44 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 sm:w-full">
+              <label className="absolute top-3 -z-10 w-44 origin-[0] -translate-y-6 scale-75 transform text-xs text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 sm:w-full md:text-sm">
                 Correo Electronico
               </label>
               {errors.mail && (
                 <span className="text-xs text-red-500">{errors.mail}</span>
               )}
             </div>
-
             {/* provincia */}
             <div className="grid max-w-[80%] px-5 md:grid-cols-2 md:gap-6 md:px-3">
               <div className="group relative z-0 mb-6 h-11 w-full">
@@ -240,17 +239,17 @@ function FormCreateDaycare() {
             </div>
             {/* cod postal */}
             <div className="mb-7 flex flex-col gap-4 lg:flex-row">
-              <div className="group relative z-0 mb-6 h-11 ">
+              <div className="group relative z-0 mb-6 h-11">
                 <input
                   onChange={handleChange}
                   type="number"
                   name="zip_code"
                   value={form.zip_code}
-                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 sm:w-full "
+                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 sm:w-full"
                   placeholder=" "
                   autoComplete="off"
                 />
-                <label className="absolute top-3 -z-10 w-full origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 sm:w-full">
+                <label className="absolute top-3 -z-10 w-full origin-[0] -translate-y-6 scale-75 transform text-xs text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 sm:w-full md:text-sm">
                   Cod. Postal
                 </label>
                 {errors.zip_code && (
@@ -259,17 +258,17 @@ function FormCreateDaycare() {
                   </span>
                 )}
               </div>
-              <div className="group relative z-0 mb-6 h-11 ">
+              <div className="group relative z-0 mb-6 h-11">
                 <input
                   onChange={handleChange}
                   type="text"
                   name="street_name"
                   value={form.street_name}
-                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 sm:w-full "
+                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 sm:w-full"
                   placeholder=" "
                   autoComplete="off"
                 />
-                <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+                <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-xs text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 md:text-sm">
                   Calle
                 </label>
                 {errors.street_name && (
@@ -278,17 +277,17 @@ function FormCreateDaycare() {
                   </span>
                 )}
               </div>
-              <div className="group relative z-0 mb-6 h-11 ">
+              <div className="group relative z-0 mb-6 h-11">
                 <input
                   onChange={handleChange}
                   type="number"
                   name="street_number"
                   value={form.street_number}
-                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 sm:w-full "
+                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 sm:w-full"
                   placeholder=" "
                   autoComplete="off"
                 />
-                <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+                <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-xs text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 md:text-sm">
                   Numeración
                 </label>
                 {errors.street_number && (
@@ -305,12 +304,12 @@ function FormCreateDaycare() {
                   type="number"
                   name="price_hour"
                   value={form.price_hour}
-                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900"
                   placeholder=" "
                   autoComplete="off"
                 />
-                <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                  Precio por Hora
+                <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-xs text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 md:text-sm">
+                  Precio hora
                 </label>
                 {errors.price_hour && (
                   <span className="text-xs text-red-500">
@@ -324,12 +323,12 @@ function FormCreateDaycare() {
                   type="number"
                   name="price_day"
                   value={form.price_day}
-                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+                  className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900"
                   placeholder=" "
                   autoComplete="off"
                 />
-                <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
-                  Precio por Dia
+                <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-xs text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 md:text-sm">
+                  Precio dia
                 </label>
                 {errors.price_day && (
                   <span className="text-xs text-red-500">
@@ -344,8 +343,8 @@ function FormCreateDaycare() {
                 value={form.description}
                 name="description"
                 onChange={handleChange}
-                className=" peer block w-full appearance-none rounded-2xl border-b-2 border-gray-100 bg-gray-100 px-1 py-4 text-sm text-gray-900   focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
-                placeholder=" agregue una breve descrpcion de su producto  "
+                className=" peer block w-full appearance-none rounded-2xl border-b-2 border-gray-100 bg-gray-100 px-1 py-4 text-xs text-gray-900 focus:outline-none   focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 md:text-sm"
+                placeholder="Agregue una descripcion para su Guarderia"
                 autoComplete="off"
               />
               {errors.description && (
@@ -358,9 +357,9 @@ function FormCreateDaycare() {
           {/* //empieza el div con imagenes */}
           <div className="lg:w-1/2">
             <div className="flex h-[23.8%] justify-center">
-              <Carousel className="min-h-[100px] w-full lg:w-10/12 ">
+              <Carousel className="min-h-[100px] w-full lg:w-10/12">
                 {selectedFiles &&
-                  selectedFiles.map((file) => (
+                  selectedFiles.map((file, i) => (
                     <picture
                       key={i}
                       className="flex min-h-[100px] items-center justify-center lg:aspect-square lg:w-1/2 "
@@ -375,8 +374,8 @@ function FormCreateDaycare() {
                   ))}
               </Carousel>
             </div>
-            <div className="p-8 px-8 lg:h-1/2 ">
-              <div className="group relative z-0 mb-14 w-full ">
+            <div className="p-8 px-8 lg:h-1/2">
+              <div className="group relative z-0 mb-14 w-full">
                 <div className="group relative z-0 mb-14 flex w-full">
                   <label htmlFor="file-upload" className="w-full">
                     <div className="rounded border border-gray-400 bg-gray-100 px-4 text-center font-semibold text-gray-800 shadow hover:bg-gray-200">
@@ -401,11 +400,11 @@ function FormCreateDaycare() {
                     type="number"
                     name="area_code"
                     value={form.area_code}
-                    className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+                    className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900"
                     placeholder=" "
                     autoComplete="off"
                   />
-                  <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+                  <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-xs text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 md:text-sm">
                     Cod. de area
                   </label>
                   {errors.area_code && (
@@ -415,17 +414,17 @@ function FormCreateDaycare() {
                   )}
                 </div>
                 {/* telefono */}
-                <div className="group relative z-0  h-11 w-full">
+                <div className="group relative z-0 h-11 w-full">
                   <input
                     onChange={handleChange}
                     type="number"
                     name="number"
                     value={form.number}
-                    className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900 "
+                    className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-0 dark:border-gray-600 dark:focus:border-gray-900"
                     placeholder=" "
                     autoComplete="off"
                   />
-                  <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900">
+                  <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-xs text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-gray-900 dark:text-gray-400 peer-focus:dark:text-gray-900 md:text-sm">
                     Teléfono
                   </label>
                   {errors.number && (
