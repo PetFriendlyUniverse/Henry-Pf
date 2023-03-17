@@ -425,7 +425,7 @@ function FormModifyDaycare() {
             </div>
             <div className="mt-8 h-[10px] lg:mt-0 lg:pl-56">
               <button>
-                {formComplete && <LinkButton component={"Crear Guarderia"} />}
+                <LinkButton component={"Modificar"} />
               </button>
             </div>
           </div>

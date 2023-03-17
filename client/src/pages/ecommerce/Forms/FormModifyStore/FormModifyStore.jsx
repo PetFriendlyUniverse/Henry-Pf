@@ -309,7 +309,7 @@ function FormModifyStore() {
             <div className="flex h-[23.8%] justify-center">
               <Carousel className="min-h-[100px] w-full lg:w-10/12">
                 {selectedFiles &&
-                  selectedFiles.map((file) => (
+                  selectedFiles.map((file, i) => (
                     <picture
                       key={i}
                       className="flex min-h-[100px] items-center justify-center lg:aspect-square lg:w-1/2 "
